@@ -26,10 +26,10 @@ abstract class Resource extends NovaResource
      * @param  \Laravel\Scout\Builder  $query
      * @return \Laravel\Scout\Builder
      */
-    public static function scoutQuery(NovaRequest $request, $query)
+    /*public static function scoutQuery(NovaRequest $request, $query)
     {
         return $query;
-    }
+    }*/
 
     /**
      * Build a "detail" query for the given resource.
