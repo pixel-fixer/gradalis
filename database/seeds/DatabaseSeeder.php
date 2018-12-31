@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
+        $this->call(BusinessSeeder::class);
 
         Model::reguard();
     }

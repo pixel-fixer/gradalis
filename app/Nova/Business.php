@@ -5,27 +5,28 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Digitalcloud\MultilingualNova\Multilingual;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use Digitalcloud\MultilingualNova\Multilingual;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class City extends Resource
+class Business extends Resource
 {
 
-    public static $group = 'Location';
+    public static $group = 'Business';
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Models\City';
+    public static $model = 'App\Models\Business\Business';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'tenslation';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -33,7 +34,7 @@ class City extends Resource
      * @var array
      */
     public static $search = [
-        'id','name','translation'
+        'id',
     ];
 
     /**
@@ -46,18 +47,33 @@ class City extends Resource
     {
         return [
             ID::make()->sortable(),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Translation')
+            Textarea::make('Description')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Country'),
+            Text::make('Seo_Title')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Multilingual::make('Translation'),
+            Textarea::make('Seo_Description')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Seo_Keywords')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            BelongsTo::make('Category', 'category', 'App\Nova\BusinessCategory'),
+
+            Multilingual::make('Name'),
+            Multilingual::make('Description'),
+            Multilingual::make('Seo_Title'),
+            Multilingual::make('Seo_Description'),
+            Multilingual::make('Seo_Keywords'),
         ];
     }
 

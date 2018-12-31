@@ -2,30 +2,29 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Digitalcloud\MultilingualNova\Multilingual;
 use Laravel\Nova\Fields\Text;
+use Digitalcloud\MultilingualNova\Multilingual;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class City extends Resource
+class BusinessCategory extends Resource
 {
 
-    public static $group = 'Location';
+    public static $group = 'Business';
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Models\City';
+    public static $model = 'App\Models\Business\BusinessCategory';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'tenslation';
+    public static $title = 'translation';
 
     /**
      * The columns that should be searched.
@@ -33,7 +32,7 @@ class City extends Resource
      * @var array
      */
     public static $search = [
-        'id','name','translation'
+        'id',
     ];
 
     /**
@@ -46,7 +45,6 @@ class City extends Resource
     {
         return [
             ID::make()->sortable(),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -54,8 +52,6 @@ class City extends Resource
             Text::make('Translation')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            BelongsTo::make('Country'),
 
             Multilingual::make('Translation'),
         ];

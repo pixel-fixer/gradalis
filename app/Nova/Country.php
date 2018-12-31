@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 
 class Country extends Resource
 {
+    public static $group = 'Location';
     /**
      * The model the resource corresponds to.
      *
