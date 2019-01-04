@@ -11,6 +11,10 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Objects"
         }
     ],
     "require": {
@@ -21,7 +25,9 @@
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
-        "silvanite/novatoolpermissions": "^1.0"
+        "marketplace/objects": "*",
+        "silvanite/novatoolpermissions": "^1.0",
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",

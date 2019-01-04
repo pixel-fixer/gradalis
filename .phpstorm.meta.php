@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-12-30 10:35:15.
+    * Generated on 2019-01-03 12:56:41.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -116,6 +116,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -258,6 +261,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -400,6 +406,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -542,6 +551,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -684,6 +696,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -826,6 +841,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
@@ -968,6 +986,9 @@ namespace PHPSTORM_META {
         'command.view.clear' => \Illuminate\Foundation\Console\ViewClearCommand::class,
         'composer' => \Illuminate\Support\Composer::class,
         'cookie' => \Illuminate\Cookie\CookieJar::class,
+        'datatables' => \Yajra\DataTables\DataTables::class,
+        'datatables.config' => \Yajra\DataTables\Utilities\Config::class,
+        'datatables.request' => \Yajra\DataTables\Utilities\Request::class,
         'db' => \Illuminate\Database\DatabaseManager::class,
         'db.connection' => \Illuminate\Database\MySqlConnection::class,
         'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,

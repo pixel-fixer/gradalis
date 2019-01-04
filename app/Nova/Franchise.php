@@ -10,10 +10,10 @@ use Laravel\Nova\Fields\Textarea;
 use Digitalcloud\MultilingualNova\Multilingual;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Business extends Resource
+class Franchise extends Resource
 {
 
-    public static $group = 'Business';
+    public static $group = 'Franchise';
     public static $displayInNavigation = false;
 
     /**
@@ -21,7 +21,7 @@ class Business extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Models\Business\Business';
+    public static $model = 'App\Models\Franchise\Franchise';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -95,7 +95,7 @@ class Business extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Category', 'category', 'App\Nova\BusinessCategory'),
+            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
 
             Multilingual::make('Name'),
             Multilingual::make('Description'),

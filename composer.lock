@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a686356a172f288bf4e16dff79184fc7",
+    "content-hash": "8b4251596cdd203e53e3059691440d03",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
@@ -264,16 +264,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.9.1",
+            "version": "v2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "ec74d6e300d78fbc896669c3ca57ef9719adc9c6"
+                "reference": "22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/ec74d6e300d78fbc896669c3ca57ef9719adc9c6",
-                "reference": "ec74d6e300d78fbc896669c3ca57ef9719adc9c6",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9",
+                "reference": "22800bd651c1d8d2a9719e2a3dc46d5108ebfcc9",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +342,7 @@
                 "php",
                 "queryobject"
             ],
-            "time": "2018-12-14T04:51:13+00:00"
+            "time": "2018-12-31T03:27:51+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -1549,6 +1549,40 @@
                 "storage"
             ],
             "time": "2018-11-23T23:41:29+00:00"
+        },
+        {
+            "name": "marketplace/objects",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Objects",
+                "reference": "a3aa3b13d9131f4d93be5423d03801cba0a6c909",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Marketplace\\Objects\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marketplace\\Objects\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "monolog/monolog",
@@ -3888,6 +3922,77 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v8.13.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "3d7f05687069d90ca5dc3e75bf269e13eecccc76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/3d7f05687069d90ca5dc3e75bf269e13eecccc76",
+                "reference": "3d7f05687069d90ca5dc3e75bf269e13eecccc76",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/filesystem": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/http": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "illuminate/view": "5.4.*|5.5.*|5.6.*|5.7.*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
+                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2018-11-23T08:05:22+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

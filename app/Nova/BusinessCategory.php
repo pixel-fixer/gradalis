@@ -12,6 +12,7 @@ class BusinessCategory extends Resource
 {
 
     public static $group = 'Business';
+    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *

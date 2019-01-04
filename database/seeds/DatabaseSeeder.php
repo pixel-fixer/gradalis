@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->truncateMultiple([
             'businesses',
             'business_categories',
+            'franchises',
+            'franchise_categories',
+            'franchise_packages',
             'languages',
             'countries',
             'cities',
@@ -30,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
         $this->call(BusinessSeeder::class);
+        $this->call(FranchiseSeeder::class);
 
         Model::reguard();
     }
