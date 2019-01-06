@@ -110,13 +110,13 @@
             },
 
             changeTab(locale) {
-                this.currentLocale = locale
-                this.$nextTick(() => {
-                    if (this.field.trix) {
-                        this.$refs.field.update()
-                    } else {
-                        this.$refs.field.focus()
-                    }
+                this.$parent.$children.forEach(function (field) {
+                    field.currentLocale = locale;
+                    field.$nextTick(() => {
+                        if (field.field && field.field.trix) {
+                            field.$refs.field.update()
+                        }
+                    })
                 })
             },
 

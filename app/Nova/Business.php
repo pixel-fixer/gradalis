@@ -5,7 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use MrMonat\Translatable\Translatable;
+use Marketplace\Translatable\Translatable;
 
 class Business extends Resource
 {

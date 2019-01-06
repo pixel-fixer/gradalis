@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use MrMonat\Translatable\Translatable;
+use Marketplace\Translatable\Translatable;
 
 class City extends Resource
 {

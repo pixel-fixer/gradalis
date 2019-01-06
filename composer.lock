@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92bfde639717bbf5748eb7cfb7ed99f7",
+    "content-hash": "5544f85e8375816d72d7647d61f73f4b",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
@@ -1593,11 +1593,12 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "284f362d724ac4bbc451ff87fe7a4e529b051cb8",
+                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
                 "shasum": null
             },
             "require": {
-                "php": ">=7.1.0"
+                "php": ">=7.1.0",
+                "spatie/laravel-translatable": "^3.0"
             },
             "type": "library",
             "extra": {
@@ -1747,49 +1748,6 @@
                 "math"
             ],
             "time": "2017-02-16T16:54:46+00:00"
-        },
-        {
-            "name": "mrmonat/nova-translatable",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrmonat/nova-translatable.git",
-                "reference": "b0458379b7cc7d69126a1818bb2f40658a464558"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrmonat/nova-translatable/zipball/b0458379b7cc7d69126a1818bb2f40658a464558",
-                "reference": "b0458379b7cc7d69126a1818bb2f40658a464558",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0",
-                "spatie/laravel-translatable": "^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "MrMonat\\Translatable\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "MrMonat\\Translatable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova field for spatie/laravel-translatable.",
-            "keywords": [
-                "laravel",
-                "nova",
-                "translatable"
-            ],
-            "time": "2018-11-13T12:58:16+00:00"
         },
         {
             "name": "nesbot/carbon",

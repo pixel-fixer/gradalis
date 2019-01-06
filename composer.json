@@ -30,10 +30,9 @@
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
         "marketplace/objects": "*",
-        "mrmonat/nova-translatable": "^1.2",
+        "marketplace/translatable": "*",
         "silvanite/novatoolpermissions": "^1.0",
-        "yajra/laravel-datatables-oracle": "~8.0",
-        "marketplace/translatable": "*"
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",

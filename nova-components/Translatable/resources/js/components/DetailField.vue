@@ -33,8 +33,9 @@
 
         methods: {
             changeTab(locale) {
-                console.log(this);
-                this.currentLocale = locale
+                this.$parent.$children.forEach(function (field) {
+                    field.currentLocale = locale;
+                })
             }
         },
 

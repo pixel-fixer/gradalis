@@ -371,8 +371,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         changeTab: function changeTab(locale) {
-            console.log(this);
-            this.currentLocale = locale;
+            this.$parent.$children.forEach(function (field) {
+                field.currentLocale = locale;
+            });
         }
     },
 
@@ -616,15 +617,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.value[this.currentLocale] = value;
         },
         changeTab: function changeTab(locale) {
-            var _this2 = this;
-
-            this.currentLocale = locale;
-            this.$nextTick(function () {
-                if (_this2.field.trix) {
-                    _this2.$refs.field.update();
-                } else {
-                    _this2.$refs.field.focus();
-                }
+            this.$parent.$children.forEach(function (field) {
+                field.currentLocale = locale;
+                field.$nextTick(function () {
+                    if (field.field && field.field.trix) {
+                        field.$refs.field.update();
+                    }
+                });
             });
         },
         handleTab: function handleTab(e) {
