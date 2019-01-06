@@ -3,9 +3,9 @@
 return [
 
     /*
-     * The source of supported locales on the application
-     * Available selection "array", "database". Default array
+     * If a translation has not been set for a given locale, use this locale instead.
      */
+    'fallback_locale' => 'ru',
     'source' => 'database',
 
     /*
@@ -27,15 +27,4 @@ return [
         'code_field' => 'lang',
         'label_field' => 'name'
     ],
-
-    /*
-     * The view style you want to show on index & details page
-     * Available selection "button", "list", "mix" default button
-     */
-    'style' => 'button',
-
-    /*
-     * If you choose mix selection, you can define after how many languages should button convert to list
-     */
-    'convert_to_list_after' => 1
 ];

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b4251596cdd203e53e3059691440d03",
+    "content-hash": "92bfde639717bbf5748eb7cfb7ed99f7",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
@@ -113,46 +113,49 @@
             "time": "2018-10-18T22:02:21+00:00"
         },
         {
-            "name": "digitalcloud/multilingual-nova",
-            "version": "1.1.2",
+            "name": "coderello/laravel-nova-lang",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/DigitalCloud/multilingual-nova.git",
-                "reference": "110a141abdc833f406924b789434a2d03338615f"
+                "url": "https://github.com/coderello/laravel-nova-lang.git",
+                "reference": "88db12a73f8b8884f24695f566e0d890a884c8f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DigitalCloud/multilingual-nova/zipball/110a141abdc833f406924b789434a2d03338615f",
-                "reference": "110a141abdc833f406924b789434a2d03338615f",
+                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/88db12a73f8b8884f24695f566e0d890a884c8f1",
+                "reference": "88db12a73f8b8884f24695f566e0d890a884c8f1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.0",
-                "spatie/laravel-translatable": "^3.0"
+                "laravel/framework": "5.5.*|5.6.*|5.7.*",
+                "php": ">=7.1"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Digitalcloud\\MultilingualNova\\FieldServiceProvider"
+                        "Coderello\\LaravelNovaLang\\Providers\\LaravelNovaLangServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Digitalcloud\\MultilingualNova\\": "src/"
+                    "Coderello\\LaravelNovaLang\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "💪 Multilingual Nova (using default nova fields)",
+            "description": "Language support for Laravel Nova.",
             "keywords": [
+                "lang",
+                "language",
                 "laravel",
-                "nova"
+                "nova",
+                "support"
             ],
-            "time": "2018-12-12T10:06:15+00:00"
+            "time": "2018-11-22T18:53:13+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1585,6 +1588,40 @@
             ]
         },
         {
+            "name": "marketplace/translatable",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Translatable",
+                "reference": "284f362d724ac4bbc451ff87fe7a4e529b051cb8",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Marketplace\\Translatable\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marketplace\\Translatable\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.24.0",
             "source": {
@@ -1710,6 +1747,49 @@
                 "math"
             ],
             "time": "2017-02-16T16:54:46+00:00"
+        },
+        {
+            "name": "mrmonat/nova-translatable",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrmonat/nova-translatable.git",
+                "reference": "b0458379b7cc7d69126a1818bb2f40658a464558"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrmonat/nova-translatable/zipball/b0458379b7cc7d69126a1818bb2f40658a464558",
+                "reference": "b0458379b7cc7d69126a1818bb2f40658a464558",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "spatie/laravel-translatable": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MrMonat\\Translatable\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MrMonat\\Translatable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field for spatie/laravel-translatable.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "translatable"
+            ],
+            "time": "2018-11-13T12:58:16+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3875,16 +3955,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/cfd5dc225767ca154853752abc93aeec040fcf36",
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36",
                 "shasum": ""
             },
             "require": {
@@ -3921,20 +4001,20 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-29T20:33:41+00:00"
+            "time": "2018-10-30T17:29:25+00:00"
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v8.13.1",
+            "version": "v8.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "3d7f05687069d90ca5dc3e75bf269e13eecccc76"
+                "reference": "387512371d3688f3fe1bf75e3e9e53b3d1426736"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/3d7f05687069d90ca5dc3e75bf269e13eecccc76",
-                "reference": "3d7f05687069d90ca5dc3e75bf269e13eecccc76",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/387512371d3688f3fe1bf75e3e9e53b3d1426736",
+                "reference": "387512371d3688f3fe1bf75e3e9e53b3d1426736",
                 "shasum": ""
             },
             "require": {
@@ -3992,7 +4072,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2018-11-23T08:05:22+00:00"
+            "time": "2019-01-05T02:12:47+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

@@ -10,6 +10,7 @@ use Marketplace\Objects\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
+
     /**
      * Bootstrap any application services.
      *

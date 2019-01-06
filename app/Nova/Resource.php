@@ -8,6 +8,13 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 abstract class Resource extends NovaResource
 {
     /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Other');
+    }
+    /**
      * Build an "index" query for the given resource.
      *
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request

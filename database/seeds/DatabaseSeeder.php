@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
+        $this->call(FranchisePackageSeeder::class);
 
         Model::reguard();
     }

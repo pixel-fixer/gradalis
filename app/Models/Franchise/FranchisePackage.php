@@ -9,10 +9,10 @@ class FranchisePackage extends Model
     use HasTranslations;
     protected $table = 'franchise_packages';
     public $timestamps = true;
-    public $translatable = ['options', 'translation'];
+    public $translatable = ['options', 'name'];
     protected $fillable = array(
         'options',
-        'translation',
+        'name',
         'franchise_id',
         'price',
         'profitability',

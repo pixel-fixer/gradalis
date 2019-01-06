@@ -3,18 +3,26 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Digitalcloud\MultilingualNova\Multilingual;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Trix;
+use Marketplace\Translatable\Translatable;
 
 class Franchise extends Resource
 {
 
-    public static $group = 'Franchise';
-    public static $displayInNavigation = false;
+    /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Franchise');
+    }
+
+    //public static $displayInNavigation = false;
 
     /**
      * The model the resource corresponds to.
@@ -39,31 +47,22 @@ class Franchise extends Resource
         'name',
     ];
 
-    /**
-     * Build an "index" query for the given resource.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public static function indexQuery(NovaRequest $request, $query)
-    {   /*$franchises = Franchise::select('name');
-        $query->select('name')->union($franchises);
-        \Log::info($query->toSql());*/
-        return $query;
+    public static function label()
+    {
+        return __('Franchises');
     }
 
     /**
-     * Apply any applicable orderings to the query.
+     * Get the displayble singular label of the resource.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  array  $orderings
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return string
      */
-    /*protected static function applyOrderings($query, array $orderings)
+    public static function singularLabel()
     {
-        return $query;
-    }*/
+        return __('Franchise');
+    }
+
+
 
     /**
      * Get the fields displayed by the resource.
@@ -73,36 +72,8 @@ class Franchise extends Resource
      */
     public function fields(Request $request)
     {
-        return [
-            ID::make()->sortable(),
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Textarea::make('Description')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Seo_Title')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Textarea::make('Seo_Description')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Seo_Keywords')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
-
-            Multilingual::make('Name'),
-            Multilingual::make('Description'),
-            Multilingual::make('Seo_Title'),
-            Multilingual::make('Seo_Description'),
-            Multilingual::make('Seo_Keywords'),
-        ];
+        $fields =  $this->getAdminFields();
+        return $fields;
     }
 
     /**
@@ -147,5 +118,65 @@ class Franchise extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    protected function getUserFields(){
+        return [
+            ID::make()->sortable(),
+            Text::make('Name')
+                ->rules('required', 'max:255'),
+
+            Trix::make('Description')
+                ->hideFromIndex()
+                ->rules('required'),
+
+            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
+
+            HasMany::make('Packages', 'packages', 'App\Nova\FranchisePackage')
+                ->withMeta([
+                    'indexName' => __('Packages'),
+                    'name' => __('Packages')
+                ])->singularLabel(__('Package')),
+        ];
+    }
+    protected function getAdminFields(){
+        return [
+            ID::make()->sortable(),
+            Translatable::make('Name')
+                ->singleLine()
+                ->indexLocale('ru')
+                ->rules('required', 'max:255'),
+
+            Translatable::make('Description')
+                ->trix()
+                ->indexLocale('ru')
+                ->hideFromIndex()
+                ->rules('required'),
+
+            Translatable::make('Seo_Title')
+                ->singleLine()
+                ->indexLocale('ru')
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+
+            Translatable::make('Seo_Description')
+                ->indexLocale('ru')
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+
+            Translatable::make('Seo_Keywords')
+                ->singleLine()
+                ->indexLocale('ru')
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+
+            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
+
+            HasMany::make('Packages', 'packages', 'App\Nova\FranchisePackage')
+                ->withMeta([
+                    'indexName' => __('Packages'),
+                    'name' => __('Packages')
+                ])->singularLabel(__('Package')),
+        ];
     }
 }

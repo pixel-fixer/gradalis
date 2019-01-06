@@ -8,6 +8,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class Objects extends Tool
 {
+
     /**
      * Perform any tasks that need to happen when the tool is booted.
      *

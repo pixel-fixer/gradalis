@@ -12,6 +12,7 @@ use Silvanite\NovaToolPermissions\Role;
 
 class User extends Resource
 {
+
     /**
      * The model the resource corresponds to.
      *
@@ -19,7 +20,6 @@ class User extends Resource
      */
     public static $model = 'App\\Models\\Auth\\User';
 
-   //public static $group = 'Auth';
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -35,6 +35,26 @@ class User extends Resource
     public static $search = [
         'id', 'name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
     ];
+
+    /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return __('Users');
+    }
+
+    /**
+     * Get the displayble singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('User');
+    }
 
     /**
      * Get the fields displayed by the resource.

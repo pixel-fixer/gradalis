@@ -5,7 +5,6 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Language extends Resource
 {
@@ -31,6 +30,26 @@ class Language extends Resource
     public static $search = [
         'id','lang','name'
     ];
+
+    /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return __('Languages');
+    }
+
+    /**
+     * Get the displayble singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Language');
+    }
 
     /**
      * Get the fields displayed by the resource.

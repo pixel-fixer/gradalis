@@ -28054,7 +28054,6 @@ __webpack_require__(1);
 __webpack_require__(2);
 __webpack_require__(3);
 __webpack_require__(9);
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -28281,7 +28280,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("table", { staticClass: "table-fixed" }, [
+  return _c("table", { staticClass: "table w-full" }, [
     _c("thead", [
       _c(
         "tr",
@@ -28496,7 +28495,7 @@ exports = module.exports = __webpack_require__(13)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
 
 // exports
 
@@ -28779,6 +28778,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -28819,15 +28820,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("heading", { staticClass: "mb-6" }, [_vm._v("Objects")]),
-      _vm._v(" "),
-      _c("datatable", { staticClass: "table", attrs: { columns: _vm.columns } })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "px-view py-view mx-auto" }, [
+    _c("h1", { staticClass: "mb-3 text-90 font-normal text-2xl" }, [
+      _vm._v("Объекты")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card relative" },
+      [
+        _c("datatable", {
+          staticClass: "table",
+          attrs: { columns: _vm.columns }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40482,23 +40491,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 //import router from 'router'
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id', 'resource'],
     methods: {
         editObject: function editObject(lang) {
-            window.location = Nova.config.base + "/resources/" + this.resource + "/" + this.id + "/edit" + "?lang=" + lang;
+            window.location = Nova.config.base + "/resources/" + this.resource + "/" + this.id + "/edit";
         }
     }
 });
@@ -40515,42 +40514,36 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "btn btn-default",
-        on: {
-          click: function($event) {
-            _vm.editObject("ru")
-          }
-        }
+        staticClass: "btn btn-default btn-icon bg-primary",
+        on: { click: _vm.editObject }
       },
-      [_vm._t("default", [_vm._v("\n            Edit ru\n        ")])],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        on: {
-          click: function($event) {
-            _vm.editObject("en")
-          }
-        }
-      },
-      [_vm._t("default", [_vm._v("\n            Edit en\n        ")])],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        on: {
-          click: function($event) {
-            _vm.editObject("pl")
-          }
-        }
-      },
-      [_vm._t("default", [_vm._v("\n            Edit pl\n        ")])],
+      [
+        _vm._t("default", [
+          _c(
+            "svg",
+            {
+              staticClass: "fill-current text-white",
+              staticStyle: { "margin-top": "-2px", "margin-left": "3px" },
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "20",
+                height: "20",
+                viewBox: "0 0 20 20",
+                "aria-labelledby": "edit",
+                role: "presentation"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z"
+                }
+              })
+            ]
+          )
+        ])
+      ],
       2
     )
   ])

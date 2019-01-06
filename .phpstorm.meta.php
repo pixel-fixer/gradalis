@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-01-03 12:56:41.
+    * Generated on 2019-01-06 11:08:08.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -88,6 +88,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -233,6 +234,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -378,6 +380,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -523,6 +526,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -668,6 +672,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -813,6 +818,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,
@@ -958,6 +964,7 @@ namespace PHPSTORM_META {
         'command.policy.make' => \Illuminate\Foundation\Console\PolicyMakeCommand::class,
         'command.preset' => \Illuminate\Foundation\Console\PresetCommand::class,
         'command.provider.make' => \Illuminate\Foundation\Console\ProviderMakeCommand::class,
+        'command.publish.nova-lang' => \Coderello\LaravelNovaLang\Commands\NovaLangPublish::class,
         'command.queue.failed' => \Illuminate\Queue\Console\ListFailedCommand::class,
         'command.queue.failed-table' => \Illuminate\Queue\Console\FailedTableCommand::class,
         'command.queue.flush' => \Illuminate\Queue\Console\FlushFailedCommand::class,

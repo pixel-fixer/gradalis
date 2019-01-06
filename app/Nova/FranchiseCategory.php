@@ -5,14 +5,20 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Digitalcloud\MultilingualNova\Multilingual;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use MrMonat\Translatable\Translatable;
 
 class FranchiseCategory extends Resource
 {
 
-    public static $group = 'Franchise';
-    public static $displayInNavigation = false;
+    /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Franchise');
+    }
+
+    //public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
@@ -36,6 +42,21 @@ class FranchiseCategory extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Categories').' '.__('Of Franchise');
+    }
+
+    /**
+     * Get the displayble singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return  __('Category').' '.__('Of Franchise');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -50,11 +71,10 @@ class FranchiseCategory extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Translation')
+            Translatable::make('Translation')
                 ->sortable()
+                ->singleLine()
                 ->rules('required', 'max:255'),
-
-            Multilingual::make('Translation'),
         ];
     }
 

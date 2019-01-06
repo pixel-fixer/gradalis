@@ -1,57 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ac035a4-5559-428a-a2eb-7533a106a64d" name="Default Changelist" comment="Started admin objects (FranchiseSeeder)(migrate)(composer update)">
-      <change afterPath="$PROJECT_DIR$/app/Models/Franchise/Franchise.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Franchise/FranchiseCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Nova/Franchise.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Nova/FranchiseCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/Franchise/FranchiseFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/Franchise/FranchisePackageFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2018_12_22_132433_create_franchise_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2018_12_22_132434_create_franchises_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2018_12_22_132435_create_franchise_packages_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Franchise/FranchisePackageSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/dist/css/tool.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/dist/js/tool.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/dist/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DeleteButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/tool.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/sass/tool.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/src/Http/Middleware/Authorize.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/src/Objects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nova-components/Objects/yarn.lock" afterDir="false" />
+    <list default="true" id="6ac035a4-5559-428a-a2eb-7533a106a64d" name="Default Changelist" comment="Started nova translation field(FranchisePackageSeeder)(migrate)(composer update)">
+      <change afterPath="$PROJECT_DIR$/app/Nova/FranchisePackage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/novatoolpermissions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143800_create_partners_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_campaigns_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143802_create_campaign_resources_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143803_create_invitations_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143808_create_conditions_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143809_create_campaign_condition_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_05_143810_create_invitation_counter_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/dist/css/field.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/dist/js/field.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/dist/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/js/Trix.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/DetailField.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/FormField.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/IndexField.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/js/field.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/resources/sass/field.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/src/FieldServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/src/Translatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/webpack.mix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nova-components/Translatable/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/nova/pl.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/nova/pl/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/nova/ru.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/nova/ru/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/market.local.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/market.local.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Business/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Business/BusinessCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Nova/Business.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Business.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Nova/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/BusinessCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/NovaServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/NovaServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/City.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/Franchise.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Franchise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/FranchiseCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/FranchiseCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Language.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/Resource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Resource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/multilingual.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/multilingual.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/multilingual.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/translatable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/Franchise/FranchisePackageSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Franchise/FranchisePackageSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/dist/js/tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/dist/js/tool.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/src/Objects.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/src/Objects.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,101 +74,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
-              <folding>
-                <element signature="e#7#42#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Franchise/Franchise.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="35" column="63" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="63" />
-              <folding>
-                <element signature="e#40#79#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Franchise/FranchiseCategory.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-              <folding>
-                <element signature="e#40#79#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Nova/Franchise.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-              <folding>
-                <element signature="e#28#62#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/tool.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-              <folding>
-                <element signature="e#171#211#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="677" lean-forward="true" selection-start-line="1" selection-start-column="677" selection-end-line="1" selection-end-column="677" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/factories/Franchise/FranchisePackageFactory.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_campaigns_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143808_create_conditions_table.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143809_create_campaign_condition_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nova-components/Translatable/webpack.mix.js">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/field.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143802_create_campaign_resources_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143803_create_invitations_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143800_create_partners_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="17" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143810_create_invitation_counter_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -180,6 +165,8 @@
       <find>orders</find>
       <find>Franchise</find>
       <find>Business</find>
+      <find>Rol</find>
+      <find>vue</find>
     </findStrings>
     <replaceStrings>
       <replace>$franchise</replace>
@@ -196,57 +183,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/storage/app/.gitignore" />
-        <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/app/Models/City.php" />
-        <option value="$PROJECT_DIR$/database/seeds/LanguagesSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Models/Country.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2014_12_10_132433_create_countries_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/CountrySeeder.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/database/seeds/Auth/UserTableSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Models/Auth/User.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2014_12_10_132434_create_cities_table.php" />
-        <option value="$PROJECT_DIR$/.env.example" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/app/Nova/Resource.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Business/BusinessTranslation.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Business/Business.php" />
-        <option value="$PROJECT_DIR$/app/Models/Business/Business.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2018_12_21_164923_alter_business_category_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/Business/BusinessSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Nova/City.php" />
-        <option value="$PROJECT_DIR$/app/Nova/Country.php" />
-        <option value="$PROJECT_DIR$/app/Providers/NovaServiceProvider.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/src/Objects.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/tool.js" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/Controller.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/routes/api.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/composer.json" />
-        <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/config/multilingual.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_20_132435_create_franchise_packages_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_20_132434_create_franchises_table.php" />
-        <option value="$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_20_132433_create_franchise_categories_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue" />
         <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DeleteButton.vue" />
         <option value="$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue" />
-        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue" />
-        <option value="$PROJECT_DIR$/app/Nova/Business.php" />
         <option value="$PROJECT_DIR$/app/Models/Franchise/Franchise.php" />
-        <option value="$PROJECT_DIR$/app/Nova/FranchiseCategory.php" />
-        <option value="$PROJECT_DIR$/app/Nova/BusinessCategory.php" />
         <option value="$PROJECT_DIR$/app/Models/Business/BusinessCategory.php" />
         <option value="$PROJECT_DIR$/app/Models/Franchise/FranchiseCategory.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_22_132433_create_franchise_categories_table.php" />
+        <option value="$PROJECT_DIR$/config/translatable.php" />
+        <option value="$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Nova/Business.php" />
+        <option value="$PROJECT_DIR$/app/Nova/BusinessCategory.php" />
+        <option value="$PROJECT_DIR$/app/Nova/FranchiseCategory.php" />
+        <option value="$PROJECT_DIR$/app/Nova/Language.php" />
+        <option value="$PROJECT_DIR$/app/Nova/User.php" />
+        <option value="$PROJECT_DIR$/app/Nova/Resource.php" />
+        <option value="$PROJECT_DIR$/config/novatoolpermissions.php" />
+        <option value="$PROJECT_DIR$/database/seeds/Franchise/FranchisePackageSeeder.php" />
+        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/app/Nova/City.php" />
+        <option value="$PROJECT_DIR$/app/Nova/Country.php" />
+        <option value="$PROJECT_DIR$/app/Nova/FranchisePackage.php" />
         <option value="$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Nova/Franchise.php" />
+        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue" />
+        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue" />
+        <option value="$PROJECT_DIR$/nova-components/Objects/src/Objects.php" />
+        <option value="$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php" />
+        <option value="$PROJECT_DIR$/resources/lang/vendor/nova/ru.json" />
         <option value="$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php" />
+        <option value="$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143800_create_partners_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143808_create_invitation_counter_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_companies_table.php" />
+        <option value="$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/components/FormField.vue" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/IndexField.vue" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/src/FieldServiceProvider.php" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/src/Translatable.php" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/package.json" />
+        <option value="$PROJECT_DIR$/app/Nova/Franchise.php" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/FormField.vue" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/resources/js/components/DetailField.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_invitations_table.php" />
+        <option value="$PROJECT_DIR$/nova-components/Translatable/resources/js/field.js" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143808_create_conditions_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143803_create_invitations_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143809_create_campaign_condition_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143802_create_campaign_resources_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_campaigns_table.php" />
       </list>
     </option>
   </component>
@@ -356,7 +343,6 @@
       <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
-      <path value="$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova" />
       <path value="$PROJECT_DIR$/vendor/orchestra/testbench-core" />
       <path value="$PROJECT_DIR$/vendor/orchestra/testbench" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
@@ -375,6 +361,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/mrmonat/nova-translatable" />
+      <path value="$PROJECT_DIR$/vendor/coderello/laravel-nova-lang" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -402,17 +390,6 @@
             <path>
               <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
               <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Nova" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -420,62 +397,6 @@
               <item name="market.local" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-              <item name="Franchise" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-              <item name="Objects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-              <item name="Objects" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-              <item name="Objects" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-              <item name="Objects" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="market.local" type="b2602c69:ProjectViewProjectNode" />
-              <item name="market.local" type="462c0819:PsiDirectoryNode" />
-              <item name="nova-components" type="462c0819:PsiDirectoryNode" />
-              <item name="Objects" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -496,11 +417,11 @@
       <recent name="C:\Sites\Code\market.local\app\Models\Auth" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Sites\Code\market.local\database\migrations" />
+      <recent name="C:\Sites\Code\market.local\nova-components\Translatable\resources\js" />
       <recent name="C:\Sites\Code\market.local\app\Nova" />
       <recent name="C:\Sites\Code\market.local\nova-components\Objects\resources\js\components" />
       <recent name="C:\Sites\Code\market.local\database\factories" />
-      <recent name="C:\Sites\Code\market.local\database\seeds" />
-      <recent name="C:\Sites\Code\market.local\app\Models\Franchise" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -556,17 +477,24 @@
       <option name="project" value="LOCAL" />
       <updated>1546162840311</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Started admin objects (FranchiseSeeder)(migrate)(composer update)">
+      <created>1546619614559</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1546619614559</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44136000" />
+    <option name="totallyTimeSpent" value="70626000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1453" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.2702509" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.2702509" />
       <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.2702509" />
       <window_info id="npm" order="2" sideWeight="0.50201887" side_tool="true" weight="0.2702509" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -579,10 +507,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.32974428" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32974428" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32839838" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32166892" />
+      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32166892" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -596,372 +524,371 @@
     <MESSAGE value="Fix for larasan" />
     <MESSAGE value="Started admin objects" />
     <MESSAGE value="Started admin objects (FranchiseSeeder)(migrate)(composer update)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started admin objects (FranchiseSeeder)(migrate)(composer update)" />
+    <MESSAGE value="Started nova translation field(FranchisePackageSeeder)(migrate)(composer update)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started nova translation field(FranchisePackageSeeder)(migrate)(composer update)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php">
+    <entry file="file://$PROJECT_DIR$/app/Nova/Resource.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3652">
-          <caret line="227" column="67" selection-start-line="227" selection-start-column="67" selection-end-line="227" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/multilingual.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova/resources/js/components/FormField.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/NovaServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+        <state relative-caret-position="-357">
+          <caret line="15" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="15" selection-end-column="5" />
           <folding>
-            <element signature="e#33#55#0#PHP" expanded="true" />
+            <element signature="e#28#70#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova/src/Multilingual.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_22_132435_create_franchise_packages_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Franchise/FranchiseTranslation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="20" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Franchise/FranchisePackageTranslation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_22_132434_create_franchises_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Business/Business.php">
+    <entry file="file://$PROJECT_DIR$/vendor/silvanite/novatoolpermissions/src-php/Role.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="97" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="97" />
-          <folding>
-            <element signature="e#39#78#0#PHP" expanded="true" />
-          </folding>
+          <caret line="93" column="5" selection-start-line="85" selection-start-column="4" selection-end-line="93" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/Franchise/FranchiseFactory.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/Franchise/FranchiseFactory.php">
+    <entry file="file://$PROJECT_DIR$/vendor/silvanite/novatoolpermissions/src-php/Policies/RolePolicy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
+        <state relative-caret-position="-306" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_20_072001_create_business_categories_table.php">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/config/novatoolpermissions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="286">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/Business/BusinessSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="e#7#40#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/src/PerformsQueries.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/src/Resource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nova/Resource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-01-03.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="295">
-          <caret line="2416" column="107" selection-start-line="2416" selection-start-column="34" selection-end-line="2416" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/DeleteButton.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="101" selection-start-line="2" selection-start-column="101" selection-end-line="2" selection-end-column="101" />
-          <folding>
-            <element signature="e#139#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/base.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/Nova.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1277">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/views/Index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12495" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/components.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova/resources/js/components/IndexField.vue">
+    <entry file="file://$PROJECT_DIR$/app/Nova/City.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="16" selection-end-line="20" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova/resources/js/field.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/digitalcloud/multilingual-nova/resources/js/components/LanguageUI.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="161" lean-forward="true" selection-start-line="10" selection-start-column="161" selection-end-line="10" selection-end-column="161" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/nova/resources/js/router/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="60" column="61" selection-start-line="58" selection-start-column="16" selection-end-line="60" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nova/BusinessCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146">
-          <caret line="20" column="56" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="56" />
-          <folding>
-            <element signature="e#28#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nova/FranchiseCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Franchise/FranchisePackage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="e#40#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/src/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding>
-            <element signature="e#87#120#0#PHP" expanded="true" />
-            <element signature="e#80#86#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nova/Business.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
+          <caret line="80" column="24" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
           <folding>
             <element signature="e#28#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_21_164923_alter_business_category_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Nova/Country.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state relative-caret-position="-1037">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Business/BusinessCategory.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/Franchise/FranchisePackageSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_22_132433_create_franchise_categories_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Franchise/FranchiseCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#40#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+        <state relative-caret-position="184">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="49" />
           <folding>
             <element signature="e#7#42#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Franchise/Franchise.php">
+    <entry file="file://$PROJECT_DIR$/app/Nova/FranchiseCategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="35" column="63" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="63" />
+        <state relative-caret-position="340">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
           <folding>
-            <element signature="e#40#79#0#PHP" expanded="true" />
+            <element signature="e#28#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nova/Franchise.php">
+    <entry file="file://$PROJECT_DIR$/app/Nova/FranchisePackage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="289">
+          <caret line="81" column="33" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
           <folding>
             <element signature="e#28#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue">
+    <entry file="file://$PROJECT_DIR$/database/seeds/Franchise/FranchiseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        <state relative-caret-position="173">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+          <folding>
+            <element signature="e#7#42#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-01-05.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-16229" />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue">
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/DataTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-          <folding>
-            <element signature="e#171#211#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/src/Objects.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/vendor/nova/ru.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/src/ToolServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/tool.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php">
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/Tool.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="677" lean-forward="true" selection-start-line="1" selection-start-column="677" selection-end-line="1" selection-end-column="677" />
+        <state relative-caret-position="34">
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+          <folding>
+            <element signature="e#277#317#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/Franchise/FranchisePackageFactory.php">
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/views/navigation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="83" selection-start-line="1" selection-start-column="83" selection-end-line="1" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/Auth/UserTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Objects/resources/js/components/EditButton.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+          <caret line="4" column="477" selection-start-line="4" selection-start-column="477" selection-end-line="4" selection-end-column="477" />
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#slot#0;n#button#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/composer.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/dist/mix-manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/NovaServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/components/DetailField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="10" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/components/FormField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="77" column="16" lean-forward="true" selection-end-line="148" />
+          <folding>
+            <element signature="e#2242#2268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/components/IndexField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="true" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/components/IndexField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/field.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/Trix.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/resources/js/Trix.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/src/FieldServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="32" column="1" lean-forward="true" selection-start-line="3" selection-end-line="32" selection-end-column="1" />
+          <folding>
+            <element signature="e#40#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/src/FieldServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+          <folding>
+            <element signature="e#44#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/src/Translatable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mrmonat/nova-translatable/src/Translatable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="105" column="1" selection-start-line="3" selection-end-line="105" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Nova/Franchise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/dist/js/field.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2091">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/components/DetailField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/components/FormField.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="112" column="43" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/webpack.mix.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nova-components/Translatable/resources/js/field.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143810_create_invitation_counter_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143809_create_campaign_condition_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143808_create_conditions_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143803_create_invitations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143802_create_campaign_resources_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143800_create_partners_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_05_143801_create_campaigns_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
         </state>
       </provider>
     </entry>

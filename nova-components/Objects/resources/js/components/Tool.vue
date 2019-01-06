@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <heading class="mb-6">Objects</heading>
-        <datatable :columns="columns" class="table"></datatable>
+    <div class="px-view py-view mx-auto">
+        <h1 class="mb-3 text-90 font-normal text-2xl">Объекты</h1>
+        <div class="card relative">
+            <datatable :columns="columns" class="table"></datatable>
+        </div>
     </div>
 </template>
 

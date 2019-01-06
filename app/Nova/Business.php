@@ -5,16 +5,20 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use Digitalcloud\MultilingualNova\Multilingual;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use MrMonat\Translatable\Translatable;
 
 class Business extends Resource
 {
 
-    public static $group = 'Business';
-    public static $displayInNavigation = false;
+    //public static $displayInNavigation = false;
+
+    /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Business');
+    }
 
     /**
      * The model the resource corresponds to.
@@ -40,30 +44,24 @@ class Business extends Resource
     ];
 
     /**
-     * Build an "index" query for the given resource.
+     * Get the displayble label of the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return string
      */
-    public static function indexQuery(NovaRequest $request, $query)
-    {   /*$franchises = Franchise::select('name');
-        $query->select('name')->union($franchises);
-        \Log::info($query->toSql());*/
-        return $query;
+    public static function label()
+    {
+        return __('Businesses');
     }
 
     /**
-     * Apply any applicable orderings to the query.
+     * Get the displayble singular label of the resource.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  array  $orderings
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return string
      */
-    /*protected static function applyOrderings($query, array $orderings)
+    public static function singularLabel()
     {
-        return $query;
-    }*/
+        return __('Business');
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -75,33 +73,36 @@ class Business extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name')
-                ->sortable()
+
+            Translatable::make('Name')
+                ->singleLine()
+                ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            Textarea::make('Description')
-                ->sortable()
+            Translatable::make('Description')
+                ->trix()
+                ->indexLocale('ru')
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            Text::make('Seo_Title')
-                ->sortable()
+            Translatable::make('Seo_Title')
+                ->singleLine()
+                ->indexLocale('ru')
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            Textarea::make('Seo_Description')
-                ->sortable()
+            Translatable::make('Seo_Description')
+                ->indexLocale('ru')
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            Text::make('Seo_Keywords')
-                ->sortable()
+            Translatable::make('Seo_Keywords')
+                ->singleLine()
+                ->indexLocale('ru')
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             BelongsTo::make('Category', 'category', 'App\Nova\BusinessCategory'),
-
-            Multilingual::make('Name'),
-            Multilingual::make('Description'),
-            Multilingual::make('Seo_Title'),
-            Multilingual::make('Seo_Description'),
-            Multilingual::make('Seo_Keywords'),
         ];
     }
 

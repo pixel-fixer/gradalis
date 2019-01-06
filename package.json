@@ -9,7 +9,11 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "build-objects": "cd nova-components/Objects && npm run dev",
-        "build-objects-prod": "cd nova-components/Objects && npm run prod"
+        "build-objects-prod": "cd nova-components/Objects && npm run prod",
+        "build-nova-translaable": "cd nova-components/NovaTranslaable && npm run dev",
+        "build-nova-translaable-prod": "cd nova-components/NovaTranslaable && npm run prod",
+        "build-translatable": "cd nova-components/Translatable && npm run dev",
+        "build-translatable-prod": "cd nova-components/Translatable && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.18",

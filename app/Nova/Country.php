@@ -4,13 +4,19 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Digitalcloud\MultilingualNova\Multilingual;
 use Laravel\Nova\Fields\Text;
+use MrMonat\Translatable\Translatable;
 
 class Country extends Resource
 {
-    public static $group = 'Location';
+    /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Location');
+    }
+
     /**
      * The model the resource corresponds to.
      *
@@ -35,6 +41,26 @@ class Country extends Resource
     ];
 
     /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return __('Countries');
+    }
+
+    /**
+     * Get the displayble singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Country');
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,11 +75,9 @@ class Country extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Translation')
+            Translatable::make('Translation')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            Multilingual::make('Translation'),
         ];
     }
 

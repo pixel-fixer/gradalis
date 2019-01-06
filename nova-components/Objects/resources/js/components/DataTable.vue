@@ -1,5 +1,5 @@
 <template>
-    <table class="table-fixed">
+    <table class="table w-full">
         <thead>
         <tr>
             <th v-for="column in parameters.columns" v-html="title(column)"></th>
@@ -19,7 +19,6 @@
     require('datatables.net-bs');
     require('datatables.net-buttons');
     require('datatables.net-buttons-bs');
-
     export default{
         data() {
             return {

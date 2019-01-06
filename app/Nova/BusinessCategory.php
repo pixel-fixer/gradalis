@@ -5,14 +5,21 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Digitalcloud\MultilingualNova\Multilingual;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use MrMonat\Translatable\Translatable;
 
 class BusinessCategory extends Resource
 {
 
-    public static $group = 'Business';
-    public static $displayInNavigation = false;
+    //public static $displayInNavigation = false;
+
+    /**
+     * @return array|string|null
+     */
+    public static function group()
+    {
+        return __('Business');
+    }
+
     /**
      * The model the resource corresponds to.
      *
@@ -37,6 +44,26 @@ class BusinessCategory extends Resource
     ];
 
     /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return __('Categories').' '.__('Of Business');
+    }
+
+    /**
+     * Get the displayble singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return  __('Category').' '.__('Of Business');
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,11 +77,9 @@ class BusinessCategory extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Translation')
-                ->sortable()
+            Translatable::make('Translation')
+                ->singleLine()
                 ->rules('required', 'max:255'),
-
-            Multilingual::make('Translation'),
         ];
     }
 
