@@ -13,24 +13,29 @@ class Travel extends Model
         return $this->belongsTo('App\Models\Auth\User');
     }
 
+    public function ordered_service()
+    {
+        return $this->belongsTo('App\Models\Service\OrderedService', 'ordered_services_id', 'id');
+    }
+
     public function hotels()
     {
-        return $this->hasMany('App\Models\Travels\Hotel');
+        return $this->hasMany('App\Models\Travel\Hotel');
     }
 
     public function meetings()
     {
-        return $this->hasMany('App\Models\Travels\Meeting');
+        return $this->hasMany('App\Models\Travel\Meeting');
     }
 
     public function flights()
     {
-        return $this->hasMany('App\Models\Travels\Flight');
+        return $this->hasMany('App\Models\Travel\Flight');
     }
 
     public function consultations()
     {
-        return $this->hasMany('App\Models\Travels\Consultation');
+        return $this->hasMany('App\Models\Travel\Consultation');
     }
 
 }

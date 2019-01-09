@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->integer('type');
             $table->tinyInteger('status')->default('0');
-            $table->json('translate');
+            $table->json('name');
             $table->integer('price')->unsigned();
             $table->timestamps();
         });

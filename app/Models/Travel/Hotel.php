@@ -10,4 +10,9 @@ class Hotel extends Model
     {
         return $this->belongsTo('App\Models\Travels\Travel');
     }
+
+    protected $casts = [
+        'check_in_date' => 'datetime',
+        'check_out_date' => 'datetime'
+    ];
 }

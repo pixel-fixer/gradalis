@@ -2,29 +2,32 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
-use Silvanite\NovaToolPermissions\Role;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\BelongsTo;
 
-class User extends Resource
+class OrderedService extends Resource
 {
+    public static $with = ['service', 'user'];
 
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\\Models\\Auth\\User';
+    public static $model = 'App\Models\Service\OrderedService';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
+    public function title()
+    {
+        return $this->service->name;
+    }
+
     public static $title = 'id';
 
     /**
@@ -33,28 +36,8 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
+        'id',
     ];
-
-    /**
-     * Get the displayble label of the resource.
-     *
-     * @return string
-     */
-    public static function label()
-    {
-        return __('Users');
-    }
-
-    /**
-     * Get the displayble singular label of the resource.
-     *
-     * @return string
-     */
-    public static function singularLabel()
-    {
-        return __('User');
-    }
 
     /**
      * Get the fields displayed by the resource.
@@ -66,30 +49,7 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Gravatar::make(),
-
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Phone')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6'),
-
-
-            BelongsToMany::make('Roles', 'roles', Role::class),
+            BelongsTo::make('service')
         ];
     }
 
@@ -135,5 +95,20 @@ class User extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public static function label()
+    {
+        return __('OrderedServices');
+    }
+
+    public static function singularLabel()
+    {
+        return __('OrderedService');
+    }
+
+    public static function group()
+    {
+        return __('Services');
     }
 }

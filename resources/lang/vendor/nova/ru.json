@@ -36,6 +36,12 @@
     "Travel": "Поездка",
     "Travels": "Поездки",
 
+    "Services": "Услуги",
+    "Service": "Услуга",
+
+    "OrderedServices": "Заказанные услуги",
+    "OrderedService": "Заказанная услуга",
+
     "viewNova": "Доступ к Nova",
     "viewRoles": "Просмотр Ролей",
     "manageRoles": "Редактирование Ролей",

@@ -10,4 +10,9 @@ class Flight extends Model
     {
         return $this->belongsTo('App\Models\Travels\Travel');
     }
+
+    protected $casts = [
+        'in_time' => 'datetime',
+        'out_time' => 'datetime'
+    ];
 }

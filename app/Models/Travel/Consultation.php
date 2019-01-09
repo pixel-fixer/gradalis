@@ -10,4 +10,8 @@ class Consultation extends Model
     {
         return $this->belongsTo('App\Models\Travels\Travel');
     }
+
+    protected $casts = [
+        'date' => 'datetime'
+    ];
 }

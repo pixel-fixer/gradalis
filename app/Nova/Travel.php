@@ -4,10 +4,17 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 
 class Travel extends Resource
 {
+    public static $with = ['ordered_service', 'user', 'flights', 'hotels', 'meetings', 'consultations'];
+
     /**
      * The model the resource corresponds to.
      *
@@ -40,6 +47,11 @@ class Travel extends Resource
     {
         return __('Travels');
     }
+
+    public static function singularLabel()
+    {
+        return __('Travel');
+    }
     /**
      * @return array|string|null
      */
@@ -58,6 +70,30 @@ class Travel extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            BelongsTo::make('user'),
+
+            Text::make('name', function(){
+                return $this->user->first_name.' '.$this->user->last_name;
+            }),
+
+            DateTime::make('created_at')
+                ->format('DD-MM-YYYY')
+                ->sortable(),
+
+            //TODO может быть это поле должно быть text?
+            Textarea::make('user_meeting_comment'),
+
+            //TODO может быть это поле должно быть text?
+            Textarea::make('user_consult_comment'),
+
+            HasMany::make('Flights'),
+
+            HasMany::make('Hotels'),
+
+            HasMany::make('Meetings'),
+
+            HasMany::make('Consultations'),
         ];
     }
 
