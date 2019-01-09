@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="147" height="48">
+	<defs>
+		<clipPath id="clip_0">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_0)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="0" y="38.21875">
+				i
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_1">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_1)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="10.496094" y="38.21875">
+				n
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_2">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_2)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="32.554688" y="38.21875">
+				v
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_3">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_3)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="52.71875" y="38.21875">
+				e
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_4">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_4)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="73.996094" y="38.21875">
+				s
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_5">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_5)">
+		<text fill="rgb(243,124,34)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-weight="bold" font-family="Roboto Black, Roboto" x="93.984375" y="38.21875">
+				t
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_6">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_6)">
+		<text fill="rgb(139,151,169)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-family="Roboto Light, Roboto" x="107.21484" y="38.21875">
+				.
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_7">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_7)">
+		<text fill="rgb(139,151,169)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-family="Roboto Light, Roboto" x="116.26563" y="38.21875">
+				p
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_8">
+			<rect x="-159" y="-18" width="1436.1121" height="4118.8491" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_8)">
+		<text fill="rgb(139,151,169)" stroke="none" transform="matrix(0.9973 0 0 0.9973 0.568008 0.9487)" font-size="40" font-family="Roboto Light, Roboto" x="137.93359" y="38.21875">
+				l
+		</text>
+	</g>
+
+</svg>
