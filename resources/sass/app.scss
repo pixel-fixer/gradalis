@@ -1,14 +1,25 @@
+@charset "utf-8";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&subset=cyrillic-ext');
 
-// Variables
+
+//
+//// Bootstrap
+//@import '~bootstrap/scss/bootstrap';
+//
+//.navbar-laravel {
+//  background-color: #fff;
+//  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+//}
+
+
+//// Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "../../node_modules/bulma/bulma.sass";
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+@import "parts/header";
+@import "parts/main";
+@import "parts/footer";

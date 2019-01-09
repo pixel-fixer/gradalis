@@ -1,20 +1,63 @@
+//
+//// Body
+//$body-bg: #f8fafc;
+//
+//// Typography
+//$font-family-sans-serif: "Nunito", sans-serif;
+//$font-size-base: 0.9rem;
+//$line-height-base: 1.6;
+//
+//// Colors
+//$blue: #3490dc;
+//$indigo: #6574cd;
+//$purple: #9561e2;
+//$pink: #f66D9b;
+//$red: #e3342f;
+//$orange: #f6993f;
+//$yellow: #ffed4a;
+//$green: #38c172;
+//$teal: #4dc0b5;
+//$cyan: #6cb2eb;
 
-// Body
-$body-bg: #f8fafc;
 
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+// Set your brand colors
+$mp-blue: #4857CE;
+$mp-orange: #F37C22;
+$mp-green: #36A236;
+$mp-red: #E62E2E;
+$body-bg: #F7FBFF;
+$white: #ffffff;
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$very-dark-blue: #162540;
+$very-dark-blue-footer-bg: #1C2940;
+$mostly-dark-blue-2: #4B5A73;
+$mostly-dark-blue: #6b87a4;
+
+// Update Bulma's global variables
+$family-sans-serif: "Roboto", sans-serif;
+$body-background-color: $body-bg;
+$navbar-item-img-max-height: 3rem;
+$navbar-item-hover-background-color: rgba(0, 112, 217, 0.1);
+$navbar-item-hover-color: $very-dark-blue;
+$navbar-item-color: $very-dark-blue;
+$navbar-item-active-color: $very-dark-blue;
+$navbar-item-active-background-color: $navbar-item-hover-background-color;
+$navbar-dropdown-arrow: #8B97A9;
+
+$gap: 64px;
+$widescreen: 1120px + (2 * $gap);
+$fullhd: 1120px + (2 * $gap);
+
+$navbar-height: 2.875rem;
+$navbar-divider-background-color: rgba(207, 218, 230, 0.5);
+$navbar-divider-height: 1px;
+
+
+$footer-background-color: $very-dark-blue-footer-bg;
+//$footer-padding: 3rem 0rem 3rem 0rem;
+
+
+$green: $mp-green;
+$blue: $mp-blue;
+$yellow: $mp-orange;
+$red: $mp-red;
