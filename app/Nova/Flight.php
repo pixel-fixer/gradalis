@@ -17,6 +17,8 @@ class Flight extends Resource
      */
     public static $model = 'App\Models\Travel\Flight';
 
+    public static $displayInNavigation = false;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

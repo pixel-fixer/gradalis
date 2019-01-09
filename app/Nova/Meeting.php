@@ -17,6 +17,7 @@ class Meeting extends Resource
      */
     public static $model = 'App\Models\Travel\Meeting';
 
+    public static $displayInNavigation = false;
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
