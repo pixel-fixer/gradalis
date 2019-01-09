@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
             'countries',
             'cities',
             'users',
+            'services',
+            'ordered_services',
+            'travels',
+            'flights',
+            'hotels',
+            'meetings',
+            'consultations',
         ]);
         Schema::enableForeignKeyConstraints();
 
@@ -35,6 +42,13 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
         $this->call(FranchisePackageSeeder::class);
+        $this->call(ServicesSeeder::class);
+        $this->call(OrderedServicesSeeder::class);
+        $this->call(TravelsSeeder::class);
+        $this->call(FlightsSeeder::class);
+        $this->call(HotelsSeeder::class);
+        $this->call(MeetingsSeeder::class);
+        $this->call(ConsultationsSeeder::class);
 
         Model::reguard();
     }
