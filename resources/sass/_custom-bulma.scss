@@ -1,0 +1,10 @@
+@import 'variables';
+
+.button {
+    &.is-outlined {
+        //font-weight: 700;
+        &.is-link {
+            //border-color: rgba($blue, 0.3);
+        }
+    }
+}

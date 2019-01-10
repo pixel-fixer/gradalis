@@ -20,6 +20,11 @@
 
 @import "../../node_modules/bulma/bulma.sass";
 
+@import "custom-bulma";
+
 @import "parts/header";
 @import "parts/main";
 @import "parts/footer";
+@import "parts/tooltip";
+@import "objects/card";
+
