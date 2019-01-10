@@ -9,11 +9,11 @@ class City extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['translations'];
+    public $translatable = ['translation'];
 
     protected $table = 'cities';
     public $timestamps = true;
-    protected $fillable = array('name', 'translations', 'country_id');
+    protected $fillable = array('name', 'translation', 'country_id');
 
     public function country(){
         return $this->belongsTo('App\Models\Country');

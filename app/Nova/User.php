@@ -20,12 +20,10 @@ class User extends Resource
      */
     public static $model = 'App\\Models\\Auth\\User';
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'id';
+    public function title()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
 
     /**
      * The columns that should be searched.
@@ -33,7 +31,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
+        'id', 'first_name','last_name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
     ];
 
     /**

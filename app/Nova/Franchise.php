@@ -142,16 +142,17 @@ class Franchise extends Resource
     protected function getAdminFields(){
         return [
             ID::make()->sortable(),
-            Translatable::make('Name')
+
+            Translatable::make('Наименование','name')
                 ->singleLine()
                 ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            Translatable::make('Description')
+            Translatable::make('Описание','description')
                 ->trix()
                 ->indexLocale('ru')
                 ->hideFromIndex()
-                ->rules('required'),
+                ->rules('required', 'max:255'),
 
             Translatable::make('Seo_Title')
                 ->singleLine()
@@ -170,13 +171,13 @@ class Franchise extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
-
+            BelongsTo::make('Категория', 'category', 'App\Nova\FranchiseCategory'),
+            BelongsTo::make('Пользователь','user', 'App\Nova\User')->searchable(),
             HasMany::make('Packages', 'packages', 'App\Nova\FranchisePackage')
                 ->withMeta([
                     'indexName' => __('Packages'),
                     'name' => __('Packages')
-                ])->singularLabel(__('Package')),
+                ])->singularLabel(__('Package'))
         ];
     }
 }

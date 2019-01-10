@@ -72,18 +72,18 @@ class FranchisePackage extends Resource
     {
         return [
             ID::make()->sortable(),
-            Translatable::make('Name')
+            Translatable::make('Наименование','name')
                 ->singleLine()
                 ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            Translatable::make('Options')
+            Translatable::make('Опции','options')
                 ->singleLine()
                 ->hideFromIndex()
                 ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Franchise', 'franchise', 'App\Nova\Franchise'),
+            BelongsTo::make('Франшиза', 'franchise', 'App\Nova\Franchise')->searchable(),
         ];
     }
 

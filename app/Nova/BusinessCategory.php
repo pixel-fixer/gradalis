@@ -73,12 +73,13 @@ class BusinessCategory extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name')
+            Text::make('Наименование','name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Translatable::make('Translation')
+            Translatable::make('Перевод','translation')
                 ->singleLine()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
         ];
     }
