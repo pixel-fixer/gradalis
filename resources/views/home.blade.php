@@ -17,6 +17,7 @@
                                             <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
                                         </figure>
                                         <div class="slide-content">
+                                            <div class="slide__tag">Популярные</div>
                                             <div class="slide__cat">Продукты для покупателя</div>
                                             <div class="slide__title">Персональный менеджер</div>
                                             <div class="slide__content">
@@ -34,25 +35,9 @@
                                             <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
                                         </figure>
                                         <div class="slide-content">
-                                            <div class="slide__cat">Информация для покупателя</div>
-                                            <div class="slide__title">Персональный менеджер</div>
-                                            <div class="slide__content">
-                                                Ваш персональный менеджер, который говорит сразу
-                                                на 3 языках, для вашего комфорта.
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slide-wrap">
-                                    <a href="" class="slide">
-                                        <figure>
-                                            <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
-                                        </figure>
-                                        <div class="slide-content">
-                                            <div class="slide__cat">Продукты для покупателя 3</div>
-                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__tag">Популярные</div>
+                                            <div class="slide__cat">Продукты для покупателя</div>
+                                            <div class="slide__title">Персональный менеджер 2</div>
                                             <div class="slide__content">
                                                 Ваш персональный менеджер, который говорит сразу
                                                 на 3 языках, для вашего комфорта.
@@ -77,6 +62,7 @@
                                             <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
                                         </figure>
                                         <div class="slide-content">
+                                            <div class="slide__tag">Популярные</div>
                                             <div class="slide__cat">Продукты для покупателя</div>
                                             <div class="slide__title">Персональный менеджер</div>
                                             <div class="slide__content">
@@ -94,6 +80,7 @@
                                             <img src="{{ asset('/img/home/sliders/man.png') }}" alt="Fav">
                                         </figure>
                                         <div class="slide-content">
+                                            <div class="slide__tag">Популярные</div>
                                             <div class="slide__cat">Информация для покупателя</div>
                                             <div class="slide__title">Персональный менеджер</div>
                                             <div class="slide__content">
@@ -111,6 +98,7 @@
                                             <img src="{{ asset('/img/home/sliders/man.png') }}" alt="Fav">
                                         </figure>
                                         <div class="slide-content">
+                                            <div class="slide__tag">Популярные</div>
                                             <div class="slide__cat">Продукты для покупателя 3</div>
                                             <div class="slide__title">Персональный менеджер</div>
                                             <div class="slide__content">
