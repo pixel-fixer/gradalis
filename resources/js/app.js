@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -10,9 +9,11 @@
 // window.Vue = require('vue');
 
 import Vue from 'vue';
+
 window.Vue = Vue;
 
 import VTooltip from 'v-tooltip'
+
 Vue.use(VTooltip)
 
 /**
@@ -38,4 +39,18 @@ Vue.component('example-form-short', require('./components/ExampleFormShort.vue')
 
 const app = new Vue({
     el: '#app'
+});
+
+import Swiper from 'swiper';
+
+/**
+ * Слайдер новостей на главной
+ */
+var newsHomeSwiper = new Swiper('.swiper-news-home', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 });

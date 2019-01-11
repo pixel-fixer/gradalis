@@ -21,6 +21,7 @@
 // Plugins
 @import '../../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
 @import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/swiper/dist/css/swiper.min.css";
 
 @import "custom-bulma";
 
@@ -30,4 +31,6 @@
 @import "parts/tooltip";
 @import "parts/form-inline";
 @import "objects/card";
+@import "news/news";
+@import "news/card";
 
