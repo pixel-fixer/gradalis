@@ -9,3 +9,15 @@
 .main {
     flex: 1;
 }
+
+.button {
+    &_bas-big {
+        font-size: .875rem;
+        padding: 1.875rem 2.1875rem;
+    }
+}
+
+.my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

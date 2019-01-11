@@ -30,6 +30,7 @@
     },
     "dependencies": {
         "bulma": "^0.7.2",
-        "v-tooltip": "^2.0.0-rc.33"
+        "v-tooltip": "^2.0.0-rc.33",
+        "vue-multiselect": "^2.1.3"
     }
 }
