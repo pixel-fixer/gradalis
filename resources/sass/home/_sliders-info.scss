@@ -1,0 +1,127 @@
+@import '../variables';
+
+.swiper-home-info {
+    min-height: 10.25rem;
+
+    .swiper-pagination {
+        &-fraction {
+            text-align: right;
+            padding-right: 1rem;
+            color: rgba($white, 0.8);
+            font-size: .875rem;
+            letter-spacing: -.1em;
+            font-weight: 100;
+            bottom: 2.5rem;
+        }
+    }
+
+    .swiper-slide {
+        opacity: 0 !important;
+
+        &-active {
+            opacity: 1 !important;
+        }
+    }
+
+    .slide {
+        position: relative;
+        display: block;
+
+        figure {
+            position: absolute;
+            left: 1rem;
+            bottom: 0;
+            display: flex;
+            z-index: 2;
+        }
+
+        &-wrap {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0.1875rem;
+        }
+
+        &-content {
+            padding: 1.625rem 1rem 1.625rem 9.125rem;
+            min-height: 10.25rem;
+            box-sizing: border-box;
+            background-image: url(../../img/slider-rectangle.png);
+            background-repeat: no-repeat;
+            background-position: center left;
+            position: relative;
+
+            &:before {
+                position: absolute;
+                content: "";
+                width: 90%;
+                height: 3rem;
+                mix-blend-mode: normal;
+                opacity: 0.5;
+                filter: blur(1rem);
+                border-radius: 0.1875rem;
+                left: 5%;
+                bottom: 0;
+            }
+        }
+
+        &__cat {
+            color: rgba($white, 0.8);
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: .625rem;
+        }
+
+        &__title {
+            font-weight: bold;
+            font-size: 1.125rem;
+            color: $white;
+            margin-top: .625rem;
+        }
+
+        &__content {
+            font-size: .875rem;
+            color: $white;
+            margin-top: .625rem;
+        }
+    }
+
+    &-left {
+        .slide {
+            &__cat {
+                //color: #A6B0FF;
+            }
+
+            &-wrap {
+                background-color: #4857CE;
+            }
+
+            &-content {
+                &:before {
+                    background: #4857CE;
+                }
+            }
+
+
+        }
+    }
+
+    &-right {
+        .slide {
+            &__cat {
+                //color: #A6B0FF;
+            }
+
+            &-wrap {
+                background-color: #D96309;
+            }
+
+            &-content {
+                &:before {
+                    background: #D96309;
+                }
+            }
+
+
+        }
+    }
+}

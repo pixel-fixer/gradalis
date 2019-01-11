@@ -1,8 +1,137 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <!-- Section Top Sliders -->
+    <section class="section pb-0">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <!-- Swiper -->
+                    <div class="swiper-container swiper-home-info swiper-home-info-left">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a href="" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Продукты для покупателя</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a href="" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Информация для покупателя</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a href="" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Продукты для покупателя 3</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination swiper-pagination-white"></div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <!-- Swiper -->
+                    <div class="swiper-container swiper-home-info swiper-home-info-right">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a  href="#" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/girl.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Продукты для покупателя</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a href="#" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/man.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Информация для покупателя</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-wrap">
+                                    <a href="#" class="slide">
+                                        <figure>
+                                            <img src="{{ asset('/img/home/sliders/man.png') }}" alt="Fav">
+                                        </figure>
+                                        <div class="slide-content">
+                                            <div class="slide__cat">Продукты для покупателя 3</div>
+                                            <div class="slide__title">Персональный менеджер</div>
+                                            <div class="slide__content">
+                                                Ваш персональный менеджер, который говорит сразу
+                                                на 3 языках, для вашего комфорта.
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination swiper-pagination-white"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section business -->
-    <section class="section section-list-objects">
+    <section class="section section-list-objects pt-1">
         <div class="container">
             <h1 class="title is-1 section-title">Продажа бизнеса в Польше</h1>
         </div>
@@ -722,13 +851,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -737,13 +868,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -752,13 +885,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -767,13 +902,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -782,13 +919,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -797,13 +936,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>
@@ -812,13 +953,15 @@
                         <div class="swiper-slide">
                             <article class="card-news">
                                 <figure class="card-news__thumb">
-                                    <img src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
-                                         alt="">
+                                    <img
+                                        src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
+                                        alt="">
                                 </figure>
                                 <div class="card-news__tags">
                                     <a href="#" class="card-news__tag">Новости</a>
                                 </div>
-                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал рубль</h3>
+                                <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
+                                    рубль</h3>
                                 <div class="card-news__excerpt">
                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                 </div>

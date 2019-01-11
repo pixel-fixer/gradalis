@@ -54,3 +54,38 @@ var newsHomeSwiper = new Swiper('.swiper-news-home', {
         prevEl: '.swiper-button-prev',
     },
 });
+
+/**
+ * Слайдер информационный на главной (слева)
+ */
+var swiperHomeInfoLeft = new Swiper('.swiper-home-info-left', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+    },
+});
+
+/**
+ * Слайдер информационный на главной (Правый)
+ */
+var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+    },
+});
+
