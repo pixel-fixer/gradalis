@@ -47,6 +47,8 @@ $navbar-item-active-background-color: $navbar-item-hover-background-color;
 $navbar-dropdown-arrow: #8B97A9;
 
 $gap: 64px;
+$tablet: 768px;
+$desktop: 960px + (2 * $gap);
 $widescreen: 1120px + (2 * $gap);
 $fullhd: 1120px + (2 * $gap);
 

@@ -9,3 +9,14 @@
         }
     }
 }
+
+.dropdown {
+    &.is-active {
+        .dropdown-menu {
+            display: none;
+        }
+        >.dropdown-menu {
+            display: block;
+        }
+    }
+}

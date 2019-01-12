@@ -5,7 +5,8 @@
     <!-- Section Top Sliders -->
     <section class="section pb-0">
         <div class="container">
-            <div class="columns">
+            <!-- ToDo: не выводить на мобильных устройствах -->
+            <div class="columns is-hidden-mobile">
                 <div class="column is-6">
                     <!-- Swiper -->
                     <div class="swiper-container swiper-home-info swiper-home-info-left">

@@ -12,14 +12,23 @@ form {
             //padding-bottom: 0;
             padding: 0;
             border-right: 1px solid rgba(207, 218, 230, 0.5);
-
+            @media screen and (max-width: $tablet) {
+                border-right: 0;
+            }
             &:last-child {
                 border-right: 0;
                 padding-right: .75rem;
+                @media screen and (max-width: $tablet) {
+                    background: $white;
+                    padding-right: 0;
+                }
             }
 
             &:first-child {
                 padding-left: .75rem;
+                @media screen and (max-width: $tablet) {
+                    padding-left: 0;
+                }
             }
         }
 

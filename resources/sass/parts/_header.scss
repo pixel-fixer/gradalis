@@ -2,20 +2,41 @@
 
 .header {
     box-shadow: 0px 4px 6px 0px rgba(23, 44, 76, 0.1);
-
     &__line {
         &-top {
             padding: 0.5rem 0;
-
-            .navbar-end {
+            .navbar-brand {
+                max-width: 35%;
                 .navbar-item {
+                    max-width: 100%;
+                }
+            }
+            .navbar-end {
+                justify-content: flex-end;
+                margin-left: auto;
+                align-items: stretch;
+                display: flex;
+                > .navbar-item {
+                    padding-left: 0;
+                    @media screen and (min-width: $desktop) {
+                        margin-right: -0.75rem;
+                    }
+                }
+                .navbar-item {
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
                     &.rounded {
                         border-radius: 50%;
                         height: 3rem;
                         width: 3rem;
-                        justify-content: center;
-                        align-items: center;
                         margin-right: 0.25rem;
+
+                        @media screen and (max-width: $tablet) {
+                            height: 2rem;
+                            width: 2rem;
+                        }
+
                     }
                     .tag {
                         &__count {
@@ -33,8 +54,13 @@
 
                     &.basic {
                         height: 3rem;
+                        @media screen and (max-width: $tablet) {
+                            height: 2rem;
+                        }
                         &.login {
-                            margin-right: 1rem;
+                            @media screen and (min-width: $tablet) {
+                                margin-right: 1rem;
+                            }
                         }
                         &.user {
                             img {
@@ -47,7 +73,14 @@
                             font-weight: 400;
                             color: $very-dark-blue;
                             margin-left: .5rem;
+                            //@media screen and (max-width: $widescreen) {
+                            //    display: none;
+                            //}
                         }
+                    }
+                    @media screen and (max-width: $tablet) {
+                        padding: 0.35rem;
+                        margin-right: 0.25rem;
                     }
                 }
 
@@ -94,7 +127,7 @@
                 }
 
                 &:not(.has-dropdown) {
-                    padding: .5rem;
+                    padding: .5rem 0.75rem;
                 }
 
                 img.icon {
@@ -126,11 +159,97 @@
                     }
                 }
             }
+
+            &_mobile {
+                .navbar-lang {
+                    margin-left: auto;
+                    justify-content: flex-end;
+                    //padding-top: 0;
+                    //padding-right: 0.75rem;
+
+                }
+                .dropdown {
+                    height: auto;
+                    .navbar-link:not(.is-arrowless)::after {
+                        transition: 0.2s;
+                    }
+                    &-menu {
+                        background-color: $white;
+                    }
+                    .dropdown {
+                        &.dropdown-item.navbar-item {
+                            padding: 0;
+                            .dropdown-trigger {
+                                .navbar-link {
+                                    border-radius: 0;
+                                    //padding-left: 0.5rem;
+                                }
+                            }
+                        }
+                        .dropdown-menu {
+                            padding-left: 0.5rem;
+                        }
+                    }
+                    &.is-active {
+                        > .dropdown-trigger {
+                            .navbar-link:not(.is-arrowless)::after {
+                                transform: rotate(135deg);
+                            }
+                        }
+                    }
+                    &-trigger {
+                        > .navbar-link {
+                            line-height: normal;
+                            padding: 0.5rem 0.75rem;
+                            padding-right: 2.5em;
+                        }
+                    }
+                    &.navbar-main-menu {
+                        padding-left: 0.5rem;
+                        .dropdown-trigger {
+
+                        }
+                        > .dropdown-trigger {
+                            &:after {
+                                position: absolute;
+                                content: '';
+                                width: calc(100% - 0.5rem - 0.75rem);
+                                height: 0.125rem;
+                                background-color: $blue;
+                                left: 0.5rem;
+                                bottom: 0;
+                            }
+                            .navbar-link {
+                                padding-left: 0.25rem;
+                            }
+                        }
+                    }
+                }
+                .dropdown-menu {
+                    padding-top: 0;
+                    width: 100vw;
+                    box-shadow: 0 4px 6px 0 rgba(23, 44, 77, 0.10);
+                    border: none;
+
+                    .dropdown-content {
+                        border-radius: 0;
+                        box-shadow: none;
+                        .navbar-item {
+                            border-radius: 0;
+                            padding-left: 0.75rem;
+                            padding-right: 0.75rem;
+                        }
+                    }
+                }
+            }
         }
     }
 
     .navbar-divider {
         margin: 0.5rem 0 0.75rem;
+        @media screen and (max-width: $desktop) {
+            margin-bottom: 0;
+        }
     }
 }
 

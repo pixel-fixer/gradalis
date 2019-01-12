@@ -89,3 +89,15 @@ var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
     },
 });
 
+/**
+ *  Включает работу Dropdown по клику
+ */
+var dropdownList = document.querySelectorAll('.dropdown');
+
+for (var i = 0; i < dropdownList.length; i++) {
+    dropdownList[i].addEventListener('click', function (event) {
+        event.stopPropagation();
+        this.classList.toggle('is-active');
+    });
+}
+
