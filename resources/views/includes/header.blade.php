@@ -42,7 +42,7 @@
                                 src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                 alt="Balance"><span>$100</span></a>
 
-                        <a class="navbar-item basic" v-tooltip.left-start="{
+                        <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
                                                             content: '$100',
                                                             trigger: 'click',
                                                     }">

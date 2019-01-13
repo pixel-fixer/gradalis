@@ -10,32 +10,59 @@ form {
         .column {
             //padding-top: 0;
             //padding-bottom: 0;
-            padding: 0;
-            border-right: 1px solid rgba(207, 218, 230, 0.5);
-            @media screen and (max-width: $tablet) {
-                border-right: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-right: 0;
+
+            @media screen and (min-width: $tablet) {
+                border-right: 1px solid rgba(207, 218, 230, 0.5);
+                padding: 0;
             }
             &:last-child {
-                border-right: 0;
-                padding-right: .75rem;
-                @media screen and (max-width: $tablet) {
-                    background: $white;
-                    padding-right: 0;
+                //background: $white;
+                //padding-right: 0;
+
+                @media screen and (min-width: $tablet) {
+                    border-right: 0;
+                    padding-right: .75rem;
+                    background-color: transparent;
                 }
             }
 
             &:first-child {
-                padding-left: .75rem;
-                @media screen and (max-width: $tablet) {
-                    padding-left: 0;
+                //padding-left: 0;
+                @media screen and (min-width: $tablet) {
+                    padding-left: .75rem;
                 }
             }
+            &:nth-last-child(2) {
+                .multiselect {
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+
         }
 
         .multiselect {
+            &:after {
+                position: absolute;
+                content: "";
+                width: calc(100% - 3rem);
+                left: 1.5rem;
+                bottom: 0;
+                border-bottom: 1px solid rgba(207, 218, 230, 0.5);
+                @media screen and (min-width: $tablet) {
+                    display: none;
+                }
+            }
             &__select {
                 top: 1rem;
-                right: .1875rem;
+                right: 0.75rem;
+                @media screen and (min-width: $tablet) {
+                    right: .1875rem;
+                }
                 &:before {
                     width: .5rem;
                     height: .5rem;
@@ -56,6 +83,7 @@ form {
             &__tags {
                 border: 0;
                 padding: 1.5rem 2.625rem 1.5rem 1.5rem;
+                min-height: 4.375rem;
             }
 
             &__placeholder {
@@ -63,11 +91,17 @@ form {
                 color: $mostly-dark-blue-2;
                 margin-bottom: 0;
                 padding-top: 0;
+                @media screen and (max-width: $desktop - 1px) {
+                    font-size: 0.875rem;
+                }
             }
 
             &__single {
                 padding-left: 0;
                 margin-bottom: 0;
+                @media screen and (max-width: $desktop - 1px) {
+                    font-size: 0.875rem;
+                }
             }
 
             &__input,
@@ -77,10 +111,16 @@ form {
         }
 
         .button-wrap {
-            padding: .75rem;
+            padding: 0.75rem 1.5rem 1.5rem 1.5rem;
             height: 100%;
+            @media screen and (min-width: $tablet) {
+                padding: .75rem;
+            }
             .button {
                 height: 100%;
+                @media screen and (max-width: $desktop - 1px) {
+                    font-size: 0.875rem;
+                }
             }
         }
     }
@@ -88,11 +128,18 @@ form {
 
 .multiselect {
     &__option {
+        @media screen and (max-width: $desktop - 1px) {
+            font-size: 0.875rem;
+            line-height: 1em;
+        }
         &--highlight {
             background-color: $green;
             &.multiselect__option--selected {
                 background-color: $red;
             }
         }
+    }
+    &__content-wrapper {
+        border: 0;
     }
 }

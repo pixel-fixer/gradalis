@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent="submit" v-if="show" class="form-inline">
             <div class="columns">
-                <div class="column">
+                <div class="column is-one-fifth">
                     <multiselect v-model="form.city.selected"
                                  :deselect-label="form.city.deselectLabel"
                                  track-by="name"
@@ -16,7 +16,7 @@
                         <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                     </multiselect>
                 </div>
-                <div class="column">
+                <div class="column is-one-fifth">
                     <multiselect v-model="form.region.selected"
                                  :deselect-label="form.region.deselectLabel"
                                  track-by="name"
@@ -30,7 +30,7 @@
                         <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                     </multiselect>
                 </div>
-                <div class="column">
+                <div class="column is-one-fifth">
                     <multiselect v-model="form.category.selected"
                                  :deselect-label="form.category.deselectLabel"
                                  track-by="name"
@@ -44,7 +44,7 @@
                         <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                     </multiselect>
                 </div>
-                <div class="column">
+                <div class="column is-one-fifth">
                     <multiselect v-model="form.payback.selected"
                                  :deselect-label="form.payback.deselectLabel"
                                  track-by="name"
@@ -58,7 +58,7 @@
                         <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                     </multiselect>
                 </div>
-                <div class="column">
+                <div class="column is-one-fifth">
                     <div class="button-wrap">
                         <button class="button is-link has-text-weight-bold is-fullwidth" type="submit">Найти бизнес</button>
                     </div>
@@ -108,7 +108,7 @@
                     },
                     category: {
                         selected: null,
-                        placeholder: 'Категория бизнеса',
+                        placeholder: 'Категория',
                         selectedLabel: 'Выбрано',
                         selectLabel: '',
                         deselectLabel: '',
