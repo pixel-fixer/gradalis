@@ -212,4 +212,11 @@
         </div>
     </div>
 
+    @guest
+        <div class="buttons has-addons buttons-business buttons-business_mobile is-hidden-tablet">
+            <a class="button is-link" data-desc="Регистрация">Купить бизнес</a>
+            <a class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
+        </div>
+    @endguest
+
 </header>
