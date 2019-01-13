@@ -15,8 +15,133 @@
         .dropdown-menu {
             display: none;
         }
-        >.dropdown-menu {
+        > .dropdown-menu {
             display: block;
+        }
+    }
+}
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+    color: $title-color;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    @media screen and (min-width: $tablet) {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h3 {
+    font-size: 1.125rem;
+    line-height: 1.875rem;
+}
+
+h4 {
+    font-size: 1rem;
+    line-height: 1.875rem;
+}
+
+h5 {
+    font-size: 1rem;
+    line-height: 1.875rem;
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 1.875rem;
+}
+
+/* Buttons */
+
+.button {
+    &[disabled] {
+        &.is-primary,
+        &.is-link,
+        &.is-info,
+        &.is-success,
+        &.is-warning,
+        &.is-danger {
+            background-color: #dae4f2 !important;
+            color: #748399 !important;
+            border: none !important;
+        }
+    }
+    &.is-outlined {
+        &.is-primary {
+            border: 1px solid rgba($primary, 0.3);
+        }
+        &.is-link {
+            border: 1px solid rgba($blue, 0.3);
+        }
+        &.is-info {
+            border: 1px solid rgba($cyan, 0.3);
+        }
+        &.is-success {
+            border: 1px solid rgba($green, 0.3);
+        }
+        &.is-warning {
+            border: 1px solid rgba($yellow, 0.3);
+        }
+        &.is-danger {
+            border: 1px solid rgba($red, 0.3);
+        }
+    }
+    &:hover {
+        &.is-primary {
+            background-color: lighten($primary, 3);
+        }
+        &.is-link {
+            background-color: lighten($blue, 3);
+        }
+        &.is-info {
+            background-color: lighten($cyan, 3);
+        }
+        &.is-success {
+            background-color: lighten($green, 3);
+        }
+        &.is-warning {
+            background-color: lighten($yellow, 3);
+        }
+        &.is-danger {
+            background-color: lighten($red, 3);
+        }
+    }
+    &:focus,
+    &:active {
+        &.is-primary,
+        &.is-primary.is-outlined {
+            background-color: darken($primary, 3);
+        }
+        &.is-link,
+        &.is-link.is-outlined {
+            background-color: darken($blue, 3);
+        }
+        &.is-info,
+        &.is-info.is-outlined {
+            background-color: darken($cyan, 3);
+        }
+        &.is-success,
+        &.is-success.is-outlined {
+            background-color: darken($green, 3);
+        }
+        &.is-warning,
+        &.is-warning.is-outlined {
+            background-color: darken($yellow, 3);
+        }
+        &.is-danger,
+        &.is-danger.is-outlined {
+            background-color: darken($red, 3);
         }
     }
 }

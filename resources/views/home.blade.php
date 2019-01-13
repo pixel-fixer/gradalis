@@ -122,7 +122,7 @@
     <!-- Section business -->
     <section class="section section-list-objects pt-1">
         <div class="container">
-            <h1 class="title is-1 section-title">Продажа бизнеса в Польше</h1>
+            <h1 class="section-title">Продажа бизнеса в Польше</h1>
         </div>
         <div class="container">
             <example-form-short></example-form-short>
@@ -476,7 +476,7 @@
     <!-- Section franchise -->
     <section class="section section-list-objects pt-0">
         <div class="container">
-            <h1 class="title is-1 section-title">Продажа франшиз в Польше</h1>
+            <h1 class="section-title">Продажа франшиз в Польше</h1>
         </div>
         <div class="container">
             <example-form-short></example-form-short>
