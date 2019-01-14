@@ -19,6 +19,10 @@
         {
             "type": "path",
             "url": "./nova-components/Translatable"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Referrals"
         }
     ],
     "require": {
@@ -32,7 +36,7 @@
         "marketplace/objects": "*",
         "marketplace/translatable": "*",
         "silvanite/novatoolpermissions": "^1.0",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "marketplace/referrals": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",

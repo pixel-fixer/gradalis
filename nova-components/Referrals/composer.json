@@ -1,5 +1,5 @@
 {
-    "name": "marketplace/objects",
+    "name": "marketplace/referrals",
     "description": "A Laravel Nova tool.",
     "keywords": [
         "laravel",
@@ -12,13 +12,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Marketplace\\Objects\\": "src/"
+            "Marketplace\\Referrals\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Marketplace\\Objects\\ToolServiceProvider"
+                "Marketplace\\Referrals\\ToolServiceProvider"
             ]
         }
     },
