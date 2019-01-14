@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+/**
+ * @property string $url
+ */
 class Hotel extends Resource
 {
 
@@ -33,7 +36,6 @@ class Hotel extends Resource
 
     /**
      * Get the fields displayed by the resource.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */

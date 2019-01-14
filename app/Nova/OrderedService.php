@@ -4,9 +4,14 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 
+/**
+ * @property object $service
+ * @property string $name
+ */
 class OrderedService extends Resource
 {
     public static $with = ['service', 'user'];
@@ -18,11 +23,6 @@ class OrderedService extends Resource
      */
     public static $model = 'App\Models\Service\OrderedService';
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     public function title()
     {
         return $this->service->name;
@@ -49,7 +49,18 @@ class OrderedService extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('service')
+
+            BelongsTo::make('service'),
+
+            BelongsTo::make('user')->searchable(),
+
+            Select::make('status')->options([
+                1 => 'paid',
+                2 => 'preparation',
+                3 => 'in_progress',
+                4 => 'done',
+            ])->displayUsingLabels()
+
         ];
     }
 

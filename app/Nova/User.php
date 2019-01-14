@@ -10,6 +10,10 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Silvanite\NovaToolPermissions\Role;
 
+/**
+ * @property string $first_name
+ * @property string $last_name
+ */
 class User extends Resource
 {
 
@@ -25,7 +29,11 @@ class User extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+
+    public function title()
+    {
+        return $this->first_name." ".$this->last_name;
+    }
 
     /**
      * The columns that should be searched.
@@ -33,7 +41,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
+        'id', 'first_name', 'last_name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
     ];
 
     /**
@@ -69,7 +77,11 @@ class User extends Resource
 
             Gravatar::make(),
 
-            Text::make('Name')
+            Text::make('First name', 'first_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Last name', 'last_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 

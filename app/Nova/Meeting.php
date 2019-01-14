@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+/**
+ * @property string $url
+ */
 class Meeting extends Resource
 {
     /**
