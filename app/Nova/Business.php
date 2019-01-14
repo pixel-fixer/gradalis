@@ -5,6 +5,7 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Marketplace\Translatable\Translatable;
 
 class Business extends Resource
@@ -74,12 +75,12 @@ class Business extends Resource
         return [
             ID::make()->sortable(),
 
-            Translatable::make('Name')
+            Translatable::make('Наименование','name')
                 ->singleLine()
                 ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            Translatable::make('Description')
+            Translatable::make('Описание','description')
                 ->trix()
                 ->indexLocale('ru')
                 ->hideFromIndex()
@@ -102,7 +103,8 @@ class Business extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Category', 'category', 'App\Nova\BusinessCategory'),
+            BelongsTo::make('Категория', 'category', 'App\Nova\BusinessCategory')->searchable(),
+            BelongsTo::make('Пользователь','user', 'App\Nova\User')->searchable()
         ];
     }
 

@@ -1,12 +1,12 @@
 <header class="header has-background-white">
     <div class="container">
-        <nav class="navbar header__line-top">
+        <nav class="navbar header__line-top is-flex">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
                     <img src="{{ asset('/svg/logo.svg') }}" width="155" height="48"
                          alt="{{ config('app.name', 'Laravel') }}">
                 </a>
-                <div class="navbar-item navbar-contacts">
+                <div class="navbar-item navbar-contacts is-hidden-mobile">
                     <a href="tel:8800202470" class="navbar-contacts__phone">8 800 2024 70</a>
                     <div class="navbar-contacts__worktime">Работаем с 10:00 до 20:00</div>
                 </div>
@@ -16,12 +16,13 @@
             <div class="navbar-end">
                 <!-- Authentication Links -->
                 @guest
-                    <div class="navbar-item is-paddingless">
+                    <div class="navbar-item is-flex">
                         <a class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                                             alt="Fav"></a>
                         <a class="navbar-item basic login" href="{{ route('login') }}"><img
-                                src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span>{{ __('Login') }}</span></a>
-                        <div class="buttons has-addons buttons-business">
+                                src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span
+                                class="is-hidden-tablet-only">{{ __('Login') }}</span></a>
+                        <div class="buttons has-addons buttons-business is-hidden-mobile">
                             <a class="button is-link" data-desc="Регистрация">Купить бизнес</a>
                             <a class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
                         </div>
@@ -35,24 +36,36 @@
                         <a class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                                             alt="Fav"></a>
                         <a class="navbar-item basic user"><img src="{{ asset('/img/avatar-1.png') }}"
-                                                               alt="User"><span>User Name</span></a>
-                        <a class="navbar-item basic"><img src="{{ asset('/svg/icons/ic_balance.svg') }}"
-                                                          alt="Balance"><span>$100</span></a>
-                        <a class="navbar-item basic" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><img
-                                src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span>{{ __('Logout') }}</span></a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                                                               alt="User"><span
+                                class="is-hidden-mobile">User Name</span></a>
+                        <a class="navbar-item basic is-hidden-mobile"><img
+                                src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                alt="Balance"><span>$100</span></a>
+
+                        <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
+                                                            content: '$100',
+                                                            trigger: 'click',
+                                                    }">
+                            <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                 alt="Balance"></a>
+
+                        {{--<a class="navbar-item basic" href="{{ route('logout') }}" onclick="event.preventDefault();--}}
+                        {{--document.getElementById('logout-form').submit();"><img--}}
+                        {{--src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span>{{ __('Logout') }}</span></a>--}}
+                        {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                        {{--@csrf--}}
+                        {{--</form>--}}
                     </div>
                 @endguest
 
             </div>
         </nav>
     </div>
-    <div class="navbar-divider"></div>
+    <div class="navbar-divider is-block"></div>
     <div class="container">
-        <nav class="navbar header__line-bottom" role="navigation" aria-label="main navigation">
+
+        <!-- Desktop Menu-->
+        <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
             <div class="navbar-start main-menu">
                 <a class="navbar-item is-active">
                     <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home" class="icon"><span>Главная</span>
@@ -116,6 +129,94 @@
                 </div>
             </div>
         </nav>
+
+        <!-- Tablet and mobile Menu-->
+        <div class="header__line-bottom header__line-bottom_mobile is-flex is-hidden-desktop">
+
+            <div class="dropdown is-left navbar-item navbar-main-menu main-menu">
+
+                <div class="dropdown-trigger">
+                    <div class="navbar-link navbar-item" aria-haspopup="true" aria-controls="dropdown-menu-main-mobile">
+                        <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home" class="icon"><span>Главная</span>
+                    </div>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu-main-mobile" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                 class="icon"><span>Главная</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                 class="icon"><span>Главная</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                 class="icon"><span>Главная</span>
+                        </a>
+
+                        <div class="dropdown is-left dropdown-item navbar-item">
+
+                            <div class="dropdown-trigger">
+                                <div class="navbar-link">
+                                    <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                         class="icon"><span>О компании</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-content">
+                                    <a href="#" class="dropdown-item navbar-item">
+                                        <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                             class="icon"><span>О компании 1</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item navbar-item">
+                                        <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                             class="icon"><span>О компании 2</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item navbar-item">
+                                        <img src="{{ asset('/svg/icons/ic_home.svg') }}" alt="Home"
+                                             class="icon"><span>О компании 3</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="dropdown is-right navbar-item navbar-lang">
+
+                <div class="dropdown-trigger">
+                    <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
+                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
+                             class="icon"><span>Русский</span>
+                    </div>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    @guest
+        <div class="buttons has-addons buttons-business buttons-business_mobile is-hidden-tablet">
+            <a class="button is-link" data-desc="Регистрация">Купить бизнес</a>
+            <a class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
+        </div>
+    @endguest
 
 </header>

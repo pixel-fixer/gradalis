@@ -1,13 +1,20 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
+
+import Vue from 'vue';
+
+window.Vue = Vue;
+
+import VTooltip from 'v-tooltip'
+
+Vue.use(VTooltip)
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,6 +30,8 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
 
+Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,3 +41,64 @@ Vue.component('chat', require('./components/chat.vue').default);
 const app = new Vue({
     el: '#app'
 });
+
+import Swiper from 'swiper';
+
+/**
+ * Слайдер новостей на главной
+ */
+var newsHomeSwiper = new Swiper('.swiper-news-home', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+/**
+ * Слайдер информационный на главной (слева)
+ */
+var swiperHomeInfoLeft = new Swiper('.swiper-home-info-left', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+    },
+});
+
+/**
+ * Слайдер информационный на главной (Правый)
+ */
+var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
+    spaceBetween: 30,
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+    },
+});
+
+/**
+ *  Включает работу Dropdown по клику
+ */
+var dropdownList = document.querySelectorAll('.dropdown');
+
+for (var i = 0; i < dropdownList.length; i++) {
+    dropdownList[i].addEventListener('click', function (event) {
+        event.stopPropagation();
+        this.classList.toggle('is-active');
+    });
+}
+

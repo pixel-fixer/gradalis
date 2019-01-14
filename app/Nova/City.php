@@ -32,7 +32,7 @@ class City extends Resource
      *
      * @var string
      */
-    public static $title = 'tenslation';
+    public static $title = 'translation';
 
     /**
      * The columns that should be searched.
@@ -73,16 +73,16 @@ class City extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Text::make('Name')
+            Text::make('Наименование','name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Translatable::make('Translation')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            Translatable::make('Перевод','translation')
+                ->singleLine()
+                ->hideFromIndex()
+                ->rules('max:255'),
 
-            BelongsTo::make('Country'),
+            BelongsTo::make('Страна','country','App\Nova\Country'),
         ];
     }
 

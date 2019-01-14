@@ -75,7 +75,7 @@
             {{--</div>--}}
         {{--</nav>--}}
 
-        <main class="main" style="padding-top: 5rem; padding-bottom: 5rem;">
+        <main class="main">
             @yield('content')
         </main>
 

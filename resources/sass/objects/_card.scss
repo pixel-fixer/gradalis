@@ -1,0 +1,176 @@
+@import '../variables';
+
+.card {
+    &-object {
+        border-radius: 0.1875rem;
+        overflow: hidden;
+        box-shadow: 0px 6px 10px 0px rgba(23, 44, 76, 0.1);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            transform: translateY(-1.25rem);
+        }
+
+        &__header {
+
+        }
+
+        &__footer {
+            border-top: 1px solid rgba(207, 218, 230, 0.5);
+            padding-top: 1rem;
+        }
+
+        .card-content {
+            .title {
+                color: $very-dark-blue-footer-bg;
+                font-size: 1.125rem;
+                line-height: 1.5em;
+                font-weight: 700;
+                margin-bottom: .5rem;
+            }
+
+            .location {
+                font-size: .875rem;
+                font-weight: 400;
+                color: $dark-grayish-blue;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+
+                img {
+                    margin-right: .5rem;
+                    margin-top: .125rem;
+                }
+
+                span {
+
+                }
+            }
+
+
+            .list-properties {
+                &__item {
+                    display: flex;
+                    justify-content: space-between;
+                    color: $very-dark-blue-footer-bg;
+                    padding: .125rem 0;
+
+                    span {
+
+                    }
+                }
+            }
+
+
+            .price {
+                font-size: 1.375rem;
+                font-weight: 900;
+                color: $very-dark-blue-footer-bg;
+                margin-bottom: 1rem;
+
+                &-info {
+                    display: flex;
+                }
+
+                &-sale {
+                    margin-right: .5rem;
+                    font-size: .875rem;
+                    height: 2.2em;
+                    align-self: baseline;
+                }
+
+                &-old {
+                    color: $dark-grayish-blue;
+                    text-decoration: line-through;
+                    margin-left: .5rem;
+                    align-self: flex-start;
+                }
+            }
+
+            .button {
+                font-size: .875rem;
+                padding: 1.5rem 0;
+            }
+        }
+
+        .tag {
+            &-payback {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                border-top-left-radius: .375rem;
+                background: rgba(0, 0, 0, 0.4);
+                text-align: right;
+                display: block;
+                height: auto;
+                padding: .5rem .75rem;
+
+                span.name {
+                    display: block;
+                    font-size: .5rem;
+                    color: $white;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    opacity: 0.7;
+                }
+
+                span.term {
+                    display: block;
+                    font-size: 1rem;
+                    color: $white;
+                    font-weight: 700;
+                    line-height: 1em;
+                }
+            }
+
+            &-object-sold {
+                position: absolute;
+                top: 0.625rem;
+                left: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        .info-icon {
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s;
+
+            &.object {
+                &-favorite {
+                    background: rgba(255, 255, 255, 0.3);
+                    top: 0.625rem;
+                    right: 0.625rem;
+
+                    &:hover,
+                    &.active {
+                        background-color: $yellow;
+                    }
+                }
+
+                &-promo {
+                    top: 0.625rem;
+                    left: 0.625rem;
+                    background-color: $green;
+                }
+
+                &-sale {
+                    top: 0.625rem;
+                    left: 0.625rem;
+                    background-color: $red;
+                }
+            }
+        }
+
+
+        &_promo {
+            border: 2px solid $green;
+        }
+    }
+}
