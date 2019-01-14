@@ -72,7 +72,7 @@ $section-padding: 4rem 1.5rem;
 $radius: 0.1875rem;
 
 $box-radius: 0.1875rem;
-$box-shadow: 0 4px 6px 0 rgba(23,44,77,0.10);
+$box-shadow: 0 4px 6px 0 rgba(23, 44, 77, 0.10);
 $box-padding: 2rem;
 
 $label-color: #596C80;
@@ -82,7 +82,13 @@ $input-color: #B4C4DB;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
 $input-focus-border-color: #0070D9;
-$input-hover-border-color: lighten($input-border-color,3);
-$input-shadow: 0 1px 3px 0 rgba(54,66,156,0.15);
+$input-hover-border-color: lighten($input-border-color, 3);
+$input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
-$input-focus-box-shadow-color:rgba(54,66,156,0.15);
+$input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
+
+$breadcrumb-item-color: $cyan;
+$breadcrumb-item-active-color: #596C80;
+$breadcrumb-item-hover-color: $breadcrumb-item-active-color;
+$breadcrumb-item-padding-vertical: 0;
+$breadcrumb-item-padding-horizontal: 0.75rem
