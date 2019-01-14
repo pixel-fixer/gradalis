@@ -75,7 +75,7 @@
             {{--</div>--}}
         {{--</nav>--}}
 
-        <main class="main">
+        <main class="main is-flex">
             @yield('content')
         </main>
 

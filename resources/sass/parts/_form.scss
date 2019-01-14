@@ -1,0 +1,86 @@
+@import '../variables';
+
+label.label {
+    font-size: 0.875rem;
+}
+
+input.input {
+    height: 3rem;
+    &:focus {
+        color: $title-color;
+    }
+}
+
+.input,
+.textarea {
+    padding: 0.5rem 1rem;
+}
+
+.field:not(:last-child) {
+    margin-bottom: 1.25rem;
+}
+
+/* Customize the label (the container) */
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    /* Hide the browser's default checkbox */
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    /* Create a custom checkbox */
+    span {
+        line-height: 1.5rem;
+        &:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-color: $white;
+            border: 1px solid #CEDCF0;
+            border-radius: $radius;
+        }
+        /* Create the checkmark/indicator (hidden when not checked) */
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        /* Style the checkmark/indicator */
+        &:after {
+            left: 0;
+            top: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-image: url(../../img/check.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    /* On mouse-over, add a grey background color */
+    &:hover input ~ span {
+        //background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    input:checked ~ span:before {
+        background-color: $cyan;
+        border: 1px solid $cyan;
+    }
+
+    /* Show the checkmark when checked */
+    input:checked ~ span:after {
+        display: block;
+    }
+}
