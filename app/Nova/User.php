@@ -2,13 +2,15 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
-use Silvanite\NovaToolPermissions\Role;
+use Vyuldashev\NovaPermission\Role;
+use Vyuldashev\NovaPermission\Permission;
 
 class User extends Resource
 {
@@ -67,27 +69,32 @@ class User extends Resource
 
             Gravatar::make(),
 
-            Text::make('Name')
+            Text::make(__('User Table Name'), 'first_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Phone')
+            Text::make(__('User Table Phone'), 'phone')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Email')
+            Text::make(__('User Table Email'), 'email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+            Date::make(__('User Create Date'), 'created_at')
+                ->sortable()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
 
-            Password::make('Password')
+            Password::make(__('User Table Password'), 'password')
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
 
 
-            BelongsToMany::make('Roles', 'roles', Role::class),
+            MorphToMany::make('Роль', 'roles', Role::class),
+            MorphToMany::make('Разрешение', 'permissions', Permission::class),
         ];
     }
 

@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $this->call(UserTableSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
         $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);

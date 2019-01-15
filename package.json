@@ -13,7 +13,9 @@
         "build-nova-translaable": "cd nova-components/NovaTranslaable && npm run dev",
         "build-nova-translaable-prod": "cd nova-components/NovaTranslaable && npm run prod",
         "build-translatable": "cd nova-components/Translatable && npm run dev",
-        "build-translatable-prod": "cd nova-components/Translatable && npm run prod"
+        "build-translatable-prod": "cd nova-components/Translatable && npm run prod",
+        "build-PermissionTool": "cd nova-components/PermissionTool && npm run dev",
+        "build-PermissionTool-prod": "cd nova-components/PermissionTool && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.18",
