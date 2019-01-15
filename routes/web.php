@@ -22,3 +22,7 @@ Route::get('/chat', function () {
 })->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/business', function () {
+    return view('business');
+})->middleware('auth');

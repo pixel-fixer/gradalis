@@ -29,10 +29,12 @@ $white: #ffffff;
 $pure-blue: #0070D9;
 
 $very-dark-blue: #162540;
-$very-dark-blue-footer-bg: #1C2940;
+$very-dark-blue-2: #1C2940;
 $mostly-dark-blue-2: #4B5A73;
 $mostly-dark-blue: #6b87a4;
 $dark-grayish-blue: #8b97a9;
+
+$input-placeholder-color: #B4C4DB;
 
 // Update Bulma's global variables
 $family-sans-serif: "Roboto", sans-serif;
@@ -55,7 +57,7 @@ $navbar-height: 2.875rem;
 $navbar-divider-background-color: rgba(207, 218, 230, 0.5);
 $navbar-divider-height: 1px;
 
-$footer-background-color: $very-dark-blue-footer-bg;
+$footer-background-color: $very-dark-blue-2;
 //$footer-padding: 3rem 0rem 3rem 0rem;
 
 $green: $mp-green;
@@ -65,7 +67,7 @@ $red: $mp-red;
 $cyan: $pure-blue;
 
 $title-size: 2.5rem;
-$title-color: $very-dark-blue-footer-bg;
+$title-color: $very-dark-blue-2;
 $title-line-height: initial;
 
 $section-padding: 4rem 1.5rem;
@@ -78,10 +80,10 @@ $box-padding: 2rem;
 $label-color: #596C80;
 $label-weight: 400;
 
-$input-color: #B4C4DB;
+$input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
-$input-focus-border-color: #0070D9;
+$input-focus-border-color: $cyan;
 $input-hover-border-color: lighten($input-border-color, 3);
 $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
@@ -91,4 +93,18 @@ $breadcrumb-item-color: $cyan;
 $breadcrumb-item-active-color: #596C80;
 $breadcrumb-item-hover-color: $breadcrumb-item-active-color;
 $breadcrumb-item-padding-vertical: 0;
-$breadcrumb-item-padding-horizontal: 0.75rem
+$breadcrumb-item-padding-horizontal: 0.75rem;
+
+$button-color: #596C80;
+$button-background-color: $body-bg;
+$button-border-color: #C5D2E5;
+$button-hover-color: $button-color;
+$button-hover-border-color: $button-border-color;
+$button-focus-color: $button-color;
+$button-focus-border-color: $button-border-color;
+$button-focus-box-shadow-size: 0;
+
+$pagination-color: $cyan;
+$pagination-hover-color: $label-color;
+$pagination-current-color: $pagination-hover-color;
+$pagination-current-background-color: trasparent;
