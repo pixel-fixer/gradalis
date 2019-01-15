@@ -2,6 +2,20 @@
 
 label.label {
     font-size: 0.875rem;
+    &_req {
+        span {
+            position: relative;
+            padding-right: .75em;
+            &:after {
+                position: absolute;
+                content: '*';
+                color: $red;
+                font-size: .875rem;
+                right: 0;
+                top: -.1875rem;
+            }
+        }
+    }
 }
 
 input.input {
@@ -114,6 +128,13 @@ input.input {
     input:checked ~ span:before {
         background-color: $cyan;
         border: 1px solid $cyan;
+    }
+
+    &.is-warning {
+        input:checked ~ span:before {
+            background-color: $yellow;
+            border: 1px solid $yellow;
+        }
     }
 
     /* Show the checkmark when checked */

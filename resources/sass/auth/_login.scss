@@ -1,8 +1,6 @@
 @import '../variables';
 
 .card-auth {
-    margin-top: 2.5rem;
-    margin-bottom: 6rem;
     &.card-login {
         width: 33.875rem;
         max-width: 100%;
@@ -16,6 +14,7 @@
     a.is-link {
         text-decoration: underline;
         font-size: 0.875rem;
+        text-decoration-color: rgba($cyan, 0.3);
     }
     .button {
         height: 3rem;
@@ -34,5 +33,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 2.5rem;
+        margin-bottom: 6rem;
     }
 }
