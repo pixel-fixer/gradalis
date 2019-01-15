@@ -10,9 +10,10 @@ $factory->define(Business::class, function (Faker $faker) {
         'user_id' => rand(1,3),
         'profit' => 100,
         'payback' => 100,
-        'status'=>1,
+        'status'=>rand(0,4),
         'district_id' => 1,
         'city_id' => 1,
+        'commission' => 15,
         'category_id' => rand(1,2)
     ];
 });

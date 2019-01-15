@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
             'countries',
             'cities',
             'users',
+            'campaigns',
+            'campaign_resources',
+            'conditions',
+            'partners',
+            'campaign_condition',
+            'invitations',
+            'invitation_counter',
             'services',
             'ordered_services',
             'travels',
@@ -44,6 +51,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
         $this->call(FranchisePackageSeeder::class);
+        $this->call(PartnerSeeder::class);
+        $this->call(CampaignSeeder::class);
+        $this->call(ConditionSeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(OrderedServicesSeeder::class);
         $this->call(TravelsSeeder::class);

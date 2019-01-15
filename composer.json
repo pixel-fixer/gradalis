@@ -22,7 +22,7 @@
         },
         {
             "type": "path",
-            "url": "./nova-components/PermissionTool"
+            "url": "./nova-components/Referrals"
         }
     ],
     "require": {
@@ -36,7 +36,8 @@
         "marketplace/objects": "*",
         "marketplace/translatable": "*",
         "vyuldashev/nova-permission": "^1.4",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "marketplace/referrals": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",

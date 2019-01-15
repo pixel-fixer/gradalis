@@ -12,6 +12,10 @@ use Laravel\Nova\Fields\Password;
 use Vyuldashev\NovaPermission\Role;
 use Vyuldashev\NovaPermission\Permission;
 
+/**
+ * @property string $first_name
+ * @property string $last_name
+ */
 class User extends Resource
 {
 
@@ -68,8 +72,12 @@ class User extends Resource
             ID::make()->sortable(),
 
             Gravatar::make(),
+            
+            Text::make('First name', 'first_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Text::make(__('User Table Name'), 'first_name')
+            Text::make('Last name', 'last_name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 

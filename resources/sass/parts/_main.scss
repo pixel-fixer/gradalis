@@ -12,6 +12,7 @@ body {
 
 .main {
     flex: 1;
+    flex-direction: column;
 }
 
 .button {
@@ -36,6 +37,10 @@ body {
 
 .pt-1 {
     padding-top: 1rem;
+}
+
+.has-justify-content-between {
+    justify-content: space-between;
 }
 
 .section-title {

@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/chat', function () {
+    return view('chat');
+})->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->name('home');

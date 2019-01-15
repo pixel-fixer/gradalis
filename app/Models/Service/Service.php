@@ -12,4 +12,6 @@ class Service extends Model
     public $translatable = ['name'];
 
     protected $guarded = ['id'];
+
+    protected $statuses = ['paid', 'preparation', 'in_progress', 'done'];
 }

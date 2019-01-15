@@ -71,21 +71,17 @@ class Travel extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('user'),
-
-            Text::make('name', function(){
-                return $this->user->first_name.' '.$this->user->last_name;
-            }),
+            BelongsTo::make(__('User'), 'user', 'App\Nova\User')->searchable(),
 
             DateTime::make('created_at')
                 ->format('DD-MM-YYYY')
                 ->sortable(),
 
             //TODO может быть это поле должно быть text?
-            Textarea::make('user_meeting_comment'),
+            Textarea::make('Комментарий пользователя о встречах', 'user_meeting_comment'),
 
             //TODO может быть это поле должно быть text?
-            Textarea::make('user_consult_comment'),
+            Textarea::make('Комментарий пользователя о консультациях', 'user_consult_comment'),
 
             HasMany::make('Flights'),
 

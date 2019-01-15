@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc26065ef0c176232b73ecfbb5ea7da7",
+    "content-hash": "3a670319a71745da6e2fa830ba5ad749",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1510,11 +1510,12 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Objects",
-                "reference": "345c70ec36487ddff3071cc49ce03a6953646ee1",
+                "reference": "5e579a4109e942cca25be81fa6b3cdd227354171",
                 "shasum": null
             },
             "require": {
-                "php": ">=7.1.0"
+                "php": ">=7.1.0",
+                "yajra/laravel-datatables-oracle": "~8.0"
             },
             "type": "library",
             "extra": {
@@ -1527,6 +1528,41 @@
             "autoload": {
                 "psr-4": {
                     "Marketplace\\Objects\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
+        },
+        {
+            "name": "marketplace/referrals",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Referrals",
+                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "yajra/laravel-datatables-oracle": "~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Marketplace\\Referrals\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marketplace\\Referrals\\": "src/"
                 }
             },
             "license": [

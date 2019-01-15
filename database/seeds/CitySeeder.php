@@ -12,9 +12,16 @@ class CitySeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        $csv = storage_path('app/data/city.csv');
+        $csv   = storage_path('app/data/city.csv');
         $query = sprintf("LOAD DATA local INFILE '%s' INTO TABLE cities FIELDS TERMINATED BY ';' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\"' LINES TERMINATED BY '\\n' IGNORE 0 LINES (`country_id`, `name`)", addslashes($csv));
         DB::connection()->getpdo()->exec($query);
+
+        $cities = \App\Models\City::all();
+        foreach ($cities as $city) {
+            $name = $city->name;
+            $city->setTranslation('translation','ru',$name);
+            $city->save();
+        }
         Schema::enableForeignKeyConstraints();
     }
 }

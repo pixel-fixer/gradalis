@@ -13,7 +13,8 @@ $factory->define(Franchise::class, function (Faker $faker) {
         'foundation_year' => 1998,
         'start_year' => 2000,
         'own_enterprices' => 5,
-        'status'=>1,
+        'status'=>rand(0,4),
+        'commission' => 15,
         'district_id' => 1,
         'city_id' => 1,
         'category_id' => rand(1,2)
