@@ -35,3 +35,6 @@ Route::get('/business', function () {
 Route::get('/register/seller ', function () {
     return view('auth.register.seller');
 });
+Route::get('/register/buyer ', function () {
+    return view('auth.register.buyer');
+});
