@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'hotels',
             'meetings',
             'consultations',
+            'dialogs'
         ]);
         Schema::enableForeignKeyConstraints();
 
@@ -49,6 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HotelsSeeder::class);
         $this->call(MeetingsSeeder::class);
         $this->call(ConsultationsSeeder::class);
+        $this->call(DialogSeeder::class);
 
         Model::reguard();
     }

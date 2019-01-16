@@ -39,6 +39,9 @@
       border-bottom: 1px solid rgba(207, 218, 230, 0.5);
       padding: 13px 15px;
       cursor: pointer;
+      &.active{
+        background: #e5f2ff;
+      }
       &.new-message &__theme{
         font-style: normal;
         font-weight: bold;
@@ -87,10 +90,7 @@
     }
 
     &__settings{
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      line-height: 24px;
+      line-height: 20px;
       font-size: 14px;
       padding: 15px;
       border-top: 1px solid rgba(207, 218, 230, 0.5);
@@ -201,6 +201,7 @@
     &__new-message{
       padding: 14px;
       border-top: 1px solid rgba(207, 218, 230, 0.5);
+      height: 55px;
       &__attach{
         flex-shrink: 0;
         line-height: 21px;
@@ -217,6 +218,9 @@
       input::placeholder{
         color:  #B4C4DB;
       }
+      a, button{
+        line-height: 0;
+      }
       button{
         cursor: pointer;
         padding: 0;
@@ -226,15 +230,29 @@
       }
     }
   }
+
+  &__no-dialog{
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #4857ce;
+  }
 }
 
 .chat-messages{
   flex: 1;
-  padding: 15px;
-  display: flex;
+  //padding: 15px;
+  //display: flex;
   justify-content: flex-end;
   flex-direction: column;
-
+  //overflow-y: scroll;
+  //padding: 15px 27px 15px 15px;
+  &__scroll{
+    padding: 15px 27px 15px 15px;
+  }
   &__list{
     position: relative;
   }
@@ -274,6 +292,9 @@
         border-radius: 3px;
         display: inline-block;
         margin-right: 10px;
+      }
+      a:last-child{
+        margin-right: 0;
       }
       img{
         vertical-align: middle;
@@ -325,6 +346,9 @@
       border-radius: 3px;
       background: rgba(197, 210, 230, 0.2);
       padding: 2px 12px 9px 12px;
+    }
+    &__text{
+      text-align: left;
     }
   }
 
@@ -379,6 +403,9 @@
     .chat__list__item__from{
       color: rgba(255,255,255, 0.3);
     }
+   }
+  &--support.new-message .chat__list__item__theme{
+    color: #fff;
   }
   &--seller:before{
     background: #F37C22;
@@ -397,7 +424,6 @@
   opacity: 0;
 }
 
-
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
@@ -412,3 +438,4 @@
   transform: translateX(10px);
   opacity: 0;
 }
+

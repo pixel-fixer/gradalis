@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/chat', function () {
-    return view('chat');
-})->middleware('auth');
+Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
+    Route::get('', 'ChatController@index');
+    Route::get('dialogs', 'ChatController@getDialogs');
+    Route::get('dialog/{dialog}', 'ChatController@getMessages');
+    Route::post('message', 'ChatController@newMessage');
+    Route::delete('message/{message}', 'ChatController@deleteMessage');
+    Route::patch('message/{message}/accept', 'ChatController@acceptMessage');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
