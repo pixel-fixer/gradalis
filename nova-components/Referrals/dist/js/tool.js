@@ -28091,7 +28091,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
 
 // exports
 
@@ -28467,12 +28467,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            columns: [{ data: 'id', title: 'Id Объекта' }, { data: 'name.ru', name: 'name', title: 'Наименование' }, {
-                data: 'type',
-                orderable: false,
-                searchable: false,
-                title: 'Тип'
-            }, { data: 'status', title: 'Статус' }, { data: 'price', title: 'Стоимость' }, {
+            columns: [{ data: 'id', title: 'Id Инвайта' }, { data: 'first_name', name: 'users.first_name', title: 'Имя приглашенного пользователя' }, {
                 data: 'edit',
                 orderable: false,
                 searchable: false,
@@ -28592,6 +28587,29 @@ __webpack_require__(17);
             }, {
                 ajax: this.ajax,
                 columns: this.columns,
+                aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
+                language: {
+                    "processing": "Подождите...",
+                    "search": "Поиск:",
+                    "lengthMenu": "Показать _MENU_ записей",
+                    "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                    "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                    "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                    "infoPostFix": "",
+                    "loadingRecords": "Загрузка записей...",
+                    "zeroRecords": "Записи отсутствуют.",
+                    "emptyTable": "В таблице отсутствуют данные",
+                    "paginate": {
+                        "first": "Первая",
+                        "previous": "Предыдущая",
+                        "next": "Следующая",
+                        "last": "Последняя"
+                    },
+                    "aria": {
+                        "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                        "sortDescending": ": активировать для сортировки столбца по убыванию"
+                    }
+                },
                 createdRow: function createdRow() {
                     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
                         args[_key] = arguments[_key];

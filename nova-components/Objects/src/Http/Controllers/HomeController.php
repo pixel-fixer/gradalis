@@ -2,7 +2,7 @@
 
 namespace Marketplace\Objects\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use DataTables;
@@ -10,6 +10,20 @@ use DB;
 
 class HomeController extends Controller
 {
+
+    public function sale(Request $request)
+    {
+        $id = $request->get('id');
+        $resource = $request->get('resource');
+        if($resource == 'businesses'){
+            $obj = Business::find($id);
+        }else{
+            $obj = Franchise::find($id);
+        }
+        $obj->status = Business::STATUS_SOLD_OUT;
+        $obj->save();
+        return response()->json(['status'=>'ok']);
+    }
 
     public function index()
     {
@@ -31,8 +45,10 @@ class HomeController extends Controller
         $businesses->union($franchises);
         return DataTables::eloquent($businesses)
             ->addColumn('edit', function ($businesses) {
-                $btns = '<button class="btn btn-danger" data-url=""><i class="fa fa-trash"></i></button> &nbsp;';
-                return $btns;
+                return 'edit';
+            }, false)
+            ->addColumn('sale', function ($businesses) {
+                return 'sale';
             }, false)
             ->editColumn('status',function ($business) use ($statuses){
                 return $statuses[$business->status];

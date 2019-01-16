@@ -1,5 +1,5 @@
 <template>
-    <table class="table w-full">
+    <table id="objects-table" class="table w-full">
         <thead>
         <tr>
             <th v-for="column in parameters.columns" v-html="title(column)"></th>
@@ -19,6 +19,7 @@
     require('datatables.net-bs');
     require('datatables.net-buttons');
     require('datatables.net-buttons-bs');
+
     export default {
         data() {
             return {
@@ -44,6 +45,29 @@
                 }, {
                     ajax: this.ajax,
                     columns: this.columns,
+                    aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
+                    language: {
+                        "processing": "Подождите...",
+                        "search": "Поиск:",
+                        "lengthMenu": "Показать _MENU_ записей",
+                        "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                        "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                        "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                        "infoPostFix": "",
+                        "loadingRecords": "Загрузка записей...",
+                        "zeroRecords": "Записи отсутствуют.",
+                        "emptyTable": "В таблице отсутствуют данные",
+                        "paginate": {
+                            "first": "Первая",
+                            "previous": "Предыдущая",
+                            "next": "Следующая",
+                            "last": "Последняя"
+                        },
+                        "aria": {
+                            "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                            "sortDescending": ": активировать для сортировки столбца по убыванию"
+                        }
+                    },
                     createdRow(...args) {
                         vm.$emit('created-row', ...args);
                     },
@@ -91,6 +115,7 @@
         },
         props: {
             footer: {default: false},
+            selectCheckbox: {type: Number},
             columns: {type: Array},
             ajax: {default: '/nova-vendor/objects/data'},
             options: {}

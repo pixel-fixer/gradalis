@@ -17,16 +17,8 @@
         data() {
             return {
                 columns: [
-                    {data: 'id',title:'Id Объекта'},
-                    {data: 'name.ru',name: 'name',title:'Наименование'},
-                    {
-                        data: 'type',
-                        orderable: false,
-                        searchable: false,
-                        title:'Тип'
-                    },
-                    {data: 'status',title:'Статус'},
-                    {data: 'price',title:'Стоимость'},
+                    {data: 'id',title:'Id Инвайта'},
+                    {data: 'first_name',name: 'users.first_name',title:'Имя приглашенного пользователя'},
                     {
                         data: 'edit',
                         orderable: false,
