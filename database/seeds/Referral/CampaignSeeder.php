@@ -75,7 +75,7 @@ class CampaignSeeder extends Seeder
 
                     factory(InvitationCounter::class, 3)->create([
                         'invitation_id' => $invitation->id,
-                        'created_at'    => $invitation->id,
+                        //'created_at'    => $invitation->id,
                         'invitation_id' => $invitation->id
                     ]);
                 });

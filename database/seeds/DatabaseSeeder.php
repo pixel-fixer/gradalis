@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         Schema::disableForeignKeyConstraints();
         $this->truncateMultiple([
+            'roles',
             'businesses',
             'business_categories',
             'franchises',
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'hotels',
             'meetings',
             'consultations',
-            'dialogs'
+            'dialogs',
         ]);
         Schema::enableForeignKeyConstraints();
 
