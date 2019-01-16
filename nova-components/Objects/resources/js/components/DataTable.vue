@@ -19,7 +19,7 @@
     require('datatables.net-bs');
     require('datatables.net-buttons');
     require('datatables.net-buttons-bs');
-    export default{
+    export default {
         data() {
             return {
                 dataTable: {},
@@ -30,7 +30,9 @@
                 return column.title || this.titleCase(column.title);
             },
             titleCase(str) {
-                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+                return str.replace(/\w\S*/g, function (txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
             }
         },
         computed: {
@@ -88,10 +90,10 @@
             }
         },
         props: {
-            footer: { default: false },
-            columns: { type: Array },
-            ajax: { default: '/nova-vendor/objects/data' },
-            options: { }
+            footer: {default: false},
+            columns: {type: Array},
+            ajax: {default: '/nova-vendor/objects/data'},
+            options: {}
         },
         mounted() {
             this.dataTable = window.$(this.$el).DataTable(this.parameters);
