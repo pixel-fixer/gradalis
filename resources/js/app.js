@@ -91,6 +91,31 @@ var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
 });
 
 /**
+ * Слайдер на странице объекта
+ */
+var swiperObjectThumbs = new Swiper('.swiper-object-thumbs', {
+    spaceBetween: 16,
+    slidesPerView: 5,
+    loop: true,
+    freeMode: true,
+    loopedSlides: 5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+});
+var swiperObjectMain = new Swiper('.swiper-object-main', {
+    spaceBetween: 0,
+    loop:true,
+    loopedSlides: 5, //looped slides should be the same
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+        swiper: swiperObjectThumbs,
+    },
+});
+
+/**
  *  Включает работу Dropdown по клику
  */
 var dropdownList = document.querySelectorAll('.dropdown');

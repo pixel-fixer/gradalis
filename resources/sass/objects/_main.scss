@@ -1,0 +1,100 @@
+@import '../variables';
+
+.object {
+    &__header {
+        h1.section-title {
+            margin-bottom: 1rem;
+        }
+        &__info {
+            //margin-bottom: 1rem;
+            margin-bottom: 1.75rem;
+            ul {
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    position: relative;
+                    color: $label-color;
+                    font-size: .875rem;
+                    margin-right: .5rem;
+                    padding-left: .8125rem;
+                    &:before {
+                        position: absolute;
+                        content: "";
+                        width: .3125rem;
+                        height: .3125rem;
+                        background-color: #B4C4DB;
+                        border-radius: 50%;
+                        left: 0;
+                        top: calc(50% - .15625rem);
+                    }
+                    &:first-child {
+                        padding-left: 0;
+                        &:before {
+                            display: none;
+                        }
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &__slider {
+        height: 34.25rem;
+        position: relative;
+        .swiper-container {
+            //width: 100%;
+            //height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-top {
+            height: 100%;
+            width: 100%;
+        }
+        .gallery-thumbs {
+            height: 3.75rem;
+            box-sizing: border-box;
+            .swiper-slide {
+                height: 100%;
+                opacity: 0.8;
+                transition: 0.2s;
+                cursor: pointer;
+                border-radius: $radius;
+                box-sizing: border-box;
+                &:hover {
+                    opacity: 1;
+                }
+                &-thumb-active {
+                    opacity: 1;
+                    border: .125rem solid $input-placeholder-color;
+                }
+            }
+        }
+
+        .swiper-object-main {
+
+        }
+        .swiper-object-thumbs {
+            position: absolute;
+            width: 41.5rem;
+            bottom: 1.5rem;
+            left: 1.5rem;
+        }
+
+    }
+
+    &__body {
+        background-color: $white;
+        border-radius: $radius;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+    }
+}

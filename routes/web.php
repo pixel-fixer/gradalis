@@ -32,6 +32,10 @@ Route::get('/business', function () {
     return view('business');
 })->middleware('auth');
 
+Route::get('/business/single', function () {
+    return view('business-single');
+})->middleware('auth');
+
 Route::get('/register/seller ', function () {
     return view('auth.register.seller');
 });
