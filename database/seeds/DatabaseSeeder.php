@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
             'countries',
             'cities',
             'users',
+            'campaigns',
+            'campaign_resources',
+            'conditions',
+            'partners',
+            'campaign_condition',
+            'invitations',
+            'invitation_counter',
             'services',
             'ordered_services',
             'travels',
@@ -37,12 +44,17 @@ class DatabaseSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $this->call(UserTableSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
         $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
         $this->call(FranchisePackageSeeder::class);
+        $this->call(PartnerSeeder::class);
+        $this->call(CampaignSeeder::class);
+        $this->call(ConditionSeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(OrderedServicesSeeder::class);
         $this->call(TravelsSeeder::class);

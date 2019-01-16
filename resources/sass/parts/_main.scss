@@ -12,6 +12,7 @@ body {
 
 .main {
     flex: 1;
+    flex-direction: column;
 }
 
 .button {
@@ -36,6 +37,20 @@ body {
 
 .pt-1 {
     padding-top: 1rem;
+}
+
+.is-size-875 {
+    font-size: .875rem;
+}
+
+.has-justify-content-between {
+    justify-content: space-between;
+}
+.has-justify-content-end {
+    justify-content: flex-end;
+}
+.has-align-self-center {
+    align-self: center;
 }
 
 .section-title {

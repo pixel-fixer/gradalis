@@ -6,7 +6,7 @@
     z-index: 10000;
 
     .tooltip-inner {
-        background: $very-dark-blue-footer-bg;
+        background: $very-dark-blue-2;
         color: #C5D2E6;
         font-weight: 400;
         border-radius: 3px;
@@ -20,7 +20,7 @@
         border-style: solid;
         position: absolute;
         margin: 5px;
-        border-color: $very-dark-blue-footer-bg;
+        border-color: $very-dark-blue-2;
         z-index: 1;
     }
 

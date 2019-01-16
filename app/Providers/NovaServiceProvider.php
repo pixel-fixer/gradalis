@@ -7,7 +7,8 @@ use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Marketplace\Objects\Objects;
-use Silvanite\NovaToolPermissions\NovaToolPermissions;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
+use Marketplace\Referrals\Referrals;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -70,8 +71,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new NovaToolPermissions(),
-            new Objects()
+            new NovaPermissionTool,
+            new Objects,
+            new Referrals
         ];
     }
 

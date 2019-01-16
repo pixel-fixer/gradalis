@@ -7,12 +7,25 @@ use Spatie\Translatable\HasTranslations;
 class Franchise extends Model
 {
     use HasTranslations;
+
+    //В ожидании
+    const STATUS_AWAIT      = 0;
+    //Прошел модерацию
+    const STATUS_MODERATED  = 1;
+    //Одобрен
+    const STATUS_APPROUVED  = 2;
+    //Продан
+    const STATUS_SOLD_OUT  = 3;
+    //Отклонен
+    const STATUS_DECLINED    = 4;
+
     public $timestamps = true;
     protected $table = 'franchises';
     public $translatable = ['name', 'description', 'seo_title','seo_description','seo_keywords','education'];
     protected $fillable = array(
         'name',
         'description',
+        'commission',
         'seo_title',
         'seo_description',
         'seo_keywords',
@@ -36,6 +49,11 @@ class Franchise extends Model
         return $this->belongsTo('App\Models\Franchise\FranchiseCategory');
     }
 
+    public function city()
+    {
+        return $this->belongsTo('App\Models\City');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');
@@ -44,6 +62,17 @@ class Franchise extends Model
     public function packages()
     {
         return $this->hasMany('App\Models\Franchise\FranchisePackage');
+    }
+
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_AWAIT  => 'В ожидании',
+            self::STATUS_MODERATED  => 'Прошел модерацию',
+            self::STATUS_APPROUVED => 'Одобрен',
+            self::STATUS_SOLD_OUT => 'Продан',
+            self::STATUS_DECLINED => 'Отклонен',
+        ];
     }
 
     /**

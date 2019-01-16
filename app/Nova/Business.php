@@ -5,8 +5,10 @@ namespace App\Nova;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Marketplace\Translatable\Translatable;
+use App\Models\Business\Business AS BusinessModel;
 
 class Business extends Resource
 {
@@ -74,7 +76,6 @@ class Business extends Resource
     {
         return [
             ID::make()->sortable(),
-
             Translatable::make('Наименование','name')
                 ->singleLine()
                 ->indexLocale('ru')
@@ -85,6 +86,30 @@ class Business extends Resource
                 ->indexLocale('ru')
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
+            Number::make('Цена','price')
+                ->rules('required'),
+
+            Number::make('Рентабельность','profitability')
+                ->hideFromIndex()
+                ->rules('required'),
+
+            Number::make('Прибыль','profit')
+                ->hideFromIndex()
+                ->rules('required'),
+
+            Number::make('Окупаемость','payback')
+                ->hideFromIndex()
+                ->rules('required'),
+
+            Select::make('Статус','status')
+                ->options(BusinessModel::getStatuses())
+                ->hideWhenCreating()
+                ->displayUsingLabels()
+                ->rules('required'),
+
+            Number::make('Комиссия','commission')
+                ->hideWhenCreating()
+                ->rules('required'),
 
             Translatable::make('Seo_Title')
                 ->singleLine()
@@ -104,6 +129,7 @@ class Business extends Resource
                 ->rules('required', 'max:255'),
 
             BelongsTo::make('Категория', 'category', 'App\Nova\BusinessCategory')->searchable(),
+            BelongsTo::make('Город', 'city', 'App\Nova\City'),
             BelongsTo::make('Пользователь','user', 'App\Nova\User')->searchable()
         ];
     }

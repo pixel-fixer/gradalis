@@ -13,6 +13,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        $statuses = Business::getStatuses();
         $businesses = Business::select([
                 'id',
                 'name',
@@ -33,6 +34,9 @@ class HomeController extends Controller
                 $btns = '<button class="btn btn-danger" data-url=""><i class="fa fa-trash"></i></button> &nbsp;';
                 return $btns;
             }, false)
+            ->editColumn('status',function ($business) use ($statuses){
+                return $statuses[$business->status];
+            })
             ->rawColumns(['edit'])
             ->make(true);
     }

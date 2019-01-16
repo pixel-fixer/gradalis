@@ -27,3 +27,11 @@ Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/business', function () {
+    return view('business');
+})->middleware('auth');
+
+Route::get('/register/seller ', function () {
+    return view('auth.register.seller');
+});

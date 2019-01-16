@@ -103,6 +103,7 @@ h6 {
         }
     }
     &:hover {
+        background-color: lighten($button-background-color, 3);
         &.is-primary {
             background-color: lighten($primary, 3);
         }
@@ -123,7 +124,11 @@ h6 {
         }
     }
     &:focus,
-    &:active {
+    &:active,
+    &.is-active {
+        background-color: darken($button-background-color, 3);
+        border-color: $button-border-color;
+        color: $button-color;
         &.is-primary,
         &.is-primary.is-outlined {
             background-color: darken($primary, 3);

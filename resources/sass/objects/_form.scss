@@ -1,0 +1,27 @@
+@import '../variables';
+
+.form {
+    &-filter-objects {
+        margin-bottom: 1rem;
+        .form-controls {
+            .button {
+                height: 3rem;
+                &[type="reset"] {
+                    padding-left: 2.5rem;
+                    padding-right: 1rem;
+                    span {
+                        color: $input-placeholder-color;
+                        font-size: 2rem;
+                        position: absolute;
+                        left: 1rem;
+                        top: 0;
+                        line-height: 2.75rem;
+                    }
+                }
+                &[type="submit"] {
+
+                }
+            }
+        }
+    }
+}

@@ -28,7 +28,12 @@
     "Languages": "Языки",
 
     "User": "Пользователь",
-    "Users":"Пользователи",
+    "Users": "Пользователи",
+    "User Table Name": "Имя",
+    "User Table Phone": "Телефон",
+    "User Table Email": "Email",
+    "User Table Password": "Пароль",
+    "User Create Date": "Время регистрации",
 
     "Roles": "Роли",
     "Role": "Роль",

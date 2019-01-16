@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="9px" viewBox="0 0 12 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Register" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Login_1440" transform="translate(-486.000000, -544.000000)" fill="#FFFFFF">
+            <g id="Bussines-Finder" transform="translate(480.000000, 336.000000)">
+                <g id="In-the-property" transform="translate(0.000000, 200.000000)">
+                    <path d="M17.6854701,8.24560876 C17.294731,7.89509105 16.6870546,7.92256109 16.3299623,8.31000809 L10.4739113,14.6733115 L7.6447687,11.835107 C7.27131298,11.4618488 6.66460477,11.4561637 6.28732444,11.8237367 C5.90907585,12.1903543 5.90331474,12.7900133 6.27580221,13.1632714 L9.81724112,16.7157926 C9.998692,16.8976681 10.244435,16.9990445 10.5017002,16.9990445 C10.5074613,16.9990445 10.5141906,16.9990445 10.5199518,17 C10.7849146,16.9943149 11.0345306,16.8825238 11.2121084,16.689278 L17.750682,9.58423576 C18.1069028,9.19578551 18.0780973,8.59708195 17.6854701,8.24560876 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
