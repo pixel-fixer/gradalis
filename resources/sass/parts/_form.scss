@@ -251,6 +251,7 @@ input.input {
     }
 
     &--active {
+        z-index: 5;
         .multiselect__tags {
             border-color: $cyan;
         }
