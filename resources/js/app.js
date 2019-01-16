@@ -33,6 +33,8 @@ Vue.component('chat', require('./components/chat.vue').default);
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue').default);
 
+Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

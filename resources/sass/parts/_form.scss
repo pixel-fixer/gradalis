@@ -55,13 +55,38 @@ input.input {
             height: 100%;
         }
     }
-    &.control.has-icons-left {
+    &.has-icons-left {
         .input,
         .select select {
             padding-left: 3rem;
         }
         .icon.is-left {
             width: 3em;
+        }
+    }
+    &.has-text-left {
+        .input {
+            padding-left: 4rem;
+            &:focus {
+                ~ .text {
+                    border-color: $input-focus-border-color;
+                }
+            }
+        }
+        .text {
+            width: 4em;
+            height: 100%;
+            color: $input-focus-color;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            border-right: 1px solid $input-border-color;
+            &.is-left {
+                left: 0;
+            }
         }
     }
 }
