@@ -30,6 +30,15 @@ class PermissionSeeder extends Seeder
     ];
     
     /**
+     * Отдельные разрешения, которые не относятся к моделям
+     *
+     */
+    private $allPerms = [
+        'Чат: модерация сообщений',
+        'Чат: модерация сообщений (свои пользователи)',
+    ];
+    
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -51,6 +60,12 @@ class PermissionSeeder extends Seeder
                     ['guard_name' => 'web']
                 );
             }
+        }
+        foreach ( $this->allPerms as $perm ) {
+            Permission::firstOrCreate(
+                ['name' => $perm],
+                ['guard_name' => 'web']
+            );
         }
     }
 }
