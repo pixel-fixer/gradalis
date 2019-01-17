@@ -39,7 +39,21 @@ Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').d
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      object: {
+          // Переменные, используемые на странице объекта
+          showDetailedInformation: false
+      }
+    },
+    methods: {
+        showModal (id) {
+            document.getElementById(id).classList.add('is-active');
+        },
+        hideModal (id) {
+            document.getElementById(id).classList.remove('is-active');
+        }
+    }
 });
 
 import Swiper from 'swiper';
