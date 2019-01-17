@@ -42,3 +42,7 @@ Route::get('/register/seller ', function () {
 Route::get('/register/buyer ', function () {
     return view('auth.register.buyer');
 });
+
+Route::get('/services', function () {
+    return view('services');
+})->middleware('auth');
