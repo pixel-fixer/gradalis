@@ -244,14 +244,15 @@
 
 .chat-messages{
   flex: 1;
-  //padding: 15px;
   //display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  //overflow-y: scroll;
-  //padding: 15px 27px 15px 15px;
+  //justify-content: flex-end;
+  //flex-direction: column;
   &__scroll{
     padding: 15px 27px 15px 15px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100%;
   }
   &__list{
     position: relative;

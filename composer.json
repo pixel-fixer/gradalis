@@ -30,14 +30,15 @@
         "coderello/laravel-nova-lang": "^1.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
+        "inspheric/nova-indicator-field": "^1.2",
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
         "marketplace/objects": "*",
+        "marketplace/referrals": "*",
         "marketplace/translatable": "*",
         "vyuldashev/nova-permission": "^1.4",
-        "yajra/laravel-datatables-oracle": "~8.0",
-        "marketplace/referrals": "*"
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",

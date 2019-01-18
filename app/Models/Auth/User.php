@@ -37,4 +37,14 @@ class User extends Authenticatable
     {
         return "{$this->first_name} {$this->last_name}";
     }
+
+    public function business()
+    {
+        return $this->hasMany('App\Models\Business\Business');
+    }
+
+    public function franchise()
+    {
+        return $this->hasMany('App\Models\Franchise\Franchise');
+    }
 }

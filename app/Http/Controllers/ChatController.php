@@ -17,6 +17,7 @@ class ChatController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         return view('chat');
     }
 
@@ -37,7 +38,6 @@ class ChatController extends Controller
 
     public function newMessage()
     {
-
         //TODO Привязывать юзера к диалогу?
 
         $message = Message::create([
@@ -128,6 +128,11 @@ class ChatController extends Controller
 //        });
 //
         return $dialog->load('messages.from');
+    }
+
+    public function setChatRoles()
+    {
+
     }
 
 }

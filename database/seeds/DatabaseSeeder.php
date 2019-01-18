@@ -41,7 +41,9 @@ class DatabaseSeeder extends Seeder
             'meetings',
             'consultations',
             'dialogs',
+            'admin_notifications'
         ]);
+
         Schema::enableForeignKeyConstraints();
 
         $this->call(UserTableSeeder::class);
@@ -64,6 +66,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MeetingsSeeder::class);
         $this->call(ConsultationsSeeder::class);
         $this->call(DialogSeeder::class);
+        $this->call(AdminNofiticationSeeder::class);
 
         Model::reguard();
     }
