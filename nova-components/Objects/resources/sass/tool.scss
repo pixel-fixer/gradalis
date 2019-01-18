@@ -1,1 +1,94 @@
 // Nova Tool CSS
+
+.dt-bootstrap {
+    .row {
+        display: flex;
+
+        .col-sm {
+            &-6 {
+                flex: 2;
+            }
+
+            &-12 {
+                flex: 1;
+            }
+        }
+    }
+
+    .dataTables {
+        &_length {
+            select {
+                border: 1px solid #ededed;
+                border-radius: .5rem;
+                -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+                &:focus,
+                &:active {
+                    border-radius: .5rem;
+                    outline: none;
+                    -webkit-box-shadow: 0 0 8px var(--primary);
+                    box-shadow: 0 0 8px var(--primary);
+                }
+            }
+            padding: 1rem;
+        }
+
+        &_filter {
+            justify-content: flex-end;
+            display: flex;
+            padding: 1rem;
+
+            input[type="search"] {
+                margin-left: 1rem;
+                background-color: var(--white);
+                border: 1px solid #ededed;
+                padding-left: .75rem;
+                padding-right: .75rem;
+                color: var(--80);
+                border-radius: .5rem;
+                -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+                height: 2.25rem;
+                line-height: normal;
+                /*width: 18.75rem;*/
+                /*padding-left: 2.75rem;*/
+                &:focus,
+                &:active {
+                    border-radius: .5rem;
+                    outline: none;
+                    -webkit-box-shadow: 0 0 8px var(--primary);
+                    box-shadow: 0 0 8px var(--primary);
+                }
+            }
+        }
+
+        &_paginate {
+            padding: 1rem;
+            ul {
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    margin-right: .5rem;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        color: #7c858e;
+                        text-decoration: none;
+                        font-weight: 800;
+                        &:focus,
+                        &:active {
+                            border: 0;
+                            box-shadow: none;
+                        }
+                        &:hover {
+                            color:#666769;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

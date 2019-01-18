@@ -15,6 +15,7 @@
         .dropdown-menu {
             display: none;
         }
+
         > .dropdown-menu {
             display: block;
         }
@@ -23,11 +24,18 @@
 
 /* Typography */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
     color: $title-color;
 }
 
-h1 {
+h1,
+.content h1 {
     font-size: 2rem;
     line-height: 2.5rem;
     font-weight: 900;
@@ -37,34 +45,68 @@ h1 {
     }
 }
 
-h2 {
+h2,
+.content h2 {
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 900;
 }
 
-h3 {
+h3,
+.content h3 {
     font-size: 1.125rem;
     line-height: 1.875rem;
     font-weight: bold;
 }
 
-h4 {
+h4,
+.content h4 {
     font-size: 1rem;
     line-height: 1.875rem;
     font-weight: bold;
 }
 
-h5 {
+h5,
+.content h5 {
     font-size: 1rem;
     line-height: 1.875rem;
     font-weight: bold;
 }
 
-h6 {
+h6,
+.content h6 {
     font-size: 1rem;
     line-height: 1.875rem;
     font-weight: bold;
+}
+
+p,
+.content p,
+.content {
+    //color: $very-dark-blue-2;
+    line-height: 1.75em;
+}
+
+.content {
+    ul {
+        list-style: none;
+        margin-left: 3rem;
+        li {
+            position: relative;
+
+            &:before {
+                position: absolute;
+                content: "";
+                background-color: $cyan;
+                width: 0.3125rem;
+                height: 0.3125rem;
+                top: .55em;
+                //margin-top: -0.15625;
+                border-radius: 50%;
+                left: -1.875rem;
+            }
+        }
+    }
 }
 
 /* Buttons */
@@ -82,73 +124,93 @@ h6 {
             border: none !important;
         }
     }
+
     &.is-outlined {
         &.is-primary {
             border: 1px solid rgba($primary, 0.3);
         }
+
         &.is-link {
             border: 1px solid rgba($blue, 0.3);
         }
+
         &.is-info {
             border: 1px solid rgba($cyan, 0.3);
         }
+
         &.is-success {
             border: 1px solid rgba($green, 0.3);
         }
+
         &.is-warning {
             border: 1px solid rgba($yellow, 0.3);
         }
+
         &.is-danger {
             border: 1px solid rgba($red, 0.3);
         }
     }
+
     &:hover {
         background-color: lighten($button-background-color, 3);
+
         &.is-primary {
             background-color: lighten($primary, 3);
         }
+
         &.is-link {
             background-color: lighten($blue, 3);
         }
+
         &.is-info {
             background-color: lighten($cyan, 3);
         }
+
         &.is-success {
             background-color: lighten($green, 3);
         }
+
         &.is-warning {
             background-color: lighten($yellow, 3);
         }
+
         &.is-danger {
             background-color: lighten($red, 3);
         }
     }
+
     &:focus,
     &:active,
     &.is-active {
         background-color: darken($button-background-color, 3);
         border-color: $button-border-color;
         color: $button-color;
+
         &.is-primary,
         &.is-primary.is-outlined {
             background-color: darken($primary, 3);
         }
+
         &.is-link,
         &.is-link.is-outlined {
             background-color: darken($blue, 3);
         }
+
         &.is-info,
         &.is-info.is-outlined {
             background-color: darken($cyan, 3);
         }
+
         &.is-success,
         &.is-success.is-outlined {
             background-color: darken($green, 3);
         }
+
         &.is-warning,
         &.is-warning.is-outlined {
             background-color: darken($yellow, 3);
         }
+
         &.is-danger,
         &.is-danger.is-outlined {
             background-color: darken($red, 3);

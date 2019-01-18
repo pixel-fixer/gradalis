@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/data', 'Marketplace\Objects\Http\Controllers\HomeController@index');
+Route::get('/sale', 'Marketplace\Objects\Http\Controllers\HomeController@sale');
 
 // Route::get('/endpoint', function (Request $request) {
 //     //

@@ -17,16 +17,30 @@
         data() {
             return {
                 columns: [
-                    {data: 'id',title:'Id Объекта'},
-                    {data: 'name.ru',name: 'name',title:'Наименование'},
+                    {data: 'id',title:'Id Объекта',searchable: false},
+                    {data: 'name.ru',name: 'name',title:'Наименование',searchable: true},
                     {
                         data: 'type',
-                        orderable: false,
+                        orderable: true,
                         searchable: false,
                         title:'Тип'
                     },
-                    {data: 'status',title:'Статус'},
+                    {data: 'status',title:'Статус',searchable: true},
                     {data: 'price',title:'Стоимость'},
+                    {
+                        data: 'sale',
+                        orderable: false,
+                        searchable: false,
+                        title:'Продано',
+                        createdCell(cell, cellData, rowData) {
+                            let SaleButton = Vue.extend(require('./SaleButton'));
+                            let instance = new SaleButton({
+                                propsData: rowData
+                            });
+                            instance.$mount();
+                            $(cell).empty().append(instance.$el);
+                        }
+                    },
                     {
                         data: 'edit',
                         orderable: false,

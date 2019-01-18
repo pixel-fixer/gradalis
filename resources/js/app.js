@@ -30,6 +30,7 @@ Vue.component('example-form-short', require('./components/ExampleFormShort.vue')
 Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue').default);
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
+Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,7 +39,21 @@ Vue.component('form-register-seller', require('./components/FormRegisterSeller')
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+      object: {
+          // Переменные, используемые на странице объекта
+          showDetailedInformation: false
+      }
+    },
+    methods: {
+        showModal (id) {
+            document.getElementById(id).classList.add('is-active');
+        },
+        hideModal (id) {
+            document.getElementById(id).classList.remove('is-active');
+        }
+    }
 });
 
 import Swiper from 'swiper';
@@ -88,6 +103,46 @@ var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
         type: 'fraction',
     },
 });
+
+/**
+ * Слайдер на странице объекта (основной)
+ */
+var swiperObjectThumbs = new Swiper('.swiper-object-thumbs', {
+    spaceBetween: 16,
+    slidesPerView: 5,
+    // loop: true,
+    // freeMode: false,
+    // loopedSlides: 5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+});
+var swiperObjectMain = new Swiper('.swiper-object-main', {
+    spaceBetween: 0,
+    // loop:true,
+    // loopedSlides: 5, //looped slides should be the same
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+        swiper: swiperObjectThumbs,
+    },
+});
+
+/**
+ * Слайдер услуг на странице объекта
+ */
+var swiperObjectServices = new Swiper('.swiper-object-services', {
+    slidesPerView: 3,
+    spaceBetween: 8,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-object-services-next',
+        prevEl: '.swiper-object-services-prev',
+    },
+});
+
+
 
 /**
  *  Включает работу Dropdown по клику

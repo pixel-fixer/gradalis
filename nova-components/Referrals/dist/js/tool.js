@@ -28091,7 +28091,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
 
 // exports
 
@@ -28458,6 +28458,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -28467,26 +28495,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            columns: [{ data: 'id', title: 'Id Объекта' }, { data: 'name.ru', name: 'name', title: 'Наименование' }, {
-                data: 'type',
-                orderable: false,
-                searchable: false,
-                title: 'Тип'
-            }, { data: 'status', title: 'Статус' }, { data: 'price', title: 'Стоимость' }, {
-                data: 'edit',
-                orderable: false,
-                searchable: false,
-                title: 'Редактировать',
-                createdCell: function createdCell(cell, cellData, rowData) {
-                    var EditButton = __WEBPACK_IMPORTED_MODULE_1_vue___default.a.extend(__webpack_require__(23));
-                    var instance = new EditButton({
-                        propsData: rowData
-                    });
-                    instance.$mount();
-                    $(cell).empty().append(instance.$el);
-                }
-            }]
+            clickCountYear: 0,
+            clickCountMonth: 0,
+            clickCountWeek: 0,
+
+            regCountYear: 0,
+            regCountMonth: 0,
+            regCountWeek: 0,
+            columns: [{ data: 'date', title: 'Дата' }, { data: 'click', title: 'Всего кликов' }, { data: 'unique', title: 'Уник. кликов' }, { data: 'regs', title: 'Регистрации' }]
         };
+    },
+    mounted: function mounted() {
+        this.getStatistics();
+    },
+
+    methods: {
+        getStatistics: function getStatistics() {
+            var vm = this;
+            axios.get('/nova-vendor/referrals/statistics').then(function (responce) {
+                var data = responce.data;
+                vm.clickCountYear = data.clickCountYear;
+                vm.clickCountMonth = data.clickCountMonth;
+                vm.clickCountWeek = data.clickCountWeek;
+
+                vm.regCountYear = data.regCountYear;
+                vm.regCountMonth = data.regCountMonth;
+                vm.regCountWeek = data.regCountWeek;
+            });
+        }
     }
 });
 
@@ -28591,7 +28627,31 @@ __webpack_require__(17);
                 processing: true
             }, {
                 ajax: this.ajax,
+                searching: false,
                 columns: this.columns,
+                aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
+                language: {
+                    "processing": "Подождите...",
+                    "search": "Поиск:",
+                    "lengthMenu": "Показать _MENU_ записей",
+                    "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+                    "infoEmpty": "Записи с 0 до 0 из 0 записей",
+                    "infoFiltered": "(отфильтровано из _MAX_ записей)",
+                    "infoPostFix": "",
+                    "loadingRecords": "Загрузка записей...",
+                    "zeroRecords": "Записи отсутствуют.",
+                    "emptyTable": "В таблице отсутствуют данные",
+                    "paginate": {
+                        "first": "Первая",
+                        "previous": "Предыдущая",
+                        "next": "Следующая",
+                        "last": "Последняя"
+                    },
+                    "aria": {
+                        "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                        "sortDescending": ": активировать для сортировки столбца по убыванию"
+                    }
+                },
                 createdRow: function createdRow() {
                     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
                         args[_key] = arguments[_key];
@@ -40381,136 +40441,9 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(24)
-/* template */
-var __vue_template__ = __webpack_require__(25)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/EditButton.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-02009ef2", Component.options)
-  } else {
-    hotAPI.reload("data-v-02009ef2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-//import router from 'router'
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['id', 'resource'],
-    methods: {
-        editObject: function editObject(lang) {
-            window.location = Nova.config.base + "/resources/" + this.resource + "/" + this.id + "/edit";
-        }
-    }
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default btn-icon bg-primary",
-        on: { click: _vm.editObject }
-      },
-      [
-        _vm._t("default", [
-          _c(
-            "svg",
-            {
-              staticClass: "fill-current text-white",
-              staticStyle: { "margin-top": "-2px", "margin-left": "3px" },
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "20",
-                height: "20",
-                viewBox: "0 0 20 20",
-                "aria-labelledby": "edit",
-                role: "presentation"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M4.3 10.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM6 14h2.59l9-9L15 2.41l-9 9V14zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h6a1 1 0 1 1 0 2H2v14h14v-6z"
-                }
-              })
-            ]
-          )
-        ])
-      ],
-      2
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-02009ef2", module.exports)
-  }
-}
-
-/***/ }),
+/* 23 */,
+/* 24 */,
+/* 25 */,
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40520,13 +40453,75 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "px-view py-view mx-auto" }, [
     _c("h1", { staticClass: "mb-3 text-90 font-normal text-2xl" }, [
-      _vm._v("Объекты")
+      _vm._v("Статистика")
     ]),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "card relative" },
       [
+        _c("div", { staticClass: "max-w-xls flex rounded overflow-hidden" }, [
+          _c("div", { staticClass: "px-4 py-2 m-2" }, [
+            _c("div", { staticClass: "font-bold text-xl mb-2" }, [
+              _vm._v("Клики")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего кликов за год: " +
+                  _vm._s(_vm.clickCountYear) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего кликов за месяц: " +
+                  _vm._s(_vm.clickCountMonth) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего кликов за неделю: " +
+                  _vm._s(_vm.clickCountWeek) +
+                  "\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "px-4 py-2 m-2" }, [
+            _c("div", { staticClass: "font-bold text-xl mb-2" }, [
+              _vm._v("Регистрации")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего регистраций за год: " +
+                  _vm._s(_vm.regCountYear) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего регистраций за месяц: " +
+                  _vm._s(_vm.regCountMonth) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-grey-darker text-base" }, [
+              _vm._v(
+                "\n                    Всего регистраций за неделю: " +
+                  _vm._s(_vm.regCountWeek) +
+                  "\n                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("datatable", {
           staticClass: "table",
           attrs: { columns: _vm.columns }

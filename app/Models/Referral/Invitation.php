@@ -8,7 +8,7 @@ class Invitation extends Model
 {
     protected $table = 'invitations';
     public $timestamps = true;
-    protected $fillable = array('user_id','partner_id', 'campaign_id','campaign_resource_id','token','status','ip','http_referrer');
+    protected $fillable = array('partner_id', 'campaign_id','campaign_resource_id','token','status');
 
     public function campaign(){
         return $this->belongsTo('App\Models\Referral\Campaign');
@@ -20,6 +20,22 @@ class Invitation extends Model
 
     public function partner(){
         return $this->belongsTo('App\Models\Referral\Partner');
+    }
+
+    /**
+     * Генерируем токен для партнера
+     *
+     * @return string
+     */
+    public static function makeToken()
+    {
+        do {
+            //Генерируем токен
+            $token = strtolower(str_random(16));
+        } //если токен существует генерируем заново
+        while (Invitation::where('token', $token)->exists());
+
+        return $token;
     }
 
 }

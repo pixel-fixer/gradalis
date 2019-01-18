@@ -33,9 +33,11 @@
 @import "parts/form";
 @import "parts/breadcrumb";
 @import "parts/pagination";
+@import "parts/vue-slider";
 
 @import "objects/card";
 @import "objects/form";
+@import "objects/main";
 
 @import "news/news";
 @import "news/card";
@@ -45,5 +47,7 @@
 
 @import "auth/login";
 @import "auth/register";
+
+@import "services/card";
 
 @import "chat";

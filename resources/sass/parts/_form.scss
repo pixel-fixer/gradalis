@@ -2,10 +2,18 @@
 
 label.label {
     font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+
+    img {
+        margin-right: 0.5rem;
+    }
+
     &_req {
         span {
             position: relative;
             padding-right: .75em;
+
             &:after {
                 position: absolute;
                 content: '*';
@@ -28,12 +36,15 @@ input.input {
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: $input-placeholder-color;
     }
+
     &::-moz-placeholder { /* Firefox 19+ */
         color: $input-placeholder-color;
     }
+
     &:-ms-input-placeholder { /* IE 10+ */
         color: $input-placeholder-color;
     }
+
     &:-moz-placeholder { /* Firefox 18- */
         color: $input-placeholder-color;
     }
@@ -44,8 +55,23 @@ input.input {
     padding: 0.5rem 1rem;
 }
 
-.field:not(:last-child) {
-    margin-bottom: 1.25rem;
+.field {
+    &:not(:last-child) {
+        margin-bottom: 1.25rem;
+    }
+
+    &.has-addons {
+        .control {
+            .button {
+                color: $input-focus-color;
+                border-color: $input-border-color;
+                background-color: $white;
+                box-shadow: $input-shadow;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    }
 }
 
 .control {
@@ -55,38 +81,15 @@ input.input {
             height: 100%;
         }
     }
+
     &.has-icons-left {
         .input,
         .select select {
             padding-left: 3rem;
         }
+
         .icon.is-left {
             width: 3em;
-        }
-    }
-    &.has-text-left {
-        .input {
-            padding-left: 4rem;
-            &:focus {
-                ~ .text {
-                    border-color: $input-focus-border-color;
-                }
-            }
-        }
-        .text {
-            width: 4em;
-            height: 100%;
-            color: $input-focus-color;
-            pointer-events: none;
-            position: absolute;
-            top: 0;
-            align-items: center;
-            display: inline-flex;
-            justify-content: center;
-            border-right: 1px solid $input-border-color;
-            &.is-left {
-                left: 0;
-            }
         }
     }
 }
@@ -162,6 +165,13 @@ input.input {
         }
     }
 
+    &.is-link {
+        input:checked ~ span:before {
+            background-color: $blue;
+            border: 1px solid $blue;
+        }
+    }
+
     /* Show the checkmark when checked */
     input:checked ~ span:after {
         display: block;
@@ -176,6 +186,7 @@ input.input {
         height: 100%;
         display: flex;
         align-items: center;
+
         &:before {
             width: .5rem;
             height: .5rem;
@@ -200,6 +211,7 @@ input.input {
         font-size: .875rem;
         min-height: 3rem;
         padding: 0.5rem 2.5rem .5rem 1rem;
+
         &-wrap {
 
         }
@@ -239,8 +251,19 @@ input.input {
     }
 
     &--active {
+        z-index: 5;
         .multiselect__tags {
             border-color: $cyan;
         }
     }
+}
+
+
+/**/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }
