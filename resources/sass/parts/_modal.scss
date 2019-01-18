@@ -1,0 +1,50 @@
+@import '../variables';
+
+.modal {
+    &-background {
+        background-color: rgba(#0B101A, .9);
+    }
+
+    &-content {
+
+    }
+
+    &-card {
+        &-head {
+
+        }
+
+        &-title {
+            font-weight: 900;
+        }
+
+        &-body {
+
+        }
+
+        &-foot {
+
+        }
+    }
+
+    .close-modal {
+        &.delete {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: $radius;
+            //border-top-right-radius: 0;
+            border-top-right-radius: $radius;
+            background-color: rgba(black, .4);
+            width: 1.5rem;
+            height: 1.5rem;
+            max-width: 1.5rem;
+            max-height: 1.5rem;
+            &:hover {
+                background-color: rgba(black, .8);
+            }
+        }
+    }
+}

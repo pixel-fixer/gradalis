@@ -228,11 +228,12 @@
                 &-slide {
                     .card-service {
                         margin: 0.75rem;
-                        //box-shadow: none;
-                        //border: 1px solid #C5D2E6;
-                        //&:hover {
-                        //    //transform: none;
-                        //}
+                        box-shadow: none;
+                        border: 1px solid #C5D2E6;
+
+                        &:hover {
+                            transform: none;
+                        }
                     }
                 }
 
@@ -347,6 +348,7 @@
     //}
     &__info {
         margin-top: 1.5rem;
+
         &__toggle {
             padding: .5rem 2rem;
             box-sizing: content-box;
@@ -356,6 +358,7 @@
         &__group {
             border-bottom: 1px solid rgba(207, 218, 230, 0.5);
             margin-bottom: 1rem;
+
             &:last-child {
                 border-bottom: none;
                 margin-bottom: 0;
@@ -366,6 +369,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 0.125rem;
+
             img {
                 width: 1rem;
                 height: 1rem;

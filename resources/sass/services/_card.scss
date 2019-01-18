@@ -45,7 +45,8 @@
             padding-top: .875rem;
             .button {
                 height: 3rem;
-                &.is-outlined {
+                box-sizing: border-box;
+                &:first-child {
                     padding-left: 2.25em;
                     padding-right: 2.25em;
                 }
