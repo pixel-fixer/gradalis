@@ -38,12 +38,18 @@ body {
 .pt-1 {
     padding-top: 1rem;
 }
+
 .py-1 {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .p-1-5 {
     padding: 1.5rem;
+}
+
+.h-3 {
+    height: 3rem;
 }
 
 .is-size-875 {
@@ -53,13 +59,48 @@ body {
 .has-justify-content-between {
     justify-content: space-between;
 }
+
 .has-justify-content-end {
     justify-content: flex-end;
 }
+
 .has-align-self-center {
     align-self: center;
 }
 
 .section-title {
     margin-bottom: 2rem;
+}
+
+
+ol,
+.content ol{
+    &.ol-big-counter {
+        list-style: none;
+        counter-reset: li; /* Initiate a counter */
+        margin-left: 4rem;
+        li {
+            position: relative;
+            min-height: 3rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            &:before {
+                content: counter(li); /* Use the counter as content */
+                counter-increment: li; /* Increment the counter by 1 */
+                position: absolute;
+                left: -4rem;
+                top: 0;
+                width: 3rem;
+                height: 3rem;
+                background-color: rgba($cyan,0.1);
+                border-radius: 50%;
+                font-weight: bold;
+                color: $cyan;
+                font-size: 1rem;
+                line-height: 3rem;
+                text-align: center;
+            }
+        }
+    }
 }

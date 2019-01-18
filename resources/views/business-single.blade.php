@@ -129,6 +129,7 @@
                         <div class="swiper-container swiper-object-services">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
+                                    <!-- ToDo: для кнопки заказать использовать классы "button is-link is-size-875" -->
                                     @include('parts.card-service')
                                 </div>
                                 <div class="swiper-slide">
@@ -272,7 +273,8 @@
                                                 </div>
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
-                                                        <img src="{{ asset('/svg/icons/ic_target_audience.svg') }}" alt="Target audience"
+                                                        <img src="{{ asset('/svg/icons/ic_target_audience.svg') }}"
+                                                             alt="Target audience"
                                                              class="icon svg">
                                                         <span>Целевая аудитория</span>
                                                     </h3>
@@ -297,7 +299,8 @@
                                                 </div>
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
-                                                        <img src="{{ asset('/svg/icons/ic_object_finance.svg') }}" alt="Finance"
+                                                        <img src="{{ asset('/svg/icons/ic_object_finance.svg') }}"
+                                                             alt="Finance"
                                                              class="icon svg">
                                                         <span>Финансовые показатели</span>
                                                     </h3>
@@ -348,7 +351,8 @@
                                                 </div>
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
-                                                        <img src="{{ asset('/svg/icons/ic_process.svg') }}" alt="Process"
+                                                        <img src="{{ asset('/svg/icons/ic_process.svg') }}"
+                                                             alt="Process"
                                                              class="icon svg">
                                                         <span>Бизнес-процессы</span>
                                                     </h3>
@@ -399,7 +403,8 @@
                                                 </div>
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
-                                                        <img src="{{ asset('/svg/icons/ic_object_building.svg') }}" alt="Building"
+                                                        <img src="{{ asset('/svg/icons/ic_object_building.svg') }}"
+                                                             alt="Building"
                                                              class="icon svg">
                                                         <span>Недвижимость</span>
                                                     </h3>
@@ -511,37 +516,54 @@
     <!-- Modal -->
     <div class="modal" id="modal-question-object">
         <div class="modal-background" @click="hideModal('modal-question-object')"></div>
-        <div class="modal-content">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">
-                        “There are two hard things in computer science: cache invalidation, naming things, and
-                        off-by-one errors.”
-                    </p>
-                    <p class="subtitle">
-                        Jeff Atwood
-                    </p>
-                </div>
-            </div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Modal title</p>
+                <button class="delete close-modal" @click="hideModal('modal-question-object')"
+                        aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success">Save changes</button>
+                <button class="button">Cancel</button>
+            </footer>
         </div>
-        <button aria-label="close" class="delete close-modal" @click="hideModal('modal-question-object')"></button>
     </div>
 
     <!-- Modal -->
     <div class="modal" id="modal-how-purchase">
         <div class="modal-background" @click="hideModal('modal-how-purchase')"></div>
-        <div class="modal-content">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">
-                        Как происходит покупка
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Как происходит сделка?</p>
+                <button class="delete close-modal" @click="hideModal('modal-how-purchase')"
+                        aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <p>
+                        Оставляйте заявку, это вас не обязывает ни к чему. Вместе с вами мы пройдем следующие шаги:
                     </p>
-                    <p class="subtitle">
-                        Jeff Atwood
-                    </p>
+                    <ol class="ol-big-counter">
+                        <li>Вам позвонит эксперт по бизнесу, чтобы уточнить критерии поиска и проконсультировать при
+                            необходимости
+                        </li>
+                        <li>Эксперт найдёт для вас самые подходящие варианты</li>
+                        <li>Вместе с вами эксперт едет на объект, чтобы посмотреть его «вживую»</li>
+                        <li>Если объект понравился, назначаем встречу с собственником</li>
+                        <li>Заключаем предварительный договор — до завершения сделки ваши деньги защищены и не переходят к
+                            продавцу бизнеса
+                        </li>
+                        <li>Вы проверяете бизнес — от недели</li>
+                        <li>Заключаем основной договор. К вам переходят все активы, а к продавцу — деньги</li>
+                    </ol>
                 </div>
-            </div>
+            </section>
+            <footer class="modal-card-foot">
+                <a href="#" class="button is-success is-fullwidth h-3">Оставить заявку</a>
+            </footer>
         </div>
-        <button aria-label="close" class="delete close-modal" @click="hideModal('modal-how-purchase')"></button>
     </div>
 @endsection

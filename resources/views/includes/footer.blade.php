@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container">
-        <div class="columns">
-            <div class="column is-3">
+        <div class="columns is-multiline">
+            <div class="column is-3-desktop is-12-tablet footer__column-first">
                 <a class="footer__logo" href="{{ url('/') }}">
                     <img src="{{ asset('/svg/logo.svg') }}" width="155" height="48"
                          alt="{{ config('app.name', 'Laravel') }}">
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="column is-9">
+            <div class="column is-9-desktop is-12-tablet">
                 <div class="columns footer__nav">
                     <div class="column is-3">
                         <ul>

@@ -90,12 +90,14 @@ $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
 $input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
 
+/* Breadcrumb */
 $breadcrumb-item-color: $cyan;
 $breadcrumb-item-active-color: #596C80;
 $breadcrumb-item-hover-color: $breadcrumb-item-active-color;
 $breadcrumb-item-padding-vertical: 0;
 $breadcrumb-item-padding-horizontal: 0.75rem;
 
+/* Button */
 $button-color: #596C80;
 $button-background-color: $body-bg;
 $button-border-color: #C5D2E5;
@@ -109,8 +111,21 @@ $button-focus-box-shadow-size: 0;
 //$button-static-border-color: $button-border-color;
 
 
-
+/* Pagination */
 $pagination-color: $cyan;
 $pagination-hover-color: $label-color;
 $pagination-current-color: $pagination-hover-color;
 $pagination-current-background-color: trasparent;
+
+/* Modal */
+$modal-content-width: 34rem;
+$modal-card-head-background-color: $white;
+$modal-card-head-border-bottom: none;
+$modal-card-foot-border-top: none;
+$modal-card-head-radius: $radius;
+$modal-card-foot-radius: $radius;
+$modal-card-title-color: $very-dark-blue-2;
+$modal-card-head-padding: 1.5rem;
+$modal-card-body-padding: 0rem 1.5rem;
+//$modal-close-right: 0;
+//$modal-close-top: 0;
