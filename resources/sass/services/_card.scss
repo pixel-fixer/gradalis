@@ -19,13 +19,14 @@
             width: 2.5rem;
             height: 2.5rem;
             margin-right: 1rem;
-
+            margin-bottom: .5rem;
             img {
                 width: 100%;
             }
         }
 
         &__info {
+            //margin-top: .5rem;
             flex: 1;
         }
 

@@ -176,6 +176,7 @@
 
             .tag {
                 z-index: 2;
+
                 &-payback {
                     position: absolute;
                     bottom: 0;
@@ -211,6 +212,55 @@
                     left: 0;
                     border-top-left-radius: 0;
                     border-bottom-left-radius: 0;
+                }
+            }
+        }
+
+        .slider-services {
+            padding: 1.5rem 3rem 0.25rem;
+            position: relative;
+
+            .swiper {
+                &-container {
+                    //padding: 1.5rem;
+                }
+
+                &-slide {
+                    .card-service {
+                        margin: 0.75rem;
+                        //box-shadow: none;
+                        //border: 1px solid #C5D2E6;
+                        //&:hover {
+                        //    //transform: none;
+                        //}
+                    }
+                }
+
+                &-button {
+                    &-next,
+                    &-prev {
+                        background-image: url(../../img/ic_arrow.svg);
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        margin-top: -0.75rem;
+                        background-size: contain;
+
+                        &:focus,
+                        &:active {
+                            border: none;
+                            outline: none;
+                        }
+                    }
+
+                    &-next {
+                        right: .875rem;
+                    }
+
+                    &-prev {
+                        transform: scale(-1, 1);
+                        left: .875rem;
+                    }
+
                 }
             }
         }
@@ -296,10 +346,60 @@
     //    padding: 1.5rem;
     //}
     &__info {
+        margin-top: 1.5rem;
         &__toggle {
             padding: .5rem 2rem;
             box-sizing: content-box;
             margin: 1rem 0;
+        }
+
+        &__group {
+            border-bottom: 1px solid rgba(207, 218, 230, 0.5);
+            margin-bottom: 1rem;
+            &:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.125rem;
+            img {
+                width: 1rem;
+                height: 1rem;
+                object-fit: contain;
+                object-position: center;
+                margin-right: 0.5rem;
+            }
+        }
+
+        &__list {
+            &__item {
+                display: flex;
+                flex-wrap: wrap;
+                padding: .5rem 0;
+
+                span {
+                    width: 50%;
+                }
+
+                &__subgroup {
+                    width: 100%;
+                    padding: .5rem 0;
+
+                    .object__info__list__item {
+                        color: $label-color;
+
+                        span {
+                            &:first-child {
+                                padding-left: 1.5rem;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

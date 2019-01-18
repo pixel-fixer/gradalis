@@ -105,21 +105,21 @@ var swiperHomeInfoRight = new Swiper('.swiper-home-info-right', {
 });
 
 /**
- * Слайдер на странице объекта
+ * Слайдер на странице объекта (основной)
  */
 var swiperObjectThumbs = new Swiper('.swiper-object-thumbs', {
     spaceBetween: 16,
     slidesPerView: 5,
-    loop: true,
-    freeMode: true,
-    loopedSlides: 5, //looped slides should be the same
+    // loop: true,
+    // freeMode: false,
+    // loopedSlides: 5, //looped slides should be the same
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
 });
 var swiperObjectMain = new Swiper('.swiper-object-main', {
     spaceBetween: 0,
-    loop:true,
-    loopedSlides: 5, //looped slides should be the same
+    // loop:true,
+    // loopedSlides: 5, //looped slides should be the same
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -128,6 +128,21 @@ var swiperObjectMain = new Swiper('.swiper-object-main', {
         swiper: swiperObjectThumbs,
     },
 });
+
+/**
+ * Слайдер услуг на странице объекта
+ */
+var swiperObjectServices = new Swiper('.swiper-object-services', {
+    slidesPerView: 3,
+    spaceBetween: 8,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-object-services-next',
+        prevEl: '.swiper-object-services-prev',
+    },
+});
+
+
 
 /**
  *  Включает работу Dropdown по клику

@@ -120,13 +120,45 @@
                         {{--<span class="tag is-warning tag-object-sold">Продано</span>--}}
 
                         {{--<span class="info-icon object-sale">--}}
-                            {{--<img src="{{ asset('/svg/icons/ic_sale.svg') }}" alt="Sale">--}}
+                        {{--<img src="{{ asset('/svg/icons/ic_sale.svg') }}" alt="Sale">--}}
                         {{--</span>--}}
                     </div>
 
                     <div class="slider-services">
-
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-object-services">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                                <div class="swiper-slide">
+                                    @include('parts.card-service')
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next swiper-object-services-next"></div>
+                        <div class="swiper-button-prev swiper-object-services-prev"></div>
                     </div>
+
                     <div class="p-1-5">
                         <div class="columns">
                             <div class="column is-8">
@@ -190,30 +222,199 @@
                                         </button>
 
                                         <div class="object__info" v-show="object.showDetailedInformation">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad amet
-                                                consectetur
-                                                culpa dolorem dolores eligendi eos est et hic, impedit ipsum
-                                                laboriosam
-                                                libero
-                                                maiores maxime perferendis quisquam ratione reiciendis repellendus
-                                                repudiandae
-                                                sint soluta totam veniam voluptas voluptatem. Itaque laborum magni
-                                                qui
-                                                quod rem
-                                                rerum similique! Accusantium aliquid, dignissimos dolor dolorem
-                                                ducimus
-                                                ea est
-                                                et eveniet iusto necessitatibus obcaecati odio provident quisquam
-                                                reiciendis
-                                                soluta vel velit? Alias debitis dolores earum eligendi et ex laborum
-                                                nemo nulla.
-                                                Corporis eum excepturi rem, sequi sint voluptates. At ipsam ipsum
-                                                nihil
-                                                obcaecati, quibusdam recusandae. Accusamus adipisci dolorem eveniet
-                                                excepturi
-                                                modi necessitatibus non similique! Porro?
-                                            </p>
+                                            <div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_info.svg') }}" alt="Info"
+                                                             class="icon svg">
+                                                        <span>Основная информация</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Причина продажи</span>
+                                                            <span>Переход в другую сферу интересов</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Название фирмы</span>
+                                                            <span>Invest.pl</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Профиль деятельности</span>
+                                                            <span>Венчурные инвестиции</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Адрес</span>
+                                                            <span>ul. Dluga 52, Warsaw 00-241, Poland </span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Индекс</span>
+                                                            <span>022245</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Количество сотрудников</span>
+                                                            <span>3</span>
+                                                            <div class="object__info__list__item__subgroup">
+                                                                <div class="object__info__list__item">
+                                                                    <span>Менеджер по продажам</span>
+                                                                    <span>€ 1 300</span>
+                                                                </div>
+                                                                <div class="object__info__list__item">
+                                                                    <span>Директор по персоналу</span>
+                                                                    <span>€ 2 300</span>
+                                                                </div>
+                                                                <div class="object__info__list__item">
+                                                                    <span>Руководитель направления</span>
+                                                                    <span>€ 3 300</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_target_audience.svg') }}" alt="Target audience"
+                                                             class="icon svg">
+                                                        <span>Целевая аудитория</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Целевая аудитория</span>
+                                                            <span>Мужчины и женщины с высоким доходом</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Средний возраст клиентов</span>
+                                                            <span>28-48</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Средний чек</span>
+                                                            <span>€ 10 000</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Стоимость привлечения</span>
+                                                            <span>€ 1 000</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_object_finance.svg') }}" alt="Finance"
+                                                             class="icon svg">
+                                                        <span>Финансовые показатели</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Обороты в месяц</span>
+                                                            <span>€ 20 000</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Расходы в месяц</span>
+                                                            <span>€ 10 000</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_law_form.svg') }}" alt="Law"
+                                                             class="icon svg">
+                                                        <span>Юридическое состояние</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_judge.svg') }}" alt="Judge"
+                                                             class="icon svg">
+                                                        <span>Правовое состояние компании</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_process.svg') }}" alt="Process"
+                                                             class="icon svg">
+                                                        <span>Бизнес-процессы</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_globe.svg') }}" alt="Globe"
+                                                             class="icon svg">
+                                                        <span>Нематериальные активы</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_money.svg') }}" alt="Money"
+                                                             class="icon svg">
+                                                        <span>Материальные активы</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="object__info__group">
+                                                    <h3 class="object__info__title">
+                                                        <img src="{{ asset('/svg/icons/ic_object_building.svg') }}" alt="Building"
+                                                             class="icon svg">
+                                                        <span>Недвижимость</span>
+                                                    </h3>
+                                                    <div class="object__info__list">
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                        <div class="object__info__list__item">
+                                                            <span>Title</span>
+                                                            <span>Value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <button
                                                 class="button is-info is-outlined is-size-875 has-text-weight-bold object__info__toggle"
                                                 @click="object.showDetailedInformation = !object.showDetailedInformation"
@@ -273,8 +474,12 @@
                                         </div>
                                     </div>
                                     <div class="buttons">
-                                        <a href="#" class="button is-success is-fullwidth has-text-weight-bold is-size-875">Получить документы</a>
-                                        <a href="#" class="button is-success is-outlined is-fullwidth has-text-weight-bold is-size-875">Заказать продукт</a>
+                                        <a href="#"
+                                           class="button is-success is-fullwidth has-text-weight-bold is-size-875">Получить
+                                            документы</a>
+                                        <a href="#"
+                                           class="button is-success is-outlined is-fullwidth has-text-weight-bold is-size-875">Заказать
+                                            продукт</a>
                                     </div>
                                 </div>
                                 <div class="has-text-centered object__how-purchase">
