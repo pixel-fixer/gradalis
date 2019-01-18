@@ -8,7 +8,7 @@ use App\Models\Business\BusinessCategory;
 use App\Models\Franchise\Franchise;
 use App\Models\Business\Business;
 
-class UserByCategory extends BooleanFilter
+class UserByBusinessCategory extends BooleanFilter
 {
 
     /**

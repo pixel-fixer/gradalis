@@ -9,15 +9,14 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
+    public function viewAny(User $user)
+    {
+        return $user->hasAnyRole(['Админ', 'Главный брокер', 'Брокер-покупатель', 'Брокер-продавец']);
+    }
 
     public function view(User $user)
     {
-        return $user->hasRole('Админ');
+        return $user->hasRole(['Админ', 'Главный брокер', 'Брокер-покупатель', 'Брокер-продавец']);
     }
 
     public function create(User $user)
@@ -27,7 +26,7 @@ class UserPolicy
 
     public function update(User $user)
     {
-        return $user->hasRole('Админ');
+        return $user->hasRole(['Админ', 'Главный брокер', 'Брокер-покупатель', 'Брокер-продавец']);
     }
 
     public function delete(User $user)

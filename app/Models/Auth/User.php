@@ -47,4 +47,22 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Franchise\Franchise');
     }
+
+    public function city()
+    {
+        return $this->BelongsTo('App\Models\City');
+    }
+
+    public function broker()
+    {
+        return $this->belongsTo('App\Models\Auth\User', 'id', 'broker_id');
+    }
+
+    //TODO Возможно, сделать 2 отдельных метода для покупателей и продавцов?
+    public function users()
+    {
+        $this->hasMany('App\Models\Auth\User', 'id', 'broker_id');
+    }
+
+
 }

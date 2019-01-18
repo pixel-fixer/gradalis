@@ -65,7 +65,7 @@ class SellersList extends Lens
     public function filters(Request $request)
     {
         return [
-            new \App\Nova\Filters\UserByCategory
+            new \App\Nova\Filters\UserByBusinessCategory
         ];
     }
 

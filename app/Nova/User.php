@@ -2,7 +2,9 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -100,6 +102,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
 
+            BelongsTo::make(__('City'),'city', City::class)->searchable(),
 
             MorphToMany::make('Роль', 'roles', Role::class),
             MorphToMany::make('Разрешение', 'permissions', Permission::class),

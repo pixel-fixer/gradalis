@@ -2,8 +2,11 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SellerList extends Resource
@@ -31,6 +34,14 @@ class SellerList extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            Text::make('full_name')->onlyOnIndex(),
+
+            Text::make('email'),
+
+            Text::make('phone'),
+
+            BelongsTo::make('city')
         ];
     }
 
@@ -54,7 +65,7 @@ class SellerList extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\UserByCategory
+            new Filters\UserByBusinessCategory
         ];
     }
 
