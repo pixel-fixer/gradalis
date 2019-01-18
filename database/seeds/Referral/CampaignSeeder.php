@@ -58,27 +58,38 @@ class CampaignSeeder extends Seeder
                 'campaign_id' => $campaign->id
             ]);
             foreach ($partners as $partner) {
-                $date = Carbon::now()->addDays(random_int(30, 450))->format('Y-m-d H:i:s');
 
-                factory(User::class, 3)->create()->each(function ($user) use ($partner, $campaign, $faker, $campaignResource) {
-                    $invitation = Invitation::create([
-                        'user_id'              => $user->id,
-                        'partner_id'           => $partner->id,
-                        'campaign_id'          => $campaign->id,
-                        'campaign_resource_id' => $campaignResource->id,
-                        'token'                => strtolower(str_random(16)),
-                        'status'               => rand(0, 2),
-                        'ip'                   => $faker->ipv4,
-                        'http_referrer'        => 'https://google.com'
-                    ]);
-                    $user->save();
+                $token = Invitation::makeToken();
+                Invitation::create([
+                    'partner_id'           => $partner->id,
+                    'campaign_id'          => $campaign->id,
+                    'campaign_resource_id' => $campaignResource->id,
+                    'token'                => $token,
+                    'status'               => rand(0, 2),
+                ]);
 
-                    factory(InvitationCounter::class, 3)->create([
-                        'invitation_id' => $invitation->id,
-                        //'created_at'    => $invitation->id,
-                        'invitation_id' => $invitation->id
-                    ]);
-                });
+
+                foreach (Invitation::all() as $invitation) {
+                    factory(User::class, 5)->create()->each(function ($user) use ($invitation, $faker) {
+                        $date   = Carbon::now()->subDays(random_int(1, 370))->format('Y-m-d H:i:s');
+                        $status = rand(0, 2);
+                        $data   = [
+                            'invitation_id' => $invitation->id,
+                            'created_at'    => $date,
+                            'updated_at'    => $date,
+                            'status'        => $status,
+                            'ip'            => $faker->ipv4,
+                            'token'         => $invitation->token,
+                            'count'         => rand(1, 7),
+                            'http_referrer' => 'https://google.com',
+                            'invitation_id' => $invitation->id
+                        ];
+                        if ($status > 0) {
+                            $data['user_id'] = $user->id;
+                        }
+                        InvitationCounter::create($data);
+                    });
+                }
             }
         }
         Schema::enableForeignKeyConstraints();

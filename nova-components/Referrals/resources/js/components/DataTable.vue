@@ -41,6 +41,7 @@
                     processing: true
                 }, {
                     ajax: this.ajax,
+                    searching: false,
                     columns: this.columns,
                     aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
                     language: {

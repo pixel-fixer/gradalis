@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/data', 'Marketplace\Referrals\Http\Controllers\HomeController@index');
+Route::get('/statistics', 'Marketplace\Referrals\Http\Controllers\HomeController@statistics');
+
 // Route::get('/endpoint', function (Request $request) {
 //     //
 // });

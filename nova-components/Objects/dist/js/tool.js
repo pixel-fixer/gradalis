@@ -28467,12 +28467,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            columns: [{ data: 'id', title: 'Id Объекта' }, { data: 'name.ru', name: 'name', title: 'Наименование' }, {
+            columns: [{ data: 'id', title: 'Id Объекта', searchable: false }, { data: 'name.ru', name: 'name', title: 'Наименование', searchable: true }, {
                 data: 'type',
                 orderable: true,
                 searchable: false,
                 title: 'Тип'
-            }, { data: 'status', title: 'Статус' }, { data: 'price', title: 'Стоимость' }, {
+            }, { data: 'status', title: 'Статус', searchable: true }, { data: 'price', title: 'Стоимость' }, {
                 data: 'sale',
                 orderable: false,
                 searchable: false,
@@ -28573,6 +28573,48 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 window.$ = window.jQuery = __webpack_require__(0);
 __webpack_require__(2);
@@ -28583,7 +28625,9 @@ __webpack_require__(17);
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            dataTable: {}
+            dataTable: {},
+            statusFilter: "",
+            typeFilter: ""
         };
     },
 
@@ -28595,6 +28639,12 @@ __webpack_require__(17);
             return str.replace(/\w\S*/g, function (txt) {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
             });
+        },
+        statusFilterChange: function statusFilterChange() {
+            this.dataTable.ajax.reload(null, false);
+        },
+        typeFilterChange: function typeFilterChange() {
+            this.dataTable.ajax.reload(null, false);
         }
     },
     computed: {
@@ -28604,7 +28654,15 @@ __webpack_require__(17);
                 serverSide: true,
                 processing: true
             }, {
-                ajax: this.ajax,
+                ajax: {
+                    url: '/nova-vendor/objects/data',
+                    data: function data(d) {
+                        return $.extend({}, d, {
+                            "status": vm.statusFilter,
+                            "type": vm.typeFilter
+                        });
+                    }
+                },
                 columns: this.columns,
                 aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
                 language: {
@@ -28734,11 +28792,10 @@ __webpack_require__(17);
         footer: { default: false },
         selectCheckbox: { type: Number },
         columns: { type: Array },
-        ajax: { default: '/nova-vendor/objects/data' },
         options: {}
     },
     mounted: function mounted() {
-        this.dataTable = window.$(this.$el).DataTable(this.parameters);
+        this.dataTable = window.$(this.$refs['objects-table']).DataTable(this.parameters);
     },
     destroyed: function destroyed() {
         this.dataTable.destroy();
@@ -28830,37 +28887,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "table",
-    { staticClass: "table w-full", attrs: { id: "objects-table" } },
-    [
-      _c("thead", [
+  return _c("div", { staticClass: "w-full" }, [
+    _c("div", { staticClass: "flex border-b border-40 clearfix" }, [
+      _c("div", { staticClass: "py-6 px-8 w-1/6" }, [
         _c(
-          "tr",
-          _vm._l(_vm.parameters.columns, function(column) {
-            return _c("th", {
-              domProps: { innerHTML: _vm._s(_vm.title(column)) }
-            })
-          }),
-          0
-        )
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.statusFilter,
+                expression: "statusFilter"
+              }
+            ],
+            staticClass: "form-control form-select",
+            attrs: { id: "status" },
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.statusFilter = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                function($event) {
+                  _vm.statusFilterChange()
+                }
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "", selected: "selected" } }, [
+              _vm._v("Все статусы")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "0" } }, [
+              _vm._v("\n                    В ожидании\n                ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v("\n                    Прошел модерацию\n                ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v("\n                    Одобрен\n                ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [
+              _vm._v("\n                    Продан\n                ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [
+              _vm._v("\n                    Отклонен\n                ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "help-text help-text mt-2" })
       ]),
       _vm._v(" "),
-      _vm.footer
-        ? _c("tfoot", [
-            _c(
-              "tr",
-              _vm._l(_vm.parameters.columns, function(column) {
-                return _c("th", {
-                  domProps: { innerHTML: _vm._s(column.footer) }
-                })
-              }),
-              0
-            )
-          ])
-        : _vm._e()
-    ]
-  )
+      _c("div", { staticClass: "py-6 px-8 w-1/6" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.typeFilter,
+                expression: "typeFilter"
+              }
+            ],
+            staticClass: "form-control form-select",
+            attrs: { id: "type" },
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.typeFilter = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                function($event) {
+                  _vm.typeFilterChange()
+                }
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "", selected: "selected" } }, [
+              _vm._v("Все типы")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Бизнес" } }, [
+              _vm._v("\n                    Бизнес\n                ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Франшиза" } }, [
+              _vm._v("\n                    Франшиза\n                ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "help-text help-text mt-2" })
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      {
+        ref: "objects-table",
+        staticClass: "table w-full",
+        attrs: { id: "objects-table" }
+      },
+      [
+        _c("thead", [
+          _c(
+            "tr",
+            _vm._l(_vm.parameters.columns, function(column) {
+              return _c("th", {
+                domProps: { innerHTML: _vm._s(_vm.title(column)) }
+              })
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _vm.footer
+          ? _c("tfoot", [
+              _c(
+                "tr",
+                _vm._l(_vm.parameters.columns, function(column) {
+                  return _c("th", {
+                    domProps: { innerHTML: _vm._s(column.footer) }
+                  })
+                }),
+                0
+              )
+            ])
+          : _vm._e()
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40485,10 +40668,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['id', 'resource'],
+    props: ['id', 'resource', 'status'],
     data: function data() {
         return {
             info: null
@@ -40497,10 +40692,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         saleObject: function saleObject(lang) {
-            console.log();
             axios.get('/nova-vendor/objects/sale', { params: { id: this.id, resource: this.resource } }).then(function (responce) {
                 window.$('#objects-table').DataTable().ajax.reload(null, false);
             });
+        }
+    },
+    computed: {
+        show: function show() {
+            if (this.status === "Одобрен") {
+                return true;
+            }
+            return false;
+        },
+        rejected: function rejected() {
+            if (this.status === "Отклонен") {
+                return true;
+            }
+            return false;
+        },
+        soldout: function soldout() {
+            if (this.status === "Продан") {
+                return true;
+            }
+            return false;
         }
     }
 });
@@ -40514,39 +40728,107 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default btn-icon bg-primary",
-        on: { click: _vm.saleObject }
-      },
-      [
-        _vm._t("default", [
-          _c(
-            "svg",
-            {
-              staticClass: "fill-current text-white",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                viewBox: "0 0 24 24",
-                width: "24",
-                height: "24"
-              }
-            },
-            [
-              _c("path", {
-                staticClass: "heroicon-ui",
-                attrs: {
-                  d:
-                    "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-11v2h1a3 3 0 0 1 0 6h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h3v-2h-1a3 3 0 0 1 0-6h1V6a1 1 0 0 1 2 0v1h3a1 1 0 0 1 0 2h-3zm-2 0h-1a1 1 0 1 0 0 2h1V9zm2 6h1a1 1 0 0 0 0-2h-1v2z"
-                }
-              })
-            ]
-          )
-        ])
-      ],
-      2
-    )
+    _vm.show
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-default btn-icon bg-primary",
+            on: { click: _vm.saleObject }
+          },
+          [
+            _vm._t("default", [
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current text-white",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    width: "24",
+                    height: "24"
+                  }
+                },
+                [
+                  _c("path", {
+                    staticClass: "heroicon-ui",
+                    attrs: {
+                      d:
+                        "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-11v2h1a3 3 0 0 1 0 6h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h3v-2h-1a3 3 0 0 1 0-6h1V6a1 1 0 0 1 2 0v1h3a1 1 0 0 1 0 2h-3zm-2 0h-1a1 1 0 1 0 0 2h1V9zm2 6h1a1 1 0 0 0 0-2h-1v2z"
+                    }
+                  })
+                ]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.soldout
+      ? _c(
+          "button",
+          { staticClass: "btn btn-disabled btn-default btn-icon bg-success" },
+          [
+            _vm._t("default", [
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current text-white",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    width: "24",
+                    height: "24"
+                  }
+                },
+                [
+                  _c("path", {
+                    staticClass: "heroicon-ui",
+                    attrs: {
+                      d:
+                        "M17.62 10H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H8.5c-1.2 0-2.3-.72-2.74-1.79l-3.5-7-.03-.06A3 3 0 0 1 5 9h5V4c0-1.1.9-2 2-2h1.62l4 8zM16 11.24L12.38 4H12v7H5a1 1 0 0 0-.93 1.36l3.5 7.02a1 1 0 0 0 .93.62H16v-8.76zm2 .76v8h2v-8h-2z"
+                    }
+                  })
+                ]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.rejected
+      ? _c(
+          "button",
+          { staticClass: "btn btn-disabled btn-default btn-icon bg-danger" },
+          [
+            _vm._t("default", [
+              _c(
+                "svg",
+                {
+                  staticClass: "fill-current text-white",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    width: "24",
+                    height: "24"
+                  }
+                },
+                [
+                  _c("path", {
+                    staticClass: "heroicon-ui",
+                    attrs: {
+                      d:
+                        "M4.93 19.07A10 10 0 1 1 19.07 4.93 10 10 0 0 1 4.93 19.07zm1.41-1.41A8 8 0 1 0 17.66 6.34 8 8 0 0 0 6.34 17.66zM13.41 12l1.42 1.41a1 1 0 1 1-1.42 1.42L12 13.4l-1.41 1.42a1 1 0 1 1-1.42-1.42L10.6 12l-1.42-1.41a1 1 0 1 1 1.42-1.42L12 10.6l1.41-1.42a1 1 0 1 1 1.42 1.42L13.4 12z"
+                    }
+                  })
+                ]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

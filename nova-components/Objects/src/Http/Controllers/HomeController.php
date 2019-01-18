@@ -28,28 +28,46 @@ class HomeController extends Controller
     public function index()
     {
         $statuses = Business::getStatuses();
-        $businesses = Business::select([
-                'id',
-                'name',
-                'status',
-                'price',
-            ])->addSelect(DB::raw("'Бизнес' as type"))
-            ->addSelect(DB::raw("'businesses' as resource"));
-        $franchises = Franchise::select([
+
+        $franchises = DB::table('franchises')->select([
             'id',
             'name',
             'status',
             'price',
         ])->addSelect(DB::raw("'Франшиза' as type"))
             ->addSelect(DB::raw("'franchises' as resource"));
-        $businesses->union($franchises);
-        return DataTables::eloquent($businesses)
+        $businesses = DB::table('businesses')->select([
+            'id',
+            'name',
+            'status',
+            'price',
+        ])->addSelect(DB::raw("'Бизнес' as type"))
+            ->addSelect(DB::raw("'businesses' as resource"))
+            ->unionAll($franchises);
+        $objects = DB::table(DB::raw("({$businesses->toSql()}) as objects"))
+            ->mergeBindings($businesses);
+        return DataTables::query($objects)
+            ->editColumn('name', function ($object) {
+                return json_decode($object->name, true);
+            })
             ->addColumn('edit', function ($businesses) {
                 return 'edit';
             }, false)
             ->addColumn('sale', function ($businesses) {
                 return 'sale';
             }, false)
+            ->filter(function ($query) {
+                if (request()->has('status')) {
+                    $status = request()->get('status');
+                    if ($status != "")
+                        $query->where('status', request()->get('status'));
+                }
+                if (request()->has('type')) {
+                    $status = request()->get('type');
+                    if ($status != "")
+                        $query->where('type', request()->get('type'));
+                }
+            },true)
             ->editColumn('status',function ($business) use ($statuses){
                 return $statuses[$business->status];
             })
