@@ -1,43 +1,17 @@
 <template>
     <div class="w-full">
-        <div class="flex border-b border-40 clearfix">
-            <div class="py-6 px-8 w-1/6">
-                <select @change="statusTypeChange()" v-model="statusType" id="type"
-                        class="form-control form-select">
-                    <option value="" selected="selected">Все типы</option>
-                    <option v-for="(type,id) in types" :value="id">{{type}}</option>
-                </select>
-                <div class="help-text help-text mt-2"></div>
-            </div>
-            <div class="py-6 px-8 w-1/2">
-                <select @change="statusSellerChange()" v-model="statusSeller" id="status"
-                        class="form-control form-select">
-                    <option value="" selected="selected">Все продавцы</option>
-                    <option v-for="seller in sellers" :value="seller.id">{{seller.name}}</option>
-                </select>
-                <div class="help-text help-text mt-2"></div>
-            </div>
-            <div class="py-6 px-8 w-1/6">
-                <select @change="statusCampaignChange()" v-model="statusCampaign" id="campaign"
-                        class="form-control form-select">
-                    <option value="" selected="selected">Все ссылки</option>
-                    <option v-for="campaign in campaigns" :value="campaign.id">{{campaign.name.ru}} {{campaign.id}}</option>
-                </select>
-                <div class="help-text help-text mt-2"></div>
-            </div>
-        </div>
-    <table ref="referrals-table" class="table w-full">
-        <thead>
-        <tr>
-            <th v-for="column in parameters.columns" v-html="title(column)"></th>
-        </tr>
-        </thead>
-        <tfoot v-if="footer">
-        <tr>
-            <th v-for="column in parameters.columns" v-html="column.footer"></th>
-        </tr>
-        </tfoot>
-    </table>
+        <table id="referrals-table" ref="referrals-table" class="table w-full">
+            <thead>
+            <tr>
+                <th v-for="column in parameters.columns" v-html="title(column)"></th>
+            </tr>
+            </thead>
+            <tfoot v-if="footer">
+            <tr>
+                <th v-for="column in parameters.columns" v-html="column.footer"></th>
+            </tr>
+            </tfoot>
+        </table>
     </div>
 </template>
 
@@ -47,17 +21,17 @@
     require('datatables.net-bs');
     require('datatables.net-buttons');
     require('datatables.net-buttons-bs');
-    export default{
+    export default {
         data() {
             return {
                 dataTable: {},
-                statusSeller:"",
-                statusCampaign:"",
-                statusType:"",
-                sellers:{},
-                buyers:{},
-                campaigns:{},
-                types:{},
+                statusSeller: "",
+                statusCampaign: "",
+                statusType: "",
+                sellers: {},
+                buyers: {},
+                campaigns: {},
+                types: {},
             }
         },
         methods: {
@@ -98,7 +72,9 @@
                 return column.title || this.titleCase(column.title);
             },
             titleCase(str) {
-                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+                return str.replace(/\w\S*/g, function (txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
             }
         },
         computed: {
@@ -189,9 +165,9 @@
             }
         },
         props: {
-            footer: { default: false },
-            columns: { type: Array },
-            options: { }
+            footer: {default: false},
+            columns: {type: Array},
+            options: {}
         },
         mounted() {
             this.getSellersAndBuyers();
