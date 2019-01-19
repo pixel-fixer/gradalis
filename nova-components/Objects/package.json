@@ -19,6 +19,7 @@
         "datatables.net-buttons": "^1.5.4",
         "datatables.net-buttons-bs": "^1.5.4",
         "datatables.net-select": "^1.2.7",
-        "vue": "^2.5.0"
+        "vue": "^2.5.0",
+        "vue-slider-component": "^2.8.6"
     }
 }

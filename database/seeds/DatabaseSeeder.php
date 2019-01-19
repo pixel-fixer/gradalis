@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         $this->truncateMultiple([
             'roles',
+            'model_has_roles',
+            'model_has_permissions',
             'businesses',
             'business_categories',
             'franchises',
@@ -57,6 +59,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FranchisePackageSeeder::class);
         $this->call(PartnerSeeder::class);
         $this->call(CampaignSeeder::class);
+        $this->call(ReferralUsersSeeder::class);
         $this->call(ConditionSeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(OrderedServicesSeeder::class);

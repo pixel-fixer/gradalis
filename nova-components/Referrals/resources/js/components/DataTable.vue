@@ -1,5 +1,32 @@
 <template>
-    <table class="table w-full">
+    <div class="w-full">
+        <div class="flex border-b border-40 clearfix">
+            <div class="py-6 px-8 w-1/6">
+                <select @change="statusTypeChange()" v-model="statusType" id="type"
+                        class="form-control form-select">
+                    <option value="" selected="selected">Все типы</option>
+                    <option v-for="(type,id) in types" :value="id">{{type}}</option>
+                </select>
+                <div class="help-text help-text mt-2"></div>
+            </div>
+            <div class="py-6 px-8 w-1/2">
+                <select @change="statusSellerChange()" v-model="statusSeller" id="status"
+                        class="form-control form-select">
+                    <option value="" selected="selected">Все продавцы</option>
+                    <option v-for="seller in sellers" :value="seller.id">{{seller.name}}</option>
+                </select>
+                <div class="help-text help-text mt-2"></div>
+            </div>
+            <div class="py-6 px-8 w-1/6">
+                <select @change="statusCampaignChange()" v-model="statusCampaign" id="campaign"
+                        class="form-control form-select">
+                    <option value="" selected="selected">Все ссылки</option>
+                    <option v-for="campaign in campaigns" :value="campaign.id">{{campaign.name.ru}} {{campaign.id}}</option>
+                </select>
+                <div class="help-text help-text mt-2"></div>
+            </div>
+        </div>
+    <table ref="referrals-table" class="table w-full">
         <thead>
         <tr>
             <th v-for="column in parameters.columns" v-html="title(column)"></th>
@@ -11,6 +38,7 @@
         </tr>
         </tfoot>
     </table>
+    </div>
 </template>
 
 <script>
@@ -23,9 +51,49 @@
         data() {
             return {
                 dataTable: {},
+                statusSeller:"",
+                statusCampaign:"",
+                statusType:"",
+                sellers:{},
+                buyers:{},
+                campaigns:{},
+                types:{},
             }
         },
         methods: {
+            getSellersAndBuyers() {
+                let vm = this;
+                axios.get('/nova-vendor/referrals/get-sellers-buyers').then(
+                    responce => {
+                        let data = responce.data;
+                        console.log(data);
+                        vm.sellers = data.sellers;
+                        vm.buyers = data.buyers;
+                    })
+            },
+            getCampaigns() {
+                let vm = this;
+                axios.get('/nova-vendor/referrals/get-campaigns').then(
+                    responce => {
+                        vm.campaigns = responce.data;
+                    })
+            },
+            getTypes() {
+                let vm = this;
+                axios.get('/nova-vendor/referrals/get-types').then(
+                    responce => {
+                        vm.types = responce.data;
+                    })
+            },
+            statusSellerChange() {
+                this.dataTable.ajax.reload(null, false);
+            },
+            statusCampaignChange() {
+                this.dataTable.ajax.reload(null, false);
+            },
+            statusTypeChange() {
+                this.dataTable.ajax.reload(null, false);
+            },
             title(column) {
                 return column.title || this.titleCase(column.title);
             },
@@ -40,7 +108,16 @@
                     serverSide: true,
                     processing: true
                 }, {
-                    ajax: this.ajax,
+                    ajax: {
+                        url: '/nova-vendor/referrals/data',
+                        data: function (d) {
+                            return $.extend({}, d, {
+                                "seller": vm.statusSeller,
+                                "campaign": vm.statusCampaign,
+                                "type": vm.statusType,
+                            });
+                        }
+                    },
                     searching: false,
                     columns: this.columns,
                     aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
@@ -114,11 +191,13 @@
         props: {
             footer: { default: false },
             columns: { type: Array },
-            ajax: { default: '/nova-vendor/referrals/data' },
             options: { }
         },
         mounted() {
-            this.dataTable = window.$(this.$el).DataTable(this.parameters);
+            this.getSellersAndBuyers();
+            this.getCampaigns();
+            this.getTypes();
+            this.dataTable = window.$(this.$refs['referrals-table']).DataTable(this.parameters);
         },
         destroyed() {
             this.dataTable.destroy();

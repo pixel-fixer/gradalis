@@ -36,7 +36,6 @@
 
 <script>
     import datatable from './DataTable.vue';
-    import Vue from 'vue';
 
     export default {
         components: {
@@ -44,18 +43,18 @@
         },
         data() {
             return {
-                clickCountYear:0,
-                clickCountMonth:0,
-                clickCountWeek:0,
+                clickCountYear: 0,
+                clickCountMonth: 0,
+                clickCountWeek: 0,
 
-                regCountYear:0,
-                regCountMonth:0,
-                regCountWeek:0,
+                regCountYear: 0,
+                regCountMonth: 0,
+                regCountWeek: 0,
                 columns: [
-                    {data: 'date', title: 'Дата'},
-                    {data: 'click', title: 'Всего кликов'},
-                    {data: 'unique', title: 'Уник. кликов'},
-                    {data: 'regs', title: 'Регистрации'},
+                    {data: 'created', title: 'Дата',className:'text-left'},
+                    {data: 'click', title: 'Всего кликов',className:'text-left'},
+                    {data: 'uniq', title: 'Уник. кликов',className:'text-left'},
+                    {data: 'regs', title: 'Регистрации',className:'text-left'},
                 ]
             }
         },
@@ -76,7 +75,8 @@
                         vm.regCountMonth = data.regCountMonth;
                         vm.regCountWeek = data.regCountWeek;
                     });
-            }
+            },
+
         }
     }
 </script>

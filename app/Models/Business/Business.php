@@ -2,6 +2,7 @@
 
 namespace App\Models\Business;
 
+use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -38,6 +39,10 @@ class Business extends Model
     public function city()
     {
         return $this->belongsTo('App\Models\City');
+    }
+
+    public function campaign(){
+        return $this->belongsTo('App\Models\Referral\Campaign','target_id')->where('type','=',Campaign::TYPE_BUSINESS);
     }
 
     public static function getStatuses()
