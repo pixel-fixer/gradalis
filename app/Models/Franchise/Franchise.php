@@ -2,6 +2,7 @@
 
 namespace App\Models\Franchise;
 
+use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 class Franchise extends Model
@@ -62,6 +63,10 @@ class Franchise extends Model
     public function packages()
     {
         return $this->hasMany('App\Models\Franchise\FranchisePackage');
+    }
+
+    public function campaign(){
+        return $this->belongsTo('App\Models\Referral\Campaign','target_id')->where('type','=',Campaign::TYPE_FRANCHISE);
     }
 
     public static function getStatuses()

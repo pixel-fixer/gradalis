@@ -37,25 +37,40 @@
 <script>
     import datatable from './DataTable.vue';
     import Vue from 'vue';
-
     export default {
         components: {
             datatable
         },
         data() {
             return {
-                clickCountYear:0,
-                clickCountMonth:0,
-                clickCountWeek:0,
+                clickCountYear: 0,
+                clickCountMonth: 0,
+                clickCountWeek: 0,
 
-                regCountYear:0,
-                regCountMonth:0,
-                regCountWeek:0,
+                regCountYear: 0,
+                regCountMonth: 0,
+                regCountWeek: 0,
                 columns: [
-                    {data: 'date', title: 'Дата'},
-                    {data: 'click', title: 'Всего кликов'},
-                    {data: 'unique', title: 'Уник. кликов'},
-                    {data: 'regs', title: 'Регистрации'},
+                    {data: 'name', title: 'Ф.И.О',className:'text-left'},
+                    {data: 'reg_date', title: 'Дата регистрации',className:'text-left'},
+                    {data: 'clicks', title: 'Всего кликов',className:'text-left'},
+                    {data: 'uniq', title: 'Уник. кликов',className:'text-left'},
+                    {data: 'regs', title: 'Регистрации',className:'text-left'},
+                    {data: 'revenue', title: 'Оборот',className:'text-left'},
+                    {data: 'percent', title: 'Отчисления',className:'text-left'},
+                    {
+                        data: null,
+                        orderable: false,
+                        searchable: false,
+                        title: 'Детали',
+                        className: 'text-left',
+                        createdCell(cell, cellData, rowData) {
+                            let DetailButton  = Vue.extend(require('./DetailButton'));
+                            let instance = new DetailButton();
+                            instance.$mount();
+                            $(cell).empty().append(instance.$el);
+                        }
+                    },
                 ]
             }
         },
@@ -76,7 +91,8 @@
                         vm.regCountMonth = data.regCountMonth;
                         vm.regCountWeek = data.regCountWeek;
                     });
-            }
+            },
+
         }
     }
 </script>

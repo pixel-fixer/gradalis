@@ -9,7 +9,7 @@
 
 <script>
     import datatable from './DataTable.vue';
-    import Vue from 'vue';
+
     export default {
         components: {
             datatable
@@ -17,21 +17,24 @@
         data() {
             return {
                 columns: [
-                    {data: 'id',title:'Id Объекта',searchable: false},
-                    {data: 'name.ru',name: 'name',title:'Наименование',searchable: true},
+                    {data: 'id', title: 'Id Объекта', className: 'text-left', searchable: false},
+                    {data: 'name.ru', name: 'name', title: 'Наименование', className: 'text-left', searchable: true},
                     {
                         data: 'type',
                         orderable: true,
                         searchable: false,
-                        title:'Тип'
+                        title: 'Тип',
+                        className: 'text-left'
+
                     },
-                    {data: 'status',title:'Статус',searchable: true},
-                    {data: 'price',title:'Стоимость'},
+                    {data: 'status', title: 'Статус', searchable: true, className: 'text-left'},
+                    {data: 'price', title: 'Стоимость', className: 'text-left'},
                     {
                         data: 'sale',
                         orderable: false,
                         searchable: false,
-                        title:'Продано',
+                        title: 'Продано',
+                        className: 'text-left',
                         createdCell(cell, cellData, rowData) {
                             let SaleButton = Vue.extend(require('./SaleButton'));
                             let instance = new SaleButton({
@@ -45,7 +48,8 @@
                         data: 'edit',
                         orderable: false,
                         searchable: false,
-                        title:'Редактировать',
+                        className: 'text-left',
+                        title: 'Редактировать',
                         createdCell(cell, cellData, rowData) {
                             let EditButton = Vue.extend(require('./EditButton'));
                             let instance = new EditButton({

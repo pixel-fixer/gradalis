@@ -9,6 +9,10 @@ class Campaign extends Model
 {
     use HasTranslations;
 
+    const TYPE_BUSINESS = 1;
+    const TYPE_FRANCHISE = 2;
+    const TYPE_SERVICE = 3;
+
     public $translatable = ['name'];
 
     protected $table = 'campaigns';
@@ -21,6 +25,15 @@ class Campaign extends Model
 
     public function conditions(){
         return $this->belongsToMany('App\Models\Referral\Condition');
+    }
+
+    public static function getTypes()
+    {
+        return [
+            self::TYPE_BUSINESS  => 'Бизнес',
+            self::TYPE_FRANCHISE  => 'Франшиза',
+            self::TYPE_SERVICE  => 'Услуга',
+        ];
     }
 
 }

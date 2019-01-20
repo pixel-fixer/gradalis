@@ -41,7 +41,7 @@ class FranchiseSeeder extends Seeder
         $franchiseCategory->setTranslations('translation', $translations);
         $franchiseCategory->save();
 
-        factory(Franchise::class, 5)->make()->each(function ($franchise) {
+        factory(Franchise::class, 3)->make()->each(function ($franchise) {
             foreach (Language::all() as $lang) {
                 $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
                 $name = 'Франшиза - '.$faker->company;

@@ -5,10 +5,10 @@ use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use App\Models\Referral\Campaign;
 use App\Models\Referral\CampaignResource;
+use App\Models\Referral\Invitation;
+use App\Models\Referral\InvitationCounter;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use App\Models\Referral\InvitationCounter;
-use App\Models\Referral\Invitation;
 
 class CampaignSeeder extends Seeder
 {
@@ -22,36 +22,40 @@ class CampaignSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         $businesses = Business::all();
         $franshises = Franchise::all();
-        $partners   = \App\Models\Referral\Partner::all();
-        $faker      = \Faker\Factory::create();
+        $partners = \App\Models\Referral\Partner::all();
+        $faker = \Faker\Factory::create();
         foreach ($businesses as $business) {
             $names = [
                 'ru' => 'Лндинг',
                 'en' => 'Landing',
                 'pl' => 'Lądowanie',
             ];
-            Campaign::create([
+            $campaign = new Campaign([
                 'name'      => json_encode($names),
                 'target_id' => $business->id,
                 'type'      => 1,
                 'status'    => rand(0, 1)
             ]);
+            $campaign->setTranslations('name',$names);
+            $campaign->save();
         }
-        foreach ($franshises as $franshise) {
-            $names            = [
+        foreach ($franshises as $franchise) {
+            $names = [
                 'ru' => 'Лндинг',
                 'en' => 'Landing',
                 'pl' => 'Lądowanie',
             ];
-            $campaign         = Campaign::create([
+            $campaign = new Campaign([
                 'name'      => json_encode($names),
-                'target_id' => $franshise->id,
+                'target_id' => $franchise->id,
                 'type'      => 2,
                 'status'    => rand(0, 1)
             ]);
+            $campaign->setTranslations('name',$names);
+            $campaign->save();
             $campaignResource = CampaignResource::create([
-                'name'        => $franshise->name,
-                'url'         => $franshise->id,
+                'name'        => $franchise->name,
+                'url'         => $franchise->id,
                 'type'        => 1,
                 'width'       => 250,
                 'height'      => 250,
@@ -70,10 +74,10 @@ class CampaignSeeder extends Seeder
 
 
                 foreach (Invitation::all() as $invitation) {
-                    factory(User::class, 5)->create()->each(function ($user) use ($invitation, $faker) {
-                        $date   = Carbon::now()->subDays(random_int(1, 370))->format('Y-m-d H:i:s');
+                    factory(User::class, 2)->create()->each(function ($user) use ($invitation, $faker) {
+                        $date = Carbon::now()->subDays(random_int(1, 370))->format('Y-m-d H:i:s');
                         $status = rand(0, 2);
-                        $data   = [
+                        $data = [
                             'invitation_id' => $invitation->id,
                             'created_at'    => $date,
                             'updated_at'    => $date,
@@ -92,6 +96,7 @@ class CampaignSeeder extends Seeder
                 }
             }
         }
+
         Schema::enableForeignKeyConstraints();
     }
 }

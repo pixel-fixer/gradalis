@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "b6b6e9d77ce558518874a8df0c85b4da",
@@ -1623,7 +1623,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
+                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
                 "shasum": null
             },
             "require": {
@@ -1658,7 +1658,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
+                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
                 "shasum": null
             },
             "require": {
