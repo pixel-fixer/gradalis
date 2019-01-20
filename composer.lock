@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6b6e9d77ce558518874a8df0c85b4da",
+    "content-hash": "e6b532f622a5a5c9942d78de7fb2d5cf",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -65,16 +65,16 @@
         },
         {
             "name": "coderello/laravel-nova-lang",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/coderello/laravel-nova-lang.git",
-                "reference": "88db12a73f8b8884f24695f566e0d890a884c8f1"
+                "reference": "733995c0bc66a85ec7c819a629b46332f70a37f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/88db12a73f8b8884f24695f566e0d890a884c8f1",
-                "reference": "88db12a73f8b8884f24695f566e0d890a884c8f1",
+                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/733995c0bc66a85ec7c819a629b46332f70a37f7",
+                "reference": "733995c0bc66a85ec7c819a629b46332f70a37f7",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                 "nova",
                 "support"
             ],
-            "time": "2018-11-22T18:53:13+00:00"
+            "time": "2019-01-20T13:25:12+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3877,6 +3877,47 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "treestoneit/belongs-to-field",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/treeStoneIT/belongs-to-field.git",
+                "reference": "badd77695636bdefbe64fff47013ff0b79c6a729"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/treeStoneIT/belongs-to-field/zipball/badd77695636bdefbe64fff47013ff0b79c6a729",
+                "reference": "badd77695636bdefbe64fff47013ff0b79c6a729",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Treestoneit\\BelongsToField\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Treestoneit\\BelongsToField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova Belongs To field that respects Eager Loading",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2018-11-23T19:47:23+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -42,7 +42,12 @@ class City extends Resource
     public static $search = [
         'id','name','translation'
     ];
-
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static $with = ['country'];
     /**
      * Get the displayble label of the resource.
      *
@@ -82,7 +87,7 @@ class City extends Resource
                 ->hideFromIndex()
                 ->rules('max:255'),
 
-            BelongsTo::make('Страна','country','App\Nova\Country'),
+            BelongsToField::make('Страна','country','App\Nova\Country'),
         ];
     }
 
