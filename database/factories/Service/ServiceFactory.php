@@ -9,6 +9,7 @@ $factory->define(\App\Models\Service\Service::class, function (Faker $faker) {
         'type' => 1,
         'status' => 1,
         'name' => ['en' => 'Service', 'pl' => 'Usługa','ru' => 'Услуга'],
-        'price' => 10000
+        'price_pln' => 2300,
+        'price_eur' => 10000
     ];
 });

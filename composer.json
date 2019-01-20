@@ -23,6 +23,10 @@
         {
             "type": "path",
             "url": "./nova-components/Referrals"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Chat"
         }
     ],
     "require": {
@@ -34,6 +38,7 @@
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
+        "marketplace/chat": "*",
         "marketplace/objects": "*",
         "marketplace/referrals": "*",
         "marketplace/translatable": "*",

@@ -6,6 +6,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Marketplace\Chat\Chat;
 use Marketplace\Objects\Objects;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 use Marketplace\Referrals\Referrals;
@@ -71,6 +72,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
+            new Chat,
             new NovaPermissionTool,
             new Objects,
             new Referrals

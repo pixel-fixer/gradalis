@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "be0b4b1332f0e85f3eff0ad6e26e1347",
+    "content-hash": "b6b6e9d77ce558518874a8df0c85b4da",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1547,6 +1547,40 @@
                 "storage"
             ],
             "time": "2018-11-23T23:41:29+00:00"
+        },
+        {
+            "name": "marketplace/chat",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Chat",
+                "reference": "90b25e85945678cec6ae9b8e537a7f46ab24e90e",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Marketplace\\Chat\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Marketplace\\Chat\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "marketplace/objects",
