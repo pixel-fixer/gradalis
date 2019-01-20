@@ -28064,7 +28064,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Scoped Styles */\n", ""]);
 
 // exports
 
@@ -28474,7 +28474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             regCountYear: 0,
             regCountMonth: 0,
             regCountWeek: 0,
-            columns: [{ data: 'name', title: 'Ф.И.О', className: 'text-left' }, { data: 'reg_date', title: 'Дата регистрации', className: 'text-left' }, { data: 'clicks', title: 'Всего кликов', className: 'text-left' }, { data: 'uniq', title: 'Уник. кликов', className: 'text-left' }, { data: 'regs', title: 'Регистрации', className: 'text-left' }, {
+            columns: [{ data: 'name', title: 'Ф.И.О', className: 'text-left' }, { data: 'reg_date', title: 'Дата регистрации', className: 'text-left' }, { data: 'clicks', title: 'Всего кликов', className: 'text-left' }, { data: 'uniq', title: 'Уник. кликов', className: 'text-left' }, { data: 'regs', title: 'Регистрации', className: 'text-left' }, { data: 'revenue', title: 'Оборот', className: 'text-left' }, { data: 'percent', title: 'Отчисления', className: 'text-left' }, {
                 data: null,
                 orderable: false,
                 searchable: false,
@@ -28659,7 +28659,7 @@ __webpack_require__(16);
                         });
                     }
                 },
-                searching: false,
+                searching: true,
                 columns: this.columns,
                 aLengthMenu: [[10, 25, 50, -1], ["10", "25", "50", "All"]],
                 language: {

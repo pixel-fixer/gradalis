@@ -13,7 +13,9 @@ class Invitation extends Model
     public function campaign(){
         return $this->belongsTo('App\Models\Referral\Campaign');
     }
-
+    public function counters(){
+        return $this->hasMany('App\Models\Referral\InvitationCounter');
+    }
     public function user(){
         return $this->belongsTo('App\Models\Auth\User');
     }

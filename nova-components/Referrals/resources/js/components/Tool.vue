@@ -56,6 +56,8 @@
                     {data: 'clicks', title: 'Всего кликов',className:'text-left'},
                     {data: 'uniq', title: 'Уник. кликов',className:'text-left'},
                     {data: 'regs', title: 'Регистрации',className:'text-left'},
+                    {data: 'revenue', title: 'Оборот',className:'text-left'},
+                    {data: 'percent', title: 'Отчисления',className:'text-left'},
                     {
                         data: null,
                         orderable: false,

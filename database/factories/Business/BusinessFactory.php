@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Business::class, function (Faker $faker) {
     return [
-        'price' => 10000,
+        'price' => rand(1000,1000000),
         'profitability'=>1,
         'user_id' => rand(1,3),
         'profit' => 100,
