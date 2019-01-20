@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
@@ -45,6 +45,13 @@ class Business extends Resource
     public static $search = [
         'name',
     ];
+
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static $with = ['category','city','user'];
 
     /**
      * Get the displayble label of the resource.
@@ -107,6 +114,10 @@ class Business extends Resource
                 ->displayUsingLabels()
                 ->rules('required'),
 
+            Select::make('Процент','percent')
+                ->hideWhenCreating()
+                ->rules('required'),
+
             Number::make('Комиссия','commission')
                 ->hideWhenCreating()
                 ->rules('required'),
@@ -128,9 +139,9 @@ class Business extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Категория', 'category', 'App\Nova\BusinessCategory')->searchable(),
-            BelongsTo::make('Город', 'city', 'App\Nova\City'),
-            BelongsTo::make('Пользователь','user', 'App\Nova\User')->searchable()
+            BelongsToField::make('Категория', 'category', 'App\Nova\BusinessCategory')->searchable(false),
+            BelongsToField::make('Город', 'city', 'App\Nova\City'),
+            BelongsToField::make('Пользователь','user', 'App\Nova\User')
         ];
     }
 

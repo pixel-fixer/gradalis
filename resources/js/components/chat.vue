@@ -23,7 +23,7 @@
 
     export default {
         name: "chat",
-        components: { ChatDialogs ,ChatDialog },
+        components: { ChatDialogs, ChatDialog },
         props: ['user'],
         data: () => ({
             dialog_id: null,

@@ -36,7 +36,7 @@
 
 <script>
     import datatable from './DataTable.vue';
-
+    import Vue from 'vue';
     export default {
         components: {
             datatable
@@ -51,10 +51,26 @@
                 regCountMonth: 0,
                 regCountWeek: 0,
                 columns: [
-                    {data: 'created', title: 'Дата',className:'text-left'},
-                    {data: 'click', title: 'Всего кликов',className:'text-left'},
+                    {data: 'name', title: 'Ф.И.О',className:'text-left'},
+                    {data: 'reg_date', title: 'Дата регистрации',className:'text-left'},
+                    {data: 'clicks', title: 'Всего кликов',className:'text-left'},
                     {data: 'uniq', title: 'Уник. кликов',className:'text-left'},
                     {data: 'regs', title: 'Регистрации',className:'text-left'},
+                    {data: 'revenue', title: 'Оборот',className:'text-left'},
+                    {data: 'percent', title: 'Отчисления',className:'text-left'},
+                    {
+                        data: null,
+                        orderable: false,
+                        searchable: false,
+                        title: 'Детали',
+                        className: 'text-left',
+                        createdCell(cell, cellData, rowData) {
+                            let DetailButton  = Vue.extend(require('./DetailButton'));
+                            let instance = new DetailButton();
+                            instance.$mount();
+                            $(cell).empty().append(instance.$el);
+                        }
+                    },
                 ]
             }
         },

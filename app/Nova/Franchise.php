@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -48,6 +48,13 @@ class Franchise extends Resource
     public static $search = [
         'name',
     ];
+
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static $with = ['category','city','user','packages'];
 
     public static function label()
     {
@@ -132,7 +139,7 @@ class Franchise extends Resource
                 ->hideFromIndex()
                 ->rules('required'),
 
-            BelongsTo::make('Category', 'category', 'App\Nova\FranchiseCategory'),
+            BelongsToField::make('Category', 'category', 'App\Nova\FranchiseCategory'),
 
             HasMany::make('Packages', 'packages', 'App\Nova\FranchisePackage')
                 ->withMeta([
@@ -219,9 +226,9 @@ class Franchise extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Категория', 'category', 'App\Nova\FranchiseCategory'),
-            BelongsTo::make('Город', 'city', 'App\Nova\City'),
-            BelongsTo::make('Пользователь','user', 'App\Nova\User')->searchable(),
+            BelongsToField::make('Категория', 'category', 'App\Nova\FranchiseCategory'),
+            BelongsToField::make('Город', 'city', 'App\Nova\City'),
+            BelongsToField::make('Пользователь','user', 'App\Nova\User')->searchable(),
             HasMany::make('Packages', 'packages', 'App\Nova\FranchisePackage')
                 ->withMeta([
                     'indexName' => __('Packages'),

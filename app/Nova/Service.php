@@ -2,11 +2,15 @@
 
 namespace App\Nova;
 
+use Inspheric\Fields\Indicator;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Marketplace\Translatable\Translatable;
 use Laravel\Nova\Fields\Text;
+use Illuminate\Support\Facades\Cache;
 
 class Service extends Resource
 {
@@ -17,7 +21,7 @@ class Service extends Resource
      */
     public static $model = 'App\Models\Service\Service';
 
-    public static $displayInNavigation = false;
+//    public static $displayInNavigation = false;
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -34,6 +38,21 @@ class Service extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Services');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Service');
+    }
+
+    public static function group()
+    {
+        return __('Services');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -45,11 +64,36 @@ class Service extends Resource
         return [
             ID::make()->sortable(),
 
-            Translatable::make('name')
+            Translatable::make(__('fields.title'), 'name')
                 ->sortable()
                 ->singleLine(),
 
-            ID::make('status')
+            Indicator::make(__('fields.status'), 'status')->labels([
+                0 => 'Не автивен',
+                1 => 'Активен'
+            ])->colors([
+                0 => 'red',
+                1 => 'green',
+            ])->onlyOnIndex()->sortable(),
+
+             Select::make(__('fields.status'), 'status')->options([
+                 0 => trans('fields.status_disabled'),
+                 1 => trans('fields.status_active')
+             ])->displayUsingLabels()->onlyOnForms(),
+
+            //Поле currency на винде не работает, поставил vyuldashev/nova-money-field
+            Text::make(__('fields.price_pln'), 'price_pln')->resolveUsing(function($price){
+                return number_format($price, 2, '.', ' ');
+            }),
+
+            Text::make(__('fields.price_eur'),'price_eur')->resolveUsing(function($price){
+                return number_format($price, 2, '.', ' ');
+            }),
+
+            Text::make(__('fields.price_btc'), function (){
+                $btc_eur = $this->getBtc();
+                return number_format( $this->price_eur/$btc_eur, 6, '.', ' ');
+            })
         ];
     }
 
@@ -97,18 +141,21 @@ class Service extends Resource
         return [];
     }
 
-    public static function label()
+    /**
+     * Возвращает курс btc к указанной валюте
+     * @param string $currency
+     * @return mixed
+     */
+    public function getBtc($currency = 'EUR')
     {
-        return __('Services');
+        $currencies = Cache::remember('btc', 60, function () use ($currency) {
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('GET', 'https://blockchain.info/ticker');
+            $currencies = json_decode($response->getBody()->getContents(), true);
+            return $currencies;
+        });
+
+        return $currencies[$currency]['last'];
     }
 
-    public static function singularLabel()
-    {
-        return __('Service');
-    }
-
-    public static function group()
-    {
-        return __('Services');
-    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -86,7 +86,7 @@ class BuyerList extends Resource
 
             Textarea::make(__('fields.note'), 'note')->onlyOnForms()
 
-            //BelongsTo::make(__('City'),'city', City::class)->onlyOnIndex()
+            //BelongsToField::make(__('City'),'city', City::class)->onlyOnIndex()
         ];
     }
 

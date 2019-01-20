@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\MorphToMany;
@@ -41,6 +41,13 @@ class User extends Resource
     public static $search = [
         'id', 'first_name','last_name', 'email','phone','balance','active','sum_from','sum_to','purchase_date_from','purchase_date_to'
     ];
+
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static $with = ['city'];
 
     /**
      * Get the displayble label of the resource.
@@ -102,7 +109,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
 
-            BelongsTo::make(__('City'),'city', City::class)->searchable(),
+            BelongsToField::make(__('City'),'city', City::class)->searchable(),
 
             MorphToMany::make('Роль', 'roles', Role::class),
             MorphToMany::make('Разрешение', 'permissions', Permission::class),
