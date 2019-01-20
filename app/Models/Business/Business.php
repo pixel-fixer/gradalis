@@ -23,7 +23,7 @@ class Business extends Model
 
     protected $table = 'businesses';
     public $timestamps = true;
-    protected $fillable = array('price','user_id', 'profitability', 'profit', 'payback', 'status','commission','name', 'description', 'seo_title','seo_description','seo_keywords', 'district_id', 'city_id', 'category_id');
+    protected $fillable = array('price','percent','call_count','metrics','user_id', 'profitability', 'profit', 'payback', 'status','commission','name', 'description', 'seo_title','seo_description','seo_keywords', 'district_id', 'city_id', 'category_id');
     public $translatable = ['name', 'description', 'seo_title','seo_description','seo_keywords'];
 
     public function category()

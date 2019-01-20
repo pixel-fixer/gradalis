@@ -107,6 +107,10 @@ class Business extends Resource
                 ->displayUsingLabels()
                 ->rules('required'),
 
+            Select::make('Процент','percent')
+                ->hideWhenCreating()
+                ->rules('required'),
+
             Number::make('Комиссия','commission')
                 ->hideWhenCreating()
                 ->rules('required'),

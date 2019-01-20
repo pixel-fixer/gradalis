@@ -22,7 +22,6 @@ class HomeController extends Controller
 
         foreach ($partners as $partner) {
             $sum = 0;
-            $percent = 0;
             $clicks = 0;
             $uniq = 0;
             $regs = 0;
@@ -35,10 +34,10 @@ class HomeController extends Controller
                 $regs += $counters->where('status', '>=', 1)->count();
                 foreach ($counters->where('status', 2) as $counter) {
                     if ($invitation->campaign->type == Campaign::TYPE_FRANCHISE) {
-                        $sum += Franchise::find($invitation->campaign->target_id)->price;
+                        $sum += json_decode(Franchise::find($invitation->campaign->target_id)->price,true)['ru'];
                     }
                     if ($invitation->campaign->type == Campaign::TYPE_BUSINESS) {
-                        $sum += Business::find($invitation->campaign->target_id)->price;
+                        $sum += json_decode(Business::find($invitation->campaign->target_id)->price,true)['ru'];
                     }
                     //TODO Services
                 }
@@ -51,10 +50,10 @@ class HomeController extends Controller
         }
         return DataTables::collection($partners)
             ->editColumn('revenue', function ($partner) {
-                return number_format($partner->revenue, 0, ',', ' ') . 'р';;
+                return number_format($partner->revenue, 0, ',', ' ') . ' р.';;
             })
             ->editColumn('percent', function ($partner) {
-                return number_format($partner->percent, 0, ',', ' ') . 'р';;
+                return number_format($partner->percent, 0, ',', ' ') . ' р.';;
             })
             ->make(true);
     }
@@ -76,7 +75,6 @@ class HomeController extends Controller
     public function getTypes()
     {
         $types = Campaign::getTypes();
-
         return response()->json($types);
     }
 

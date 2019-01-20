@@ -1554,7 +1554,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Chat",
-                "reference": "90b25e85945678cec6ae9b8e537a7f46ab24e90e",
+                "reference": "9df5e1811aa2b67ef0b1934387889d535f2f0a6c",
                 "shasum": null
             },
             "require": {
