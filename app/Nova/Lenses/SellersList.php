@@ -2,9 +2,11 @@
 
 namespace App\Nova\Lenses;
 
+use function foo\func;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Lenses\Lens;
 use Laravel\Nova\Http\Requests\LensRequest;
 use DB;
@@ -26,8 +28,13 @@ class SellersList extends Lens
                 DB::raw("concat(first_name, ' ', first_name) as name"),
                 'users.phone',
                 'users.email'
-            ])
-        ));
+                ])
+                ->with('business.category')
+                ->whereHas('roles', function ($query){
+                    $query->where('name', 'Продавец');
+                })
+                ->where('broker_id', $request->user()->id)
+            ));
     }
 
     /**
@@ -40,18 +47,34 @@ class SellersList extends Lens
     {
         return [
             ID::make('ID', 'id')->sortable(),
+
             Text::make('name')->sortable(),
+
             Text::make('phone'),
+
             Text::make('email')->sortable(),
-            Text::make('user_led_id', function (){
-                return 'Ответственный';
-            })->canSee(function ($request) { //Поле "ответственный/кто привел. Может видеть админ и главный брокер"
-                //TODO Добавить главного брокера к миграциям
-                return $request->user()->hasAnyRole(['Админ','Главный брокер']);
+
+            Text::make('business_category', function (){
+                $categories = $this->business->map(function($item){
+                    return $item->category->translation;
+                })->unique()->values();
+                return implode(', ', $categories->toArray());
             }),
+
+            Text::make('user_led_id', function (){
+                    return 'Ответственный';
+                })->canSee(function ($request) { //Поле "ответственный/кто привел. Может видеть админ и главный брокер"
+                    //TODO Добавить главного брокера к миграциям
+                    return $request->user()->hasAnyRole(['Админ','Главный брокер']);
+                }),
+
             Text::make('chat_link', function (){
                 return "<a href=''>ссылка на чат с продавцом</a>";
-            })->asHtml()
+            })->asHtml(),
+
+            //Text::make(__('fields.note'), 'note')->onlyOnIndex(),
+
+            Textarea::make(__('fields.note'), 'note')->onlyOnForms()
 
         ];
     }

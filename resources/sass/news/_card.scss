@@ -14,63 +14,6 @@
         }
     }
 
-    &__tag {
-        border: 1px solid rgba($pure-blue, 0.3);
-        color: $pure-blue;
-        font-size: .875rem;
-        border-radius: .1875rem;
-        padding: .375rem .75rem;
-        display: inline-block;
-        margin-right: 0.25rem;
-        margin-bottom: 0.25rem;
-
-        svg, span {
-            display: inline-block;
-            vertical-align: middle;
-        }
-        svg {
-            width: 1rem;
-            margin-right: 0.125rem;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        &:hover {
-            border-color: $pure-blue;
-            background-color: $pure-blue;
-            color: $white;
-            span {
-                color: $white;
-            }
-            svg {
-                path {
-                    fill: $white;
-                }
-            }
-        }
-
-        &.is-danger {
-            border: 1px solid rgba($red, 0.3);
-            color: $red;
-
-            &:hover {
-                border-color: $red;
-                background-color: $red;
-            }
-        }
-
-        &.is-success {
-            border: 1px solid rgba($green, 0.3);
-            color: $green;
-
-            &:hover {
-                border-color: $green;
-                background-color: $green;
-            }
-        }
-    }
 
     &__title {
         &.title {
@@ -83,6 +26,64 @@
     &__excerpt {
         font-size: .875rem;
         color: $mostly-dark-blue-2;
+    }
+}
+
+.news-tag-cat {
+    border: 1px solid rgba($pure-blue, 0.3);
+    color: $pure-blue;
+    font-size: .875rem;
+    border-radius: .1875rem;
+    padding: .375rem .75rem;
+    display: inline-block;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+
+    svg, span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    svg {
+        width: 1rem;
+        margin-right: 0.125rem;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        border-color: $pure-blue;
+        background-color: $pure-blue;
+        color: $white;
+        span {
+            color: $white;
+        }
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    &.is-danger {
+        border: 1px solid rgba($red, 0.3);
+        color: $red;
+
+        &:hover {
+            border-color: $red;
+            background-color: $red;
+        }
+    }
+
+    &.is-success {
+        border: 1px solid rgba($green, 0.3);
+        color: $green;
+
+        &:hover {
+            border-color: $green;
+            background-color: $green;
+        }
     }
 }
 

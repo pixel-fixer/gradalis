@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SellerList extends Resource
@@ -31,6 +32,14 @@ class SellerList extends Resource
     {
         return 'Список продавцов';
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereHas('roles', function ($query){
+            $query->where('name', 'Продавец');
+        })->where('broker_id', $request->user()->id);
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -42,13 +51,37 @@ class SellerList extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('full_name')->onlyOnIndex(),
+            Text::make(__('fields.full_name'), function(){
+                return $this->full_name;
+            })->onlyOnIndex(),
 
-            Text::make('email'),
+            Text::make(__('fields.email'), 'email')->sortable()->onlyOnIndex(),
 
-            Text::make('phone'),
+            Text::make(__('fields.phone'), 'phone')->onlyOnIndex(),
 
-            BelongsToField::make('city')
+            Text::make(__('fields.business_category'), function (){
+                $categories = $this->business->map(function($item){
+                    return $item->category->translation;
+                })->unique()->values();
+                return implode(', ', $categories->toArray());
+            })->onlyOnIndex(),
+
+            //Кто привел / ответственный
+            //TODO Добавить миграцию в юзера
+            Text::make(__('fields.user_ref_id'), function (){
+                return 'Ответственный';
+            })->canSee(function ($request) {
+                //TODO Добавить главного брокера к миграциям
+                return $request->user()->hasAnyRole(['Админ','Главный брокер']);
+            })->onlyOnIndex(),
+
+            Text::make(__('fields.chat_link'), 'chat_link', function (){
+                return "<a href=''>ссылка на чат с продавцом</a>";
+            })->asHtml(),
+
+            Text::make(__('fields.note'), 'note')->onlyOnIndex(),
+
+            Textarea::make(__('fields.note'), 'note')
         ];
     }
 
@@ -72,7 +105,8 @@ class SellerList extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\UserByBusinessCategory
+            new Filters\UserByBusinessCategory,
+           // new Filters\UserType
         ];
     }
 
@@ -85,7 +119,7 @@ class SellerList extends Resource
     public function lenses(Request $request)
     {
         return [
-            new Lenses\SellersList
+            //new Lenses\SellersList
         ];
     }
 

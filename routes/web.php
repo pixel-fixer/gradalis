@@ -50,3 +50,6 @@ Route::get('/services', function () {
 Route::get('/news', function () {
     return view('news');
 })->middleware('auth');
+Route::get('/news-single', function () {
+    return view('news-single');
+})->middleware('auth');

@@ -119,7 +119,7 @@
                                             alt="">
                                     </figure>
                                     <div class="card-news__tags">
-                                        <a href="#" class="card-news__tag">Новости</a>
+                                        <a href="#" class="news-tag-cat">Новости</a>
                                     </div>
                                     <h3 class="card-news__title title">Председатель Федеральной резервной системы
                                         поддержал
@@ -137,7 +137,7 @@
                                             alt="">
                                     </figure>
                                     <div class="card-news__tags">
-                                        <a href="#" class="card-news__tag is-danger">
+                                        <a href="#" class="news-tag-cat is-danger">
                                             <img src="{{ asset('/svg/icons/ic_videoreviews.svg') }}" class="svg"
                                                  alt="Videoreviews">
                                             <span>Видеообзоры</span>
@@ -159,7 +159,7 @@
                                             alt="">
                                     </figure>
                                     <div class="card-news__tags">
-                                        <a href="#" class="card-news__tag is-success">
+                                        <a href="#" class="news-tag-cat is-success">
                                             <img src="{{ asset('/svg/icons/ic_advice.svg') }}" class="svg" alt="Advice">
                                             <span>Полезные советы</span>
                                         </a>
@@ -180,7 +180,7 @@
                                             alt="">
                                     </figure>
                                     <div class="card-news__tags">
-                                        <a href="#" class="card-news__tag">Новости</a>
+                                        <a href="#" class="news-tag-cat">Новости</a>
                                     </div>
                                     <h3 class="card-news__title title">Председатель Федеральной резервной системы
                                         поддержал

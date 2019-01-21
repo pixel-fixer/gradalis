@@ -31,11 +31,13 @@
                                          label="name"
                                          :placeholder="form.country.placeholder"
                                          :options="form.country.options"
-                                         :searchable="false"
+                                         :searchable="true"
+                                         :show-no-results="true"
                                          :allow-empty="false"
                                          :selectLabel="form.country.selectLabel"
                                          :selectedLabel="form.country.selectedLabel">
                                 <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
+                                <span slot="noResult">Нет результатов.</span>
                             </multiselect>
                         </div>
                     </div>
@@ -63,18 +65,20 @@
                     <div class="field">
                         <label class="label">Категория бизнеса</label>
                         <div class="control">
-                            <multiselect v-model="form.category.selected"
-                                         :deselect-label="form.category.deselectLabel"
-                                         track-by="name"
-                                         label="name"
-                                         :placeholder="form.category.placeholder"
-                                         :options="form.category.options"
-                                         :searchable="false"
-                                         :allow-empty="false"
-                                         :selectLabel="form.category.selectLabel"
-                                         :selectedLabel="form.category.selectedLabel">
-                                <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
-                            </multiselect>
+                            <div class="input inputbox-val" @click="modalCategoryShow = !modalCategoryShow">Категории
+                            </div>
+                            <!--<multiselect v-model="form.category.selected"-->
+                            <!--:deselect-label="form.category.deselectLabel"-->
+                            <!--track-by="name"-->
+                            <!--label="name"-->
+                            <!--:placeholder="form.category.placeholder"-->
+                            <!--:options="form.category.options"-->
+                            <!--:searchable="false"-->
+                            <!--:allow-empty="false"-->
+                            <!--:selectLabel="form.category.selectLabel"-->
+                            <!--:selectedLabel="form.category.selectedLabel">-->
+                            <!--<template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>-->
+                            <!--</multiselect>-->
                         </div>
                     </div>
                 </div>
@@ -187,7 +191,8 @@
                                     </button>
                                 </div>
                                 <div class="column is-6">
-                                    <button class="button is-link has-text-weight-bold is-fullwidth" type="submit">Найти бизнес
+                                    <button class="button is-link has-text-weight-bold is-fullwidth" type="submit">Найти
+                                        бизнес
                                     </button>
                                 </div>
                             </div>
@@ -196,6 +201,205 @@
                 </div>
             </div>
         </form>
+        Modal
+        <div class="modal modal-select-category" :class="modalCategoryActive" id="modal-select-categories">
+            <div class="modal-background" @click="modalCategoryShow = !modalCategoryShow"></div>
+            <div class="modal-card modal-card_big">
+                <header class="modal-card-head modal-card-head_bb">
+                    <p class="modal-card-title">Выберите категорию</p>
+                    <button class="delete close-modal" @click="modalCategoryShow = !modalCategoryShow"
+                            aria-label="close"></button>
+                </header>
+                <section class="modal-card-body is-paddingless">
+                    <ul class="category-list">
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item disabled">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item is-active">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                        <li class="category-list__item">
+                            <figure class="category-list__item__icon">
+                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                            </figure>
+                            <span>Автомойки, сервисы, СТО</span>
+                        </li>
+                    </ul>
+                    <div class="subcategory-wrap">
+                        <div class="subcategory-header">
+                            <h3>Выберите подкатегорию</h3>
+                            <div class="toggle-list">
+                                <span class="toggle-list__item">Выбрать все</span>
+                                <span class="toggle-list__item">Отменить все</span>
+                            </div>
+                        </div>
+                        <ul class="subcategory-list">
+                            <li class="subcategory-list__item">
+                                <span>Автомойки, сервисы, СТО</span>
+                            </li>
+                            <li class="subcategory-list__item is-active">
+                                <span>Автомойки, сервисы, СТО</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-info save is-size-875 has-text-weight-bold">Сохранить категорию</button>
+                    <button class="button clear is-size-875"><img src="/svg/icons/ic_close.svg" alt="" class="svg"><span>Сбросить</span></button>
+                </footer>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -209,7 +413,7 @@
             return {
                 selected: null,
                 options: ['list', 'of', 'options'],
-
+                modalCategoryShow: false,
                 form: {
                     type: {
                         selected: null,
@@ -247,13 +451,23 @@
                         ]
                     },
                     category: {
-                        selected: null,
+                        selected: [],
                         placeholder: 'Категория',
                         selectedLabel: 'Выбрано',
                         selectLabel: '',
                         deselectLabel: '',
                         options: [
-                            {id: '1', name: 'Cat 1'},
+                            {
+                                id: '1',
+                                name: 'Cat 1',
+                                subcategory: [
+                                    {id: '1-1', name: 'Cat 1-1'},
+                                    {id: '1-2', name: 'Cat 1-2'},
+                                    {id: '1-3', name: 'Cat 1-3'},
+                                    {id: '1-4', name: 'Cat 1-4'},
+                                    {id: '1-5', name: 'Cat 1-5'},
+                                ]
+                            },
                             {id: '2', name: 'Cat 2'},
                             {id: '3', name: 'Cat 3'},
                             {id: '4', name: 'Cat 4'}
@@ -310,6 +524,20 @@
             submit() {
                 console.log('submit!');
             },
+            toggleModalCategory() {
+                this.showModalCategory = true;
+                console.log('asd');
+                return true;
+            }
+        },
+        computed: {
+            modalCategoryActive: function () {
+                if (this.modalCategoryShow) {
+                    return 'is-active';
+                } else {
+                    return '';
+                }
+            }
         }
     }
 </script>

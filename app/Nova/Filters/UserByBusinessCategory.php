@@ -11,6 +11,10 @@ use App\Models\Business\Business;
 class UserByBusinessCategory extends BooleanFilter
 {
 
+    public function name(){
+        return __('Business category');
+    }
+
     /**
      * Apply the filter to the given query.
      *
@@ -27,7 +31,13 @@ class UserByBusinessCategory extends BooleanFilter
             return $key;
         })->values()->toArray();
 
-//        return $query;
+        //TODO или поменять название фильтра, или сделать опциональным.
+        $query->whereHas('roles', function ($query){
+            $query->where('name', 'Продавец');
+        })
+        ->where('broker_id', $request->user()->id);
+
+
         if($object__ids) {
             return $query->whereHas('business.category', function ($query) use ($object__ids) {
                 $query->whereIn('id', $object__ids);
