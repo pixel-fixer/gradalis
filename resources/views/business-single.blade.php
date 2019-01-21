@@ -227,7 +227,7 @@
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_info.svg') }}" alt="Info"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Основная информация</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -275,7 +275,7 @@
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_target_audience.svg') }}"
                                                              alt="Target audience"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Целевая аудитория</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -301,7 +301,7 @@
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_object_finance.svg') }}"
                                                              alt="Finance"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Финансовые показатели</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -318,7 +318,7 @@
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_law_form.svg') }}" alt="Law"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Юридическое состояние</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -335,7 +335,7 @@
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_judge.svg') }}" alt="Judge"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Правовое состояние компании</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -353,7 +353,7 @@
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_process.svg') }}"
                                                              alt="Process"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Бизнес-процессы</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -370,7 +370,7 @@
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_globe.svg') }}" alt="Globe"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Нематериальные активы</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -387,7 +387,7 @@
                                                 <div class="object__info__group">
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_money.svg') }}" alt="Money"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Материальные активы</span>
                                                     </h3>
                                                     <div class="object__info__list">
@@ -405,7 +405,7 @@
                                                     <h3 class="object__info__title">
                                                         <img src="{{ asset('/svg/icons/ic_object_building.svg') }}"
                                                              alt="Building"
-                                                             class="icon svg">
+                                                             class="icon">
                                                         <span>Недвижимость</span>
                                                     </h3>
                                                     <div class="object__info__list">
