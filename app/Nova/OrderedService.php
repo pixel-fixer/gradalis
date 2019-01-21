@@ -6,7 +6,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 
 /**
  * @property object $service
@@ -39,6 +39,7 @@ class OrderedService extends Resource
         'id',
     ];
 
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -50,9 +51,9 @@ class OrderedService extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('service'),
+            BelongsToField::make('service'),
 
-            BelongsTo::make('user')->searchable(),
+            BelongsToField::make('user')->searchable(),
 
             Select::make('status')->options([
                 1 => 'paid',

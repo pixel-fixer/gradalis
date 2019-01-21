@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Marketplace\Translatable\Translatable;
@@ -41,6 +41,13 @@ class FranchisePackage extends Resource
     public static $search = [
         'name',
     ];
+
+    /**
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static $with = ['franchise'];
 
     /**
      * Get the displayble label of the resource.
@@ -83,7 +90,7 @@ class FranchisePackage extends Resource
                 ->indexLocale('ru')
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Франшиза', 'franchise', 'App\Nova\Franchise')->searchable(),
+            BelongsToField::make('Франшиза', 'franchise', 'App\Nova\Franchise')->searchable(),
         ];
     }
 

@@ -26,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //Дает админу все права без прямого назначения в бд
+        Gate::before(function ($user) {
+            if ($user->hasRole('Админ')) {
+                return true;
+            }
+        });
     }
 }

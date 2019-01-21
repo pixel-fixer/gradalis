@@ -9,7 +9,7 @@
 
 <script>
     import datatable from './DataTable.vue';
-
+    import Vue from 'vue';
     export default {
         components: {
             datatable
@@ -28,7 +28,13 @@
 
                     },
                     {data: 'status', title: 'Статус', searchable: true, className: 'text-left'},
-                    {data: 'price', title: 'Стоимость', className: 'text-left'},
+                    {data: 'price.ru',name:'price', title: 'Стоимость', className: 'text-left',
+                        createdCell(cell, cellData, rowData) {
+                            let price = Number(cellData).toLocaleString('ru-RU')+' р.';
+                            $(cell).empty().append(price);
+                        }
+                    },
+                    {data: 'percent', title: 'Процент', className: 'text-left'},
                     {
                         data: 'sale',
                         orderable: false,

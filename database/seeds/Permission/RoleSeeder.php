@@ -31,5 +31,8 @@ class RoleSeeder extends Seeder
         foreach ($this->allRoles as $role) {
             Role::create(['name' => $role]);
         }
+        
+        $user = \App\Models\Auth\User::find(1);
+        $user->assignRole('Админ');
     }
 }

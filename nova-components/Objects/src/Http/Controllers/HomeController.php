@@ -34,6 +34,7 @@ class HomeController extends Controller
             'name',
             'status',
             'price',
+            'percent',
         ])->addSelect(DB::raw("'Франшиза' as type"))
             ->addSelect(DB::raw("'franchises' as resource"));
         $businesses = DB::table('businesses')->select([
@@ -41,6 +42,7 @@ class HomeController extends Controller
             'name',
             'status',
             'price',
+            'percent',
         ])->addSelect(DB::raw("'Бизнес' as type"))
             ->addSelect(DB::raw("'businesses' as resource"))
             ->unionAll($franchises);
@@ -49,6 +51,12 @@ class HomeController extends Controller
         return DataTables::query($objects)
             ->editColumn('name', function ($object) {
                 return json_decode($object->name, true);
+            })
+            ->editColumn('price', function ($object) {
+                return json_decode($object->price, true);
+            })
+            ->editColumn('percent', function ($object) {
+                return $object->percent.'%';
             })
             ->addColumn('edit', function ($businesses) {
                 return 'edit';

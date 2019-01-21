@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\BelongsTo;
+use Treestoneit\BelongsToField\BelongsToField;
 use Laravel\Nova\Fields\HasMany;
 
 class Travel extends Resource
@@ -71,7 +71,7 @@ class Travel extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make(__('User'), 'user', 'App\Nova\User')->searchable(),
+            BelongsToField::make(__('User'), 'user', 'App\Nova\User')->searchable(),
 
             DateTime::make('created_at')
                 ->format('DD-MM-YYYY')

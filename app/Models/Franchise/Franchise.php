@@ -5,24 +5,25 @@ namespace App\Models\Franchise;
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+
 class Franchise extends Model
 {
     use HasTranslations;
 
     //В ожидании
-    const STATUS_AWAIT      = 0;
+    const STATUS_AWAIT = 0;
     //Прошел модерацию
-    const STATUS_MODERATED  = 1;
+    const STATUS_MODERATED = 1;
     //Одобрен
-    const STATUS_APPROUVED  = 2;
+    const STATUS_APPROUVED = 2;
     //Продан
-    const STATUS_SOLD_OUT  = 3;
+    const STATUS_SOLD_OUT = 3;
     //Отклонен
-    const STATUS_DECLINED    = 4;
+    const STATUS_DECLINED = 4;
 
     public $timestamps = true;
+    public $translatable = ['name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education'];
     protected $table = 'franchises';
-    public $translatable = ['name', 'description', 'seo_title','seo_description','seo_keywords','education'];
     protected $fillable = array(
         'name',
         'description',
@@ -43,7 +44,21 @@ class Franchise extends Model
         'district_id',
         'city_id',
         'category_id'
+    , 'percent',
+        'call_count',
+        'metrics'
     );
+
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_AWAIT     => 'В ожидании',
+            self::STATUS_MODERATED => 'Прошел модерацию',
+            self::STATUS_APPROUVED => 'Одобрен',
+            self::STATUS_SOLD_OUT  => 'Продан',
+            self::STATUS_DECLINED  => 'Отклонен',
+        ];
+    }
 
     public function category()
     {
@@ -65,19 +80,9 @@ class Franchise extends Model
         return $this->hasMany('App\Models\Franchise\FranchisePackage');
     }
 
-    public function campaign(){
-        return $this->belongsTo('App\Models\Referral\Campaign','target_id')->where('type','=',Campaign::TYPE_FRANCHISE);
-    }
-
-    public static function getStatuses()
+    public function campaign()
     {
-        return [
-            self::STATUS_AWAIT  => 'В ожидании',
-            self::STATUS_MODERATED  => 'Прошел модерацию',
-            self::STATUS_APPROUVED => 'Одобрен',
-            self::STATUS_SOLD_OUT => 'Продан',
-            self::STATUS_DECLINED => 'Отклонен',
-        ];
+        return $this->belongsTo('App\Models\Referral\Campaign', 'target_id')->where('type', '=', Campaign::TYPE_FRANCHISE);
     }
 
     /**

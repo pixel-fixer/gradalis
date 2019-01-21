@@ -514,7 +514,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -531,7 +531,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -548,7 +548,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -565,7 +565,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -582,7 +582,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -599,7 +599,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>
@@ -616,7 +616,7 @@
                                         alt="">
                                 </figure>
                                 <div class="card-news__tags">
-                                    <a href="#" class="card-news__tag">Новости</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
                                 <h3 class="card-news__title title">Председатель Федеральной резервной системы поддержал
                                     рубль</h3>

@@ -46,3 +46,10 @@ Route::get('/register/buyer ', function () {
 Route::get('/services', function () {
     return view('services');
 })->middleware('auth');
+
+Route::get('/news', function () {
+    return view('news');
+})->middleware('auth');
+Route::get('/news-single', function () {
+    return view('news-single');
+})->middleware('auth');

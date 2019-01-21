@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Marketplace\Chat\Chat;
 use Marketplace\Objects\Objects;
+use App\Nova\CustomRole;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 use Marketplace\Referrals\Referrals;
 
@@ -73,7 +74,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new Chat,
-            new NovaPermissionTool,
             new Objects,
             new Referrals
         ];

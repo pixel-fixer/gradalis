@@ -32,6 +32,7 @@
     "require": {
         "php": "^7.1.3",
         "coderello/laravel-nova-lang": "^1.0",
+        "dmitrybubyakin/nova-medialibrary-field": "^1.1",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "inspheric/nova-indicator-field": "^1.2",
@@ -42,6 +43,7 @@
         "marketplace/objects": "*",
         "marketplace/referrals": "*",
         "marketplace/translatable": "*",
+        "treestoneit/belongs-to-field": "^0.1.0",
         "vyuldashev/nova-permission": "^1.4",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
