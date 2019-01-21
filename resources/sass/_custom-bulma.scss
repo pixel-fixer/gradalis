@@ -91,6 +91,7 @@ p,
     ul {
         list-style: none;
         margin-left: 3rem;
+
         li {
             position: relative;
 
@@ -216,4 +217,11 @@ p,
             background-color: darken($red, 3);
         }
     }
+}
+
+
+.tag,
+.tag:not(body) {
+    padding: 0 .75rem;
+    min-height: 2rem;
 }
