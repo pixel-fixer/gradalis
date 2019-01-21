@@ -43,6 +43,7 @@
         "marketplace/objects": "*",
         "marketplace/referrals": "*",
         "marketplace/translatable": "*",
+        "spatie/laravel-medialibrary": "^7.5.5",
         "treestoneit/belongs-to-field": "^0.1.0",
         "vyuldashev/nova-permission": "^1.4",
         "yajra/laravel-datatables-oracle": "~8.0"
