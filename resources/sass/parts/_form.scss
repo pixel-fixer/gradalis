@@ -347,6 +347,35 @@ input.input {
         }
     }
 
+    &__tag {
+        color: $input-color;
+        background-color: rgba($cyan, 0.1);
+        border-radius: $radius;
+        padding: 0.5rem 2.625rem 0.5rem .625rem;
+        margin-bottom: 0;
+
+        &-icon {
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 1px solid rgba($label-color, 0.25);
+            width: 2rem;
+
+            &:after {
+                color: rgba($label-color, 0.25);
+                font-size: 1.25rem;
+                line-height: 1.875rem;
+            }
+
+            &:focus,
+            &:hover {
+                color: rgba($label-color, 0.5);
+                background-color: rgba($label-color, 0.25);
+            }
+        }
+    }
+
     &.multiselect--active:not(.multiselect--above) {
         .multiselect__current,
         .multiselect__input,
@@ -393,20 +422,25 @@ input.input {
 
     &__option {
         font-size: .875rem;
+
         &--highlight {
             background-color: rgba($input-border-color, 0.3);
             color: $input-color;
+
             &:after {
                 background-color: darken($input-border-color, 5);
                 color: $input-color;
             }
+
             &.multiselect__option--selected {
                 background-color: rgba($input-border-color, 0.3);
                 color: $input-color;
             }
         }
+
         &--selected {
             background-color: rgba($input-border-color, 0.3);
+            font-weight: normal;
         }
     }
 
@@ -421,6 +455,95 @@ input.input {
             &:before {
                 border-color: $cyan;
             }
+        }
+    }
+
+    &_multiple {
+        .multiselect__tags {
+            overflow: hidden;
+            padding-left: .5rem;
+            height: 3rem;
+
+            &:after {
+                position: absolute;
+                content: "";
+                height: 2.875rem;
+                width: 4rem;
+                top: 1px;
+                right: 1px;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001) 0%, $white 40%);
+                border-radius: $radius;
+            }
+
+            &-wrap {
+                white-space: nowrap;
+            }
+        }
+
+        &.multiselect--active {
+            .multiselect__input {
+                position: absolute;
+                left: 1px;
+                top: 1px;
+                height: calc(2.875rem - 1px);
+                padding-top: 0;
+                padding-left: .5rem;
+                max-width: calc(100% - 2px);
+                min-width: calc(100% - 2px);
+            }
+        }
+
+        .multiselect__element {
+            .multiselect__option {
+                padding-left: 2.75rem;
+                &:before {
+                    position: absolute;
+                    content: "";
+                    top: .5rem;
+                    left: .5rem;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    background-color: $white;
+                    border: 1px solid #CEDCF0;
+                    border-radius: $radius;
+                    box-shadow: $input-shadow;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    top: .5rem;
+                    left: .5rem;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    padding-left: 0;
+                    background-image: url(../../img/check.svg);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                &--selected {
+                    &:before {
+                        background-color: $cyan;
+                        border: 1px solid $cyan;
+                    }
+                    &:after {
+                        display: block;
+                    }
+                    &.multiselect__option--highlight {
+                        &:after {
+                            background-color: rgba($input-border-color, 0.3);
+                            content: "";
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .multiselect__select {
+            z-index: 2;
         }
     }
 }

@@ -137,10 +137,31 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="column is-3">
+                    <div class="field">
+                        <label class="label"><span>Multi Select</span></label>
+                        <div class="control">
+                            <multiselect v-model="form.multiselect.selected"
+                                         :deselect-label="form.multiselect.deselectLabel"
+                                         track-by="name"
+                                         label="name"
+                                         openDirection="bottom"
+                                         :multiple="true"
+                                         :class="'multiselect_multiple'"
+                                         :placeholder="form.multiselect.placeholder"
+                                         :options="form.multiselect.options"
+                                         :searchable="true"
+                                         :close-on-select="false"
+                                         :allow-empty="true"
+                                         :selectLabel="form.multiselect.selectLabel"
+                                         :selectedLabel="form.multiselect.selectedLabel">
+                                <span slot="noResult">Ничего не найдено</span>
+                            </multiselect>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
-
     </div>
 </template>
 
@@ -158,6 +179,21 @@
                 modalCategoryShow: false,
                 form: {
                     select: {
+                        selected: null,
+                        placeholder: 'Выберите',
+                        selectedLabel: '',
+                        selectLabel: '',
+                        deselectLabel: '',
+                        options: [
+                            {id: '1', name: 'Москва'},
+                            {id: '2', name: 'Белгород'},
+                            {id: '3', name: 'Воронеж'},
+                            {id: '4', name: 'Казань'},
+                            {id: '5', name: 'Варшава'},
+                            {id: '6', name: 'Краков'},
+                        ]
+                    },
+                    multiselect: {
                         selected: null,
                         placeholder: 'Выберите',
                         selectedLabel: '',
