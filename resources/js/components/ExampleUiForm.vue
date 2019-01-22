@@ -114,6 +114,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <hr>
+            <div class="columns is-multiline">
                 <div class="column is-3">
                     <div class="field">
                         <label class="label"><span>Select</span></label>
@@ -122,9 +125,10 @@
                                          :deselect-label="form.select.deselectLabel"
                                          track-by="name"
                                          label="name"
+                                         openDirection="bottom"
                                          :placeholder="form.select.placeholder"
                                          :options="form.select.options"
-                                         :searchable="false"
+                                         :searchable="true"
                                          :allow-empty="false"
                                          :selectLabel="form.select.selectLabel"
                                          :selectedLabel="form.select.selectedLabel">
@@ -133,7 +137,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </form>
@@ -157,13 +160,16 @@
                     select: {
                         selected: null,
                         placeholder: 'Выберите',
-                        selectedLabel: 'Выбрано',
-                        selectLabel: 'selectLabel',
+                        selectedLabel: '',
+                        selectLabel: '',
                         deselectLabel: '',
                         options: [
-                            {id: 'type_1', name: 'Тип 1'},
-                            {id: 'type_2', name: 'Тип 2'},
-                            {id: 'type_3', name: 'Тип 3'},
+                            {id: '1', name: 'Москва'},
+                            {id: '2', name: 'Белгород'},
+                            {id: '3', name: 'Воронеж'},
+                            {id: '4', name: 'Казань'},
+                            {id: '5', name: 'Варшава'},
+                            {id: '6', name: 'Краков'},
                         ]
                     },
 

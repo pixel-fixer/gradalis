@@ -111,23 +111,29 @@ input.input {
             display: flex;
             top: 0;
             position: absolute;
+
             .icon {
                 position: relative;
                 width: 1rem;
                 margin: 0 .5rem;
             }
+
             &.is-right {
                 right: 0;
             }
+
             &.is-left {
                 left: 0;
             }
         }
+
         .icon {
             height: 1rem;
+
             &.has-tooltip {
                 pointer-events: auto;
                 cursor: help;
+
                 &:hover {
                     svg {
                         path {
@@ -137,6 +143,7 @@ input.input {
                 }
             }
         }
+
         svg {
             width: 1rem;
             height: 1rem;
@@ -160,6 +167,7 @@ input.input {
             .icons {
                 width: 3rem;
             }
+
             .input,
             .select select {
                 padding-left: 3rem;
@@ -169,6 +177,7 @@ input.input {
                 width: 3em;
             }
         }
+
         &_2 {
             .input,
             .select select {
@@ -193,6 +202,7 @@ input.input {
                 width: 3em;
             }
         }
+
         &_2 {
             .input,
             .select select {
@@ -294,6 +304,14 @@ input.input {
 /* Multiselect */
 
 .multiselect {
+    &:not(.multiselect--active) {
+        &:hover {
+            .multiselect__tags {
+                border-color: $input-hover-border-color;
+            }
+        }
+    }
+
     &__select {
         height: 100%;
         display: flex;
@@ -363,15 +381,33 @@ input.input {
             margin-top: .5rem;
             border-radius: $radius;
             border: 1px solid $input-border-color;
+            box-shadow: $input-shadow;
         }
     }
 
     &__element {
-
+        &:not(:first-child) {
+            border-top: 1px solid rgba($input-border-color, 0.5);
+        }
     }
 
     &__option {
         font-size: .875rem;
+        &--highlight {
+            background-color: rgba($input-border-color, 0.3);
+            color: $input-color;
+            &:after {
+                background-color: darken($input-border-color, 5);
+                color: $input-color;
+            }
+            &.multiselect__option--selected {
+                background-color: rgba($input-border-color, 0.3);
+                color: $input-color;
+            }
+        }
+        &--selected {
+            background-color: rgba($input-border-color, 0.3);
+        }
     }
 
     &--active {
@@ -379,6 +415,12 @@ input.input {
 
         .multiselect__tags {
             border-color: $cyan;
+        }
+
+        .multiselect__select {
+            &:before {
+                border-color: $cyan;
+            }
         }
     }
 }

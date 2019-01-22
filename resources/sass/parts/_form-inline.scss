@@ -126,20 +126,15 @@ form {
     }
 }
 
-.multiselect {
-    &__option {
-        @media screen and (max-width: $desktop - 1px) {
-            font-size: 0.875rem;
-            line-height: 1em;
-        }
-        &--highlight {
-            background-color: $green;
-            &.multiselect__option--selected {
-                background-color: $red;
-            }
-        }
-    }
-    &__content-wrapper {
-        border: 0;
-    }
-}
+//.multiselect {
+//    &__option {
+//        @media screen and (max-width: $desktop - 1px) {
+//            font-size: 0.875rem;
+//            line-height: 1em;
+//        }
+//
+//    }
+//    &__content-wrapper {
+//        border: 0;
+//    }
+//}
