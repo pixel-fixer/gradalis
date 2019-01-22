@@ -223,5 +223,10 @@ p,
 .tag,
 .tag:not(body) {
     padding: 0 .75rem;
-    min-height: 2rem;
+}
+
+.tag {
+    &_big {
+        min-height: 2rem;
+    }
 }

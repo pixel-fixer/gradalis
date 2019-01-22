@@ -85,20 +85,23 @@ $input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
 $input-focus-border-color: $cyan;
-$input-hover-border-color: lighten($input-border-color, 3);
+$input-hover-border-color: #B4C4DB;
 $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
 $input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
+//$input-disabled-color: $input-placeholder-color;
+$input-disabled-background-color: rgba(#DAE4F2, 0.3);
+$input-disabled-border-color: rgba($label-color, 0.3);
 
 /* Breadcrumb */
 $breadcrumb-item-color: $cyan;
-$breadcrumb-item-active-color: #596C80;
+$breadcrumb-item-active-color: $label-color;
 $breadcrumb-item-hover-color: $breadcrumb-item-active-color;
 $breadcrumb-item-padding-vertical: 0;
 $breadcrumb-item-padding-horizontal: 0.75rem;
 
 /* Button */
-$button-color: #596C80;
+$button-color: $label-color;
 $button-background-color: $body-bg;
 $button-border-color: #C5D2E5;
 $button-hover-color: $button-color;

@@ -142,15 +142,17 @@
                 <div class="column is-3">
                     <div class="field">
                         <label class="label">Название или ID</label>
-                        <div class="control has-icons-left">
+                        <div class="control has-icons-left has-icons-left_1">
                             <input id="email" type="text"
                                    class="input is-size-875" name="query"
                                    :value="form.query.value"
                                    :placeholder="form.query.placeholder"
                             >
-                            <span class="icon is-small is-left">
-                                  <img src="/svg/icons/ic_search.svg" alt="">
-                            </span>
+                            <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_search.svg" class="svg" alt="">
+                                  </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -201,7 +203,7 @@
                 </div>
             </div>
         </form>
-        Modal
+        <!--Modal-->
         <div class="modal modal-select-category" :class="modalCategoryActive" id="modal-select-categories">
             <div class="modal-background" @click="modalCategoryShow = !modalCategoryShow"></div>
             <div class="modal-card modal-card_big">
