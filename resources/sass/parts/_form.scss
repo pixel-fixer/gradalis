@@ -20,7 +20,7 @@ label.label {
                 color: $red;
                 font-size: .875rem;
                 right: 0;
-                top: -.1875rem;
+                top: 0;
             }
         }
     }
@@ -48,11 +48,30 @@ input.input {
     &:-moz-placeholder { /* Firefox 18- */
         color: $input-placeholder-color;
     }
+
+    &[disabled] {
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $input-placeholder-color;
+        }
+
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: $input-placeholder-color;
+        }
+
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: $input-placeholder-color;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+            color: $input-placeholder-color;
+        }
+    }
 }
 
 .inputbox-val {
     height: 3rem;
     color: $input-placeholder-color;
+
     &.is-active {
         color: $input-color;
     }
@@ -85,19 +104,104 @@ input.input {
 .control {
     &.has-icons-left,
     &.has-icons-right {
-        .icon {
+        .icons {
             height: 100%;
+            padding: 1rem 0;
+            justify-content: center;
+            display: flex;
+            top: 0;
+            position: absolute;
+            .icon {
+                position: relative;
+                width: 1rem;
+                margin: 0 .5rem;
+            }
+            &.is-right {
+                right: 0;
+            }
+            &.is-left {
+                left: 0;
+            }
+        }
+        .icon {
+            height: 1rem;
+            &.has-tooltip {
+                pointer-events: auto;
+                cursor: help;
+                &:hover {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
+            }
+        }
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        input {
+            &:focus {
+                & ~ .icons {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
+            }
         }
     }
 
     &.has-icons-left {
-        .input,
-        .select select {
-            padding-left: 3rem;
-        }
+        &_1 {
+            .icons {
+                width: 3rem;
+            }
+            .input,
+            .select select {
+                padding-left: 3rem;
+            }
 
-        .icon.is-left {
-            width: 3em;
+            .icons.is-right {
+                width: 3em;
+            }
+        }
+        &_2 {
+            .input,
+            .select select {
+                padding-left: 4.75rem;
+            }
+
+            .icons.is-right {
+                width: 4.75em;
+            }
+        }
+    }
+
+    &.has-icons-right {
+
+        &_1 {
+            .input,
+            .select select {
+                padding-right: 3rem;
+            }
+
+            .icons.is-right {
+                width: 3em;
+            }
+        }
+        &_2 {
+            .input,
+            .select select {
+                padding-right: 4.75rem;
+            }
+
+            .icons.is-right {
+                width: 4.75em;
+            }
         }
     }
 }
@@ -225,6 +329,15 @@ input.input {
         }
     }
 
+    &.multiselect--active:not(.multiselect--above) {
+        .multiselect__current,
+        .multiselect__input,
+        .multiselect__tags {
+            border-bottom-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+        }
+    }
+
     &__spinner {
 
     }
@@ -247,7 +360,9 @@ input.input {
 
     &__content {
         &-wrapper {
-
+            margin-top: .5rem;
+            border-radius: $radius;
+            border: 1px solid $input-border-color;
         }
     }
 
@@ -261,6 +376,7 @@ input.input {
 
     &--active {
         z-index: 5;
+
         .multiselect__tags {
             border-color: $cyan;
         }

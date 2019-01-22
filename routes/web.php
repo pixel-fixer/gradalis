@@ -53,3 +53,7 @@ Route::get('/news', function () {
 Route::get('/news-single', function () {
     return view('news-single');
 })->middleware('auth');
+
+Route::get('/ui', function () {
+    return view('ui');
+})->middleware('auth');
