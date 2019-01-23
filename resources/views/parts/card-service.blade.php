@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="card-service__footer">
-        <a class="button is-warning is-outlined is-size-875">Заказать</a>
-        <a class="button is-size-875 card-service__button-more">Подробнее</a>
+        <a class="button is-warning is-outlined is-size-875 h-3">Заказать</a>
+        <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
     </div>
 </div>

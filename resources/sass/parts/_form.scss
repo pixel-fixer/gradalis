@@ -75,6 +75,14 @@ input.input {
     &.is-active {
         color: $input-color;
     }
+    &:active,
+    &:focus {
+        > .multiselect__select {
+            &:before {
+                border-color: $cyan;
+            }
+        }
+    }
 }
 
 .input,
@@ -96,6 +104,75 @@ input.input {
                 box-shadow: $input-shadow;
                 padding-left: 1rem;
                 padding-right: 1rem;
+            }
+        }
+    }
+
+    &.has-slider {
+        margin-bottom: .75rem;
+    }
+
+    .control {
+        &-text-left {
+            &_3em {
+                .input {
+                    padding-left: 3em;
+                }
+
+                .text {
+                    width: 3em;
+                }
+            }
+
+            .text {
+                height: 100%;
+                color: $input-focus-color;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                align-items: center;
+                display: inline-flex;
+                justify-content: flex-end;
+                z-index: 5;
+                padding: 0.5rem 0;
+                border-top: 1px solid transparent;
+                &.is-left {
+                    left: 0;
+                    border-left: 1px solid transparent;
+                }
+            }
+        }
+
+        &-month-range {
+            .input {
+                padding-left: 3em;
+                padding-right: calc(100% - 4.5em);
+            }
+
+            .text {
+                height: 100%;
+                color: $input-focus-color;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                align-items: center;
+                display: inline-flex;
+                z-index: 5;
+                padding: 0.5rem 0;
+                border-top: 1px solid transparent;
+
+                &.is-left {
+                    left: 0;
+                    justify-content: flex-end;
+                    width: 3em;
+                    border-left: 1px solid transparent;
+                }
+
+                &.is-right {
+                    right: 0;
+                    justify-content: flex-start;
+                    width: calc(100% - 4.5em);
+                }
             }
         }
     }
@@ -302,7 +379,6 @@ input.input {
 
 
 /* Multiselect */
-
 .multiselect {
     &:not(.multiselect--active) {
         &:hover {
@@ -445,7 +521,7 @@ input.input {
     }
 
     &--active {
-        z-index: 5;
+        z-index: 10;
 
         .multiselect__tags {
             border-color: $cyan;
@@ -496,6 +572,7 @@ input.input {
         .multiselect__element {
             .multiselect__option {
                 padding-left: 2.75rem;
+
                 &:before {
                     position: absolute;
                     content: "";
@@ -528,9 +605,11 @@ input.input {
                         background-color: $cyan;
                         border: 1px solid $cyan;
                     }
+
                     &:after {
                         display: block;
                     }
+
                     &.multiselect__option--highlight {
                         &:after {
                             background-color: rgba($input-border-color, 0.3);

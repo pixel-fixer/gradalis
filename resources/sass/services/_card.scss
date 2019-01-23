@@ -44,7 +44,7 @@
         &__footer {
             padding-top: .875rem;
             .button {
-                height: 3rem;
+                //height: 3rem;
                 box-sizing: border-box;
                 &:first-child {
                     padding-left: 2.25em;
@@ -52,16 +52,16 @@
                 }
             }
         }
-        &__button-more {
-            border-color: transparent;
-            background-color: transparent;
-            text-decoration: underline;
-            &:hover,
-            &:focus,
-            &:active {
-
-            }
-        }
+        //&__button-more {
+        //    border-color: transparent;
+        //    background-color: transparent;
+        //    text-decoration: underline;
+        //    &:hover,
+        //    &:focus,
+        //    &:active {
+        //
+        //    }
+        //}
 
     }
 }

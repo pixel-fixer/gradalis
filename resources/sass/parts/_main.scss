@@ -52,6 +52,10 @@ body {
     height: 3rem;
 }
 
+.is-flex-1 {
+    flex: 1;
+}
+
 .is-size-875 {
     font-size: .875rem;
 }
@@ -66,6 +70,10 @@ body {
 
 .has-align-self-center {
     align-self: center;
+}
+
+.has-text-decoration-underline {
+    text-decoration: underline;
 }
 
 .section-title {
