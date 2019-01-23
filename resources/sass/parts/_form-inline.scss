@@ -45,7 +45,42 @@ form {
 
         }
 
+        .inputbox-val {
+            border: 0;
+            box-shadow: none;
+            height: 4.5rem;
+            color: $label-color;
+        }
+        .dropdown {
+            &-content {
+                .field {
+                    .control-month-range {
+                        .input {
+                            padding-left: 2.5em;
+                            padding-right: calc(100% - 4.25em);
+                        }
+                        .text {
+                            &.is-left {
+                                width: 2.25rem;
+                            }
+                            &.is-right {
+                                width: calc(100% - 4.25em);
+                            }
+                        }
+                    }
+                }
+                .buttons {
+                    .button {
+                        &.is-flex-1 {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+
         .multiselect {
+            color: $label-color;
             &:after {
                 position: absolute;
                 content: "";
@@ -84,21 +119,15 @@ form {
                 border: 0;
                 padding: 1.5rem 2.625rem 1.5rem 1.5rem;
                 min-height: 4.375rem;
+                box-shadow: none;
             }
-
+            &__single,
+            &__input,
             &__placeholder {
                 font-size: 1rem;
                 color: $mostly-dark-blue-2;
                 margin-bottom: 0;
                 padding-top: 0;
-                @media screen and (max-width: $desktop - 1px) {
-                    font-size: 0.875rem;
-                }
-            }
-
-            &__single {
-                padding-left: 0;
-                margin-bottom: 0;
                 @media screen and (max-width: $desktop - 1px) {
                     font-size: 0.875rem;
                 }
