@@ -112,3 +112,28 @@ ol,
         }
     }
 }
+
+
+.content {
+    a {
+        color: $cyan;
+        //text-decoration: underline;
+        //text-decoration-color: rgba($cyan, .3);
+        &:hover {
+            color: darken($cyan,10);
+            //text-decoration-color: rgba($cyan, .5);
+        }
+        &.link-doc {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: .5rem;
+            }
+            span {
+
+            }
+        }
+    }
+}

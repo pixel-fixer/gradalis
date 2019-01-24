@@ -61,3 +61,6 @@ Route::get('/ui', function () {
 Route::get('/spa/favorites', function () {
     return view('spa.favorites');
 });
+Route::get('/spa/legal', function () {
+    return view('spa.legal');
+});

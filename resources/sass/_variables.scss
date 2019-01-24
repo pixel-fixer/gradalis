@@ -36,6 +36,8 @@ $dark-grayish-blue: #8b97a9;
 
 $input-placeholder-color: #B4C4DB;
 
+$transition: all 0.2s ease-in-out;
+
 // Update Bulma's global variables
 $family-sans-serif: "Roboto", sans-serif;
 $body-background-color: $body-bg;
@@ -74,12 +76,14 @@ $title-line-height: initial;
 $section-padding: 4rem 1.5rem;
 $radius: 0.1875rem;
 
-$box-radius: 0.1875rem;
+$box-radius: $radius;
 $box-shadow: 0 4px 6px 0 rgba(23, 44, 77, 0.10);
-$box-padding: 2rem;
+$box-padding: 1.5rem;
 
-$label-color: #596C80;
+$text: #596C80;
+$label-color: $text;
 $label-weight: 400;
+
 
 $input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
