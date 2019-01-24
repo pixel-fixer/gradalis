@@ -71,9 +71,13 @@ class Travel extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsToField::make(__('User'), 'user', 'App\Nova\User')->searchable(),
+            Text::make(__('User'), function(){
+                return $this->user->full_name;
+            })->onlyOnIndex(),
 
-            DateTime::make('created_at')
+            BelongsToField::make(__('User'), 'user', 'App\Nova\User')->onlyOnForms()->searchable(),
+
+            DateTime::make(__('fields.created_at'), 'created_at')
                 ->format('DD-MM-YYYY')
                 ->sortable(),
 
@@ -83,13 +87,13 @@ class Travel extends Resource
             //TODO может быть это поле должно быть text?
             Textarea::make('Комментарий пользователя о консультациях', 'user_consult_comment'),
 
-            HasMany::make('Flights'),
+            HasMany::make(__('Flights'), 'flights', Flight::class),
 
-            HasMany::make('Hotels'),
+            HasMany::make(__('Hotels'), 'Hotels', Hotel::class),
 
-            HasMany::make('Meetings'),
+            HasMany::make(__('Meetings'), 'Meetings', Meeting::class),
 
-            HasMany::make('Consultations'),
+            HasMany::make(__('Consultations'), 'Consultations', Consultation::class),
         ];
     }
 

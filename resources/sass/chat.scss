@@ -202,6 +202,13 @@
       padding: 14px;
       border-top: 1px solid rgba(207, 218, 230, 0.5);
       height: 55px;
+      .icon-send svg{
+        fill: #8B97A9;
+        transition: fill .3s ease-in-out;
+      }
+      .icon-send:hover svg{
+        fill: #0070D9;
+      }
       &__attach{
         flex-shrink: 0;
         line-height: 21px;
@@ -235,10 +242,21 @@
     flex: 1;
     text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-weight: bold;
-    color: #4857ce;
+    justify-content: center;
+    line-height: 24px;
+    font-size: 14px;
+    &__icon{
+        margin-bottom: 23px;
+    }
+    a{
+      color: #0070D9;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 17px;
+      border-bottom: 1px solid rgba(0, 112, 217, 0.3);
+    }
   }
 }
 
@@ -249,7 +267,7 @@
   //flex-direction: column;
   &__scroll{
     padding: 15px 27px 15px 15px;
-    display: flex !important;
+    //display: flex !important;
     flex-direction: column;
     justify-content: flex-end;
     min-height: 100%;

@@ -37,6 +37,16 @@ class Meeting extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Meeting');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Hotel');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -46,15 +56,17 @@ class Meeting extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('name')->sortable(),
+            Text::make(__('fields.title'),'name')->sortable(),
 
-            Text::make('url', function(){
+            Text::make(__('fields.title'), function(){
                 return '<a href="'.$this->url.'" target="_blank">'.$this->url.'</a>';
             })->asHtml(),
 
-            Text::make('description'),
+            Text::make(__('fields.link'), 'url')->onlyOnForms(),
 
-            DateTime::make('date_time')
+            Text::make(__('fields.description'), 'description'),
+
+            DateTime::make(__('fields.date_time'), 'date_time')
         ];
     }
 

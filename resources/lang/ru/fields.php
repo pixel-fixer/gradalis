@@ -27,5 +27,21 @@ return [
     'price_btc'         => 'Цена(BTC)',
     'business_category' => 'Категории бизнеса',
     'user_ref_id'       => 'Кто привел',
-    'chat_link'         => 'Чат'
+    'chat_link'         => 'Чат',
+
+    'out_time'       => 'Время вылета',
+    'in_time'        => 'Время прилета',
+    'out_city'       => 'Город вылета',
+    'in_city'        => 'Город вылета',
+    'airport'        => 'Аэропорт',
+    'meeting_person' => 'Имя встречающего',
+
+    'check_in_date' => 'Дата/время заезда',
+    'check_out_date' => 'Дата/время отъезда',
+    'address' => 'Адрес',
+    'url' => 'Сайт',
+    'link' => 'Ссылка',
+    'date_time' => 'Дата и время',
+    'description' => 'Описание',
+    'theme' => 'Тема'
 ];

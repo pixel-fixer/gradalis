@@ -23,6 +23,9 @@
         </div>
         <div class="chat-messages" v-if="messagesMapped.length > 0" v-bar>
             <div class="chat-messages__scroll" ref="message_list">
+
+                <!--<div class="chat-messages__wrap">-->
+
               <div class="chat-messages__stack"
                      v-for="stack in messagesMapped"
                      :class="{yours: user.id == stack.user.id}">
@@ -32,18 +35,21 @@
                     <div class="chat-messages__list">
                         <div class="chat-messages__message"
                              v-for="message in stack.messages"
-                             :class="{'status-moderating': message.status == 0}">
+                             :class="{'status-moderating': message.status == 0 && user.canModerateMessages}">
                             <div class="chat-messages__message__wrap">
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
                                 <span class="chat-messages__message__time">{{getTime(message.created_at)}}</span><br>
                                 <div class="chat-messages__message__text">{{message.text}}</div>
                             </div>
-                            <div class="chat-messages__message__mode-btns" v-if="message.status == 0">
+                            <chat-message-status
+                                    :message="message"
+                                    v-if="user.id === stack.user.id"></chat-message-status>
+                            <div class="chat-messages__message__mode-btns" v-if="user.canModerateMessages && message.status == 0">
                                 <a href="" class="chat-messages__message__accept" @click.prevent="acceptMessage(message.id)">
                                     <img src="/svg/icons/chat/chat_message_ok.svg" alt="">
                                     Одобрить
                                 </a>
-                                <a href="" class="chat-messages__message__decline" @click.prevent="deleteMessage(message.id)">
+                                <a href="" class="chat-messages__message__decline" @click.prevent="ui.showDeleteReasonModal = true;delete_message.id = message.id">
                                     <img src="/svg/icons/chat/chat_message_del.svg" alt="">
                                     Удалить
                                 </a>
@@ -51,6 +57,9 @@
                         </div>
                     </div>
                 </div>
+
+                <!--</div>-->
+
             </div>
         </div>
         <div v-else style="text-align: center;flex: 1 1 0%;  color: #4857CE;  font-size: 17px;  align-items: center;  display: flex; justify-content: center;">Сообщений нет</div>
@@ -61,23 +70,51 @@
                 </a>
                 <input v-model="message" type="text" placeholder="Начните вводить сообщение">
                 <button type="submit">
-                    <img src="/svg/icons/chat/chat_send.svg" alt="">
+                    <simple-svg class="icon-send"
+                            :filepath="'/svg/icons/chat/chat_send.svg'"
+                            height="24" width="24">
+                    </simple-svg>
                 </button>
             </form>
         </div>
+        <modal v-if="ui.showDeleteReasonModal" @close="ui.showDeleteReasonModal = false">
+            <div slot="header"><h3>Причина удаления сообщения</h3></div>
+            <div slot="body">
+                <form action="" @submit.prevent="deleteMessage">
+                    <div class="field">
+                        <label for="delete_reason" class="label label_req">Укажите причину</label>
+                        <textarea v-model="delete_message.reason" id="delete_reason" class="textarea" name="delete_reason" placeholder="Текст причины отказа" required></textarea>
+                    </div>
+                    <div class="field">
+                        <button type="submit" class="button is-link is-fullwidth has-text-weight-bold">Подтвердить</button>
+                    </div>
+                </form>
+            </div>
+        </modal>
     </div>
 </template>
 
 <script>
+    import {SimpleSVG} from 'vue-simple-svg'
+    import Velocity from 'velocity-animate'
+    import Modal from './modal';
+    import ChatMessageStatus from './chat-message-status'
+
     export default {
         name: "chat-dialog",
+        components: { 'simple-svg': SimpleSVG, Modal, ChatMessageStatus },
         props: ['dialog', 'user'],
         data: () => ({
             ui: {
-                showDialogSearch: false
+                showDialogSearch: false,
+                showDeleteReasonModal: false
             },
             search: '',
-            message: ''
+            message: '',
+            delete_message: {
+                id: null,
+                reason: ''
+            }
         }),
         mounted(){
             this.scrollToEnd();
@@ -86,8 +123,8 @@
             messagesMapped: function () {
                 if(this.dialog.messages.length == 0) return [];
 
-                var stack = [];
-                var stackEl = {
+                let stack = [];
+                let stackEl = {
                     user: this.dialog.messages[0].from,
                     messages: []
                 }
@@ -104,39 +141,49 @@
                         stackEl.messages.push(message);
                     }
                 }
-                //if one user
-                if(stackEl.messages.length > 0 && stack.length == 0)
-                    stack.push(stackEl);
+                stack.push(stackEl);
 
                 return stack
             }
         },
         watch: {
-            'dialog.messages': function () {
-                this.$nextTick(() => {
-                    this.scrollToEnd()
-                })
-            }
+            // 'dialog.messages': function () {
+            //         this.scrollToEnd()
+            // }
         },
         methods: {
-            scrollToEnd(){
-                let message_list = this.$refs.message_list;
-                message_list.scrollTop = message_list.scrollHeight;
+            scrollToEnd(animate = false){
+                this.$nextTick(() => {
+                    let message_list = this.$refs.message_list;
+                    if(typeof message_list != 'undefined'){
+                        // if(animate) {
+                        //     console.dir(Velocity);
+                        //     Velocity(message_list, 'scroll', { duration: 400 })
+                        // }else{
+                            message_list.scrollTop = message_list.scrollHeight;
+                        // }
+
+                    }
+                })
             },
             sendMessage(){
-                if(this.message == '')
+                if(this.message === '')
                     return
                 axios.post('/chat/message', {
-                    message: this.message,
-                    dialog_id: this.dialog.id
-                }).then(res => {
-                        this.message = ''
-                       //TODO Добавить сообщение через JS или обновить диалог из базы?
-                        this.$emit('fresh');
-                        //this.messages.push(res.data)
-                }).catch(err => {
-                    //TODO эвент для добавления сообщения, которое не отправлено?
-                })
+                        message: this.message,
+                        dialog_id: this.dialog.id
+                    })
+                    .then(res => {
+                            this.message = ''
+                           //TODO Добавить сообщение через JS или обновить диалог из базы?
+                            this.$emit('fresh')
+                            setTimeout(()=>{
+                                this.scrollToEnd(true)
+                            }, 500) //TODO похоже на костыль
+                            //this.messages.push(res.data)
+                    }).catch(err => {
+                        //TODO Добавлять сообщения, которое не отправлено, или показывать тост с ошибкой?
+                    })
             },
             acceptMessage(id){
                 axios.patch(`/chat/message/${id}/accept`)
@@ -147,9 +194,13 @@
                         console.log(err.data)
                     })
             },
-            deleteMessage(id){
-                axios.delete(`/chat/message/${id}`)
+            deleteMessage(){
+                axios.delete(`/chat/message/${this.delete_message.id}`, {
+                        params: { delete_reason: this.delete_message.reason }
+                    })
                     .then(res => {
+                        this.ui.showDeleteReasonModal = false
+                        this.delete_message.reason = ''
                         this.$emit('fresh');
                     })
                     .catch(err => {

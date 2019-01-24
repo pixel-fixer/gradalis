@@ -34,6 +34,15 @@ class Consultation extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Consultations');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Consultation');
+    }
     /**
      * Get the fields displayed by the resource.
      *
@@ -43,9 +52,9 @@ class Consultation extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('theme'),
+            Text::make(__('fields.theme'), 'theme'),
 
-            DateTime::make('date'),
+            DateTime::make(__('fields.date_time'), 'date')
         ];
     }
 

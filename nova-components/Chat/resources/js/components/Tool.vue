@@ -8,7 +8,7 @@
 
 <script>
     // import Chat from './../../../../../resources/js/components/chat'
-    // export default {
-    //     component: { Chat }
-    // }
+    export default {
+        // component: { Chat }
+    }
 </script>

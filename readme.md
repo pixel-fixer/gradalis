@@ -1,3 +1,10 @@
+## laravel-echo-server setup  [https://github.com/tlaverdure/laravel-echo-server](https://github.com/tlaverdure/laravel-echo-server)
+
+1. Composer update
+2. npm install -g laravel-echo-server && laravel-echo-server init  
+3. В .env файле BROADCAST_DRIVER=redis
+4. laravel-echo-server start
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

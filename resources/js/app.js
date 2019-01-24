@@ -3,12 +3,10 @@ require('./bootstrap');
 // window.Vue = require('vue');
 
 import Vue from 'vue';
-
-window.Vue = Vue;
-
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 
+window.Vue = Vue;
 Vue.use(VTooltip)
 Vue.use(Vuebar)
 
@@ -31,12 +29,6 @@ Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 const app = new Vue({
     el: '#app',

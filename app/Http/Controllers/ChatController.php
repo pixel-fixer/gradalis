@@ -18,7 +18,11 @@ class ChatController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('chat');
+
+        //TODO Или выдать permission нужным ролям?
+        $user->canModerateMessages = $user->canModerateMessages();
+
+        return view('chat', compact('user'));
     }
 
     public function getDialogs($search = null)
@@ -33,7 +37,13 @@ class ChatController extends Controller
             $dialogs->where('theme', 'LIKE', '%'.$search.'%');
         }
 
-        return $dialogs->get();
+        $dialog = $dialogs->get()->map(function ($item){
+            //TODO get notifications from db
+            $item->notifications = 0;
+            return $item;
+        });
+
+        return $dialog;
     }
 
     public function newMessage()
@@ -43,42 +53,44 @@ class ChatController extends Controller
         $message = Message::create([
             'dialog_id' => request()->input('dialog_id'),
             'from' => Auth::id(),
-            'text' => request()->input('message')
+            'text' => request()->input('message'),
+            'status' => Auth::user()->hasAnyRole(['Брокер-продавец', 'Брокер-покупатель']) ? 0 : 1
         ]);
-
-        //TODO если пишет администратор - то сразу сравить статус "принято"
 
         $message = $message->load('from');
 
-        //broadcast(new \App\Events\NewMessage($message));
+        broadcast(new \App\Events\NewMessage($message))->toOthers();
 
         return $message;
     }
 
-    public function acceptMessage(Message $message)
+    public function acceptMessage(Message $message, Request $request)
     {
-        //TODO Проверка прав
-        //$isCanAccept = true;
-        //if($isCanAccept){
+        if($request->user()->canModerateMessages()){
             $message->status = 1;
             $message->save();
-
+            //TODO Броадкаст ивент на смену статуса / новое сообщение
             return $message;
-        //}else{
-
-        //}
+        }else{
+            return response('401 Unauthorized',401);
+        }
     }
 
-    public function deleteMessage(Message $message)
+    public function deleteMessage(Message $message, Request $request)
     {
-        //TODO Проверка прав
-        //$isCanDelete = true;
-        //if($isCanDelete){
-            $message->delete();
-            return 1;
-        //}else{
+        $request->validate([
+            'delete_reason' => 'required'
+        ]);
 
-        //}
+        if(Auth::user()->canModerateMessages()){
+            $message->delete_reason = $request->get('delete_reason');
+            $message->save();
+            $message->delete();
+            //TODO Броадкаст ивент на удаление
+            return response('OK');
+        }else{
+            return response('401 Unauthorized',401);
+        }
     }
 
     /*
@@ -127,7 +139,19 @@ class ChatController extends Controller
 //            $query->where('id', $id1)->orWhere('id', $id2);
 //        });
 //
-        return $dialog->load('messages.from');
+
+        //TODO забирать сообщения текущего юзера, которые удалены?
+
+        $dialog = $dialog->load(['messages' => function($query){
+            $query->with('from');
+
+            //Если пользователь может модерировать сообщения, или это его сообшения
+            if(!Auth::user()->canModerateMessages()) {
+                $query->where('status', '!=', 0)->orWhere('from', Auth::user()->id);
+            }
+        }]);
+
+        return $dialog;
     }
 
     public function setChatRoles()

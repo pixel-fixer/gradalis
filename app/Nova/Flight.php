@@ -35,6 +35,16 @@ class Flight extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Flights');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Flight');
+    }
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -44,17 +54,17 @@ class Flight extends Resource
     public function fields(Request $request)
     {
         return [
-            DateTime::make('out_time')->sortable(),
+            DateTime::make(__('fields.out_time'), 'out_time')->sortable(),
 
-            DateTime::make('in_time')->sortable(),
+            DateTime::make(__('fields.in_time'), 'in_time')->sortable(),
 
-            Text::make('out_city'),
+            Text::make(__('fields.out_city'), 'out_city'),
 
-            Text::make('in_city'),
+            Text::make(__('fields.in_city'), 'in_city'),
 
-            Text::make('airport'),
+            Text::make(__('fields.airport'), 'airport'),
 
-            Text::make('meeting_person'),
+            Text::make(__('fields.meeting_person'), 'meeting_person'),
         ];
     }
 

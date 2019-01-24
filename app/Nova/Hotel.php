@@ -34,6 +34,15 @@ class Hotel extends Resource
         'id',
     ];
 
+    public static function label()
+    {
+        return __('Hotels');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Hotel');
+    }
     /**
      * Get the fields displayed by the resource.
      * @param  \Illuminate\Http\Request  $request
@@ -44,15 +53,15 @@ class Hotel extends Resource
         return [
             ID::make()->sortable(),
 
-            DateTime::make('check_in_date')->sortable(),
+            DateTime::make(__('fields.check_in_date'), 'check_in_date')->sortable(),
 
-            DateTime::make('check_out_date')->sortable(),
+            DateTime::make(__('fields.check_out_date'), 'check_out_date')->sortable(),
 
-            Text::make('address'),
+            Text::make(__('fields.address'), 'address'),
 
-            Text::make('phone'),
+            Text::make(__('fields.phone'), 'phone'),
 
-            Text::make('url', function(){
+            Text::make(__('fields.url'), 'url', function(){
                 return '<a href="'.$this->url.'" target="_blank">'.$this->url.'</a>';
             })->asHtml(),
         ];
