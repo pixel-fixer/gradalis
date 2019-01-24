@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['name'];
+    public $translatable = ['name', 'price_for', 'small_text'];
 
     protected $guarded = ['id'];
 

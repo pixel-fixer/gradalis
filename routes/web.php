@@ -43,9 +43,7 @@ Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/services', function () {
-    return view('services');
-})->middleware('auth');
+Route::get('/services', 'ServiceController@index')->middleware('auth');
 
 Route::get('/news', function () {
     return view('news');

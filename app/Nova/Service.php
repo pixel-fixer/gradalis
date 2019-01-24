@@ -2,11 +2,15 @@
 
 namespace App\Nova;
 
+use Benjaminhirsch\NovaSlugField\Slug;
 use Inspheric\Fields\Indicator;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\File;
+use Laravel\Nova\Fields\Image;
+use Benjaminhirsch\NovaSlugField\TextWithSlug;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Marketplace\Translatable\Translatable;
 use Laravel\Nova\Fields\Text;
@@ -64,10 +68,6 @@ class Service extends Resource
         return [
             ID::make()->sortable(),
 
-            Translatable::make(__('fields.title'), 'name')
-                ->sortable()
-                ->singleLine(),
-
             Indicator::make(__('fields.status'), 'status')->labels([
                 0 => 'Не автивен',
                 1 => 'Активен'
@@ -76,24 +76,56 @@ class Service extends Resource
                 1 => 'green',
             ])->onlyOnIndex()->sortable(),
 
-             Select::make(__('fields.status'), 'status')->options([
-                 0 => trans('fields.status_disabled'),
-                 1 => trans('fields.status_active')
-             ])->displayUsingLabels()->onlyOnForms(),
+            Select::make(__('fields.status'), 'status')->options([
+                0 => __('fields.status_disabled'),
+                1 => __('fields.status_active')
+            ])
+                ->displayUsingLabels()
+                ->onlyOnForms(),
 
-            //Поле currency на винде не работает, поставил vyuldashev/nova-money-field
+            TextWithSlug::make(__('fields.title'), 'name')
+                ->sortable()
+                ->slug('Постоянная ссылка')
+                ->rules('required'),
+
+            Slug::make('Постоянная ссылка', 'slug')
+                ->rules('required'), //TODO перевести
+
+            Translatable::make(__('fields.description'), 'small_text'),
+
+            Image::make('Иконка','icon') //TODO перевести
+                //FIX for svg
+                ->storeAs(function (Request $request) {
+                    return sha1($request->icon->getClientOriginalName()) . '.' . $request->icon->getClientOriginalExtension();
+                }),
+
+            //На винде Currency не работает в индексе, сделал так
             Text::make(__('fields.price_pln'), 'price_pln')->resolveUsing(function($price){
                 return number_format($price, 2, '.', ' ');
-            }),
+            })->exceptOnForms(),
+
+            Currency::make(__('fields.price_pln'),'price_pln')->onlyOnForms(),
 
             Text::make(__('fields.price_eur'),'price_eur')->resolveUsing(function($price){
                 return number_format($price, 2, '.', ' ');
-            }),
+            })->exceptOnForms(),
+
+            Currency::make(__('fields.price_eur'),'price_eur')->onlyOnForms(),
 
             Text::make(__('fields.price_btc'), function (){
                 $btc_eur = $this->getBtc();
                 return number_format( $this->price_eur/$btc_eur, 6, '.', ' ');
-            })
+            }),
+
+            Translatable::make('Цена за', 'price_for')->hideFromIndex(), //TODO перевести
+
+            Select::make('Тип', 'type')->options([
+                1 => 'Для покупателя',
+                2 => 'Для продавца'
+            ])->displayUsingLabels()
+                ->sortable()
+                ->rules('required')
+
         ];
     }
 

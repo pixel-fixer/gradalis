@@ -31,6 +31,7 @@
     ],
     "require": {
         "php": "^7.1.3",
+        "benjaminhirsch/nova-slug-field": "^1.1",
         "coderello/laravel-nova-lang": "^1.0",
         "dmitrybubyakin/nova-medialibrary-field": "^1.1",
         "doctrine/dbal": "^2.9",
