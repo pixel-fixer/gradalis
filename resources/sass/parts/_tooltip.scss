@@ -24,9 +24,19 @@
         z-index: 1;
     }
 
+    &.is-warning {
+        .tooltip-inner {
+            background: $red;
+            color: $white;
+        }
+        .tooltip-arrow {
+            border-color: $red;
+        }
+    }
+
     &[x-placement^="top"] {
         margin-bottom: 5px;
-
+        top: -0.1875rem !important;
         .tooltip-arrow {
             border-width: 5px 5px 0 5px;
             border-left-color: transparent !important;
@@ -36,6 +46,12 @@
             left: calc(50% - 5px);
             margin-top: 0;
             margin-bottom: 0;
+        }
+    }
+    &[x-placement="top-end"] {
+        .tooltip-arrow {
+            left: auto !important;
+            right: 0;
         }
     }
 

@@ -59,11 +59,11 @@
                 <div class="field is-expanded">
                     <label class="label label_req"><img src="/svg/icons/ic_coins.svg" alt=""><span>Сумма покупки</span></label>
                     <div class="field has-addons has-slider">
-                        <p class="control control-purchase-amount">
+                        <p class="control control-text-left control-text-left_3em">
                             <input type="number" class="input is-size-875" v-model="form.purchaseAmount[0]">
                             <span class="text is-left is-size-875">от €</span>
                         </p>
-                        <p class="control control-purchase-amount">
+                        <p class="control control-text-left control-text-left_3em">
                             <input type="number" class="input is-size-875" v-model="form.purchaseAmount[1]">
                             <span class="text is-left is-size-875">до €</span>
                         </p>
@@ -80,12 +80,12 @@
                 <div class="field is-expanded">
                     <label class="label label_req"><img src="/svg/icons/ic_time.svg" alt=""><span>Ориентировочное время до покупки</span></label>
                     <div class="field has-addons has-slider">
-                        <p class="control control-time-purchase">
+                        <p class="control control-month-range">
                             <input type="number" class="input is-size-875" v-model="form.timePurchase[0]">
                             <span class="text is-left is-size-875">от&nbsp;</span>
                             <span class="text is-right is-size-875">мес.</span>
                         </p>
-                        <p class="control control-time-purchase">
+                        <p class="control control-month-range">
                             <input type="number" class="input is-size-875" v-model="form.timePurchase[1]">
                             <span class="text is-left is-size-875">до&nbsp;</span>
                             <span class="text is-right is-size-875">мес.</span>

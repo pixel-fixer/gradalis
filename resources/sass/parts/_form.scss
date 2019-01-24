@@ -20,7 +20,7 @@ label.label {
                 color: $red;
                 font-size: .875rem;
                 right: 0;
-                top: -.1875rem;
+                top: 0;
             }
         }
     }
@@ -48,6 +48,41 @@ input.input {
     &:-moz-placeholder { /* Firefox 18- */
         color: $input-placeholder-color;
     }
+
+    &[disabled] {
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $input-placeholder-color;
+        }
+
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: $input-placeholder-color;
+        }
+
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: $input-placeholder-color;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+            color: $input-placeholder-color;
+        }
+    }
+}
+
+.inputbox-val {
+    height: 3rem;
+    color: $input-placeholder-color;
+
+    &.is-active {
+        color: $input-color;
+    }
+    &:active,
+    &:focus {
+        > .multiselect__select {
+            &:before {
+                border-color: $cyan;
+            }
+        }
+    }
 }
 
 .input,
@@ -72,24 +107,188 @@ input.input {
             }
         }
     }
+
+    &.has-slider {
+        margin-bottom: .75rem;
+    }
+
+    .control {
+        &-text-left {
+            &_3em {
+                .input {
+                    padding-left: 3em;
+                }
+
+                .text {
+                    width: 3em;
+                }
+            }
+
+            .text {
+                height: 100%;
+                color: $input-focus-color;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                align-items: center;
+                display: inline-flex;
+                justify-content: flex-end;
+                z-index: 5;
+                padding: 0.5rem 0;
+                border-top: 1px solid transparent;
+                &.is-left {
+                    left: 0;
+                    border-left: 1px solid transparent;
+                }
+            }
+        }
+
+        &-month-range {
+            .input {
+                padding-left: 3em;
+                padding-right: calc(100% - 4.5em);
+            }
+
+            .text {
+                height: 100%;
+                color: $input-focus-color;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                align-items: center;
+                display: inline-flex;
+                z-index: 5;
+                padding: 0.5rem 0;
+                border-top: 1px solid transparent;
+
+                &.is-left {
+                    left: 0;
+                    justify-content: flex-end;
+                    width: 3em;
+                    border-left: 1px solid transparent;
+                }
+
+                &.is-right {
+                    right: 0;
+                    justify-content: flex-start;
+                    width: calc(100% - 4.5em);
+                }
+            }
+        }
+    }
 }
 
 .control {
     &.has-icons-left,
     &.has-icons-right {
-        .icon {
+        .icons {
             height: 100%;
+            padding: 1rem 0;
+            justify-content: center;
+            display: flex;
+            top: 0;
+            position: absolute;
+
+            .icon {
+                position: relative;
+                width: 1rem;
+                margin: 0 .5rem;
+            }
+
+            &.is-right {
+                right: 0;
+            }
+
+            &.is-left {
+                left: 0;
+            }
+        }
+
+        .icon {
+            height: 1rem;
+
+            &.has-tooltip {
+                pointer-events: auto;
+                cursor: help;
+
+                &:hover {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
+            }
+        }
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        input {
+            &:focus {
+                & ~ .icons {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
+            }
         }
     }
 
     &.has-icons-left {
-        .input,
-        .select select {
-            padding-left: 3rem;
+        &_1 {
+            .icons {
+                width: 3rem;
+            }
+
+            .input,
+            .select select {
+                padding-left: 3rem;
+            }
+
+            .icons.is-right {
+                width: 3em;
+            }
         }
 
-        .icon.is-left {
-            width: 3em;
+        &_2 {
+            .input,
+            .select select {
+                padding-left: 4.75rem;
+            }
+
+            .icons.is-right {
+                width: 4.75em;
+            }
+        }
+    }
+
+    &.has-icons-right {
+
+        &_1 {
+            .input,
+            .select select {
+                padding-right: 3rem;
+            }
+
+            .icons.is-right {
+                width: 3em;
+            }
+        }
+
+        &_2 {
+            .input,
+            .select select {
+                padding-right: 4.75rem;
+            }
+
+            .icons.is-right {
+                width: 4.75em;
+            }
         }
     }
 }
@@ -180,8 +379,15 @@ input.input {
 
 
 /* Multiselect */
-
 .multiselect {
+    &:not(.multiselect--active) {
+        &:hover {
+            .multiselect__tags {
+                border-color: $input-hover-border-color;
+            }
+        }
+    }
+
     &__select {
         height: 100%;
         display: flex;
@@ -217,6 +423,44 @@ input.input {
         }
     }
 
+    &__tag {
+        color: $input-color;
+        background-color: rgba($cyan, 0.1);
+        border-radius: $radius;
+        padding: 0.5rem 2.625rem 0.5rem .625rem;
+        margin-bottom: 0;
+
+        &-icon {
+            border-top-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 1px solid rgba($label-color, 0.25);
+            width: 2rem;
+
+            &:after {
+                color: rgba($label-color, 0.25);
+                font-size: 1.25rem;
+                line-height: 1.875rem;
+            }
+
+            &:focus,
+            &:hover {
+                color: rgba($label-color, 0.5);
+                background-color: rgba($label-color, 0.25);
+            }
+        }
+    }
+
+    &.multiselect--active:not(.multiselect--above) {
+        .multiselect__current,
+        .multiselect__input,
+        .multiselect__tags {
+            border-bottom-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+        }
+    }
+
     &__spinner {
 
     }
@@ -227,7 +471,8 @@ input.input {
         padding-top: .25rem;
     }
 
-    &__single {
+    &__single,
+    &__input {
         color: $input-color;
         font-size: .875rem;
         margin-bottom: 0;
@@ -238,22 +483,146 @@ input.input {
 
     &__content {
         &-wrapper {
-
+            margin-top: .5rem;
+            border-radius: $radius;
+            border: 1px solid $input-border-color;
+            box-shadow: $input-shadow;
         }
     }
 
     &__element {
-
+        &:not(:first-child) {
+            border-top: 1px solid rgba($input-border-color, 0.5);
+        }
     }
 
     &__option {
         font-size: .875rem;
+
+        &--highlight {
+            background-color: rgba($input-border-color, 0.3);
+            color: $input-color;
+
+            &:after {
+                background-color: darken($input-border-color, 5);
+                color: $input-color;
+            }
+
+            &.multiselect__option--selected {
+                background-color: rgba($input-border-color, 0.3);
+                color: $input-color;
+            }
+        }
+
+        &--selected {
+            background-color: rgba($input-border-color, 0.3);
+            font-weight: normal;
+        }
     }
 
     &--active {
-        z-index: 5;
+        z-index: 10;
+
         .multiselect__tags {
             border-color: $cyan;
+        }
+
+        .multiselect__select {
+            &:before {
+                border-color: $cyan;
+            }
+        }
+    }
+
+    &_multiple {
+        .multiselect__tags {
+            overflow: hidden;
+            padding-left: .5rem;
+            height: 3rem;
+
+            &:after {
+                position: absolute;
+                content: "";
+                height: 2.875rem;
+                width: 4rem;
+                top: 1px;
+                right: 1px;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001) 0%, $white 40%);
+                border-radius: $radius;
+            }
+
+            &-wrap {
+                white-space: nowrap;
+            }
+        }
+
+        &.multiselect--active {
+            .multiselect__input {
+                position: absolute;
+                left: 1px;
+                top: 1px;
+                height: calc(2.875rem - 1px);
+                padding-top: 0;
+                padding-left: .5rem;
+                max-width: calc(100% - 2px);
+                min-width: calc(100% - 2px);
+            }
+        }
+
+        .multiselect__element {
+            .multiselect__option {
+                padding-left: 2.75rem;
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    top: .5rem;
+                    left: .5rem;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    background-color: $white;
+                    border: 1px solid #CEDCF0;
+                    border-radius: $radius;
+                    box-shadow: $input-shadow;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    top: .5rem;
+                    left: .5rem;
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    padding-left: 0;
+                    background-image: url(../../img/check.svg);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                &--selected {
+                    &:before {
+                        background-color: $cyan;
+                        border: 1px solid $cyan;
+                    }
+
+                    &:after {
+                        display: block;
+                    }
+
+                    &.multiselect__option--highlight {
+                        &:after {
+                            background-color: rgba($input-border-color, 0.3);
+                            content: "";
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .multiselect__select {
+            z-index: 2;
         }
     }
 }

@@ -39,7 +39,7 @@ Route::get('/business/single', function () {
 Route::get('/register/seller ', function () {
     return view('auth.register.seller');
 });
-Route::get('/register/buyer ', function () {
+Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
@@ -53,3 +53,14 @@ Route::get('/news', function () {
 Route::get('/news-single', function () {
     return view('news-single');
 })->middleware('auth');
+
+Route::get('/ui', function () {
+    return view('ui');
+})->middleware('auth');
+
+Route::get('/spa/favorites', function () {
+    return view('spa.favorites');
+});
+Route::get('/spa/legal', function () {
+    return view('spa.legal');
+});

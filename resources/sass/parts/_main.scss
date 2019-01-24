@@ -52,6 +52,10 @@ body {
     height: 3rem;
 }
 
+.is-flex-1 {
+    flex: 1;
+}
+
 .is-size-875 {
     font-size: .875rem;
 }
@@ -66,6 +70,10 @@ body {
 
 .has-align-self-center {
     align-self: center;
+}
+
+.has-text-decoration-underline {
+    text-decoration: underline;
 }
 
 .section-title {
@@ -100,6 +108,31 @@ ol,
                 font-size: 1rem;
                 line-height: 3rem;
                 text-align: center;
+            }
+        }
+    }
+}
+
+
+.content {
+    a {
+        color: $cyan;
+        //text-decoration: underline;
+        //text-decoration-color: rgba($cyan, .3);
+        &:hover {
+            color: darken($cyan,10);
+            //text-decoration-color: rgba($cyan, .5);
+        }
+        &.link-doc {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: .5rem;
+            }
+            span {
+
             }
         }
     }

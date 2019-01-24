@@ -1,0 +1,31 @@
+@import '../variables';
+
+.dropdown {
+    &.is-flex {
+        &.is-full {
+            .dropdown-trigger {
+                width: 100%;
+            }
+        }
+    }
+    &-content {
+        border: 1px solid $input-border-color;
+    }
+
+    &-trigger {
+        > .input {
+            padding-right: 2.5rem;
+        }
+    }
+
+    &.is-active {
+        > .dropdown-trigger {
+            > .input {
+                padding-right: 2.5rem;
+                > .multiselect__select {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}

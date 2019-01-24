@@ -73,9 +73,9 @@
                                 торговли между развивающимися странами и пересмотра торговых соглашений.</p>
                         </div>
                         <div class="tags">
-                            <span class="tag">fashion</span>
-                            <span class="tag">тенденции</span>
-                            <span class="tag">аналитика</span>
+                            <span class="tag tag_big">fashion</span>
+                            <span class="tag tag_big">тенденции</span>
+                            <span class="tag tag_big">аналитика</span>
                         </div>
                         <hr class="my-1">
                         <div class="share-list">

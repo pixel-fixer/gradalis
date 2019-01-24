@@ -5,10 +5,12 @@ require('./bootstrap');
 import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
+import Vuelidate from 'vuelidate'
 
 window.Vue = Vue;
 Vue.use(VTooltip)
 Vue.use(Vuebar)
+Vue.use(Vuelidate)
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +28,7 @@ Vue.component('chat', require('./components/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue').default);
+Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').default);
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
@@ -33,22 +36,23 @@ Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').d
 const app = new Vue({
     el: '#app',
     data: {
-      object: {
-          // Переменные, используемые на странице объекта
-          showDetailedInformation: false
-      }
+        object: {
+            // Переменные, используемые на странице объекта
+            showDetailedInformation: false
+        }
     },
     methods: {
-        showModal (id) {
+        showModal(id) {
             document.getElementById(id).classList.add('is-active');
         },
-        hideModal (id) {
+        hideModal(id) {
             document.getElementById(id).classList.remove('is-active');
         }
     }
 });
 
 import inlineSVG from 'inline-svg';
+
 inlineSVG.init({
     svgSelector: 'img.svg', // the class attached to all images that should be inlined
     initClass: 'js-inlinesvg', // class added to <html>
@@ -144,16 +148,42 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
 });
 
 
+/**
+ *  Functions
+ */
+function getAll(selector) {
+    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+}
+
 
 /**
- *  Включает работу Dropdown по клику
+ *  Dropdowns
  */
-var dropdownList = document.querySelectorAll('.dropdown');
+var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
-for (var i = 0; i < dropdownList.length; i++) {
-    dropdownList[i].addEventListener('click', function (event) {
-        event.stopPropagation();
-        this.classList.toggle('is-active');
+if ($dropdowns.length > 0) {
+    $dropdowns.forEach(function ($el) {
+        $el.addEventListener('click', function (event) {
+            let target = event.target;
+            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active'))) {
+                return;
+            } else {
+                event.stopPropagation();
+                $el.classList.toggle('is-active');
+            }
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        let target = event.target;
+        if (!target.closest('.dropdown.is-active')) {
+            closeDropdowns();
+        }
     });
 }
 
+function closeDropdowns() {
+    $dropdowns.forEach(function ($el) {
+        $el.classList.remove('is-active');
+    });
+}

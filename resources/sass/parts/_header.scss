@@ -189,6 +189,9 @@
                         .dropdown-menu {
                             padding-left: 0.5rem;
                         }
+                        .dropdown-content {
+                            border: none;
+                        }
                     }
                     &.is-active {
                         > .dropdown-trigger {
@@ -206,6 +209,22 @@
                     }
                     &.navbar-main-menu {
                         padding-left: 0.5rem;
+                        .dropdown-menu {
+                            display: none;
+                            visibility: visible;
+                        }
+                        .dropdown.is-active,
+                        &.is-active {
+                            .dropdown-menu {
+                                display: none;
+                                visibility: visible;
+                            }
+
+                            > .dropdown-menu {
+                                display: block !important;
+                                visibility: visible;
+                            }
+                        }
                         .dropdown-trigger {
 
                         }

@@ -36,6 +36,8 @@ $dark-grayish-blue: #8b97a9;
 
 $input-placeholder-color: #B4C4DB;
 
+$transition: all 0.2s ease-in-out;
+
 // Update Bulma's global variables
 $family-sans-serif: "Roboto", sans-serif;
 $body-background-color: $body-bg;
@@ -74,31 +76,36 @@ $title-line-height: initial;
 $section-padding: 4rem 1.5rem;
 $radius: 0.1875rem;
 
-$box-radius: 0.1875rem;
+$box-radius: $radius;
 $box-shadow: 0 4px 6px 0 rgba(23, 44, 77, 0.10);
-$box-padding: 2rem;
+$box-padding: 1.5rem;
 
-$label-color: #596C80;
+$text: #596C80;
+$label-color: $text;
 $label-weight: 400;
+
 
 $input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
 $input-focus-border-color: $cyan;
-$input-hover-border-color: lighten($input-border-color, 3);
+$input-hover-border-color: #B4C4DB;
 $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
 $input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
+//$input-disabled-color: $input-placeholder-color;
+$input-disabled-background-color: rgba(#DAE4F2, 0.3);
+$input-disabled-border-color: rgba($label-color, 0.3);
 
 /* Breadcrumb */
 $breadcrumb-item-color: $cyan;
-$breadcrumb-item-active-color: #596C80;
+$breadcrumb-item-active-color: $label-color;
 $breadcrumb-item-hover-color: $breadcrumb-item-active-color;
 $breadcrumb-item-padding-vertical: 0;
 $breadcrumb-item-padding-horizontal: 0.75rem;
 
 /* Button */
-$button-color: #596C80;
+$button-color: $label-color;
 $button-background-color: $body-bg;
 $button-border-color: #C5D2E5;
 $button-hover-color: $button-color;
@@ -139,3 +146,8 @@ $content-blockquote-padding: 1.5rem 2.25rem;
 /* Tag */
 $tag-background-color: rgba($label-color, 0.1);
 $tag-color: $label-color;
+
+/* Dropdown */
+$dropdown-content-shadow: $input-shadow;
+$dropdown-content-offset: 0.5rem;
+$dropdown-divider-background-color: rgba($input-border-color, 0.5);
