@@ -1,0 +1,27 @@
+@import '../variables';
+
+.buttons-services-list {
+    .button {
+        position: relative;
+        transition: $transition;
+        &:before {
+            position: absolute;
+            content: "";
+            width: 1em;
+            height: 1em;
+            left: .75em;
+            top: 50%;
+            margin-top: -.5em;
+            background-image: url(../../img/check_mark_white.svg);
+            transform: scale(0);
+            transition: $transition;
+        }
+        &.is-active {
+            padding-left: calc(.75em + 1rem + .5em);
+            &:before {
+                transform: scale(1);
+            }
+
+        }
+    }
+}

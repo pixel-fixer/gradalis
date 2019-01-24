@@ -241,31 +241,37 @@ p,
         &.is-primary,
         &.is-primary.is-outlined {
             background-color: darken($primary, 3);
+            color: $white;
         }
 
         &.is-link,
         &.is-link.is-outlined {
             background-color: darken($blue, 3);
+            color: $white;
         }
 
         &.is-info,
         &.is-info.is-outlined {
             background-color: darken($cyan, 3);
+            color: $white;
         }
 
         &.is-success,
         &.is-success.is-outlined {
             background-color: darken($green, 3);
+            color: $white;
         }
 
         &.is-warning,
         &.is-warning.is-outlined {
             background-color: darken($yellow, 3);
+            color: $white;
         }
 
         &.is-danger,
         &.is-danger.is-outlined {
             background-color: darken($red, 3);
+            color: $white;
         }
 
         &.is-light-cyan,
@@ -275,22 +281,6 @@ p,
         }
     }
 }
-
-//.buttons {
-//    &.has-addons {
-//        .button {
-//            &.is-flex-1 {
-//                &:not(:last-child) {
-//                    margin-right: 1px;
-//                }
-//                &:not(:first-child) {
-//                    margin-left: 1px;
-//                }
-//            }
-//
-//        }
-//    }
-//}
 
 .field {
     &.has-addons {
@@ -311,7 +301,106 @@ p,
     }
 }
 
+/* Notification */
+.notification {
+    position: relative;
+    &-list {
+        margin-bottom: 1.5rem;
+    }
 
+    &__icon {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    &__content {
+        &-wrap {
+            padding-left: 3rem;
+        }
+    }
+
+    &__title {
+
+    }
+
+    > .delete {
+        border-radius: 0;
+        background: none;
+        width: .75rem;
+        height: .75rem;
+        min-height: .75rem;
+        min-width: .75rem;
+        max-height: .75rem;
+        max-width: .75rem;
+        right: 1rem;
+        top: 1rem;
+
+        &:before,
+        &:after {
+            border-radius: $radius;
+        }
+
+        &:before {
+            width: 100%;
+        }
+
+        &:after {
+            height: 100%;
+        }
+    }
+
+    &.is-primary {
+
+    }
+
+    &.is-link {
+
+    }
+
+    &.is-info {
+
+    }
+
+    &.is-success {
+        border: 1px solid #8ABD8A;
+        background-color: rgba(#36A236, 0.07);
+
+        .notification__title {
+            color: #257025;
+        }
+
+        .notification__content {
+            color: #598059;
+        }
+
+        .delete {
+            &:before,
+            &:after {
+                background-color: lighten(#8ABD8A, 5);
+            }
+
+            &:hover {
+                &:before,
+                &:after {
+                    background-color: darken(#8ABD8A, 5);
+                }
+            }
+        }
+    }
+
+    &.is-warning {
+
+    }
+
+    &.is-danger {
+
+    }
+}
+
+/* Tag */
 .tag,
 .tag:not(body) {
     padding: 0 .75rem;
