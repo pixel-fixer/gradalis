@@ -5,6 +5,7 @@
         display: block;
         visibility: hidden;
     }
+
     &.is-active {
         .dropdown-menu {
             visibility: hidden;
@@ -271,6 +272,41 @@ p,
         &.is-light-cyan.is-outlined {
             background-color: darken(rgba($cyan, 0.1), 3);
             color: $very-dark-blue-2;
+        }
+    }
+}
+
+//.buttons {
+//    &.has-addons {
+//        .button {
+//            &.is-flex-1 {
+//                &:not(:last-child) {
+//                    margin-right: 1px;
+//                }
+//                &:not(:first-child) {
+//                    margin-left: 1px;
+//                }
+//            }
+//
+//        }
+//    }
+//}
+
+.field {
+    &.has-addons {
+        &.has-addons-fullwidth {
+            .control {
+
+                &:not(:last-child) {
+                    margin-right: 1px;
+                }
+
+                &:not(:first-child) {
+                    margin-left: 1px;
+                }
+
+
+            }
         }
     }
 }
