@@ -29,6 +29,13 @@ body {
 .mb-1 {
     margin-bottom: 1rem;
 }
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
 
 .pt-0 {
     padding-top: 0;
@@ -144,4 +151,8 @@ ol,
             }
         }
     }
+}
+
+.has-text-basic {
+    color: $text;
 }

@@ -33,8 +33,9 @@ $very-dark-blue-2: #1C2940;
 $mostly-dark-blue-2: #4B5A73;
 $mostly-dark-blue: #6b87a4;
 $dark-grayish-blue: #8b97a9;
+$light-grayish-blue: #B4C4DB;
 
-$input-placeholder-color: #B4C4DB;
+$input-placeholder-color: $light-grayish-blue;
 
 //Colors social
 $color-fb: #3C5A99;
@@ -94,7 +95,7 @@ $input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
 $input-focus-border-color: $cyan;
-$input-hover-border-color: #B4C4DB;
+$input-hover-border-color: $light-grayish-blue;
 $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
 $input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);

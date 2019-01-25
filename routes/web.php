@@ -68,3 +68,6 @@ Route::get('/spa/services', function () {
 Route::get('/spa/settings', function () {
     return view('spa.settings');
 });
+Route::get('/spa/balance', function () {
+    return view('spa.balance');
+});

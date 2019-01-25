@@ -465,3 +465,33 @@ p,
         min-height: 2rem;
     }
 }
+
+/* Table */
+//$table-color: $very-dark-blue-2;
+//$table-background-color: transparent;
+//$table-cell-padding: 1em;
+//$table-cell-heading-color: $text;
+table.table {
+    background-color: transparent;
+    tbody {
+        &.box {
+            display: table-row-group;
+            color: $very-dark-blue-2;
+        }
+    }
+    th {
+        color: $text;
+        font-weight: normal;
+    }
+    td,
+    th {
+        border: 0;
+        padding: 1em;
+    }
+    tr {
+        border-bottom: 1px solid rgba(#CFDAE6, .5);
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
