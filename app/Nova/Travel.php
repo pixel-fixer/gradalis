@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use DmitryBubyakin\NovaMedialibraryField\Fields\Medialibrary;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Textarea;
@@ -94,8 +95,11 @@ class Travel extends Resource
             HasMany::make(__('Meetings'), 'Meetings', Meeting::class),
 
             HasMany::make(__('Consultations'), 'Consultations', Consultation::class),
+
+            Medialibrary::make('Документы')->onlyOnIndex()
         ];
     }
+
 
     /**
      * Get the cards available for the request.
