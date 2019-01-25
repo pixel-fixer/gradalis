@@ -477,6 +477,28 @@ table.table {
         &.box {
             display: table-row-group;
             color: $very-dark-blue-2;
+            tr {
+                &:last-child {
+                    td {
+                        &:first-child {
+                            border-bottom-left-radius: $radius;
+                        }
+                        &:last-child {
+                            border-bottom-right-radius: $radius;
+                        }
+                    }
+                }
+                &:first-child {
+                    td {
+                        &:first-child {
+                            border-top-left-radius: $radius;
+                        }
+                        &:last-child {
+                            border-top-right-radius: $radius;
+                        }
+                    }
+                }
+            }
         }
     }
     th {
@@ -494,4 +516,5 @@ table.table {
             border-bottom: none;
         }
     }
+
 }
