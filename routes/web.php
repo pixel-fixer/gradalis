@@ -65,3 +65,6 @@ Route::get('/spa/legal', function () {
 Route::get('/spa/services', function () {
     return view('spa.services');
 });
+Route::get('/spa/settings', function () {
+    return view('spa.settings');
+});

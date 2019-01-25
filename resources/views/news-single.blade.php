@@ -9,7 +9,7 @@
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-12-tablet is-8-desktop">
-                    <main class="news-single-main">
+                    <main class="news-single box">
                         <div class="news-single__header">
                             <h1 class="section-title">FCG: четыре радикальных тренда на рынке одежды в 2019 году</h1>
                             <div class="news-single__header__info is-flex">
@@ -79,8 +79,8 @@
                         </div>
                         <hr class="my-1">
                         <div class="share-list">
-                            <a href="#" class="share-item share-item__fb button">Поделиться в Facebook</a>
-                            <a href="#" class="share-item share-item__ok button">Поделиться в Одноклассниках</a>
+                            <a href="#" class="share-item is-fb button">Поделиться в Facebook</a>
+                            <a href="#" class="share-item is-ok button">Поделиться в Одноклассниках</a>
                         </div>
                     </main>
                 </div>

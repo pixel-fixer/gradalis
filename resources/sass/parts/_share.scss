@@ -1,7 +1,5 @@
 @import '../variables';
 
-$color-fb: #3C5A99;
-$color-ok: #ED812B;
 .share {
     &-list {
         display: flex;
@@ -23,44 +21,5 @@ $color-ok: #ED812B;
             margin-right: 0;
         }
 
-        &__fb {
-            background-color: $color-fb;
-            border-color: $color-fb;
-            color: $white;
-
-            &:hover {
-                background-color: lighten($color-fb, 3);
-                color: $white;
-                border-color: lighten($color-fb, 3);
-            }
-
-            &:focus,
-            &:active,
-            &.is-active {
-                background-color: darken($color-fb, 3);
-                color: $white;
-                border-color: darken($color-fb, 3);
-            }
-        }
-
-        &__ok {
-            background-color: $color-ok;
-            border-color: $color-ok;
-            color: $white;
-
-            &:hover {
-                background-color: lighten($color-ok, 3);
-                color: $white;
-                border-color: lighten($color-ok, 3);
-            }
-
-            &:focus,
-            &:active,
-            &.is-active {
-                background-color: darken($color-ok, 3);
-                color: $white;
-                border-color: darken($color-ok, 3);
-            }
-        }
     }
 }

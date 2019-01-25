@@ -4,10 +4,11 @@
 
     <section class="section pb-0">
         <div class="container">
+            <h2 class="section-title">Forms</h2>
             <example-ui-form></example-ui-form>
         </div>
     </section>
-    <section class="section ">
+    <section class="section pb-0 pt-0">
         <div class="container">
             <div class="columns">
                 <div class="column">
@@ -28,6 +29,31 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section pt-0">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <hr>
+                    <h2 class="section-title">Buttons social</h2>
+                   <div class="columns">
+                       <div class="column is-12">
+                           <div class="buttons">
+                               <button class="button is-vk is-size-875 has-text-weight-bold h-3 px-1">
+                                   Вконтакте
+                               </button>
+                               <button class="button is-ok is-size-875 has-text-weight-bold h-3 px-1">
+                                   Одноклассники
+                               </button>
+                               <button class="button is-fb is-size-875 has-text-weight-bold h-3 px-1">
+                                   Facebook
+                               </button>
+                           </div>
+                       </div>
+                   </div>
                 </div>
             </div>
         </div>

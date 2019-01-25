@@ -28,6 +28,8 @@ Vue.component('chat', require('./components/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue').default);
+Vue.component('example-form-change-password', require('./components/ExampleFormChangePassword.vue').default);
+Vue.component('example-form-profile-spa', require('./components/ExampleFormProfileSPA.vue').default);
 Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').default);
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);

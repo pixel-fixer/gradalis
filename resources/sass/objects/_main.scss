@@ -125,10 +125,7 @@
     }
 
     &__body {
-        background-color: $white;
-        border-radius: $radius;
         overflow: hidden;
-        box-shadow: $box-shadow;
 
         &_promo {
             border: 0.125rem solid $green;
