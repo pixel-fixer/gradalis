@@ -71,3 +71,6 @@ Route::get('/spa/settings', function () {
 Route::get('/spa/balance', function () {
     return view('spa.balance');
 });
+Route::get('/spa/purchased-services', function () {
+    return view('spa.purchased-services');
+});

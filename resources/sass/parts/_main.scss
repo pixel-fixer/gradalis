@@ -26,9 +26,11 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 .mb-1 {
     margin-bottom: 1rem;
 }
+
 .mt-1 {
     margin-top: 1rem;
 }
@@ -97,17 +99,19 @@ body {
 
 
 ol,
-.content ol{
+.content ol {
     &.ol-big-counter {
         list-style: none;
         counter-reset: li; /* Initiate a counter */
         margin-left: 4rem;
+
         li {
             position: relative;
             min-height: 3rem;
             margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
+
             &:before {
                 content: counter(li); /* Use the counter as content */
                 counter-increment: li; /* Increment the counter by 1 */
@@ -116,7 +120,7 @@ ol,
                 top: 0;
                 width: 3rem;
                 height: 3rem;
-                background-color: rgba($cyan,0.1);
+                background-color: rgba($cyan, 0.1);
                 border-radius: 50%;
                 font-weight: bold;
                 color: $cyan;
@@ -135,17 +139,20 @@ ol,
         //text-decoration: underline;
         //text-decoration-color: rgba($cyan, .3);
         &:hover {
-            color: darken($cyan,10);
+            color: darken($cyan, 10);
             //text-decoration-color: rgba($cyan, .5);
         }
+
         &.link-doc {
             display: flex;
             align-items: center;
+
             svg {
                 width: 1.5rem;
                 height: 1.5rem;
                 margin-right: .5rem;
             }
+
             span {
 
             }
@@ -155,4 +162,25 @@ ol,
 
 .has-text-basic {
     color: $text;
+}
+
+a {
+    &.link-with-icon {
+        display: flex;
+        align-items: center;
+        color: $cyan;
+        &:hover {
+            color: darken($cyan, 10);
+        }
+        img,
+        svg {
+            width: 1rem;
+            height: 1rem;
+            margin-right: .5rem;
+        }
+
+        span {
+
+        }
+    }
 }
