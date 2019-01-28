@@ -181,6 +181,10 @@ ol,
     color: $text;
 }
 
+.has-vertical-align-middle {
+    vertical-align: middle !important;
+}
+
 a {
     &.link-with-icon {
         display: flex;
@@ -200,4 +204,23 @@ a {
 
         }
     }
+}
+
+.text-with-icon {
+    display: flex;
+    align-items: center;
+    img,
+    svg {
+        width: 1rem;
+        height: 1rem;
+        margin-right: .5rem;
+    }
+
+    span {
+
+    }
+}
+
+.no-wrap {
+    white-space: nowrap;
 }

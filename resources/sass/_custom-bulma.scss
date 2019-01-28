@@ -141,6 +141,7 @@ p,
         &_close {
             &.is-size-875 {
                 .icon-close {
+                    line-height: .875rem;
                     font-size: 1.5rem;
                     margin-right: .25rem;
                     color: lighten($label-color, 15);
@@ -516,5 +517,19 @@ table.table {
             border-bottom: none;
         }
     }
+    thead {
+        &.bb {
+            border-bottom: 1px solid rgba(#CFDAE6, 0.5);
+        }
+    }
 
+}
+
+
+/* Progress */
+.progress {
+    border-radius: $radius;
+    &.is-small {
+        height: .375rem;
+    }
 }

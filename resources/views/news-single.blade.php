@@ -141,7 +141,7 @@
                                         <div class="card-image">
                                             <figure class="image is-16by9">
                                                 <img
-                                                    src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                                    src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg"
                                                     alt="Placeholder image">
                                             </figure>
                                             <span class="tag tag-payback">

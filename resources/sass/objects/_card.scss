@@ -61,32 +61,6 @@
                 }
             }
 
-
-            .price {
-                font-size: 1.375rem;
-                font-weight: 900;
-                color: $very-dark-blue-2;
-                margin-bottom: 1rem;
-
-                &-info {
-                    display: flex;
-                }
-
-                &-sale {
-                    margin-right: .5rem;
-                    font-size: .875rem;
-                    height: 2.2em;
-                    align-self: baseline;
-                }
-
-                &-old {
-                    color: $dark-grayish-blue;
-                    text-decoration: line-through;
-                    margin-left: .5rem;
-                    align-self: flex-start;
-                }
-            }
-
             .button {
                 font-size: .875rem;
                 padding: 1.5rem 0;
@@ -172,5 +146,30 @@
         &_promo {
             border: 0.125rem solid $green;
         }
+    }
+}
+
+.price {
+    font-size: 1.375rem;
+    font-weight: 900;
+    color: $very-dark-blue-2;
+    margin-bottom: 1rem;
+
+    &-info {
+        display: flex;
+    }
+
+    &-sale {
+        margin-right: .5rem;
+        font-size: .875rem;
+        height: 2.2em;
+        align-self: baseline;
+    }
+
+    &-old {
+        color: $dark-grayish-blue;
+        text-decoration: line-through;
+        margin-left: .5rem;
+        align-self: flex-start;
     }
 }

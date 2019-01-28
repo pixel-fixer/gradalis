@@ -13,15 +13,16 @@
     }
 
     &-trigger {
-        > .input {
-            padding-right: 2.5rem;
+        > .input,
+        > .button {
+            padding-right: 2.5rem !important;
         }
     }
 
     &.is-active {
         > .dropdown-trigger {
-            > .input {
-                padding-right: 2.5rem;
+            > .input,
+            > .button {
                 > .multiselect__select {
                     transform: rotate(180deg);
                 }
