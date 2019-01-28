@@ -9,7 +9,7 @@
                 @include('spa.aside')
             </div>
             <div class="column is-8 user-setting">
-                <section class="section pt-1">
+                <section class="section pt-1 px-0">
                     <div class="user-setting__header is-flex">
                         <figure>
                             <img src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"

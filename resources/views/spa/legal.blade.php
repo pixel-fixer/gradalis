@@ -9,10 +9,9 @@
                 @include('spa.aside')
             </div>
             <div class="column is-8">
-                <section class="section pt-1">
+                <section class="section pt-1 px-0">
 
-                    <h1 class="section-title">Условия и договора</h1>
-
+                    <h1 class="section-title mb-1-75">Условия и договора</h1>
 
                     <div class="box">
                         <div class="content">
@@ -73,7 +72,6 @@
                             </div>
                         </div>
                     </div>
-
 
                 </section>
             </div>

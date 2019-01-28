@@ -9,8 +9,8 @@
                 @include('spa.aside')
             </div>
             <div class="column is-8">
-                <section class="section pt-1 pb-0">
-                    <h1 class="section-title">Ваш баланс</h1>
+                <section class="section pt-1 pb-0 px-0">
+                    <h1 class="section-title mb-1-75">Ваш баланс</h1>
                     <div class="card-your-balance is-flex">
                         <figure>
                             <img src="{{ asset('/svg/icons/ic_balance.svg') }}" alt="Balance" class="svg">
@@ -18,7 +18,7 @@
                         <span class="has-text-weight-bold">Текущий баланс составляет — €100</span>
                     </div>
                 </section>
-                <section class="section pt-0 pb-0">
+                <section class="section pt-0 pb-0 px-0">
                     <h3 class="mb-1">Пополнение баланса</h3>
                     <div class="columns is-multiline">
                         <div class="column is-6">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="section pt-1 mt-1">
+                <section class="section pt-1 mt-1 px-0">
                     <h3 class="mb-1">История транзакций</h3>
                     <table class="table is-fullwidth is-size-875">
                         <thead>
