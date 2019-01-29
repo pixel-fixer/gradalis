@@ -77,3 +77,6 @@ Route::get('/spa/purchased-services', function () {
 Route::get('/spa/objects', function () {
     return view('spa.objects');
 });
+Route::get('/spa/view-request', function () {
+    return view('spa.view-request');
+});
