@@ -80,3 +80,7 @@ Route::get('/spa/objects', function () {
 Route::get('/spa/view-request', function () {
     return view('spa.view-request');
 });
+
+Route::get('/add-business', function () {
+    return view('add-business');
+});

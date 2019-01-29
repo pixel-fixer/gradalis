@@ -192,6 +192,18 @@ p,
         &.is-light-cyan {
             border: 1px solid rgba($cyan, 0.07);
         }
+
+        &.is-inverted {
+            &.is-primary,
+            &.is-link,
+            &.is-info,
+            &.is-warning,
+            &.is-success,
+            &.is-danger,
+            &.is-light-cyan {
+                border-color: rgba($white, 0.3);
+            }
+        }
     }
 
     &:hover {

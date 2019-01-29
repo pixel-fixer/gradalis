@@ -34,6 +34,7 @@ Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').defau
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
+Vue.component('form-add-bussines', require('./components/FormAddBussines').default);
 
 const app = new Vue({
     el: '#app',
