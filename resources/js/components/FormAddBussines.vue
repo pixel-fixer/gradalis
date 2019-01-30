@@ -24,7 +24,7 @@
         <!--</v-stepper>-->
 
 
-        <div class="stepper__nav">
+        <div class="stepper__nav is-hidden-mobile">
             <template v-for="(item, index) in steps">
                 <div class="stepper__nav__item" :class="{ 'is-active' : item.active, 'is-ok' : item.success }">
                     <div class="stepper__nav__item__button" v-tooltip="item.title" @click="toggleStep(index)">
@@ -33,6 +33,15 @@
                     <div class="stepper__nav__item__title">{{item.title}}</div>
                 </div>
             </template>
+        </div>
+
+        <div class="stepper__nav stepper__nav_mobile is-hidden-tablet">
+                <div class="stepper__nav__item is-active">
+                    <div class="stepper__nav__item__button">
+                        {{step}}/8
+                    </div>
+                    <div class="stepper__nav__item__title">{{steps[step].title}}</div>
+                </div>
         </div>
 
         <template v-if="step === 1">
