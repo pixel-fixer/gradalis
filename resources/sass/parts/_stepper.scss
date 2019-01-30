@@ -103,6 +103,11 @@
                 }
             }
         }
+        &_mobile {
+            .stepper__nav__item__button {
+                cursor: auto;
+            }
+        }
     }
 }
 
