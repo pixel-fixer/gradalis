@@ -107,7 +107,7 @@
                                   <span class="icon is-small" v-tooltip="'Tooltip 1'">
                                     <img src="/svg/icons/ic_globe.svg" class="svg" alt="">
                                   </span>
-                                  <span class="icon is-small" v-tooltip="'Tooltip 2'">
+                                <span class="icon is-small" v-tooltip="'Tooltip 2'">
                                     <img src="/svg/icons/ic_home.svg" class="svg" alt="">
                                   </span>
                             </div>
@@ -161,6 +161,192 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="columns is-multiline">
+                <div class="column is-3">
+                    <div class="field">
+                        <label class="label"><span>Range From To</span></label>
+                        <div class="field has-addons has-slider">
+                            <p class="control control-text-left control-text-left_3em">
+                                <input type="number" class="input is-size-875" v-model="form.rangeFromTo[0]">
+                                <span class="text is-left is-size-875">от €</span>
+                            </p>
+                            <p class="control control-text-left control-text-left_3em">
+                                <input type="number" class="input is-size-875" v-model="form.rangeFromTo[1]">
+                                <span class="text is-left is-size-875">до €</span>
+                            </p>
+                        </div>
+                        <vue-slider v-model="form.rangeFromTo"
+                                    :tooltip="optionSliderRangeFromTo.tooltip"
+                                    :min="optionSliderRangeFromTo.min"
+                                    :max="optionSliderRangeFromTo.max">
+
+                        </vue-slider>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="field">
+                        <label class="label"><span>Range From</span></label>
+                        <div class="field has-slider">
+                            <div class="control control-text-left control-text-left_3em">
+                                <input id="inputRangeFrom" type="text"
+                                       class="input is-size-875" name="inputRangeFrom"
+                                       :value="form.rangeFrom"
+                                >
+                                <span class="text is-left is-size-875">от €</span>
+                            </div>
+                        </div>
+                        <vue-slider v-model="form.rangeFrom"
+                                    :tooltip="optionSliderRangeFrom.tooltip"
+                                    :min="optionSliderRangeFrom.min"
+                                    :max="optionSliderRangeFrom.max">
+
+                        </vue-slider>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="field">
+                        <label class="label"><span>Dropdown Range From To</span></label>
+                        <div class="dropdown is-flex is-full">
+                            <div class="dropdown-trigger">
+                                <div class="input inputbox-val is-size-875" aria-haspopup="true"
+                                     aria-controls="example-dropdown">
+                                    <span v-show="form.rangeFromTo2.empty">Default text</span>
+                                    <span v-show="!form.rangeFromTo2.empty" class="has-text-basic">{{'от €'+form.rangeFromTo2.value[0]+ ' до €' + form.rangeFromTo2.value[1]}}</span>
+
+                                    <div class="multiselect__select"></div>
+                                </div>
+
+                            </div>
+                            <div class="dropdown-menu" id="example-dropdown" role="menu">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-item">
+                                        <label class="label"><span>Range From To</span></label>
+                                        <div class="field has-addons has-slider">
+                                            <p class="control control-text-left control-text-left_3em">
+                                                <input type="number" class="input is-size-875"
+                                                       v-model="form.rangeFromTo2.value[0]">
+                                                <span class="text is-left is-size-875">от €</span>
+                                            </p>
+                                            <p class="control control-text-left control-text-left_3em">
+                                                <input type="number" class="input is-size-875"
+                                                       v-model="form.rangeFromTo2.value[1]"
+                                                >
+                                                <span class="text is-left is-size-875">до €</span>
+                                            </p>
+                                        </div>
+                                        <vue-slider v-model="form.rangeFromTo2.value"
+                                                    :tooltip="optionSliderRangeFromTo2.tooltip"
+                                                    :min="optionSliderRangeFromTo2.min"
+                                                    :max="optionSliderRangeFromTo2.max">
+
+                                        </vue-slider>
+                                    </div>
+                                    <hr class="dropdown-divider">
+                                    <div class="dropdown-item">
+                                        <div class="buttons">
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromTo2.value = form.rangeFromTo2.valueUnto05">до
+                                                €500 тыс.
+                                            </div>
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromTo2.value = form.rangeFromTo2.valueUnto1">до €1
+                                                млн.
+                                            </div>
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromTo2.value = form.rangeFromTo2.valueUnto2">до €2
+                                                млн.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="dropdown-divider">
+                                    <div class="dropdown-item">
+                                        <div class="buttons">
+                                            <div class="button is-size-875 is-info h-3 has-text-weight-bold is-flex-1"
+                                                 @click="form.rangeFromTo2.empty = false">
+                                                Применить
+                                            </div>
+                                            <div class="button is-clear is-clear_close is-size-875 h-3"
+                                                 @click="form.rangeFromTo2.empty = true">
+                                                <span class="icon-close">×</span>
+                                                <span class="has-text-decoration-underline">Очистить</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="field">
+                        <label class="label"><span>Dropdown Range From</span></label>
+                        <div class="dropdown is-flex is-full">
+                            <div class="dropdown-trigger">
+                                <div class="input inputbox-val is-size-875" aria-haspopup="true"
+                                     aria-controls="example-dropdown-2">
+                                    <span v-show="form.rangeFromDropdown.empty">Default text</span>
+                                    <span v-show="!form.rangeFromDropdown.empty" class="has-text-basic">{{'от €'+form.rangeFromDropdown.value}}</span>
+
+                                    <div class="multiselect__select"></div>
+                                </div>
+
+                            </div>
+                            <div class="dropdown-menu" id="example-dropdown-2" role="menu">
+                                <div class="dropdown-content">
+                                    <div class="dropdown-item">
+                                        <label class="label"><span>Range From</span></label>
+                                        <div class="field has-slider">
+                                            <p class="control control-text-left control-text-left_3em">
+                                                <input type="number" class="input is-size-875"
+                                                       v-model="form.rangeFromDropdown.value">
+                                                <span class="text is-left is-size-875">от €</span>
+                                            </p>
+                                        </div>
+                                        <vue-slider v-model="form.rangeFromDropdown.value"
+                                                    :tooltip="optionSliderRangeFromDropdown.tooltip"
+                                                    :min="optionSliderRangeFromDropdown.min"
+                                                    :max="optionSliderRangeFromDropdown.max">
+
+                                        </vue-slider>
+                                    </div>
+                                    <hr class="dropdown-divider">
+                                    <div class="dropdown-item">
+                                        <div class="buttons">
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromDropdown.value = form.rangeFromDropdown.valueFrom01">от
+                                                €100 тыс.
+                                            </div>
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromDropdown.value = form.rangeFromDropdown.valueFrom02">от
+                                                €200 тыс.
+                                            </div>
+                                            <div class="button is-light-cyan is-size-875"
+                                                 @click="form.rangeFromDropdown.value = form.rangeFromDropdown.valueFrom05">от
+                                                €500 тыс.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="dropdown-divider">
+                                    <div class="dropdown-item">
+                                        <div class="buttons">
+                                            <div class="button is-size-875 is-info h-3 has-text-weight-bold is-flex-1"
+                                                 @click="form.rangeFromDropdown.empty = false">
+                                                Применить
+                                            </div>
+                                            <div class="button is-clear is-clear_close is-size-875 h-3"
+                                                 @click="form.rangeFromDropdown.empty = true">
+                                                <span class="icon-close">×</span>
+                                                <span class="has-text-decoration-underline">Очистить</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -168,10 +354,11 @@
 <script>
     import {required, minLength} from 'vuelidate/lib/validators'
     import Multiselect from 'vue-multiselect'
+    import vueSlider from 'vue-slider-component';
 
     export default {
         name: "ExampleUiForm",
-        components: {Multiselect},
+        components: {Multiselect, vueSlider},
         data() {
             return {
                 selected: null,
@@ -220,10 +407,62 @@
                             errorRequired: 'Это поле обязательно',
                             errorMinLength: 'Минимум 4 символа',
                         }
-                    }
+                    },
+
+                    rangeFromTo: [
+                        1000,
+                        5000
+                    ],
+
+                    rangeFromTo2: {
+                        value: [
+                            10000,
+                            500000
+                        ],
+                        valueUnto05: [
+                            0,
+                            500000
+                        ],
+                        valueUnto1: [
+                            0,
+                            1000000
+                        ],
+                        valueUnto2: [
+                            0,
+                            2000000
+                        ],
+                        empty: true
+                    },
+                    rangeFrom: 0,
+                    rangeFromDropdown: {
+                        value: 0,
+                        valueFrom01: 100000,
+                        valueFrom02: 200000,
+                        valueFrom05: 500000,
+                        empty: true
+                    },
                 },
                 name: "",
-
+                optionSliderRangeFromTo: {
+                    tooltip: false,
+                    min: 0,
+                    max: 20000
+                },
+                optionSliderRangeFromTo2: {
+                    tooltip: false,
+                    min: 0,
+                    max: 2000000
+                },
+                optionSliderRangeFrom: {
+                    tooltip: false,
+                    min: 0,
+                    max: 200000
+                },
+                optionSliderRangeFromDropdown: {
+                    tooltip: false,
+                    min: 0,
+                    max: 1000000
+                },
                 show: true,
             }
         },
@@ -252,18 +491,7 @@
             }
         },
         computed: {
-            // messages: function () {
-            //     return {
-            //         errorName: function () {
-            //             if (this.$v.form.name.value.$error && !this.$v.form.name.value.required) {
-            //                 return 'required';
-            //             } else if (this.$v.form.name.value.$error && !this.$v.form.name.value.minLength) {
-            //                 return 'minLength';
-            //             }
-            //         }
-            //     };
-            // },
-            // modalCategoryActive:
+
         }
     }
 </script>

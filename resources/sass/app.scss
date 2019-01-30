@@ -37,6 +37,10 @@
 @import "parts/pagination";
 @import "parts/vue-slider";
 @import "parts/share";
+@import "parts/dropdown";
+@import "parts/aside";
+@import "parts/add-business";
+@import "parts/stepper";
 
 @import "objects/card";
 @import "objects/form";
@@ -52,5 +56,10 @@
 @import "auth/register";
 
 @import "services/card";
+@import "services/buttons";
+
+@import "pa/main";
+@import "pa/balance";
+@import "pa/objects";
 
 @import "chat";

@@ -3,10 +3,22 @@
 namespace App\Models\Chat;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Message extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['from', 'to', 'text', 'status', 'dialog_id'];
+
+    protected $dates = ['deleted_at'];
+
+    //TODO Дописать
+    /*
+    protected $statuses = [
+
+    ];
+    */
 
     protected $attributes = [
         'status' => 0,

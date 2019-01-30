@@ -20,6 +20,7 @@
             height: 2.5rem;
             margin-right: 1rem;
             margin-bottom: .5rem;
+
             img {
                 width: 100%;
             }
@@ -41,25 +42,41 @@
             font-weight: 900;
             margin-bottom: .875rem;
         }
+
         &__footer {
             padding-top: .875rem;
+
             .button {
-                height: 3rem;
+                //height: 3rem;
                 box-sizing: border-box;
+
                 &:first-child {
                     padding-left: 2.25em;
                     padding-right: 2.25em;
                 }
             }
         }
-        &__button-more {
-            border-color: transparent;
-            background-color: transparent;
-            text-decoration: underline;
-            &:hover,
-            &:focus,
-            &:active {
 
+        /* Выводится в таблицах */
+        &_table {
+            &__icon {
+                margin-right: .5rem;
+
+                img {
+                    max-width: 2.5rem;
+                }
+            }
+
+            &__info {
+                h4 {
+                    line-height: 1em;
+                    padding-top: .375em;
+                }
+
+                time {
+                    color: $text;
+                    font-size: .75rem;
+                }
             }
         }
 

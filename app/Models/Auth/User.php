@@ -64,5 +64,9 @@ class User extends Authenticatable
         $this->hasMany('App\Models\Auth\User', 'id', 'broker_id');
     }
 
+    public function canModerateMessages()
+    {
+        return $this->hasAnyRole(['Админ', 'Главный брокер']) ? true : false;
+    }
 
 }

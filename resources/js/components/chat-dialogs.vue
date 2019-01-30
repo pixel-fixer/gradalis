@@ -10,10 +10,10 @@
                           name="fade">
             <div v-for="dialog in dialogsMapped"
                  @click="$emit('select', dialog.id)"
-                 :class="['chat-type--' + dialog.type, { 'active' : dialog.id === selected  }]"
-                 class="chat__list__item new-message"
+                 :class="['chat-type--' + dialog.type, { 'active' : dialog.id === selected  }, {'new-message': dialog.notifications > 0}]"
+                 class="chat__list__item"
                  :key="dialog.id">
-                <div class="chat__list__item__theme" v-html="dialog.theme"></div>
+                <div class="chat__list__item__theme">{{ dialog.theme | stripTags }}</div>
                 <div class="chat__list__item__from" v-if="dialog.type == 'support'">От: Служба поддержки</div>
                 <div class="chat__list__item__from" v-else>От: {{dialog.user.full_name}}</div>
             </div>
@@ -45,8 +45,11 @@
     </div>
 </template>
 <script>
+    import stripTags from '../stripTags'
+
     export default {
         name: "chat-dialogs",
+        filters: { stripTags },
         props: ['dialogs', 'selected'],
         data: () => ({
             firstLoad: true,
@@ -55,6 +58,7 @@
             },
             search: '',
             filter: ['seller', 'customer', 'support'],
+
         }),
         computed: {
             dialogsMapped: function () {
@@ -71,6 +75,22 @@
                     this.ui.showSettings = false;
                 }, 1000)
             });
+        },
+        watch: {
+            dialogs: function () {
+                this.socketConnect()
+            }
+        },
+        methods:{
+            socketConnect(){
+                for(let dialog of this.dialogs){
+                    window.Echo
+                        .private('Chat.Dialog.' + dialog.id)
+                        .listen('NewMessage',  (e) => {
+                            this.$emit('new-message', e)
+                        })
+                }
+            },
         }
     }
 </script>

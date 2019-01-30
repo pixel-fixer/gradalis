@@ -39,13 +39,11 @@ Route::get('/business/single', function () {
 Route::get('/register/seller ', function () {
     return view('auth.register.seller');
 });
-Route::get('/register/buyer ', function () {
+Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/services', function () {
-    return view('services');
-})->middleware('auth');
+Route::get('/services', 'ServiceController@index')->middleware('auth');
 
 Route::get('/news', function () {
     return view('news');
@@ -57,3 +55,32 @@ Route::get('/news-single', function () {
 Route::get('/ui', function () {
     return view('ui');
 })->middleware('auth');
+
+Route::get('/spa/favorites', function () {
+    return view('spa.favorites');
+});
+Route::get('/spa/legal', function () {
+    return view('spa.legal');
+});
+Route::get('/spa/services', function () {
+    return view('spa.services');
+});
+Route::get('/spa/settings', function () {
+    return view('spa.settings');
+});
+Route::get('/spa/balance', function () {
+    return view('spa.balance');
+});
+Route::get('/spa/purchased-services', function () {
+    return view('spa.purchased-services');
+});
+Route::get('/spa/objects', function () {
+    return view('spa.objects');
+});
+Route::get('/spa/view-request', function () {
+    return view('spa.view-request');
+});
+
+Route::get('/add-business', function () {
+    return view('add-business');
+});

@@ -3,9 +3,14 @@
 namespace App\Models\Travel;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Travel extends Model
+
+class Travel extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     protected $guarded = ['id', 'ordered_services_id', 'user_id'];
 
     public function user()
@@ -38,4 +43,15 @@ class Travel extends Model
         return $this->hasMany('App\Models\Travel\Consultation');
     }
 
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('documents')
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'application/pdf'
+                    || $file->mimeType === 'application/msword'
+                    || $file->mimeType === 'image/jpeg'
+                    || $file->mimeType === 'image/png';
+            });
+    }
 }

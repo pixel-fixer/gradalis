@@ -2,9 +2,12 @@
 
 namespace App\Nova;
 
+use DmitryBubyakin\NovaMedialibraryField\Fields\Medialibrary;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Treestoneit\BelongsToField\BelongsToField;
 
@@ -51,17 +54,25 @@ class OrderedService extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsToField::make('service'),
+            BelongsToField::make('Услуга', 'service', Service::class),
 
-            BelongsToField::make('user')->searchable(),
+            BelongsToField::make('Пользователь', 'user', User::class)->searchable(),
 
-            Select::make('status')->options([
-                1 => 'paid',
-                2 => 'preparation',
-                3 => 'in_progress',
-                4 => 'done',
-            ])->displayUsingLabels()
+            Select::make('Статус', 'status')->options([
+                0 => 'Не выбран',
+                1 => 'Оплачена',
+                2 => 'Подготовка',
+                3 => 'В процессе',
+                4 => 'Выполнена',
+            ])->displayUsingLabels(),
 
+            Text::make('Комментарий админа', 'admin_comment'),
+
+            Text::make('Комментарий пользователя', 'user_comment'),
+
+            Medialibrary::make('Докеументы юриста','ur_documents')->exceptOnForms(),
+
+            Medialibrary::make('Докеументы бугалтера','buh_documents')->exceptOnForms(),
         ];
     }
 

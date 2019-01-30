@@ -1,0 +1,75 @@
+@import '../variables';
+
+.add-business {
+    &__header {
+        margin-bottom: 2rem;
+        .section-title {
+            margin-bottom: 0;
+        }
+
+        .info-banner {
+            //background-color: $yellow;
+            background: linear-gradient(354.87deg, #D96309 0%, #EF6C09 97.76%);
+            border-radius: $radius;
+            padding: .5rem;
+            color: $white;
+            align-items: self-start;
+            position: relative;
+            overflow: hidden;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 6.125rem;
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+                height: 3rem;
+
+                align-items: center;
+            }
+
+            &-wrap {
+                position: relative;
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    width: 90%;
+                    height: 2rem;
+                    mix-blend-mode: normal;
+                    opacity: 0.5;
+                    filter: blur(1rem);
+                    border-radius: 0.1875rem;
+                    left: 5%;
+                    bottom: 0;
+                    z-index: -1;
+                    background: $yellow;
+                }
+            }
+
+            figure {
+                position: absolute;
+                left: -0.75rem;
+                width: auto;
+                top: -0.5rem;
+                @media screen and (min-width: $tablet) {
+                    left: -.5rem;
+                    width: 4.5rem;
+                    top: -0.75rem;
+                }
+            }
+
+            &__text {
+                padding-left: 5rem;
+                @media screen and (min-width: $tablet) {
+                    padding-left: 3.5rem;
+                }
+            }
+
+            &__buttons {
+                padding-left: 5rem;
+                @media screen and (min-width: $tablet) {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

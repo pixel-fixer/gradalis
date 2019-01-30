@@ -10,39 +10,39 @@
             <div class="columns">
                 <div class="column is-4">
                     <aside>
-                        <nav class="news-nav">
+                        <nav class="aside-nav">
                             <h3>Категории</h3>
                             <ul>
-                                <li class="news-nav__item">
+                                <li class="aside-nav__item">
                                     <a href="#">
-                                        <span class="news-nav__item__title">Финансовая аналитика</span>
-                                        <span class="news-nav__item__count">24</span>
+                                        <span class="aside-nav__item__title">Финансовая аналитика</span>
+                                        <span class="aside-nav__item__count">24</span>
                                     </a>
                                 </li>
-                                <li class="news-nav__item">
+                                <li class="aside-nav__item">
                                     <a href="#">
-                                        <span class="news-nav__item__title">Новости</span>
-                                        <span class="news-nav__item__count">129</span>
+                                        <span class="aside-nav__item__title">Новости</span>
+                                        <span class="aside-nav__item__count">129</span>
                                     </a>
                                 </li>
-                                <li class="news-nav__item">
+                                <li class="aside-nav__item">
                                     <a href="#">
-                                        <span class="news-nav__item__title">Обновления</span>
-                                        <span class="news-nav__item__count">5</span>
+                                        <span class="aside-nav__item__title">Обновления</span>
+                                        <span class="aside-nav__item__count">5</span>
                                     </a>
                                 </li>
-                                <li class="news-nav__item">
+                                <li class="aside-nav__item">
                                     <a href="#">
                                         <img src="{{ asset('/svg/icons/ic_advice.svg') }}" class="svg" alt="Advice">
-                                        <span class="news-nav__item__title">Полезные советы</span>
-                                        <span class="news-nav__item__count">12</span>
+                                        <span class="aside-nav__item__title">Полезные советы</span>
+                                        <span class="aside-nav__item__count">12</span>
                                     </a>
                                 </li>
-                                <li class="news-nav__item">
+                                <li class="aside-nav__item">
                                     <a href="#">
                                         <img src="{{ asset('/svg/icons/ic_videoreviews.svg') }}" class="svg" alt="Video">
-                                        <span class="news-nav__item__title">Видеообзоры</span>
-                                        <span class="news-nav__item__count">69</span>
+                                        <span class="aside-nav__item__title">Видеообзоры</span>
+                                        <span class="aside-nav__item__count">69</span>
                                     </a>
                                 </li>
                             </ul>
@@ -51,7 +51,7 @@
                             <div class="card-image">
                                 <figure class="image is-16by9">
                                     <img
-                                        src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                        src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg"
                                         alt="Placeholder image">
                                 </figure>
                                 <span class="tag tag-payback">

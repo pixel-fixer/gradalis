@@ -157,7 +157,7 @@
                     <div class="card card-object">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
@@ -211,7 +211,7 @@
                     <div class="card card-object card-object_promo">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
@@ -268,7 +268,7 @@
                     <div class="card card-object">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
@@ -327,7 +327,7 @@
                     <div class="card card-object">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
@@ -381,7 +381,7 @@
                     <div class="card card-object">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
@@ -435,7 +435,7 @@
                     <div class="card card-object">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <img src="http://sadovnick.ru/upload/iblock/985/985dec2d14c8f7cdf99f99f2da44fcf6.jpg"
+                                <img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                      alt="Placeholder image">
                             </figure>
                             <span class="tag tag-payback">
