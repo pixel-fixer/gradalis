@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dialog extends Model
 {
-    protected $fillable = ['type', 'related_to', 'user_id'];
+    protected $fillable = ['type', 'related_to', 'user_id', 'theme'];
 
-    private $types = ['support', 'customer', 'seller'];
+    private $types = ['support', 'buyer', 'seller'];
 
     protected $morphToTypes = [
         'App\Models\Business\Business' => 'business',
         'App\Models\Business\Franchise' => 'franchise'
     ];
 
-    protected $appends = ['object_type_short'];
+    protected $appends = ['object_type_code'];
 
     public function user()
     {
@@ -27,7 +27,7 @@ class Dialog extends Model
         return $this->morphTo();
     }
 
-    public function getObjectTypeShortAttribute() {
+    public function getObjectTypeCodeAttribute() {
         $type = $this->object_type;
         if(!$type) {
             return null;
@@ -50,10 +50,14 @@ class Dialog extends Model
         if(is_int($value))
             $this->attributes['type'] = $value;
         elseif(is_string($value) && in_array($value, $this->types))
-            $this->attributes['type'] = $this->types[$value];
+            $this->attributes['type'] = array_search($value, $this->types) + 1;
         else
             throw new \Exception('Wrong Dialog model type');
     }
 
+    public function users()
+    {
+        return $this->belongsTo('App\Auth\User');
+    }
 
 }

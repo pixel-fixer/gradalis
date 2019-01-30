@@ -201,7 +201,7 @@
     &__new-message{
       padding: 14px;
       border-top: 1px solid rgba(207, 218, 230, 0.5);
-      height: 55px;
+      min-height: 55px;
       .icon-send svg{
         fill: #8B97A9;
         transition: fill .3s ease-in-out;
@@ -210,9 +210,18 @@
         fill: #0070D9;
       }
       &__attach{
+        cursor: pointer;
         flex-shrink: 0;
         line-height: 21px;
         margin-right: 5px;
+        input{
+          display: none;
+        }
+      }
+      &__files{
+        img{
+          max-width: 100px;
+        }
       }
       form{
         display: flex;
@@ -255,7 +264,7 @@
       text-decoration: none;
       display: inline-block;
       line-height: 17px;
-      border-bottom: 1px solid rgba(0, 112, 217, 0.3);
+      border-bottom: 1px dotted rgba(0, 112, 217, 0.3);
     }
   }
 }
@@ -396,7 +405,7 @@
     height: 40px;
     margin-right: 12px;
     img{
-      border-radius: 50%;
+      border-radius: 3px;
       width: 100%;
     }
   }
@@ -427,10 +436,39 @@
     color: #fff;
   }
   &--seller:before{
+    background: #4857CE;
+  }
+  &--buyer:before{
     background: #F37C22;
   }
-  &--customer:before{
-    background: #4857CE;
+}
+
+.chat-links{
+  margin-bottom: 15px;
+  &__link{
+    line-height: 16px;
+    font-size: 14px;
+    color: #0070D9;
+    text-decoration: none;
+    margin-right: 30px;
+    span{
+      display: inline-block;
+      border-bottom: 1px dotted rgba(0, 112, 217, 0.3);
+    }
+    &__icon{
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  &__link:last-child{
+    margin-right: 0;
+  }
+  &__link:hover{
+    color: #0070D9;
+    span{
+      border-bottom: none;
+    }
   }
 }
 

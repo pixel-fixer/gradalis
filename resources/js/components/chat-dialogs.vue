@@ -32,7 +32,7 @@
                         <span class="color-seller">Покупатели</span>
                     </label>
                     <label>
-                        <input type="checkbox" v-model="filter" value="customer">
+                        <input type="checkbox" v-model="filter" value="buyer">
                         <span class="color-buyer">Продавцы</span>
                     </label>
                     <label>
@@ -57,7 +57,7 @@
                 showSettings: false
             },
             search: '',
-            filter: ['seller', 'customer', 'support'],
+            filter: ['seller', 'buyer', 'support'],
 
         }),
         computed: {
