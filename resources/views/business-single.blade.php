@@ -24,7 +24,7 @@
         <!-- Section object content -->
         <section class="section is-paddingless">
             <div class="container">
-                <div class="object__body object__body_promo">
+                <div class="object__body object__body_promo box is-paddingless">
                     <div class="object__body__top">
                         <div class="object__slider">
                             <!-- Swiper -->

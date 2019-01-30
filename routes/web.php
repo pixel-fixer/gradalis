@@ -67,3 +67,22 @@ Route::get('/spa/legal', function () {
 Route::get('/spa/services', function () {
     return view('spa.services');
 });
+Route::get('/spa/settings', function () {
+    return view('spa.settings');
+});
+Route::get('/spa/balance', function () {
+    return view('spa.balance');
+});
+Route::get('/spa/purchased-services', function () {
+    return view('spa.purchased-services');
+});
+Route::get('/spa/objects', function () {
+    return view('spa.objects');
+});
+Route::get('/spa/view-request', function () {
+    return view('spa.view-request');
+});
+
+Route::get('/add-business', function () {
+    return view('add-business');
+});

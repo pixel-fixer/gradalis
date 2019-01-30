@@ -9,7 +9,7 @@
                 @include('spa.aside')
             </div>
             <div class="column is-8">
-                <section class="section pt-1">
+                <section class="section pt-1 px-0">
                     <div class="notification-list">
                         <div class="notification is-success">
                             <button class="delete"></button>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="section-title">Продукты</h1>
+                    <h1 class="section-title mb-1-75">Продукты</h1>
                     <div class="buttons buttons-services-list">
                         <button class="button is-outlined is-info is-size-875 has-text-weight-bold">Управление объявленем</button>
                         <button class="button is-outlined is-info is-size-875 has-text-weight-bold is-active">Помощь в продаже</button>

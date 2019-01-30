@@ -28,6 +28,13 @@
             </li>
             <li class="aside-nav__item">
                 <a href="#">
+                    <img src="{{ asset('/svg/icons/ic_eye.svg') }}" class="svg" alt="Eye">
+                    <span class="aside-nav__item__title has-text-weight-bold">Запросы на просмотр</span>
+                    <span class="aside-nav__item__count">5</span>
+                </a>
+            </li>
+            <li class="aside-nav__item">
+                <a href="#">
                     <img src="{{ asset('/svg/icons/ic_messages.svg') }}" class="svg" alt="Messages">
                     <span class="aside-nav__item__title has-text-weight-bold">Сообщения</span>
                     <span class="aside-nav__item__count tag is-danger is-rounded tag__count is-flex">12</span>

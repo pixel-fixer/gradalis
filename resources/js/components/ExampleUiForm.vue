@@ -491,18 +491,7 @@
             }
         },
         computed: {
-            // messages: function () {
-            //     return {
-            //         errorName: function () {
-            //             if (this.$v.form.name.value.$error && !this.$v.form.name.value.required) {
-            //                 return 'required';
-            //             } else if (this.$v.form.name.value.$error && !this.$v.form.name.value.minLength) {
-            //                 return 'minLength';
-            //             }
-            //         }
-            //     };
-            // },
-            // modalCategoryActive:
+
         }
     }
 </script>

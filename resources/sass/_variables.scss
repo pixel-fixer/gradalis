@@ -33,8 +33,14 @@ $very-dark-blue-2: #1C2940;
 $mostly-dark-blue-2: #4B5A73;
 $mostly-dark-blue: #6b87a4;
 $dark-grayish-blue: #8b97a9;
+$light-grayish-blue: #B4C4DB;
 
-$input-placeholder-color: #B4C4DB;
+$input-placeholder-color: $light-grayish-blue;
+
+//Colors social
+$color-fb: #3C5A99;
+$color-ok: #ED812B;
+$color-vk: #45668E;
 
 $transition: all 0.2s ease-in-out;
 
@@ -73,7 +79,8 @@ $title-size: 2.5rem;
 $title-color: $very-dark-blue-2;
 $title-line-height: initial;
 
-$section-padding: 4rem 1.5rem;
+//$section-padding: 4rem 1.5rem;
+$section-padding: 4rem 1rem;
 $radius: 0.1875rem;
 
 $box-radius: $radius;
@@ -89,7 +96,7 @@ $input-color: $very-dark-blue-2;
 $input-focus-color: $title-color;
 $input-border-color: #CEDCF0;
 $input-focus-border-color: $cyan;
-$input-hover-border-color: #B4C4DB;
+$input-hover-border-color: $light-grayish-blue;
 $input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
 $input-focus-box-shadow-size: 0 1px 3px 0;
 $input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
@@ -151,6 +158,10 @@ $tag-color: $label-color;
 $dropdown-content-shadow: $input-shadow;
 $dropdown-content-offset: 0.5rem;
 $dropdown-divider-background-color: rgba($input-border-color, 0.5);
+$dropdown-item-hover-background-color: rgba($input-border-color, 0.3);
 
 /* Notification */
 $notification-padding: 1.5rem;
+
+/* Progress */
+$progress-bar-background-color: rgba(#C5D2E5, .5);

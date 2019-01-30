@@ -6477,6 +6477,11 @@ vue-slider-component@^2.8.5:
   resolved "https://registry.yarnpkg.com/vue-slider-component/-/vue-slider-component-2.8.5.tgz#dc2255494ec5b0f7d09335d9ae25a6789946c08e"
   integrity sha512-IYt6v8UKIlDazZrChM5N/sQeS+c/FdithWOsn2NVhc8pyBO5c0jxfLyP3smnMQFF5wKFFSY3dy09fxGenpbEXQ==
 
+vue-stepper-component@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-stepper-component/-/vue-stepper-component-1.0.0.tgz#378ffc1a3563329d9f1472d7ff0110db6b116d82"
+  integrity sha512-Bbj/+L31Sb/S8sr42JAW1AKiREyLYbrfZWhpdJWqKM1pKXtiMJeIIFUPmIVC5xVAerdaw1TzrmniIvxlQclPlQ==
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
