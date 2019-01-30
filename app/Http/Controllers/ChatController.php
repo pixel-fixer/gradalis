@@ -22,6 +22,9 @@ class ChatController extends Controller
         //TODO Или выдать permission нужным ролям?
         $user->canModerateMessages = $user->canModerateMessages();
 
+        $roles = $user->roles->pluck('name')->all();
+        $user = $user->toArray();
+        $user['roles'] = $roles; //Почему то работает только так.
         return view('chat', compact('user'));
     }
 
@@ -37,25 +40,37 @@ class ChatController extends Controller
             $dialogs->where('theme', 'LIKE', '%'.$search.'%');
         }
 
-        $dialog = $dialogs->get()->map(function ($item){
+        $dialogs = $dialogs->get()->map(function ($item){
             //TODO get notifications from db
             $item->notifications = 0;
+
+            //if(Auth::user()->canModerateMessages())
+
             return $item;
         });
 
-        return $dialog;
+        return $dialogs;
     }
 
     public function newMessage()
     {
         //TODO Привязывать юзера к диалогу?
 
+        request()->validate([
+            'dialog_id' => 'required',
+            'text' => 'required_without:file',
+            'file' => 'file|required_if:text,==""'
+        ]);
+
         $message = Message::create([
             'dialog_id' => request()->input('dialog_id'),
             'from' => Auth::id(),
-            'text' => request()->input('message'),
+            'text' => request()->input('text',''),
             'status' => Auth::user()->hasAnyRole(['Брокер-продавец', 'Брокер-покупатель']) ? 0 : 1
         ]);
+
+        if(request()->hasFile('file') && request()->file('file')->isValid())
+            $message->addMedia(request()->file('file'))->toMediaCollection();
 
         $message = $message->load('from');
 
@@ -69,6 +84,7 @@ class ChatController extends Controller
         if($request->user()->canModerateMessages()){
             $message->status = 1;
             $message->save();
+
             //TODO Броадкаст ивент на смену статуса / новое сообщение
             return $message;
         }else{
@@ -86,6 +102,7 @@ class ChatController extends Controller
             $message->delete_reason = $request->get('delete_reason');
             $message->save();
             $message->delete();
+
             //TODO Броадкаст ивент на удаление
             return response('OK');
         }else{
@@ -93,57 +110,65 @@ class ChatController extends Controller
         }
     }
 
-    /*
-    public function newDialog(User $user, $type = null)
+
+    public function newDialog(Request $request)
     {
-        //TODO Можем ли мы создать диалог с этим пользователем
-        if(true){
+        $user = Auth::user();
 
-            //TODO Проверяем, к какой группе отноcится пользователь, чтобы определить вид диалога
-            $type = $type ?: 0;
+        $request->validate([
+            'theme' => 'required',
+            'message' => 'required',
+            'type' => 'required'
+        ]);
 
-            $dialog = Dialog::create([
-                'type' => $type,
-                'user_id' => Auth::id()
-            ]);
+        switch ($request->get('type')){
+            case 'broker':
+                if($user->hasRole('Покупатель')){
+                    $type = 'buyer';
+                }
+                if($user->hasRole('Продавец')){
+                    $type = 'seller';
+                }
 
-            $dialog->users()->attach([
-                Auth::id(),
-                $user->id
-            ]);
+                if($user->broker()->exists())
+                    $broker_id = $user->broker->id;
+                else
+                    return response(['message' => "User is't belongs to any broker"], 422);
 
-            return $dialog->load('users');
-        }else{
-            return response('Unauthorized. You can not create this dialog', 401);
+                //TODO обработать случаи, если топик стартер не входит в группы выше
+                break;
+            case 'support':
+                $type = 'support';
+                break;
+            default:
+                return response('Wrong dialog type', 422);
         }
+
+        $dialog = Dialog::create([
+            'theme' => $request->get('theme'),
+            'user_id' => $user->id,
+            'type' => $type
+        ]);
+
+        //TODO прикрепить нужных юезров к диалогу
+        //TODO выслать уведомления
+
+        Message::create([
+            'dialog_id' => $dialog->id,
+            'from' => $user->id,
+            'status' => 1, //TODO если это пишет не юзер, у которого включена премодерация сообщений
+            'text' => $request->get('message')
+        ]);
+
+        return $dialog;
     }
-    */
 
-    public function getMessages(Dialog $dialog)
+
+    public function getDialog(Dialog $dialog)
     {
-       // $messages = Message::where('dialog_id', $dialog->id);
-
-//        $search = request()->get('search');
-//        if($search){
-//            $messages->where('text', 'LIKE', '%'.$search.'%');
-//        }
-//        $id1 = Auth::user()->id;
-//        $id2 = $user->id;
-//        $search = request()->get('search');
-//
-//        //TODO Брать только промодерированные
-//        //TODO выбрать только нужные поля
-//        $messages = Message::whereHas('from', function($query) use($id1, $id2){
-//            $query->where('id', $id1)->orWhere('id', $id2);
-//        })->whereHas('to', function($query) use($id1, $id2){
-//            $query->where('id', $id1)->orWhere('id', $id2);
-//        });
-//
-
-        //TODO забирать сообщения текущего юзера, которые удалены?
-
+        //TODO search
         $dialog = $dialog->load(['messages' => function($query){
-            $query->with('from');
+            $query->with(['from','media']);
 
             //Если пользователь может модерировать сообщения, или это его сообшения
             if(!Auth::user()->canModerateMessages()) {
@@ -151,12 +176,37 @@ class ChatController extends Controller
             }
         }]);
 
+        //Пути для прикрепленных файлов
+        $dialog->messages->map(function ($item){
+            foreach ($item->media as $k => $media){
+                $item->media[$k]->url =  [
+                    'origin' => $media->getUrl(),
+                    'thumb' =>$media->getUrl('thumb')
+                ];
+            }
+            return $item;
+        });
+
         return $dialog;
     }
 
-    public function setChatRoles()
+    public function getMessages(Dialog $dialog)
     {
+        $messages = Message::where('dialog__id', $dialog->id);
 
+        if(!Auth::user()->canModerateMessages()) {
+            $messages->where('status', '!=', 0)->orWhere('from', Auth::user()->id);
+        }
+        $messages = $messages->map(function ($item){
+            foreach ($item->media as $k => $media){
+                $item->media[$k]->url =  [
+                    'origin' => $media->getUrl(),
+                    'thumb' =>$media->getUrl('thumb')
+                ];
+            }
+            return $item;
+        });
+
+        return $messages;
     }
-
 }

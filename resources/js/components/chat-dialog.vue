@@ -40,6 +40,14 @@
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
                                 <span class="chat-messages__message__time">{{getTime(message.created_at)}}</span><br>
                                 <div class="chat-messages__message__text">{{message.text}}</div>
+                                <div class="chat-messages__message__files" v-if="message.media.length > 0">
+                                    <a :href="file.url.origin"
+                                       v-for="file in message.media"
+                                       target="_blank">
+                                        <img v-if="file.mime_type.indexOf('image') >= 0" :src="file.url.thumb" alt="">
+                                        <span v-else>{{file.file_name}}</span>
+                                    </a>
+                                </div>
                             </div>
                             <chat-message-status
                                     :message="message"
@@ -57,6 +65,7 @@
                         </div>
                     </div>
                 </div>
+                <chat-preloader v-if="isSendingMessage"></chat-preloader>
 
                 <!--</div>-->
 
@@ -64,10 +73,16 @@
         </div>
         <div v-else style="text-align: center;flex: 1 1 0%;  color: #4857CE;  font-size: 17px;  align-items: center;  display: flex; justify-content: center;">Сообщений нет</div>
         <div class="chat__dialog__new-message">
+            <div v-if="attachment.base64" class="chat__dialog__new-message__files">
+                <img v-if="ifFileIsImage(attachment.mime)" :src="attachment.base64">
+                <div>{{uploadedFileName}}</div>
+                <button @click="clearFile">удалить</button>
+            </div>
             <form action="" @submit.prevent="sendMessage">
-                <a href="" class="chat__dialog__new-message__attach">
+                <label for="chat_file_attachment" class="chat__dialog__new-message__attach">
                     <img src="/svg/icons/chat/chat_attach.svg" alt="">
-                </a>
+                    <input id="chat_file_attachment" type="file" ref="file" @change="handleFileUpload">
+                </label>
                 <input v-model="message" type="text" placeholder="Начните вводить сообщение">
                 <button type="submit">
                     <simple-svg class="icon-send"
@@ -99,10 +114,11 @@
     import Velocity from 'velocity-animate'
     import Modal from './modal';
     import ChatMessageStatus from './chat-message-status'
+    import ChatPreloader from './chat-preloader'
 
     export default {
         name: "chat-dialog",
-        components: { 'simple-svg': SimpleSVG, Modal, ChatMessageStatus },
+        components: { 'simple-svg': SimpleSVG, Modal, ChatMessageStatus, ChatPreloader },
         props: ['dialog', 'user'],
         data: () => ({
             ui: {
@@ -114,10 +130,16 @@
             delete_message: {
                 id: null,
                 reason: ''
+            },
+            isSendingMessage: false,
+            attachment: {
+                file: null,
+                status: null,
+                base64: null
             }
         }),
         mounted(){
-            this.scrollToEnd();
+            this.scrollToEnd(true);
         },
         computed: {
             messagesMapped: function () {
@@ -144,6 +166,9 @@
                 stack.push(stackEl);
 
                 return stack
+            },
+            uploadedFileName(){
+                return this.attachment.file ? this.$refs.file.value.split(/(\\|\/)/g).pop() : false
             }
         },
         watch: {
@@ -152,34 +177,64 @@
             // }
         },
         methods: {
-            scrollToEnd(animate = false){
+            scrollToEnd(initial = false){
                 this.$nextTick(() => {
-                    let message_list = this.$refs.message_list;
-                    if(typeof message_list != 'undefined'){
-                        // if(animate) {
-                        //     console.dir(Velocity);
-                        //     Velocity(message_list, 'scroll', { duration: 400 })
-                        // }else{
-                            message_list.scrollTop = message_list.scrollHeight;
-                        // }
 
+                    let message_list = this.$refs.message_list;
+
+                    if(typeof message_list != 'undefined'){
+                        //TODO Добавить опцию анимации?
+
+                        //Ждем загрузки всех картинок, если диалог только открылся
+                        if(initial) {
+                            let images = message_list.querySelectorAll('img');
+                            let counter = 0;
+                            images.forEach((image) => {
+                                image.addEventListener('load', () => {
+                                    counter++
+                                    if (images.length === counter)
+                                        message_list.scrollTop = message_list.scrollHeight;
+                                })
+                            })
+                        }else{
+                            message_list.scrollTop = message_list.scrollHeight;
+                        }
                     }
                 })
             },
             sendMessage(){
-                if(this.message === '')
+                if(this.message === '' && !this.attachment.file)
                     return
-                axios.post('/chat/message', {
-                        message: this.message,
-                        dialog_id: this.dialog.id
+
+                this.isSendingMessage = true;
+                this.scrollToEnd()
+
+                let formData = new FormData()
+
+                formData.append('text', this.message);
+                formData.append('dialog_id', this.dialog.id);
+
+                if(this.attachment.file)
+                    formData.append('file', this.attachment.file)
+
+                axios.post('/chat/message',
+                    formData,
+                    {
+                        headers: { 'Content-Type': 'multipart/form-data' }
                     })
                     .then(res => {
                             this.message = ''
+                            this.isSendingMessage = false;
+
                            //TODO Добавить сообщение через JS или обновить диалог из базы?
                             this.$emit('fresh')
+                            this.clearFile()
+
                             setTimeout(()=>{
-                                this.scrollToEnd(true)
-                            }, 500) //TODO похоже на костыль
+                                this.scrollToEnd()
+                            }, 700) //TODO похоже на костыль
+
+                             new Audio('/chat_message_sent.mp3').play()
                             //this.messages.push(res.data)
                     }).catch(err => {
                         //TODO Добавлять сообщения, которое не отправлено, или показывать тост с ошибкой?
@@ -228,6 +283,41 @@
 
                 var date =  new Date(Date.parse(mySQLDate.replace('-','/','g')));
                 return date.getHours() + ':' + date.getMinutes()
+            },
+            handleFileUpload(){
+                this.attachment.file = this.$refs.file.files[0]
+                this.getFile(this.attachment.file)
+            },
+            getFile(file) {
+                return new Promise((resolve, reject) => {
+                    const fReader = new FileReader();
+                    const img = document.createElement('img');
+
+                    fReader.onload = () => {
+                        file = fReader.result;
+                        console.log(file);
+                        //Определить mime
+                        this.attachment.mime = this.getFileMimeType(fReader.result)
+                        this.attachment.base64 = fReader.result
+                        resolve();
+                    }
+
+                    fReader.readAsDataURL(file);
+                })
+            },
+            getFileMimeType(base64){
+                return base64.substring("data:".length, base64.indexOf(";base64"))
+            },
+            canAcceptFile(){
+
+            },
+            ifFileIsImage(mime){
+                return mime.indexOf('image') >= 0 ? true : false
+            },
+            clearFile(){
+                this.attachment.base64 = null
+                this.attachment.file = null
+                this.$refs.file.value = ''
             }
         }
     }
