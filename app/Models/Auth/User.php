@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function broker()
     {
-        return $this->belongsTo('App\Models\Auth\User', 'id', 'broker_id');
+        return $this->belongsTo('App\Models\Auth\User', 'broker_id', 'id');
     }
 
     //TODO Возможно, сделать 2 отдельных метода для покупателей и продавцов?
@@ -67,6 +67,11 @@ class User extends Authenticatable
     public function canModerateMessages()
     {
         return $this->hasAnyRole(['Админ', 'Главный брокер']) ? true : false;
+    }
+
+    public function dialog()
+    {
+       return $this->belongsTo('App\Chat\Dialog');
     }
 
 }

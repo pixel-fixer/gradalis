@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
     Route::get('', 'ChatController@index');
+    Route::post('dialog', 'ChatController@newDialog');
     Route::get('dialogs', 'ChatController@getDialogs');
-    Route::get('dialog/{dialog}', 'ChatController@getMessages');
+    Route::get('dialog/{dialog}', 'ChatController@getDialog');
+    Route::get('dialog/{dialog}/messages', 'ChatController@getMessages');
     Route::post('message', 'ChatController@newMessage');
     Route::delete('message/{message}', 'ChatController@deleteMessage');
     Route::patch('message/{message}/accept', 'ChatController@acceptMessage');

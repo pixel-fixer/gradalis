@@ -4,10 +4,14 @@ namespace App\Models\Chat;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Message extends Model
+class Message extends Model implements HasMedia
 {
     use SoftDeletes;
+    use HasMediaTrait;
 
     protected $fillable = ['from', 'to', 'text', 'status', 'dialog_id'];
 
@@ -37,5 +41,20 @@ class Message extends Model
     public function to()
     {
         return $this->belongsTo('App\Models\Auth\User','to','id');
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
+
+        $this
+            ->addMediaCollection('attachment')
+            //TODO почему то не работает, протестить
+            ->acceptsFile(function (File $file) {
+                return $file->mimeType === 'image/jpeg' || $file->mimeType === 'image/png' || $file->mimeType === 'application/pdf';
+            });
     }
 }
