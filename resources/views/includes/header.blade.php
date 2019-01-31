@@ -31,16 +31,18 @@
                     <div class="navbar-item is-paddingless">
                         <a class="navbar-item rounded">
                             <img src="{{ asset('/svg/icons/ic_notifications.svg') }}" alt="Not">
-                            <span class="tag is-danger is-rounded tag__count">12</span>
+                            @empty($notifications)
+                                <span class="tag is-danger is-rounded tag__count">{{count($notifications)}}</span>
+                            @endempty
                         </a>
                         <a class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                                             alt="Fav"></a>
-                        <a class="navbar-item basic user"><img src="{{ asset('/img/avatar-1.png') }}"
+                        <a href="/profile" class="navbar-item basic user"><img src="{{ asset('/img/avatar-1.png') }}"
                                                                alt="User"><span
-                                class="is-hidden-mobile">User Name</span></a>
+                                class="is-hidden-mobile">{{ Auth::user()->full_name }}</span></a>
                         <a class="navbar-item basic is-hidden-mobile"><img
                                 src="{{ asset('/svg/icons/ic_balance.svg') }}"
-                                alt="Balance"><span>$100</span></a>
+                                alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
 
                         <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
                                                             content: '$100',

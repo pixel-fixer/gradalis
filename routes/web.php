@@ -58,6 +58,8 @@ Route::get('/ui', function () {
     return view('ui');
 })->middleware('auth');
 
+Route::get('/profile', 'ProfileController@index');
+
 Route::get('/spa/favorites', function () {
     return view('spa.favorites');
 });
