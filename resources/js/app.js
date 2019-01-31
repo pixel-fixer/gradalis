@@ -33,6 +33,7 @@ Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue
 Vue.component('example-form-change-password', require('./components/ExampleFormChangePassword.vue').default);
 Vue.component('example-form-profile-spa', require('./components/ExampleFormProfileSPA.vue').default);
 Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').default);
+Vue.component('example-file-upload-vue', require('./components/ExampleFileUploadVue.vue').default);
 
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);

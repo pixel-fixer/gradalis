@@ -347,6 +347,13 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="columns is-multiline">
+                <div class="column">
+                    <!--<example-file-upload></example-file-upload>-->
+                    <example-file-upload-vue></example-file-upload-vue>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -464,6 +471,7 @@
                     max: 1000000
                 },
                 show: true,
+
             }
         },
         validations: {
@@ -488,7 +496,7 @@
                     return 'Поле обязательно';
                 }
                 ;
-            }
+            },
         },
         computed: {
 
@@ -497,5 +505,42 @@
 </script>
 
 <style scoped>
+    #customdropzone {
+        background-color: orange;
+        font-family: 'Arial', sans-serif;
+        letter-spacing: 0.2px;
+        color: #777;
+        transition: background-color .2s linear;
+        height: 200px;
+        padding: 40px;
+    }
 
+    #customdropzone .dz-preview {
+        width: 160px;
+        display: inline-block
+    }
+    #customdropzone .dz-preview .dz-image {
+        width: 80px;
+        height: 80px;
+        margin-left: 40px;
+        margin-bottom: 10px;
+    }
+    #customdropzone .dz-preview .dz-image > div {
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        background-size: contain;
+    }
+    #customdropzone .dz-preview .dz-image > img {
+        width: 100%;
+    }
+
+    #customdropzone .dz-preview .dz-details {
+        color: white;
+        transition: opacity .2s linear;
+        text-align: center;
+    }
+    #customdropzone .dz-success-mark, .dz-error-mark, .dz-remove {
+        display: none;
+    }
 </style>
