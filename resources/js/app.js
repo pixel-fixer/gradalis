@@ -6,6 +6,8 @@ import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
+import VueRouter from 'vue-router'
+import router from './routes'
 
 window.Vue = Vue;
 Vue.use(VTooltip)
@@ -37,6 +39,8 @@ Vue.component('form-register-seller', require('./components/FormRegisterSeller')
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
 Vue.component('form-add-bussines', require('./components/FormAddBussines').default);
 
+Vue.component('profile', require('./components/profile/profile').default);
+// Vue.component('profile-settings', require('./components/profile/settings').default);
 
 const app = new Vue({
     el: '#app',
@@ -46,6 +50,7 @@ const app = new Vue({
             showDetailedInformation: false
         }
     },
+    router,
     methods: {
         showModal(id) {
             document.getElementById(id).classList.add('is-active');
