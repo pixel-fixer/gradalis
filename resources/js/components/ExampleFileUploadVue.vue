@@ -1,68 +1,15 @@
 <template>
-    <div>
+
+    <div class="field">
+        <label class="label"><span>Фотографии бизнеса</span></label>
         <div class="dropzone-previews">
-            <div class="dropzone-previews__title">Фотографии бизнеса</div>
-            <div class="dropzone-previews-list">
-                <div class="dropzone-previews-item dz-preview">
-                    <figure class="dropzone-previews-item__thumb dz-image">
-                        <img src="https://css-tricks.com/wp-content/uploads/2019/01/alternate-universe.png" alt="">
-                    </figure>
-                    <div class="dropzone-previews-item__info">
-                        <div class="dropzone-previews-item__info__title">worldplanet_front_view.jpg</div>
-                        <div>
-                            <div class="progress">
-                                <span class="progress-text">38%</span>
-                                <div class="dropzone-previews-item__info__progress dz-progress">
-                                    <span class="dz-upload" data-dz-uploadprogress="" style="width: 50%;"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropzone-previews-item__buttons">
-                        <button class="button is-clear is-clear_close is-size-875"><span
-                            class="icon-close">×</span><span class="has-text-decoration-underline">Удалить</span>
-                        </button>
-                    </div>
-                </div>
 
-                <div class="dropzone-previews-item dz-preview dz-success">
-                    <figure class="dropzone-previews-item__thumb dz-image">
-                        <img src="https://css-tricks.com/wp-content/uploads/2019/01/alternate-universe.png" alt="">
-                    </figure>
-                    <div class="dropzone-previews-item__info">
-                        <div class="dropzone-previews-item__info__title">worldplanet_front_view.jpg</div>
-                        <div>
-                            <div class="dropzone-previews-item__info__size">564.23 Kb</div>
-                        </div>
-                    </div>
-                    <div class="dropzone-previews-item__buttons">
-                        <button class="button is-clear is-clear_close is-size-875"><span
-                            class="icon-close">×</span><span class="has-text-decoration-underline">Удалить</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="dropzone-previews-item dz-preview">
-                    <figure class="dropzone-previews-item__thumb dz-image">
-                        <img src="https://css-tricks.com/wp-content/uploads/2019/01/alternate-universe.png" alt="">
-                    </figure>
-                    <div class="dropzone-previews-item__info">
-                        <div class="dropzone-previews-item__info__title">worldplanet_front_view.jpg</div>
-                        <div>
-                            <div class="dropzone-previews-item__info__size">564.23 Kb</div>
-                        </div>
-                    </div>
-                    <div class="dropzone-previews-item__buttons">
-                        <button class="button is-clear is-clear_close is-size-875"><span
-                            class="icon-close">×</span><span class="has-text-decoration-underline">Удалить</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" :useCustomSlot=true
-                      v-on:vdropzone-file-added="attachListener">
+                      v-on:vdropzone-success="attachListener"
+                      v-on:vdropzone-upload-progress="uploadProgress"
+        >
             <div class="dropzone-custom-content">
                 <figure>
                     <img src="/svg/icons/ic_add_files.svg" alt="" class="svg">
@@ -74,57 +21,8 @@
             </div>
         </vue-dropzone>
 
-        <!--<div id="preview-template" style="display: none;">-->
-        <!--<div class="dz-preview dz-file-preview">-->
-        <!--<div class="dz-image"><img data-dz-thumbnail=""></div>-->
-        <!--<div class="dz-details">-->
-        <!--<div class="dz-size"><span data-dz-size=""></span></div>-->
-        <!--<div class="dz-filename"><span data-dz-name=""></span></div>-->
-        <!--</div>-->
-        <!--<div class="dz-progress"><span class="dz-upload"-->
-        <!--data-dz-uploadprogress=""></span></div>-->
-        <!--<div class="dz-error-message"><span data-dz-errormessage=""></span></div>-->
-        <!--<div class="dz-success-mark">-->
-        <!--<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg"-->
-        <!--xmlns:xlink="http://www.w3.org/1999/xlink"-->
-        <!--xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">-->
-        <!--<title>Check</title>-->
-        <!--<desc>Created with Sketch.</desc>-->
-        <!--<defs></defs>-->
-        <!--<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"-->
-        <!--sketch:type="MSPage">-->
-        <!--<path-->
-        <!--d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z"-->
-        <!--id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475"-->
-        <!--fill="#FFFFFF" sketch:type="MSShapeGroup"></path>-->
-        <!--</g>-->
-        <!--</svg>-->
-        <!--</div>-->
-        <!--<div class="dz-error-mark">-->
-        <!--<svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg"-->
-        <!--xmlns:xlink="http://www.w3.org/1999/xlink"-->
-        <!--xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">-->
-        <!--<title>error</title>-->
-        <!--<desc>Created with Sketch.</desc>-->
-        <!--<defs></defs>-->
-        <!--<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"-->
-        <!--sketch:type="MSPage">-->
-        <!--<g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474"-->
-        <!--stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">-->
-        <!--<path-->
-        <!--d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z"-->
-        <!--id="Oval-2" sketch:type="MSShapeGroup"></path>-->
-        <!--</g>-->
-        <!--</g>-->
-        <!--</svg>-->
-        <!--</div>-->
-
-
-        <!--</div>-->
-        <!--</div>-->
-
-
     </div>
+
 </template>
 
 
@@ -140,39 +38,60 @@
             return {
                 dropzoneOptions: {
                     url: 'https://httpbin.org/post',
-                    thumbnailWidth: 150,
+                    thumbnailWidth: 40,
                     maxFilesize: 0.5,
                     headers: {"My-Awesome-Header": "header value"},
                     previewTemplate: this.template(),
                     previewsContainer: ".dropzone-previews",
+                    addRemoveLinks: false,
+                    dictCancelUploadConfirmation: "Вы уверены, что хотите отменить загрузку?"
                 },
             }
         },
         methods: {
             template: function () {
-                return `<div class="dz-preview dz-file-preview">
-                <div class="dz-image">
-                   <img data-dz-thumbnail />
-                </div>
-                <div class="dz-details">
-                    <div class="dz-size"><span data-dz-size></span></div>
-                    <div class="dz-filename"><span data-dz-name></span></div>
-                </div>
-                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                <div class="dz-error-message"><span data-dz-errormessage></span></div>
-                <div class="dz-success-mark"><i class="fa fa-check"></i></div>
-                <div class="dz-error-mark"><i class="fa fa-close"></i></div>
-            </div>`;
-            },
-            say: function (message) {
-                alert(message)
+                return `
+                <div class="dropzone-previews-item dz-preview dz-file-preview">
+                    <figure class="dz-image">
+                            <img data-dz-thumbnail />
+                            <div class="tooltip vue-tooltip-theme">
+                                <div class="tooltip-arrow"></div>
+                                <div class="tooltip-inner">Сделать обложкой</div>
+                            </div>
+                    </figure>
+                    <div class="dz-preview__info">
+                        <div class="dz-filename"><span data-dz-name></span></div>
+
+                          <div class="dz-details">
+                            <div class="dz-progress-wrap">
+                                <span class="dz-progress-text"></span>
+                                <div class="dz-progress">
+                                    <span class="dz-upload" data-dz-uploadprogress></span>
+                                </div>
+                            </div>
+                            <div class="dz-size"><span data-dz-size=""></span></div>
+                            <div class="dz-error-message"><span class="has-text-danger" data-dz-errormessage=""></span></div>
+                        </div>
+
+                    </div>
+                    <div class="dz-buttons">
+                        <button class="button is-clear is-clear_close is-size-875 dz-delete-file" data-dz-remove><span
+                            class="icon-close">×</span><span class="has-text-decoration-underline">Удалить</span>
+                        </button>
+                    </div>
+                </div>`;
             },
             attachListener: function (file) {
-                let vm = this;
+
                 file.previewElement.querySelector('.dz-image').addEventListener("click", function () {
-                    console.log(this);
-                    vm.say('asd')
-                })
+                    // Логика установки картинки обложкой
+                    console.log('click');
+                });
+
+            },
+            uploadProgress: function (file, progress, bytesSent) {
+                var progressElement = file.previewElement.querySelector("[data-dz-uploadprogress]");
+                progressElement.closest(".dz-progress-wrap").querySelector(".dz-progress-text").textContent = Math.round(progress) + "%";
             }
         }
     }

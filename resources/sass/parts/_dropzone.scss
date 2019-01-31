@@ -58,16 +58,10 @@
     }
 
     &-previews {
-        &__title {
-            font-size: .875rem;
-            color: $text;
-        }
 
-        &-list {
 
-        }
+        .dz-preview {
 
-        &-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -78,10 +72,57 @@
                 border-bottom: 0;
             }
 
-            &__thumb {
+            &.dz-processing {
+                .dz-progress {
+                    opacity: 1;
+                }
+
+                .dz-progress-wrap {
+                    display: flex;
+                }
+            }
+
+            &.dz-complete {
+                .dz-progress {
+                    opacity: 0;
+                }
+
+                .dz-progress-wrap {
+                    display: none;
+                }
+            }
+
+            &.dz-success {
+                .dz-image {
+                    cursor: pointer;
+                    &:before {
+                        transform: scale(1);
+                    }
+                    &:hover {
+                        &:after {
+                            opacity: 1;
+                        }
+
+                        .tooltip {
+                            display: block !important;
+                        }
+                    }
+                }
+            }
+
+            &.basic {
+                .dz-image {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .dz-image {
                 margin-right: 1rem;
                 width: 2.5rem;
                 height: 2.5rem;
+
                 img {
                     width: 100%;
                     height: 100%;
@@ -96,66 +137,57 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                //padding: .125rem 0;
                 min-height: 2.5rem;
 
-                &__title {
-                    color: $very-dark-blue-2;
-                    font-size: .875rem;
-                    //padding-top: 0.125rem;
-                }
-
-                &__size {
-                    color: #8B97A9;
-                    font-size: .875rem;
-                }
-
-                .progress {
+                .dz-details {
                     display: flex;
-                    align-items: center;
-                    &-text {
+
+                    > div {
+                        margin-right: 0.5rem;
                         color: #8B97A9;
                         font-size: .875rem;
-                        margin-right: .5rem;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        &.dz-size {
+                            strong {
+                                color: inherit;
+                                font-weight: normal;
+                            }
+                        }
                     }
                 }
 
-                //&__progress {
-                //    transition: $transition;
-                //}
+                .dz-filename {
+                    color: $very-dark-blue-2;
+                    font-size: .875rem;
+                }
+
+
+                .dz-progress-wrap {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .dz-progress-text {
+                    margin-right: 0.5rem;
+
+                }
+
 
             }
 
-            &__buttons {
+            .dz-buttons {
                 display: flex;
                 align-items: center;
             }
-        }
 
-
-//
-        .dz-preview {
-            &.dz-complete {
-                .dz-progress {
-                    opacity: 0;
-                }
-            }
-            &.dz-processing {
-                .dz-progress {
-                    opacity: 1;
-                }
-            }
-
-            &.dz-success {
-                .dz-image {
-                    &:before {
-                        display: block;
-                    }
-                }
-            }
 
             .dz-image {
                 position: relative;
+
                 &:before {
                     position: absolute;
                     content: "";
@@ -169,7 +201,40 @@
                     border-radius: 50%;
                     right: -0.25rem;
                     top: -0.25rem;
-                    display: none;
+                    transform: scale(0);
+                    z-index: 2;
+                }
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    //transition: $transition;
+                    background-image: url(../../img/check_circle.svg);
+                    background-size: 1.375rem;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: rgba($very-dark-blue-2, 0.8);
+                    border-radius: $radius;
+                }
+
+                .tooltip {
+                    display: none !important;
+                    width: 9rem;
+                    text-align: center;
+                    position: absolute;
+                    top: -2rem;
+                    left: 0rem;
+
+                    &-arrow {
+                        left: 1rem;
+                        bottom: -.5rem;
+                        transform: rotate(45deg);
+                    }
                 }
             }
 
@@ -180,6 +245,7 @@
                 width: 8.25rem;
                 border-radius: $radius;
                 position: relative;
+
                 .dz-upload {
                     border-radius: $radius;
                     transition: $transition;
