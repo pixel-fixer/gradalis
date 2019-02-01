@@ -305,6 +305,12 @@ input.input {
     margin-bottom: 12px;
     cursor: pointer;
     user-select: none;
+
+    &.h3 {
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+    }
+
     /* Hide the browser's default checkbox */
     input {
         position: absolute;
@@ -386,10 +392,6 @@ input.input {
 
 .radio {
     margin-right: 1rem;
-    &.h3 {
-        margin-top: .75rem;
-        margin-bottom: .75rem;
-    }
 }
 
 .checkbox {

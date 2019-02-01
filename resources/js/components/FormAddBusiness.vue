@@ -402,7 +402,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column is-6">
+                    <div class="column is-12">
                         <div class="field">
                             <div class="control">
                                 <label class="checkbox is-info is-size-875" v-model="steps[1].form.accept.value">
@@ -465,7 +465,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                   {{steps[2].form.priceShares.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -490,7 +490,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                   {{steps[2].form.netAverageAnnualProfit.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -514,7 +514,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                   {{steps[2].form.netAverageQuarterlyProfit.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -539,7 +539,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                    {{steps[2].form.averageAnnualTurnover.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -563,7 +563,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                 {{steps[2].form.averageQuarterlyTurnover.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -587,7 +587,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                   {{steps[2].form.costBusinessPerYear.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -611,7 +611,7 @@
                         <div class="field has-addons">
                             <p class="control">
                                 <span class="button is-static is-size-875">
-                                   zł
+                                  {{steps[2].form.costBusinessPerQuarter.prevTxt}}
                                 </span>
                             </p>
                             <div class="control is-expanded has-icons-right has-icons-right_1">
@@ -706,8 +706,753 @@
             </div>
         </div>
         <div v-show="step === 3">
-            <div class="box">
-                Step 3 Content
+            <div class="box step px-0">
+                <div class="px-1-5">
+                    <div class="step__header">
+                        <div class="columns is-multiline">
+                            <div class="column is-6">
+                                <h3><img src="/svg/icons/ic_object_building.svg" alt=""
+                                         class="svg"><span>{{steps[3].title}}</span>
+                                </h3>
+                            </div>
+                            <div class="column is-6">
+                                <div class="add-business__progress is-flex">
+                                    <figure>
+                                        <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                    </figure>
+                                    <div class="add-business__progress__info">
+                                        <div class="is-size-875">Успех на продажу бизнеса</div>
+                                        <div class="progress-wrap is-flex">
+                                            <progress class="progress is-success is-small" value="16"
+                                                      max="100"></progress>
+                                            <div class="has-text-success has-text-weight-bold percent">15.35%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-multiline">
+                    <div class="column is-12">
+                        <div class="add-business__objects-list">
+                            <div class="add-business__objects-item px-1-5"
+                                 v-for="(item, index) in steps[3].form.objects">
+                                <h3 class="mb-1">Объект №1</h3>
+                                <div class="columns is-multiline address-wrap">
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].categoryProperty.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].categoryProperty.selected"
+                                                    :deselect-label="steps[3].form.objects[index].categoryProperty.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].categoryProperty.placeholder"
+                                                    :options="steps[3].form.objects[index].categoryProperty.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].categoryProperty.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].categoryProperty.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].typeProperty.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].typeProperty.selected"
+                                                    :deselect-label="steps[3].form.objects[index].typeProperty.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].typeProperty.placeholder"
+                                                    :options="steps[3].form.objects[index].typeProperty.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].typeProperty.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].typeProperty.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <label
+                                            class="label label_req"><span>{{steps[3].form.objects[index].numberSquareMeters.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[3].form.objects[index].numberSquareMeters.prevTxt}}
+                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[3].form.objects[index].numberSquareMeters.value"
+                                                       :placeholder="steps[3].form.objects[index].numberSquareMeters.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[3].form.objects[index].numberSquareMeters.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-12">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].priceSquareMeters.title}}</span></label>
+                                                <div class="columns is-multiline">
+                                                    <div class="column is-6">
+                                                        <div class="field has-addons">
+                                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[3].form.objects[index].priceSquareMeters.prevTxt}}
+                                                </span>
+                                                            </p>
+                                                            <div
+                                                                class="control is-expanded has-icons-right has-icons-right_1">
+                                                                <input type="number"
+                                                                       class="input is-size-875"
+                                                                       v-model="steps[3].form.objects[index].priceSquareMeters.value"
+                                                                       :placeholder="steps[3].form.objects[index].priceSquareMeters.placeholder"
+                                                                >
+                                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[3].form.objects[index].priceSquareMeters.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="column is-6">
+                                                        <div class="field mt-2-5">
+                                                            <div class="control">
+                                                                <label class="checkbox is-info is-size-875 h3"
+                                                                       v-model="steps[3].form.objects[index].priceIncludingVAT.value">
+                                                                    <input type="checkbox">
+                                                                    <span>{{steps[3].form.objects[index].priceIncludingVAT.title}}</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req no-wrap"><span>{{steps[3].form.objects[index].titleDocuments.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].titleDocuments.selected"
+                                                    :deselect-label="steps[3].form.objects[index].titleDocuments.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].titleDocuments.placeholder"
+                                                    :options="steps[3].form.objects[index].titleDocuments.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].titleDocuments.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].titleDocuments.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].restrictionsOperation.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].restrictionsOperation.selected"
+                                                    :deselect-label="steps[3].form.objects[index].restrictionsOperation.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].restrictionsOperation.placeholder"
+                                                    :options="steps[3].form.objects[index].restrictionsOperation.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].restrictionsOperation.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].restrictionsOperation.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label"><span>{{steps[3].form.objects[index].listRestrictionsOperation.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].listRestrictionsOperation.selected"
+                                                    :deselect-label="steps[3].form.objects[index].listRestrictionsOperation.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :multiple="true"
+                                                    :class="'multiselect_multiple'"
+                                                    :placeholder="steps[3].form.objects[index].listRestrictionsOperation.placeholder"
+                                                    :options="steps[3].form.objects[index].listRestrictionsOperation.options"
+                                                    :searchable="true"
+                                                    :close-on-select="false"
+                                                    :allow-empty="true"
+                                                    :selectLabel="steps[3].form.objects[index].listRestrictionsOperation.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].listRestrictionsOperation.selectedLabel">
+                                                    <span slot="noResult">{{steps[3].form.objects[index].listRestrictionsOperation.noResult}}</span>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].refRegisterEstate.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].refRegisterEstate.selected"
+                                                    :deselect-label="steps[3].form.objects[index].refRegisterEstate.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].refRegisterEstate.placeholder"
+                                                    :options="steps[3].form.objects[index].refRegisterEstate.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].refRegisterEstate.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].refRegisterEstate.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].technicalPropertyPlan.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].technicalPropertyPlan.selected"
+                                                    :deselect-label="steps[3].form.objects[index].technicalPropertyPlan.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].technicalPropertyPlan.placeholder"
+                                                    :options="steps[3].form.objects[index].technicalPropertyPlan.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].technicalPropertyPlan.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].technicalPropertyPlan.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].coordinationRedevelopment.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].coordinationRedevelopment.selected"
+                                                    :deselect-label="steps[3].form.objects[index].coordinationRedevelopment.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].coordinationRedevelopment.placeholder"
+                                                    :options="steps[3].form.objects[index].coordinationRedevelopment.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].coordinationRedevelopment.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].coordinationRedevelopment.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].availabilityMortgage.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].availabilityMortgage.selected"
+                                                    :deselect-label="steps[3].form.objects[index].availabilityMortgage.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].availabilityMortgage.placeholder"
+                                                    :options="steps[3].form.objects[index].availabilityMortgage.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].availabilityMortgage.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].availabilityMortgage.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].totalAmountMortgage.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].totalAmountMortgage.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].totalAmountMortgage.value"
+                                                               :placeholder="steps[3].form.objects[index].totalAmountMortgage.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].totalAmountMortgage.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].repaidAmountMortgage.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].repaidAmountMortgage.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].repaidAmountMortgage.value"
+                                                               :placeholder="steps[3].form.objects[index].repaidAmountMortgage.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].repaidAmountMortgage.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].balanceMortgage.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].balanceMortgage.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].balanceMortgage.value"
+                                                               :placeholder="steps[3].form.objects[index].balanceMortgage.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].balanceMortgage.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].monthlyPaymentMortgage.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].monthlyPaymentMortgage.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].monthlyPaymentMortgage.value"
+                                                               :placeholder="steps[3].form.objects[index].monthlyPaymentMortgage.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].monthlyPaymentMortgage.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].finalPaymentMortgageDate.title}}</span></label>
+                                            <div
+                                                class="control has-icons-right has-icons-right_1 has-icons-left has-icons-left_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[3].form.objects[index].finalPaymentMortgageDate.value"
+                                                       :placeholder="steps[3].form.objects[index].finalPaymentMortgageDate.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[3].form.objects[index].finalPaymentMortgageDate.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                                </div>
+                                                <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
+                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].availabilityLoanSecuredObject.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].availabilityLoanSecuredObject.selected"
+                                                    :deselect-label="steps[3].form.objects[index].availabilityLoanSecuredObject.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].availabilityLoanSecuredObject.placeholder"
+                                                    :options="steps[3].form.objects[index].availabilityLoanSecuredObject.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].availabilityLoanSecuredObject.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].availabilityLoanSecuredObject.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].totalAmountCredit.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].totalAmountCredit.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].totalAmountCredit.value"
+                                                               :placeholder="steps[3].form.objects[index].totalAmountCredit.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].totalAmountCredit.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].repaidAmountCredit.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].repaidAmountCredit.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].repaidAmountCredit.value"
+                                                               :placeholder="steps[3].form.objects[index].repaidAmountCredit.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].repaidAmountCredit.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].balanceCredit.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].balanceCredit.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].balanceCredit.value"
+                                                               :placeholder="steps[3].form.objects[index].balanceCredit.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].balanceCredit.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="column is-6">
+                                                <label class="label label_req"><span>{{steps[3].form.objects[index].monthlyPaymentCredit.title}}</span></label>
+                                                <div class="field has-addons">
+                                                    <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].monthlyPaymentCredit.prevTxt}}
+                                        </span>
+                                                    </p>
+                                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].monthlyPaymentCredit.value"
+                                                               :placeholder="steps[3].form.objects[index].monthlyPaymentCredit.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].monthlyPaymentCredit.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label
+                                                        class="label label_req"><span>{{steps[3].form.objects[index].finalPaymentCreditDate.title}}</span></label>
+                                                    <div
+                                                        class="control has-icons-right has-icons-right_1 has-icons-left has-icons-left_1">
+                                                        <input type="number"
+                                                               class="input is-size-875"
+                                                               v-model="steps[3].form.objects[index].finalPaymentCreditDate.value"
+                                                               :placeholder="steps[3].form.objects[index].finalPaymentCreditDate.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[3].form.objects[index].finalPaymentCreditDate.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                                        </div>
+                                                        <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
+                                  </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label
+                                                        class="label label_req"><span>{{steps[3].form.objects[index].purposeCredit.title}}</span></label>
+                                                    <div class="control">
+                                                        <multiselect
+                                                            v-model="steps[3].form.objects[index].purposeCredit.selected"
+                                                            :deselect-label="steps[3].form.objects[index].purposeCredit.deselectLabel"
+                                                            track-by="name"
+                                                            label="name"
+                                                            openDirection="bottom"
+                                                            :placeholder="steps[3].form.objects[index].purposeCredit.placeholder"
+                                                            :options="steps[3].form.objects[index].purposeCredit.options"
+                                                            :searchable="true"
+                                                            :allow-empty="false"
+                                                            :selectLabel="steps[3].form.objects[index].purposeCredit.selectLabel"
+                                                            :selectedLabel="steps[3].form.objects[index].purposeCredit.selectedLabel">
+                                                            <template slot="singleLabel" slot-scope="{ option }">{{
+                                                                option.name
+                                                                }}
+                                                            </template>
+                                                        </multiselect>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].jointPropertyEstate.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].jointPropertyEstate.selected"
+                                                    :deselect-label="steps[3].form.objects[index].jointPropertyEstate.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].jointPropertyEstate.placeholder"
+                                                    :options="steps[3].form.objects[index].jointPropertyEstate.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].jointPropertyEstate.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].jointPropertyEstate.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].typeRelationshipCoowners.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[3].form.objects[index].typeRelationshipCoowners.selected"
+                                                    :deselect-label="steps[3].form.objects[index].typeRelationshipCoowners.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[3].form.objects[index].typeRelationshipCoowners.placeholder"
+                                                    :options="steps[3].form.objects[index].typeRelationshipCoowners.options"
+                                                    :searchable="true"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[3].form.objects[index].typeRelationshipCoowners.selectLabel"
+                                                    :selectedLabel="steps[3].form.objects[index].typeRelationshipCoowners.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <label
+                                            class="label label_req"><span>{{steps[3].form.objects[index].monthlyUtilityCosts.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                        <span class="button is-static is-size-875">
+                                           {{steps[3].form.objects[index].monthlyUtilityCosts.prevTxt}}
+                                        </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[3].form.objects[index].monthlyUtilityCosts.value"
+                                                       :placeholder="steps[3].form.objects[index].monthlyUtilityCosts.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[3].form.objects[index].monthlyUtilityCosts.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[3].form.objects[index].houseBookNumber.title}}</span></label>
+                                            <div class="control has-icons-right has-icons-right_1">
+                                                <input type="text"
+                                                       class="input is-size-875"
+                                                       v-model="steps[3].form.objects[index].houseBookNumber.value"
+                                                       :placeholder="steps[3].form.objects[index].houseBookNumber.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[3].form.objects[index].houseBookNumber.tooltipAddress">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-1-5">
+                    <div class="step__footer">
+                        <div class="columns is-multiline">
+                            <div class="column is-12">
+                                <div class="buttons">
+                                    <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                            @click="toggleStep(3)">
+                                        <span>Шаг 3: Информация о недвижимости</span>
+                                        <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                    </button>
+                                    <button class="button is-clear is-clear_close is-size-875 h-3"
+                                            @click="toggleStep(1)">
+                                        <span class="has-text-decoration-underline">Вернуться назад</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div v-show="step === 4">
@@ -931,77 +1676,396 @@
                             },
                         }
                     },
-                    2:
-                        {
-                            title: "Финансовые показатели",
-                            active: false,
-                            success: false,
-                            form: {
-                                priceShares: {
-                                    title: 'Цена долей или акций',
-                                    placeholder: '100 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                netAverageAnnualProfit: {
-                                    title: 'Чистая средняя годовая прибыль',
-                                    placeholder: '1 000 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                netAverageQuarterlyProfit: {
-                                    title: 'Чистая средняя квартальная прибыль',
-                                    placeholder: '50 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                averageAnnualTurnover: {
-                                    title: 'Средний годовой оборот',
-                                    placeholder: '10 000 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                averageQuarterlyTurnover: {
-                                    title: 'Средний квартальный оборот',
-                                    placeholder: '500 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                costBusinessPerYear: {
-                                    title: 'Затраты на коммерческую деятельность в год',
-                                    placeholder: '25 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                costBusinessPerQuarter: {
-                                    title: 'Затраты на коммерческую деятельность в квартал',
-                                    placeholder: '100 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                positiveScenario: {
-                                    title: 'Позитивный сценарий (в месяцах)',
-                                    placeholder: '12',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                negativeScenario: {
-                                    title: 'Негативный сценарий (в месяцах)',
-                                    placeholder: '36',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
+                    2: {
+                        title: "Финансовые показатели",
+                        active: false,
+                        success: false,
+                        form: {
+                            priceShares: {
+                                title: 'Цена долей или акций',
+                                placeholder: '100 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
                             },
-                            labelReturnInvestment: 'Окупаемость вложенных средств'
-                        }
-                    ,
+                            netAverageAnnualProfit: {
+                                title: 'Чистая средняя годовая прибыль',
+                                placeholder: '1 000 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            netAverageQuarterlyProfit: {
+                                title: 'Чистая средняя квартальная прибыль',
+                                placeholder: '50 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            averageAnnualTurnover: {
+                                title: 'Средний годовой оборот',
+                                placeholder: '10 000 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            averageQuarterlyTurnover: {
+                                title: 'Средний квартальный оборот',
+                                placeholder: '500 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            costBusinessPerYear: {
+                                title: 'Затраты на коммерческую деятельность в год',
+                                placeholder: '25 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            costBusinessPerQuarter: {
+                                title: 'Затраты на коммерческую деятельность в квартал',
+                                placeholder: '100 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            positiveScenario: {
+                                title: 'Позитивный сценарий (в месяцах)',
+                                placeholder: '12',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            negativeScenario: {
+                                title: 'Негативный сценарий (в месяцах)',
+                                placeholder: '36',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                        },
+                        labelReturnInvestment: 'Окупаемость вложенных средств'
+                    },
                     3:
                         {
                             title: "Недвижимость",
-                            active:
-                                false,
-                            success:
-                                false
+                            active: false,
+                            success: false,
+                            form: {
+                                objects: [
+                                    {
+                                        categoryProperty: {
+                                            selected: null,
+                                            title: 'Тип собственности объекта',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        typeProperty: {
+                                            selected: null,
+                                            title: 'Тип недвижимости',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        numberSquareMeters: {
+                                            title: 'Количество кв. метров',
+                                            placeholder: '12',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'кв.м.',
+                                        },
+                                        priceSquareMeters: {
+                                            title: 'Цена за кв. метр',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        priceIncludingVAT: {
+                                            title: 'Цена с учетом НДС',
+                                            value: false,
+                                        },
+                                        titleDocuments: {
+                                            selected: null,
+                                            title: 'Правоустанавливающие документы',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        restrictionsOperation: {
+                                            selected: null,
+                                            title: 'Огрничения по эксплуатции',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        listRestrictionsOperation: {
+                                            selected: null,
+                                            title: 'Укажите ограничения',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ],
+                                            noResult: 'Ничего не найдено'
+                                        },
+                                        refRegisterEstate: {
+                                            selected: null,
+                                            title: 'Справка из регистра недв. и зданий',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        technicalPropertyPlan: {
+                                            selected: null,
+                                            title: 'Технический план недвижимости',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        coordinationRedevelopment: {
+                                            selected: null,
+                                            title: 'Согласование перепланировок',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        availabilityMortgage: {
+                                            selected: null,
+                                            title: 'Наличие ипотеки по объекту',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        totalAmountMortgage: {
+                                            title: 'Общая сумма ипотеки',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        repaidAmountMortgage: {
+                                            title: 'Погашенная сумма',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        balanceMortgage: {
+                                            title: 'Остаток суммы ипотеки',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        monthlyPaymentMortgage: {
+                                            title: 'Ежемесячный платёж',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        finalPaymentMortgageDate: {
+                                            title: 'Окончательный срок выплаты',
+                                            placeholder: '25 марта 2020',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        availabilityLoanSecuredObject: {
+                                            selected: null,
+                                            title: 'Наличие кредита под залог объекта',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        totalAmountCredit: {
+                                            title: 'Общая сумма кредита',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        repaidAmountCredit: {
+                                            title: 'Погашенная сумма',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        balanceCredit: {
+                                            title: 'Остаток суммы кредита',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        monthlyPaymentCredit: {
+                                            title: 'Ежемесячный платёж',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        finalPaymentCreditDate: {
+                                            title: 'Окончательный срок выплаты',
+                                            placeholder: '25 марта 2020',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        purposeCredit: {
+                                            selected: null,
+                                            title: 'Назначение кредита',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        jointPropertyEstate: {
+                                            selected: null,
+                                            title: 'Совместная собственность недвижимости',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        typeRelationshipCoowners: {
+                                            selected: null,
+                                            title: 'Тип взаимоотношений сообственников',
+                                            placeholder: 'Выберите',
+                                            selectedLabel: '',
+                                            selectLabel: '',
+                                            deselectLabel: '',
+                                            options: [
+                                                {id: '1', name: 'Item 1'},
+                                                {id: '2', name: 'Item 2'},
+                                                {id: '3', name: 'Item 3'},
+                                                {id: '4', name: 'Item 4'},
+                                                {id: '5', name: 'Item 5'},
+                                                {id: '6', name: 'Item 6'},
+                                            ]
+                                        },
+                                        monthlyUtilityCosts: {
+                                            title: 'Ежемесячные расходы на комуннальные платежи',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                            prevTxt: 'zł',
+                                        },
+                                        houseBookNumber: {
+                                            title: 'Номер домовой книги',
+                                            placeholder: '1 000',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                        },
+                                    },
+                                ],
+                            }
                         }
                     ,
                     4:
