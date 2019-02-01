@@ -118,6 +118,17 @@
 
             }
         }
+        &__footer {
+            .button-next {
+                span {
+                    margin-right: .5rem;
+                }
+                svg {
+                    width: .625rem;
+                    height: .625rem;
+                }
+            }
+        }
 
         .address-wrap {
             &:not(:last-child) {
@@ -141,24 +152,16 @@
         }
 
         .button {
-            border-radius: 50%;
-            width: 2.5rem;
-            height: 2.5rem;
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 1.25rem;
-            line-height: 1em;
-            padding: .5rem;
-            &-add {
-
-                //img {
-                //    width: 1rem;
-                //    height: 1rem;
-                //}
-            }
-
+            &-add,
             &-remove {
-
+                border-radius: 50%;
+                width: 2.5rem;
+                height: 2.5rem;
+                margin-top: 2rem;
+                text-align: center;
+                font-size: 1.25rem;
+                line-height: 1em;
+                padding: .5rem;
             }
         }
 

@@ -5,7 +5,8 @@
         border-radius: $radius;
         border: .125rem dashed;
         border-color: $light-grayish-blue;
-        background-color: $body-background-color;
+        //background-color: $body-background-color;
+        background-color: transparent;
         min-height: 6.625rem;
         display: flex;
         justify-content: center;

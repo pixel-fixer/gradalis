@@ -38,6 +38,7 @@ Vue.component('example-file-upload-vue', require('./components/ExampleFileUpload
 Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
 Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
 Vue.component('form-add-business', require('./components/FormAddBusiness').default);
+Vue.component('upload-photo-business', require('./components/UploadPhotoBusiness.vue').default);
 
 Vue.component('profile', require('./components/profile/profile').default);
 // Vue.component('profile-settings', require('./components/profile/settings').default);

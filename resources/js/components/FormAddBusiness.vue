@@ -159,7 +159,7 @@
                                     <label class="label label_req"><span>{{steps[1].form.addresses.list[index].address.title}}</span></label>
                                     <div class="control has-icons-right has-icons-right_1">
                                         <input type="text"
-                                               class="input is-size-875" name="input_ir"
+                                               class="input is-size-875" 
                                                v-model="steps[1].form.addresses.list[index].address.value"
                                                :placeholder="steps[1].form.addresses.list[index].address.placeholder"
                                         >
@@ -253,7 +253,7 @@
                             <label class="label label_req"><span>{{steps[1].form.nameLegalEntity.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <input type="text"
-                                       class="input is-size-875" name="input_ir"
+                                       class="input is-size-875" 
                                        v-model="steps[1].form.nameLegalEntity.value"
                                        :placeholder="steps[1].form.nameLegalEntity.placeholder"
                                 >
@@ -270,7 +270,7 @@
                             <label class="label label_req"><span>{{steps[1].form.nameBusiness.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <input type="text"
-                                       class="input is-size-875" name="input_ir"
+                                       class="input is-size-875" 
                                        v-model="steps[1].form.nameBusiness.value"
                                        :placeholder="steps[1].form.nameBusiness.placeholder"
                                 >
@@ -302,7 +302,7 @@
                             <label class="label label_req"><span>{{steps[1].form.numberShares.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_2">
                                 <input type="text"
-                                       class="input is-size-875" name="input_ir"
+                                       class="input is-size-875" 
                                        v-model="steps[1].form.numberShares.value"
                                        :placeholder="steps[1].form.numberShares.placeholder"
                                 >
@@ -314,6 +314,116 @@
                                     <img src="/svg/icons/ic_lock.svg" class="svg" alt="">
                                   </span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label label_req"><span>{{steps[1].form.descriptionBusiness.title}}</span></label>
+                            <div class="control has-icons-right has-icons-right_1">
+                                <textarea class="textarea is-size-875" v-model="steps[1].form.descriptionBusiness.value"
+                                          :placeholder="steps[1].form.descriptionBusiness.placeholder"></textarea>
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[1].form.descriptionBusiness.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label label_req"><span>{{steps[1].form.yearFoundationBusiness.title}}</span></label>
+                            <div class="control has-icons-right has-icons-right_1 has-icons-left has-icons-left_1">
+                                <input type="number"
+                                       class="input is-size-875" 
+                                       v-model="steps[1].form.yearFoundationBusiness.value"
+                                       :placeholder="steps[1].form.yearFoundationBusiness.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[1].form.yearFoundationBusiness.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                                <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label label_req"><span>{{steps[1].form.reasonSale.title}}</span></label>
+                            <div class="control has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875" 
+                                       v-model="steps[1].form.reasonSale.value"
+                                       :placeholder="steps[1].form.reasonSale.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[1].form.reasonSale.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12">
+                        <upload-photo-business></upload-photo-business>
+                    </div>
+
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
+                            <div class="control">
+                                <input type="text"
+                                       class="input is-size-875" 
+                                       v-model="steps[1].form.nameVideoReview.value"
+                                       :placeholder="steps[1].form.nameVideoReview.placeholder"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
+                            <div class="control">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[1].form.linkVideoReview.value"
+                                       :placeholder="steps[1].form.linkVideoReview.placeholder"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox is-info is-size-875"  v-model="steps[1].form.accept.value">
+                                    <input type="checkbox" name="remember">
+                                    <span>Принимаю <a href="#" class="has-text-info is-link">условия данного раздела</a> и <a href="#" class="has-text-info is-link">договора о неразглашении (NDA)</a></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="step__footer">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="buttons">
+                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(2)">
+                                    <span>Шаг 2: Указать финансовые показатели</span>
+                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                </button>
+                                <button class="button is-clear is-clear_close is-size-875 h-3">
+                                    <span class="has-text-decoration-underline">Отменить</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -516,7 +626,38 @@
                                 value: '',
                                 tooltip: 'tooltip text',
                                 tooltipLock: 'tooltip lock',
-
+                            },
+                            descriptionBusiness: {
+                                title: 'Описание бизнеса',
+                                placeholder: 'Опишите продаваемый бизнес',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            yearFoundationBusiness: {
+                                title: 'Год основания бизнеса',
+                                placeholder: '2007',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            reasonSale: {
+                                title: 'Причина продажи',
+                                placeholder: 'Опишите причину продажи',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            nameVideoReview: {
+                                title: 'Название видеообзора',
+                                placeholder: 'Укажите название видеообзора',
+                                value: '',
+                            },
+                            linkVideoReview: {
+                                title: 'Видеобзор бизнеса',
+                                placeholder: 'http://',
+                                value: '',
+                            },
+                            accept: {
+                                // title: 'Видеобзор бизнеса',
+                                value: false,
                             },
                         }
                     },
