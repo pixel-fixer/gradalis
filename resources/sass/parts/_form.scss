@@ -105,6 +105,7 @@ input.input {
                 box-shadow: $input-shadow;
                 padding-left: 1rem;
                 padding-right: 1rem;
+                height: 100%;
             }
         }
     }
@@ -149,6 +150,7 @@ input.input {
             .input {
                 padding-left: 3em;
                 padding-right: calc(100% - 4.5em);
+                text-align: center;
             }
 
             .text {
@@ -716,4 +718,35 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+}
+
+.buttons-control-input-number {
+    display: flex;
+    flex-direction: column;
+    .plus,
+    .minus {
+        width: .625rem;
+        height: .375rem;
+        margin: .125rem;
+        pointer-events: auto;
+        cursor: pointer;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &:hover {
+            svg {
+                path {
+                    fill: $cyan;
+                }
+            }
+        }
+    }
+    .plus {
+        transform: scale(1, -1)
+    }
+    .minus {
+
+    }
 }

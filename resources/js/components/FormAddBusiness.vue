@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <template v-if="step === 1">
+        <div v-show="step === 1">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -159,7 +159,7 @@
                                     <label class="label label_req"><span>{{steps[1].form.addresses.list[index].address.title}}</span></label>
                                     <div class="control has-icons-right has-icons-right_1">
                                         <input type="text"
-                                               class="input is-size-875" 
+                                               class="input is-size-875"
                                                v-model="steps[1].form.addresses.list[index].address.value"
                                                :placeholder="steps[1].form.addresses.list[index].address.placeholder"
                                         >
@@ -253,7 +253,7 @@
                             <label class="label label_req"><span>{{steps[1].form.nameLegalEntity.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <input type="text"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.nameLegalEntity.value"
                                        :placeholder="steps[1].form.nameLegalEntity.placeholder"
                                 >
@@ -270,7 +270,7 @@
                             <label class="label label_req"><span>{{steps[1].form.nameBusiness.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <input type="text"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.nameBusiness.value"
                                        :placeholder="steps[1].form.nameBusiness.placeholder"
                                 >
@@ -302,7 +302,7 @@
                             <label class="label label_req"><span>{{steps[1].form.numberShares.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_2">
                                 <input type="text"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.numberShares.value"
                                        :placeholder="steps[1].form.numberShares.placeholder"
                                 >
@@ -320,7 +320,8 @@
 
                     <div class="column is-12">
                         <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.descriptionBusiness.title}}</span></label>
+                            <label
+                                class="label label_req"><span>{{steps[1].form.descriptionBusiness.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <textarea class="textarea is-size-875" v-model="steps[1].form.descriptionBusiness.value"
                                           :placeholder="steps[1].form.descriptionBusiness.placeholder"></textarea>
@@ -334,10 +335,11 @@
                     </div>
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.yearFoundationBusiness.title}}</span></label>
+                            <label
+                                class="label label_req"><span>{{steps[1].form.yearFoundationBusiness.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1 has-icons-left has-icons-left_1">
                                 <input type="number"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.yearFoundationBusiness.value"
                                        :placeholder="steps[1].form.yearFoundationBusiness.placeholder"
                                 >
@@ -359,7 +361,7 @@
                             <label class="label label_req"><span>{{steps[1].form.reasonSale.title}}</span></label>
                             <div class="control has-icons-right has-icons-right_1">
                                 <input type="text"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.reasonSale.value"
                                        :placeholder="steps[1].form.reasonSale.placeholder"
                                 >
@@ -381,7 +383,7 @@
                             <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
                             <div class="control">
                                 <input type="text"
-                                       class="input is-size-875" 
+                                       class="input is-size-875"
                                        v-model="steps[1].form.nameVideoReview.value"
                                        :placeholder="steps[1].form.nameVideoReview.placeholder"
                                 >
@@ -403,9 +405,10 @@
                     <div class="column is-6">
                         <div class="field">
                             <div class="control">
-                                <label class="checkbox is-info is-size-875"  v-model="steps[1].form.accept.value">
+                                <label class="checkbox is-info is-size-875" v-model="steps[1].form.accept.value">
                                     <input type="checkbox" name="remember">
-                                    <span>Принимаю <a href="#" class="has-text-info is-link">условия данного раздела</a> и <a href="#" class="has-text-info is-link">договора о неразглашении (NDA)</a></span>
+                                    <span>Принимаю <a href="#" class="has-text-info is-link">условия данного раздела</a> и <a
+                                        href="#" class="has-text-info is-link">договора о неразглашении (NDA)</a></span>
                                 </label>
                             </div>
                         </div>
@@ -429,42 +432,309 @@
                     </div>
                 </div>
             </div>
-        </template>
-        <template v-if="step === 2">
-            <div class="box">
-                Step 2 Content
+        </div>
+        <div v-show="step === 2">
+            <div class="box step">
+                <div class="step__header">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <h3><img src="/svg/icons/ic_object_finance.svg" alt=""
+                                     class="svg"><span>{{steps[2].title}}</span>
+                            </h3>
+                        </div>
+                        <div class="column is-6">
+                            <div class="add-business__progress is-flex">
+                                <figure>
+                                    <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                </figure>
+                                <div class="add-business__progress__info">
+                                    <div class="is-size-875">Успех на продажу бизнеса</div>
+                                    <div class="progress-wrap is-flex">
+                                        <progress class="progress is-success is-small" value="10" max="100"></progress>
+                                        <div class="has-text-success has-text-weight-bold percent">9.50%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columns is-multiline">
+                    <div class="column is-6">
+                        <label class="label label_req"><span>{{steps[2].form.priceShares.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.priceShares.value"
+                                       :placeholder="steps[2].form.priceShares.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[2].form.priceShares.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 is-paddingless"></div>
+                    <div class="column is-6 ">
+                        <label
+                            class="label label_req"><span>{{steps[2].form.netAverageAnnualProfit.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.netAverageAnnualProfit.value"
+                                       :placeholder="steps[2].form.netAverageAnnualProfit.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[2].form.netAverageAnnualProfit.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 ">
+                        <label
+                            class="label label_req"><span>{{steps[2].form.netAverageQuarterlyProfit.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.netAverageQuarterlyProfit.value"
+                                       :placeholder="steps[2].form.netAverageQuarterlyProfit.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[2].form.netAverageQuarterlyProfit.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 ">
+                        <label
+                            class="label label_req"><span>{{steps[2].form.averageAnnualTurnover.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.averageAnnualTurnover.value"
+                                       :placeholder="steps[2].form.averageAnnualTurnover.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[2].form.averageAnnualTurnover.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 ">
+                        <label
+                            class="label label_req"><span>{{steps[2].form.averageQuarterlyTurnover.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.averageQuarterlyTurnover.value"
+                                       :placeholder="steps[2].form.averageQuarterlyTurnover.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[2].form.averageQuarterlyTurnover.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 ">
+                        <label class="label label_req"><span>{{steps[2].form.costBusinessPerYear.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.costBusinessPerYear.value"
+                                       :placeholder="steps[2].form.costBusinessPerYear.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[2].form.costBusinessPerYear.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-6 ">
+                        <label
+                            class="label label_req"><span>{{steps[2].form.costBusinessPerQuarter.title}}</span></label>
+                        <div class="field has-addons">
+                            <p class="control">
+                                <span class="button is-static is-size-875">
+                                   zł
+                                </span>
+                            </p>
+                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                <input type="text"
+                                       class="input is-size-875"
+                                       v-model="steps[2].form.costBusinessPerQuarter.value"
+                                       :placeholder="steps[2].form.costBusinessPerQuarter.placeholder"
+                                >
+                                <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[2].form.costBusinessPerQuarter.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-12">
+                        <label class="label is-size-6"><span>{{steps[2].labelReturnInvestment}}</span></label>
+                        <div class="columns is-multiline">
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[2].form.positiveScenario.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_2">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[2].form.positiveScenario.value"
+                                               :placeholder="steps[2].form.positiveScenario.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[2].form.positiveScenario.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                            <div class="icon buttons-control-input-number">
+                                                <div class="plus" @click="steps[2].form.positiveScenario.value++">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                                <div class="minus" @click="steps[2].form.positiveScenario.value--">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[2].form.negativeScenario.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_2">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[2].form.negativeScenario.value"
+                                               :placeholder="steps[2].form.negativeScenario.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                          <span class="icon is-small"
+                                                v-tooltip="steps[2].form.negativeScenario.tooltip">
+                                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                          </span>
+                                            <div class="icon buttons-control-input-number">
+                                                <div class="plus" @click="steps[2].form.negativeScenario.value++">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                                <div class="minus" @click="steps[2].form.negativeScenario.value--">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step__footer">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="buttons">
+                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(3)">
+                                    <span>Шаг 3: Информация о недвижимости</span>
+                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                </button>
+                                <button class="button is-clear is-clear_close is-size-875 h-3" @click="toggleStep(1)">
+                                    <span class="has-text-decoration-underline">Вернуться назад</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </template>
-        <template v-if="step === 3">
+        </div>
+        <div v-show="step === 3">
             <div class="box">
                 Step 3 Content
             </div>
-        </template>
-        <template v-if="step === 4">
+        </div>
+        <div v-show="step === 4">
             <div class="box">
                 Step 4 Content
             </div>
-        </template>
-        <template v-if="step === 5">
+        </div>
+        <div v-show="step === 5">
             <div class="box">
                 Step 5 Content
             </div>
-        </template>
-        <template v-if="step === 6">
+        </div>
+        <div v-show="step === 6">
             <div class="box">
                 Step 6 Content
             </div>
-        </template>
-        <template v-if="step === 7">
+        </div>
+        <div v-show="step === 7">
             <div class="box">
                 Step 7 Content
             </div>
-        </template>
-        <template v-if="step === 8">
+        </div>
+        <div v-show="step === 8">
             <div class="box">
                 Step 8 Content
             </div>
-        </template>
+        </div>
 
         <!-- Stepper Controls -->
         <!--<button type="button" @click="$refs.stepper.previous()">Previous</button>-->
@@ -664,10 +934,65 @@
                     2:
                         {
                             title: "Финансовые показатели",
-                            active:
-                                false,
-                            success:
-                                false
+                            active: false,
+                            success: false,
+                            form: {
+                                priceShares: {
+                                    title: 'Цена долей или акций',
+                                    placeholder: '100 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                netAverageAnnualProfit: {
+                                    title: 'Чистая средняя годовая прибыль',
+                                    placeholder: '1 000 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                netAverageQuarterlyProfit: {
+                                    title: 'Чистая средняя квартальная прибыль',
+                                    placeholder: '50 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                averageAnnualTurnover: {
+                                    title: 'Средний годовой оборот',
+                                    placeholder: '10 000 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                averageQuarterlyTurnover: {
+                                    title: 'Средний квартальный оборот',
+                                    placeholder: '500 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                costBusinessPerYear: {
+                                    title: 'Затраты на коммерческую деятельность в год',
+                                    placeholder: '25 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                costBusinessPerQuarter: {
+                                    title: 'Затраты на коммерческую деятельность в квартал',
+                                    placeholder: '100 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                positiveScenario: {
+                                    title: 'Позитивный сценарий (в месяцах)',
+                                    placeholder: '12',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                negativeScenario: {
+                                    title: 'Негативный сценарий (в месяцах)',
+                                    placeholder: '36',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                            },
+                            labelReturnInvestment: 'Окупаемость вложенных средств'
                         }
                     ,
                     3:
