@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,7 +57,14 @@ Route::get('/ui', function () {
     return view('ui');
 })->middleware('auth');
 
-Route::get('/profile', 'ProfileController@index');
+Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
+    Route::get('', 'ProfileController@index');
+    Route::post('avatar', 'ProfileController@uploadAvatar');
+    Route::post('update', 'ProfileController@update');
+    Route::get('cities', 'ProfileController@getCities');
+    Route::post('password', 'ProfileController@updatePassword');
+});
+
 
 Route::get('/spa/favorites', function () {
     return view('spa.favorites');

@@ -7,9 +7,11 @@ import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
+import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
 
 window.Vue = Vue;
+Vue.use(VueSweetalert2)
 Vue.use(VTooltip)
 Vue.use(Vuebar)
 Vue.use(Vuelidate)

@@ -49,10 +49,12 @@ class Message extends Model implements HasMedia
             ->width(368)
             ->height(232)
             ->sharpen(10);
+    }
 
-        $this
-            ->addMediaCollection('attachment')
-            //TODO почему то не работает, протестить
+    //TODO протестить
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('attachment')
             ->acceptsFile(function (File $file) {
                 return $file->mimeType === 'image/jpeg' || $file->mimeType === 'image/png' || $file->mimeType === 'application/pdf';
             });
