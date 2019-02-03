@@ -7,8 +7,24 @@ export default new Router({
     scrollBehavior: () => ({y: 0}),
     routes: [
         {
+            path: '/',
+            component: require('./components/profile/views/index').default
+        },
+        {
+            path: '/chat',
+            component: require('./components/profile/views/chat').default
+        },
+        {
             path: '/settings',
-            component: require('./components/profile/settings')
+            component: require('./components/profile/views/settings').default
+        },
+        {
+            path: '/products',
+            component: require('./components/profile/views/products').default
+        },
+        {
+            path: '/purchased-products',
+            component: require('./components/profile/views/purchased-products').default
         }
     ]
 })

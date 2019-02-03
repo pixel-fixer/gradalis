@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="container">
-                <form-add-bussines></form-add-bussines>
+                <form-add-business></form-add-business>
             </div>
         </section>
     </div>

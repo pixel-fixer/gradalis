@@ -8,18 +8,18 @@
         <nav class="aside-nav">
             <ul>
                 <li class="aside-nav__item">
-                    <a href="#">
-                        <img src="/svg/icons/ic_product.svg" class="svg" alt="Product">
+                    <router-link to="/products" tag="a">
+                        <img src="/svg/icons/ic_product.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Продукты</span>
                         <span class="aside-nav__item__count">24</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
-                        <img src="/svg/icons/ic_cart_c.svg" class="svg" alt="Products">
+                     <router-link to="/purchased-products" tag="a">
+                        <img src="/svg/icons/ic_cart_c.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Купленные продукты</span>
                         <span class="aside-nav__item__count">129</span>
-                    </a>
+                     </router-link>
                 </li>
                 <li class="aside-nav__item">
                     <a href="#">
@@ -36,18 +36,17 @@
                     </a>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
+                     <router-link to="/chat" tag="a">
                         <img src="/svg/icons/ic_messages.svg" class="svg" alt="Messages">
                         <span class="aside-nav__item__title has-text-weight-bold">Сообщения</span>
                         <span class="aside-nav__item__count tag is-danger is-rounded tag__count is-flex">12</span>
-                    </a>
+                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
+                    <router-link to="/settings" tag="a">
                         <img src="/svg/icons/ic_profile_settings.svg" class="svg" alt="Settings">
                         <span class="aside-nav__item__title has-text-weight-bold">Настройки профиля</span>
-                        <span class="aside-nav__item__count">69</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="aside-nav__item">
                     <a href="#">
@@ -67,7 +66,3 @@ export default {
     name: 'profile-aside'
 }
 </script>
-
-<style>
-
-</style>

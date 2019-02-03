@@ -6,10 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
-
-class User extends Authenticatable
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, HasMediaTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password',
+        'first_name','last_name', 'email', 'password', 'phone', 'city_id', 'subscribes'
     ];
 
     /**
@@ -30,12 +32,22 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'full_name'
+        'full_name',
+        'avatar'
+    ];
+
+    protected $casts = [
+        'subscribes' => 'array'
     ];
 
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->getFirstMediaUrl('avatar');
     }
 
     public function business()
@@ -58,7 +70,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Auth\User', 'broker_id', 'id');
     }
 
-    //TODO Возможно, сделать 2 отдельных метода для покупателей и продавцов?
     public function users()
     {
         $this->hasMany('App\Models\Auth\User', 'id', 'broker_id');
@@ -74,4 +85,15 @@ class User extends Authenticatable
        return $this->belongsTo('App\Chat\Dialog');
     }
 
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('avatar')
+              ->width(160)
+              ->height(160);
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('avatar')->singleFile();       
+    }
 }

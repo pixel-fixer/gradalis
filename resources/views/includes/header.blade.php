@@ -31,13 +31,13 @@
                     <div class="navbar-item is-paddingless">
                         <a class="navbar-item rounded">
                             <img src="{{ asset('/svg/icons/ic_notifications.svg') }}" alt="Not">
-                            @empty($notifications)
-                                <span class="tag is-danger is-rounded tag__count">{{count($notifications)}}</span>
-                            @endempty
+                            @unless(Auth::user()->unreadNotifications)
+                                <span class="tag is-danger is-rounded tag__count">{{count(Auth::user()->unreadNotifications)}}</span>
+                            @endunless
                         </a>
                         <a class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                                             alt="Fav"></a>
-                        <a href="/profile" class="navbar-item basic user"><img src="{{ asset('/img/avatar-1.png') }}"
+                        <a href="/profile" class="navbar-item basic user"><img src="{{ Auth::user()->avatar }}"
                                                                alt="User"><span
                                 class="is-hidden-mobile">{{ Auth::user()->full_name }}</span></a>
                         <a class="navbar-item basic is-hidden-mobile"><img

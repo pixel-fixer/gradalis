@@ -75,6 +75,7 @@ input.input {
     &.is-active {
         color: $input-color;
     }
+
     &:active,
     &:focus {
         > .multiselect__select {
@@ -104,6 +105,7 @@ input.input {
                 box-shadow: $input-shadow;
                 padding-left: 1rem;
                 padding-right: 1rem;
+                height: 100%;
             }
         }
     }
@@ -136,6 +138,7 @@ input.input {
                 z-index: 5;
                 padding: 0.5rem 0;
                 border-top: 1px solid transparent;
+
                 &.is-left {
                     left: 0;
                     border-left: 1px solid transparent;
@@ -147,6 +150,7 @@ input.input {
             .input {
                 padding-left: 3em;
                 padding-right: calc(100% - 4.5em);
+                text-align: center;
             }
 
             .text {
@@ -293,14 +297,20 @@ input.input {
     }
 }
 
-/* Custom checkbox */
-.checkbox {
-    display: block;
+/* Custom checkbox and radio */
+.checkbox,
+.radio {
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
     user-select: none;
+
+    &.h3 {
+        margin-top: .75rem;
+        margin-bottom: .75rem;
+    }
+
     /* Hide the browser's default checkbox */
     input {
         position: absolute;
@@ -346,9 +356,12 @@ input.input {
         }
     }
 
-    /* On mouse-over, add a grey background color */
+    /* On mouse-over */
     &:hover input ~ span {
         //background-color: #ccc;
+        &:before {
+            border-color: $input-hover-border-color;
+        }
     }
 
     /* When the checkbox is checked, add a blue background */
@@ -377,17 +390,28 @@ input.input {
     }
 }
 
+.radio {
+    margin-right: 1rem;
+}
+
+.checkbox {
+    display: block;
+}
+
 .checkbox-2 {
     display: block;
+
     input {
         position: absolute;
         z-index: -1;
         opacity: 0;
     }
+
     &__info {
         position: relative;
         padding: 0 0 0 3rem;
         cursor: pointer;
+
         &:before {
             content: '';
             position: absolute;
@@ -400,6 +424,7 @@ input.input {
             background: #C5D2E6;
             transition: .2s;
         }
+
         &:after {
             content: '';
             position: absolute;
@@ -421,6 +446,7 @@ input.input {
             &:before {
                 background: rgba($cyan, 0.7);
             }
+
             &:after {
                 left: 1rem;
             }
@@ -694,4 +720,35 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+}
+
+.buttons-control-input-number {
+    display: flex;
+    flex-direction: column;
+    .plus,
+    .minus {
+        width: .625rem;
+        height: .375rem;
+        margin: .125rem;
+        pointer-events: auto;
+        cursor: pointer;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &:hover {
+            svg {
+                path {
+                    fill: $cyan;
+                }
+            }
+        }
+    }
+    .plus {
+        transform: scale(1, -1)
+    }
+    .minus {
+
+    }
 }

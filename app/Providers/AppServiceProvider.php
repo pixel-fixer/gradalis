@@ -15,10 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.app', function($view)
-        {
-            $view->with('notifications', Auth::check() ? Auth::user()->unreadNotifications: null);
-        });
+        // view()->composer('layouts.app', function($view)
+        // {
+        //     $user = [
+        //         'notifications' => Auth::check() ? Auth::user()->unreadNotifications: null,
+        //         'avatar' => Auth::user()->avatar
+        //     ];
+            
+        //     $view->with('user', $user);
+        // });
     }
 
     /**

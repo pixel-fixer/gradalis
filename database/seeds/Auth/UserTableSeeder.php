@@ -19,13 +19,21 @@ class UserTableSeeder extends Seeder
     {
         $this->disableForeignKeys();
 
+        $subscribes = [
+            'ordered_service_status' => false,
+            'new_message'            => false,
+            'personal_selection'     => false,
+            'offer'                  => false,
+        ];
+
         // Add the master administrator, user id of 1
         User::create([
             'first_name'        => 'Admin',
             'last_name'         => 'Istrator',
             'email'             => 'admin@admin.com',
             'password'          => Hash::make('secret'),
-            'email_verified_at' => \Carbon\Carbon::now()
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
         ]);
 
         User::create([
@@ -33,7 +41,8 @@ class UserTableSeeder extends Seeder
             'last_name'         => 'User',
             'email'             => 'executive@executive.com',
             'password'          => Hash::make('secret'),
-            'email_verified_at' => \Carbon\Carbon::now()
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
         ]);
 
         User::create([
@@ -41,7 +50,8 @@ class UserTableSeeder extends Seeder
             'last_name'         => 'User',
             'email'             => 'user@user.com',
             'password'          => Hash::make('secret'),
-            'email_verified_at' => \Carbon\Carbon::now()
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
         ]);
 
         $this->enableForeignKeys();
