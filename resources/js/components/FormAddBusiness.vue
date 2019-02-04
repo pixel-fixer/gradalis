@@ -2564,8 +2564,50 @@
             </div>
         </div>
         <div v-show="step === 6">
-            <div class="box">
-                Step 6 Content
+            <div class="box step">
+                <div class="step__header">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <h3><img src="/svg/icons/ic_globe.svg" alt=""
+                                     class="svg"><span>{{steps[6].title}}</span>
+                            </h3>
+                        </div>
+                        <div class="column is-6">
+                            <div class="add-business__progress is-flex">
+                                <figure>
+                                    <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                </figure>
+                                <div class="add-business__progress__info">
+                                    <div class="is-size-875">Успех на продажу бизнеса</div>
+                                    <div class="progress-wrap is-flex">
+                                        <progress class="progress is-success is-small" value="42" max="100"></progress>
+                                        <div class="has-text-success has-text-weight-bold percent">41.68%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columns is-multiline">
+
+                </div>
+                <div class="step__footer">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="buttons">
+                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(7)">
+                                    <span>Шаг 7: Целевая аудитория</span>
+                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                </button>
+                                <button class="button is-clear is-clear_close is-size-875 h-3" @click="toggleStep(5)">
+                                    <span class="has-text-decoration-underline">Вернуться назад</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div v-show="step === 7">
@@ -3525,8 +3567,7 @@
                             },
                         }
                     },
-                    5:
-                        {
+                    5: {
                             title: "Материальные активы",
                             active: false,
                             success: false,
@@ -3717,15 +3758,138 @@
                                 },
 
                             }
-                        }
-                    ,
-                    6:
-                        {
+                        },
+                    6: {
                             title: "Нематериальные активы",
-                            active:
-                                false,
-                            success:
-                                false
+                            active: false,
+                            success: false,
+                            form: {
+                                saleSite: {
+                                    selected: null,
+                                    title: 'Продается ли сайт?',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                yearCreationSite: {
+                                    title: 'Год создания сайта',
+                                    placeholder: '2010',
+                                    value: '',
+                                },
+                                cms: {
+                                    selected: null,
+                                    title: 'Система управления сайтом',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                themeSite: {
+                                    selected: null,
+                                    title: 'Тематика сайта *',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                salePhone: {
+                                    selected: null,
+                                    title: 'Продается ли телефон?',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                phone: {
+                                    title: 'Номер телефона',
+                                    placeholder: '880005553535',
+                                    value: '',
+                                },
+                                intellectualProperty: {
+                                    selected: null,
+                                    title: 'Интеллектуальная собственность?',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                intellectualPropertyList: {
+                                    selected: null,
+                                    title: 'Укажите объекты интеллектуальной собственности',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+
+                                visitorsPerDay: {
+                                    title: 'Посетителей в день',
+                                    placeholder: '1 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                viewsPerDay: {
+                                    title: 'Просмотров в день',
+                                    placeholder: '1 000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                            }
                         }
                     ,
                     7:
