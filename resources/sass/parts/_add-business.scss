@@ -103,6 +103,17 @@
         }
     }
 
+    &__objects {
+        &-list {
+
+        }
+
+        &-item {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba($light-grayish-blue, .5);
+        }
+    }
+
     .step {
         &__header {
             h3 {
@@ -118,11 +129,13 @@
 
             }
         }
+
         &__footer {
             .button-next {
                 span {
                     margin-right: .5rem;
                 }
+
                 svg {
                     width: .625rem;
                     height: .625rem;
@@ -142,6 +155,7 @@
                     }
                 }
             }
+
             &:last-child {
                 .button {
                     &-remove {
@@ -154,14 +168,19 @@
         .button {
             &-add,
             &-remove {
-                border-radius: 50%;
-                width: 2.5rem;
+                border-radius: 1.25rem;
+                min-width: 2.5rem;
                 height: 2.5rem;
                 margin-top: 2rem;
                 text-align: center;
                 font-size: 1.25rem;
                 line-height: 1em;
                 padding: .5rem;
+
+                span {
+                    margin-left: .5rem;
+                    margin-right: .25rem;
+                }
             }
         }
 
