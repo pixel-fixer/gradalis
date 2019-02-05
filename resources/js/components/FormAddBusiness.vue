@@ -4431,10 +4431,12 @@
                                                 <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                               </span>
                                             <div class="icon buttons-control-input-number">
-                                                <div class="plus" @click="steps[7].form.b2b.countPerpetualServiceContracts.value++">
+                                                <div class="plus"
+                                                     @click="steps[7].form.b2b.countPerpetualServiceContracts.value++">
                                                     <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
                                                 </div>
-                                                <div class="minus" @click="steps[7].form.b2b.countPerpetualServiceContracts.value--">
+                                                <div class="minus"
+                                                     @click="steps[7].form.b2b.countPerpetualServiceContracts.value--">
                                                     <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
                                                 </div>
                                             </div>
@@ -4515,8 +4517,209 @@
             </div>
         </div>
         <div v-show="step === 8">
-            <div class="box">
-                Step 8 Content
+            <div class="box step">
+                <div class="step__header">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <h3><img src="/svg/icons/ic_law_form.svg" alt=""
+                                     class="svg"><span>{{steps[8].title}}</span>
+                            </h3>
+                        </div>
+                        <div class="column is-6">
+                            <div class="add-business__progress is-flex">
+                                <figure>
+                                    <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                </figure>
+                                <div class="add-business__progress__info">
+                                    <div class="is-size-875">Успех на продажу бизнеса</div>
+                                    <div class="progress-wrap is-flex">
+                                        <progress class="progress is-success is-small" value="65" max="100"></progress>
+                                        <div class="has-text-success has-text-weight-bold percent">65.07%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-multiline">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.legalStatus.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[8].form.legalStatus.selected"
+                                             :deselect-label="steps[8].form.legalStatus.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[8].form.legalStatus.placeholder"
+                                             :options="steps[8].form.legalStatus.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[8].form.legalStatus.selectLabel"
+                                             :selectedLabel="steps[8].form.legalStatus.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.taxSystem.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[8].form.taxSystem.selected"
+                                             :deselect-label="steps[8].form.taxSystem.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[8].form.taxSystem.placeholder"
+                                             :options="steps[8].form.taxSystem.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[8].form.taxSystem.selectLabel"
+                                             :selectedLabel="steps[8].form.taxSystem.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.changesProfileLegalEntity.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[8].form.changesProfileLegalEntity.selected"
+                                             :deselect-label="steps[8].form.changesProfileLegalEntity.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[8].form.changesProfileLegalEntity.placeholder"
+                                             :options="steps[8].form.changesProfileLegalEntity.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[8].form.changesProfileLegalEntity.selectLabel"
+                                             :selectedLabel="steps[8].form.changesProfileLegalEntity.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.havePenalties.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[8].form.havePenalties.selected"
+                                             :deselect-label="steps[8].form.havePenalties.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[8].form.havePenalties.placeholder"
+                                             :options="steps[8].form.havePenalties.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[8].form.havePenalties.selectLabel"
+                                             :selectedLabel="steps[8].form.havePenalties.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.listPenalties.title}}</span></label>
+                            <div class="control">
+                                <multiselect
+                                    v-model="steps[8].form.listPenalties.selected"
+                                    :deselect-label="steps[8].form.listPenalties.deselectLabel"
+                                    track-by="name"
+                                    label="name"
+                                    openDirection="bottom"
+                                    :multiple="true"
+                                    :class="'multiselect_multiple'"
+                                    :placeholder="steps[8].form.listPenalties.placeholder"
+                                    :options="steps[8].form.listPenalties.options"
+                                    :searchable="true"
+                                    :close-on-select="false"
+                                    :allow-empty="true"
+                                    :selectLabel="steps[8].form.listPenalties.selectLabel"
+                                    :selectedLabel="steps[8].form.listPenalties.selectedLabel">
+                                    <span slot="noResult">{{steps[8].form.listPenalties.noResult}}</span>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.haveDisputableSituations.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[8].form.haveDisputableSituations.selected"
+                                             :deselect-label="steps[8].form.haveDisputableSituations.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[8].form.haveDisputableSituations.placeholder"
+                                             :options="steps[8].form.haveDisputableSituations.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[8].form.haveDisputableSituations.selectLabel"
+                                             :selectedLabel="steps[8].form.haveDisputableSituations.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[8].form.listDisputableSituations.title}}</span></label>
+                            <div class="control">
+                                <multiselect
+                                    v-model="steps[8].form.listDisputableSituations.selected"
+                                    :deselect-label="steps[8].form.listDisputableSituations.deselectLabel"
+                                    track-by="name"
+                                    label="name"
+                                    openDirection="bottom"
+                                    :multiple="true"
+                                    :class="'multiselect_multiple'"
+                                    :placeholder="steps[8].form.listDisputableSituations.placeholder"
+                                    :options="steps[8].form.listDisputableSituations.options"
+                                    :searchable="true"
+                                    :close-on-select="false"
+                                    :allow-empty="true"
+                                    :selectLabel="steps[8].form.listDisputableSituations.selectLabel"
+                                    :selectedLabel="steps[8].form.listDisputableSituations.selectedLabel">
+                                    <span slot="noResult">{{steps[8].form.listDisputableSituations.noResult}}</span>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step__footer">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="buttons">
+                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                >
+                                    <span>Перейти к публикации объявления</span>
+                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                </button>
+                                <button class="button is-clear is-clear_close is-size-875 h-3"
+                                        @click="toggleStep(7)">
+                                    <span class="has-text-decoration-underline">Вернуться назад</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -6523,17 +6726,133 @@
                                 },
                             }
                         }
-                    }
-                    ,
-                    8:
-                        {
-                            title: "Юридическое состояние",
-                            active:
-                                false,
-                            success:
-                                false
+                    },
+                    8: {
+                        title: "Юридическое состояние",
+                        active: false,
+                        success: false,
+                        form: {
+                            legalStatus: {
+                                selected: null,
+                                title: 'Юридический статус',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            taxSystem: {
+                                selected: null,
+                                title: 'Система налогообложения',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            changesProfileLegalEntity: {
+                                selected: null,
+                                title: 'Были изменения профиля деятельности в юридическом лице?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            havePenalties: {
+                                selected: null,
+                                title: 'Непокрытые штрафные санкции, наложенные фискальными органами?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            listPenalties: {
+                                selected: null,
+                                title: 'Укажите штрафные санкции',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            haveDisputableSituations: {
+                                selected: null,
+                                title: 'Вовлечение в спорные/коммерческие/административные ситуации?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            listDisputableSituations: {
+                                selected: null,
+                                title: 'Укажите типы спорных ситуаций',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
                         }
-                    ,
+                    },
                 }
             }
         },
