@@ -143,7 +143,7 @@
             }
         }
 
-        .address-wrap {
+        .list-wrap {
             &:not(:last-child) {
                 .button {
                     &-add {
@@ -191,6 +191,23 @@
                     width: 1rem;
                     height: 1rem;
                 }
+            }
+        }
+
+        .slider-gender {
+            display: flex;
+            margin-top: 2rem;
+            figure {
+                width: 1rem;
+                height: 1rem;
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+            &-container {
+                margin: 0 1rem;
+                flex: 1;
             }
         }
 

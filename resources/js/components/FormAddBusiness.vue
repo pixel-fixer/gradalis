@@ -152,7 +152,7 @@
                     </div>
 
                     <div class="column is-12">
-                        <div class="columns is-multiline address-wrap"
+                        <div class="columns is-multiline list-wrap"
                              v-for="(item, index) in steps[1].form.addresses.list">
                             <div class="column is-6">
                                 <div class="field">
@@ -394,7 +394,7 @@
                         <div class="field">
                             <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
                             <div class="control">
-                                <input type="text"
+                                <input type="url"
                                        class="input is-size-875"
                                        v-model="steps[1].form.linkVideoReview.value"
                                        :placeholder="steps[1].form.linkVideoReview.placeholder"
@@ -755,7 +755,7 @@
                             <div class="add-business__objects-item px-1-5"
                                  v-for="(item, index) in steps[3].form.objects">
                                 <h3 class="mb-1">Объект №1</h3>
-                                <div class="columns is-multiline address-wrap">
+                                <div class="columns is-multiline list-wrap">
                                     <div class="column is-6">
                                         <div class="field">
                                             <label
@@ -1774,7 +1774,7 @@
                             <h3>{{steps[4].form.contractors.title}}</h3>
                         </div>
                         <div class="column is-12">
-                            <div class="columns is-multiline address-wrap"
+                            <div class="columns is-multiline list-wrap"
                                  v-for="(item, index) in steps[4].form.contractors.list">
                                 <div class="column is-3">
                                     <div class="field">
@@ -1887,7 +1887,7 @@
                             <h3>{{steps[4].form.staff.title}}</h3>
                         </div>
                         <div class="column is-12">
-                            <div class="columns is-multiline address-wrap"
+                            <div class="columns is-multiline list-wrap"
                                  v-for="(item, index) in steps[4].form.staff.list">
                                 <div class="column is-3">
                                     <div class="field">
@@ -2090,7 +2090,7 @@
                             </div>
                         </div>
                         <div class="column is-12">
-                            <div class="columns is-multiline address-wrap"
+                            <div class="columns is-multiline list-wrap"
                                  v-for="(item, index) in steps[4].form.certificates.list">
                                 <div class="column is-3">
                                     <div class="field">
@@ -2141,26 +2141,22 @@
                                 <div class="column is-6">
                                     <div class="columns is-multiline">
                                         <div class="column">
-                                            <div class="columns is-multiline">
-                                                <div class="column is-12">
-                                                    <div class="field">
-                                                        <label class="label label_req"><span>{{steps[4].form.certificates.list[index].licensePeriod.title}}</span></label>
-                                                        <div class="control has-icons-left has-icons-left_1">
-                                                            <flat-pickr
-                                                                class="input is-size-875"
-                                                                v-model="steps[4].form.certificates.list[index].licensePeriod.value"
-                                                                :placeholder="steps[4].form.certificates.list[index].licensePeriod.placeholder"
-                                                                :config="steps[4].form.certificates.list[index].licensePeriod.config"
-                                                            >
+                                            <div class="field">
+                                                <label class="label label_req"><span>{{steps[4].form.certificates.list[index].licensePeriod.title}}</span></label>
+                                                <div class="control has-icons-left has-icons-left_1">
+                                                    <flat-pickr
+                                                        class="input is-size-875"
+                                                        v-model="steps[4].form.certificates.list[index].licensePeriod.value"
+                                                        :placeholder="steps[4].form.certificates.list[index].licensePeriod.placeholder"
+                                                        :config="steps[4].form.certificates.list[index].licensePeriod.config"
+                                                    >
 
-                                                            </flat-pickr>
-                                                            <div class="icons is-left">
+                                                    </flat-pickr>
+                                                    <div class="icons is-left">
                                                               <span class="icon is-small">
                                                                 <img src="/svg/icons/ic_calendar.svg" class="svg"
                                                                      alt="">
                                                               </span>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3522,27 +3518,27 @@
                             <h3>Группы в социальных сетях</h3>
                         </div>
                         <div class="column is-6">
-                        <div class="field">
-                            <label
-                                class="label label_req"><span>{{steps[6].form.saleGroupsSocNet.title}}</span></label>
-                            <div class="control">
-                                <multiselect v-model="steps[6].form.saleGroupsSocNet.selected"
-                                             :deselect-label="steps[6].form.saleGroupsSocNet.deselectLabel"
-                                             track-by="name"
-                                             label="name"
-                                             openDirection="bottom"
-                                             :placeholder="steps[6].form.saleGroupsSocNet.placeholder"
-                                             :options="steps[6].form.saleGroupsSocNet.options"
-                                             :searchable="false"
-                                             :allow-empty="false"
-                                             :selectLabel="steps[6].form.saleGroupsSocNet.selectLabel"
-                                             :selectedLabel="steps[6].form.saleGroupsSocNet.selectedLabel">
-                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
-                                    </template>
-                                </multiselect>
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.saleGroupsSocNet.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.saleGroupsSocNet.selected"
+                                                 :deselect-label="steps[6].form.saleGroupsSocNet.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.saleGroupsSocNet.placeholder"
+                                                 :options="steps[6].form.saleGroupsSocNet.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.saleGroupsSocNet.selectLabel"
+                                                 :selectedLabel="steps[6].form.saleGroupsSocNet.selectedLabel">
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <div class="column is-6">
                             <div class="field">
                                 <label
@@ -3616,18 +3612,20 @@
                                             <label
                                                 class="label label_req"><span>{{steps[6].form.socNetItems[index].haveIncome.title}}</span></label>
                                             <div class="control">
-                                                <multiselect v-model="steps[6].form.socNetItems[index].haveIncome.selected"
-                                                             :deselect-label="steps[6].form.socNetItems[index].haveIncome.deselectLabel"
-                                                             track-by="name"
-                                                             label="name"
-                                                             openDirection="bottom"
-                                                             :placeholder="steps[6].form.socNetItems[index].haveIncome.placeholder"
-                                                             :options="steps[6].form.socNetItems[index].haveIncome.options"
-                                                             :searchable="false"
-                                                             :allow-empty="false"
-                                                             :selectLabel="steps[6].form.socNetItems[index].haveIncome.selectLabel"
-                                                             :selectedLabel="steps[6].form.socNetItems[index].haveIncome.selectedLabel">
-                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                                <multiselect
+                                                    v-model="steps[6].form.socNetItems[index].haveIncome.selected"
+                                                    :deselect-label="steps[6].form.socNetItems[index].haveIncome.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :placeholder="steps[6].form.socNetItems[index].haveIncome.placeholder"
+                                                    :options="steps[6].form.socNetItems[index].haveIncome.options"
+                                                    :searchable="false"
+                                                    :allow-empty="false"
+                                                    :selectLabel="steps[6].form.socNetItems[index].haveIncome.selectLabel"
+                                                    :selectedLabel="steps[6].form.socNetItems[index].haveIncome.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
                                                     </template>
                                                 </multiselect>
                                             </div>
@@ -3827,7 +3825,8 @@
                                                              :selectLabel="steps[6].form.socNetItems[index].lang.selectLabel"
                                                              :selectedLabel="steps[6].form.socNetItems[index].lang.selectedLabel">
                                                     <span slot="noResult">{{steps[6].form.socNetItems[index].lang.noResult}}</span>
-                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name
+                                                        }}
                                                     </template>
                                                 </multiselect>
                                             </div>
@@ -3883,8 +3882,636 @@
             </div>
         </div>
         <div v-show="step === 7">
-            <div class="box">
-                Step 7 Content
+            <div class="box step">
+                <div class="step__header">
+                    <div class="columns is-multiline">
+                        <div class="column is-6">
+                            <h3><img src="/svg/icons/ic_target_audience.svg" alt=""
+                                     class="svg"><span>{{steps[7].title}}</span>
+                            </h3>
+                        </div>
+                        <div class="column is-6">
+                            <div class="add-business__progress is-flex">
+                                <figure>
+                                    <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                </figure>
+                                <div class="add-business__progress__info">
+                                    <div class="is-size-875">Успех на продажу бизнеса</div>
+                                    <div class="progress-wrap is-flex">
+                                        <progress class="progress is-success is-small" value="52" max="100"></progress>
+                                        <div class="has-text-success has-text-weight-bold percent">51.96%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-multiline">
+                    <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.typeAudience.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[7].form.typeAudience.selected"
+                                             :deselect-label="steps[7].form.typeAudience.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[7].form.typeAudience.placeholder"
+                                             :options="steps[7].form.typeAudience.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[7].form.typeAudience.selectLabel"
+                                             :selectedLabel="steps[7].form.typeAudience.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                    <template>
+                        <div class="column is-12 pb-0">
+                            <h3>B2C</h3>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.genderTargetAudience.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[7].form.b2c.genderTargetAudience.selected"
+                                                 :deselect-label="steps[7].form.b2c.genderTargetAudience.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[7].form.b2c.genderTargetAudience.placeholder"
+                                                 :options="steps[7].form.b2c.genderTargetAudience.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[7].form.b2c.genderTargetAudience.selectLabel"
+                                                 :selectedLabel="steps[7].form.b2c.genderTargetAudience.selectedLabel">
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.ageMenFrom.title}}</span></label>
+                                <div class="field has-addons ">
+                                    <p class="control control-text-left control-text-left_3em">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.ageMenFrom.value">
+                                        <span class="text is-left is-size-875">от&nbsp;</span>
+                                    </p>
+                                    <p class="control control-text-left control-text-left_3em">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.ageMenTo.value">
+                                        <span class="text is-left is-size-875">до&nbsp;</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.ageWomenFrom.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control control-text-left control-text-left_3em">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.ageWomenFrom.value">
+                                        <span class="text is-left is-size-875">от&nbsp;</span>
+                                    </p>
+                                    <p class="control control-text-left control-text-left_3em">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.ageWomenTo.value">
+                                        <span class="text is-left is-size-875">до&nbsp;</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label class="label label_req"><span>{{steps[7].form.b2c.sexRatio.title}}</span></label>
+                                <div class="field has-slider slider-gender">
+                                    <figure>
+                                        <img src="/svg/icons/ic_gender_man.svg" class="svg" alt="">
+                                    </figure>
+                                    <div class="slider-gender-container">
+                                        <vue-slider v-model="steps[7].form.b2c.sexRatio.value"
+                                                    :tooltip="steps[7].form.b2c.sexRatio.optionSlider.tooltip"
+                                                    :formatter="steps[7].form.b2c.sexRatio.optionSlider.formatter"
+                                                    :tooltipStyle="steps[7].form.b2c.sexRatio.optionSlider.tooltipStyle"
+                                                    :min="steps[7].form.b2c.sexRatio.optionSlider.min"
+                                                    :max="steps[7].form.b2c.sexRatio.optionSlider.max">
+
+                                        </vue-slider>
+                                    </div>
+                                    <figure>
+                                        <img src="/svg/icons/ic_gender_woman.svg" class="svg" alt="">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-12">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.familyStatusClients.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[7].form.b2c.familyStatusClients.selected"
+                                        :deselect-label="steps[7].form.b2c.familyStatusClients.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[7].form.b2c.familyStatusClients.placeholder"
+                                        :options="steps[7].form.b2c.familyStatusClients.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[7].form.b2c.familyStatusClients.selectLabel"
+                                        :selectedLabel="steps[7].form.b2c.familyStatusClients.selectedLabel">
+                                        <span slot="noResult">{{steps[7].form.b2c.familyStatusClients.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <label class="label label_req"><span>{{steps[7].form.b2c.aloneClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.aloneClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.aloneClients.value"
+                                           :placeholder="steps[7].form.b2c.aloneClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[7].form.b2c.aloneClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-3">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.b2c.couplesClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.couplesClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.couplesClients.value"
+                                           :placeholder="steps[7].form.b2c.couplesClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[7].form.b2c.couplesClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-3">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.b2c.familiesWithChildrenClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.familiesWithChildrenClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.familiesWithChildrenClients.value"
+                                           :placeholder="steps[7].form.b2c.familiesWithChildrenClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[7].form.b2c.familiesWithChildrenClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="column is-12">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.socialStatusClients.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[7].form.b2c.socialStatusClients.selected"
+                                        :deselect-label="steps[7].form.b2c.socialStatusClients.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[7].form.b2c.socialStatusClients.placeholder"
+                                        :options="steps[7].form.b2c.socialStatusClients.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[7].form.b2c.socialStatusClients.selectLabel"
+                                        :selectedLabel="steps[7].form.b2c.socialStatusClients.selectedLabel">
+                                        <span slot="noResult">{{steps[7].form.b2c.socialStatusClients.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <label class="label label_req"><span>{{steps[7].form.b2c.childClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.childClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.childClients.value"
+                                           :placeholder="steps[7].form.b2c.childClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[7].form.b2c.childClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-3">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.b2c.studentsClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.studentsClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.studentsClients.value"
+                                           :placeholder="steps[7].form.b2c.studentsClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[7].form.b2c.studentsClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="column is-3">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.b2c.pensionersClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.pensionersClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.pensionersClients.value"
+                                           :placeholder="steps[7].form.b2c.pensionersClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                      <span class="icon is-small"
+                                            v-tooltip="steps[7].form.b2c.pensionersClients.tooltip">
+                                        <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                      </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.averageIncomeTargetClientsFrom.title}}</span></label>
+                                <div class="field has-addons">
+                                    <div
+                                        class="control control-text-left control-text-left_3em has-icons-right has-icons-right_1 is-flex-1">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.averageIncomeTargetClientsFrom.value">
+                                        <span class="text is-left is-size-875">от&nbsp;</span>
+                                        <div class="icons is-right">
+                                      <span class="icon is-small"
+                                            v-tooltip="steps[7].form.b2c.averageIncomeTargetClientsFrom.tooltip">
+                                        <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                      </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="control control-text-left control-text-left_3em has-icons-right has-icons-right_1 is-flex-1">
+                                        <input type="number" class="input is-size-875"
+                                               v-model="steps[7].form.b2c.averageIncomeTargetClientsTo.value">
+                                        <span class="text is-left is-size-875">до&nbsp;</span>
+                                        <div class="icons is-right">
+                                      <span class="icon is-small"
+                                            v-tooltip="steps[7].form.b2c.averageIncomeTargetClientsTo.tooltip">
+                                        <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <label
+                                class="label label_req"><span>{{steps[7].form.b2c.averageCheckClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2c.averageCheckClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2c.averageCheckClients.value"
+                                           :placeholder="steps[7].form.b2c.averageCheckClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                      <span class="icon is-small"
+                                            v-tooltip="steps[7].form.b2c.averageCheckClients.tooltip">
+                                        <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                      </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2c.mainAdvertisingSourcesAttractClients.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.selected"
+                                        :deselect-label="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.placeholder"
+                                        :options="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.selectLabel"
+                                        :selectedLabel="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.selectedLabel">
+                                        <span slot="noResult">{{steps[7].form.b2c.mainAdvertisingSourcesAttractClients.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+
+                    </template>
+
+                    <template>
+                        <div class="column is-12 pb-0">
+                            <h3>B2B</h3>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2b.mainCategoryBusinessPartners.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[7].form.b2b.mainCategoryBusinessPartners.selected"
+                                        :deselect-label="steps[7].form.b2b.mainCategoryBusinessPartners.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[7].form.b2b.mainCategoryBusinessPartners.placeholder"
+                                        :options="steps[7].form.b2b.mainCategoryBusinessPartners.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[7].form.b2b.mainCategoryBusinessPartners.selectLabel"
+                                        :selectedLabel="steps[7].form.b2b.mainCategoryBusinessPartners.selectedLabel">
+                                        <span slot="noResult">{{steps[7].form.b2b.mainCategoryBusinessPartners.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2b.haveExistingContracts.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[7].form.b2b.haveExistingContracts.selected"
+                                                 :deselect-label="steps[7].form.b2b.haveExistingContracts.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[7].form.b2b.haveExistingContracts.placeholder"
+                                                 :options="steps[7].form.b2b.haveExistingContracts.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[7].form.b2b.haveExistingContracts.selectLabel"
+                                                 :selectedLabel="steps[7].form.b2b.haveExistingContracts.selectedLabel">
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template v-for="(item, index) in steps[7].form.b2b.listContracts">
+                            <div class="column is-12">
+                                <div class="columns is-multiline list-wrap">
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[7].form.b2b.listContracts[index].title.title}}</span></label>
+                                            <div class="control has-icons-right has-icons-right_1">
+                                                <input type="text"
+                                                       class="input is-size-875"
+                                                       v-model="steps[7].form.b2b.listContracts[index].title.value"
+                                                       :placeholder="steps[7].form.b2b.listContracts[index].title.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[7].form.b2b.listContracts[index].title.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="columns is-multiline">
+                                            <div class="column">
+                                                <div class="field">
+                                                    <label class="label label_req"><span>{{steps[7].form.b2b.listContracts[index].finalDate.title}}</span></label>
+                                                    <div class="control has-icons-left has-icons-left_1">
+                                                        <flat-pickr
+                                                            class="input is-size-875"
+                                                            v-model="steps[7].form.b2b.listContracts[index].finalDate.value"
+                                                            :placeholder="steps[7].form.b2b.listContracts[index].finalDate.placeholder"
+                                                            :config="steps[7].form.b2b.listContracts[index].finalDate.config"
+                                                        >
+
+                                                        </flat-pickr>
+                                                        <div class="icons is-left">
+                                                              <span class="icon is-small">
+                                                                <img src="/svg/icons/ic_calendar.svg" class="svg"
+                                                                     alt="">
+                                                              </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column is-narrow">
+                                                <button class="button is-warning is-outlined button-remove"
+                                                        v-tooltip="'Удалить'"
+                                                        @click="removeContract(index)">
+                                                    &times;<span class="is-size-875 is-hidden-tablet">Удалить</span>
+                                                </button>
+                                                <button class="button is-info is-outlined button-add"
+                                                        v-tooltip="'Добавить'"
+                                                        @click="addContract">
+                                                    +<span class="is-size-875 is-hidden-tablet">Добавить</span>
+                                                </button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div class="column is-6">
+                            <div class="field">
+                                <label class="label label_req"><span>{{steps[7].form.b2b.countPerpetualServiceContracts.title}}</span></label>
+
+                                <div class="field">
+                                    <div class="control has-icons-right has-icons-right_2">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[7].form.b2b.countPerpetualServiceContracts.value"
+                                               :placeholder="steps[7].form.b2b.countPerpetualServiceContracts.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[7].form.b2b.countPerpetualServiceContracts.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                            <div class="icon buttons-control-input-number">
+                                                <div class="plus" @click="steps[7].form.b2b.countPerpetualServiceContracts.value++">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                                <div class="minus" @click="steps[7].form.b2b.countPerpetualServiceContracts.value--">
+                                                    <img src="/svg/icons/ic_arrow.svg" class="svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <label class="label label_req"><span>{{steps[7].form.b2b.averageCheckClients.title}}</span></label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[7].form.b2b.averageCheckClients.prevTxt}}
+                                </span>
+                                </p>
+                                <div class="control is-expanded has-icons-right has-icons-right_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[7].form.b2b.averageCheckClients.value"
+                                           :placeholder="steps[7].form.b2b.averageCheckClients.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[7].form.b2b.averageCheckClients.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[7].form.b2b.mainAdvertisingSourcesAttractClients.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.selected"
+                                        :deselect-label="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.placeholder"
+                                        :options="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.selectLabel"
+                                        :selectedLabel="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.selectedLabel">
+                                        <span slot="noResult">{{steps[7].form.b2b.mainAdvertisingSourcesAttractClients.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+                <div class="step__footer">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="buttons">
+                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(8)">
+                                    <span>Шаг 8: Юридическое состояние</span>
+                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                </button>
+                                <button class="button is-clear is-clear_close is-size-875 h-3"
+                                        @click="toggleStep(6)">
+                                    <span class="has-text-decoration-underline">Вернуться назад</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div v-show="step === 8">
@@ -3919,7 +4546,7 @@
         data() {
             return {
                 // steps: 3,
-                step: 6,
+                step: 1,
                 steps: {
                     1: {
                         title: "Основная информация",
@@ -5608,16 +6235,295 @@
                                 }
                             ]
                         }
-                    }
-                    ,
-                    7:
-                        {
-                            title: "Целевая аудитория",
-                            active:
-                                false,
-                            success:
-                                false
+                    },
+                    7: {
+                        title: "Целевая аудитория",
+                        active: false,
+                        success: false,
+                        form: {
+                            typeAudience: {
+                                selected: null,
+                                title: 'Тип аудитории на которую расчитан бизнес',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            b2c: {
+                                genderTargetAudience: {
+                                    selected: null,
+                                    title: 'Пол целевой аудитории',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                ageMenFrom: {
+                                    title: 'Возраст мужчин',
+                                    placeholder: '20',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                ageMenTo: {
+                                    title: 'Возраст мужчин',
+                                    placeholder: '48',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                ageWomenFrom: {
+                                    title: 'Возраст женщин',
+                                    placeholder: '20',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                ageWomenTo: {
+                                    title: 'Возраст женщин',
+                                    placeholder: '48',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                sexRatio: {
+                                    title: 'Соотношение полов',
+                                    value: 50,
+                                    optionSlider: {
+                                        tooltip: 'always',
+                                        formatter: '{value}%',
+                                        min: 0,
+                                        max: 100,
+                                        tooltipStyle: {
+                                            "backgroundColor": "transparent",
+                                            "borderColor": "transparent",
+                                            "color": "#1C2940",
+                                            "top": ".5rem",
+                                            "position": "relative"
+
+                                        }
+                                    }
+                                },
+
+                                familyStatusClients: {
+                                    selected: null,
+                                    title: 'Семейный статус клиентов',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                aloneClients: {
+                                    title: 'Соотношение одиноких',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+                                couplesClients: {
+                                    title: 'Соотношение пар',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+                                familiesWithChildrenClients: {
+                                    title: 'Соотношение семей с детьми',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+
+                                socialStatusClients: {
+                                    selected: null,
+                                    title: 'Социальные статусы клиентов',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                childClients: {
+                                    title: 'Соотношение детей',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+                                studentsClients: {
+                                    title: 'Соотношение студентов',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+                                pensionersClients: {
+                                    title: 'Соотношение пенсонеров',
+                                    placeholder: '50',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: '%',
+                                },
+
+                                averageIncomeTargetClientsFrom: {
+                                    title: 'Средний уровень доходов целевых клиентов',
+                                    placeholder: '1000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                averageIncomeTargetClientsTo: {
+                                    title: 'Средний уровень доходов целевых клиентов',
+                                    placeholder: '1000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+
+                                averageCheckClients: {
+                                    title: 'Средний чек клиента',
+                                    placeholder: '1000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: 'zł',
+                                },
+                                mainAdvertisingSourcesAttractClients: {
+                                    selected: null,
+                                    title: 'Основные рекламные источники привлечение клиентов',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                            },
+                            b2b: {
+                                mainCategoryBusinessPartners: {
+                                    selected: null,
+                                    title: 'Основаня категория партнёров по бизнесу',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                haveExistingContracts: {
+                                    selected: null,
+                                    title: 'Наличие действущих контрактов?',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                                listContracts: [
+                                    {
+                                        title: {
+                                            title: 'Название контракта №1',
+                                            placeholder: 'Укажите название контракта',
+                                            value: '',
+                                            tooltip: 'tooltip text',
+                                        },
+                                        finalDate: {
+                                            title: 'Срок действия контракта №1',
+                                            tooltip: 'tooltip text',
+                                            placeholder: '25.02.2020',
+                                            value: '',
+                                            config: {
+                                                altFormat: 'd.m.Y',
+                                                altInput: true,
+                                                dateFormat: 'Y-m-d'
+                                            }
+                                        },
+                                    }
+                                ],
+                                countPerpetualServiceContracts: {
+                                    title: 'Количество бессрочных договров на оказания улсуг',
+                                    placeholder: '4',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                },
+                                averageCheckClients: {
+                                    title: 'Средний чек клиента',
+                                    placeholder: '1000',
+                                    value: '',
+                                    tooltip: 'tooltip text',
+                                    prevTxt: 'zł',
+                                },
+                                mainAdvertisingSourcesAttractClients: {
+                                    selected: null,
+                                    title: 'Основные рекламные источники привлечение клиентов',
+                                    placeholder: 'Выберите',
+                                    selectedLabel: '',
+                                    selectLabel: '',
+                                    deselectLabel: '',
+                                    options: [
+                                        {id: '1', name: 'Item 1'},
+                                        {id: '2', name: 'Item 2'},
+                                        {id: '3', name: 'Item 3'},
+                                        {id: '4', name: 'Item 4'},
+                                        {id: '5', name: 'Item 5'},
+                                        {id: '6', name: 'Item 6'},
+                                    ],
+                                    noResult: 'Ничего не найдено'
+                                },
+                            }
                         }
+                    }
                     ,
                     8:
                         {
@@ -5698,6 +6604,12 @@
             },
             removeCertificates(index) {
                 // Удаление документа
+            },
+            addContract() {
+                // Добавление контракта
+            },
+            removeContract(index) {
+                // Удаление контракта
             },
         }
     }
