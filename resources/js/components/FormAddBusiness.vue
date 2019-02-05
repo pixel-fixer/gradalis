@@ -2564,46 +2564,1318 @@
             </div>
         </div>
         <div v-show="step === 6">
-            <div class="box step">
-                <div class="step__header">
-                    <div class="columns is-multiline">
-                        <div class="column is-6">
-                            <h3><img src="/svg/icons/ic_globe.svg" alt=""
-                                     class="svg"><span>{{steps[6].title}}</span>
-                            </h3>
-                        </div>
-                        <div class="column is-6">
-                            <div class="add-business__progress is-flex">
-                                <figure>
-                                    <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
-                                </figure>
-                                <div class="add-business__progress__info">
-                                    <div class="is-size-875">Успех на продажу бизнеса</div>
-                                    <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="42" max="100"></progress>
-                                        <div class="has-text-success has-text-weight-bold percent">41.68%</div>
+            <div class="box step px-0">
+                <div class="px-1-5">
+                    <div class="step__header">
+                        <div class="columns is-multiline">
+                            <div class="column is-6">
+                                <h3><img src="/svg/icons/ic_globe.svg" alt=""
+                                         class="svg"><span>{{steps[6].title}}</span>
+                                </h3>
+                            </div>
+                            <div class="column is-6">
+                                <div class="add-business__progress is-flex">
+                                    <figure>
+                                        <img src="/svg/icons/ic_crown.svg" alt="" class="svg">
+                                    </figure>
+                                    <div class="add-business__progress__info">
+                                        <div class="is-size-875">Успех на продажу бизнеса</div>
+                                        <div class="progress-wrap is-flex">
+                                            <progress class="progress is-success is-small" value="42"
+                                                      max="100"></progress>
+                                            <div class="has-text-success has-text-weight-bold percent">41.68%</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="columns is-multiline">
-
-                </div>
-                <div class="step__footer">
                     <div class="columns is-multiline">
-                        <div class="column is-12">
-                            <div class="buttons">
-                                <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
-                                        @click="toggleStep(7)">
-                                    <span>Шаг 7: Целевая аудитория</span>
-                                    <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
-                                </button>
-                                <button class="button is-clear is-clear_close is-size-875 h-3" @click="toggleStep(5)">
-                                    <span class="has-text-decoration-underline">Вернуться назад</span>
-                                </button>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.saleSite.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.saleSite.selected"
+                                                 :deselect-label="steps[6].form.saleSite.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.saleSite.placeholder"
+                                                 :options="steps[6].form.saleSite.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.saleSite.selectLabel"
+                                                 :selectedLabel="steps[6].form.saleSite.selectedLabel">
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.yearCreationSite.title}}</span></label>
+                                <div class="control has-icons-left has-icons-left_1">
+                                    <input type="number"
+                                           class="input is-size-875"
+                                           v-model="steps[6].form.yearCreationSite.value"
+                                           :placeholder="steps[6].form.yearCreationSite.placeholder"
+                                    >
+                                    <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
+                                  </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.cms.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.cms.selected"
+                                                 :deselect-label="steps[6].form.cms.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.cms.placeholder"
+                                                 :options="steps[6].form.cms.options"
+                                                 :searchable="true"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.cms.selectLabel"
+                                                 :selectedLabel="steps[6].form.cms.selectedLabel">
+                                        <span slot="noResult">{{steps[6].form.cms.noResult}}</span>
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.themeSite.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.themeSite.selected"
+                                                 :deselect-label="steps[6].form.themeSite.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.themeSite.placeholder"
+                                                 :options="steps[6].form.themeSite.options"
+                                                 :searchable="true"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.themeSite.selectLabel"
+                                                 :selectedLabel="steps[6].form.themeSite.selectedLabel">
+                                        <span slot="noResult">{{steps[6].form.themeSite.noResult}}</span>
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.salePhone.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.salePhone.selected"
+                                                 :deselect-label="steps[6].form.salePhone.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.salePhone.placeholder"
+                                                 :options="steps[6].form.salePhone.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.salePhone.selectLabel"
+                                                 :selectedLabel="steps[6].form.salePhone.selectedLabel">
+                                        <span slot="noResult">{{steps[6].form.salePhone.noResult}}</span>
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="field">
+                                <label class="label label_req"><span>{{steps[6].form.phone.title}}</span></label>
+                                <div class="control has-icons-right has-icons-right_1">
+                                    <input type="text"
+                                           class="input is-size-875"
+                                           v-model="steps[6].form.phone.value"
+                                           :placeholder="steps[6].form.phone.placeholder"
+                                    >
+                                    <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.phone.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.intellectualProperty.title}}</span></label>
+                                <div class="control">
+                                    <multiselect v-model="steps[6].form.intellectualProperty.selected"
+                                                 :deselect-label="steps[6].form.intellectualProperty.deselectLabel"
+                                                 track-by="name"
+                                                 label="name"
+                                                 openDirection="bottom"
+                                                 :placeholder="steps[6].form.intellectualProperty.placeholder"
+                                                 :options="steps[6].form.intellectualProperty.options"
+                                                 :searchable="false"
+                                                 :allow-empty="false"
+                                                 :selectLabel="steps[6].form.intellectualProperty.selectLabel"
+                                                 :selectedLabel="steps[6].form.intellectualProperty.selectedLabel">
+                                        <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                        </template>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.intellectualPropertyList.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[6].form.intellectualPropertyList.selected"
+                                        :deselect-label="steps[6].form.intellectualPropertyList.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[6].form.intellectualPropertyList.placeholder"
+                                        :options="steps[6].form.intellectualPropertyList.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[6].form.intellectualPropertyList.selectLabel"
+                                        :selectedLabel="steps[6].form.intellectualPropertyList.selectedLabel">
+                                        <span slot="noResult">{{steps[6].form.intellectualPropertyList.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template>
+                            <div class="column is-12 pb-0">
+                                <h3>Трафик и SEO</h3>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.visitorsPerDay.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.visitorsPerDay.value"
+                                               :placeholder="steps[6].form.visitorsPerDay.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.visitorsPerDay.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.viewsPerDay.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.viewsPerDay.value"
+                                               :placeholder="steps[6].form.viewsPerDay.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.viewsPerDay.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.natureTraffic.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect v-model="steps[6].form.natureTraffic.selected"
+                                                     :deselect-label="steps[6].form.natureTraffic.deselectLabel"
+                                                     track-by="name"
+                                                     label="name"
+                                                     openDirection="bottom"
+                                                     :placeholder="steps[6].form.natureTraffic.placeholder"
+                                                     :options="steps[6].form.natureTraffic.options"
+                                                     :searchable="true"
+                                                     :allow-empty="false"
+                                                     :selectLabel="steps[6].form.natureTraffic.selectLabel"
+                                                     :selectedLabel="steps[6].form.natureTraffic.selectedLabel">
+                                            <span slot="noResult">{{steps[6].form.natureTraffic.noResult}}</span>
+                                            <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                            </template>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.sourcesTraffic.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect
+                                            v-model="steps[6].form.sourcesTraffic.selected"
+                                            :deselect-label="steps[6].form.sourcesTraffic.deselectLabel"
+                                            track-by="name"
+                                            label="name"
+                                            openDirection="bottom"
+                                            :multiple="true"
+                                            :class="'multiselect_multiple'"
+                                            :placeholder="steps[6].form.sourcesTraffic.placeholder"
+                                            :options="steps[6].form.sourcesTraffic.options"
+                                            :searchable="true"
+                                            :close-on-select="false"
+                                            :allow-empty="true"
+                                            :selectLabel="steps[6].form.sourcesTraffic.selectLabel"
+                                            :selectedLabel="steps[6].form.sourcesTraffic.selectedLabel">
+                                            <span slot="noResult">{{steps[6].form.sourcesTraffic.noResult}}</span>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="columns is-multiline">
+                                    <div class="column is-narrow">
+                                        <button class="button is-info button-integrate-analitics"
+                                                v-tooltip="'Интеграция с Google Analytics'">
+                                            <img src="/svg/icons/ic_analytics.svg" alt="" class="svg">
+                                        </button>
+                                    </div>
+                                    <div class="column">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label class="label label_req"><span>{{steps[6].form.sourceGoogle.title}}</span></label>
+                                                    <div class="control has-icons-right has-icons-right_1">
+                                                        <input type="text"
+                                                               class="input is-size-875"
+                                                               v-model="steps[6].form.sourceGoogle.value"
+                                                               :placeholder="steps[6].form.sourceGoogle.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.sourceGoogle.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="column is-6">
+                                                <div class="field">
+                                                    <label class="label label_req"><span>{{steps[6].form.sourceYandex.title}}</span></label>
+                                                    <div class="control has-icons-right has-icons-right_1">
+                                                        <input type="text"
+                                                               class="input is-size-875"
+                                                               v-model="steps[6].form.sourceYandex.value"
+                                                               :placeholder="steps[6].form.sourceYandex.placeholder"
+                                                        >
+                                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.sourceYandex.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[6].form.additionalInformationTraffic.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.additionalInformationTraffic.value"
+                                               :placeholder="steps[6].form.additionalInformationTraffic.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.additionalInformationTraffic.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template>
+                            <div class="column is-12 pb-0">
+                                <h3>Доходы сайта</h3>
+                            </div>
+                            <div class="column is-3">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.haveIncomeSite.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect v-model="steps[6].form.haveIncomeSite.selected"
+                                                     :deselect-label="steps[6].form.haveIncomeSite.deselectLabel"
+                                                     track-by="name"
+                                                     label="name"
+                                                     openDirection="bottom"
+                                                     :placeholder="steps[6].form.haveIncomeSite.placeholder"
+                                                     :options="steps[6].form.haveIncomeSite.options"
+                                                     :searchable="false"
+                                                     :allow-empty="false"
+                                                     :selectLabel="steps[6].form.haveIncomeSite.selectLabel"
+                                                     :selectedLabel="steps[6].form.haveIncomeSite.selectedLabel">
+                                            <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                            </template>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.averageMonthlyIncome.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.averageMonthlyIncome.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.averageMonthlyIncome.value"
+                                               :placeholder="steps[6].form.averageMonthlyIncome.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.averageMonthlyIncome.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.sourcesIncome.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect
+                                            v-model="steps[6].form.sourcesIncome.selected"
+                                            :deselect-label="steps[6].form.sourcesIncome.deselectLabel"
+                                            track-by="name"
+                                            label="name"
+                                            openDirection="bottom"
+                                            :multiple="true"
+                                            :class="'multiselect_multiple'"
+                                            :placeholder="steps[6].form.sourcesIncome.placeholder"
+                                            :options="steps[6].form.sourcesIncome.options"
+                                            :searchable="true"
+                                            :close-on-select="false"
+                                            :allow-empty="true"
+                                            :selectLabel="steps[6].form.sourcesIncome.selectLabel"
+                                            :selectedLabel="steps[6].form.sourcesIncome.selectedLabel">
+                                            <span slot="noResult">{{steps[6].form.sourcesIncome.noResult}}</span>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.contextualAdvertising.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.contextualAdvertising.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.contextualAdvertising.value"
+                                               :placeholder="steps[6].form.contextualAdvertising.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.contextualAdvertising.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.contextualAdvertisingGAdsens.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.contextualAdvertisingGAdsens.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.contextualAdvertisingGAdsens.value"
+                                               :placeholder="steps[6].form.contextualAdvertisingGAdsens.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[6].form.contextualAdvertisingGAdsens.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.bannerTizerNetworks.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.bannerTizerNetworks.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.bannerTizerNetworks.value"
+                                               :placeholder="steps[6].form.bannerTizerNetworks.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.bannerTizerNetworks.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.cpa.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.cpa.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.cpa.value"
+                                               :placeholder="steps[6].form.cpa.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.cpa.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-6">
+                                <div class="field mt-2-5">
+                                    <div class="control">
+                                        <label class="checkbox is-info is-size-875 h3"
+                                               v-model="steps[6].form.banMonetizationSystems.value">
+                                            <input type="checkbox">
+                                            <span>{{steps[6].form.banMonetizationSystems.title}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[6].form.additionalInformationIncome.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.additionalInformationIncome.value"
+                                               :placeholder="steps[6].form.additionalInformationIncome.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.additionalInformationIncome.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template>
+                            <div class="column is-12 pb-0">
+                                <h3>Расходы сайта</h3>
+                            </div>
+                            <div class="column is-6">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.averageMonthlyExpensesSite.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.averageMonthlyExpensesSite.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.averageMonthlyExpensesSite.value"
+                                               :placeholder="steps[6].form.averageMonthlyExpensesSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small"
+                                        v-tooltip="steps[6].form.averageMonthlyExpensesSite.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.categoriesExpensesSite.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect
+                                            v-model="steps[6].form.categoriesExpensesSite.selected"
+                                            :deselect-label="steps[6].form.categoriesExpensesSite.deselectLabel"
+                                            track-by="name"
+                                            label="name"
+                                            openDirection="bottom"
+                                            :multiple="true"
+                                            :class="'multiselect_multiple'"
+                                            :placeholder="steps[6].form.categoriesExpensesSite.placeholder"
+                                            :options="steps[6].form.categoriesExpensesSite.options"
+                                            :searchable="true"
+                                            :close-on-select="false"
+                                            :allow-empty="true"
+                                            :selectLabel="steps[6].form.categoriesExpensesSite.selectLabel"
+                                            :selectedLabel="steps[6].form.categoriesExpensesSite.selectedLabel">
+                                            <span
+                                                slot="noResult">{{steps[6].form.categoriesExpensesSite.noResult}}</span>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.contentExpensesSite.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.contentExpensesSite.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.contentExpensesSite.value"
+                                               :placeholder="steps[6].form.contentExpensesSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.contentExpensesSite.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-3">
+                                <label class="label label_req"><span>{{steps[6].form.hostingExpensesSite.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.hostingExpensesSite.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.hostingExpensesSite.value"
+                                               :placeholder="steps[6].form.hostingExpensesSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.hostingExpensesSite.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-3">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.otherExpensesSite.title}}</span></label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.otherExpensesSite.prevTxt}}
+                                </span>
+                                    </p>
+                                    <div class="control is-expanded has-icons-right has-icons-right_1">
+                                        <input type="number"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.otherExpensesSite.value"
+                                               :placeholder="steps[6].form.otherExpensesSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.otherExpensesSite.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[6].form.additionalInformationExpensesSite.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.additionalInformationExpensesSite.value"
+                                               :placeholder="steps[6].form.additionalInformationExpensesSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.additionalInformationExpensesSite.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template>
+                            <div class="column is-12 pb-0">
+                                <h3>О контенте и дизайне</h3>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.siteDesign.title}}</span></label>
+                                    <div class="control">
+                                        <multiselect v-model="steps[6].form.siteDesign.selected"
+                                                     :deselect-label="steps[6].form.siteDesign.deselectLabel"
+                                                     track-by="name"
+                                                     label="name"
+                                                     openDirection="bottom"
+                                                     :placeholder="steps[6].form.siteDesign.placeholder"
+                                                     :options="steps[6].form.siteDesign.options"
+                                                     :searchable="false"
+                                                     :allow-empty="false"
+                                                     :selectLabel="steps[6].form.siteDesign.selectLabel"
+                                                     :selectedLabel="steps[6].form.siteDesign.selectedLabel">
+                                            <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                            </template>
+                                        </multiselect>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-12 pb-0">
+                                <label class="label"><span>Фото и картинки на сайте</span></label>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.imgSiteOwn.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.imgSiteOwn.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.imgSiteOwn.value"
+                                                   :placeholder="steps[6].form.imgSiteOwn.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.imgSiteOwn.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.imgSiteOwn.value"
+                                                :tooltip="steps[6].form.imgSiteOwn.optionSlider.tooltip"
+                                                :min="steps[6].form.imgSiteOwn.optionSlider.min"
+                                                :max="steps[6].form.imgSiteOwn.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+                            <div class="column is-6">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.imgSiteOtherSources.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.imgSiteOtherSources.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.imgSiteOtherSources.value"
+                                                   :placeholder="steps[6].form.imgSiteOtherSources.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.imgSiteOtherSources.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.imgSiteOtherSources.value"
+                                                :tooltip="steps[6].form.imgSiteOtherSources.optionSlider.tooltip"
+                                                :min="steps[6].form.imgSiteOtherSources.optionSlider.min"
+                                                :max="steps[6].form.imgSiteOtherSources.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+
+                            <div class="column is-12 pb-0">
+                                <label
+                                    class="label"><span>Тексты на сайте</span></label>
+                            </div>
+
+                            <div class="column is-3">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.textSiteCopyright.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.textSiteCopyright.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.textSiteCopyright.value"
+                                                   :placeholder="steps[6].form.textSiteCopyright.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.textSiteCopyright.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.textSiteCopyright.value"
+                                                :tooltip="steps[6].form.textSiteCopyright.optionSlider.tooltip"
+                                                :min="steps[6].form.textSiteCopyright.optionSlider.min"
+                                                :max="steps[6].form.textSiteCopyright.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.textSiteManualRewrite.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.textSiteManualRewrite.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.textSiteManualRewrite.value"
+                                                   :placeholder="steps[6].form.textSiteManualRewrite.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.textSiteManualRewrite.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.textSiteManualRewrite.value"
+                                                :tooltip="steps[6].form.textSiteManualRewrite.optionSlider.tooltip"
+                                                :min="steps[6].form.textSiteManualRewrite.optionSlider.min"
+                                                :max="steps[6].form.textSiteManualRewrite.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.textSiteSavePaste.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.textSiteSavePaste.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.textSiteSavePaste.value"
+                                                   :placeholder="steps[6].form.textSiteSavePaste.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.textSiteSavePaste.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.textSiteSavePaste.value"
+                                                :tooltip="steps[6].form.textSiteSavePaste.optionSlider.tooltip"
+                                                :min="steps[6].form.textSiteSavePaste.optionSlider.min"
+                                                :max="steps[6].form.textSiteSavePaste.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+                            <div class="column is-3">
+                                <div class="field">
+                                    <label
+                                        class="label label_req"><span>{{steps[6].form.textSiteGenerated.title}}</span></label>
+                                    <div class="field has-addons has-slider">
+                                        <p class="control">
+                                <span class="button is-static is-size-875">
+                                   {{steps[6].form.textSiteGenerated.prevTxt}}
+                                </span>
+                                        </p>
+                                        <div class="control is-expanded has-icons-right has-icons-right_1">
+                                            <input type="number"
+                                                   class="input is-size-875"
+                                                   v-model="steps[6].form.textSiteGenerated.value"
+                                                   :placeholder="steps[6].form.textSiteGenerated.placeholder"
+                                            >
+                                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="steps[6].form.textSiteGenerated.tooltip">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <vue-slider v-model="steps[6].form.textSiteGenerated.value"
+                                                :tooltip="steps[6].form.textSiteGenerated.optionSlider.tooltip"
+                                                :min="steps[6].form.textSiteGenerated.optionSlider.min"
+                                                :max="steps[6].form.textSiteGenerated.optionSlider.max">
+
+                                    </vue-slider>
+                                </div>
+                            </div>
+                            <div class="column is-12">
+                                <div class="field">
+                                    <label class="label label_req"><span>{{steps[6].form.additionalInformationContentSite.title}}</span></label>
+                                    <div class="control has-icons-right has-icons-right_1">
+                                        <input type="text"
+                                               class="input is-size-875"
+                                               v-model="steps[6].form.additionalInformationContentSite.value"
+                                               :placeholder="steps[6].form.additionalInformationContentSite.placeholder"
+                                        >
+                                        <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.additionalInformationContentSite.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+
+                <hr>
+                <div class="px-1-5">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 pb-0">
+                            <h3>Группы в социальных сетях</h3>
+                        </div>
+                        <div class="column is-6">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{steps[6].form.saleGroupsSocNet.title}}</span></label>
+                            <div class="control">
+                                <multiselect v-model="steps[6].form.saleGroupsSocNet.selected"
+                                             :deselect-label="steps[6].form.saleGroupsSocNet.deselectLabel"
+                                             track-by="name"
+                                             label="name"
+                                             openDirection="bottom"
+                                             :placeholder="steps[6].form.saleGroupsSocNet.placeholder"
+                                             :options="steps[6].form.saleGroupsSocNet.options"
+                                             :searchable="false"
+                                             :allow-empty="false"
+                                             :selectLabel="steps[6].form.saleGroupsSocNet.selectLabel"
+                                             :selectedLabel="steps[6].form.saleGroupsSocNet.selectedLabel">
+                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="column is-6">
+                            <div class="field">
+                                <label
+                                    class="label label_req"><span>{{steps[6].form.socNetList.title}}</span></label>
+                                <div class="control">
+                                    <multiselect
+                                        v-model="steps[6].form.socNetList.selected"
+                                        :deselect-label="steps[6].form.socNetList.deselectLabel"
+                                        track-by="name"
+                                        label="name"
+                                        openDirection="bottom"
+                                        :multiple="true"
+                                        :class="'multiselect_multiple'"
+                                        :placeholder="steps[6].form.socNetList.placeholder"
+                                        :options="steps[6].form.socNetList.options"
+                                        :searchable="true"
+                                        :close-on-select="false"
+                                        :allow-empty="true"
+                                        :selectLabel="steps[6].form.socNetList.selectLabel"
+                                        :selectedLabel="steps[6].form.socNetList.selectedLabel">
+                                        <span slot="noResult">{{steps[6].form.socNetList.noResult}}</span>
+                                    </multiselect>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template v-for="(item, index) in steps[6].form.socNetItems">
+                            <div class="column is-12">
+                                <div class="columns is-multiline">
+                                    <div class="column is-12 pb-0">
+                                        <h3>Группа в {{steps[6].form.socNetItems[index].title}}</h3>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label class="label label_req"><span>{{steps[6].form.socNetItems[index].link.title}}</span></label>
+                                            <div class="control has-icons-right has-icons-right_1">
+                                                <input type="url"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].link.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].link.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.socNetItems[index].link.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label class="label label_req"><span>{{steps[6].form.socNetItems[index].countUsers.title}}</span></label>
+                                            <div class="control has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].countUsers.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].countUsers.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                              <span class="icon is-small"
+                                                    v-tooltip="steps[6].form.socNetItems[index].countUsers.tooltip">
+                                                <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[6].form.socNetItems[index].haveIncome.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect v-model="steps[6].form.socNetItems[index].haveIncome.selected"
+                                                             :deselect-label="steps[6].form.socNetItems[index].haveIncome.deselectLabel"
+                                                             track-by="name"
+                                                             label="name"
+                                                             openDirection="bottom"
+                                                             :placeholder="steps[6].form.socNetItems[index].haveIncome.placeholder"
+                                                             :options="steps[6].form.socNetItems[index].haveIncome.options"
+                                                             :searchable="false"
+                                                             :allow-empty="false"
+                                                             :selectLabel="steps[6].form.socNetItems[index].haveIncome.selectLabel"
+                                                             :selectedLabel="steps[6].form.socNetItems[index].haveIncome.selectedLabel">
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].incomeYear.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].incomeYear.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].incomeYear.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].incomeYear.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].incomeYear.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].incomeQuarter.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].incomeQuarter.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].incomeQuarter.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].incomeQuarter.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].incomeQuarter.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].turnoverYear.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].turnoverYear.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].turnoverYear.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].turnoverYear.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].turnoverYear.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].turnoverQuarter.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].turnoverQuarter.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].turnoverQuarter.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].turnoverQuarter.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].turnoverQuarter.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].expensesYear.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].expensesYear.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].expensesYear.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].expensesYear.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].expensesYear.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="column is-3">
+                                        <label
+                                            class="label label_req"><span>{{steps[6].form.socNetItems[index].expensesQuarter.title}}</span></label>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <span class="button is-static is-size-875">
+                                                   {{steps[6].form.socNetItems[index].expensesQuarter.prevTxt}}
+                                                </span>
+                                            </p>
+                                            <div class="control is-expanded has-icons-right has-icons-right_1">
+                                                <input type="number"
+                                                       class="input is-size-875"
+                                                       v-model="steps[6].form.socNetItems[index].expensesQuarter.value"
+                                                       :placeholder="steps[6].form.socNetItems[index].expensesQuarter.placeholder"
+                                                >
+                                                <div class="icons is-right">
+                                                  <span class="icon is-small"
+                                                        v-tooltip="steps[6].form.socNetItems[index].expensesQuarter.tooltip">
+                                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                                  </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[6].form.socNetItems[index].themes.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[6].form.socNetItems[index].themes.selected"
+                                                    :deselect-label="steps[6].form.socNetItems[index].themes.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :multiple="true"
+                                                    :class="'multiselect_multiple'"
+                                                    :placeholder="steps[6].form.socNetItems[index].themes.placeholder"
+                                                    :options="steps[6].form.socNetItems[index].themes.options"
+                                                    :searchable="true"
+                                                    :close-on-select="false"
+                                                    :allow-empty="true"
+                                                    :selectLabel="steps[6].form.socNetItems[index].themes.selectLabel"
+                                                    :selectedLabel="steps[6].form.socNetItems[index].themes.selectedLabel">
+                                                    <span slot="noResult">{{steps[6].form.socNetItems[index].themes.noResult}}</span>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[6].form.socNetItems[index].lang.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect v-model="steps[6].form.socNetItems[index].lang.selected"
+                                                             :deselect-label="steps[6].form.socNetItems[index].lang.deselectLabel"
+                                                             track-by="name"
+                                                             label="name"
+                                                             openDirection="bottom"
+                                                             :placeholder="steps[6].form.socNetItems[index].lang.placeholder"
+                                                             :options="steps[6].form.socNetItems[index].lang.options"
+                                                             :searchable="true"
+                                                             :allow-empty="false"
+                                                             :selectLabel="steps[6].form.socNetItems[index].lang.selectLabel"
+                                                             :selectedLabel="steps[6].form.socNetItems[index].lang.selectedLabel">
+                                                    <span slot="noResult">{{steps[6].form.socNetItems[index].lang.noResult}}</span>
+                                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}
+                                                    </template>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <div class="field">
+                                            <label
+                                                class="label label_req"><span>{{steps[6].form.socNetItems[index].methodTransferGroup.title}}</span></label>
+                                            <div class="control">
+                                                <multiselect
+                                                    v-model="steps[6].form.socNetItems[index].methodTransferGroup.selected"
+                                                    :deselect-label="steps[6].form.socNetItems[index].methodTransferGroup.deselectLabel"
+                                                    track-by="name"
+                                                    label="name"
+                                                    openDirection="bottom"
+                                                    :multiple="true"
+                                                    :class="'multiselect_multiple'"
+                                                    :placeholder="steps[6].form.socNetItems[index].methodTransferGroup.placeholder"
+                                                    :options="steps[6].form.socNetItems[index].methodTransferGroup.options"
+                                                    :searchable="true"
+                                                    :close-on-select="false"
+                                                    :allow-empty="true"
+                                                    :selectLabel="steps[6].form.socNetItems[index].methodTransferGroup.selectLabel"
+                                                    :selectedLabel="steps[6].form.socNetItems[index].methodTransferGroup.selectedLabel">
+                                                    <span slot="noResult">{{steps[6].form.socNetItems[index].methodTransferGroup.noResult}}</span>
+                                                </multiselect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="step__footer">
+                        <div class="columns is-multiline">
+                            <div class="column is-12">
+                                <div class="buttons">
+                                    <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                            @click="toggleStep(7)">
+                                        <span>Шаг 7: Целевая аудитория</span>
+                                        <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
+                                    </button>
+                                    <button class="button is-clear is-clear_close is-size-875 h-3"
+                                            @click="toggleStep(5)">
+                                        <span class="has-text-decoration-underline">Вернуться назад</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2647,7 +3919,7 @@
         data() {
             return {
                 // steps: 3,
-                step: 1,
+                step: 6,
                 steps: {
                     1: {
                         title: "Основная информация",
@@ -3568,329 +4840,775 @@
                         }
                     },
                     5: {
-                            title: "Материальные активы",
-                            active: false,
-                            success: false,
-                            form: {
-                                techDocEquipmentCD: {
-                                    selected: null,
-                                    title: 'Техническая документация на оборудование (чеки или договор)?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                techDocEquipment: {
-                                    selected: null,
-                                    title: 'Техническая документация на оборудование?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                conditionProperty: {
-                                    selected: null,
-                                    title: 'Состояние имущества (по оценке собственника)',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                conditionEquipment: {
-                                    selected: null,
-                                    title: 'Состояние оборудования, транспорта, техники (по оценке собственника)',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                pledgeEquipment: {
-                                    selected: null,
-                                    title: 'Залог на оборудование, транспорт и дугие материльные активы?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
+                        title: "Материальные активы",
+                        active: false,
+                        success: false,
+                        form: {
+                            techDocEquipmentCD: {
+                                selected: null,
+                                title: 'Техническая документация на оборудование (чеки или договор)?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            techDocEquipment: {
+                                selected: null,
+                                title: 'Техническая документация на оборудование?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            conditionProperty: {
+                                selected: null,
+                                title: 'Состояние имущества (по оценке собственника)',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            conditionEquipment: {
+                                selected: null,
+                                title: 'Состояние оборудования, транспорта, техники (по оценке собственника)',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            pledgeEquipment: {
+                                selected: null,
+                                title: 'Залог на оборудование, транспорт и дугие материльные активы?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
 
-                                totalAmountCredit: {
-                                    title: 'Общая сумма кредита',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
-                                repaidAmountCredit: {
-                                    title: 'Погашенная сумма',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
-                                balanceCredit: {
-                                    title: 'Остаток суммы кредита',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
-                                monthlyPaymentCredit: {
-                                    title: 'Ежемесячный платёж',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
+                            totalAmountCredit: {
+                                title: 'Общая сумма кредита',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            repaidAmountCredit: {
+                                title: 'Погашенная сумма',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            balanceCredit: {
+                                title: 'Остаток суммы кредита',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            monthlyPaymentCredit: {
+                                title: 'Ежемесячный платёж',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
 
-                                finalPaymentCreditDate: {
-                                    title: 'Окончательный срок выплаты',
-                                    placeholder: '25.02.2020',
-                                    value: '',
-                                    config: {
-                                        altFormat: 'd.m.Y',
-                                        altInput: true,
-                                        dateFormat: 'Y-m-d'
-                                    }
-                                },
-                                purposeCredit: {
-                                    selected: null,
-                                    title: 'Назначение кредита',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                listTransferredProperty: {
-                                    selected: null,
-                                    title: 'Перечень имущества передаваемого продавцом',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
+                            finalPaymentCreditDate: {
+                                title: 'Окончательный срок выплаты',
+                                placeholder: '25.02.2020',
+                                value: '',
+                                config: {
+                                    altFormat: 'd.m.Y',
+                                    altInput: true,
+                                    dateFormat: 'Y-m-d'
+                                }
+                            },
+                            purposeCredit: {
+                                selected: null,
+                                title: 'Назначение кредита',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            listTransferredProperty: {
+                                selected: null,
+                                title: 'Перечень имущества передаваемого продавцом',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
 
-                                deductionsDepreciation: {
-                                    selected: null,
-                                    title: 'Отчисления на амортизцию',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                amountDeductionsProfits: {
-                                    title: 'Объем отчислений от прибыли',
-                                    placeholder: '75',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
+                            deductionsDepreciation: {
+                                selected: null,
+                                title: 'Отчисления на амортизцию',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            amountDeductionsProfits: {
+                                title: 'Объем отчислений от прибыли',
+                                placeholder: '75',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                            },
 
-                            }
-                        },
-                    6: {
-                            title: "Нематериальные активы",
-                            active: false,
-                            success: false,
-                            form: {
-                                saleSite: {
-                                    selected: null,
-                                    title: 'Продается ли сайт?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                yearCreationSite: {
-                                    title: 'Год создания сайта',
-                                    placeholder: '2010',
-                                    value: '',
-                                },
-                                cms: {
-                                    selected: null,
-                                    title: 'Система управления сайтом',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                themeSite: {
-                                    selected: null,
-                                    title: 'Тематика сайта *',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                salePhone: {
-                                    selected: null,
-                                    title: 'Продается ли телефон?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                phone: {
-                                    title: 'Номер телефона',
-                                    placeholder: '880005553535',
-                                    value: '',
-                                },
-                                intellectualProperty: {
-                                    selected: null,
-                                    title: 'Интеллектуальная собственность?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-                                intellectualPropertyList: {
-                                    selected: null,
-                                    title: 'Укажите объекты интеллектуальной собственности',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
-                                    noResult: 'Ничего не найдено'
-                                },
-
-                                visitorsPerDay: {
-                                    title: 'Посетителей в день',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                viewsPerDay: {
-                                    title: 'Просмотров в день',
-                                    placeholder: '1 000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                            }
                         }
+                    },
+                    6: {
+                        title: "Нематериальные активы",
+                        active: false,
+                        success: false,
+                        form: {
+                            saleSite: {
+                                selected: null,
+                                title: 'Продается ли сайт?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            yearCreationSite: {
+                                title: 'Год создания сайта',
+                                placeholder: '2010',
+                                value: '',
+                            },
+                            cms: {
+                                selected: null,
+                                title: 'Система управления сайтом',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            themeSite: {
+                                selected: null,
+                                title: 'Тематика сайта',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            salePhone: {
+                                selected: null,
+                                title: 'Продается ли телефон?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            phone: {
+                                title: 'Номер телефона',
+                                placeholder: '880005553535',
+                                value: '',
+                                tooltip: 'tooltip text'
+                            },
+                            intellectualProperty: {
+                                selected: null,
+                                title: 'Интеллектуальная собственность?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            intellectualPropertyList: {
+                                selected: null,
+                                title: 'Укажите объекты интеллектуальной собственности',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+
+                            visitorsPerDay: {
+                                title: 'Посетителей в день',
+                                placeholder: '18 300',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            viewsPerDay: {
+                                title: 'Просмотров в день',
+                                placeholder: '12 300',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            natureTraffic: {
+                                selected: null,
+                                title: 'Характер трафика',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            sourcesTraffic: {
+                                selected: null,
+                                title: 'Источники трафика',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            sourceGoogle: {
+                                title: 'Источник: Google',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            sourceYandex: {
+                                title: 'Источник: Яндекс',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+                            additionalInformationTraffic: {
+                                title: 'Дополнительная информация по трафику',
+                                placeholder: 'Опишите дополнительную информацию по вашему трафику',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+
+                            haveIncomeSite: {
+                                selected: null,
+                                title: 'Получаете ли доход из сайта?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            averageMonthlyIncome: {
+                                title: 'Среднемесячный доход',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            sourcesIncome: {
+                                selected: null,
+                                title: 'Источники дохода',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            contextualAdvertising: {
+                                title: 'Контекстная реклама',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            contextualAdvertisingGAdsens: {
+                                title: 'Из них Google Adsens',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            bannerTizerNetworks: {
+                                title: 'Баннерные и тизирные сети',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            cpa: {
+                                title: 'CPA',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            banMonetizationSystems: {
+                                title: 'Бан в системах монетизации',
+                                value: false,
+                            },
+                            additionalInformationIncome: {
+                                title: 'Дополнительная информация по доходам',
+                                placeholder: 'Опишите дополнительную информацию по доходам',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+
+                            averageMonthlyExpensesSite: {
+                                title: 'Среднемесячный расход',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            categoriesExpensesSite: {
+                                selected: null,
+                                title: 'Категории расходов',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            contentExpensesSite: {
+                                title: 'Контент',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            hostingExpensesSite: {
+                                title: 'Хостинг и администрирование',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            otherExpensesSite: {
+                                title: 'Иные расходы',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            additionalInformationExpensesSite: {
+                                title: 'Дополнительная информация по расходам',
+                                placeholder: 'Опишите дополнительную информацию по расходам',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+
+                            siteDesign: {
+                                selected: null,
+                                title: 'Дизайн сайта',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+
+                            imgSiteOwn: {
+                                title: 'Собственные',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+                            imgSiteOtherSources: {
+                                title: 'Из других источников',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+
+                            textSiteCopyright: {
+                                title: 'Копирайт',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+                            textSiteManualRewrite: {
+                                title: 'Ручной рерайт',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+                            textSiteSavePaste: {
+                                title: 'Копи-паст',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+                            textSiteGenerated: {
+                                title: 'Генерированый',
+                                placeholder: '50',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: '%',
+                                optionSlider: {
+                                    tooltip: false,
+                                    min: 0,
+                                    max: 100
+                                },
+                            },
+                            additionalInformationContentSite: {
+                                title: 'Дополнительная информация по контенту и дизайну',
+                                placeholder: 'Опишите дополнительную информацию по контенту и дизайну',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
+
+                            saleGroupsSocNet: {
+                                selected: null,
+                                title: 'Передаются ли группы в социальных сетях?',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            socNetList: {
+                                selected: null,
+                                title: 'Укажите социальные сети',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: [
+                                    {id: '1', name: 'Item 1'},
+                                    {id: '2', name: 'Item 2'},
+                                    {id: '3', name: 'Item 3'},
+                                    {id: '4', name: 'Item 4'},
+                                    {id: '5', name: 'Item 5'},
+                                    {id: '6', name: 'Item 6'},
+                                ],
+                                noResult: 'Ничего не найдено'
+                            },
+                            socNetItems: [
+                                {
+                                    title: 'Facebook',
+                                    link: {
+                                        title: 'Ссылка на группу в Facebook',
+                                        placeholder: 'https://',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                    },
+                                    countUsers: {
+                                        title: 'Объём пользователей группы в Facebook',
+                                        placeholder: '11000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                    },
+                                    haveIncome: {
+                                        selected: null,
+                                        title: 'Получаете ли доход с группы?',
+                                        placeholder: 'Выберите',
+                                        selectedLabel: '',
+                                        selectLabel: '',
+                                        deselectLabel: '',
+                                        options: [
+                                            {id: '1', name: 'Item 1'},
+                                            {id: '2', name: 'Item 2'},
+                                            {id: '3', name: 'Item 3'},
+                                            {id: '4', name: 'Item 4'},
+                                            {id: '5', name: 'Item 5'},
+                                            {id: '6', name: 'Item 6'},
+                                        ],
+                                        noResult: 'Ничего не найдено'
+                                    },
+                                    incomeYear: {
+                                        title: 'Доход с группы в год',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    incomeQuarter: {
+                                        title: 'Доход с группы в квартал ',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    turnoverYear: {
+                                        title: 'Оборот с группы в год',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    turnoverQuarter: {
+                                        title: 'Оборот с группы в квартал ',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    expensesYear: {
+                                        title: 'Расходы с группы в год',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    expensesQuarter: {
+                                        title: 'Расходы с группы в квартал ',
+                                        placeholder: '1 000',
+                                        value: '',
+                                        tooltip: 'tooltip text',
+                                        prevTxt: 'zł',
+                                    },
+                                    themes: {
+                                        selected: null,
+                                        title: 'Тематика группы',
+                                        placeholder: 'Выберите',
+                                        selectedLabel: '',
+                                        selectLabel: '',
+                                        deselectLabel: '',
+                                        options: [
+                                            {id: '1', name: 'Item 1'},
+                                            {id: '2', name: 'Item 2'},
+                                            {id: '3', name: 'Item 3'},
+                                            {id: '4', name: 'Item 4'},
+                                            {id: '5', name: 'Item 5'},
+                                            {id: '6', name: 'Item 6'},
+                                        ],
+                                        noResult: 'Ничего не найдено'
+                                    },
+                                    lang: {
+                                        selected: null,
+                                        title: 'Языковой сегмент группы',
+                                        placeholder: 'Выберите',
+                                        selectedLabel: '',
+                                        selectLabel: '',
+                                        deselectLabel: '',
+                                        options: [
+                                            {id: '1', name: 'Item 1'},
+                                            {id: '2', name: 'Item 2'},
+                                            {id: '3', name: 'Item 3'},
+                                            {id: '4', name: 'Item 4'},
+                                            {id: '5', name: 'Item 5'},
+                                            {id: '6', name: 'Item 6'},
+                                        ],
+                                        noResult: 'Ничего не найдено'
+                                    },
+                                    methodTransferGroup: {
+                                        selected: null,
+                                        title: 'Способ передачи группы',
+                                        placeholder: 'Выберите',
+                                        selectedLabel: '',
+                                        selectLabel: '',
+                                        deselectLabel: '',
+                                        options: [
+                                            {id: '1', name: 'Item 1'},
+                                            {id: '2', name: 'Item 2'},
+                                            {id: '3', name: 'Item 3'},
+                                            {id: '4', name: 'Item 4'},
+                                            {id: '5', name: 'Item 5'},
+                                            {id: '6', name: 'Item 6'},
+                                        ],
+                                        noResult: 'Ничего не найдено'
+                                    },
+
+                                }
+                            ]
+                        }
+                    }
                     ,
                     7:
                         {
