@@ -340,7 +340,7 @@ input.input {
             height: 1.5rem;
             width: 1.5rem;
             background-color: $white;
-            border: 1px solid #CEDCF0;
+            border: 1px solid $input-border-color;
             border-radius: $radius;
             box-shadow: $input-shadow;
         }
