@@ -174,6 +174,23 @@
                        </div>
                     </div>
                 </div>
+
+                <div class="check-sell-business-myself">
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox"
+                                       checked>
+                                <span>Я хочу продавать бизнес самостоятельно</span>
+                            </label>
+                            <div class="icons is-right">
+                                  <span class="icon is-small" v-tooltip="'tooltip text'">
+                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

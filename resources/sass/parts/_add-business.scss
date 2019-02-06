@@ -439,3 +439,44 @@
         }
     }
 }
+
+.check-sell-business-myself {
+    .checkbox {
+        margin-bottom: 0;
+
+        span {
+
+        }
+    }
+
+    .control {
+        display: flex;
+    }
+
+    .icons {
+        margin-left: .5rem;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &.has-tooltip {
+                pointer-events: auto;
+                cursor: help;
+
+                &:hover {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
