@@ -97,3 +97,7 @@ Route::get('/add-business', function () {
 Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
+
+Route::get('/brpa/offers-instructions', function () {
+    return view('brpa.offers-instructions');
+});
