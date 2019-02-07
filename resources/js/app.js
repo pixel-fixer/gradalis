@@ -1,31 +1,18 @@
 require('./bootstrap');
 
-// window.Vue = require('vue');
-
 import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
-import VueRouter from 'vue-router'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
+import store from './store'
 
 window.Vue = Vue;
 Vue.use(VueSweetalert2)
 Vue.use(VTooltip)
 Vue.use(Vuebar)
 Vue.use(Vuelidate)
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
@@ -43,7 +30,17 @@ Vue.component('form-add-business', require('./components/FormAddBusiness').defau
 Vue.component('upload-photo-business', require('./components/UploadPhotoBusiness.vue').default);
 
 Vue.component('profile', require('./components/profile/profile').default);
-// Vue.component('profile-settings', require('./components/profile/settings').default);
+
+/**
+ * Глобальный mixin для полей с переводом. Текущий язык берется из атрибута lang.
+ */
+Vue.mixin({
+    methods:{
+        $t(translatableObject){
+            return translatableObject[this.$store.state.lang] 
+        }
+    }
+})
 
 const app = new Vue({
     el: '#app',
@@ -54,6 +51,7 @@ const app = new Vue({
         }
     },
     router,
+    store,
     methods: {
         showModal(id) {
             document.getElementById(id).classList.add('is-active');

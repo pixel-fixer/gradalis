@@ -49,11 +49,17 @@
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
+                    <router-link to="/favorites" tag="a">
+                        <img src="/svg/icons/ic_favorites.svg" class="svg" height="16" width="16">
+                        <span class="aside-nav__item__title has-text-weight-bold">Избранное</span>
+                    </router-link>
+                </li>
+                <li class="aside-nav__item">
+                     <router-link to="/legal" tag="a">
                         <img src="/svg/icons/ic_contract.svg" class="svg" alt="Contract">
                         <span class="aside-nav__item__title has-text-weight-bold">Условия и договора</span>
                         <span class="aside-nav__item__count">69</span>
-                    </a>
+                     </router-link>
                 </li>
             </ul>
         </nav>

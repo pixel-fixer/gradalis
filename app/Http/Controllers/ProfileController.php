@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\City;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Business\Business;
+use App\Models\Franchise\Franchise;
 
 class ProfileController extends Controller
 {
@@ -104,5 +106,26 @@ class ProfileController extends Controller
         }
 
         return $cities->get();
+    }
+
+    /**
+     * Список избранных объектов
+     */
+    public function getFavorites()
+    {
+        //TODO from cache
+        return Auth::user()->favorites()->with('favoriteable.category')->get();
+    }
+
+    public function addBusinessToFavorites(Business $object)
+    {
+        if(!$object->isFavorited())
+            $object->addFavorite();
+    }
+
+    public function addFranchiseToFavorites(Franchise $object)
+    {
+        if(!$object->isFavorited())
+            $object->addFavorite();
     }
 }

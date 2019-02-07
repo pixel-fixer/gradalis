@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use App\Models\Service\ServiceCategory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,7 +44,8 @@ class DatabaseSeeder extends Seeder
             'meetings',
             'consultations',
             'dialogs',
-            'admin_notifications'
+            'admin_notifications',
+            'service_categories'
         ]);
 
         Schema::enableForeignKeyConstraints();
@@ -61,6 +63,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CampaignSeeder::class);
         $this->call(ReferralUsersSeeder::class);
         $this->call(ConditionSeeder::class);
+        $this->call(ServiceCategorySeeder::class);
         $this->call(ServicesSeeder::class);
         $this->call(OrderedServicesSeeder::class);
         $this->call(TravelsSeeder::class);

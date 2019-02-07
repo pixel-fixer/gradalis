@@ -9,9 +9,11 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
+
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, HasRoles, HasMediaTrait;
+    use Notifiable, HasRoles, HasMediaTrait, Favoriteability;
 
     /**
      * The attributes that are mass assignable.

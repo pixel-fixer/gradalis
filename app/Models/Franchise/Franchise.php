@@ -5,10 +5,10 @@ namespace App\Models\Franchise;
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-
+use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 class Franchise extends Model
 {
-    use HasTranslations;
+    use HasTranslations, Favoriteable;
 
     //В ожидании
     const STATUS_AWAIT = 0;
@@ -22,7 +22,7 @@ class Franchise extends Model
     const STATUS_DECLINED = 4;
 
     public $timestamps = true;
-    public $translatable = ['name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education'];
+    public $translatable = ['name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education', 'price'];
     protected $table = 'franchises';
     protected $fillable = array(
         'name',

@@ -5,10 +5,10 @@ namespace App\Models\Business;
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-
+use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 class Business extends Model 
 {
-    use HasTranslations;
+    use HasTranslations, Favoriteable;
 
     //В ожидании
     const STATUS_AWAIT      = 0;
@@ -24,7 +24,7 @@ class Business extends Model
     protected $table = 'businesses';
     public $timestamps = true;
     protected $fillable = array('price','percent','call_count','metrics','user_id', 'profitability', 'profit', 'payback', 'status','commission','name', 'description', 'seo_title','seo_description','seo_keywords', 'district_id', 'city_id', 'category_id');
-    public $translatable = ['name', 'description', 'seo_title','seo_description','seo_keywords'];
+    public $translatable = ['name', 'description', 'seo_title','seo_description','seo_keywords', 'price'];
 
     public function category()
     {

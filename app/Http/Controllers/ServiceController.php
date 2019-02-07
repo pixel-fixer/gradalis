@@ -13,4 +13,9 @@ class ServiceController extends Controller
             'services' => Service::all()
         ]);
     }
+
+    public function list()
+    {
+        return Service::with('category')->get();
+    }
 }

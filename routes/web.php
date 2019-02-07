@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,8 +65,14 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('update', 'ProfileController@update');
     Route::get('cities', 'ProfileController@getCities');
     Route::post('password', 'ProfileController@updatePassword');
+
+    Route::get('favorites', 'ProfileController@getFavorites');
+    Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
+    Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
+
 });
 
+Route::get('services/list', 'ServiceController@list');
 
 Route::get('/spa/favorites', function () {
     return view('spa.favorites');

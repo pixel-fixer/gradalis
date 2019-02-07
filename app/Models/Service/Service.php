@@ -14,4 +14,9 @@ class Service extends Model
     protected $guarded = ['id'];
 
     protected $statuses = ['paid', 'preparation', 'in_progress', 'done'];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Service\ServiceCategory');
+    }
 }

@@ -25,6 +25,14 @@ export default new Router({
         {
             path: '/purchased-products',
             component: require('./components/profile/views/purchased-products').default
+        },
+        {
+            path: '/favorites',
+            component: require('./components/profile/views/favorites').default
+        },
+        {
+            path: '/legal',
+            component: require('./components/profile/views/legal').default
         }
     ]
 })
