@@ -103,6 +103,17 @@
         }
     }
 
+    &__objects {
+        &-list {
+
+        }
+
+        &-item {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba($light-grayish-blue, .5);
+        }
+    }
+
     .step {
         &__header {
             h3 {
@@ -118,11 +129,13 @@
 
             }
         }
+
         &__footer {
             .button-next {
                 span {
                     margin-right: .5rem;
                 }
+
                 svg {
                     width: .625rem;
                     height: .625rem;
@@ -130,7 +143,7 @@
             }
         }
 
-        .address-wrap {
+        .list-wrap {
             &:not(:last-child) {
                 .button {
                     &-add {
@@ -142,6 +155,7 @@
                     }
                 }
             }
+
             &:last-child {
                 .button {
                     &-remove {
@@ -154,14 +168,313 @@
         .button {
             &-add,
             &-remove {
-                border-radius: 50%;
-                width: 2.5rem;
+                border-radius: 1.25rem;
+                min-width: 2.5rem;
                 height: 2.5rem;
                 margin-top: 2rem;
                 text-align: center;
                 font-size: 1.25rem;
                 line-height: 1em;
                 padding: .5rem;
+
+                span {
+                    margin-left: .5rem;
+                    margin-right: .25rem;
+                }
+            }
+
+            &-integrate-analitics {
+                border-radius: 50%;
+                height: 2.5rem;
+                width: 2.5rem;
+                margin-top: 2rem;
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+        }
+
+        .slider-gender {
+            display: flex;
+            margin-top: 2rem;
+
+            figure {
+                width: 1rem;
+                height: 1rem;
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+
+            &-container {
+                margin: 0 1rem;
+                flex: 1;
+            }
+        }
+
+    }
+}
+
+.ways-place-ads {
+    border: 1px solid $button-border-color;
+    border-radius: $radius;
+
+    .columns {
+        .column {
+            &:not(:last-child) {
+                @media screen and (min-width: $tablet) {
+                    border-right: 1px solid $button-border-color;
+                }
+
+                .ways-place-ads__item__services {
+                    border-bottom: 2px solid $button-border-color;
+                    @media screen and (min-width: $tablet) {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &__item {
+        height: 100%;
+
+        &__info {
+            .radio-wpa {
+                display: none;
+
+                & + label {
+                    display: block;
+                    padding: .875rem;
+                    border-bottom: 1px solid $button-border-color;
+                    cursor: pointer;
+                    @media screen and (min-width: $tablet) {
+                        min-height: 12.75rem;
+                    }
+                    @media screen and (min-width: $desktop) {
+                        min-height: 8.625rem;
+                    }
+
+                    .content {
+                        position: relative;
+                        padding-left: 2.25rem;
+
+                        &:before {
+                            position: absolute;
+                            content: "";
+                            top: 0;
+                            left: 0;
+                            height: 1.5rem;
+                            width: 1.5rem;
+                            background-color: $white;
+                            border: 1px solid $input-border-color;
+                            box-shadow: $input-shadow;
+                            border-radius: 50%;
+                        }
+
+                        .tag {
+                            font-size: .875rem;
+                            @media screen and (min-width: $desktop) {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                            }
+                        }
+
+                        /* Create the checkmark/indicator (hidden when not checked) */
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                        }
+
+                        /* Style the checkmark/indicator */
+                        &:after {
+                            left: 0;
+                            top: 0;
+                            height: 1.5rem;
+                            width: 1.5rem;
+                            background-image: url(../../img/check.svg);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+
+                        h4 {
+                            position: relative;
+                            line-height: 1.5rem;
+                            margin-bottom: .25rem;
+                        }
+
+                        div {
+                            line-height: 1.5em;
+                        }
+
+                        .ways-place-ads__item__info__price {
+                            margin-top: .375rem;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: rgba($cyan, 0.08);
+
+                        .content {
+                            &:before {
+                                border-color: $input-hover-border-color;
+                            }
+                        }
+                    }
+                }
+
+                /* When the radio is checked */
+                &:checked + label {
+                    background-color: rgba($cyan, 0.08);
+
+                    .content {
+                        &:before {
+                            background-color: $cyan;
+                            border: 1px solid $cyan;
+                        }
+
+                        &:after {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            &__price {
+                margin-top: .125rem;
+                color: $very-dark-blue-2;
+            }
+        }
+
+        &__services {
+            padding: .75rem 0;
+
+            &:empty {
+                display: none;
+                @media screen and (min-width: $tablet) {
+                    display: block;
+                }
+            }
+
+            .card {
+                &-service {
+                    box-shadow: none;
+                    padding: .25rem 1rem;
+
+                    &:hover {
+                        transform: none;
+                    }
+
+                    &__title {
+                        display: flex;
+                        align-items: center;
+                        font-weight: normal;
+                    }
+
+                    &__body {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &-footer {
+        border-top: 1px solid rgba($button-border-color, 0.5);
+        background-color: $body-background-color;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        justify-content: space-between;
+        flex-direction: column;
+        @media screen and (min-width: $tablet) {
+            flex-direction: row;
+        }
+
+        &-price-info {
+
+            &-wrap {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-bottom: 1rem;
+                @media screen and (min-width: $tablet) {
+                    flex-direction: row;
+                    align-items: center;
+                    margin-bottom: 0;
+                }
+
+                h3 {
+                    padding-right: .5rem;
+                }
+
+                .price {
+                    &-old {
+                        color: $light-grayish-blue;
+                        font-size: 1.125rem;
+                        margin-right: .25rem;
+                        margin-left: 0;
+                    }
+
+                    &-now {
+                        color: $very-dark-blue-2;
+                        font-size: 1.125rem;
+                    }
+
+                    &-sale {
+                        position: relative;
+                        top: -.5em;
+                    }
+                }
+            }
+        }
+
+        .button {
+            white-space: normal;
+        }
+    }
+}
+
+.check-sell-business-myself {
+    .checkbox {
+        margin-bottom: 0;
+
+        span {
+
+        }
+    }
+
+    .control {
+        display: flex;
+    }
+
+    .icons {
+        margin-left: .5rem;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &.has-tooltip {
+                pointer-events: auto;
+                cursor: help;
+
+                &:hover {
+                    svg {
+                        path {
+                            fill: $cyan;
+                        }
+                    }
+                }
             }
         }
 

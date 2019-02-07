@@ -94,3 +94,10 @@ Route::get('/spa/view-request', function () {
 Route::get('/add-business', function () {
     return view('add-business');
 });
+Route::get('/add-business/method', function () {
+    return view('add-business-method');
+});
+
+Route::get('/brpa/offers-instructions', function () {
+    return view('brpa.offers-instructions');
+});

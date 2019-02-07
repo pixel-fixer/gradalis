@@ -12,7 +12,7 @@ label.label {
     &_req {
         span {
             position: relative;
-            padding-right: .75em;
+            padding-right: .5em;
 
             &:after {
                 position: absolute;
@@ -26,8 +26,8 @@ label.label {
     }
 }
 
-input.input {
-    height: 3rem;
+input.input,
+textarea.textarea {
 
     &:focus {
         color: $title-color;
@@ -66,6 +66,14 @@ input.input {
             color: $input-placeholder-color;
         }
     }
+
+    &[readonly] {
+        box-shadow: $input-shadow;
+    }
+}
+
+input.input {
+    height: 3rem;
 }
 
 .inputbox-val {
@@ -332,7 +340,7 @@ input.input {
             height: 1.5rem;
             width: 1.5rem;
             background-color: $white;
-            border: 1px solid #CEDCF0;
+            border: 1px solid $input-border-color;
             border-radius: $radius;
             box-shadow: $input-shadow;
         }
