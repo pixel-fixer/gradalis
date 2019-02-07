@@ -28,15 +28,25 @@ body {
 }
 
 .mb-1 {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
 }
 
 .mb-0-5 {
     margin-bottom: .5rem !important;
 }
-
+.mb-0 {
+    margin-bottom: 0 !important;
+}
 .mb-1-75 {
     margin-bottom: 1.75rem !important;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+
+.mr-1 {
+    margin-right: 1rem !important;
 }
 
 .mt-1 {
@@ -68,8 +78,8 @@ body {
 }
 
 .px-0 {
-    padding-right: 0  !important;
-    padding-left: 0  !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 
 .pt-1 {
@@ -203,9 +213,12 @@ a {
         display: flex;
         align-items: center;
         color: $cyan;
+        width: fit-content;
+
         &:hover {
             color: darken($cyan, 10);
         }
+
         img,
         svg {
             width: 1rem;
@@ -222,6 +235,7 @@ a {
 .text-with-icon {
     display: flex;
     align-items: center;
+
     img,
     svg {
         width: 1rem;
@@ -232,8 +246,32 @@ a {
     span {
 
     }
+
 }
 
 .no-wrap {
     white-space: nowrap;
+}
+
+.icon-1 {
+    img,
+    svg {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+.icon {
+    &.has-tooltip {
+        pointer-events: auto !important;
+        cursor: help;
+
+        &:hover {
+            svg {
+                path {
+                    fill: $cyan;
+                }
+            }
+        }
+    }
 }

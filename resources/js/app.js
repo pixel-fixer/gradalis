@@ -45,6 +45,9 @@ Vue.component('upload-photo-business', require('./components/UploadPhotoBusiness
 Vue.component('profile', require('./components/profile/profile').default);
 // Vue.component('profile-settings', require('./components/profile/settings').default);
 
+
+Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
+
 const app = new Vue({
     el: '#app',
     data: {

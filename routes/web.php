@@ -98,6 +98,18 @@ Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
 
-Route::get('/brpa/offers-instructions', function () {
-    return view('brpa.offers-instructions');
+Route::get('/brpa/offers/instructions', function () {
+    return view('brpa.offers.instructions');
+});
+Route::get('/brpa/offers/conditions', function () {
+    return view('brpa.offers.conditions');
+});
+Route::get('/brpa/offers/payments', function () {
+    return view('brpa.offers.payments');
+});
+Route::get('/brpa/offers/instruments', function () {
+    return view('brpa.offers.instruments');
+});
+Route::get('/brpa/offers/details', function () {
+    return view('brpa.offers.details');
 });
