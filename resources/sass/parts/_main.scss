@@ -20,6 +20,13 @@ body {
         font-size: .875rem;
         padding: 1.875rem 2.1875rem;
     }
+    &.is-load {
+        //color: transparent !important;
+        pointer-events: none;
+        .icon {
+            animation: spinAround 500ms infinite linear;
+        }
+    }
 }
 
 .my-1 {
@@ -108,6 +115,9 @@ body {
 .h-3 {
     height: 3rem;
 }
+.h-full {
+    height: 100%;
+}
 
 .is-flex-1 {
     flex: 1;
@@ -127,6 +137,10 @@ body {
 
 .has-align-self-center {
     align-self: center;
+}
+
+.has-align-items-end {
+    align-items: flex-end;
 }
 
 .has-text-decoration-underline {
@@ -273,5 +287,30 @@ a {
                 }
             }
         }
+    }
+}
+
+/* Animations */
+@-webkit-keyframes spinAround {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes spinAround {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
     }
 }

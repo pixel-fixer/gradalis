@@ -51,6 +51,8 @@ Vue.component('profile', require('./components/profile/profile').default);
 
 
 Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
+Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
+Vue.component('broker-ex-chart', require('./components/broker/RandomChart').default);
 
 const app = new Vue({
     el: '#app',
@@ -164,6 +166,19 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
     navigation: {
         nextEl: '.swiper-object-services-next',
         prevEl: '.swiper-object-services-prev',
+    },
+});
+
+/**
+ * Слайдер услуг на странице объекта
+ */
+var swiperBrokerDataIndicators = new Swiper('.swiper-broker-data-indicators', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    loop: false,
+    navigation: {
+        nextEl: '.swiper-broker-data-indicators-next',
+        prevEl: '.swiper-broker-data-indicators-prev',
     },
 });
 
