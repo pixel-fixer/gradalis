@@ -4,71 +4,124 @@
             <h1 class="section-title">Купить готовый бизнес в Польше</h1>
         </div>
         <div class="container">
-            <example-form-filter></example-form-filter>
+            <example-form-filter v-on:change-filter="changeFilter"></example-form-filter>
         </div>
         <div class="container">
             <!-- Cards objects -->
             <div class="columns is-multiline">
-                <business-card v-for="business in businesses"
-                               :category="business.revenue",
-                               :revenue="business.revenue",
-                               :profit="business.profit",
+                <business-card v-for="business in businesses.data"
+                               :status="business.status"
+                               :name="business.name"
+                               :price="business.price"
+                               :category="business.category"
+                               :revenue="business.revenue"
+                               :profit="business.profit"
+                               :payback="business.payback"
                                :profitability="business.profitability"
+                               :city="business.city"
+                               :country="business.city.country"
+                               :weight="business.weight"
+                               :discount="business.discount"
                                v-bind:key="business.id"
                 ></business-card>
             </div>
             <!-- Pagination -->
-            <div class="columns is-centered">
-                <div class="column is-narrow has-text-centered">
-                    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                        <a class="pagination-previous pagination-nav button" disabled="true">
-                            <span class="pagination-nav__icon"><img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span>
-                            <span class="pagination-nav__title">Предыдущая страница</span>
-                        </a>
-                        <a class="pagination-next pagination-nav button is-link">
-                            <span class="pagination-nav__title">Следующая страница</span>
-                            <span class="pagination-nav__icon"><img src=<img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span></a>
-                        <ul class="pagination-list">
-                            <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-                            <li><span class="pagination-ellipsis">&hellip;</span></li>
-                            <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                            <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
-                            </li>
-                            <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-                            <li><span class="pagination-ellipsis">&hellip;</span></li>
-                            <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <pagination :data="businesses" @pagination-change-page="fetchBusinesses">
+                <span slot="prev-nav">
+                     <a class="pagination-previous  pagination-nav button is-link">
+                         <span class="pagination-nav__icon">
+                             <img src="/svg/icons/ic_arrow_right.svg" class="svg"/>
+                         </span>
+                        <span class="pagination-nav__title">Предыдущая страница</span>
+                     </a>
+                </span>
+                <span slot="next-nav">
+                     <a class="pagination-next pagination-nav button is-link">
+                         <span class="pagination-nav__title">Следующая страница</span>
+                         <span class="pagination-nav__icon">
+                             <img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span>
+                     </a>
+                </span>
+            </pagination>
+
         </div>
     </section>
 </template>
 
 <script>
     import BusinessCard from './BusinessCard';
+    import Pagination from 'laravel-vue-pagination';
     import ExampleFormFilter from '../ExampleFormFilter';
+
     export default {
-        comments:{
-            'business-card':BusinessCard,
-            'example-form-filter':ExampleFormFilter
+        components: {
+            'business-card': BusinessCard,
+            'example-form-filter': ExampleFormFilter,
+            'pagination': Pagination
         },
-        data(){
-            return{
-                businesses:{}
+        data() {
+            return {
+                businesses: {},
+                form: {}
             }
         },
         name: "BusinessList",
         methods: {
-            fetchBusinesses(){
+            changeFilter(data) {
+                this.form = data;
+                this.fetchBusinesses();
+            },
+            fetchBusinesses(page = 1) {
                 let vm = this;
-                axios.get('/get-businesses').then(responce=>{
+                axios.get('/get-businesses?page=' + page, {
+                    params: {
+                        region: vm.form.region,
+                        category: vm.form.category,
+                        country: vm.form.country,
+                        type: vm.form.type,
+                        price: vm.form.price,
+                        profit: vm.form.profit,
+                        payback: vm.form.payback,
+                        query: vm.form.query
+                    }
+                }).then(responce => {
                     vm.businesses = responce.data
+                    vm.changeHisory(page);
                 })
+            },
+            changeHisory(page){
+                const params = new URLSearchParams(location.search);
+                if (page > 1) {
+                    params.set('page', page);
+                } else {
+                    params.delete('page');
+                }
+
+                for (const [key, value] of Object.entries(this.form)) {
+                    if( value !== null ) {
+                        params.set(key, value);
+                    }
+                }
+
+                let url = '';
+                if ([...params.entries()].length > 0) {
+                    url += '?' + params.toString();
+                }
+                history.pushState(null, null, '/business' + url);
             }
         },
-        mounted() {
-            this.fetchBusinesses();
+        created() {
+            const params = new URLSearchParams(location.search);
+            let page = 1;
+            if (params.has('page')) {
+                page = params.get('page');
+            }
+            for (const [key, value] of Object.entries(this.form)) {
+                if (params.has(key)) {
+                    this.form[key] = value;
+                }
+            }
+            this.fetchBusinesses(page);
         }
     }
 </script>

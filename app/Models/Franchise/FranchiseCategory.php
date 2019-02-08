@@ -14,6 +14,7 @@ class FranchiseCategory extends Model
     protected $fillable = array(
         'name',
         'translation',
+        'parent_id'
     );
 
 }

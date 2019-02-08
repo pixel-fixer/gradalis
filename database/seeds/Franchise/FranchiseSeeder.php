@@ -4,6 +4,7 @@ use App\Models\Franchise\Franchise;
 use App\Models\Franchise\FranchiseCategory;
 use App\Models\Franchise\FranchisePackage;
 use App\Models\Language;
+use App\Services\Helpers;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
@@ -45,9 +46,11 @@ class FranchiseSeeder extends Seeder
             foreach (Language::all() as $lang) {
                 $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
                 $name = 'Франшиза - '.$faker->company;
+                $url = Helpers::transliterate($name);
                 $description = $faker->realText(160);
                 $franchise->setTranslation('name',$lang->lang,$name);
                 $franchise->setTranslation('description',$lang->lang,$description);
+                $franchise->setTranslation('url',$lang->lang,$url);
                 $franchise->setTranslation('seo_title',$lang->lang,$name);
                 $franchise->setTranslation('seo_description',$lang->lang,$description);
                 $franchise->setTranslation('seo_keywords',$lang->lang,$faker->words(4, true));

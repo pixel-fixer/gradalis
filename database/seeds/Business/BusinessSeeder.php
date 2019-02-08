@@ -6,6 +6,7 @@ use App\Models\Business\BusinessTranslation;
 use App\Models\Language;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
+use App\Services\Helpers;
 
 /**
  * Class BusinessSeeder
@@ -45,9 +46,11 @@ class BusinessSeeder extends Seeder
             foreach (Language::all() as $lang) {
                 $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
                 $name = $faker->company;
+                $url = Helpers::transliterate($name);
                 $description = $faker->realText(160);
                 $business->setTranslation('name',$lang->lang,$name);
                 $business->setTranslation('description',$lang->lang,$description);
+                $business->setTranslation('url',$lang->lang,$url);
                 $business->setTranslation('seo_title',$lang->lang,$name);
                 $business->setTranslation('seo_description',$lang->lang,$description);
                 $business->setTranslation('seo_keywords',$lang->lang,$faker->words(4, true));
@@ -58,4 +61,6 @@ class BusinessSeeder extends Seeder
 
         Schema::enableForeignKeyConstraints();
     }
+
+
 }

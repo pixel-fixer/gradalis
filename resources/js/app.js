@@ -7,12 +7,15 @@ import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
+import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
 
 window.Vue = Vue;
 Vue.use(VueSweetalert2)
+Vue.use(VueRouter)
 Vue.use(VTooltip)
+Vue.use(PortalVue)
 Vue.use(Vuebar)
 Vue.use(Vuelidate)
 
@@ -28,6 +31,7 @@ Vue.use(Vuelidate)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('business-list', require('./components/business/BusinessList.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
