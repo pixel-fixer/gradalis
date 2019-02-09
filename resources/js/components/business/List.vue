@@ -49,9 +49,9 @@
 </template>
 
 <script>
-    import BusinessCard from './BusinessCard';
+    import BusinessCard from './Card';
     import Pagination from 'laravel-vue-pagination';
-    import ExampleFormFilter from '../ExampleFormFilter';
+    import ExampleFormFilter from './FormFilter';
 
     export default {
         components: {

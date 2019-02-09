@@ -29,10 +29,6 @@ Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/business', function () {
-    return view('business');
-})->middleware('auth');
-
 Route::get('/business/single', function () {
     return view('business-single');
 })->middleware('auth');
@@ -115,6 +111,13 @@ Route::get('/brpa/offers/instruments', function () {
 Route::get('/brpa/offers/details', function () {
     return view('brpa.offers.details');
 });
+//BUSINESS Routes
+Route::namespace('Business')->group(function () {
+    Route::resource('business', 'BusinessController')->middleware('auth');
+});
 
-Route::get('/get-businesses', 'Api\BusinessController@getBusinesses')->middleware('auth');
-Route::get('/get-businesses-categories', 'Api\BusinessController@getBusinessesCategories')->middleware('auth');
+//API Routes
+Route::namespace('Api')->group(function () {
+    Route::get('/get-businesses', 'BusinessController@getBusinesses')->middleware('auth');
+    Route::get('/get-businesses-categories', 'BusinessController@getBusinessesCategories')->middleware('auth');
+});

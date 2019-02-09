@@ -48,10 +48,10 @@
 </template>
 
 <script>
-    import GGCategoryButton from './form/GGCategoryButton'
-    import GGSelectInput from './form/GGSelectInput'
-    import GGTextInput from './form/GGTextInput'
-    import GGRangeSlider from './form/GGRangeSlider'
+    import GGCategoryButton from '../form/GGCategoryButton'
+    import GGSelectInput from '../form/GGSelectInput'
+    import GGTextInput from '../form/GGTextInput'
+    import GGRangeSlider from '../form/GGRangeSlider'
 
     export default {
         name: "ExampleFormFilter",
