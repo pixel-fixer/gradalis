@@ -36,13 +36,11 @@ Route::get('/business/single', function () {
 Route::get('/register/seller ', function () {
     return view('auth.register.seller');
 });
-Route::get('/register/buyer ', function () {
+Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/services', function () {
-    return view('services');
-})->middleware('auth');
+Route::get('/services', 'ServiceController@index')->middleware('auth');
 
 Route::get('/news', function () {
     return view('news');
@@ -110,6 +108,9 @@ Route::get('/brpa/offers/instruments', function () {
 });
 Route::get('/brpa/offers/details', function () {
     return view('brpa.offers.details');
+});
+Route::get('/brpa', function () {
+    return view('brpa.home');
 });
 //BUSINESS Routes
 Route::namespace('Business')->group(function () {

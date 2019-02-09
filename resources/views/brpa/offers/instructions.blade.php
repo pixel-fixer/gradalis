@@ -19,16 +19,6 @@
                         </span>
                             <span>Помощь</span>
                         </button>
-                        {{--<div class="control has-icons-left has-icons-left_1">--}}
-                        {{--<div class="input inputbox-val">--}}
-                        {{--За последние 30 дней--}}
-                        {{--</div>--}}
-                        {{--<div class="icons is-left">--}}
-                        {{--<span class="icon is-small">--}}
-                        {{--<img src="/svg/icons/ic_calendar.svg" alt="" class="svg">--}}
-                        {{--</span>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
                     </div>
                 </div>
             </div>

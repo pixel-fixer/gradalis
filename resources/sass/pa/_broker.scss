@@ -211,3 +211,84 @@
         line-height: 1.5;
     }
 }
+
+
+/* swiper-broker-data-indicators */
+
+.swiper-broker-data-indicators {
+    border: 1px solid rgba($light-grayish-blue, 0.5);
+    border-radius: $radius;
+    margin-bottom: 1.5rem;
+
+    .swiper-wrapper {
+        .swiper-slide {
+            //flex: 0 0 auto;
+            //min-width: 6.625rem;
+            width: auto;
+
+            &:not(:last-child) {
+                .broker-data-indicator {
+                    border-right: 1px solid rgba($light-grayish-blue, 0.5);
+                }
+            }
+
+            .broker-data-indicator {
+                padding: 1.125rem;
+
+                &__title {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .swiper-button {
+        &-next,
+        &-prev {
+            width: 2rem;
+            height: 100%;
+            background: $body-background-color;
+            top: 0;
+            margin: 0;
+            outline: none;
+
+            &.swiper-button-disabled {
+                visibility: hidden;
+            }
+
+            &:before {
+                position: absolute;
+                content: "";
+                width: 1.5rem;
+                height: 100%;
+                top: 0;
+                left: -1.5rem;
+                background: linear-gradient(90deg, transparent 0%, $body-background-color 100%);
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                background-image: url(../../img/ic_arrow.svg);
+                background-repeat: no-repeat;
+                width: 1rem;
+                height: 1rem;
+                background-size: contain;
+                top: 50%;
+                left: 50%;
+                margin-top: -0.5rem;
+                margin-left: -0.5rem;
+            }
+        }
+
+        &-next {
+            right: 0;
+        }
+
+        &-prev {
+            left: 0;
+            transform: scale(-1, 1);
+        }
+    }
+}
