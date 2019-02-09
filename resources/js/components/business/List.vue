@@ -1,7 +1,7 @@
 <template>
     <section class="section section-list-objects pt-1">
         <div class="container">
-            <h1 class="section-title">Купить готовый бизнес в Польше</h1>
+            <h1 class="section-title">{{trans('business.index.title')}}</h1>
         </div>
         <div class="container">
             <example-form-filter v-on:change-filter="changeFilter"></example-form-filter>

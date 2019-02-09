@@ -67,9 +67,9 @@
         },
         data() {
             return {
-                defaultName: 'Категория',
+                defaultName: trans('business.index.category'),
                 selected: null,
-                selectedName: 'Категория',
+                selectedName: trans('business.index.category'),
                 modalCategoryShow: false,
                 categories: [],
                 subCategories: [],

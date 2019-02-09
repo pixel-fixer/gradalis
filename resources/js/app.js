@@ -1,7 +1,5 @@
 require('./bootstrap');
 
-// window.Vue = require('vue');
-
 import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
@@ -10,8 +8,20 @@ import VueRouter from 'vue-router'
 import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
+import lodash from 'lodash';
 
+//window._ = lodash;
 window.Vue = Vue;
+window.trans = (string) => _.get(window.i18n, string);
+Vue.prototype.trans = (string, args) => {
+    let value = _.get(window.i18n, string);
+
+    _.eachRight(args, (paramVal, paramKey) => {
+        value = _.replace(value, `:${paramKey}`, paramVal);
+    });
+    return value;
+};
+
 Vue.use(VueSweetalert2)
 Vue.use(VueRouter)
 Vue.use(VTooltip)
