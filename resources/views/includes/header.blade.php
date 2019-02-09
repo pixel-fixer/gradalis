@@ -43,7 +43,7 @@
                             <img src="{{ Auth::user()->avatar }}" alt="User">
                             <span class="is-hidden-mobile">{{ Auth::user()->full_name }}</span>
                         </a>
-                        <a class="navbar-item basic is-hidden-mobile"><img
+                        <a href="/profile/#balance" class="navbar-item basic is-hidden-mobile"><img
                                 src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                 alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
 

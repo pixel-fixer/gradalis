@@ -15,25 +15,25 @@
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                     <router-link to="/purchased-products" tag="a">
+                    <router-link to="/purchased-services" tag="a">
                         <img src="/svg/icons/ic_cart_c.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Купленные продукты</span>
                         <span class="aside-nav__item__count">129</span>
-                     </router-link>
+                    </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
+                    <router-link to="/objects" tag="a">
                         <img src="/svg/icons/ic_objects.svg" class="svg" alt="Objects">
                         <span class="aside-nav__item__title has-text-weight-bold">Выши объекты</span>
                         <span class="aside-nav__item__count">5</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <a href="#">
+                    <router-link to="/view-requests" tag="a">
                         <img src="/svg/icons/ic_eye.svg" class="svg" alt="Eye">
                         <span class="aside-nav__item__title has-text-weight-bold">Запросы на просмотр</span>
                         <span class="aside-nav__item__count">5</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="aside-nav__item">
                      <router-link to="/chat" tag="a">

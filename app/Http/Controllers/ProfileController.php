@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
+use App\Models\Service\OrderedService;
 
 class ProfileController extends Controller
 {
@@ -127,5 +128,10 @@ class ProfileController extends Controller
     {
         if(!$object->isFavorited())
             $object->addFavorite();
+    }
+
+    public function getPurchasedServices()
+    {
+        return OrderedService::where('user_id', Auth::id())->with('service')->get();
     }
 }

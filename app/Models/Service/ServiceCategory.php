@@ -12,4 +12,7 @@ class ServiceCategory extends Model
     public $translatable = ['name'];
 
     protected $fillable = ['icon', 'name', 'category_id'];
+
+    public $statuses = ['paid', 'preparation', 'in_progress', 'done'];
+
 }

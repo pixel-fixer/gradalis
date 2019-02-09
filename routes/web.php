@@ -70,6 +70,7 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
     Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
 
+    Route::get('purchased_services', 'ProfileController@getPurchasedServices');
 });
 
 Route::get('services/list', 'ServiceController@list');
