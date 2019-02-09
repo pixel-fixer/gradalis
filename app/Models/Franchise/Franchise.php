@@ -6,6 +6,7 @@ use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
+
 class Franchise extends Model
 {
     use HasTranslations, Favoriteable;
@@ -21,10 +22,10 @@ class Franchise extends Model
     //Отклонен
     const STATUS_DECLINED = 4;
 
-    public $timestamps = true;
-    public $translatable = ['name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education', 'price'];
-    protected $table = 'franchises';
-    protected $fillable = array(
+    public    $timestamps   = true;
+    public    $translatable = ['url','name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education'];
+    protected $table        = 'franchises';
+    protected $fillable     = array(
         'name',
         'description',
         'commission',
@@ -43,11 +44,19 @@ class Franchise extends Model
         'own_enterprices',
         'district_id',
         'city_id',
-        'category_id'
-    , 'percent',
+        'category_id',
+        'percent',
+        'revenue',
+        'weight',
+        'discount',
         'call_count',
-        'metrics'
+        'metrics',
+        'url'
     );
+
+    protected $casts = [
+        'price' => 'array',
+    ];
 
     public static function getStatuses()
     {

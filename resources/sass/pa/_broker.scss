@@ -1,0 +1,294 @@
+@import '../variables';
+
+.broker-pa {
+    margin-bottom: 4rem;
+
+    &__header {
+        margin-bottom: 1.875rem;
+
+        .buttons {
+            justify-content: flex-end;
+        }
+    }
+
+    &__id {
+        font-size: .75rem;
+        color: $text;
+    }
+
+    &__offers-nav {
+        ul {
+            margin-left: 0;
+            list-style: none;
+
+            li {
+                &.button {
+                    padding: 0;
+
+                    a {
+                        color: inherit;
+                        padding-left: 0.75em;
+                        padding-right: 0.75em;
+                        line-height: 3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .table {
+        .icon {
+            vertical-align: middle;
+            line-height: 1em;
+
+            img,
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+
+    .filter-table-offers-links {
+        margin-bottom: 1rem;
+
+        &__type {
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+
+            &__title {
+                min-width: 6rem;
+            }
+
+            ul {
+                margin-left: .875rem;
+                margin-top: 0;
+                list-style: none;
+                display: flex;
+
+                li {
+                    margin-top: 0;
+                    padding: 0 0.625rem;
+
+                    &:not(:last-child) {
+                        border-right: 1px solid rgba($button-border-color, 0.5);
+                    }
+
+                    &:before {
+                        content: none;
+                    }
+
+                    span {
+                        color: $cyan;
+                        text-decoration: underline;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: darken($cyan, 10);
+                        }
+
+                        &.is-active {
+                            color: $very-dark-blue-2;
+                            font-weight: bold;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__details {
+        &__thumb {
+            width: 100%;
+            height: 15.625rem;
+            margin: 0 0 1rem 0 !important;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: $radius;
+            }
+        }
+
+        &__add-offer-desc {
+            line-height: 1.375rem;
+        }
+
+        &__main-info {
+            &__item {
+                display: flex;
+                color: $very-dark-blue-2;
+                margin: 0.1875rem 0;
+
+                > span {
+                    flex: 1;
+
+                    &:first-child {
+                        max-width: 14rem;
+                        padding-right: 1rem;
+                    }
+                }
+            }
+        }
+
+        .link-more {
+            .icon {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    hr {
+        background-color: rgba(#CFDAE6, .5);
+        height: 1px;
+    }
+}
+
+.modal-create-offer-link {
+    .field-control-offer-link {
+        border: 1px solid $input-border-color;
+        border-radius: $radius;
+        padding: 0.5rem 3rem 0.5rem 0.5rem;
+
+        figure {
+            margin: 0 0.5rem 0 0;
+            min-width: 2rem;
+            min-height: 2rem;
+            width: 2rem;
+            height: 2rem;
+
+            img {
+                border-radius: $radius;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        > span {
+            color: $very-dark-blue-2;
+            line-height: 1rem;
+            padding: .5rem 0;
+        }
+
+        .icons {
+            position: absolute;
+            top: .875rem;
+
+            &.is-right {
+                right: 1rem;
+            }
+
+            a {
+                width: 1rem;
+                height: 1rem;
+            }
+
+            .icon {
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+        }
+    }
+
+    .list-subaccount {
+        .button {
+            &-add,
+            &-remove {
+                margin-top: .25rem;
+            }
+        }
+    }
+
+    .multiselect {
+        line-height: 1.5;
+    }
+}
+
+
+/* swiper-broker-data-indicators */
+
+.swiper-broker-data-indicators {
+    border: 1px solid rgba($light-grayish-blue, 0.5);
+    border-radius: $radius;
+    margin-bottom: 1.5rem;
+
+    .swiper-wrapper {
+        .swiper-slide {
+            //flex: 0 0 auto;
+            //min-width: 6.625rem;
+            width: auto;
+
+            &:not(:last-child) {
+                .broker-data-indicator {
+                    border-right: 1px solid rgba($light-grayish-blue, 0.5);
+                }
+            }
+
+            .broker-data-indicator {
+                padding: 1.125rem;
+
+                &__title {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .swiper-button {
+        &-next,
+        &-prev {
+            width: 2rem;
+            height: 100%;
+            background: $body-background-color;
+            top: 0;
+            margin: 0;
+            outline: none;
+
+            &.swiper-button-disabled {
+                visibility: hidden;
+            }
+
+            &:before {
+                position: absolute;
+                content: "";
+                width: 1.5rem;
+                height: 100%;
+                top: 0;
+                left: -1.5rem;
+                background: linear-gradient(90deg, transparent 0%, $body-background-color 100%);
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                background-image: url(../../img/ic_arrow.svg);
+                background-repeat: no-repeat;
+                width: 1rem;
+                height: 1rem;
+                background-size: contain;
+                top: 50%;
+                left: 50%;
+                margin-top: -0.5rem;
+                margin-left: -0.5rem;
+            }
+        }
+
+        &-next {
+            right: 0;
+        }
+
+        &-prev {
+            left: 0;
+            transform: scale(-1, 1);
+        }
+    }
+}

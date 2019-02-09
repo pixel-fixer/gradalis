@@ -12,7 +12,7 @@ label.label {
     &_req {
         span {
             position: relative;
-            padding-right: .75em;
+            padding-right: .5em;
 
             &:after {
                 position: absolute;
@@ -26,8 +26,8 @@ label.label {
     }
 }
 
-input.input {
-    height: 3rem;
+input.input,
+textarea.textarea {
 
     &:focus {
         color: $title-color;
@@ -66,6 +66,14 @@ input.input {
             color: $input-placeholder-color;
         }
     }
+
+    &[readonly] {
+        box-shadow: $input-shadow;
+    }
+}
+
+input.input {
+    height: 3rem;
 }
 
 .inputbox-val {
@@ -211,18 +219,18 @@ input.input {
         .icon {
             height: 1rem;
 
-            &.has-tooltip {
-                pointer-events: auto;
-                cursor: help;
-
-                &:hover {
-                    svg {
-                        path {
-                            fill: $cyan;
-                        }
-                    }
-                }
-            }
+            //&.has-tooltip {
+            //    pointer-events: auto;
+            //    cursor: help;
+            //
+            //    &:hover {
+            //        svg {
+            //            path {
+            //                fill: $cyan;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         svg {
@@ -332,7 +340,7 @@ input.input {
             height: 1.5rem;
             width: 1.5rem;
             background-color: $white;
-            border: 1px solid #CEDCF0;
+            border: 1px solid $input-border-color;
             border-radius: $radius;
             box-shadow: $input-shadow;
         }
@@ -465,6 +473,7 @@ input.input {
 
 /* Multiselect */
 .multiselect {
+    z-index: 5;
     &:not(.multiselect--active) {
         &:hover {
             .multiselect__tags {
@@ -567,6 +576,8 @@ input.input {
     }
 
     &__content {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
         &-wrapper {
             margin-top: .5rem;
             border-radius: $radius;
@@ -576,8 +587,12 @@ input.input {
     }
 
     &__element {
+        margin-top: 0 !important;
         &:not(:first-child) {
             border-top: 1px solid rgba($input-border-color, 0.5);
+        }
+        &:before {
+            content: none !important;
         }
     }
 
@@ -750,5 +765,62 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .minus {
 
+    }
+}
+
+
+.add-business .step,
+.field {
+    .list-wrap {
+        .button {
+            &-add,
+            &-remove {
+                border-radius: 1.25rem;
+                min-width: 2.5rem;
+                height: 2.5rem;
+                margin-top: 2rem;
+                text-align: center;
+                font-size: 1.25rem;
+                line-height: 1em;
+                padding: .5rem;
+
+                span {
+                    margin-left: .5rem;
+                    margin-right: .25rem;
+                }
+            }
+
+            &-integrate-analitics {
+                border-radius: 50%;
+                height: 2.5rem;
+                width: 2.5rem;
+                margin-top: 2rem;
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+        }
+
+        &:not(:last-child) {
+            .button {
+                &-add {
+                    display: none;
+                }
+
+                &-remove {
+                    display: block;
+                }
+            }
+        }
+
+        &:last-child {
+            .button {
+                &-remove {
+                    display: none;
+                }
+            }
+        }
     }
 }

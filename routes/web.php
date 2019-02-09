@@ -18,6 +18,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Localization
+Route::get('/js/lang.js', function () {
+    $strings = Cache::rememberForever('lang.js', function () {
+        $lang = config('app.locale');
+
+        $files   = glob(resource_path('lang/' . $lang . '/*.php'));
+        $strings = [];
+
+        foreach ($files as $file) {
+            $name           = basename($file, '.php');
+            $strings[$name] = require $file;
+        }
+
+        return $strings;
+    });
+
+    header('Content-Type: text/javascript');
+    echo('window.i18n = ' . json_encode($strings) . ';');
+    exit();
+})->name('assets.lang');
+
 Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
     Route::get('', 'ChatController@index');
     Route::post('dialog', 'ChatController@newDialog');
@@ -30,10 +51,6 @@ Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/business', function () {
-    return view('business');
-})->middleware('auth');
 
 Route::get('/business/single', function () {
     return view('business-single');
@@ -102,4 +119,36 @@ Route::get('/spa/view-request', function () {
 
 Route::get('/add-business', function () {
     return view('add-business');
+});
+Route::get('/add-business/method', function () {
+    return view('add-business-method');
+});
+
+Route::get('/brpa/offers/instructions', function () {
+    return view('brpa.offers.instructions');
+});
+Route::get('/brpa/offers/conditions', function () {
+    return view('brpa.offers.conditions');
+});
+Route::get('/brpa/offers/payments', function () {
+    return view('brpa.offers.payments');
+});
+Route::get('/brpa/offers/instruments', function () {
+    return view('brpa.offers.instruments');
+});
+Route::get('/brpa/offers/details', function () {
+    return view('brpa.offers.details');
+});
+Route::get('/brpa', function () {
+    return view('brpa.home');
+});
+//BUSINESS Routes
+Route::namespace('Business')->group(function () {
+    Route::resource('business', 'BusinessController')->middleware('auth');
+});
+
+//API Routes
+Route::namespace('Api')->group(function () {
+    Route::get('/get-businesses', 'BusinessController@getBusinesses')->middleware('auth');
+    Route::get('/get-businesses-categories', 'BusinessController@getBusinessesCategories')->middleware('auth');
 });

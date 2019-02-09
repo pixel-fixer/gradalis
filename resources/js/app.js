@@ -4,21 +4,37 @@ import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
+import VueRouter from 'vue-router'
+import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
 import store from './store'
+import lodash from 'lodash';
 
 window.Vue = Vue;
+window.trans = (string) => _.get(window.i18n, string);
+Vue.prototype.trans = (string, args) => {
+    let value = _.get(window.i18n, string);
+
+    _.eachRight(args, (paramVal, paramKey) => {
+        value = _.replace(value, `:${paramKey}`, paramVal);
+    });
+    return value;
+};
+
 Vue.use(VueSweetalert2)
+Vue.use(VueRouter)
 Vue.use(VTooltip)
+Vue.use(PortalVue)
 Vue.use(Vuebar)
 Vue.use(Vuelidate)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
-Vue.component('example-form-filter', require('./components/ExampleFormFilter.vue').default);
+Vue.component('example-form-filter', require('./components/business/FormFilter.vue').default);
 Vue.component('example-form-change-password', require('./components/ExampleFormChangePassword.vue').default);
 Vue.component('example-form-profile-spa', require('./components/ExampleFormProfileSPA.vue').default);
 Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').default);
@@ -37,10 +53,15 @@ Vue.component('profile', require('./components/profile/profile').default);
 Vue.mixin({
     methods:{
         $t(translatableObject){
-            return translatableObject[this.$store.state.lang] 
+            return translatableObject[this.$store.state.lang]
         }
     }
 })
+
+
+Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
+Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
+Vue.component('broker-ex-chart', require('./components/broker/RandomChart').default);
 
 const app = new Vue({
     el: '#app',
@@ -155,6 +176,19 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
     navigation: {
         nextEl: '.swiper-object-services-next',
         prevEl: '.swiper-object-services-prev',
+    },
+});
+
+/**
+ * Слайдер услуг на странице объекта
+ */
+var swiperBrokerDataIndicators = new Swiper('.swiper-broker-data-indicators', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    loop: false,
+    navigation: {
+        nextEl: '.swiper-broker-data-indicators-next',
+        prevEl: '.swiper-broker-data-indicators-prev',
     },
 });
 

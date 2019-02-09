@@ -5,7 +5,7 @@
         display: block;
         visibility: hidden;
     }
-
+    &.is-hoverable:hover,
     &.is-active {
         .dropdown-menu {
             visibility: hidden;
@@ -123,6 +123,14 @@ p,
 /* Buttons */
 
 .button {
+
+    .icon {
+        svg {
+            width: 1em;
+            height: 1em;
+        }
+    }
+
     &.is-light-cyan {
         background-color: rgba($cyan, 0.1);
         color: $very-dark-blue-2;
@@ -175,6 +183,13 @@ p,
 
         &.is-info {
             border: 1px solid rgba($cyan, 0.3);
+            .icon {
+                svg {
+                    path {
+                        fill: $cyan;
+                    }
+                }
+            }
         }
 
         &.is-success {
@@ -219,6 +234,13 @@ p,
 
         &.is-info {
             background-color: lighten($cyan, 3);
+            .icon {
+                svg {
+                    path {
+                        fill: $white;
+                    }
+                }
+            }
         }
 
         &.is-success {
@@ -261,6 +283,13 @@ p,
         &.is-info.is-outlined {
             background-color: darken($cyan, 3);
             color: $white;
+            .icon {
+                svg {
+                    path {
+                        fill: $white;
+                    }
+                }
+            }
         }
 
         &.is-success,
