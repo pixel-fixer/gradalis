@@ -4,11 +4,12 @@
             <label class="label">{{label}}</label>
             <div :class="{iconRight:'has-icons-right has-icons-right_1',iconLeft:'has-icons-left has-icons-left_1'}"
                  class="control">
-                <input type="text"
-                       class="input is-size-875"
-                       v-model="inputValue"
-                       @input="inputChange"
-                       :placeholder="placeholder">
+                <textarea type="text"
+                          class="textarea is-size-875"
+                          v-model="inputValue"
+                          @input="inputChange"
+                          :placeholder="placeholder">
+                </textarea>
                 <slot v-if="iconLeft" name="icon-left">
                     <div class="icons is-left">
                           <span class="icon is-small">
@@ -41,9 +42,9 @@
             placeholder: {default: 'Поиск'}
         },
         data(){
-            return{
-                inputValue:null
-            }
+          return{
+              inputValue:null
+          }
         },
         watch: {
             value: {

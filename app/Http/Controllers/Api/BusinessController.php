@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class BusinessController extends Controller
 {
-    public function getBusinesses(Request $request)
+    public function get(Request $request)
     {
         $query = $request->all();
 
@@ -46,7 +46,7 @@ class BusinessController extends Controller
         return response()->json($responce);
     }
 
-    public function getBusinessesCategories(){
+    public function getCategories(){
         return BusinessCategory::all();
     }
 }

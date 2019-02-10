@@ -95,7 +95,7 @@
         },
         mounted() {
             let vm = this;
-            axios.get('/get-businesses-categories').then(responce => {
+            axios.get('/business-get-categories').then(responce => {
                 vm.categories = responce.data;
             })
         },

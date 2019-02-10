@@ -68,46 +68,9 @@
                 </div>
 
                 <div class="columns is-multiline">
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.theme.title}}</span></label>
-                            <div class="control">
-                                <multiselect v-model="steps[1].form.theme.selected"
-                                             :deselect-label="steps[1].form.theme.deselectLabel"
-                                             track-by="name"
-                                             label="name"
-                                             openDirection="bottom"
-                                             :placeholder="steps[1].form.theme.placeholder"
-                                             :options="steps[1].form.theme.options"
-                                             :searchable="true"
-                                             :allow-empty="false"
-                                             :selectLabel="steps[1].form.theme.selectLabel"
-                                             :selectedLabel="steps[1].form.theme.selectedLabel">
-                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
-                                </multiselect>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.country.title}}</span></label>
-                            <div class="control">
-                                <multiselect v-model="steps[1].form.country.selected"
-                                             :deselect-label="steps[1].form.country.deselectLabel"
-                                             track-by="name"
-                                             label="name"
-                                             openDirection="bottom"
-                                             :placeholder="steps[1].form.country.placeholder"
-                                             :options="steps[1].form.country.options"
-                                             :searchable="true"
-                                             :allow-empty="false"
-                                             :selectLabel="steps[1].form.country.selectLabel"
-                                             :selectedLabel="steps[1].form.country.selectedLabel">
-                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
-                                </multiselect>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-select-input v-model="steps[1].form.theme.selected" :size="'is-6'" :placeholder="steps[1].form.theme.placeholder" :label="steps[1].form.theme.title" :searchable="true" :options="steps[1].form.theme.options"></g-g-select-input>
+                    <g-g-location-select-input v-model="steps[1].form.country.selected" :size="'is-6'"></g-g-location-select-input>
+
                     <div class="column is-6">
                         <div class="field">
                             <label class="label label_req"><span>{{steps[1].form.region.title}}</span></label>
@@ -128,278 +91,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.city.title}}</span></label>
-                            <div class="control">
-                                <multiselect v-model="steps[1].form.city.selected"
-                                             :deselect-label="steps[1].form.city.deselectLabel"
-                                             track-by="name"
-                                             label="name"
-                                             openDirection="bottom"
-                                             :placeholder="steps[1].form.city.placeholder"
-                                             :options="steps[1].form.city.options"
-                                             :searchable="true"
-                                             :allow-empty="false"
-                                             :selectLabel="steps[1].form.city.selectLabel"
-                                             :selectedLabel="steps[1].form.city.selectedLabel">
-                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
-                                </multiselect>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-location-select-input :type="'city'" :label="'Город'" v-model="steps[1].form.city.selected" :size="'is-6'"></g-g-location-select-input>
 
-                    <div class="column is-12">
-                        <div class="columns is-multiline list-wrap"
-                             v-for="(item, index) in steps[1].form.addresses.list">
-                            <div class="column is-6">
-                                <div class="field">
-                                    <label class="label label_req"><span>{{steps[1].form.addresses.list[index].address.title}}</span></label>
-                                    <div class="control has-icons-right has-icons-right_1">
-                                        <input type="text"
-                                               class="input is-size-875"
-                                               v-model="steps[1].form.addresses.list[index].address.value"
-                                               :placeholder="steps[1].form.addresses.list[index].address.placeholder"
-                                        >
-                                        <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.addresses.tooltipAddress">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="columns is-multiline">
-                                    <div class="column">
-                                        <div class="columns is-multiline">
-                                            <div class="column is-3">
-                                                <div class="field">
-                                                    <label
-                                                        class="label label_req"><span>{{steps[1].form.addresses.list[index].numberHouse.title}}</span></label>
-                                                    <div class="control">
-                                                        <input type="text"
-                                                               class="input is-size-875"
-                                                               v-model="steps[1].form.addresses.list[index].numberHouse.value"
-                                                               :placeholder="steps[1].form.addresses.list[index].numberHouse.placeholder"
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="column is-3">
-                                                <div class="field">
-                                                    <label
-                                                        class="label label_req"><span>{{steps[1].form.addresses.list[index].housingHouse.title}}</span></label>
-                                                    <div class="control">
-                                                        <input type="text"
-                                                               class="input is-size-875"
-                                                               v-model="steps[1].form.addresses.list[index].housingHouse.value"
-                                                               :placeholder="steps[1].form.addresses.list[index].housingHouse.placeholder"
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="column is-3">
-                                                <div class="field">
-                                                    <label
-                                                        class="label label_req"><span>{{steps[1].form.addresses.list[index].numberOffice.title}}</span></label>
-                                                    <div class="control">
-                                                        <input type="text"
-                                                               class="input is-size-875"
-                                                               v-model="steps[1].form.addresses.list[index].numberOffice.value"
-                                                               :placeholder="steps[1].form.addresses.list[index].numberOffice.placeholder"
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="column is-3">
-                                                <div class="field">
-                                                    <label
-                                                        class="label label_req"><span>{{steps[1].form.addresses.list[index].index.title}}</span></label>
-                                                    <div class="control">
-                                                        <input type="text"
-                                                               class="input is-size-875"
-                                                               v-model="steps[1].form.addresses.list[index].index.value"
-                                                               :placeholder="steps[1].form.addresses.list[index].index.placeholder"
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-narrow">
-                                        <button class="button is-warning is-outlined button-remove"
-                                                v-tooltip="'Удалить этот адрес'"
-                                                @click="removeAddress(index)">
-                                            &times;<span class="is-size-875 is-hidden-tablet">Удалить этот адрес</span>
-                                        </button>
-                                        <button class="button is-info is-outlined button-add"
-                                                v-tooltip="'Добавить еще один адрес'"
-                                                @click="addAddress">
-                                            +<span class="is-size-875 is-hidden-tablet">Добавить еще один адрес</span>
-                                        </button>
-                                    </div>
+                    <g-g-address-input v-model="steps[1].form.addresses.value"></g-g-address-input>
 
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.nameLegalEntity.value" :label="steps[1].form.nameLegalEntity.title" :placeholder="steps[1].form.nameLegalEntity.placeholder"></g-g-text-input>
+                    <g-g-text-input :size="'is-6'" v-model="data.nameBusiness" :label="steps[1].form.nameBusiness.title" :placeholder="steps[1].form.nameBusiness.placeholder"></g-g-text-input>
+                    <g-g-radio-input v-model="steps[1].form.partBusiness.value" :label="steps[1].form.partBusiness.title" :list="steps[1].form.partBusiness.list"></g-g-radio-input>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.numberShares.value" :label="steps[1].form.numberShares.title" :placeholder="steps[1].form.numberShares.placeholder"></g-g-text-input>
 
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.nameLegalEntity.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_1">
-                                <input type="text"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.nameLegalEntity.value"
-                                       :placeholder="steps[1].form.nameLegalEntity.placeholder"
-                                >
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.nameLegalEntity.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.nameBusiness.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_1">
-                                <input type="text"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.nameBusiness.value"
-                                       :placeholder="steps[1].form.nameBusiness.placeholder"
-                                >
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.nameBusiness.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-textarea :size="'is-12'" v-model="steps[1].form.descriptionBusiness.value" :label="steps[1].form.descriptionBusiness.title" :placeholder="steps[1].form.descriptionBusiness.placeholder"></g-g-textarea>
 
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.partBusiness.title}}</span></label>
-                            <div class="control is-size-875">
-                                <label class="radio h3" v-for="(item, index) in steps[1].form.partBusiness.list">
-                                    <input type="radio"
-                                           :name="steps[1].form.partBusiness.name"
-                                           :value="steps[1].form.partBusiness.list[index].value"
-                                           v-model="steps[1].form.partBusiness.value">
-                                    <span>{{steps[1].form.partBusiness.list[index].title}}</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.numberShares.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_2">
-                                <input type="text"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.numberShares.value"
-                                       :placeholder="steps[1].form.numberShares.placeholder"
-                                >
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.numberShares.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                    <span class="icon is-small" v-tooltip="steps[1].form.numberShares.tooltipLock">
-                                    <img src="/svg/icons/ic_lock.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column is-12">
-                        <div class="field">
-                            <label
-                                class="label label_req"><span>{{steps[1].form.descriptionBusiness.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_1">
-                                <textarea class="textarea is-size-875" v-model="steps[1].form.descriptionBusiness.value"
-                                          :placeholder="steps[1].form.descriptionBusiness.placeholder"></textarea>
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.descriptionBusiness.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label
-                                class="label label_req"><span>{{steps[1].form.yearFoundationBusiness.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_1 has-icons-left has-icons-left_1">
-                                <input type="number"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.yearFoundationBusiness.value"
-                                       :placeholder="steps[1].form.yearFoundationBusiness.placeholder"
-                                >
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.yearFoundationBusiness.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                                <div class="icons is-left">
-                                  <span class="icon is-small">
-                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.reasonSale.title}}</span></label>
-                            <div class="control has-icons-right has-icons-right_1">
-                                <input type="text"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.reasonSale.value"
-                                       :placeholder="steps[1].form.reasonSale.placeholder"
-                                >
-                                <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="steps[1].form.reasonSale.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.yearFoundationBusiness.value" :label="steps[1].form.yearFoundationBusiness.title" :placeholder="steps[1].form.yearFoundationBusiness.placeholder"></g-g-text-input>
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.reasonSale.value" :label="steps[1].form.reasonSale.title" :placeholder="steps[1].form.reasonSale.placeholder"></g-g-text-input>
 
                     <div class="column is-12">
                         <upload-photo-business></upload-photo-business>
                     </div>
-
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
-                            <div class="control">
-                                <input type="text"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.nameVideoReview.value"
-                                       :placeholder="steps[1].form.nameVideoReview.placeholder"
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{steps[1].form.nameVideoReview.title}}</span></label>
-                            <div class="control">
-                                <input type="url"
-                                       class="input is-size-875"
-                                       v-model="steps[1].form.linkVideoReview.value"
-                                       :placeholder="steps[1].form.linkVideoReview.placeholder"
-                                >
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.nameVideoReview.value" :label="steps[1].form.nameVideoReview.title" :placeholder="steps[1].form.nameVideoReview.placeholder"></g-g-text-input>
+                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.linkVideoReview.value" :label="steps[1].form.linkVideoReview.title" :placeholder="steps[1].form.linkVideoReview.placeholder"></g-g-text-input>
                     <div class="column is-12">
                         <div class="field">
                             <div class="control">
@@ -4731,6 +4442,12 @@
 <script>
     import {VStepper} from 'vue-stepper-component';
     import Multiselect from 'vue-multiselect';
+    import GGSelectInput from './form/GGSelectInput';
+    import GGRadioInput from './form/GGRadioInput';
+    import GGTextInput from './form/GGTextInput';
+    import GGTextarea from './form/GGTextarea';
+    import GGAddressInput from './form/GGAddressInput';
+    import GGLocationSelectInput from './form/GGLocationSelectInput';
     import vueSlider from 'vue-slider-component';
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
@@ -4742,17 +4459,27 @@
     export default {
         name: "form-add-bussines",
         components: {
+            GGTextarea,
+            GGTextInput,
+            GGRadioInput,
+            GGAddressInput,
+            GGSelectInput,
+            GGLocationSelectInput,
             VStepper, Multiselect, vueSlider, flatPickr
         },
         data() {
             return {
+                data:{
+                    nameBusiness:null,
+                },
                 // steps: 3,
                 step: 1,
                 steps: {
                     1: {
-                        title: "Основная информация",
+                        title: trans('business.create.steps.main_info.title'),
                         active: true,
                         success: false,
+
                         form: {
                             theme: {
                                 selected: null,
@@ -4761,30 +4488,10 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             country: {
                                 selected: null,
-                                title: 'Страна',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
                             },
                             region: {
                                 selected: null,
@@ -4793,62 +4500,13 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             city: {
                                 selected: null,
-                                title: 'Город',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
                             },
                             addresses: {
-                                tooltipAddress: "Tooltip text",
-                                list: [
-                                    {
-                                        address: {
-                                            title: 'Адрес бизнеса',
-                                            placeholder: 'Укажите адрес',
-                                            value: '',
-                                        },
-                                        numberHouse: {
-                                            title: 'Номер дома',
-                                            placeholder: '№',
-                                            value: '',
-                                        },
-                                        housingHouse: {
-                                            title: 'Корпус дома',
-                                            placeholder: 'Корпус',
-                                            value: '',
-                                        },
-                                        numberOffice: {
-                                            title: 'Номер офиса',
-                                            placeholder: '№',
-                                            value: '',
-                                        },
-                                        index: {
-                                            title: 'Индекс',
-                                            placeholder: '01001',
-                                            value: '',
-                                        }
-                                    },
-                                ],
+                                value:null
                             },
                             nameLegalEntity: {
                                 title: 'Название юр.лица',
@@ -5007,14 +4665,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     typeProperty: {
                                         selected: null,
@@ -5023,14 +4674,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     numberSquareMeters: {
                                         title: 'Количество кв. метров',
@@ -5057,14 +4701,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     restrictionsOperation: {
                                         selected: null,
@@ -5073,14 +4710,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     listRestrictionsOperation: {
                                         selected: null,
@@ -5089,14 +4719,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ],
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                         noResult: 'Ничего не найдено'
                                     },
                                     refRegisterEstate: {
@@ -5106,14 +4729,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     technicalPropertyPlan: {
                                         selected: null,
@@ -5122,14 +4738,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     coordinationRedevelopment: {
                                         selected: null,
@@ -5138,14 +4747,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     availabilityMortgage: {
                                         selected: null,
@@ -5154,14 +4756,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     totalAmountMortgage: {
                                         title: 'Общая сумма ипотеки',
@@ -5209,14 +4804,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     totalAmountCredit: {
                                         title: 'Общая сумма кредита',
@@ -5264,14 +4852,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     jointPropertyEstate: {
                                         selected: null,
@@ -5280,14 +4861,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     typeRelationshipCoowners: {
                                         selected: null,
@@ -5296,14 +4870,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     monthlyUtilityCosts: {
                                         title: 'Ежемесячные расходы на комуннальные платежи',
@@ -5326,14 +4893,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ]
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                     },
                                     costChanging: {
                                         title: 'Стоимость чейнджа',
@@ -5371,14 +4931,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             monthTeach: {
                                 title: 'Сколько времени будете обучать?',
@@ -5394,14 +4947,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             typeTrainingMaterials: {
                                 selected: null,
@@ -5410,14 +4956,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             transferCustomerBase: {
@@ -5427,14 +4966,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             typeTransferCustomerBase: {
                                 selected: null,
@@ -5443,14 +4975,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             haveContractors: {
@@ -5460,14 +4985,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             contractors: {
                                 title: 'Контрагенты',
@@ -5480,14 +4998,7 @@
                                             selectedLabel: '',
                                             selectLabel: '',
                                             deselectLabel: '',
-                                            options: [
-                                                {id: '1', name: 'Item 1'},
-                                                {id: '2', name: 'Item 2'},
-                                                {id: '3', name: 'Item 3'},
-                                                {id: '4', name: 'Item 4'},
-                                                {id: '5', name: 'Item 5'},
-                                                {id: '6', name: 'Item 6'},
-                                            ],
+                                            options: trans('business.create.steps.main_info.theme_options'),
                                             noResult: 'Ничего не найдено'
                                         },
                                         name: {
@@ -5522,14 +5033,7 @@
                                             selectedLabel: '',
                                             selectLabel: '',
                                             deselectLabel: '',
-                                            options: [
-                                                {id: '1', name: 'Item 1'},
-                                                {id: '2', name: 'Item 2'},
-                                                {id: '3', name: 'Item 3'},
-                                                {id: '4', name: 'Item 4'},
-                                                {id: '5', name: 'Item 5'},
-                                                {id: '6', name: 'Item 6'},
-                                            ],
+                                            options: trans('business.create.steps.main_info.theme_options'),
                                             noResult: 'Ничего не найдено'
                                         },
                                         termsContractDismissal: {
@@ -5539,14 +5043,7 @@
                                             selectedLabel: '',
                                             selectLabel: '',
                                             deselectLabel: '',
-                                            options: [
-                                                {id: '1', name: 'Item 1'},
-                                                {id: '2', name: 'Item 2'},
-                                                {id: '3', name: 'Item 3'},
-                                                {id: '4', name: 'Item 4'},
-                                                {id: '5', name: 'Item 5'},
-                                                {id: '6', name: 'Item 6'},
-                                            ],
+                                            options: trans('business.create.steps.main_info.theme_options'),
                                             noResult: 'Ничего не найдено'
                                         },
                                         monthlyWages: {
@@ -5573,14 +5070,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options'),
                             },
                             certificates: {
                                 title: 'Услуги и сертификаты',
@@ -5593,14 +5083,7 @@
                                             selectedLabel: '',
                                             selectLabel: '',
                                             deselectLabel: '',
-                                            options: [
-                                                {id: '1', name: 'Item 1'},
-                                                {id: '2', name: 'Item 2'},
-                                                {id: '3', name: 'Item 3'},
-                                                {id: '4', name: 'Item 4'},
-                                                {id: '5', name: 'Item 5'},
-                                                {id: '6', name: 'Item 6'},
-                                            ],
+                                            options: trans('business.create.steps.main_info.theme_options'),
                                             noResult: 'Ничего не найдено'
                                         },
                                         type: {
@@ -5610,14 +5093,7 @@
                                             selectedLabel: '',
                                             selectLabel: '',
                                             deselectLabel: '',
-                                            options: [
-                                                {id: '1', name: 'Item 1'},
-                                                {id: '2', name: 'Item 2'},
-                                                {id: '3', name: 'Item 3'},
-                                                {id: '4', name: 'Item 4'},
-                                                {id: '5', name: 'Item 5'},
-                                                {id: '6', name: 'Item 6'},
-                                            ],
+                                            options: trans('business.create.steps.main_info.theme_options'),
                                             noResult: 'Ничего не найдено'
                                         },
                                         licensePeriod: {
@@ -5640,14 +5116,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options')
                             },
                             neededLicenses: {
                                 selected: null,
@@ -5656,14 +5125,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ]
+                                options: trans('business.create.steps.main_info.theme_options')
                             },
                         }
                     },
@@ -5679,14 +5141,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             techDocEquipment: {
@@ -5696,14 +5151,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             conditionProperty: {
@@ -5713,14 +5161,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             conditionEquipment: {
@@ -5730,14 +5171,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             pledgeEquipment: {
@@ -5747,14 +5181,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
 
@@ -5804,14 +5231,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             listTransferredProperty: {
@@ -5821,14 +5241,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
 
@@ -5839,14 +5252,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             amountDeductionsProfits: {
@@ -5871,14 +5277,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             yearCreationSite: {
@@ -5893,14 +5292,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             themeSite: {
@@ -5910,14 +5302,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             salePhone: {
@@ -5927,14 +5312,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             phone: {
@@ -5950,14 +5328,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             intellectualPropertyList: {
@@ -5967,14 +5338,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
 
@@ -5997,14 +5361,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             sourcesTraffic: {
@@ -6014,14 +5371,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             sourceGoogle: {
@@ -6050,14 +5400,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             averageMonthlyIncome: {
@@ -6074,14 +5417,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             contextualAdvertising: {
@@ -6137,14 +5473,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             contentExpensesSite: {
@@ -6182,14 +5511,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
 
@@ -6280,14 +5602,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             socNetList: {
@@ -6297,14 +5612,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             socNetItems: [
@@ -6329,14 +5637,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ],
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                         noResult: 'Ничего не найдено'
                                     },
                                     incomeYear: {
@@ -6388,14 +5689,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ],
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                         noResult: 'Ничего не найдено'
                                     },
                                     lang: {
@@ -6405,14 +5699,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ],
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                         noResult: 'Ничего не найдено'
                                     },
                                     methodTransferGroup: {
@@ -6422,14 +5709,7 @@
                                         selectedLabel: '',
                                         selectLabel: '',
                                         deselectLabel: '',
-                                        options: [
-                                            {id: '1', name: 'Item 1'},
-                                            {id: '2', name: 'Item 2'},
-                                            {id: '3', name: 'Item 3'},
-                                            {id: '4', name: 'Item 4'},
-                                            {id: '5', name: 'Item 5'},
-                                            {id: '6', name: 'Item 6'},
-                                        ],
+                                        options: trans('business.create.steps.main_info.theme_options'),
                                         noResult: 'Ничего не найдено'
                                     },
 
@@ -6449,14 +5729,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             b2c: {
@@ -6467,14 +5740,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                                 ageMenFrom: {
@@ -6527,14 +5793,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                                 aloneClients: {
@@ -6566,14 +5825,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                                 childClients: {
@@ -6625,14 +5877,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                             },
@@ -6644,14 +5889,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                                 haveExistingContracts: {
@@ -6661,14 +5899,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                                 listContracts: [
@@ -6712,14 +5943,7 @@
                                     selectedLabel: '',
                                     selectLabel: '',
                                     deselectLabel: '',
-                                    options: [
-                                        {id: '1', name: 'Item 1'},
-                                        {id: '2', name: 'Item 2'},
-                                        {id: '3', name: 'Item 3'},
-                                        {id: '4', name: 'Item 4'},
-                                        {id: '5', name: 'Item 5'},
-                                        {id: '6', name: 'Item 6'},
-                                    ],
+                                    options: trans('business.create.steps.main_info.theme_options'),
                                     noResult: 'Ничего не найдено'
                                 },
                             }
@@ -6737,14 +5961,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             taxSystem: {
@@ -6754,14 +5971,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             changesProfileLegalEntity: {
@@ -6771,14 +5981,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             havePenalties: {
@@ -6788,14 +5991,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             listPenalties: {
@@ -6805,14 +6001,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             haveDisputableSituations: {
@@ -6822,14 +6011,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                             listDisputableSituations: {
@@ -6839,14 +6021,7 @@
                                 selectedLabel: '',
                                 selectLabel: '',
                                 deselectLabel: '',
-                                options: [
-                                    {id: '1', name: 'Item 1'},
-                                    {id: '2', name: 'Item 2'},
-                                    {id: '3', name: 'Item 3'},
-                                    {id: '4', name: 'Item 4'},
-                                    {id: '5', name: 'Item 5'},
-                                    {id: '6', name: 'Item 6'},
-                                ],
+                                options: trans('business.create.steps.main_info.theme_options'),
                                 noResult: 'Ничего не найдено'
                             },
                         }
@@ -6871,38 +6046,6 @@
                 this.step = parseInt(index, 10);
 
                 this.steps[index].active = true;
-            },
-            addAddress() {
-                this.steps[1].form.addresses.list.push({
-                    address: {
-                        title: 'Адрес бизнеса',
-                        placeholder: 'Укажите адрес',
-                        value: '',
-                    },
-                    numberHouse: {
-                        title: 'Номер дома',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    housingHouse: {
-                        title: 'Корпус дома',
-                        placeholder: 'Корпус',
-                        value: '',
-                    },
-                    numberOffice: {
-                        title: 'Номер офиса',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    index: {
-                        title: 'Индекс',
-                        placeholder: '01001',
-                        value: '',
-                    }
-                });
-            },
-            removeAddress(index) {
-                this.steps[1].form.addresses.list.splice(index, 1);
             },
             addContractors() {
                 // Добавление котрагента
