@@ -95,22 +95,22 @@
 
                     <g-g-address-input v-model="steps[1].form.addresses.value"></g-g-address-input>
 
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.nameLegalEntity.value" :label="steps[1].form.nameLegalEntity.title" :placeholder="steps[1].form.nameLegalEntity.placeholder"></g-g-text-input>
-                    <g-g-text-input :size="'is-6'" v-model="data.nameBusiness" :label="steps[1].form.nameBusiness.title" :placeholder="steps[1].form.nameBusiness.placeholder"></g-g-text-input>
+                    <g-g-input :size="'is-6'" v-model="steps[1].form.nameLegalEntity.value" :label="steps[1].form.nameLegalEntity.title" :placeholder="steps[1].form.nameLegalEntity.placeholder"></g-g-input>
+                    <g-g-input :size="'is-6'" v-model="data.nameBusiness" :label="steps[1].form.nameBusiness.title" :placeholder="steps[1].form.nameBusiness.placeholder"></g-g-input>
                     <g-g-radio-input v-model="steps[1].form.partBusiness.value" :label="steps[1].form.partBusiness.title" :list="steps[1].form.partBusiness.list"></g-g-radio-input>
 
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.numberShares.value" :label="steps[1].form.numberShares.title" :placeholder="steps[1].form.numberShares.placeholder"></g-g-text-input>
+                    <g-g-input :type="'number'" :prevText="'%'" :size="'is-6'" v-model="steps[1].form.numberShares.value" :label="steps[1].form.numberShares.title" :placeholder="steps[1].form.numberShares.placeholder"></g-g-input>
 
                     <g-g-textarea :size="'is-12'" v-model="steps[1].form.descriptionBusiness.value" :label="steps[1].form.descriptionBusiness.title" :placeholder="steps[1].form.descriptionBusiness.placeholder"></g-g-textarea>
 
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.yearFoundationBusiness.value" :label="steps[1].form.yearFoundationBusiness.title" :placeholder="steps[1].form.yearFoundationBusiness.placeholder"></g-g-text-input>
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.reasonSale.value" :label="steps[1].form.reasonSale.title" :placeholder="steps[1].form.reasonSale.placeholder"></g-g-text-input>
+                    <g-g-input :type="'number'" :iconLeft="'/svg/icons/ic_calendar.svg'" :size="'is-6'" v-model="steps[1].form.yearFoundationBusiness.value" :label="steps[1].form.yearFoundationBusiness.title" :placeholder="steps[1].form.yearFoundationBusiness.placeholder"></g-g-input>
+                    <g-g-input :size="'is-6'" v-model="steps[1].form.reasonSale.value" :label="steps[1].form.reasonSale.title" :placeholder="steps[1].form.reasonSale.placeholder"></g-g-input>
 
                     <div class="column is-12">
                         <upload-photo-business></upload-photo-business>
                     </div>
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.nameVideoReview.value" :label="steps[1].form.nameVideoReview.title" :placeholder="steps[1].form.nameVideoReview.placeholder"></g-g-text-input>
-                    <g-g-text-input :size="'is-6'" v-model="steps[1].form.linkVideoReview.value" :label="steps[1].form.linkVideoReview.title" :placeholder="steps[1].form.linkVideoReview.placeholder"></g-g-text-input>
+                    <g-g-input :size="'is-6'" v-model="steps[1].form.nameVideoReview.value" :label="steps[1].form.nameVideoReview.title" :placeholder="steps[1].form.nameVideoReview.placeholder"></g-g-input>
+                    <g-g-input :size="'is-6'" v-model="steps[1].form.linkVideoReview.value" :label="steps[1].form.linkVideoReview.title" :placeholder="steps[1].form.linkVideoReview.placeholder"></g-g-input>
                     <div class="column is-12">
                         <div class="field">
                             <div class="control">
@@ -169,20 +169,20 @@
                 </div>
 
                 <div class="columns is-multiline">
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.priceShares.value" :label="steps[2].form.priceShares.title" :placeholder="steps[2].form.priceShares.placeholder"></g-g-text-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.priceShares.value" :label="steps[2].form.priceShares.title" :placeholder="steps[2].form.priceShares.placeholder"></g-g-input>
                     <div class="column is-6 is-paddingless"></div>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.netAverageAnnualProfit.value" :label="steps[2].form.netAverageAnnualProfit.title" :placeholder="steps[2].form.netAverageAnnualProfit.placeholder"></g-g-text-input>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.netAverageQuarterlyProfit.value" :label="steps[2].form.netAverageQuarterlyProfit.title" :placeholder="steps[2].form.netAverageQuarterlyProfit.placeholder"></g-g-text-input>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.averageAnnualTurnover.value" :label="steps[2].form.averageAnnualTurnover.title" :placeholder="steps[2].form.averageAnnualTurnover.placeholder"></g-g-text-input>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.averageQuarterlyTurnover.value" :label="steps[2].form.averageQuarterlyTurnover.title" :placeholder="steps[2].form.averageQuarterlyTurnover.placeholder"></g-g-text-input>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.costBusinessPerYear.value" :label="steps[2].form.costBusinessPerYear.title" :placeholder="steps[2].form.costBusinessPerYear.placeholder"></g-g-text-input>
-                    <g-g-text-input :prevText="true" :size="'is-6'" v-model="steps[2].form.costBusinessPerQuarter.value" :label="steps[2].form.costBusinessPerQuarter.title" :placeholder="steps[2].form.costBusinessPerQuarter.placeholder"></g-g-text-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.netAverageAnnualProfit.value" :label="steps[2].form.netAverageAnnualProfit.title" :placeholder="steps[2].form.netAverageAnnualProfit.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.netAverageQuarterlyProfit.value" :label="steps[2].form.netAverageQuarterlyProfit.title" :placeholder="steps[2].form.netAverageQuarterlyProfit.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.averageAnnualTurnover.value" :label="steps[2].form.averageAnnualTurnover.title" :placeholder="steps[2].form.averageAnnualTurnover.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.averageQuarterlyTurnover.value" :label="steps[2].form.averageQuarterlyTurnover.title" :placeholder="steps[2].form.averageQuarterlyTurnover.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.costBusinessPerYear.value" :label="steps[2].form.costBusinessPerYear.title" :placeholder="steps[2].form.costBusinessPerYear.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="steps[2].form.costBusinessPerQuarter.value" :label="steps[2].form.costBusinessPerQuarter.title" :placeholder="steps[2].form.costBusinessPerQuarter.placeholder"></g-g-input>
 
                     <div class="column is-12">
                         <label class="label is-size-6"><span>{{steps[2].labelReturnInvestment}}</span></label>
                         <div class="columns is-multiline">
-                            <g-g-text-input :text="'Месяцев'" :prevText="true" :size="'is-6'" v-model="steps[2].form.positiveScenario.value" :label="steps[2].form.positiveScenario.title" :placeholder="steps[2].form.positiveScenario.placeholder"></g-g-text-input>
-                            <g-g-text-input :text="'Месяцев'" :prevText="true" :size="'is-6'" v-model="steps[2].form.negativeScenario.value" :label="steps[2].form.negativeScenario.title" :placeholder="steps[2].form.negativeScenario.placeholder"></g-g-text-input>
+                            <g-g-input :type="'number'" :prevText="'Месяцев'" :size="'is-6'" v-model="steps[2].form.positiveScenario.value" :label="steps[2].form.positiveScenario.title" :placeholder="steps[2].form.positiveScenario.placeholder"></g-g-input>
+                            <g-g-input :type="'number'" :prevText="'Месяцев'" :size="'is-6'" v-model="steps[2].form.negativeScenario.value" :label="steps[2].form.negativeScenario.title" :placeholder="steps[2].form.negativeScenario.placeholder"></g-g-input>
                         </div>
                     </div>
                 </div>
@@ -4218,7 +4218,7 @@
     import Multiselect from 'vue-multiselect';
     import GGSelectInput from './form/GGSelectInput';
     import GGRadioInput from './form/GGRadioInput';
-    import GGTextInput from './form/GGTextInput';
+    import GGInput from './form/GGInput';
     import GGTextarea from './form/GGTextarea';
     import GGAddressInput from './form/GGAddressInput';
     import GGLocationSelectInput from './form/GGLocationSelectInput';
@@ -4234,7 +4234,7 @@
         name: "form-add-bussines",
         components: {
             GGTextarea,
-            GGTextInput,
+            GGInput,
             GGRadioInput,
             GGAddressInput,
             GGSelectInput,
@@ -4315,7 +4315,7 @@
                             },
                             numberShares: {
                                 title: 'Количество долей или акций',
-                                placeholder: '75%',
+                                placeholder: 75,
                                 value: '',
                                 tooltip: 'tooltip text',
                                 tooltipLock: 'tooltip lock',

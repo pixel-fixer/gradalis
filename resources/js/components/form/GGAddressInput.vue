@@ -3,16 +3,16 @@
         <div class="columns is-multiline list-wrap"
         v-for="item in list">
 
-            <g-g-text-input :size="'is-6'" v-model="item.address.value" :label="item.address.title" :placeholder="item.address.placeholder"></g-g-text-input>
+            <g-g-input :size="'is-6'" v-model="item.address.value" :label="item.address.title" :placeholder="item.address.placeholder"></g-g-input>
             
             <div class="column is-6">
                 <div class="columns is-multiline">
                     <div class="column">
                         <div class="columns is-multiline">
-                            <g-g-text-input :size="'is-3'" v-model="item.numberHouse.value" :label="item.numberHouse.title" :placeholder="item.numberHouse.placeholder"></g-g-text-input>
-                            <g-g-text-input :size="'is-3'" v-model="item.housingHouse.value" :label="item.housingHouse.title" :placeholder="item.housingHouse.placeholder"></g-g-text-input>
-                            <g-g-text-input :size="'is-3'" v-model="item.numberOffice.value" :label="item.numberOffice.title" :placeholder="item.numberOffice.placeholder"></g-g-text-input>
-                            <g-g-text-input :size="'is-3'" v-model="item.index.value" :label="item.index.title" :placeholder="item.index.placeholder"></g-g-text-input>
+                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.numberHouse.value" :label="item.numberHouse.title" :placeholder="item.numberHouse.placeholder"></g-g-input>
+                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.housingHouse.value" :label="item.housingHouse.title" :placeholder="item.housingHouse.placeholder"></g-g-input>
+                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.numberOffice.value" :label="item.numberOffice.title" :placeholder="item.numberOffice.placeholder"></g-g-input>
+                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.index.value" :label="item.index.title" :placeholder="item.index.placeholder"></g-g-input>
                         </div>
                     </div>
                     <div class="column is-narrow">
@@ -36,10 +36,10 @@
 </template>
 
 <script>
-    import GGTextInput from './GGTextInput'
+    import GGInput from './GGInput'
     export default {
         name: "GGAddressInput",
-        components:{GGTextInput},
+        components:{GGInput},
         props: {
             //value: null,
             label:'',

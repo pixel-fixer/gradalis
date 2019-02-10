@@ -10,20 +10,17 @@
                           @input="inputChange"
                           :placeholder="placeholder">
                 </textarea>
-                <slot v-if="iconLeft" name="icon-left">
-                    <div class="icons is-left">
-                          <span class="icon is-small">
-                            <img src="/svg/icons/ic_search.svg" class="svg" alt="">
-                          </span>
-                    </div>
-                </slot>
-                <slot v-if="iconRight" name="icon-right">
-                    <div class="icons is-right">
-                          <span class="icon is-small" v-tooltip="steps[1].form.nameLegalEntity.tooltip">
-                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                          </span>
-                    </div>
-                </slot>
+                <div v-if="iconLeft" class="icons is-left">
+                      <span class="icon is-small">
+                        <img :src="iconLeft" class="svg" alt="">
+                      </span>
+                </div>
+
+                <div v-if="iconRight" class="icons is-right">
+                      <span class="icon is-small" v-tooltip="steps[1].form.nameLegalEntity.tooltip">
+                        <img :src="iconRight" class="svg" alt="">
+                      </span>
+                </div>
             </div>
         </div>
     </div>
@@ -34,8 +31,8 @@
     export default {
         name: "GGTextInput",
         props: {
-            iconLeft: {default: false},
-            iconRight: {default: false},
+            iconLeft: {default: null},
+            iconRight: {default: null},
             size: {default: 'is-3'},
             value: '',
             label: '',
