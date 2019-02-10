@@ -1,9 +1,17 @@
 <template>
     <div :class="size" class="column">
-        <div class="field">
-            <label class="label">{{label}}</label>
-            <div :class="{iconRight:'has-icons-right has-icons-right_1',iconLeft:'has-icons-left has-icons-left_1'}"
+        <label class="label"><span>{{label}}</span></label>
+        <div :class="{'has-addons':prevText}" class="field">
+            <slot v-if="prevText" name="prev-text">
+                <p class="control">
+                        <span class="button is-static is-size-875">
+                           {{text}}
+                        </span>
+                </p>
+            </slot>
+            <div :class="{'is-expanded':prevText,'has-icons-right has-icons-right_1':iconRight,'has-icons-left has-icons-left_1':iconLeft}"
                  class="control">
+
                 <input type="text"
                        class="input is-size-875"
                        v-model="inputValue"
@@ -35,6 +43,8 @@
         props: {
             iconLeft: {default: false},
             iconRight: {default: false},
+            prevText: {default: false},
+            text:{default:'zt'},
             size: {default: 'is-3'},
             value: '',
             label: '',

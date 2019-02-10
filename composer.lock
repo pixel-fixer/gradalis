@@ -225,16 +225,16 @@
         },
         {
             "name": "dmitrybubyakin/nova-medialibrary-field",
-            "version": "1.1.7",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dmitrybubyakin/nova-medialibrary-field.git",
-                "reference": "78b758168e1c1e5d6c01ab72e0c63990b0b01873"
+                "reference": "81e60382fd111cf6bcfd0510df86609cabb93ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dmitrybubyakin/nova-medialibrary-field/zipball/78b758168e1c1e5d6c01ab72e0c63990b0b01873",
-                "reference": "78b758168e1c1e5d6c01ab72e0c63990b0b01873",
+                "url": "https://api.github.com/repos/dmitrybubyakin/nova-medialibrary-field/zipball/81e60382fd111cf6bcfd0510df86609cabb93ddf",
+                "reference": "81e60382fd111cf6bcfd0510df86609cabb93ddf",
                 "shasum": ""
             },
             "require": {
@@ -270,7 +270,7 @@
                 "medialibrary",
                 "nova"
             ],
-            "time": "2019-02-01T09:43:23+00:00"
+            "time": "2019-02-09T10:42:58+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
