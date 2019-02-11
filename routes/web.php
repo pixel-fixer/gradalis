@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -49,8 +47,6 @@ Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
     Route::delete('message/{message}', 'ChatController@deleteMessage');
     Route::patch('message/{message}/accept', 'ChatController@acceptMessage');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/business/single', function () {
     return view('business-single');
