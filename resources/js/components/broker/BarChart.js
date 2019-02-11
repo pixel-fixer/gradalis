@@ -1,38 +1,16 @@
-<template>
-    <div>
-        <line-chart :chartdata="datacollection" :options="options" :height="260"/>
-    </div>
-</template>
+import { Bar } from 'vue-chartjs'
 
-<script>
-    import LineChart from './LineChart.js'
-
-    export default {
-        components: {
-            LineChart
+export default {
+    extends: Bar,
+    props: {
+        chartdata: {
+            type: Object,
+            default: null
         },
-        data() {
-            return {
-
-                datacollection: {
-                    labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Мая', 'Июнь', 'Июль'],
-                    datasets: [
-                        {
-                            label: 'Все показы',
-                            backgroundColor: '#0070D9',
-                            borderColor: '#0070D9',
-                            borderWidth: 2,
-                            data: [40, 39, 10, 40, 39, 80, 40],
-                            fill: false,
-                            lineTension: 0,
-                            pointBorderWidth: 4,
-                            // cubicInterpolationMode: 'monotone'
-                        }
-                    ]
-                },
-
-
-                options: {
+        options: {
+            type: Object,
+            default: function () {
+                return {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
@@ -74,7 +52,7 @@
                     },
                     legend: {
                         display: true,
-                        textAlign:'left',
+                        textAlign: 'left',
                         labels: {
                             // boxWidth: 8,
                             usePointStyle: true,
@@ -85,15 +63,9 @@
                     },
                 }
             }
-        },
-        mounted() {
-            this.fillData()
-        },
+        }
+    },
+    mounted () {
+        this.renderChart(this.chartdata, this.options)
     }
-</script>
-
-<style>
-    .line-chart canvas {
-        height: 13.75rem;
-    }
-</style>
+}

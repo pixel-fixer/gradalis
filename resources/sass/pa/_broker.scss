@@ -146,6 +146,26 @@
         background-color: rgba(#CFDAE6, .5);
         height: 1px;
     }
+
+    .chart-time-zone {
+        text-align: right;
+        color: $light-grayish-blue;
+    }
+
+
+    //&__realtime-table {
+    //    thead,
+    //    tbody {
+    //        tr {
+    //            th,
+    //            td {
+    //                &:not(:last-child) {
+    //                    border-right: 1px solid rgba($light-grayish-blue, 0.5);
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }
 
 .modal-create-offer-link {
