@@ -145,6 +145,9 @@ Route::namespace('Business')->group(function () {
 
 //API Routes
 Route::namespace('Api')->group(function () {
-    Route::get('/get-businesses', 'BusinessController@getBusinesses')->middleware('auth');
-    Route::get('/get-businesses-categories', 'BusinessController@getBusinessesCategories')->middleware('auth');
+    Route::get('/location-get-countries', 'LocationController@getCountries')->middleware('auth');
+    Route::get('/location-get-cities', 'LocationController@getCities')->middleware('auth');
+
+    Route::get('/business-get', 'BusinessController@get')->middleware('auth');
+    Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
 });

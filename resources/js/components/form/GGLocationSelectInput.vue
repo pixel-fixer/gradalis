@@ -25,16 +25,17 @@
     import Multiselect from 'vue-multiselect'
 
     export default {
-        name: "GGSelectInput",
+        name: "GGLocationSelectInput",
         components: {Multiselect},
         props: {
             value: null,
-            searchable:{default:false},
+            searchable:{default:true},
             allowempty:{default:false},
             size:{default:'is-3'},
-            placeholder: {default: 'Выберите тип'},
-            label: {default: 'Выберите тип'},
-            options: {default: []}
+            type:{default:'country'},
+            placeholder: {default: 'Выберите'},
+            label: {default: 'Страна'},
+
         },
         data() {
             return {
@@ -42,12 +43,25 @@
                 selectedLabel: 'Выбрано',
                 selectLabel: '',
                 deselectLabel: '',
+                options:[]
             }
         },
 
         methods: {
             selectChange() {
                 this.$emit('input', this.selectedValue.id);
+            }
+        },
+        mounted() {
+            let vm = this;
+            if(this.type === 'country') {
+                axios.get('/location-get-countries').then(responce => {
+                    vm.options = responce.data;
+                })
+            }else if(this.type === 'city'){
+                axios.get('/location-get-cities').then(responce => {
+                    vm.options = responce.data;
+                })
             }
         },
         watch: {

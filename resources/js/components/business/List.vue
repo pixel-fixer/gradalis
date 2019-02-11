@@ -73,7 +73,7 @@
             },
             fetchBusinesses(page = 1) {
                 let vm = this;
-                axios.get('/get-businesses?page=' + page, {
+                axios.get('/business-get?page=' + page, {
                     params: {
                         region: vm.form.region,
                         category: vm.form.category,
