@@ -23,7 +23,11 @@
     @yield('head')
 </head>
 <body>
+    @if(Request::path() !== 'profile')
     <div id="app">
+    @else
+    <div id="app_profile">
+    @endif
         @include('includes.header')
         {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
             {{--<div class="container">--}}

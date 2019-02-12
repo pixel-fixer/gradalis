@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
-import VueRouter from 'vue-router'
+//import VueRouter from 'vue-router'
 import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
@@ -23,7 +23,7 @@ Vue.prototype.trans = (string, args) => {
 };
 
 Vue.use(VueSweetalert2)
-Vue.use(VueRouter)
+//Vue.use(VueRouter)
 Vue.use(VTooltip)
 Vue.use(PortalVue)
 Vue.use(Vuebar)
@@ -65,6 +65,26 @@ Vue.component('broker-ex-chart', require('./components/broker/RandomChart').defa
 
 const app = new Vue({
     el: '#app',
+    data: {
+        object: {
+            // Переменные, используемые на странице объекта
+            showDetailedInformation: false
+        }
+    },
+    store,
+    methods: {
+        showModal(id) {
+            document.getElementById(id).classList.add('is-active');
+        },
+        hideModal(id) {
+            document.getElementById(id).classList.remove('is-active');
+        }
+    }
+});
+
+
+const app_profile = new Vue({ 
+    el: '#app_profile',
     data: {
         object: {
             // Переменные, используемые на странице объекта

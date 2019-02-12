@@ -51,6 +51,7 @@
             }
 
             &.is-active,
+            &.router-link-active,
             &:hover {
                 &:before {
                     opacity: 1;

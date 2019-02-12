@@ -55,6 +55,11 @@
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
+                    <router-link to="/balance" tag="a">
+                        <span class="aside-nav__item__title has-text-weight-bold">Баланс</span>
+                    </router-link>
+                </li>
+                <li class="aside-nav__item">
                      <router-link to="/legal" tag="a">
                         <img src="/svg/icons/ic_contract.svg" class="svg" alt="Contract">
                         <span class="aside-nav__item__title has-text-weight-bold">Условия и договора</span>
