@@ -20,13 +20,20 @@ body {
         font-size: .875rem;
         padding: 1.875rem 2.1875rem;
     }
+
     &.is-load {
         //color: transparent !important;
         pointer-events: none;
+
         .icon {
             animation: spinAround 500ms infinite linear;
         }
     }
+}
+
+.my-0 {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
 }
 
 .my-1 {
@@ -41,9 +48,11 @@ body {
 .mb-0-5 {
     margin-bottom: .5rem !important;
 }
+
 .mb-0 {
     margin-bottom: 0 !important;
 }
+
 .mb-1-75 {
     margin-bottom: 1.75rem !important;
 }
@@ -115,6 +124,7 @@ body {
 .h-3 {
     height: 3rem;
 }
+
 .h-full {
     height: 100%;
 }
@@ -289,6 +299,39 @@ a {
                 path {
                     fill: $cyan;
                 }
+            }
+        }
+    }
+
+    &-favorite {
+        cursor: pointer;
+
+        &:hover,
+        &.is-active {
+            svg {
+                path {
+                    fill: $yellow
+                }
+            }
+        }
+    }
+
+    &.has-action {
+        cursor: pointer;
+        &:hover,
+        &.is-active {
+            svg {
+                path {
+                    fill: $cyan
+                }
+            }
+        }
+    }
+
+    &_grey {
+        svg {
+            path {
+                fill: #8B97A9
             }
         }
     }

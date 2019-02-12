@@ -1,5 +1,205 @@
 <template>
-    <div class="">
+    <div>
+        <div class="broker-pa__header">
+            <div class="columns is-multiline">
+                <div class="column is-8-desktop is-12-tablet">
+                    <h1 class="section-title mb-0-5">Сводные показатели</h1>
+                </div>
+                <div class="column is-4-desktop is-12-tablet">
+                    <div class="buttons">
+                        <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1 mb-0">
+                        <span class="icon">
+                          <img src="/svg/icons/ic_lifesaver-2.svg" alt="" class="svg">
+                        </span>
+                            <span>Помощь</span>
+                        </button>
+                        <div
+                            class="control has-icons-left has-icons-left_1">
+                            <flat-pickr
+                                class="input is-size-875"
+                                v-model="form.rangeDates.value"
+                                :placeholder="form.rangeDates.placeholder"
+                                :config="form.rangeDates.config"
+                            >
+
+                            </flat-pickr>
+                            <div class="icons is-left">
+                                  <span class="icon is-small">
+                                    <img src="/svg/icons/ic_calendar.svg" class="svg" alt="">
+                                  </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <!-- Swiper -->
+            <div class="swiper-container swiper-broker-data-indicators">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Appr. Leads</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Целей оплачено</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="broker-data-indicator">
+                            <div class="broker-data-indicator__title">
+                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="icon icon-1" v-tooltip="'tooltip text'">
+                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                                </span>
+                            </div>
+                            <div class="broker-data-indicator__value has-text-weight-bold">
+                                12 580
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-broker-data-indicators-next"></div>
+                <div class="swiper-button-prev swiper-broker-data-indicators-prev"></div>
+            </div>
+        </section>
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
@@ -70,14 +270,30 @@
     import LineChart from './LineChart.js';
     import GGSelectInput from '../form/GGSelectInput';
 
+    import flatPickr from 'vue-flatpickr-component';
+    import {Russian} from "flatpickr/dist/l10n/ru.js"
+    import 'flatpickr/dist/flatpickr.css';
+
+    flatpickr.localize(Russian);
+
     export default {
-        name: "SummaryIndicators",
+        name: "BrokerSummaryIndicators",
         components: {
-            Multiselect, BarChart, LineChart, GGSelectInput
+            Multiselect, BarChart, LineChart, GGSelectInput, flatPickr
         },
         data() {
             return {
                 form: {
+                    rangeDates: {
+                        placeholder: '25.02.2018 - 03.03.2018',
+                        value: '',
+                        config: {
+                            mode: "range",
+                            altFormat: 'd.m.Y',
+                            altInput: true,
+                            dateFormat: 'Y-m-d'
+                        }
+                    },
                     typeData: {
                         selected: null,
                         title: 'Данные в графике',

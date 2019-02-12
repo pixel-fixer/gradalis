@@ -1,6 +1,6 @@
 <template>
     <div :class="size" class="column">
-        <label class="label"><span>{{label}}</span></label>
+        <label class="label" :class="{ 'label_req': required }"><span>{{label}}</span></label>
         <div :class="{'has-addons':prevText}" class="field">
 
             <p v-if="prevText" class="control">
@@ -40,15 +40,16 @@
     export default {
         name: "GGInput",
         props: {
-            type:{default:'text'},
+            type: {default: 'text'},
             iconLeft: {default: null},
             iconRight: {default: null},
             prevText: {default: null},
             size: {default: 'is-3'},
-            tooltip:{default:null},
+            tooltip: {default: null},
             value: '',
             label: '',
-            placeholder: {default: 'Поиск'}
+            placeholder: {default: 'Поиск'},
+            required: {default: false},
         },
         data() {
             return {
@@ -64,10 +65,10 @@
             }
         },
         methods: {
-            keyMonitor(event){
-                if(this.type === 'number'){
-                    if(event.keyCode == 69 || event.keyCode == 189 || event.keyCode == 188 || event.keyCode == 190 || event.keyCode == 187 )
-                    event.preventDefault();
+            keyMonitor(event) {
+                if (this.type === 'number') {
+                    if (event.keyCode == 69 || event.keyCode == 189 || event.keyCode == 188 || event.keyCode == 190 || event.keyCode == 187)
+                        event.preventDefault();
                 }
             },
 

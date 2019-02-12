@@ -141,6 +141,20 @@ Route::get('/brpa', function () {
 Route::get('/brpa/real-time', function () {
     return view('brpa.real-time');
 });
+Route::get('/brpa/web-offers', function () {
+    return view('brpa.web-offers');
+});
+Route::get('/brpa/leads', function () {
+    return view('brpa.leads');
+});
+Route::get('/brpa/balance', function () {
+    return view('brpa.balance');
+});
+Route::get('/brpa/settings', function () {
+    return view('brpa.settings');
+});
+
+
 //BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');

@@ -1,16 +1,19 @@
 <template>
     <div :class="size" class="column">
         <div class="field">
-            <label class="label">{{label}}</label>
+            <label class="label" :class="{ 'label_req': required }"><span>{{label}}</span></label>
             <div class="control">
                 <multiselect v-model="selectedValue"
                              :deselect-label="deselectLabel"
                              track-by="id"
                              @input="selectChange"
                              label="name"
+                             :multiple="multiple"
+                             :class="addClass"
                              :placeholder="placeholder"
                              :options="options"
                              :searchable="searchable"
+                             :close-on-select="closeOnSelect"
                              :allow-empty="allowempty"
                              :selectLabel="selectLabel"
                              :selectedLabel="selectedLabel">
@@ -30,13 +33,17 @@
         components: {Multiselect},
         props: {
             value: null,
-            searchable:{default:false},
-            allowempty:{default:false},
-            size:{default:'is-3'},
+            searchable: {default: false},
+            allowempty: {default: false},
+            multiple: {default: false},
+            size: {default: 'is-3'},
             placeholder: {default: 'Выберите тип'},
             label: {default: 'Выберите тип'},
             options: {default: []},
             noResult: {default: 'Результатов не найдено'},
+            addClass: {default: ''},
+            closeOnSelect: {default: true},
+            required: {default: false},
         },
         data() {
             return {
@@ -62,7 +69,7 @@
                                 this.selectedValue = val;
                             }
                         }
-                    }else{
+                    } else {
                         this.selectedValue = null;
                     }
                 }

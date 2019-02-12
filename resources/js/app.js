@@ -62,6 +62,10 @@ Vue.mixin({
 Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
 Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
+Vue.component('broker-web-offers', require('./components/broker/WebOffers').default);
+Vue.component('broker-leads', require('./components/broker/Leads').default);
+Vue.component('broker-balance', require('./components/broker/Balance').default);
+Vue.component('broker-settings', require('./components/broker/Settings').default);
 
 const app = new Vue({
     el: '#app',
@@ -94,6 +98,7 @@ inlineSVG.init({
 
 
 import Swiper from 'swiper';
+window.Swiper = Swiper;
 
 /**
  * Слайдер новостей на главной
@@ -180,9 +185,22 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
 });
 
 /**
- * Слайдер услуг на странице объекта
+ * Слайдер на страницах брокера
  */
 var swiperBrokerDataIndicators = new Swiper('.swiper-broker-data-indicators', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    loop: false,
+    navigation: {
+        nextEl: '.swiper-broker-data-indicators-next',
+        prevEl: '.swiper-broker-data-indicators-prev',
+    },
+});
+
+/**
+ * Слайдер на странице баланса брокера
+ */
+var swiperBrokerDataBalanceMonth = new Swiper('.swiper-broker-data-balance-month', {
     slidesPerView: 'auto',
     spaceBetween: 0,
     loop: false,
