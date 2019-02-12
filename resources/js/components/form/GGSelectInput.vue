@@ -14,6 +14,7 @@
                              :allow-empty="allowempty"
                              :selectLabel="selectLabel"
                              :selectedLabel="selectedLabel">
+                    <span slot="noResult">{{noResult}}</span>
                     <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                 </multiselect>
             </div>
@@ -34,7 +35,8 @@
             size:{default:'is-3'},
             placeholder: {default: 'Выберите тип'},
             label: {default: 'Выберите тип'},
-            options: {default: []}
+            options: {default: []},
+            noResult: {default: 'Результатов не найдено'},
         },
         data() {
             return {

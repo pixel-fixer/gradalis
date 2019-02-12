@@ -77,7 +77,7 @@ body {
 }
 
 .pr-0 {
-    padding-right: 0;
+    padding-right: 0 !important;
 }
 
 .pl-0 {
@@ -145,6 +145,10 @@ body {
 
 .has-text-decoration-underline {
     text-decoration: underline;
+}
+
+.has-line-height-normal {
+    line-height: normal;
 }
 
 .section-title {

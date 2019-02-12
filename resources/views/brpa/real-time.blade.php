@@ -8,7 +8,7 @@
         <div class="broker-pa__header">
             <div class="columns is-multiline">
                 <div class="column is-8-desktop is-12-tablet">
-                    <h1 class="section-title mb-0-5">Сводные показатели</h1>
+                    <h1 class="section-title mb-0-5">В реальном времени</h1>
                 </div>
                 <div class="column is-4-desktop is-12-tablet">
                     <div class="buttons">
@@ -18,16 +18,6 @@
                         </span>
                             <span>Помощь</span>
                         </button>
-                        {{--<div class="control has-icons-left has-icons-left_1">--}}
-                        {{--<div class="input inputbox-val">--}}
-                        {{--За последние 30 дней--}}
-                        {{--</div>--}}
-                        {{--<div class="icons is-left">--}}
-                        {{--<span class="icon is-small">--}}
-                        {{--<img src="/svg/icons/ic_calendar.svg" alt="" class="svg">--}}
-                        {{--</span>--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
                     </div>
                 </div>
             </div>
@@ -200,25 +190,113 @@
             </div>
         </section>
 
-        <broker-summary-indicators></broker-summary-indicators>
+        <div class="columns is-multiline">
+            <div class="column is-6">
+                <broker-real-time-indicators></broker-real-time-indicators>
+            </div>
+            <div class="column is-6">
+                <broker-real-time-indicators></broker-real-time-indicators>
+            </div>
+        </div>
 
-        <section class="section is-paddingless content">
-            <h3>Финансовые показатели</h3>
-            <table class="table is-fullwidth is-size-875">
-                <thead>
+        <section class="section is-paddingless content box">
+            <table class="table is-fullwidth is-size-875 is-paddingless has-background-white broker-pa__realtime-table">
+                <thead class="bb">
+                <tr class="has-background-info">
+                    <th colspan="2" class="has-text-white has-text-centered">По офферам</th>
+                    <th colspan="3" class="has-text-white has-text-centered">Трафик</th>
+                    <th colspan="3" class="has-text-white has-text-centered">Лиды</th>
+                    <th colspan="2" class="has-text-white has-text-centered">Комиссия</th>
+                </tr>
                 <tr>
-                    <th>Баланс аккаунта</th>
-                    <th>Комиссия на оплате рекламодателя</th>
-                    <th>Комиссия в холде</th>
-                    <th>Итого к выплате</th>
+                    <th class="">ID</th>
+                    <th class="">Название</th>
+                    <th class="no-wrap">
+                        <span>Показы</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Хиты</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Клики</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Открытая</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Одобрена</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Целей оплачено</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Открытая</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
+                    <th class="no-wrap">
+                        <span>Одобренная</span>
+                        <span class="icon icon-1" v-tooltip="'tooltip text'">
+                           <img src="/svg/icons/ic_help.svg" class="svg" alt="">
+                        </span>
+                    </th>
                 </tr>
                 </thead>
-                <tbody class="box is-paddingless">
+                <tbody>
                 <tr>
-                    <td>0.00</td>
-                    <td class="has-text-basic">0.00</td>
-                    <td class="has-text-basic">0.00</td>
-                    <td class="has-text-basic has-text-weight-bold">0.00</td>
+                    <td class="">1</td>
+                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
+                    <td class="">12 580</td>
+                    <td class="">14 580</td>
+                    <td class="">1 580</td>
+                    <td class="">8</td>
+                    <td class="">2</td>
+                    <td class="">2</td>
+                    <td class="has-text-weight-bold">0.00</td>
+                    <td class="has-text-weight-bold">0.00</td>
+                </tr>
+                <tr>
+                    <td class="">2</td>
+                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
+                    <td class="">12 580</td>
+                    <td class="">14 580</td>
+                    <td class="">1 580</td>
+                    <td class="">8</td>
+                    <td class="">2</td>
+                    <td class="">2</td>
+                    <td class="has-text-weight-bold ">0.00</td>
+                    <td class="has-text-weight-bold">0.00</td>
+                </tr>
+                <tr>
+                    <td class="">3</td>
+                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
+                    <td class="">12 580</td>
+                    <td class="">14 580</td>
+                    <td class="">1 580</td>
+                    <td class="">8</td>
+                    <td class="">2</td>
+                    <td class="">2</td>
+                    <td class="has-text-weight-bold">0.00</td>
+                    <td class="has-text-weight-bold">0.00</td>
                 </tr>
                 </tbody>
             </table>

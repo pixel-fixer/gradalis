@@ -61,7 +61,7 @@ Vue.mixin({
 
 Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
 Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
-Vue.component('broker-ex-chart', require('./components/broker/RandomChart').default);
+Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
 
 const app = new Vue({
     el: '#app',

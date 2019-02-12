@@ -5,6 +5,7 @@
         display: block;
         visibility: hidden;
     }
+
     &.is-hoverable:hover,
     &.is-active {
         .dropdown-menu {
@@ -183,6 +184,7 @@ p,
 
         &.is-info {
             border: 1px solid rgba($cyan, 0.3);
+
             .icon {
                 svg {
                     path {
@@ -234,6 +236,7 @@ p,
 
         &.is-info {
             background-color: lighten($cyan, 3);
+
             .icon {
                 svg {
                     path {
@@ -283,6 +286,7 @@ p,
         &.is-info.is-outlined {
             background-color: darken($cyan, 3);
             color: $white;
+
             .icon {
                 svg {
                     path {
@@ -400,6 +404,7 @@ p,
 /* Notification */
 .notification {
     position: relative;
+
     &-list {
         margin-bottom: 1.5rem;
     }
@@ -515,26 +520,31 @@ p,
 //$table-cell-heading-color: $text;
 table.table {
     background-color: transparent;
+
     tbody {
         &.box {
             display: table-row-group;
             color: $very-dark-blue-2;
+
             tr {
                 &:last-child {
                     td {
                         &:first-child {
                             border-bottom-left-radius: $radius;
                         }
+
                         &:last-child {
                             border-bottom-right-radius: $radius;
                         }
                     }
                 }
+
                 &:first-child {
                     td {
                         &:first-child {
                             border-top-left-radius: $radius;
                         }
+
                         &:last-child {
                             border-top-right-radius: $radius;
                         }
@@ -543,33 +553,45 @@ table.table {
             }
         }
     }
+
     th {
         color: $text;
         font-weight: normal;
     }
+
     td,
     th {
         border: 0;
         padding: 1em;
     }
+
     tr {
         border-bottom: 1px solid rgba(#CFDAE6, .5);
+
         &:last-child {
             border-bottom: none;
         }
     }
+
     thead {
         &.bb {
             border-bottom: 1px solid rgba(#CFDAE6, 0.5);
         }
     }
 
+    &.is-bordered {
+        td,
+        th {
+            border-width: 1px;
+        }
+    }
 }
 
 
 /* Progress */
 .progress {
     border-radius: $radius;
+
     &.is-small {
         height: .375rem;
     }

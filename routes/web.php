@@ -138,6 +138,9 @@ Route::get('/brpa/offers/details', function () {
 Route::get('/brpa', function () {
     return view('brpa.home');
 });
+Route::get('/brpa/real-time', function () {
+    return view('brpa.real-time');
+});
 //BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');
