@@ -72,20 +72,6 @@ Route::get('/ui', function () {
     return view('ui');
 })->middleware('auth');
 
-Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
-    Route::get('', 'ProfileController@index');
-    Route::post('avatar', 'ProfileController@uploadAvatar');
-    Route::post('update', 'ProfileController@update');
-    Route::get('cities', 'ProfileController@getCities');
-    Route::post('password', 'ProfileController@updatePassword');
-
-    Route::get('favorites', 'ProfileController@getFavorites');
-    Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
-    Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
-
-    Route::get('purchased_services', 'ProfileController@getPurchasedServices');
-});
-
 Route::get('services/list', 'ServiceController@list');
 
 Route::get('/spa/favorites', function () {
@@ -154,3 +140,21 @@ Route::namespace('Api')->group(function () {
     Route::get('/business-get', 'BusinessController@get')->middleware('auth');
     Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
 });
+
+/* Личный кабинет */
+Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
+    Route::get('', 'ProfileController@index');
+    Route::post('avatar', 'ProfileController@uploadAvatar');
+    Route::post('update', 'ProfileController@update');
+    Route::get('cities', 'ProfileController@getCities');
+    Route::post('password', 'ProfileController@updatePassword');
+
+    Route::get('favorites', 'ProfileController@getFavorites');
+    Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
+    Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
+
+    Route::get('purchased_services', 'ProfileController@getPurchasedServices');
+});
+
+/* Фикс для возможных конфликтов роутор даравела и личного кабинета */
+Route::get('/profile/{vue_capture?}', 'ProfileController@index')->where('profile', '[\/\w\.-]*');

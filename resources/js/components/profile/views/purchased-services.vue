@@ -48,7 +48,7 @@ export default {
     },
     methods:{
         getServices(){
-            axios.get('profile/purchased_services').then(res => {
+            axios.get('/profile/purchased_services').then(res => {
                 this.services = res.data;
             })
         },
