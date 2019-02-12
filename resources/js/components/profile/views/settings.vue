@@ -39,7 +39,7 @@ export default {
         handleAvatarUpload($event){
             let formData = new FormData()
             formData.append('file', $event.target.files[0])
-            axios.post('profile/avatar', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            axios.post('/profile/avatar', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
                 .then(res => {
                     this.$refs.avatar.querySelector('img').src = res.data.avatar;
                     this.$swal({ type: 'success', text: res.data.message });

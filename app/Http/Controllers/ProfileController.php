@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use App\Models\Service\OrderedService;
-
+use App\Models\PaymentTransaction;
 class ProfileController extends Controller
 {
     /**
@@ -133,5 +133,13 @@ class ProfileController extends Controller
     public function getPurchasedServices()
     {
         return OrderedService::where('user_id', Auth::id())->with('service')->get();
+    }
+
+    /**
+     * Список транзакций на странице баланса
+     */
+    public function getPaymentTransactions()
+    {
+        return PaymentTransaction::where('user_id', Auth::id())->orderBy('created_at')->get();
     }
 }

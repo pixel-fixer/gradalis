@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Carbon;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,15 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->composer('layouts.app', function($view)
-        // {
-        //     $user = [
-        //         'notifications' => Auth::check() ? Auth::user()->unreadNotifications: null,
-        //         'avatar' => Auth::user()->avatar
-        //     ];
-            
-        //     $view->with('user', $user);
-        // });
+        //TODO почему то не работает
+        $locale = config('app.locale');
+        setlocale(LC_TIME, $locale.'_'.strtoupper($locale).'.UTF-8');
+        Carbon::setLocale($locale);
     }
 
     /**

@@ -4,7 +4,6 @@ import Vue from 'vue';
 import VTooltip from 'v-tooltip'
 import Vuebar from 'vuebar'
 import Vuelidate from 'vuelidate'
-import VueRouter from 'vue-router'
 import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
@@ -23,7 +22,6 @@ Vue.prototype.trans = (string, args) => {
 };
 
 Vue.use(VueSweetalert2)
-Vue.use(VueRouter)
 Vue.use(VTooltip)
 Vue.use(PortalVue)
 Vue.use(Vuebar)
@@ -57,7 +55,6 @@ Vue.mixin({
         }
     }
 })
-
 
 Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
 Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
