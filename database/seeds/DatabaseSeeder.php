@@ -45,7 +45,8 @@ class DatabaseSeeder extends Seeder
             'consultations',
             'dialogs',
             'admin_notifications',
-            'service_categories'
+            'service_categories',
+            'payment_transactions'
         ]);
 
         Schema::enableForeignKeyConstraints();
@@ -73,6 +74,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConsultationsSeeder::class);
         $this->call(DialogSeeder::class);
         $this->call(AdminNofiticationSeeder::class);
+        $this->call(PaymentTransactionSeeder::class);
 
         Model::reguard();
     }

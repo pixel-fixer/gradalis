@@ -72,27 +72,13 @@
                         </tr>
                         </thead>
                         <tbody class="box is-paddingless">
-                        <tr>
-                            <td class="has-text-basic">1</td>
-                            <td class="has-text-weight-bold">Кредитной картой *4567</td>
-                            <td class="has-text-basic">12 марта 2019</td>
-                            <td class="has-text-weight-bold">€100</td>
-                            <td class="has-text-warning">В процессе</td>
-                        </tr>
-                        <tr>
-                            <td class="has-text-basic">2</td>
-                            <td class="has-text-weight-bold">Paypal</td>
-                            <td class="has-text-basic">6 марта 2019</td>
-                            <td class="has-text-weight-bold">€200</td>
-                            <td class="has-text-success">Зачислено</td>
-                        </tr>
-                        <tr>
-                            <td class="has-text-basic">3</td>
-                            <td class="has-text-weight-bold">Skrill</td>
-                            <td class="has-text-basic">1 марта 2019</td>
-                            <td class="has-text-weight-bold">€50</td>
-                            <td class="has-text-success">Зачислено</td>
-                        </tr>
+                            <tr v-for="(transaction, i) in transactions">
+                                <td class="has-text-basic">{{i+1}}</td>
+                                <td class="has-text-weight-bold">{{ transaction.description }}</td>
+                                <td class="has-text-basic">{{ transaction.human_date }}</td>
+                                <td class="has-text-weight-bold">€{{ transaction.sum }}</td>
+                                <td :class="transaction.status == 0 ? 'has-text-warning' : 'has-text-success' ">{{ transaction.status == 1 ? 'Зачислено' : 'В процессе' }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
@@ -101,7 +87,24 @@
 
 <script>
 export default {
-    props: ['user']
+    props: ['user'],
+    data:() =>({
+        transactions: []
+    }),
+    mounted(){
+        this.getTransactions()
+    },
+    methods:{
+        getTransactions(){
+            axios.get('/profile/balance/transactions')
+            .then( res => {
+                this.transactions = res.data
+            })
+            .catch(e => {
+                alert(e.response.res.message);
+            })
+        }
+    }
 }
 </script>
 

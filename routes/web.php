@@ -154,6 +154,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
 
     Route::get('purchased_services', 'ProfileController@getPurchasedServices');
+
+    Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
 });
 
 /* Фикс для возможных конфликтов роутор даравела и личного кабинета */
