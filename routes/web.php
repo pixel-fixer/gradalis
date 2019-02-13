@@ -18,7 +18,7 @@ Auth::routes();
 
 // Localization
 Route::get('/js/lang.js', function () {
-    $strings = Cache::rememberForever('lang.js', function () {
+//    $strings = Cache::rememberForever('lang.js', function () {
         $lang = config('app.locale');
 
         $files   = glob(resource_path('lang/' . $lang . '/*.php'));
@@ -29,8 +29,8 @@ Route::get('/js/lang.js', function () {
             $strings[$name] = require $file;
         }
 
-        return $strings;
-    });
+//        return $strings;
+//    });
 
     header('Content-Type: text/javascript');
     echo('window.i18n = ' . json_encode($strings) . ';');
@@ -64,6 +64,7 @@ Route::get('/services', 'ServiceController@index')->middleware('auth');
 Route::get('/news', function () {
     return view('news');
 })->middleware('auth');
+
 Route::get('/news-single', function () {
     return view('news-single');
 })->middleware('auth');

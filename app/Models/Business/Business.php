@@ -55,7 +55,8 @@ class Business extends Model
         'seo_keywords',
         'district_id',
         'city_id',
-        'category_id'
+        'category_id',
+        'options'
     );
 
     public function category()
@@ -80,6 +81,7 @@ class Business extends Model
 
     protected $casts = [
         'price' => 'array',
+        'options' => 'array',
     ];
 
     public static function getStatuses()

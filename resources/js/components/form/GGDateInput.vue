@@ -2,14 +2,14 @@
     <div :class="size" class="column">
         <div class="field">
             <label class="label">{{label}}</label>
-            <div :class="{iconRight:'has-icons-right has-icons-right_1',iconLeft:'has-icons-left has-icons-left_1'}"
+            <div :class="{'has-icons-right has-icons-right_1':iconRight,'has-icons-left has-icons-left_1':iconLeft}"
                  class="control">
-                <textarea type="text"
-                          class="textarea is-size-875"
-                          v-model="inputValue"
-                          @input="inputChange"
-                          :placeholder="placeholder">
-                </textarea>
+                <flat-pickr
+                    class="input is-size-875"
+                    v-model="value"
+                    :placeholder="placeholder"
+                    :config="config"
+                ></flat-pickr>
                 <div v-if="iconLeft" class="icons is-left">
                       <span class="icon is-small">
                         <img :src="iconLeft" class="svg" alt="">
@@ -27,15 +27,25 @@
 </template>
 
 <script>
-
+    import flatPickr from 'vue-flatpickr-component';
     export default {
-        name: "GGTextarea",
+        name: "GGDateInput",
+        components:{flatPickr},
         props: {
-            iconLeft: {default: null},
+            iconLeft: {default: '/svg/icons/ic_calendar.svg'},
             iconRight: {default: null},
-            size: {default: 'is-3'},
+            size: {default: 'is-6'},
             value: '',
             label: '',
+            config:{
+                default: function () {
+                    return {
+                        altFormat: 'd.m.Y',
+                        altInput: true,
+                        dateFormat: 'Y-m-d'
+                    }
+                }
+            },
             placeholder: {default: 'Поиск'}
         },
         data(){

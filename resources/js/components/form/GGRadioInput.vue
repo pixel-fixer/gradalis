@@ -6,9 +6,9 @@
                 <label class="radio h3" v-for="(item, index) in list">
                     <input type="radio"
                            :name="name"
-                           :value="list[index].value"
+                           :value="item.value"
                            v-model="value">
-                    <span>{{list[index].title}}</span>
+                    <span>{{item.title}}</span>
                 </label>
             </div>
         </div>

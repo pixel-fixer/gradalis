@@ -8,8 +8,8 @@
                              track-by="id"
                              @input="selectChange"
                              label="name"
+                             :class="{'multiselect_multiple':multiple,addClass}"
                              :multiple="multiple"
-                             :class="addClass"
                              :placeholder="placeholder"
                              :options="options"
                              :searchable="searchable"
@@ -65,6 +65,7 @@
                 handler(value) {
                     if (value !== null) {
                         for (const [key, val] of Object.entries(this.options)) {
+
                             if (val.id === this.value) {
                                 this.selectedValue = val;
                             }

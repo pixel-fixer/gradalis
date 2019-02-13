@@ -29,21 +29,22 @@
         components: {Multiselect},
         props: {
             value: null,
-            searchable:{default:true},
-            allowempty:{default:false},
-            size:{default:'is-3'},
-            type:{default:'country'},
-            placeholder: {default: 'Выберите'},
-            label: {default: 'Страна'},
+            searchable: {default: true},
+            allowempty: {default: false},
+            size: {default: 'is-3'},
+            type: {default: 'country'},
+            placeholder: {default: trans('strings.select_placeholder')},
+
 
         },
         data() {
             return {
                 selectedValue: null,
-                selectedLabel: 'Выбрано',
+                selectedLabel: trans('strings.selected_label'),
                 selectLabel: '',
                 deselectLabel: '',
-                options:[]
+                options: [],
+                label: null,
             }
         },
 
@@ -54,11 +55,11 @@
         },
         mounted() {
             let vm = this;
-            if(this.type === 'country') {
+            if (this.type === 'country') {
                 axios.get('/location-get-countries').then(responce => {
                     vm.options = responce.data;
                 })
-            }else if(this.type === 'city'){
+            } else if (this.type === 'city') {
                 axios.get('/location-get-cities').then(responce => {
                     vm.options = responce.data;
                 })
@@ -74,8 +75,18 @@
                                 this.selectedValue = val;
                             }
                         }
-                    }else{
+                    } else {
                         this.selectedValue = null;
+                    }
+                }
+            },
+            type: {
+                immediate: true,
+                handler(value) {
+                    if (value === 'country') {
+                        this.label = trans('strings.country');
+                    } else if (value === 'city') {
+                        this.label = trans('strings.city');
                     }
                 }
             }

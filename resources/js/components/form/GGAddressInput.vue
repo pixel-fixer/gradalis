@@ -3,28 +3,28 @@
         <div class="columns is-multiline list-wrap"
         v-for="item in list">
 
-            <g-g-input :size="'is-6'" v-model="item.address.value" :label="item.address.title" :placeholder="item.address.placeholder"></g-g-input>
+            <g-g-input :size="'is-6'" @input="inputChange" v-model="item.address" :label="trans('business.create.address.title')" :placeholder="trans('business.create.address.placeholder')"></g-g-input>
             
             <div class="column is-6">
                 <div class="columns is-multiline">
                     <div class="column">
                         <div class="columns is-multiline">
-                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.numberHouse.value" :label="item.numberHouse.title" :placeholder="item.numberHouse.placeholder"></g-g-input>
-                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.housingHouse.value" :label="item.housingHouse.title" :placeholder="item.housingHouse.placeholder"></g-g-input>
-                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.numberOffice.value" :label="item.numberOffice.title" :placeholder="item.numberOffice.placeholder"></g-g-input>
-                            <g-g-input :type="'number'" :size="'is-3'" v-model="item.index.value" :label="item.index.title" :placeholder="item.index.placeholder"></g-g-input>
+                            <g-g-input :type="'number'" @input="inputChange" v-model="item.numberHouse" :label="trans('business.create.numberHouse.title')" :placeholder="trans('business.create.numberHouse.placeholder')"></g-g-input>
+                            <g-g-input :type="'number'" @input="inputChange" v-model="item.housingHouse" :label="trans('business.create.housingHouse.title')" :placeholder="trans('business.create.housingHouse.placeholder')"></g-g-input>
+                            <g-g-input :type="'number'" @input="inputChange" v-model="item.numberOffice" :label="trans('business.create.numberOffice.title')" :placeholder="trans('business.create.numberOffice.placeholder')"></g-g-input>
+                            <g-g-input :type="'number'" @input="inputChange" v-model="item.index" :label="trans('business.create.index.title')" :placeholder="trans('business.create.index.placeholder')"></g-g-input>
                         </div>
                     </div>
                     <div class="column is-narrow">
                         <button class="button is-warning is-outlined button-remove"
-                                v-tooltip="'Удалить этот адрес'"
+                                v-tooltip="trans('business.create.remove_address')"
                                 @click="removeAddress(item)">
-                            &times;<span class="is-size-875 is-hidden-tablet">Удалить этот адрес</span>
+                            &times;<span class="is-size-875 is-hidden-tablet">trans('business.create.remove_address')</span>
                         </button>
                         <button class="button is-info is-outlined button-add"
-                                v-tooltip="'Добавить еще один адрес'"
+                                v-tooltip="trans('business.create.add_address')"
                                 @click="addAddress">
-                            +<span class="is-size-875 is-hidden-tablet">Добавить еще один адрес</span>
+                            +<span class="is-size-875 is-hidden-tablet">trans('business.create.remove_address')</span>
                         </button>
                     </div>
 
@@ -42,39 +42,16 @@
         components:{GGInput},
         props: {
             //value: null,
-            label:'',
-            placeholder: {default: 'Поиск'}
         },
         data(){
             return{
 
                 list: [{
-                    tooltipAddress: "Tooltip text",
-                    address: {
-                        title: 'Адрес бизнеса',
-                        placeholder: 'Укажите адрес',
-                        value: '',
-                    },
-                    numberHouse: {
-                        title: 'Номер дома',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    housingHouse: {
-                        title: 'Корпус дома',
-                        placeholder: 'Корпус',
-                        value: '',
-                    },
-                    numberOffice: {
-                        title: 'Номер офиса',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    index: {
-                        title: 'Индекс',
-                        placeholder: '01001',
-                        value: '',
-                    }
+                    address: null,
+                    numberHouse: null,
+                    housingHouse: null,
+                    numberOffice: null,
+                    index: null
                 }],
             }
         },
@@ -84,31 +61,11 @@
             },
             addAddress() {
                 this.list.push({
-                    address: {
-                        title: 'Адрес бизнеса',
-                        placeholder: 'Укажите адрес',
-                        value: '',
-                    },
-                    numberHouse: {
-                        title: 'Номер дома',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    housingHouse: {
-                        title: 'Корпус дома',
-                        placeholder: 'Корпус',
-                        value: '',
-                    },
-                    numberOffice: {
-                        title: 'Номер офиса',
-                        placeholder: '№',
-                        value: '',
-                    },
-                    index: {
-                        title: 'Индекс',
-                        placeholder: '01001',
-                        value: '',
-                    }
+                    address: null,
+                    numberHouse: null,
+                    housingHouse: null,
+                    numberOffice: null,
+                    index: null
                 });
             },
             removeAddress(index) {
