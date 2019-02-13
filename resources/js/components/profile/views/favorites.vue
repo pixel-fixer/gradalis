@@ -57,9 +57,34 @@
                                         <div class="price-info" v-if="$t(favorite.price)">
                                             <div class="price">{{ $t(favorite.price) }}</div>
                                         </div>
+                                        <!-- ToDo: Для seller -->
                                         <a class="button is-link is-outlined is-fullwidth has-text-weight-bold">Подробнее
-                                            о
-                                            бизнесе</a>
+                                            о бизнесе</a>
+                                        <!-- ToDo: Для buyer -->
+                                        <!--<div class="columns is-multiline">-->
+                                            <!--<div class="column is-6">-->
+                                                <!--<div class="dropdown is-flex is-full">-->
+                                                    <!--<div class="dropdown-trigger">-->
+                                                        <!--<button class="button is-link is-size-875 h-3 is-fullwidth has-text-weight-bold p-0"-->
+                                                                <!--aria-haspopup="true"-->
+                                                                <!--aria-controls="dropdown-services-1">-->
+                                                            <!--<span>Услуги</span>-->
+                                                            <!--<div class="multiselect__select has-text-white"></div>-->
+                                                        <!--</button>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="dropdown-menu" id="dropdown-services-1" role="menu">-->
+                                                        <!--<div class="dropdown-content is-paddingless">-->
+                                                            <!--<a class="dropdown-item" href="#">Item</a>-->
+                                                            <!--<hr class="dropdown-divider is-marginless">-->
+                                                            <!--<a class="dropdown-item" href="#">Item</a>-->
+                                                            <!--<hr class="dropdown-divider is-marginless">-->
+                                                            <!--<a class="dropdown-item" href="#">Item</a>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="column is-6"><a class="button is-link is-outlined is-fullwidth has-text-weight-bold">Подробнее</a></div>-->
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>

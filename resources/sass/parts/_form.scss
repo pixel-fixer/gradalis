@@ -474,6 +474,7 @@ input.input {
 /* Multiselect */
 .multiselect {
     z-index: 5;
+
     &:not(.multiselect--active) {
         &:hover {
             .multiselect__tags {
@@ -501,6 +502,12 @@ input.input {
             border-left: 0;
             border-top: 0;
             transform: rotate(45deg);
+        }
+
+        &.has-text-white {
+            &:before {
+                border-color: $white;
+            }
         }
     }
 
@@ -586,6 +593,7 @@ input.input {
     &__content {
         margin-left: 0 !important;
         margin-top: 0 !important;
+
         &-wrapper {
             margin-top: .5rem;
             border-radius: $radius;
@@ -596,9 +604,11 @@ input.input {
 
     &__element {
         margin-top: 0 !important;
+
         &:not(:first-child) {
             border-top: 1px solid rgba($input-border-color, 0.5);
         }
+
         &:before {
             content: none !important;
         }
@@ -608,6 +618,7 @@ input.input {
         font-size: .875rem;
         display: flex;
         align-items: center;
+
         &--highlight {
             background-color: rgba($input-border-color, 0.3);
             color: $input-color;
@@ -758,6 +769,7 @@ input[type=number]::-webkit-outer-spin-button {
 .buttons-control-input-number {
     display: flex;
     flex-direction: column;
+
     .plus,
     .minus {
         width: .625rem;
@@ -765,11 +777,13 @@ input[type=number]::-webkit-outer-spin-button {
         margin: .125rem;
         pointer-events: auto;
         cursor: pointer;
+
         img {
             position: absolute;
             top: 0;
             left: 0;
         }
+
         &:hover {
             svg {
                 path {
@@ -778,9 +792,11 @@ input[type=number]::-webkit-outer-spin-button {
             }
         }
     }
+
     .plus {
         transform: scale(1, -1)
     }
+
     .minus {
 
     }

@@ -43,6 +43,12 @@
                      </router-link>
                 </li>
                 <li class="aside-nav__item">
+                     <router-link to="/profile/trips" tag="a">
+                        <img src="/svg/icons/ic_aircraft.svg" class="svg">
+                        <span class="aside-nav__item__title has-text-weight-bold">Ваши поездки (buyer)</span>
+                     </router-link>
+                </li>
+                <li class="aside-nav__item">
                     <router-link to="/profile/settings" tag="a">
                         <img src="/svg/icons/ic_profile_settings.svg" class="svg" alt="Settings">
                         <span class="aside-nav__item__title has-text-weight-bold">Настройки профиля</span>
@@ -50,7 +56,7 @@
                 </li>
                 <li class="aside-nav__item">
                     <router-link to="/profile/favorites" tag="a">
-                        <img src="/svg/icons/ic_favorites.svg" class="svg" height="16" width="16">
+                        <img src="/svg/icons/ic_favorites-2.svg" class="svg" height="16" width="16">
                         <span class="aside-nav__item__title has-text-weight-bold">Избранное</span>
                     </router-link>
                 </li>
