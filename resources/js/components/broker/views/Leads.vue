@@ -39,9 +39,39 @@
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="form.offer.selected" :size="'is-8'"
-                                      :placeholder="form.offer.placeholder" :label="form.offer.title"
-                                      :searchable="true" :options="formOptions.offer.options"></g-g-select-input>
+                    <!--<g-g-select-input v-model="form.offer.selected" :size="'is-8'"-->
+                                      <!--:placeholder="form.offer.placeholder" :label="form.offer.title"-->
+                                      <!--:searchable="true" :options="formOptions.offer.options"></g-g-select-input>-->
+
+                    <div class="column is-8">
+                        <div class="field">
+                            <label
+                                class="label label_req"><span>{{form.offer.title}}</span></label>
+                            <div class="control">
+                                <multiselect
+                                    v-model="form.offer.selected"
+                                    :deselect-label="''"
+                                    track-by="name"
+                                    label="name"
+                                    openDirection="bottom"
+                                    :placeholder="form.offer.placeholder"
+                                    :options="formOptions.offer.options"
+                                    :searchable="true"
+                                    :allow-empty="false"
+                                    :selectLabel="''"
+                                    :selectedLabel="''">
+                                    <template slot="singleLabel" slot-scope="props"><img class="option__image" :src="props.option.img">
+                                        <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+                                    </template>
+                                    <template slot="option" slot-scope="props">
+                                        <img class="option__image" :src="props.option.img">
+                                        <div class="option__desc"><span class="option__title">{{ props.option.name }}</span></div>
+                                    </template>
+                                </multiselect>
+                            </div>
+                        </div>
+                    </div>
+
                     <g-g-select-input v-model="form.sorting.selected" :size="'is-4'"
                                       :placeholder="form.sorting.placeholder" :label="form.sorting.title"
                                       :searchable="true" :options="formOptions.sorting.options"></g-g-select-input>
@@ -138,9 +168,10 @@
 </template>
 
 <script>
-    import BarChart from './BarChart.js';
-    import LineChart from './LineChart.js';
-    import GGSelectInput from '../form/GGSelectInput';
+    import Multiselect from 'vue-multiselect'
+    import BarChart from '../BarChart.js';
+    import LineChart from '../LineChart.js';
+    import GGSelectInput from '../../form/GGSelectInput';
 
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
@@ -151,7 +182,7 @@
     export default {
         name: "BrokerLeads",
         components: {
-            BarChart, LineChart, GGSelectInput, flatPickr
+            Multiselect, BarChart, LineChart, GGSelectInput, flatPickr
         },
         data() {
             return {
@@ -184,10 +215,10 @@
                 formOptions: {
                     offer: {
                         options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
+                            {id: '1', name: 'Item 1', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                            {id: '2', name: 'Item 2', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                            {id: '3', name: 'Item 3', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                            {id: '4', name: 'Item 4', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
                         ]
                     },
                     sorting: {

@@ -57,16 +57,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "395110125ff577f080fa064dca5c5608a4e77ee1"
+                "reference": "ebda7326d4a65e53bc5bb915ebbbeee98f1926b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/395110125ff577f080fa064dca5c5608a4e77ee1",
-                "reference": "395110125ff577f080fa064dca5c5608a4e77ee1",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/ebda7326d4a65e53bc5bb915ebbbeee98f1926b0",
+                "reference": "ebda7326d4a65e53bc5bb915ebbbeee98f1926b0",
                 "shasum": ""
             },
             "require": {
@@ -110,7 +110,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-10-18T22:02:21+00:00"
+            "time": "2019-02-11T02:08:31+00:00"
         },
         {
             "name": "christiankuri/laravel-favorite",
@@ -1250,16 +1250,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.25",
+            "version": "v5.7.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf"
+                "reference": "ca3bc9769969e8af3bd9878a3e0242051c74dae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
-                "reference": "f8fb354878064b94a3ff09a6ffd48ee9a8d712cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ca3bc9769969e8af3bd9878a3e0242051c74dae4",
+                "reference": "ca3bc9769969e8af3bd9878a3e0242051c74dae4",
                 "shasum": ""
             },
             "require": {
@@ -1392,7 +1392,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-02-05T14:28:43+00:00"
+            "time": "2019-02-12T14:52:21+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
@@ -1453,31 +1453,31 @@
         },
         {
             "name": "laravel/nova",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "e7f7d3ca109d4630882fa8122b2926e12c364496"
+                "reference": "a88243f3f9bcc02ae0e96ebdce512e467839db09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-e7f7d3ca109d4630882fa8122b2926e12c364496-zip-55b2a1.zip",
-                "reference": "e7f7d3ca109d4630882fa8122b2926e12c364496",
-                "shasum": "ee98d8f1db4cbc33dbe9f634ac5e3862ff446091"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-a88243f3f9bcc02ae0e96ebdce512e467839db09-zip-93b4e7.zip",
+                "reference": "a88243f3f9bcc02ae0e96ebdce512e467839db09",
+                "shasum": "98626947825e137307cc7c9dc05a2455abe5ec21"
             },
             "require": {
-                "cakephp/chronos": "~1.0",
+                "cakephp/chronos": "^1.0",
                 "illuminate/support": "5.6.*|5.7.*",
                 "moontoast/math": "^1.1",
                 "php": ">=7.1.0",
                 "spatie/once": "^1.1",
-                "symfony/finder": "~4.0"
+                "symfony/finder": "^4.0"
             },
             "require-dev": {
-                "mockery/mockery": "~1.0",
+                "mockery/mockery": "^1.0",
                 "orchestra/database": "3.7.*",
                 "orchestra/testbench": "3.7.*",
-                "phpunit/phpunit": "~7.0",
+                "phpunit/phpunit": "^7.0",
                 "predis/predis": "^1.1"
             },
             "type": "library",
@@ -1518,7 +1518,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2019-01-21T21:43:45+00:00"
+            "time": "2019-02-11T20:04:29+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -1970,7 +1970,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
+                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
                 "shasum": null
             },
             "require": {
@@ -2005,7 +2005,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
+                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
                 "shasum": null
             },
             "require": {
@@ -3408,24 +3408,24 @@
         },
         {
             "name": "spatie/pdf-to-image",
-            "version": "1.8.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26"
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
+                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/9a5cb264a99e87e010c65d4ece03b51f821d55bd",
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd",
                 "shasum": ""
             },
             "require": {
-                "ext-imagick": "*",
-                "php": "^7.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.2"
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
             },
             "type": "library",
             "autoload": {
@@ -3454,7 +3454,7 @@
                 "pdf-to-image",
                 "spatie"
             ],
-            "time": "2018-07-02T09:30:32+00:00"
+            "time": "2016-12-14T15:37:00+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -4697,16 +4697,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v8.13.4",
+            "version": "v8.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "8aedd88a02599d5d0a4a1a2bb5aac849397dd594"
+                "reference": "a97a173a52f2b60075f310dac39932faa377fb4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/8aedd88a02599d5d0a4a1a2bb5aac849397dd594",
-                "reference": "8aedd88a02599d5d0a4a1a2bb5aac849397dd594",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/a97a173a52f2b60075f310dac39932faa377fb4f",
+                "reference": "a97a173a52f2b60075f310dac39932faa377fb4f",
                 "shasum": ""
             },
             "require": {
@@ -4764,7 +4764,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2019-01-29T03:12:37+00:00"
+            "time": "2019-02-13T01:34:34+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -5142,16 +5142,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.8.3",
+            "version": "1.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "a6a3b44581398b7135c7baa0557b7c5b10808b47"
+                "reference": "bc364c2480c17941e2135cfc568fa41794392534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/a6a3b44581398b7135c7baa0557b7c5b10808b47",
-                "reference": "a6a3b44581398b7135c7baa0557b7c5b10808b47",
+                "url": "https://api.github.com/repos/composer/composer/zipball/bc364c2480c17941e2135cfc568fa41794392534",
+                "reference": "bc364c2480c17941e2135cfc568fa41794392534",
                 "shasum": ""
             },
             "require": {
@@ -5218,7 +5218,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2019-01-30T07:31:34+00:00"
+            "time": "2019-02-11T09:52:10+00:00"
         },
         {
             "name": "composer/semver",
@@ -7027,16 +7027,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.1",
+            "version": "0.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a138b8a2731b2c19f1dffa2f1411984a638fe977"
+                "reference": "8e185a74004920419ee97bf9dc62e6a175e8dca5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a138b8a2731b2c19f1dffa2f1411984a638fe977",
-                "reference": "a138b8a2731b2c19f1dffa2f1411984a638fe977",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8e185a74004920419ee97bf9dc62e6a175e8dca5",
+                "reference": "8e185a74004920419ee97bf9dc62e6a175e8dca5",
                 "shasum": ""
             },
             "require": {
@@ -7096,7 +7096,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-01-19T20:23:08+00:00"
+            "time": "2019-02-12T14:54:38+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

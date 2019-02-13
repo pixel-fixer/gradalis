@@ -72,6 +72,7 @@
                             <div class="swiper-button-prev swiper-broker-data-indicators-prev"></div>
                         </div>
                     </section>
+                    <!--ToDo: при наличии данных выводить график в виде столбцов (инфа от Стаса)-->
                     <div class="no-date">
                         <span>
                             Данные недоступны, так как в этом месяце не было начислений

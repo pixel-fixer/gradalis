@@ -8,59 +8,59 @@
         <nav class="aside-nav">
             <ul>
                 <li class="aside-nav__item">
-                    <router-link to="/products" tag="a">
+                    <router-link to="/profile/products" tag="a">
                         <img src="/svg/icons/ic_product.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Продукты</span>
                         <span class="aside-nav__item__count">24</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/purchased-services" tag="a">
+                    <router-link to="/profile/purchased-services" tag="a">
                         <img src="/svg/icons/ic_cart_c.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Купленные продукты</span>
                         <span class="aside-nav__item__count">129</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/objects" tag="a">
+                    <router-link to="/profile/objects" tag="a">
                         <img src="/svg/icons/ic_objects.svg" class="svg" alt="Objects">
                         <span class="aside-nav__item__title has-text-weight-bold">Выши объекты</span>
                         <span class="aside-nav__item__count">5</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/view-requests" tag="a">
+                    <router-link to="/profile/view-requests" tag="a">
                         <img src="/svg/icons/ic_eye.svg" class="svg" alt="Eye">
                         <span class="aside-nav__item__title has-text-weight-bold">Запросы на просмотр</span>
                         <span class="aside-nav__item__count">5</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                     <router-link to="/chat" tag="a">
+                     <router-link to="/profile/chat" tag="a">
                         <img src="/svg/icons/ic_messages.svg" class="svg" alt="Messages">
                         <span class="aside-nav__item__title has-text-weight-bold">Сообщения</span>
                         <span class="aside-nav__item__count tag is-danger is-rounded tag__count is-flex">12</span>
                      </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/settings" tag="a">
+                    <router-link to="/profile/settings" tag="a">
                         <img src="/svg/icons/ic_profile_settings.svg" class="svg" alt="Settings">
                         <span class="aside-nav__item__title has-text-weight-bold">Настройки профиля</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/favorites" tag="a">
+                    <router-link to="/profile/favorites" tag="a">
                         <img src="/svg/icons/ic_favorites.svg" class="svg" height="16" width="16">
                         <span class="aside-nav__item__title has-text-weight-bold">Избранное</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                    <router-link to="/balance" tag="a">
+                    <router-link to="/profile/balance" tag="a">
                         <span class="aside-nav__item__title has-text-weight-bold">Баланс</span>
                     </router-link>
                 </li>
                 <li class="aside-nav__item">
-                     <router-link to="/legal" tag="a">
+                     <router-link to="/profile/legal" tag="a">
                         <img src="/svg/icons/ic_contract.svg" class="svg" alt="Contract">
                         <span class="aside-nav__item__title has-text-weight-bold">Условия и договора</span>
                         <span class="aside-nav__item__count">69</span>

@@ -4,6 +4,8 @@
 
     @include('includes.breadcrumb')
 
-    <broker-balance></broker-balance>
+    <div class="container">
+        <broker></broker>
+    </div>
 
 @endsection

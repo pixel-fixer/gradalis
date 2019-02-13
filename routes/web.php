@@ -121,23 +121,8 @@ Route::get('/brpa/offers/instruments', function () {
 Route::get('/brpa/offers/details', function () {
     return view('brpa.offers.details');
 });
-Route::get('/brpa', function () {
-    return view('brpa.home');
-});
-Route::get('/brpa/real-time', function () {
-    return view('brpa.real-time');
-});
-Route::get('/brpa/web-offers', function () {
-    return view('brpa.web-offers');
-});
-Route::get('/brpa/leads', function () {
-    return view('brpa.leads');
-});
-Route::get('/brpa/balance', function () {
-    return view('brpa.balance');
-});
-Route::get('/brpa/settings', function () {
-    return view('brpa.settings');
+Route::get('/broker/{vue_capture?}', function () {
+    return view('brpa.broker');
 });
 
 

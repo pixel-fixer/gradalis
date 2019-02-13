@@ -124,7 +124,7 @@
                     <td>€ 11 690</td>
                     <td>€ 900</td>
                     <td>
-                        <a href="#" class="link-with-icon icon_grey">
+                        <a class="link-with-icon icon_grey" @click="editPaymentAccount()">
                             <img src="/svg/icons/ic_edit.svg" class="svg">
                             <span class="has-text-decoration-underline">Изменить</span>
                         </a>
@@ -139,7 +139,7 @@
                     <td>€ 11 690</td>
                     <td>€ 900</td>
                     <td>
-                        <a href="#" class="link-with-icon icon_grey">
+                        <a class="link-with-icon icon_grey"  @click="editPaymentAccount()">
                             <img src="/svg/icons/ic_edit.svg" class="svg">
                             <span class="has-text-decoration-underline">Изменить</span>
                         </a>
@@ -148,13 +148,11 @@
 
                 </tbody>
             </table>
-            <button class="button is-info has-text-weight-bold h-3 is-size-875 px-1-5"
-                    @click="showModal = !showModal">
+            <button class="button is-info has-text-weight-bold h-3 is-size-875 px-1-5">
                 Добавить счет для выплат
             </button>
         </section>
 
-        <!-- ToDo: Доделать модалку -->
         <!--Modal-->
         <div class="modal" :class="{ 'is-active': showModal }">
             <div class="modal-background" @click="showModal = !showModal"></div>
@@ -165,7 +163,80 @@
                             aria-label="close"></button>
                 </header>
                 <section class="modal-card-body is-paddingless">
+                    <div class="content p-1-5">
+                      <div class="columns is-multiline">
+                          <g-g-input :size="'is-6'" v-model="formPaymentAccount.nameAccount.value" :label="formPaymentAccount.nameAccount.title"
+                                     :placeholder="formPaymentAccount.nameAccount.placeholder" :required="true"></g-g-input>
 
+                          <g-g-select-input v-model="formPaymentAccount.type.selected"
+                                            :size="'is-6'"
+                                            :placeholder="formPaymentAccount.type.placeholder"
+                                            :label="formPaymentAccount.type.title"
+                                            :searchable="true"
+                                            :options="formPaymentAccountOptions.type.options"
+                                            :required="true">
+                          </g-g-select-input>
+                          <g-g-select-input v-model="formPaymentAccount.country.selected"
+                                            :size="'is-6'"
+                                            :placeholder="formPaymentAccount.country.placeholder"
+                                            :label="formPaymentAccount.country.title"
+                                            :searchable="true"
+                                            :options="formPaymentAccountOptions.country.options"
+                                            :required="true">
+                          </g-g-select-input>
+                          <g-g-select-input v-model="formPaymentAccount.typeCounterparty.selected"
+                                            :size="'is-6'"
+                                            :placeholder="formPaymentAccount.typeCounterparty.placeholder"
+                                            :label="formPaymentAccount.typeCounterparty.title"
+                                            :searchable="true"
+                                            :options="formPaymentAccountOptions.typeCounterparty.options"
+                                            :required="true">
+                          </g-g-select-input>
+
+                          <div class="column is-6">
+                              <div class="field">
+                                  <label
+                                      class="label label_req"><span>{{formPaymentAccount.typePayment.title}}</span></label>
+                                  <div class="control">
+                                      <multiselect
+                                          v-model="formPaymentAccount.typePayment.selected"
+                                          :deselect-label="''"
+                                          track-by="name"
+                                          label="name"
+                                          openDirection="bottom"
+                                          :placeholder="formPaymentAccount.typePayment.placeholder"
+                                          :options="formPaymentAccountOptions.typePayment.options"
+                                          :searchable="true"
+                                          :allow-empty="false"
+                                          :selectLabel="''"
+                                          :selectedLabel="''">
+                                          <template slot="singleLabel" slot-scope="props"><img class="option__image" :src="props.option.img">
+                                              <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+                                          </template>
+                                          <template slot="option" slot-scope="props">
+                                              <img class="option__image" :src="props.option.img">
+                                              <div class="option__desc"><span class="option__title">{{ props.option.name }}</span></div>
+                                          </template>
+                                      </multiselect>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <g-g-select-input v-model="formPaymentAccount.accountCurrency.selected"
+                                            :size="'is-6'"
+                                            :placeholder="formPaymentAccount.accountCurrency.placeholder"
+                                            :label="formPaymentAccount.accountCurrency.title"
+                                            :searchable="true"
+                                            :options="formPaymentAccountOptions.accountCurrency.options"
+                                            :required="true">
+                          </g-g-select-input>
+
+                          <g-g-input :size="'is-6'" v-model="formPaymentAccount.name.value" :label="formPaymentAccount.name.title"
+                                     :placeholder="formPaymentAccount.name.placeholder" :required="true"></g-g-input>
+                          <g-g-input :size="'is-6'" v-model="formPaymentAccount.numberWallet.value" :label="formPaymentAccount.numberWallet.title"
+                                     :placeholder="formPaymentAccount.numberWallet.placeholder" :required="true"></g-g-input>
+                      </div>
+                    </div>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-info is-fullwidth is-size-875 has-text-weight-bold h-3">Сохранить
@@ -180,8 +251,8 @@
 <script>
     import Multiselect from 'vue-multiselect'
 
-    import GGInput from '../form/GGInput';
-    import GGSelectInput from '../form/GGSelectInput';
+    import GGInput from '../../form/GGInput';
+    import GGSelectInput from '../../form/GGSelectInput';
 
     export default {
         name: "BrokerSettings",
@@ -259,10 +330,96 @@
                         ]
                     },
                 },
+                formPaymentAccount: {
+                    name: {
+                        title: 'Полное ФИО',
+                        placeholder: 'Placeholder',
+                        value: '',
+
+                    },
+                    nameAccount: {
+                        title: 'Назавание счета',
+                        placeholder: 'Placeholder',
+                        value: '',
+
+                    },
+                    numberWallet: {
+                        title: 'Номер кошелька',
+                        placeholder: 'Placeholder',
+                        value: '',
+                    },
+                    country: {
+                        selected: null,
+                        title: 'Страна',
+                        placeholder: 'Выберите',
+                    },
+                    type: {
+                        selected: null,
+                        title: 'Тип',
+                        placeholder: 'Выберите',
+                    },
+                    typeCounterparty: {
+                        selected: null,
+                        title: 'Тип контрагента',
+                        placeholder: 'Выберите',
+                    },
+                    accountCurrency: {
+                        selected: null,
+                        title: 'Валюта счета',
+                        placeholder: 'Выберите',
+                    },
+                    typePayment: {
+                        selected: null,
+                        title: 'Предпочитаемый тип оплаты',
+                        placeholder: 'Выберите',
+                    },
+
+
+                },
+                formPaymentAccountOptions: {
+                    country: {
+                        options: [
+                            {id: 1, name: 'Item 1'},
+                            {id: 2, name: 'Item 2'},
+                            {id: 3, name: 'Item 3'},
+                        ]
+                    },
+                    type: {
+                        options: [
+                            {id: 1, name: 'Item 1'},
+                            {id: 2, name: 'Item 2'},
+                            {id: 3, name: 'Item 3'},
+                        ]
+                    },
+                    typeCounterparty: {
+                        options: [
+                            {id: 1, name: 'Item 1'},
+                            {id: 2, name: 'Item 2'},
+                            {id: 3, name: 'Item 3'},
+                        ]
+                    },
+                    accountCurrency: {
+                        options: [
+                            {id: 1, name: 'Item 1'},
+                            {id: 2, name: 'Item 2'},
+                            {id: 3, name: 'Item 3'},
+                        ]
+                    },
+                    typePayment: {
+                        options: [
+                            {id: 1, name: 'Item 1', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                            {id: 2, name: 'Item 2', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                            {id: 3, name: 'Item 3', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
+                        ]
+                    },
+                },
                 showModal: false
             }
         },
         methods: {
+            editPaymentAccount() {
+                this.showModal = true;
+            },
             submit() {
                 console.log('submit!');
             },

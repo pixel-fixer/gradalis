@@ -57,12 +57,9 @@ Vue.mixin({
 })
 
 Vue.component('broker-offers-modal-create-link', require('./components/broker/offers/ModalCreateLink').default);
-Vue.component('broker-summary-indicators', require('./components/broker/SummaryIndicators').default);
+
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
-Vue.component('broker-web-offers', require('./components/broker/WebOffers').default);
-Vue.component('broker-leads', require('./components/broker/Leads').default);
-Vue.component('broker-balance', require('./components/broker/Balance').default);
-Vue.component('broker-settings', require('./components/broker/Settings').default);
+Vue.component('broker', require('./components/broker/broker').default);
 
 const app = new Vue({
     el: '#app',

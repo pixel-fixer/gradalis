@@ -171,7 +171,7 @@
 </template>
 
 <script>
-    import GGSelectInput from '../form/GGSelectInput';
+    import GGSelectInput from '../../form/GGSelectInput';
 
     export default {
         name: "BrokerWebOffers",

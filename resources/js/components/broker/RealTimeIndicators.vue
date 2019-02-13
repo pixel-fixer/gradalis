@@ -27,7 +27,7 @@
     import GGSelectInput from '../form/GGSelectInput';
 
     export default {
-        name: "BrokerSummaryIndicators",
+        name: "BrokerRealTimeIndicators",
         components: {
             Multiselect, LineChart, GGSelectInput
         },

@@ -563,6 +563,7 @@ input.input {
         color: $input-placeholder-color;
         margin-bottom: 0;
         padding-top: .25rem;
+        line-height: 1.5;
     }
 
     &__single,
@@ -574,6 +575,12 @@ input.input {
         padding-left: 0;
         line-height: 1.5;
         max-width: 100%;
+
+        display: flex;
+        //align-items: center;
+        .option__image {
+            top: -.125rem;
+        }
     }
 
     &__content {
@@ -599,7 +606,8 @@ input.input {
 
     &__option {
         font-size: .875rem;
-
+        display: flex;
+        align-items: center;
         &--highlight {
             background-color: rgba($input-border-color, 0.3);
             color: $input-color;
@@ -725,6 +733,15 @@ input.input {
         .multiselect__select {
             z-index: 2;
         }
+    }
+
+
+    .option__image {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: .5rem;
+        border-radius: $radius;
+        position: relative;
     }
 }
 
