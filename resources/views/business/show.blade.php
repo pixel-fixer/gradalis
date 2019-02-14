@@ -9,18 +9,17 @@
         <section class="section pt-1 pb-0">
             <div class="container">
                 <div class="object__header">
-                    <h1 class="section-title">Мини-отель в собственность с видом на Невский проспект</h1>
+                    <h1 class="section-title">{{$business->name}}</h1>
                     <div class="object__header__info">
                         <ul>
-                            <li>ID Объекта: 454435</li>
-                            <li>24 марта 2019</li>
-                            <li>176 просмотров</li>
+                            <li>ID Объекта: {{$business->id}}</li>
+                            <li>{{$business->created_at->format('d F Y')}}</li>
+                            <li>{{$business->show_count}} просмотров</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- Section object content -->
         <section class="section is-paddingless">
             <div class="container">
@@ -30,6 +29,10 @@
                             <!-- Swiper -->
                             <div class="swiper-container gallery-top swiper-object-main">
                                 <div class="swiper-wrapper">
+                                    @foreach($business->getMedia('business/'.auth()->user()->id) as $image)
+                                        <div class="swiper-slide"
+                                             style="background-image:url({{$image->getUrl()}})"></div>
+                                    @endforeach
                                     <div class="swiper-slide"
                                          style="background-image:url(https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto)"></div>
                                     <div class="swiper-slide"
@@ -55,6 +58,10 @@
                             </div>
                             <div class="swiper-container gallery-thumbs swiper-object-thumbs">
                                 <div class="swiper-wrapper">
+                                    @foreach($business->getMedia('business/'.auth()->user()->id) as $image)
+                                        <div class="swiper-slide"
+                                             style="background-image:url({{$image->getUrl()}})"></div>
+                                    @endforeach
                                     <div class="swiper-slide"
                                          style="background-image:url(https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto)"></div>
                                     <div class="swiper-slide"
@@ -91,9 +98,20 @@
                                     {{--</div>--}}
 
                                     <div class="price-info">
-                                        <span class="tag is-danger price-sale">-15%</span>
-                                        <div class="price">$2 500 000</div>
-                                        <span class="price-old">$2 000 000</span>
+                                        @if($business->discount > 0)
+                                            <span class="tag is-danger price-sale">-{{$business->discount}}%</span>
+                                            <div
+                                                class="price">{{number_format($business->price - $business->price*($business->discount/100), 0,' ',' ')}}
+                                                zt
+                                            </div>
+                                            <span
+                                                class="price-old">{{number_format($business->price, 0,' ',' ') }} zt
+                                            </span>
+                                        @else
+                                            <div
+                                                class="price">{{number_format($business->price, 0,' ',' ')}} zt
+                                            </div>
+                                        @endif
                                     </div>
 
                                     <div class="object__broker__info is-size-875">
@@ -135,7 +153,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -148,7 +167,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +178,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -171,7 +192,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +203,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -194,7 +217,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +228,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -217,7 +242,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -227,7 +253,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -240,7 +267,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +278,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -263,7 +292,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +303,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -286,7 +317,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +328,8 @@
                                         <div class="card-service__body">
                                             <div class="is-flex">
                                                 <figure class="card-service__icon">
-                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}" alt="">
+                                                    <img src="{{ asset('/svg/icons/services/ic_translate.svg') }}"
+                                                         alt="">
                                                 </figure>
                                                 <h4 class="card-service__title">Перевод документов</h4>
                                             </div>
@@ -309,7 +342,8 @@
                                         </div>
                                         <div class="card-service__footer">
                                             <a class="button is-link is-size-875 h-3">Заказать</a>
-                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span class="has-text-decoration-underline">Подробнее</span></a>
+                                            <a class="button is-clear is-clear_close is-size-875 h-3"><span
+                                                    class="has-text-decoration-underline">Подробнее</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -326,51 +360,7 @@
                                 <div class="content">
                                     <h2>Описание объекта</h2>
                                     <div class="object__description">
-                                        <p>
-                                            Кофейня расположена в локации с крайне высоким трафиком. Вокруг большое
-                                            количество
-                                            бизнес-центров, гостиниц и т.п. Первый, не цокольный этаж. Свой отдельный
-                                            вход с
-                                            первой
-                                            линии. В качестве наружной рекламы, установлена яркая световая вывеска.
-                                            Согласована
-                                            с
-                                            комитетом по рекламе.
-                                        </p>
-                                        <p>
-                                            Кофейня находится в помещении площадью 57 кв.м. Удачная планировка –
-                                            максимум
-                                            открытого
-                                            пространства, подсобное помещение и уборная. Сделан дизайнерский ремонт.
-                                            Установлена
-                                            качественное новое оборудование, все в собственности. Для посетителей,
-                                            желающих
-                                            провести
-                                            время в кофейне, сделана комфортная зона на 30 посадочными мест со
-                                            столиками. В
-                                            ассортименте представлен кофе высокого качества с уникальными условиями от
-                                            поставщика.
-                                            Также кондитерские изделия, салаты и сэндвичи.
-                                        </p>
-                                        <p>
-                                            Владельцы заведения медийные личности и провели мощную рекламную кампанию.
-                                            Результаты:
-                                        </p>
-                                        <ul>
-                                            <li>Страница в Инстаграм с более 5000 подписчиков</li>
-                                            <li>Посты у популярных блогеров</li>
-                                            <li>Высокие рейтинги на тематических ресурсах</li>
-                                            <li>Широкая известность среди аудитории 16-25 лет</li>
-                                        </ul>
-                                        <p>
-                                            В кофейне работает 4 высококвалифицированные бариста.
-                                        </p>
-                                        <p>
-                                            Если Вы рассматриваете покупку кофейни с локации с высокой проходимостью, то
-                                            Вам
-                                            стоит
-                                            обратить внимание на данное предложение. Звоните!
-                                        </p>
+                                        {{$business->description}}
                                     </div>
 
                                     <div class="object__info-wrap">
@@ -597,45 +587,45 @@
                                     <div class="list-properties">
                                         <div class="list-properties__item">
                                             <span>Страна</span>
-                                            <span>Польша</span>
+                                            <span>{{$business->city->country->translation}}</span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Город</span>
-                                            <span>Варшава</span>
+                                            <span>{{$business->city->translation}}</span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Категория</span>
-                                            <span>Коммерческая</span>
+                                            <span>{{$business->category->translation}}</span>
                                         </div>
                                         <hr>
                                         <div class="list-properties__item">
                                             <span>Окупаемость</span>
-                                            <span><b>78 месяцев</b></span>
+                                            <span><b>{{$business->payback}} месяцев</b></span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Выручка</span>
-                                            <span><b>$48 000</b></span>
+                                            <span><b>{{number_format($business->revenue, 0,' ',' ')}} zt</b></span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Прибыль</span>
-                                            <span><b>$23 000</b></span>
+                                            <span><b>{{number_format($business->profit, 0,' ',' ')}} zt</b></span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Доходность</span>
-                                            <span><b>78%</b></span>
+                                            <span><b>{{$business->profitability}}%</b></span>
                                         </div>
                                         <hr>
                                         <div class="list-properties__item">
                                             <span>Цена в евро</span>
-                                            <span><b>18 000 560</b></span>
+                                            <span><b>{{number_format($business->euro - $business->euro*($business->discount/100), 0,'.',' ')}}</b></span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Цена в злотых</span>
-                                            <span><b>76 959 192</b></span>
+                                            <span><b>{{number_format($business->price - $business->price*($business->discount/100), 0,'.',' ')}}</b></span>
                                         </div>
                                         <div class="list-properties__item">
                                             <span>Цена в биткоинах</span>
-                                            <span><b>5,456.56</b></span>
+                                            <span><b>{{number_format($business->bitcoin - $business->bitcoin*($business->discount/100), 4,'.',' ')}}</b></span>
                                         </div>
                                     </div>
                                     <div class="buttons">
@@ -713,7 +703,8 @@
                         <li>Эксперт найдёт для вас самые подходящие варианты</li>
                         <li>Вместе с вами эксперт едет на объект, чтобы посмотреть его «вживую»</li>
                         <li>Если объект понравился, назначаем встречу с собственником</li>
-                        <li>Заключаем предварительный договор — до завершения сделки ваши деньги защищены и не переходят к
+                        <li>Заключаем предварительный договор — до завершения сделки ваши деньги защищены и не переходят
+                            к
                             продавцу бизнеса
                         </li>
                         <li>Вы проверяете бизнес — от недели</li>

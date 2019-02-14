@@ -12,6 +12,7 @@ import lodash from 'lodash';
 
 window.Vue = Vue;
 window.trans = (string) => _.get(window.i18n, string);
+window.lang = document.documentElement.lang;
 Vue.prototype.trans = (string, args) => {
     let value = _.get(window.i18n, string);
 
@@ -29,6 +30,7 @@ Vue.use(Vuelidate)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('business-list', require('./components/business/List.vue').default);
+Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);

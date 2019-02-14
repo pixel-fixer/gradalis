@@ -10,9 +10,11 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Password;
-use Vyuldashev\NovaPermission\Role;
-use Vyuldashev\NovaPermission\Permission;
+use App\Nova\CustomRole as Role;
+use App\Nova\CustomPermission as Permission;
+use KABBOUCHI\NovaImpersonate\Impersonate;
 
 /**
  * @property string $first_name
@@ -104,12 +106,20 @@ class User extends Resource
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
+            Select::make(__('User Table Active'), 'active')->options([
+                '0' => 'Заблокирован',
+                '1' => 'Активен',
+            ])->displayUsingLabels()
+              ->sortable(),
+
             Password::make(__('User Table Password'), 'password')
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
 
             BelongsToField::make(__('City'),'city', City::class)->searchable(),
+
+            Impersonate::make($this),
 
             MorphToMany::make('Роль', 'roles', Role::class),
             MorphToMany::make('Разрешение', 'permissions', Permission::class),

@@ -4,9 +4,9 @@ use App\Models\Franchise\Franchise;
 use Faker\Generator as Faker;
 
 $factory->define(Franchise::class, function (Faker $faker) {
-    $price = ['ru'=>rand(1000, 1000000)];
+
     return [
-        'price'           => $price,
+        'price'           => rand(1000, 1000000),
         'percent'         => 10,
         'profitability'   => 1,
         'user_id'         => rand(1, 3),

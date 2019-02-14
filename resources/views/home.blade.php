@@ -129,14 +129,12 @@
         </div>
         <div class="container">
             <!-- Cards objects -->
-            <div class="columns is-multiline">
-                @include('parts.cards-object')
-            </div>
+            <main-list></main-list>
             <!-- Link to all objects -->
             <div class="columns is-centered">
                 <div class="column is-4 has-text-centered">
-                    <a class="button is-link button_bas-big has-text-weight-bold my-1">Посмотреть полный каталог
-                        (254)</a>
+                    <a href="{{route('business.index')}}" class="button is-link button_bas-big has-text-weight-bold my-1">Посмотреть полный каталог
+                        ({{$businesses_count}})</a>
                 </div>
             </div>
         </div>

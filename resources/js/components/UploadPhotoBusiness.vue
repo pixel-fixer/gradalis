@@ -6,8 +6,10 @@
 
         </div>
 
-        <vue-dropzone ref="photoBusinessDropzone" id="dropzone-photo-business" :options="dropzoneOptions" :useCustomSlot=true
+        <vue-dropzone ref="photoBusinessDropzone" id="dropzone-photo-business" :options="dropzoneOptions"
+                      :useCustomSlot=true
                       v-on:vdropzone-success="attachListener"
+                      v-on:vdropzone-removed-file="removeFile"
                       v-on:vdropzone-upload-progress="uploadProgress"
         >
             <div class="dropzone-custom-content">
@@ -34,13 +36,19 @@
         components: {
             vueDropzone: vue2Dropzone
         },
+        props: {
+            value: null
+        },
         data: function () {
             return {
+                images: [],
                 dropzoneOptions: {
-                    url: 'https://httpbin.org/post',
+                    url: '/business-image-upload',
                     thumbnailWidth: 40,
                     maxFilesize: 0.5,
-                    headers: {"My-Awesome-Header": "header value"},
+                    headers: {
+                        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
+                    },
                     previewTemplate: this.template(),
                     previewsContainer: ".dropzone-previews",
                     addRemoveLinks: false,
@@ -81,17 +89,36 @@
                     </div>
                 </div>`;
             },
-            attachListener: function (file) {
-
-                file.previewElement.querySelector('.dz-image').addEventListener("click", function () {
+            attachListener: function (file, response) {
+                this.images.push(response.image);
+                this.$emit('input',this.images);
+                file.previewElement.querySelector('.dz-image').addEventListener("click", function (e) {
                     // Логика установки картинки обложкой
                     console.log('click');
+                    console.log(e);
                 });
 
+            },
+            removeFile:function(file, error, xhr){
+                let image = JSON.parse(file.xhr.response).image;
+                let index = this.images.indexOf(image);
+                this.images.splice(index, 1);
             },
             uploadProgress: function (file, progress, bytesSent) {
                 var progressElement = file.previewElement.querySelector("[data-dz-uploadprogress]");
                 progressElement.closest(".dz-progress-wrap").querySelector(".dz-progress-text").textContent = Math.round(progress) + "%";
+            }
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    if (value !== null && value !== []) {
+                        this.images = value;
+                    } else {
+                        this.images = null;
+                    }
+                }
             }
         }
     }

@@ -77,6 +77,7 @@
         {{--</nav>--}}
 
         <main class="main is-flex">
+            @include('includes.messages')
             @yield('content')
         </main>
 

@@ -4,12 +4,15 @@ namespace App\Models\Business;
 
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 
-class Business extends Model
+class Business extends Model implements HasMedia
 {
-    use HasTranslations, Favoriteable;
+    use HasTranslations, Favoriteable, HasMediaTrait;
 
     //В ожидании
     const STATUS_AWAIT = 0;
@@ -39,6 +42,7 @@ class Business extends Model
         'revenue',
         'weight',
         'price',
+        'show_count',
         'percent',
         'call_count',
         'metrics',
@@ -58,6 +62,14 @@ class Business extends Model
         'category_id',
         'options'
     );
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(120)
+            ->height(60)
+            ->sharpen(10);
+    }
 
     public function category()
     {
@@ -79,8 +91,41 @@ class Business extends Model
         return $this->belongsTo('App\Models\Referral\Campaign', 'target_id')->where('type', '=', Campaign::TYPE_BUSINESS);
     }
 
+    public function getCountryIdAttribute()
+    {
+        return $this->city->country_id;
+    }
+
+    public function getEuroAttribute()
+    {
+        return $this->price * config('currency.PLN_EUR');
+    }
+
+    public function getBitcoinAttribute()
+    {
+        return $this->price * config('currency.PLN_BTC');
+    }
+
+    public function getDescriptionAttribute($value): string
+    {
+        $data = json_decode($value, true);
+        if(!$data){
+            return $value;
+        }
+        return json_decode($value, true)[app()->getLocale()];
+    }
+
+
+    public function getNameAttribute($value): string
+    {
+        $data = json_decode($value, true);
+        if(!$data){
+            return $value;
+        }
+        return json_decode($value, true)[app()->getLocale()];
+    }
+
     protected $casts = [
-        'price' => 'array',
         'options' => 'array',
     ];
 

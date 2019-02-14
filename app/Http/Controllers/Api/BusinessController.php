@@ -42,11 +42,21 @@ class BusinessController extends Controller
             $businesses->where('payback', '>', (int)$payback[0]);
             $businesses->where('payback', '<', (int)$payback[1]);
         }
-        $responce = $businesses->paginate(3);
+        $responce = $businesses->paginate(6);
         return response()->json($responce);
     }
 
     public function getCategories(){
         return BusinessCategory::all();
+    }
+
+    public function imageUpload(Request $request){
+        $request->validate([
+            'file' => 'required|file|image|max:2048'
+        ]);
+
+        $image = $request->file('file')->store('business/'.auth()->user()->id);
+
+        return response(['message' => 'Изображение добавлено', 'image' => $image], 201);
     }
 }

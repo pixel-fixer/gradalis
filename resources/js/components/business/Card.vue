@@ -16,7 +16,7 @@
                 <span v-if="(discount && status != 3)" class="info-icon object-sale">
                             <img src="/svg/icons/ic_sale.svg" alt="Sale">
                         </span>
-                <a v-if="(status == 2)"href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
+                <a v-if="(status == 2)" href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
                     <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
                 </a>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="card-content">
                 <div class="card-object__header">
-                    <h3 class="title">{{name.ru}}</h3>
+                    <h3 class="title">{{name}}</h3>
                     <p class="location"><img src="/svg/icons/ic_location.svg"
                                              alt="Fav"><span>{{country.translation.ru}}, г. {{city.translation.ru}}</span>
                     </p>
@@ -39,11 +39,11 @@
                         </div>
                         <div class="list-properties__item">
                             <span>Выручка</span>
-                            <span><b>{{revenue}}</b></span>
+                            <span><b>{{ formatPrice(revenue) }}</b></span>
                         </div>
                         <div class="list-properties__item">
                             <span>Прибыль</span>
-                            <span><b>{{profit}}</b></span>
+                            <span><b>{{formatPrice(profit)}}</b></span>
                         </div>
                         <div class="list-properties__item">
                             <span>Доходность</span>
@@ -53,14 +53,15 @@
                 </div>
                 <div class="card-object__footer">
                     <div class="price-info">
-                        <span v-if="(discount && status != 3)"  class="tag is-danger price-sale">-15%</span>
-                        <div class="price">{{price.ru}} р.</div>
-                        <span v-if="(discount && status != 3)" class="price-old">$2 000 000</span>
+                        <span v-if="(discount && status != 3)" class="tag is-danger price-sale">-{{discount}}%</span>
+                        <div class="price">{{ (discount)?formatPrice(price-price*(discount/100)):formatPrice(price) }}</div>
+                        <span v-if="(discount && status != 3)" class="price-old">{{formatPrice(price)}}</span>
                     </div>
-                    <a v-if="(status == 2)" class="button is-link is-outlined is-fullwidth has-text-weight-bold" v-bind:class="[(weight>0)?'is-success':'is-link']">Подробнее о
-                        бизнесе</a>
-                    <a v-if="(status == 3)" class="button is-warning is-outlined is-fullwidth has-text-weight-bold">Подробнее о
-                        сделке</a>
+                    <a :href="'/business/'+businessId" v-if="(status == 2)"
+                       class="button is-link is-outlined is-fullwidth has-text-weight-bold"
+                       v-bind:class="[(weight>0)?'is-success':'is-link']">Подробнее о бизнесе</a>
+                    <a :href="'/business/'+businessId" v-if="(status == 3)"
+                       class="button is-warning is-outlined is-fullwidth has-text-weight-bold">Подробнее о сделке</a>
                 </div>
             </div>
         </div>
@@ -71,6 +72,7 @@
     export default {
         name: "BusinessCard",
         props: [
+            'businessId',
             'status',
             'name',
             'price',
@@ -88,6 +90,11 @@
         data() {
             return {
                 //discount:false,
+            }
+        },
+        methods: {
+            formatPrice(value) {
+                return value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' })
             }
         }
     }
