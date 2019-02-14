@@ -10,6 +10,7 @@
             <!-- Cards objects -->
             <div class="columns is-multiline">
                 <business-card v-for="business in businesses.data"
+                               :businessId="business.id"
                                :status="business.status"
                                :name="business.name"
                                :price="business.price"

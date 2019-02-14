@@ -1,5 +1,5 @@
 <template>
-    <div class="stepper">
+    <div ref="business-form" class="stepper">
         <div class="stepper__nav is-hidden-mobile">
             <template v-for="(item, index) in steps">
                 <div class="stepper__nav__item" :class="{ 'is-active' : item.active, 'is-ok' : item.success }">
@@ -51,19 +51,19 @@
 
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label label_req"><span>{{business.region.title}}</span></label>
+                            <label class="label label_req"><span>{{region.title}}</span></label>
                             <div class="control">
                                 <multiselect
-                                             :deselect-label="business.region.deselectLabel"
-                                             track-by="name"
-                                             label="name"
-                                             openDirection="bottom"
-                                             :placeholder="business.region.placeholder"
-                                             :options="business.region.options"
-                                             :searchable="true"
-                                             :allow-empty="false"
-                                             :selectLabel="business.region.selectLabel"
-                                             :selectedLabel="business.region.selectedLabel">
+                                    :deselect-label="region.deselectLabel"
+                                    track-by="name"
+                                    label="name"
+                                    openDirection="bottom"
+                                    :placeholder="region.placeholder"
+                                    :options="region.options"
+                                    :searchable="true"
+                                    :allow-empty="false"
+                                    :selectLabel="region.selectLabel"
+                                    :selectedLabel="region.selectedLabel">
                                     <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
                                 </multiselect>
                             </div>
@@ -84,7 +84,8 @@
                                      :list="business.options.partBusiness.list"></g-g-radio-input>
 
                     <g-g-input :type="'number'" :prevText="'%'" :size="'is-6'"
-                               v-model="business.options.numberShares" :label="trans('business.create.numberShares.title')"
+                               v-model="business.options.numberShares"
+                               :label="trans('business.create.numberShares.title')"
                                :placeholder="trans('business.create.numberShares.placeholder')"></g-g-input>
 
                     <g-g-textarea :size="'is-12'" v-model="business.description"
@@ -100,7 +101,7 @@
                                :placeholder="trans('business.create.reasonSale.placeholder')"></g-g-input>
 
                     <div class="column is-12">
-                        <upload-photo-business></upload-photo-business>
+                        <upload-photo-business v-model="business.images"></upload-photo-business>
                     </div>
                     <g-g-input :size="'is-6'" v-model="business.options.nameVideoReview"
                                :label="trans('business.create.nameVideoReview.title')"
@@ -212,9 +213,10 @@
                 <div class="step__footer">
                     <div class="columns is-multiline">
                         <div class="column is-12">
-                            <div class="buttons"><!--@click="toggleStep(3)"-->
+                            <div class="buttons">
                                 <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
-                                        @click="submit()">
+                                        @click="toggleStep(3)"
+                                >
                                     <span>Шаг 3: Информация о недвижимости</span>
                                     <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                 </button>
@@ -1072,6 +1074,7 @@
                         <div class="column is-12">
                             <div class="buttons">
                                 <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="submit()"
                                 >
                                     <span>Перейти к публикации объявления</span>
                                     <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
@@ -1134,26 +1137,19 @@
         },
         data() {
             return {
+                model:null,
                 business: {
                     category: null,
                     country_id: null,
                     city_id: null,
                     name: null,
-                    description:null,
+                    description: null,
                     payback: null,
                     price: null,
                     revenue: null,
                     profitability: null,
-                    district_id:1,
-                    region: {
-                        selected: null,
-                        title: 'Регион',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: trans('business.create.theme.options'),
-                    },
+                    district_id: 1,
+                    images: [],
                     options: {
                         //region Step 1
                         addresses: {},
@@ -1176,7 +1172,19 @@
                         costBusinessPerQuarter: null,
                         negativeScenario: null,
                         //endregion
+                        //region Step 3
+
+                        //endregion
                     }
+                },
+                region: {
+                    selected: null,
+                    title: 'Регион',
+                    placeholder: 'Выберите',
+                    selectedLabel: '',
+                    selectLabel: '',
+                    deselectLabel: '',
+                    options: trans('business.create.theme.options'),
                 },
                 accept: {
                     value: false,
@@ -2442,11 +2450,20 @@
             submit() {
                 console.log('submit!');
                 let vm = this;
-                axios.post('/business', {
-                    business: this.business
-                }).then(responce => {
-                    vm.categories = responce.data;
-                })
+                if(vm.model){
+                    axios.put('/business/'+vm.model.id, {
+                        business: this.business
+                    }).then(responce => {
+                        vm.categories = responce.data;
+                    })
+                }
+                else {
+                    axios.post('/business', {
+                        business: this.business
+                    }).then(responce => {
+                        vm.categories = responce.data;
+                    })
+                }
             },
             toggleStep(index) {
                 let vm = this;
@@ -2462,6 +2479,17 @@
 
                 this.steps[index].active = true;
             },
+            fetchBusiness(){
+                axios.get('/business-get-categories').then(responce => {
+                    vm.categories = responce.data;
+                })
+            }
+        },
+        mounted(){
+          this.model = JSON.parse(this.$refs['business-form'].dataset.business)
+            if(this.model){
+                this.business = this.model;
+            }
         }
     }
 </script>

@@ -12,6 +12,7 @@ import lodash from 'lodash';
 
 window.Vue = Vue;
 window.trans = (string) => _.get(window.i18n, string);
+window.lang = document.documentElement.lang;
 Vue.prototype.trans = (string, args) => {
     let value = _.get(window.i18n, string);
 

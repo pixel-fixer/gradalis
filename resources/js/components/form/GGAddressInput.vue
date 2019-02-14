@@ -41,7 +41,7 @@
         name: "GGAddressInput",
         components:{GGInput},
         props: {
-            //value: null,
+            value: null,
         },
         data(){
             return{
@@ -71,6 +71,24 @@
             removeAddress(index) {
                 this.list.splice(index, 1);
             },
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    if (value) {
+                        this.list = value;
+                    } else {
+                        this.list = [{
+                            address: null,
+                            numberHouse: null,
+                            housingHouse: null,
+                            numberOffice: null,
+                            index: null
+                        }]
+                    }
+                }
+            }
         }
     }
 </script>

@@ -4,12 +4,13 @@ namespace App\Models\Business;
 
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 
 class Business extends Model
 {
-    use HasTranslations, Favoriteable;
+    use HasTranslations, Favoriteable, HasMediaTrait;
 
     //В ожидании
     const STATUS_AWAIT = 0;
@@ -79,8 +80,22 @@ class Business extends Model
         return $this->belongsTo('App\Models\Referral\Campaign', 'target_id')->where('type', '=', Campaign::TYPE_BUSINESS);
     }
 
+    public function getCountryIdAttribute()
+    {
+        return $this->city->country_id;
+    }
+
+    public function getDescriptionAttribute($value): string
+    {
+        return json_decode($value, true)[app()->getLocale()];
+    }
+
+    public function getNameAttribute($value): string
+    {
+        return json_decode($value, true)[app()->getLocale()];
+    }
+
     protected $casts = [
-        'price' => 'array',
         'options' => 'array',
     ];
 
