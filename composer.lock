@@ -2072,7 +2072,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
+                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
                 "shasum": null
             },
             "require": {
@@ -2107,7 +2107,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
+                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
                 "shasum": null
             },
             "require": {
@@ -3320,16 +3320,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.31.0",
+            "version": "2.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "5f9960854295c6aec1c706aaa3b146962d6ee905"
+                "reference": "a6ddad06f2d8899178a909f72cddfea497e1e9cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/5f9960854295c6aec1c706aaa3b146962d6ee905",
-                "reference": "5f9960854295c6aec1c706aaa3b146962d6ee905",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/a6ddad06f2d8899178a909f72cddfea497e1e9cf",
+                "reference": "a6ddad06f2d8899178a909f72cddfea497e1e9cf",
                 "shasum": ""
             },
             "require": {
@@ -3381,7 +3381,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2019-02-04T03:56:54+00:00"
+            "time": "2019-02-13T16:05:27+00:00"
         },
         {
             "name": "spatie/laravel-translatable",
@@ -3510,24 +3510,24 @@
         },
         {
             "name": "spatie/pdf-to-image",
-            "version": "1.2.2",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd"
+                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/9a5cb264a99e87e010c65d4ece03b51f821d55bd",
-                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd",
+                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
+                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
+                "ext-imagick": "*",
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*",
-                "scrutinizer/ocular": "~1.1"
+                "phpunit/phpunit": "^6.2"
             },
             "type": "library",
             "autoload": {
@@ -3556,7 +3556,7 @@
                 "pdf-to-image",
                 "spatie"
             ],
-            "time": "2016-12-14T15:37:00+00:00"
+            "time": "2018-07-02T09:30:32+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -5882,16 +5882,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23"
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/dc4f10b6b1148744facb784015e4b339d7feec23",
-                "reference": "dc4f10b6b1148744facb784015e4b339d7feec23",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
                 "shasum": ""
             },
             "require": {
@@ -5943,7 +5943,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2019-02-08T14:43:54+00:00"
+            "time": "2019-02-13T09:37:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",

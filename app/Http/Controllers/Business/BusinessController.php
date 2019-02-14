@@ -29,8 +29,26 @@ class BusinessController extends Controller
     public function store(BusinessStoreRequest $request)
     {
         Schema::disableForeignKeyConstraints();
-        Business::create($request->get('business'));
+        $businessData = $request->get('business');
+        foreach ($businessData['images'] as $image) {
+            dd(storage_path('business/'.auth()->user()->id.'/'.$image));
+            //$business->addMedia(storage_path(''))->toMediaCollection('images');
+        }
+        $business = Business::create($businessData);
+
         Schema::enableForeignKeyConstraints();
         return response()->isOk();
+    }
+
+    public function edit(Business $business)
+    {
+        $business->country_id = $business->country_id;
+        $business->images = [];
+        $data['business'] = $business;
+        return view('business.edit',$data);
+    }
+
+    public function update(BusinessStoreRequest $request,Business $business){
+
     }
 }

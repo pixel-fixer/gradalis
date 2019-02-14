@@ -58,10 +58,24 @@
             if (this.type === 'country') {
                 axios.get('/location-get-countries').then(responce => {
                     vm.options = responce.data;
+                    if (vm.value) {
+                        for (const [key, val] of Object.entries(vm.options)) {
+                            if (val.id === vm.value) {
+                                vm.selectedValue = val;
+                            }
+                        }
+                    }
                 })
             } else if (this.type === 'city') {
                 axios.get('/location-get-cities').then(responce => {
                     vm.options = responce.data;
+                    if (vm.value) {
+                        for (const [key, val] of Object.entries(vm.options)) {
+                            if (val.id === vm.value) {
+                                vm.selectedValue = val;
+                            }
+                        }
+                    }
                 })
             }
         },

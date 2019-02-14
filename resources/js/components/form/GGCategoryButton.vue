@@ -104,6 +104,10 @@
             let vm = this;
             axios.get('/business-get-categories').then(responce => {
                 vm.categories = responce.data;
+                if(this.value){
+                    this.selected = this.value;
+                    this.selectedName = vm.categories[this.selected].name;
+                }
             })
         },
         methods: {

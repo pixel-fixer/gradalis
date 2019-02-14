@@ -127,19 +127,23 @@ Route::get('/broker/{vue_capture?}', function () {
 });
 
 
-//BUSINESS Routes
+//region BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');
-});
 
-//API Routes
+});
+//endregion
+
+//region API Routes
 Route::namespace('Api')->group(function () {
     Route::get('/location-get-countries', 'LocationController@getCountries')->middleware('auth');
     Route::get('/location-get-cities', 'LocationController@getCities')->middleware('auth');
 
     Route::get('/business-get', 'BusinessController@get')->middleware('auth');
     Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
+    Route::post('/business-image-upload', 'BusinessController@imageUpload')->middleware('auth');
 });
+//endregion
 
 /* Личный кабинет */
 Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){

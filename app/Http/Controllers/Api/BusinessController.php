@@ -49,4 +49,14 @@ class BusinessController extends Controller
     public function getCategories(){
         return BusinessCategory::all();
     }
+
+    public function imageUpload(Request $request){
+        $request->validate([
+            'file' => 'required|file|image|max:2048'
+        ]);
+
+        $image = $request->file('file')->store('business/'.auth()->user()->id);
+
+        return response(['message' => 'Изображение добавлено', 'image' => $image], 201);
+    }
 }
