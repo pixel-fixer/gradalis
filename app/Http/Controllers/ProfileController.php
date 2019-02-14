@@ -84,14 +84,15 @@ class ProfileController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
-        }else{
-            //TODO Эвент на смену пароля
-
-            Auth::user()->password = Hash::make($request->get('password'));
-            Auth::user()->save();
-
-            return response(['message' => 'Новый пароль установлен'], 200);
         }
+        
+        //TODO Эвент на смену пароля
+
+        Auth::user()->password = Hash::make($request->get('password'));
+        Auth::user()->save();
+
+        return response(['message' => 'Новый пароль установлен'], 200);
+        
     }
 
     /**
