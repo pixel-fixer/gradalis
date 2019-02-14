@@ -11,6 +11,7 @@ use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use App\Models\Service\OrderedService;
 use App\Models\PaymentTransaction;
+use App\Models\ViewRequest;
 class ProfileController extends Controller
 {
     /**
@@ -141,5 +142,33 @@ class ProfileController extends Controller
     public function getPaymentTransactions()
     {
         return PaymentTransaction::where('user_id', Auth::id())->orderBy('created_at')->get();
+    }
+
+    public function getViewRequests()
+    {
+        //TODO похоже на дичь, подумать.
+        $business = Business::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
+        $franchise = Franchise::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
+
+        $view_requests = collect(array_merge($business, $franchise))->map(function($item){
+            return $item['view_request'];
+        })->reject(function ($item) {
+            return empty($item);
+        });
+      
+        $view_requests_mapped = [];
+        foreach($view_requests->all() as $array){
+            $view_requests_mapped = array_merge($view_requests_mapped, $array);
+        }
+        return $view_requests_mapped;  
+    }
+
+    public function setViewRequestStatus(ViewRequest $view_request, $status)
+    {
+        $view_request->status = $status;
+        $view_request->save();
+
+        //TODO translate message
+        return response(['message' => 'Статус запроса изменен'], 200);
     }
 }

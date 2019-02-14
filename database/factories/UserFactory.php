@@ -14,6 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
+    $cities = [1, 2562]; //Москва и Варшава
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -26,6 +27,9 @@ $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
             'new_message' => false,
             'personal_selection' => false,
             'offer' =>  false 
-        ]
+        ],
+        'city_id' => $cities[rand(0,1)],
+        'sum_from' => 10000,
+        'sum_to' => 1000000
     ];
 });

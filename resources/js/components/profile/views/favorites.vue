@@ -1,7 +1,9 @@
 <template>
      <section class="section pt-1 px-0">
-<button @click="addTofavorites(2, 'business')">Добавить бизнес с id=2 в избранное</button>
-<button @click="addTofavorites(3, 'franchise')">Добавить франшизу с id=3 в избранное</button>
+
+<!-- <button @click="addTofavorites(2, 'business')">Добавить бизнес с id=2 в избранное</button> -->
+<!-- <button @click="addTofavorites(3, 'franchise')">Добавить франшизу с id=3 в избранное</button> -->
+
                     <h1 class="section-title mb-1-75">Избранное</h1>
 
                     <div class="columns is-multiline">
@@ -21,9 +23,9 @@
                                     <!-- <a href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
                                         <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
                                     </a> -->
-                                    <a href="#" class="info-icon object-favorite" v-tooltip="'Удалить'">
+                                    <!-- <a href="#" class="info-icon object-favorite" v-tooltip="'Удалить'">
                                        Удалить
-                                    </a>
+                                    </a> -->
                                 </div>
                                 <div class="card-content">
                                     <div class="card-object__header">
@@ -112,7 +114,7 @@ export default {
     },
     methods:{
         getData(){
-            axios.get('/profile/favorites')
+            axios.get('/profile/favorite')
                 .then( res => this.favorites = res.data)
                 .catch(e => alert(e.response.data.message))
         },

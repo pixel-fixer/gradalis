@@ -61,7 +61,7 @@
                 </form>
             </div>
         </modal>
-        <p>Роли пользователя: {{ user.roles.join(', ') }}</p>
+        <!-- <p>Роли пользователя: {{ user.roles.join(', ') }}</p> -->
     </div>
 </template>
 

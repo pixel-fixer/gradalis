@@ -1,21 +1,23 @@
 <template>
     <section class="section pt-1 px-0">
-        <div class="notification-list">
-            <div class="notification is-success">
-                <button class="delete"></button>
-                <div class="notification__icon">
-                    <img src="/svg/icons/notification/ic_thankyou.svg" class="svg" alt="">
-                </div>
-                <div class="notification__content-wrap">
-                    <h5 class="notification__title has-text-weight-bold">
-                        Спасибо за регистрацию!
-                    </h5>
-                    <div class="notification__content is-size-875">
-                        Добрый день, Андрей. Спасибо за регистрацию на нашем портале. Выбирайте продукты и
-                        начинайте продавать свой бизнес или франшизу.
+        <div class="notification-list" v-if="showFlash">
+            <transition name="fade">
+                <div class="notification is-success">
+                    <button class="delete" @click="showFlash = false"></button>
+                    <div class="notification__icon">
+                        <img src="/svg/icons/notification/ic_thankyou.svg" class="svg" alt="">
+                    </div>
+                    <div class="notification__content-wrap">
+                        <h5 class="notification__title has-text-weight-bold">
+                            Спасибо за регистрацию!
+                        </h5>
+                        <div class="notification__content is-size-875">
+                            Добрый день, Андрей. Спасибо за регистрацию на нашем портале. Выбирайте продукты и
+                            начинайте продавать свой бизнес или франшизу.
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
         <h1 class="section-title mb-1-75">Продукты</h1>
         <div class="buttons buttons-services-list">
@@ -57,7 +59,8 @@
 export default {
     data:() => ({
         products: [],
-        categoriesFilter: []
+        categoriesFilter: [],
+        showFlash: true
     }),
     mounted(){
         this.getData()

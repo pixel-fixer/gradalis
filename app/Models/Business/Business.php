@@ -103,4 +103,9 @@ class Business extends Model
             self::PART_STOCK => 'Акции'
         ];
     }
+
+    public function view_request()
+    {
+        return $this->morphMany('App\Models\ViewRequest', 'object');
+    }
 }

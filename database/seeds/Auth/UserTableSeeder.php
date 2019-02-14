@@ -26,6 +26,8 @@ class UserTableSeeder extends Seeder
             'offer'                  => false,
         ];
 
+        $cities = [1, 2562]; //Москва и Варшава
+
         // Add the master administrator, user id of 1
         User::create([
             'first_name'        => 'Admin',
@@ -34,6 +36,9 @@ class UserTableSeeder extends Seeder
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
         ]);
 
         User::create([
@@ -43,6 +48,9 @@ class UserTableSeeder extends Seeder
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
         ]);
 
         User::create([
@@ -52,6 +60,9 @@ class UserTableSeeder extends Seeder
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
         ]);
 
         $this->enableForeignKeys();

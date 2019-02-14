@@ -112,4 +112,9 @@ class Franchise extends Model
                 'franchises.payback',
             ])->get();
     }*/
+
+    public function view_request()
+    {
+        return $this->morphMany('App\Models\ViewRequest', 'object');
+    }
 }

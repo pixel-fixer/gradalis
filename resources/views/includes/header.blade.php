@@ -69,7 +69,7 @@
                             </div>
                             <div class="dropdown-menu" id="dropdown-user-menu" role="menu">
                                 <div class="dropdown-content is-paddingless">
-                                    <a class="dropdown-item" href="#">Item</a>
+                                    <a class="dropdown-item" href="/profile">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

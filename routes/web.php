@@ -149,14 +149,17 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::get('cities', 'ProfileController@getCities');
     Route::post('password', 'ProfileController@updatePassword');
 
-    Route::get('favorites', 'ProfileController@getFavorites');
+    Route::get('favorite', 'ProfileController@getFavorites');
     Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
     Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
 
     Route::get('purchased_services', 'ProfileController@getPurchasedServices');
 
     Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
+
+    Route::get('view_requests', 'ProfileController@getViewRequests');
+    Route::patch('view_request/{view_request}/{status}', 'ProfileController@setViewRequestStatus');
 });
 
 /* Фикс для возможных конфликтов роутор даравела и личного кабинета */
-Route::get('/profile/{vue_capture?}', 'ProfileController@index')->where('profile', '[\/\w\.-]*');
+Route::get('/profile/{vue_capture?}', 'ProfileController@index')->where('profile', '[\/\w\.-]*')->middleware('auth');
