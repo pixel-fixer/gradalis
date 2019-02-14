@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div v-if="step === 1">
+        <div v-show="step === 1">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 2">
+        <div v-show="step === 2">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -229,7 +229,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 3">
+        <div v-show="step === 3">
             <div class="box step px-0">
                 <div class="px-1-5">
                     <div class="step__header">
@@ -442,7 +442,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 4">
+        <div v-show="step === 4">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -523,7 +523,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 5">
+        <div v-show="step === 5">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -627,7 +627,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 6">
+        <div v-show="step === 6">
             <div class="box step px-0">
                 <div class="px-1-5">
                     <div class="step__header">
@@ -865,7 +865,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 7">
+        <div v-show="step === 7">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">
@@ -1013,7 +1013,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="step === 8">
+        <div v-show="step === 8">
             <div class="box step">
                 <div class="step__header">
                     <div class="columns is-multiline">

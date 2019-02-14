@@ -42,7 +42,7 @@ class BusinessController extends Controller
             $businesses->where('payback', '>', (int)$payback[0]);
             $businesses->where('payback', '<', (int)$payback[1]);
         }
-        $responce = $businesses->paginate(3);
+        $responce = $businesses->paginate(6);
         return response()->json($responce);
     }
 

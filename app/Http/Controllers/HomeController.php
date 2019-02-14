@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business\Business;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['businesses_count'] = Business::whereIn('status',[Business::STATUS_APPROUVED,Business::STATUS_SOLD_OUT])->count();
+        return view('home',$data);
     }
 }

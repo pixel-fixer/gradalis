@@ -25,7 +25,7 @@
             </div>
             <div class="card-content">
                 <div class="card-object__header">
-                    <h3 class="title">{{name.ru}}</h3>
+                    <h3 class="title">{{name}}</h3>
                     <p class="location"><img src="/svg/icons/ic_location.svg"
                                              alt="Fav"><span>{{country.translation.ru}}, г. {{city.translation.ru}}</span>
                     </p>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="list-properties__item">
                             <span>Прибыль</span>
-                            <span><b>{{profit}}</b></span>
+                            <span><b>{{formatPrice(profit)}}</b></span>
                         </div>
                         <div class="list-properties__item">
                             <span>Доходность</span>
@@ -53,9 +53,9 @@
                 </div>
                 <div class="card-object__footer">
                     <div class="price-info">
-                        <span v-if="(discount && status != 3)" class="tag is-danger price-sale">-15%</span>
-                        <div class="price">{{ formatPrice(price) }} р.</div>
-                        <span v-if="(discount && status != 3)" class="price-old">$2 000 000</span>
+                        <span v-if="(discount && status != 3)" class="tag is-danger price-sale">-{{discount}}%</span>
+                        <div class="price">{{ (discount)?formatPrice(price-price*(discount/100)):formatPrice(price) }}</div>
+                        <span v-if="(discount && status != 3)" class="price-old">{{formatPrice(price)}}</span>
                     </div>
                     <a :href="'/business/'+businessId" v-if="(status == 2)"
                        class="button is-link is-outlined is-fullwidth has-text-weight-bold"
@@ -94,7 +94,7 @@
         },
         methods: {
             formatPrice(value) {
-                return value.toLocaleString('pl-PL')
+                return value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' })
             }
         }
     }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Business;
 
-use App\Models\Business\Business;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessStoreRequest;
+use App\Models\Business\Business;
 use Illuminate\Support\Facades\Schema;
 
 class BusinessController extends Controller
@@ -18,7 +17,11 @@ class BusinessController extends Controller
 
     public function show(Business $business)
     {
-        return view('business.show');
+        $business->show_count += 1;
+        $business->save();
+        $data['business'] = $business;
+
+        return view('business.show', $data);
     }
 
     public function create()
@@ -30,14 +33,14 @@ class BusinessController extends Controller
     {
         Schema::disableForeignKeyConstraints();
         $businessData = $request->get('business');
-        foreach ($businessData['images'] as $image) {
-            dd(storage_path('business/'.auth()->user()->id.'/'.$image));
-            //$business->addMedia(storage_path(''))->toMediaCollection('images');
-        }
+
         $business = Business::create($businessData);
+        foreach ($businessData['images'] as $image) {
+            $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
+        }
 
         Schema::enableForeignKeyConstraints();
-        return response()->isOk();
+        return response();
     }
 
     public function edit(Business $business)
@@ -45,10 +48,19 @@ class BusinessController extends Controller
         $business->country_id = $business->country_id;
         $business->images = [];
         $data['business'] = $business;
-        return view('business.edit',$data);
+        return view('business.edit', $data);
     }
 
-    public function update(BusinessStoreRequest $request,Business $business){
+    public function update(BusinessStoreRequest $request, Business $business)
+    {
+        Schema::disableForeignKeyConstraints();
+        $businessData = $request->get('business');
+        foreach ($businessData['images'] as $image) {
+            $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
+        }
+        $business->update($businessData);
 
+        Schema::enableForeignKeyConstraints();
+        return response();
     }
 }
