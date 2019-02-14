@@ -33,6 +33,7 @@
     "User Table Name": "Имя",
     "User Table Phone": "Телефон",
     "User Table Email": "Email",
+    "User Table Active": "Статус",
     "User Table Password": "Пароль",
     "User Create Date": "Время регистрации",
 

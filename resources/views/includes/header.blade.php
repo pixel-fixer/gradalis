@@ -61,8 +61,7 @@
                         <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
                                 <a href="/profile" class="navbar-item basic user">
-                                    <img src="{{ Auth::user()->avatar }}"
-                                         alt="User"
+                                    <img src="{{ (Auth::user()->avatar) ?: asset('/svg/icons/ic_login.svg') }}"
                                          aria-haspopup="true"
                                          aria-controls="dropdown-user-menu"><span
                                         class="is-hidden-mobile">{{ Auth::user()->full_name }}</span></a>

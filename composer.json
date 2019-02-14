@@ -38,6 +38,7 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "inspheric/nova-indicator-field": "^1.2",
+        "kabbouchi/nova-impersonate": "^1.0",
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",

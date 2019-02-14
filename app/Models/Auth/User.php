@@ -5,13 +5,17 @@ namespace App\Models\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
 
-class User extends Authenticatable implements HasMedia
+/**
+ * @property mixed active
+ */
+class User extends Authenticatable implements HasMedia, MustVerifyEmail
 {
     use Notifiable, HasRoles, HasMediaTrait, Favoriteability;
 
@@ -86,12 +90,20 @@ class User extends Authenticatable implements HasMedia
     {
        return $this->belongsTo('App\Chat\Dialog');
     }
+    
+    public function isActive() {
+        return $this->active;
+    }
 
     public function registerMediaConversions(Media $media = null)
     {
-        $this->addMediaConversion('avatar')
-              ->width(160)
-              ->height(160);
+        try {
+            $this->addMediaConversion('avatar')
+                 ->width(160)
+                 ->height(160);
+        } catch ( InvalidManipulation $e ) {
+            \Log::error('Avatar conversion failed.');
+        }
     }
 
     public function registerMediaCollections()
