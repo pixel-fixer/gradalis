@@ -134,10 +134,12 @@
                         </span></td>
                     <td>1</td>
                     <td class="has-vertical-align-middle">
+                        <router-link :to="{ path: '/broker/web-offer/'+2}">
                         <a href="#" class="name-offer">
                             <figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt=""></figure>
                             <span>Банк Хоум Кредит: Дебетовая карта Польза - Активация</span>
                         </a>
+                        </router-link>
                     </td>
                     <td>1.69 - 2.99</td>
                     <td>1.69 - 2.99</td>

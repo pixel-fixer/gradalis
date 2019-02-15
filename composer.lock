@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "cddd54a214e4f6f2c545389616cb8dd2",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminhirsch/nova-slug-field.git",
-                "reference": "592fe6940758334b911fc6bdc191026ab0d6a2ba"
+                "reference": "6fa734c45d47e28095c5b221f68b69f2b0c00839"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminhirsch/nova-slug-field/zipball/592fe6940758334b911fc6bdc191026ab0d6a2ba",
-                "reference": "592fe6940758334b911fc6bdc191026ab0d6a2ba",
+                "url": "https://api.github.com/repos/benjaminhirsch/nova-slug-field/zipball/6fa734c45d47e28095c5b221f68b69f2b0c00839",
+                "reference": "6fa734c45d47e28095c5b221f68b69f2b0c00839",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "laravel",
                 "nova"
             ],
-            "time": "2018-10-10T18:18:24+00:00"
+            "time": "2019-02-14T19:05:06+00:00"
         },
         {
             "name": "cakephp/chronos",
