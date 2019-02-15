@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
+use Spatie\Image\Manipulations;
 
 /**
  * @property mixed active
@@ -53,7 +54,8 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     public function getAvatarAttribute()
     {
-        return $this->getFirstMediaUrl('avatar');
+        $media = $this->getMedia('avatar');
+        return isset($media[0]) ? $media[0]->getUrl('avatar') : '';
     }
 
     public function business()
@@ -99,8 +101,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         try {
             $this->addMediaConversion('avatar')
-                 ->width(160)
-                 ->height(160);
+                ->crop(Manipulations::CROP_CENTER, 160, 160);
         } catch ( InvalidManipulation $e ) {
             \Log::error('Avatar conversion failed.');
         }

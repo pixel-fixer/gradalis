@@ -112,7 +112,7 @@
 <script>
     import {SimpleSVG} from 'vue-simple-svg'
     import Velocity from 'velocity-animate'
-    import Modal from './modal';
+    import Modal from './../Modal';
     import ChatMessageStatus from './chat-message-status'
     import ChatPreloader from './chat-preloader'
 

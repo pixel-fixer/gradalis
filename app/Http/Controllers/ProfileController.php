@@ -172,4 +172,12 @@ class ProfileController extends Controller
         //TODO translate message
         return response(['message' => 'Статус запроса изменен'], 200);
     }
+
+    public function getObjects()
+    {
+        $business = Business::where('user_id', Auth::id())->get();
+        $franchise = Franchise::where('user_id', Auth::id())->get();
+
+        return $business->concat($franchise);
+    }
 }

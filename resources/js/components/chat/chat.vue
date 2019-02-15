@@ -70,7 +70,7 @@
     import ChatDialogs from './chat-dialogs';
     import ChatDialog from './chat-dialog';
     import { SimpleSVG } from 'vue-simple-svg'
-    import Modal from './modal'
+    import Modal from './../Modal' 
 
     export default {
         name: "chat",

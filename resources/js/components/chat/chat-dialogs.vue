@@ -14,12 +14,15 @@
                  class="chat__list__item"
                  :key="dialog.id">
                 <div class="chat__list__item__theme">{{ dialog.theme | stripTags }}</div>
-                <div class="chat__list__item__from" v-if="dialog.type == 'support'">От: Служба поддержки</div>
-                <div class="chat__list__item__from" v-else>От: {{dialog.user.full_name}}</div>
+                <!-- <div class="chat__list__item__from" v-if="dialog.type == 'support'">Cлужба поддержки</div> -->
+                <div class="chat__list__item__from">
+                    <img v-if="dialog.user.avatar" :src="dialog.user.avatar" class="chat__list__item__from__avatar">
+                    {{dialog.user.full_name}}
+                </div>
             </div>
         </transition-group>
-        <div v-else-if="search">Сообщений не найдено</div>
-        <div v-else-if="!firstLoad">Сообщений нет</div>
+        <div v-else-if="search">Диалогов не найдено</div>
+        <div v-else-if="!firstLoad">Диалогов нет</div>
         <div class="flex-push"></div>
         <div class="chat__list__settings" ref="chat_list_settings">
             <a href="" @click.prevent="ui.showSettings = !ui.showSettings" :class="{active: ui.showSettings}">
@@ -45,7 +48,7 @@
     </div>
 </template>
 <script>
-    import stripTags from '../stripTags'
+    import stripTags from '../../stripTags'
 
     export default {
         name: "chat-dialogs",
