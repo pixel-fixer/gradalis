@@ -40,7 +40,7 @@ class BusinessController extends Controller
         }
 
         Schema::enableForeignKeyConstraints();
-        return response();
+        return response()->json(['status'=>'ok']);
     }
 
     public function edit(Business $business)
@@ -61,6 +61,6 @@ class BusinessController extends Controller
         $business->update($businessData);
 
         Schema::enableForeignKeyConstraints();
-        return response();
+        return response()->json(['status'=>'ok']);
     }
 }

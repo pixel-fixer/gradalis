@@ -24,7 +24,7 @@
                 <li class="aside-nav__item">
                     <router-link to="/profile/objects" tag="a">
                         <img src="/svg/icons/ic_objects.svg" class="svg" alt="Objects">
-                        <span class="aside-nav__item__title has-text-weight-bold">Выши объекты</span>
+                        <span class="aside-nav__item__title has-text-weight-bold">Ваши объекты</span>
                         <!-- <span class="aside-nav__item__count">5</span> -->
                     </router-link>
                 </li>

@@ -16,8 +16,9 @@ import Echo from 'laravel-echo'
 
 window.io = require('socket.io-client');
 
-if(window.location.pathname == '/chat' || window.location.hash == '#/chat'){
-    window.Echo = new Echo({
+//TODO доработать проверку
+if(window.location.pathname == '/profile/chat' || window.location.hash == '#/chat'){
+    window.Echo = new Echo({ 
         broadcaster: 'socket.io',
         host: window.location.hostname + ':6001'
     });

@@ -2454,14 +2454,18 @@
                     axios.put('/business/'+vm.model.id, {
                         business: this.business
                     }).then(responce => {
-                        vm.categories = responce.data;
+                        if(responce.data.status === 'ok'){
+                            window.location.href = '/profile/objects';
+                        }
                     })
                 }
                 else {
                     axios.post('/business', {
                         business: this.business
                     }).then(responce => {
-                        vm.categories = responce.data;
+                        if(responce.data.status === 'ok'){
+                            window.location.href = '/profile/objects';
+                        }
                     })
                 }
             },

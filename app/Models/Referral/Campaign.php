@@ -13,18 +13,32 @@ class Campaign extends Model
     const TYPE_FRANCHISE = 2;
     const TYPE_SERVICE = 3;
 
-    public $translatable = ['name'];
+    const CAMPAIGN_STATUS_BASE = 1;
+
+    public $translatable = ['name','description'];
 
     protected $table = 'campaigns';
     public $timestamps = true;
-    protected $fillable = array('name', 'target_id','type','status');
+    protected $fillable = array('name','site','country_id','campaign_status','description','clt_days','approve_days','pay_days', 'target_id','type','status');
 
-    public function referralable(){
+    public function referable(){
         return $this->morphTo(null,'type','target_id');
     }
 
     public function conditions(){
-        return $this->belongsToMany('App\Models\Referral\Condition');
+        return $this->belongsToMany('App\Models\Referral\Condition')->withPivot('status');
+    }
+
+    public function targets(){
+        return $this->hasMany('App\Models\Referral\CampaignTarget');
+    }
+
+    public function resources(){
+        return $this->hasMany('App\Models\Referral\CampaignResource');
+    }
+
+    public function country(){
+        return $this->belongsTo('App\Models\Country');
     }
 
     public static function getTypes()
@@ -34,6 +48,28 @@ class Campaign extends Model
             self::TYPE_FRANCHISE  => 'Франшиза',
             self::TYPE_SERVICE  => 'Услуга',
         ];
+    }
+
+    public static function getType($type)
+    {
+        switch ($type){
+            case self::TYPE_BUSINESS: return 'Бизнес';
+            case self::TYPE_FRANCHISE: return 'Франшиза';
+            case self::TYPE_SERVICE: return 'Услуга';
+        }
+    }
+
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_BASE  => 'Базовый'
+        ];
+    }
+    public static function getStatus($status)
+    {
+        switch ($status){
+            case self::CAMPAIGN_STATUS_BASE: return 'Базовый';
+        }
     }
 
 }

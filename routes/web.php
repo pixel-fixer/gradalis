@@ -145,7 +145,9 @@ Route::namespace('Api')->group(function () {
 });
 //endregion
 
-/* Личный кабинет */
+/**
+ * Личный кабинет
+ * */
 Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::get('', 'ProfileController@index');
     Route::post('avatar', 'ProfileController@uploadAvatar');
@@ -163,6 +165,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
 
     Route::get('view_requests', 'ProfileController@getViewRequests');
     Route::patch('view_request/{view_request}/{status}', 'ProfileController@setViewRequestStatus');
+
+    Route::get('/api/objects', 'ProfileController@getObjects');
 });
 
 /* Фикс для возможных конфликтов роутор даравела и личного кабинета */

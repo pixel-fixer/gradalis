@@ -72,7 +72,8 @@
         name: "GGRangeSlider",
         props: {
             min:{default: 0},
-            max:{default: 500000},
+            max:{default: 50000000},
+
             value:null,
             adds:{},
             label: '',
@@ -98,7 +99,7 @@
                 this.empty = false;
                 // e.target.closest('.dropdown').classList.remove("is-active");
                 // console.log(e.target.closest('.dropdown'));
-                this.$emit('input', this.value);
+                this.$emit('input', this.setValue);
             }
         },
         watch: {

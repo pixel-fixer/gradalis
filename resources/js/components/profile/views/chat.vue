@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Chat from './../../chat'
+import Chat from './../../chat/chat'
 
 export default {
     props: ['user'],

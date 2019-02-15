@@ -31,7 +31,7 @@ Vue.use(Vuelidate)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
-Vue.component('chat', require('./components/chat.vue').default);
+Vue.component('chat', require('./components/chat/chat.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/business/FormFilter.vue').default);
