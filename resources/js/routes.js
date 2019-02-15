@@ -23,6 +23,7 @@ export default new Router({
 
         /* Buyer */
         {path: '/profile/trips', component: require('./components/profile/views/trips').default},
+        {path: '/profile/trips-single', component: require('./components/profile/views/tripsDetails').default},
 
         /* Broker */
         {path: '/broker/', redirect: '/broker/realtime'},
