@@ -167,6 +167,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::patch('view_request/{view_request}/{status}', 'ProfileController@setViewRequestStatus');
 
     Route::get('/api/objects', 'ProfileController@getObjects');
+
+    Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 });
 
 /* Фикс для возможных конфликтов роутор даравела и личного кабинета */

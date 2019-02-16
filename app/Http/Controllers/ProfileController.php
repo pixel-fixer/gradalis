@@ -175,9 +175,41 @@ class ProfileController extends Controller
 
     public function getObjects()
     {
-        $business = Business::where('user_id', Auth::id())->get();
-        $franchise = Franchise::where('user_id', Auth::id())->get();
+        $business = Business::where('user_id', Auth::id())->with('city.country')->get()->map(function($item){
+            $item->favorites_count = $item->favoritesCount;
+            $item->status_labels = $item->getStatuses();
+            $item->type= 'business';
+            return $item;
+        });
+
+        $franchise = Franchise::where('user_id', Auth::id())->with('city.country')->get()->map(function($item){
+            $item->favorites_count = $item->favoritesCount;
+            $item->status_labels = $item->getStatuses();
+            $item->type= 'franchise';
+            return $item;
+        });
 
         return $business->concat($franchise);
+    }
+
+    public function setObjectStatus($type, $id, $status)
+    {
+        switch ($type) {
+            case 'business':
+                $object = Business::where([['id', $id], ['user_id', Auth::id()]])->first();
+                break;
+            case 'franchise':
+                $object = Franchise::where([['id', $id], ['user_id', Auth::id()]])->first();
+                break;
+        }
+
+        if(!$object){
+            return response(['message' => 'Object not found'], 404);
+        }
+
+        $object->status = $status;
+        $object->save();
+
+        return response(['message' => 'Статус объекта изменен'], 200);
     }
 }

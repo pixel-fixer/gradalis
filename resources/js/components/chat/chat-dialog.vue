@@ -27,22 +27,24 @@
                 <!--<div class="chat-messages__wrap">-->
 
               <div class="chat-messages__stack"
-                     v-for="stack in messagesMapped"
-                     :class="{yours: user.id == stack.user.id}">
+                     v-for="(stack, i) in messagesMapped"
+                     :class="{yours: user.id == stack.user.id}"
+                     :key="i">
                     <div class="chat-messages__user">
                         <img src="/img/avatar-1.png" alt="">
                     </div>
                     <div class="chat-messages__list">
                         <div class="chat-messages__message"
                              v-for="message in stack.messages"
-                             :class="{'status-moderating': message.status == 0 && user.canModerateMessages}">
+                             :class="{'status-moderating': message.status == 0 && user.canModerateMessages}"
+                             :key="message.id">
                             <div class="chat-messages__message__wrap">
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
                                 <span class="chat-messages__message__time">{{getTime(message.created_at)}}</span><br>
                                 <div class="chat-messages__message__text">{{message.text}}</div>
-                                <div class="chat-messages__message__files" v-if="message.media.length > 0">
+                                <div class="chat-messages__message__files">
                                     <a :href="file.url.origin"
-                                       v-for="file in message.media"
+                                       v-for="file in message.media_links"
                                        target="_blank">
                                         <img v-if="file.mime_type.indexOf('image') >= 0" :src="file.url.thumb" alt="">
                                         <span v-else>{{file.file_name}}</span>

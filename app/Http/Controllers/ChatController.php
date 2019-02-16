@@ -176,17 +176,6 @@ class ChatController extends Controller
             }
         }]);
 
-        //Пути для прикрепленных файлов
-        $dialog->messages->map(function ($item){
-            foreach ($item->media as $k => $media){
-                $item->media[$k]->url =  [
-                    'origin' => $media->getUrl(),
-                    'thumb' =>$media->getUrl('thumb')
-                ];
-            }
-            return $item;
-        });
-
         return $dialog;
     }
 
@@ -197,15 +186,16 @@ class ChatController extends Controller
         if(!Auth::user()->canModerateMessages()) {
             $messages->where('status', '!=', 0)->orWhere('from', Auth::user()->id);
         }
-        $messages = $messages->map(function ($item){
-            foreach ($item->media as $k => $media){
-                $item->media[$k]->url =  [
-                    'origin' => $media->getUrl(),
-                    'thumb' =>$media->getUrl('thumb')
-                ];
-            }
-            return $item;
-        });
+
+        // $messages = $messages->map(function ($item){
+        //     foreach ($item->media as $k => $media){
+        //         $item->media[$k]->url =  [
+        //             'origin' => $media->getUrl(),
+        //             'thumb' =>$media->getUrl('thumb')
+        //         ];
+        //     }
+        //     return $item;
+        // });
 
         return $messages;
     }

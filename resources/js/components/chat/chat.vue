@@ -157,8 +157,7 @@
             },
             onNewMessage(e){
                 //почему то эта фигня не работает, если не выбран диалог
-                let dasfdsf = new Audio('/chat.mp3')
-                dasfdsf.play();
+                new Audio('/chat_message_sent.mp3').play();
 
                 if(e.message.dialog_id == this.dialog_id){
                     this.dialog.messages.push(e.message);

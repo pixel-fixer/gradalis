@@ -3,12 +3,14 @@
     <section class="section pt-1 pb-0 px-0">
             <h1 class="section-title mb-1-75">Ваши объекты</h1>
             <div class="buttons has-addons">
-                <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 is-active">
+                <label :class="{'is-active': filter == 'active'}" class="button is-outlined is-info is-size-875 has-text-weight-bold h-3">
                     Активные объекты
-                </button>
-                <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3">Проданные
+                    <input type="radio" v-model="filter" value="active" style="display: none">
+                </label>
+                <label :class="{'is-active': filter == 'sold'}" class="button is-outlined is-info is-size-875 has-text-weight-bold h-3">Проданные
                     объекты
-                </button>
+                    <input type="radio" v-model="filter" value="sold" style="display: none">
+                </label>
             </div>
             <div class="columns is-multiline">
                 <div class="column is-12">
@@ -36,22 +38,23 @@
                                     <address class="is-size-875 is-flex">
                                         <img src="/svg/icons/ic_location.svg" class="svg"
                                                 alt="Location">
-                                        <span>Россия, г. Ростов-на-Дону</span>
+                                        <span>&nbsp;{{$t(object.city.country.translation)}}, {{$t(object.city.translation)}}</span>
                                     </address>
                                     <div class="card-object-pa__price is-flex">
                                         <div class="price-info">
-                                            <div class="price">$2 000 560</div>
+                                            <div class="price">${{object.price}}</div>
                                         </div>
                                         <a href="#" class="has-text-decoration-underline is-size-875">Опустить
                                             цену</a>
                                     </div>
                                     <div class="card-object-pa__progress">
-                                        <div class="card-object-pa__progress__title is-size-875">Опубликовано 5
-                                            дней назад
-                                        </div>
+                                        <!-- TODO добавить на бэк время изменения статуса? -->
+                                        <div class="card-object-pa__progress__title is-size-875">{{ object.status_labels[object.status] }}</div>
                                         <div class="card-object-pa__progress__bar">
-                                            <progress class="progress is-success is-small" value="60" max="100">
-                                                60%
+                                            <progress :class="getObjectProgessBarClass(object.status)"
+                                                    class="progress is-success is-small"
+                                                    :value="(object.status + 1) * 25"
+                                                    max="100">
                                             </progress>
                                         </div>
                                     </div>
@@ -59,12 +62,12 @@
                                         <div class="card-object-pa__statistics__item is-flex">
                                             <img src="/svg/icons/ic_eye.svg" class="svg"
                                                     alt="Eye">
-                                            <span>289 просмотров</span>
+                                            <span> {{ object.show_count }} просмотров</span>
                                         </div>
                                         <div class="card-object-pa__statistics__item is-flex">
                                             <img src="/svg/icons/ic_favorites-2.svg" class="svg"
                                                     alt="Favorites">
-                                            <span>15 в избранном</span>
+                                            <span>{{ object.favorites_count }} в избранном</span>
                                         </div>
                                         <div class="card-object-pa__statistics__item is-flex">
                                             <img src="/svg/icons/ic_document.svg" class="svg"
@@ -104,7 +107,7 @@
                                     </div>
                                 </div>
 
-                                <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Продано</a>
+                                <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold" @click="setStatusSold(object.type, object.id)">Продано</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Загрузить
                                     документы</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Подключить
@@ -251,7 +254,7 @@ import ObjectStats from './objects/object-stats'
 export default {
     components: { ObjectStats },
     data:() => ({
-        filter: [],
+        filter: 'active',
         objects: [],
         firstLoad: true
     }),
@@ -260,10 +263,13 @@ export default {
     },
     computed:{
         objectsMapped(){
-            return this.objects.map(item => {
-                return item
+            return this.objects.filter(item => {
+                if(this.filter == 'sold')
+                    return item.status == 3
+                else
+                   return item.status !== 3
             });
-        }
+        },
     },
     methods:{
         getData(){
@@ -279,6 +285,29 @@ export default {
                 .then(res => {
                     this.$swal({ type: 'success', text: res.data.message });
                     this.getData();
+                }).catch(e => {
+                    this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+                })
+        },
+        getObjectProgessBarClass(status){
+            switch (status) {
+                case 0:
+                    return 'is-warning'
+                case 1:
+                    return 'is-success'
+                case 2:
+                    return 'is-success'
+                case 3:
+                    return 'is-success'
+                case 4:
+                    return 'is-danger'
+            }
+        },
+        setStatusSold(type, id, status = 3){
+            axios.patch(`/profile/api/object/${type}/${id}/status/${status}`)
+                .then(res => {  
+                     this.$swal({ type: 'success', text: res.data.message });
+                    this.getData()
                 }).catch(e => {
                     this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                 })

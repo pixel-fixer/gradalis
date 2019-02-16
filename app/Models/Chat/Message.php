@@ -17,6 +17,8 @@ class Message extends Model implements HasMedia
 
     protected $dates = ['deleted_at'];
 
+    protected $appends = ['media_links'];
+
     //TODO Дописать
     /*
     protected $statuses = [
@@ -27,6 +29,32 @@ class Message extends Model implements HasMedia
     protected $attributes = [
         'status' => 0,
     ];
+
+    // public function getMediaAttribute()
+    // {
+    //     $mediaMapped = $this->media;
+    //     foreach ($this->media as $k => $media){
+    //         $mediaMapped[$k]->url = [
+    //             'origin' => $media->getUrl(),
+    //             'thumb' =>$media->getUrl('thumb')
+    //         ];
+    //     }
+
+    //     return $mediaMapped;
+    // }
+
+    public function getMediaLinksAttribute()
+    {
+        $mediaMapped = $this->media;
+        foreach ($this->media as $k => $media){
+            $mediaMapped[$k]->url = [
+                'origin' => $media->getUrl(),
+                'thumb' =>$media->getUrl('thumb')
+            ];
+        }
+
+        return $mediaMapped;
+    }
 
     public function dialog()
     {
