@@ -20,7 +20,13 @@ class ConditionSeeder extends Seeder
           'en' => 'Email',
           'pl' => 'Email',
         ];
+        $descripionTranslations = [
+          'ru' => 'Только по согласованию с рекламодателем',
+          'en' => 'Только по согласованию с рекламодателем',
+          'pl' => 'Только по согласованию с рекламодателем',
+        ];
         $condition->setTranslations('name',$nameTranslations);
+        $condition->setTranslations('description',$descripionTranslations);
         $condition->save();
 
         $condition = new Condition();

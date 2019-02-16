@@ -23,14 +23,16 @@ export default new Router({
 
         /* Buyer */
         {path: '/profile/trips', component: require('./components/profile/views/trips').default},
+        {path: '/profile/trips-single', component: require('./components/profile/views/tripsDetails').default},
 
         /* Broker */
-        {path: '/broker/', redirect: '/broker/realtime'},
+        {path: '/broker/', redirect: '/broker/summary'},
         {path: '/broker/realtime', component: require('./components/broker/views/RealTime').default},
         {path: '/broker/balance', component: require('./components/broker/views/Balance').default},
         {path: '/broker/leads', component: require('./components/broker/views/Leads').default},
         {path: '/broker/settings', component: require('./components/broker/views/Settings').default},
         {path: '/broker/summary', component: require('./components/broker/views/SummaryIndicators').default},
         {path: '/broker/web-offers', component: require('./components/broker/views/WebOffers').default},
+        {path: '/broker/web-offer/:id', component: require('./components/broker/views/WebOffer').default},
     ]
 })

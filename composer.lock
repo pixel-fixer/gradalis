@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "cddd54a214e4f6f2c545389616cb8dd2",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminhirsch/nova-slug-field.git",
-                "reference": "592fe6940758334b911fc6bdc191026ab0d6a2ba"
+                "reference": "6fa734c45d47e28095c5b221f68b69f2b0c00839"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminhirsch/nova-slug-field/zipball/592fe6940758334b911fc6bdc191026ab0d6a2ba",
-                "reference": "592fe6940758334b911fc6bdc191026ab0d6a2ba",
+                "url": "https://api.github.com/repos/benjaminhirsch/nova-slug-field/zipball/6fa734c45d47e28095c5b221f68b69f2b0c00839",
+                "reference": "6fa734c45d47e28095c5b221f68b69f2b0c00839",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "laravel",
                 "nova"
             ],
-            "time": "2018-10-10T18:18:24+00:00"
+            "time": "2019-02-14T19:05:06+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -2072,7 +2072,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
+                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
                 "shasum": null
             },
             "require": {
@@ -2107,7 +2107,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
+                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
                 "shasum": null
             },
             "require": {
@@ -3510,24 +3510,24 @@
         },
         {
             "name": "spatie/pdf-to-image",
-            "version": "1.8.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26"
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
+                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/9a5cb264a99e87e010c65d4ece03b51f821d55bd",
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd",
                 "shasum": ""
             },
             "require": {
-                "ext-imagick": "*",
-                "php": "^7.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.2"
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
             },
             "type": "library",
             "autoload": {
@@ -3556,7 +3556,7 @@
                 "pdf-to-image",
                 "spatie"
             ],
-            "time": "2018-07-02T09:30:32+00:00"
+            "time": "2016-12-14T15:37:00+00:00"
         },
         {
             "name": "spatie/temporary-directory",

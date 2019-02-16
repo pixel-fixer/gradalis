@@ -96,9 +96,11 @@
             &.dz-success {
                 .dz-image {
                     cursor: pointer;
+
                     &:before {
                         transform: scale(1);
                     }
+
                     &:hover {
                         &:after {
                             opacity: 1;

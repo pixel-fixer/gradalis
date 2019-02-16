@@ -5,6 +5,7 @@ use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use App\Models\Referral\Campaign;
 use App\Models\Referral\CampaignResource;
+use App\Models\Referral\CampaignTarget;
 use App\Models\Referral\Invitation;
 use App\Models\Referral\InvitationCounter;
 use Carbon\Carbon;
@@ -19,6 +20,18 @@ class CampaignSeeder extends Seeder
      */
     public function run()
     {
+        $description = <<<DESCRIPTION
+            Банк Хоум Кредит занимает лидерские позиции на рынке финансовой розницы России. Входит в ТОП-10 по кредитам физическим лицам, занимает первое место на рынке потребительских кредитов в точках продаж.
+
+            Тариф дебетовой карты "Польза":
+            
+            7% — при остатке менее 300000 ₽ и совершении покупок на сумму не менее 5000 ₽. в мес.
+            3% — на сумму превышения 300000 ₽ и совершении покупок на сумму не менее 5000 ₽ в мес.
+            0 % — в остальных случаях, выплачиваются ежемесячно.
+            за получение наличных в любых банкоматах и кассах других банков по первым пяти операциям в мес. РП длится в течение календарного месяца с первого и по последнее число.
+
+DESCRIPTION;
+
         Schema::disableForeignKeyConstraints();
         $businesses = Business::all();
         $franshises = Franchise::all();
@@ -26,41 +39,79 @@ class CampaignSeeder extends Seeder
         $faker = \Faker\Factory::create();
         foreach ($businesses as $business) {
             $names = [
-                'ru' => 'Лндинг',
-                'en' => 'Landing',
-                'pl' => 'Lądowanie',
+                'ru' => $faker->name(),
+                'en' => $faker->name(),
+                'pl' => $faker->name(),
             ];
             $campaign = new Campaign([
-                'name'      => json_encode($names),
-                'target_id' => $business->id,
-                'type'      => 1,
-                'status'    => rand(0, 1)
+                'name'       => $business->name,
+                'target_id'  => $business->id,
+                'type'       => 'App\Models\Business\Business',
+                'country_id' => rand(1, 2),
+                'site'       => 'http://google.com',
+                'status'     => rand(0, 1)
             ]);
-            $campaign->setTranslations('name',$names);
+
+            $campaign->setTranslation('description', 'ru', $description);
             $campaign->save();
+            $campaignTarget = CampaignTarget::create([
+                'name'        => 'Активная дебетовая карта',
+                'campaign_id' => $campaign->id,
+                'country_id'  => rand(1, 2),
+                'cpl'         => rand(10, 30) . '%',
+                'cps'         => rand(10, 30) . '%'
+            ]);
+            for ($i = 0; $i <= 4; $i++) {
+                $type = rand(1, 2);
+                $campaignResource = CampaignResource::create([
+                    'url'           => 'http://google.com',
+                    'type'          => $type,
+                    'resource_type' => ($type === 2) ? rand(2, 3) : 1,
+                    'width'         => ($type === 2) ? 250 : null,
+                    'height'        => ($type === 2) ? 250 : null,
+                    'campaign_id'   => $campaign->id
+                ]);
+                $campaignResource->setTranslations('name', $names);
+                $campaignResource->save();
+            }
         }
         foreach ($franshises as $franchise) {
             $names = [
-                'ru' => 'Лндинг',
-                'en' => 'Landing',
-                'pl' => 'Lądowanie',
+                'ru' => $faker->name(),
+                'en' => $faker->name(),
+                'pl' => $faker->name(),
             ];
             $campaign = new Campaign([
-                'name'      => json_encode($names),
-                'target_id' => $franchise->id,
-                'type'      => 2,
-                'status'    => rand(0, 1)
+                'name'       => $franchise->name,
+                'target_id'  => $franchise->id,
+                'type'       => 'App\Models\Franchise\Franchise',
+                'country_id' => rand(1, 2),
+                'site'       => 'http://google.com',
+                'status'     => rand(0, 1)
             ]);
-            $campaign->setTranslations('name',$names);
+
+            $campaign->setTranslation('description', 'ru', $description);
             $campaign->save();
-            $campaignResource = CampaignResource::create([
-                'name'        => $franchise->name,
-                'url'         => $franchise->id,
-                'type'        => 1,
-                'width'       => 250,
-                'height'      => 250,
-                'campaign_id' => $campaign->id
+            $campaignTarget = CampaignTarget::create([
+                'name'        => 'Активная дебетовая карта',
+                'campaign_id' => $campaign->id,
+                'country_id'  => rand(1, 2),
+                'cpl'         => rand(10, 30) . '%',
+                'cps'         => rand(10, 30) . '%'
             ]);
+            for ($i = 0; $i <= 4; $i++) {
+                $type = rand(1, 2);
+                $campaignResource = CampaignResource::create([
+                    'url'         => 'http://google.com',
+                    'type'        => $type,
+                    'resource_type' => ($type === 2) ? rand(2, 3) : 1,
+                    'width'       => ($type === 2) ? 250 : null,
+                    'height'      => ($type === 2) ? 250 : null,
+                    'campaign_id' => $campaign->id
+                ]);
+                $campaignResource->setTranslations('name', $names);
+                $campaignResource->save();
+            }
             foreach ($partners as $partner) {
 
                 $token = Invitation::makeToken();
