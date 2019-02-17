@@ -342,7 +342,7 @@
 
                                     <g-g-date-input v-model="object.finalPaymentMortgageDate"
                                                     :label="trans('business.create.finalPaymentMortgageDate.title')"
-                                                    :placeholder="trans('business.create.finalPaymentMortgageDate.title')"></g-g-date-input>
+                                                    :placeholder="trans('business.create.finalPaymentMortgageDate.placeholder')"></g-g-date-input>
 
                                     <g-g-select-input v-model="object.availabilityLoanSecuredObject.selected"
                                                       :size="'is-6'"

@@ -42,10 +42,7 @@
                     return {
                         altFormat: 'd.m.Y',
                         altInput: true,
-                        dateFormat: 'Y-m-d',
-                        onChange: function(selectedDates, dateStr, instance) {
-                           this.inputChange
-                        },
+                        dateFormat: 'Y-m-d'
                     }
                 }
             },
@@ -54,22 +51,19 @@
         },
         data(){
           return{
-              inputValue:null
+
           }
         },
-        watch: {
-            value: {
-                immediate: true,
-                handler(value) {
-                    this.inputValue = value;
-                }
+        computed:{
+            inputValue: {
+                get: function () {
+                    return this.value
+                },
+                set: function (value) {
+                    this.$emit('input', value);
+                },
             }
         },
-        methods: {
-            inputChange() {
-                this.$emit('input', this.inputValue);
-            }
-        }
     }
 </script>
 
