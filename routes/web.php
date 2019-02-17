@@ -104,7 +104,13 @@ Route::get('/vacancy', function () {
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');
+});
+//endregion
 
+
+//region BROKER Routes
+Route::namespace('Broker')->prefix('broker')->group(function () {
+    Route::get('/{vue_capture?}', 'BrokerController@index')->where('vue_capture', '.*')->middleware('auth');;
 });
 //endregion
 
@@ -112,6 +118,11 @@ Route::namespace('Business')->group(function () {
 Route::namespace('Api')->group(function () {
     Route::get('/location-get-countries', 'LocationController@getCountries')->middleware('auth');
     Route::get('/location-get-cities', 'LocationController@getCities')->middleware('auth');
+
+    Route::post('/offer-bookmark', 'OfferController@bookmark')->middleware('auth');
+    Route::post('/offer-all', 'OfferController@index')->middleware('auth');
+    Route::get('/offer-get/{id}', 'OfferController@get')->middleware('auth');
+    Route::post('/invitation-create', 'OfferController@invitationCreate')->middleware('auth');
 
     Route::get('/business-get', 'BusinessController@get')->middleware('auth');
     Route::get('/business-get-by-id/{business}', 'BusinessController@getById')->middleware('auth');
