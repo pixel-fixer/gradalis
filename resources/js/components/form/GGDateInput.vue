@@ -1,12 +1,12 @@
 <template>
     <div :class="size" class="column">
         <div class="field">
-            <label class="label">{{label}}</label>
+            <label class="label" :class="{ 'label_req': required }"><span>{{label}}</span></label>
             <div :class="{'has-icons-right has-icons-right_1':iconRight,'has-icons-left has-icons-left_1':iconLeft}"
                  class="control">
                 <flat-pickr
                     class="input is-size-875"
-                    v-model="value"
+                    v-model="inputValue"
                     :placeholder="placeholder"
                     :config="config"
                 ></flat-pickr>
@@ -46,7 +46,8 @@
                     }
                 }
             },
-            placeholder: {default: 'Поиск'}
+            placeholder: {default: 'Поиск'},
+            required: {default: false},
         },
         data(){
           return{

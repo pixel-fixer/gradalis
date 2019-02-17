@@ -1,7 +1,7 @@
 <template>
     <div :class="size" class="column">
         <div class="field">
-            <label class="label">{{label}}</label>
+            <label class="label" :class="{ 'label_req': required }"><span>{{label}}</span></label>
             <div :class="{iconRight:'has-icons-right has-icons-right_1',iconLeft:'has-icons-left has-icons-left_1'}"
                  class="control">
                 <textarea type="text"
@@ -36,7 +36,8 @@
             size: {default: 'is-3'},
             value: '',
             label: '',
-            placeholder: {default: 'Поиск'}
+            placeholder: {default: 'Поиск'},
+            required: {default: false},
         },
         data(){
           return{

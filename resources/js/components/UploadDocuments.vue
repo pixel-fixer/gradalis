@@ -6,7 +6,6 @@
         </div>
 
         <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" :useCustomSlot=true
-                      v-on:vdropzone-success="attachListener"
                       v-on:vdropzone-upload-progress="uploadProgress"
         >
             <div class="dropzone-custom-content">

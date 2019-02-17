@@ -35,10 +35,18 @@
             display: flex;
             justify-content: center;
 
+            figure {
+                height: 2rem;
+            }
             svg {
                 width: 2rem;
                 height: 2rem;
                 margin-right: .5rem;
+            }
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             &__title {

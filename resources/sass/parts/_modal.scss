@@ -1,6 +1,7 @@
 @import '../variables';
 
 .modal {
+    transition: all .3s ease;
     &-background {
         background-color: rgba(#0B101A, .9);
     }
@@ -12,6 +13,7 @@
     &-card {
         max-width: 100%;
         border-radius: $radius;
+        transition: all .3s ease;
         &_big {
             max-width: 100%;
             width: 46rem;

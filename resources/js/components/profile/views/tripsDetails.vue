@@ -46,9 +46,84 @@
                 </tr>
                 <tr>
                     <td colspan="4" class="has-text-centered">
-                        <button class="button is-info is-outlined h-3 is-rounded px-1">
+                        <button class="button is-info is-outlined h-3 is-rounded px-1"
+                                @click="ui.modalRequestView.show = true">
                             <span class="mr-0-5 is-size-4">+</span><span class="is-size-875">Добавить просмотр</span>
                         </button>
+
+                        <modal v-if="ui.modalRequestView.show" @close="ui.modalRequestView.show = false">
+                            <div slot="header">
+                                <p class="modal-card-title mb-0">{{ui.modalRequestView.header}}</p>
+                            </div>
+
+                            <div slot="body">
+                                <div class="content">
+                                    <div class="columns is-multiline">
+                                        <div class="column is-12">
+                                            <div class="field">
+                                                <label
+                                                    class="label label_req"><span>{{formNewRequestView.object.title}}</span></label>
+                                                <div class="control">
+                                                    <multiselect
+                                                        v-model="formNewRequestView.object.selected"
+                                                        :deselect-label="''"
+                                                        track-by="name"
+                                                        label="name"
+                                                        openDirection="bottom"
+                                                        :placeholder="formNewRequestView.object.placeholder"
+                                                        :options="formsOptions.objects.options"
+                                                        :searchable="true"
+                                                        :allow-empty="false"
+                                                        :selectLabel="''"
+                                                        :selectedLabel="''">
+                                                        <template slot="singleLabel" slot-scope="props"><img
+                                                            class="option__image" :src="props.option.img">
+                                                            <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+                                                        </template>
+                                                        <template slot="option" slot-scope="props">
+                                                            <img class="option__image" :src="props.option.img">
+                                                            <div class="option__desc"><span class="option__title">{{ props.option.name }}</span>
+                                                            </div>
+                                                        </template>
+                                                    </multiselect>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <g-g-date-input v-model="formNewRequestView.date.value"
+                                                        :label="formNewRequestView.date.title"
+                                                        :placeholder="formNewRequestView.date.placeholder"
+                                                        :required="formNewRequestView.date.required"
+                                                        :size="'is-6'">
+                                        </g-g-date-input>
+                                        <g-g-date-input v-model="formNewRequestView.time.value"
+                                                        :label="formNewRequestView.time.title"
+                                                        :placeholder="formNewRequestView.time.placeholder"
+                                                        :required="formNewRequestView.time.required"
+                                                        :size="'is-6'"
+                                                        :config="formNewRequestView.time.config">
+                                        </g-g-date-input>
+                                        <g-g-textarea :size="'is-12'" v-model="formNewRequestView.comment.value"
+                                                      :label="formNewRequestView.comment.title"
+                                                      :placeholder="formNewRequestView.comment.placeholder"
+                                                      :required="formNewRequestView.comment.required"></g-g-textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content w-full" slot="footer">
+                                <div class="columns is-multiline">
+                                    <div class="column is-12">
+                                        <button @click="createRequestView"
+                                                class="button is-info is-fullwidth has-text-weight-bold h-3 is-size-875">
+                                            Отправить запрос на просмотр
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </modal>
+
                     </td>
                 </tr>
                 </tbody>
@@ -290,8 +365,33 @@
                     class="has-text-success has-text-weight-bold">Загружено</span></li>
                 <li><span>Договор купли и продажи</span></li>
             </ol>
-            <div class="box">
-                <UploadDocuments></UploadDocuments>
+            <div class="box px-0 pb-0">
+                <UploadDocuments class="px-1-5"></UploadDocuments>
+                <table class="table is-fullwidth is-size-875">
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Название документа</th>
+                        <th>Дата</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="has-text-basic">1</td>
+                        <td class="has-text-weight-bold">
+                            Чек об оплате услугу нашим предприятием.jpg
+                        </td>
+                        <td class="has-text-basic">12 марта 2019</td>
+                        <td>
+                            <a href="#" class="link-with-icon">
+                                <img src="/svg/icons/ic_close.svg">
+                                <span class="has-text-decoration-underline">Удалить</span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
 
         </section>
@@ -300,16 +400,96 @@
 
 <script>
     import UploadDocuments from '../../UploadDocuments'
+    import Modal from '../../Modal'
+    import Multiselect from 'vue-multiselect'
+    import GGDateInput from '../../form/GGDateInput'
+    import GGTextarea from '../../form/GGTextarea'
 
     export default {
         components: {
-            UploadDocuments: UploadDocuments
+            UploadDocuments,
+            Modal,
+            Multiselect,
+            GGDateInput,
+            GGTextarea,
         },
-        data: () => ({}),
+        data: () => ({
+            ui: {
+                modalRequestView: {
+                    show: false,
+                    header: "Запрос на просмотр"
+                }
+            },
+            formNewRequestView: {
+                object: {
+                    selected: null,
+                    title: 'Укажите объект для просмотра',
+                    placeholder: 'Выберите',
+                    selectedLabel: '',
+                    selectLabel: '',
+                    deselectLabel: '',
+                    noResult: 'Ничего не найдено'
+                },
+                date: {
+                    title: 'Желаемая дата просмотра',
+                    placeholder: '25.05.2019',
+                    value: '',
+                    required: true
+                },
+                time: {
+                    title: 'Желаемое время просмотра',
+                    placeholder: '12:00',
+                    value: '',
+                    required: true,
+                    config: {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: "H:i",
+                        time_24hr: true
+                    },
+                },
+                comment: {
+                    title: 'Комментарий для продавца',
+                    placeholder: 'Укажите комментарий',
+                    value: '',
+                    required: true
+                }
+            },
+            formsOptions: {
+                objects: {
+                    options: [
+                        {
+                            id: '1',
+                            name: 'Item 1',
+                            img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
+                        },
+                        {
+                            id: '2',
+                            name: 'Item 2',
+                            img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
+                        },
+                        {
+                            id: '3',
+                            name: 'Item 3',
+                            img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
+                        },
+                        {
+                            id: '4',
+                            name: 'Item 4',
+                            img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
+                        },
+                    ]
+                },
+            }
+        }),
         mounted() {
 
         },
-        methods: {}
+        methods: {
+            createRequestView() {
+                console.log('createRequestView');
+            },
+        }
     }
 </script>
 
