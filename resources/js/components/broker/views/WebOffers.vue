@@ -20,12 +20,25 @@
 
         <nav class="broker-pa__offers-nav mb-2">
             <ul class="buttons has-addons">
-                <li class="button h-3 is-outlined is-info is-size-875 is-active">
-                    <span>{{trans('broker.all_offers')}}</span></li>
-                <li class="button h-3 is-outlined is-info is-size-875"><span>{{trans('broker.active_offers')}}</span>
+                <li :class="{'is-active':showTab.all}"
+                    @click="toggleTab('all')"
+                    class="button h-3 is-outlined is-info is-size-875">
+                    <span>{{trans('broker.all_offers')}}</span>
                 </li>
-                <li class="button h-3 is-outlined is-info is-size-875"><span>{{trans('broker.new_offers')}}</span></li>
-                <li class="button h-3 is-outlined is-info is-size-875"><span>{{trans('broker.favorites_offers')}}</span>
+                <li :class="{'is-active':showTab.active}"
+                    @click="toggleTab('active')"
+                    class="button h-3 is-outlined is-info is-size-875">
+                    <span>{{trans('broker.active_offers')}}</span>
+                </li>
+                <li :class="{'is-active':showTab.new}"
+                    @click="toggleTab('new')"
+                    class="button h-3 is-outlined is-info is-size-875">
+                    <span>{{trans('broker.new_offers')}}</span>
+                </li>
+                <li :class="{'is-active':showTab.favorite}"
+                    @click="toggleTab('favorite')"
+                    class="button h-3 is-outlined is-info is-size-875">
+                    <span>{{trans('broker.favorites_offers')}}</span>
                 </li>
             </ul>
         </nav>
@@ -33,34 +46,26 @@
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="form.keyWords.selected"
-                                      :size="'is-3'"
-                                      :placeholder="form.keyWords.placeholder"
-                                      :label="form.keyWords.title"
-                                      :searchable="true"
-                                      :options="formOptions.keyWords.options"
-                                      :multiple="true"
-                                      :add-class="'multiselect_multiple'"
-                                      :close-on-select="false"
-                    >
-                    </g-g-select-input>
-                    <g-g-select-input v-model="form.languages.selected"
-                                      :size="'is-3'"
-                                      :placeholder="form.languages.placeholder"
-                                      :label="form.languages.title"
-                                      :searchable="true"
-                                      :options="formOptions.languages.options"
-                                      :multiple="true"
-                                      :add-class="'multiselect_multiple'"
-                                      :close-on-select="false"
-                    >
-                    </g-g-select-input>
+                    <g-g-input v-model="keyWords"
+                               :label="form.keyWords.title"
+                               :placeholder="form.keyWords.placeholder">
+                    </g-g-input>
                     <g-g-select-input v-model="form.category.selected"
                                       :size="'is-3'"
                                       :placeholder="form.category.placeholder"
                                       :label="form.category.title"
                                       :searchable="true"
                                       :options="formOptions.category.options"
+                                      :multiple="true"
+                                      :add-class="'multiselect_multiple'"
+                                      :close-on-select="false"
+                    >
+                    </g-g-select-input><g-g-select-input v-model="form.languages.selected"
+                                      :size="'is-3'"
+                                      :placeholder="form.languages.placeholder"
+                                      :label="form.languages.title"
+                                      :searchable="true"
+                                      :options="formOptions.languages.options"
                                       :multiple="true"
                                       :add-class="'multiselect_multiple'"
                                       :close-on-select="false"
@@ -81,7 +86,7 @@
             </div>
             <div class="column is-narrow">
                 <div class="is-flex has-align-items-end h-full">
-                    <button class="button is-info is-size-875 has-text-weight-bold h-3 px-1">Найти оффер</button>
+                    <button @click="fetchCampaigns" class="button is-info is-size-875 has-text-weight-bold h-3 px-1">Найти оффер</button>
                 </div>
             </div>
 
@@ -128,41 +133,25 @@
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
-                <tr>
-                    <td><span class="icon icon-1 icon-favorite">
-                           <img src="/svg/icons/ic_favorites-2.svg" class="svg" alt="">
+                <tr v-for="offer in offers">
+                    <td><span @click="bookmark(offer)" :class="{'is-active':offer.bookmark}" class="icon icon-1 icon-favorite">
+                           <img :src="(offer.bookmark)?'/svg/icons/ic_favorites-3.svg':'/svg/icons/ic_favorites-2.svg'" class="svg" alt="">
                         </span></td>
-                    <td>1</td>
+                    <td>{{offer.id}}</td>
                     <td class="has-vertical-align-middle">
-                        <router-link :to="{ path: '/broker/web-offer/'+2}">
-                        <a href="#" class="name-offer">
-                            <figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt=""></figure>
-                            <span>Банк Хоум Кредит: Дебетовая карта Польза - Активация</span>
-                        </a>
+                        <router-link :to="{ path: '/broker/web-offer/'+ offer.id}">
+                            <a href="#" class="name-offer">
+                                <!--<figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt="">-->
+                                <!--</figure>-->
+                                <span>{{offer.name.ru}}</span>
+                            </a>
                         </router-link>
                     </td>
-                    <td>1.69 - 2.99</td>
-                    <td>1.69 - 2.99</td>
-                    <td>30</td>
-                    <td>5</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td><span class="icon icon-1 icon-favorite is-active">
-                           <img src="/svg/icons/ic_favorites-2.svg" class="svg" alt="">
-                        </span></td>
-                    <td>2</td>
-                    <td class="has-vertical-align-middle">
-                        <a href="#" class="name-offer">
-                            <figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt=""></figure>
-                            <span>Автоломбард Капитал: Заявка (МСК,МО)</span>
-                        </a>
-                    </td>
-                    <td>1.69 - 2.99</td>
-                    <td>1.69 - 2.99</td>
-                    <td>30</td>
-                    <td>5</td>
-                    <td>3</td>
+                    <td>{{offer.cpl}}</td>
+                    <td>{{offer.cps}}</td>
+                    <td>{{offer.approve_days}}</td>
+                    <td>{{offer.pay_days}}</td>
+                    <td>{{offer.clt_days}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -174,17 +163,28 @@
 
 <script>
     import GGSelectInput from '../../form/GGSelectInput';
+    import GGInput from '../../form/GGInput';
 
     export default {
         name: "BrokerWebOffers",
         components: {
-            GGSelectInput
+            GGSelectInput,
+            GGInput
         },
         data() {
             return {
+                offers: [],
+                keyWords:'',
+                category:null,
+                showTab:{
+                    all:true,
+                    active:false,
+                    new:false,
+                    favorite:false,
+                },
+                categories:[],
                 form: {
                     keyWords: {
-                        selected: null,
                         title: 'Ключевые слова',
                         placeholder: 'Выберите',
                     },
@@ -240,6 +240,38 @@
                 }
             }
         },
+        methods: {
+            fetchCampaigns() {
+                let vm = this;
+                let tab = (_.invert(vm.showTab))[true];
+
+                axios.post('/offer-all', {
+                    tab: tab,
+                    query:this.keyWords
+                }).then(responce => {
+                    vm.offers = responce.data;
+                });
+
+            },
+            bookmark(campaign){
+                axios.post('/offer-bookmark', {
+                    campaign_id: campaign.id
+                }).then(responce => {
+                    campaign.bookmark = responce.data.bookmark;
+                });
+            },
+            toggleTab(tab) {
+                for (let el in this.showTab) {
+                    this.showTab[el] = false;
+                }
+                this.showTab[tab] = true
+                this.fetchCampaigns();
+            }
+
+        },
+        mounted() {
+            this.fetchCampaigns();
+        }
     }
 </script>
 

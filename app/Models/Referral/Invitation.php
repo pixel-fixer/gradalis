@@ -8,10 +8,13 @@ class Invitation extends Model
 {
     protected $table = 'invitations';
     public $timestamps = true;
-    protected $fillable = array('partner_id', 'campaign_id','campaign_resource_id','token','status');
+    protected $fillable = array('partner_id','sub_account', 'campaign_id','campaign_resource_id','token','status');
 
     public function campaign(){
         return $this->belongsTo('App\Models\Referral\Campaign');
+    }
+    public function resource(){
+        return $this->belongsTo('App\Models\Referral\CampaignResource','campaign_resource_id' ,'id');
     }
     public function counters(){
         return $this->hasMany('App\Models\Referral\InvitationCounter');
@@ -24,6 +27,9 @@ class Invitation extends Model
         return $this->belongsTo('App\Models\Referral\Partner');
     }
 
+    protected $casts = [
+        'sub_account' => 'array',
+    ];
     /**
      * Генерируем токен для партнера
      *

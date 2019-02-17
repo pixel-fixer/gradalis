@@ -62,7 +62,7 @@ return [
             'title'       => 'Количество долей или акций',
             'placeholder' => 75
         ],
-        'description'       => [
+        'description'               => [
             'title'       => 'Описание бизнеса',
             'placeholder' => 'Опишите продаваемый бизнес'
         ],
@@ -97,11 +97,11 @@ return [
         ],
         //endregion
         //region Step 2
-        'price'               => [
+        'price'                     => [
             'title'       => 'Цена долей или акций',
             'placeholder' => 100000
         ],
-        'profitability'    => [
+        'profitability'             => [
             'title'       => 'Чистая средняя годовая прибыль',
             'placeholder' => 1000000
         ],
@@ -109,7 +109,7 @@ return [
             'title'       => 'Чистая средняя квартальная прибыль',
             'placeholder' => 50000
         ],
-        'revenue'     => [
+        'revenue'                   => [
             'title'       => 'Средний годовой оборот',
             'placeholder' => 10000000
         ],
@@ -125,13 +125,101 @@ return [
             'title'       => 'Затраты на коммерческую деятельность в квартал',
             'placeholder' => 100000
         ],
-        'payback'          => [
+        'payback'                   => [
             'title'       => 'Позитивный сценарий',
             'placeholder' => 12
         ],
         'negativeScenario'          => [
             'title'       => 'Негативный сценарий',
             'placeholder' => 36
+        ],
+        //endregion
+        //region Step 3
+        'categoryProperty'          => [
+            'title'       => 'Тип собственности объекта',
+            'placeholder' => 'Выберите',
+            'options'     => [
+                ['id' => 1, 'name' => 'Собственность'],
+                ['id' => 2, 'name' => 'Долевая собственность'],
+                ['id' => 3, 'name' => 'Совместное владение супружеской собственностью'],
+            ]
+        ],
+        'typeProperty'              => [
+            'title'       => 'Тип собственности объекта',
+            'placeholder' => 'Выберите',
+            'options'     => [
+                ['id' => 1, 'name' => 'Недвижимость/землья общего назначения  '],
+                ['id' => 2, 'name' => 'Недвижимость сельско-хозяйского назначения'],
+                ['id' => 3, 'name' => 'Недвижимость со зданиямии'],
+                ['id' => 4, 'name' => 'Отдельная коммерческая собственная квартира/помещение'],
+                ['id' => 5, 'name' => 'Отдельнoe собственнoe жилье/квартира'],
+                ['id' => 6, 'name' => 'Отдельнoe собственнoe коммерческое помещение'],
+                ['id' => 7, 'name' => 'Отдельнoe собственнoe жилое помещение'],
+            ]
+        ],
+        'numberSquareMeters'        => [
+            'title'       => 'Количество кв. метров',
+            'placeholder' => 12,
+            'prevText'     => 'кв.м.',
+        ],
+        'priceSquareMeters'        => [
+            'title'       => 'Цена за кв. метр',
+            'placeholder' => 1000,
+        ],
+        'priceIncludingVAT'        => [
+            'title'       => 'Цена с учетом НДС',
+        ],
+        'titleDocuments' => [
+            'title'       => 'Правоустанавливающие документы',
+        ],
+        'restrictionsOperation' => [
+            'title'       => 'Огрничения по эксплуатции',
+        ],
+        'listRestrictionsOperation' => [
+            'title'       => 'Укажите ограничения',
+            'placeholder' => 'Выберите',
+            'options'     => [
+                ['id' => 1, 'name' => 'Ипотека'],
+                ['id' => 2, 'name' => 'Залог на речиях находящих в помещении'],
+                ['id' => 3, 'name' => 'Ограниченное право собственности - сервитут прохода и транзита определённых лиц'],
+                ['id' => 4, 'name' => 'Ограниченное право собственности'],
+                ['id' => 5, 'name' => 'Ограниченное право собственности - сервитут передачи'],
+                ['id' => 6, 'name' => 'Ограниченное право собственности - сервитут пожизненной квартиры'],
+                ['id' => 7, 'name' => 'Долгосрочный прокат (аренда)'],
+                ['id' => 8, 'name' => 'Аренда'],
+            ]
+        ],
+        'refRegisterEstate'        => [
+            'title'       => 'Справка из регистра недв. и зданий',
+        ],
+        'technicalPropertyPlan' => [
+            'title'       => 'Технический план недвижимости',
+        ],
+        'coordinationRedevelopment' => [
+            'title'       => 'Согласование перепланировок',
+        ],
+        'availabilityMortgage' => [
+            'title'       => 'Наличие ипотеки по объекту',
+        ],
+        'totalAmountMortgage'        => [
+            'title'       => 'Общая сумма ипотеки',
+            'placeholder' => 1000,
+        ],
+        'repaidAmountMortgage'        => [
+            'title'       => 'Погашенная сумма',
+            'placeholder' => 1000,
+        ],
+        'balanceMortgage'        => [
+            'title'       => 'Остаток суммы ипотеки',
+            'placeholder' => 1000,
+        ],
+        'monthlyPaymentMortgage'        => [
+            'title'       => 'Ежемесячный платёж',
+            'placeholder' => 1000,
+        ],
+        'finalPaymentMortgageDate'        => [
+            'title'       => 'Окончательный срок выплаты',
+            'placeholder' => '25.02.2020',
         ],
         //endregion
     ],

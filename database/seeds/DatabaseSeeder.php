@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'conditions',
             'partners',
             'campaign_condition',
+            'campaign_targets',
             'invitations',
             'invitation_counter',
             'services',
@@ -49,6 +50,7 @@ class DatabaseSeeder extends Seeder
             'payment_transactions',
             'view_requests'
         ]);
+
 
         Schema::enableForeignKeyConstraints();
 

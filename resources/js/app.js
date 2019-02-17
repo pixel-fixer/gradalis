@@ -11,6 +11,7 @@ import store from './store'
 import lodash from 'lodash';
 
 window.Vue = Vue;
+
 window.trans = (string) => _.get(window.i18n, string);
 window.lang = document.documentElement.lang;
 Vue.prototype.trans = (string, args) => {
@@ -22,11 +23,11 @@ Vue.prototype.trans = (string, args) => {
     return value;
 };
 
-Vue.use(VueSweetalert2)
-Vue.use(VTooltip)
-Vue.use(PortalVue)
-Vue.use(Vuebar)
-Vue.use(Vuelidate)
+Vue.use(VueSweetalert2);
+Vue.use(VTooltip);
+Vue.use(PortalVue);
+Vue.use(Vuebar);
+Vue.use(Vuelidate);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('business-list', require('./components/business/List.vue').default);

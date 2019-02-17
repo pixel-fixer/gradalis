@@ -1,15 +1,10 @@
 <template>
     <div :class="size" class="column">
-        <div class="field">
-            <label class="label label_req"><span>{{label}}</span></label>
-            <div class="control is-size-875">
-                <label class="radio h3" v-for="(item, index) in list">
-                    <input type="radio"
-                           :name="name"
-                           :value="item.value"
-                           v-model="inputValue"
-                           @click="inputChange">
-                    <span>{{item.title}}</span>
+        <div class="field mt-2-5">
+            <div class="control">
+                <label class="checkbox is-info is-size-875 h3">
+                    <input type="checkbox" v-model="inputValue" @change="inputChange">
+                    <span>{{label}}</span>
                 </label>
             </div>
         </div>
@@ -19,15 +14,11 @@
 <script>
 
     export default {
-        name: "GGRadioInput",
+        name: "GGCheckBoxInput",
         props: {
-            list: null,
-            name: '',
             size: {default: 'is-6'},
             value: {default: null},
-
             label: '',
-            placeholder: {default: 'Поиск'}
         },
         data() {
             return {

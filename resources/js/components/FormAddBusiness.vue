@@ -79,9 +79,9 @@
                                :placeholder="trans('business.create.nameLegalEntity.placeholder')"></g-g-input>
                     <g-g-input :size="'is-6'" v-model="business.name" :label="trans('business.create.name.title')"
                                :placeholder="trans('business.create.name.placeholder')"></g-g-input>
-                    <g-g-radio-input v-model="business.options.partBusiness.value"
+                    <g-g-radio-input v-model="business.options.partBusiness"
                                      :label="trans('business.create.partBusiness.title')"
-                                     :list="business.options.partBusiness.list"></g-g-radio-input>
+                                     :list="trans('business.create.partBusiness.list')"></g-g-radio-input>
 
                     <g-g-input :type="'number'" :prevText="'%'" :size="'is-6'"
                                v-model="business.options.numberShares"
@@ -261,79 +261,88 @@
                     <div class="column is-12">
                         <div class="add-business__objects-list">
                             <div class="add-business__objects-item px-1-5"
-                                 v-for="(object, index) in steps[3].form.objects">
+                                 v-for="(object, index) in business.options.objects">
                                 <h3 class="mb-1">Объект №{{index + 1}}</h3>
                                 <div class="columns is-multiline list-wrap">
-                                    <g-g-select-input v-model="object.categoryProperty.selected" :size="'is-6'"
-                                                      :placeholder="object.categoryProperty.placeholder"
-                                                      :label="object.categoryProperty.title" :searchable="true"
-                                                      :options="object.categoryProperty.options"></g-g-select-input>
-                                    <g-g-select-input v-model="object.typeProperty.selected" :size="'is-6'"
-                                                      :placeholder="object.typeProperty.placeholder"
-                                                      :label="object.typeProperty.title" :searchable="true"
-                                                      :options="object.typeProperty.options"></g-g-select-input>
+                                    <g-g-select-input v-model="object.categoryProperty" :size="'is-6'"
+                                                      :placeholder="trans('business.create.categoryProperty.placeholder')"
+                                                      :label="trans('business.create.categoryProperty.title')"
+                                                      :options="trans('business.create.categoryProperty.options')">
+                                    </g-g-select-input>
+                                    <g-g-select-input v-model="object.typeProperty" :size="'is-6'"
+                                                      :placeholder="trans('business.create.typeProperty.placeholder')"
+                                                      :label="trans('business.create.typeProperty.title')" :searchable="true"
+                                                      :options="trans('business.create.typeProperty.options')"></g-g-select-input>
 
-                                    <g-g-input :type="'number'" :prevText="'кв.м.'" :size="'is-6'"
-                                               v-model="object.numberSquareMeters.value"
-                                               :label="object.numberSquareMeters.title"
-                                               :placeholder="object.numberSquareMeters.placeholder"></g-g-input>
+                                    <g-g-input :type="'number'"
+                                               :prevText="trans('business.create.numberSquareMeters.prevText')"
+                                               :size="'is-6'"
+                                               v-model="object.numberSquareMeters"
+                                               :label="trans('business.create.numberSquareMeters.title')"
+                                               :placeholder="trans('business.create.numberSquareMeters.placeholder')">
+                                    </g-g-input>
                                     <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.priceSquareMeters.value"
-                                               :label="object.priceSquareMeters.title"
-                                               :placeholder="object.priceSquareMeters.placeholder"></g-g-input>
-                                    <g-g-radio-input :size="'is-3'" v-model="object.priceIncludingVAT.value"
-                                                     :label="object.priceIncludingVAT.title"
-                                                     :list="{'value':object.priceIncludingVAT.value,'title':object.priceIncludingVAT.title}"></g-g-radio-input>
+                                               v-model="object.priceSquareMeters"
+                                               :label="trans('business.create.priceSquareMeters.title')"
+                                               :placeholder="trans('business.create.priceSquareMeters.placeholder')">
+                                    </g-g-input>
 
-                                    <g-g-select-input v-model="object.titleDocuments.selected"
-                                                      :placeholder="object.titleDocuments.placeholder"
-                                                      :label="object.titleDocuments.title" :searchable="true"
-                                                      :options="object.titleDocuments.options"></g-g-select-input>
-                                    <g-g-select-input v-model="object.restrictionsOperation.selected"
-                                                      :placeholder="object.restrictionsOperation.placeholder"
-                                                      :label="object.restrictionsOperation.title" :searchable="true"
-                                                      :options="object.restrictionsOperation.options"></g-g-select-input>
-                                    <g-g-select-input v-model="object.listRestrictionsOperation.selected" :size="'is-6'"
-                                                      :placeholder="object.listRestrictionsOperation.placeholder"
-                                                      :label="object.listRestrictionsOperation.title" :searchable="true"
-                                                      :options="object.listRestrictionsOperation.options"></g-g-select-input>
+                                    <g-g-check-box-input :size="'is-3'" v-model="object.priceIncludingVAT"
+                                                     :label="trans('business.create.priceIncludingVAT.title')">
+                                    </g-g-check-box-input>
 
-                                    <g-g-select-input v-model="object.refRegisterEstate.selected"
-                                                      :placeholder="object.refRegisterEstate.placeholder"
-                                                      :label="object.refRegisterEstate.title" :searchable="true"
-                                                      :options="object.refRegisterEstate.options"></g-g-select-input>
-                                    <g-g-select-input v-model="object.technicalPropertyPlan.selected"
-                                                      :placeholder="object.technicalPropertyPlan.placeholder"
-                                                      :label="object.technicalPropertyPlan.title" :searchable="true"
-                                                      :options="object.technicalPropertyPlan.options"></g-g-select-input>
-                                    <g-g-select-input v-model="object.coordinationRedevelopment.selected" :size="'is-6'"
-                                                      :placeholder="object.coordinationRedevelopment.placeholder"
-                                                      :label="object.coordinationRedevelopment.title" :searchable="true"
-                                                      :options="object.coordinationRedevelopment.options"></g-g-select-input>
+                                    <g-g-check-box-input :size="'is-3'" v-model="object.titleDocuments"
+                                                         :label="trans('business.create.titleDocuments.title')">
+                                    </g-g-check-box-input>
+                                    <g-g-check-box-input :size="'is-3'" v-model="object.restrictionsOperation"
+                                                         :label="trans('business.create.restrictionsOperation.title')">
+                                    </g-g-check-box-input>
 
-                                    <g-g-select-input v-model="object.availabilityMortgage.selected" :size="'is-6'"
-                                                      :placeholder="object.availabilityMortgage.placeholder"
-                                                      :label="object.availabilityMortgage.title" :searchable="true"
-                                                      :options="object.availabilityMortgage.options"></g-g-select-input>
+                                    <g-g-select-input :size="'is-6'" v-model="object.listRestrictionsOperation"
+                                                      :multiple="true"
+                                                      :placeholder="trans('business.create.listRestrictionsOperation.placeholder')"
+                                                      :label="trans('business.create.listRestrictionsOperation.title')"
+                                                      :options="trans('business.create.listRestrictionsOperation.options')"></g-g-select-input>
+
+                                    <g-g-check-box-input :size="'is-3'" v-model="object.refRegisterEstate"
+                                                         :label="trans('business.create.refRegisterEstate.title')">
+                                    </g-g-check-box-input>
+                                    <g-g-check-box-input :size="'is-3'" v-model="object.technicalPropertyPlan"
+                                                         :label="trans('business.create.technicalPropertyPlan.title')">
+                                    </g-g-check-box-input>
+                                    <g-g-check-box-input :size="'is-6'" v-model="object.coordinationRedevelopment"
+                                                         :label="trans('business.create.coordinationRedevelopment.title')">
+                                    </g-g-check-box-input>
+
+                                    <g-g-check-box-input :size="'is-6'" v-model="object.availabilityMortgage"
+                                                         :label="trans('business.create.availabilityMortgage.title')">
+                                    </g-g-check-box-input>
+
                                     <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.totalAmountMortgage.value"
-                                               :label="object.totalAmountMortgage.title"
-                                               :placeholder="object.totalAmountMortgage.placeholder"></g-g-input>
+                                               v-model="object.totalAmountMortgage"
+                                               :label="trans('business.create.availabilityMortgage.title')"
+                                               :placeholder="trans('business.create.availabilityMortgage.placeholder')">
+                                    </g-g-input>
                                     <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.repaidAmountMortgage.value"
-                                               :label="object.repaidAmountMortgage.title"
-                                               :placeholder="object.repaidAmountMortgage.placeholder"></g-g-input>
+                                               v-model="object.repaidAmountMortgage"
+                                               :label="trans('business.create.repaidAmountMortgage.title')"
+                                               :placeholder="trans('business.create.repaidAmountMortgage.placeholder')">
+                                    </g-g-input>
 
-                                    <g-g-input :type="'number'" :prevText="'zt'" v-model="object.balanceMortgage.value"
-                                               :label="object.balanceMortgage.title"
-                                               :placeholder="object.balanceMortgage.placeholder"></g-g-input>
                                     <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.monthlyPaymentMortgage.value"
-                                               :label="object.monthlyPaymentMortgage.title"
-                                               :placeholder="object.monthlyPaymentMortgage.placeholder"></g-g-input>
-                                    <g-g-date-input v-model="object.finalPaymentMortgageDate.value"
-                                                    :label="object.finalPaymentMortgageDate.title"
-                                                    :placeholder="object.finalPaymentMortgageDate.placeholder"></g-g-date-input>
+                                               v-model="object.balanceMortgage"
+                                               :label="trans('business.create.balanceMortgage.title')"
+                                               :placeholder="trans('business.create.balanceMortgage.placeholder')">
+                                    </g-g-input>
+                                    <g-g-input :type="'number'" :prevText="'zt'"
+                                               v-model="object.monthlyPaymentMortgage"
+                                               :label="trans('business.create.monthlyPaymentMortgage.title')"
+                                               :placeholder="trans('business.create.monthlyPaymentMortgage.placeholder')">
+                                    </g-g-input>
+
+                                    <g-g-date-input v-model="object.finalPaymentMortgageDate"
+                                                    :label="trans('business.create.finalPaymentMortgageDate.title')"
+                                                    :placeholder="trans('business.create.finalPaymentMortgageDate.title')"></g-g-date-input>
 
                                     <g-g-select-input v-model="object.availabilityLoanSecuredObject.selected"
                                                       :size="'is-6'"
@@ -1101,6 +1110,7 @@
     import GGCategoryButton from './form/GGCategoryButton';
     import GGSocialInput from './form/GGSocialInput';
     import GGRadioInput from './form/GGRadioInput';
+    import GGCheckBoxInput from './form/GGCheckBoxInput';
     import GGDateInput from './form/GGDateInput';
     import GGFromToInput from './form/GGFromToInput';
     import GGInput from './form/GGInput';
@@ -1127,6 +1137,7 @@
             GGInput,
             GGDateInput,
             GGRadioInput,
+            GGCheckBoxInput,
             GGAddressInput,
             GGCertificatesInput,
             GGContragentsInput,
@@ -1135,9 +1146,10 @@
             GGLocationSelectInput,
             VStepper, Multiselect, vueSlider, flatPickr
         },
+        props:{id:{default:null}},
         data() {
             return {
-                model:null,
+                model: null,
                 business: {
                     category: null,
                     country_id: null,
@@ -1152,12 +1164,9 @@
                     images: [],
                     options: {
                         //region Step 1
-                        addresses: {},
+                        addresses: null,
                         nameLegalEntity: null,
-                        partBusiness: {
-                            value: 'part',
-                            list: trans('business.create.partBusiness.list')
-                        },
+                        partBusiness:  'part',
                         numberShares: null,
                         descriptionBusiness: null,
                         yearFoundationBusiness: null,
@@ -1173,7 +1182,141 @@
                         negativeScenario: null,
                         //endregion
                         //region Step 3
+                        objects:[{
+                            categoryProperty:null,
+                            typeProperty: null,
+                            numberSquareMeters: null,
+                            priceSquareMeters: null,
+                            priceIncludingVAT: null,
+                            titleDocuments: null,
+                            restrictionsOperation: null,
+                            listRestrictionsOperation: null,
+                            refRegisterEstate: null,
+                            technicalPropertyPlan: null,
+                            coordinationRedevelopment: null,
+                            availabilityMortgage: null,
+                            totalAmountMortgage: null,
+                            repaidAmountMortgage: null,
+                            balanceMortgage: null,
+                            monthlyPaymentMortgage: null,
+                            finalPaymentMortgageDate: null,
+                            availabilityLoanSecuredObject: {
+                                selected: null,
+                                title: 'Наличие кредита под залог объекта',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: trans('business.create.theme.options'),
+                            },
+                            totalAmountCredit: {
+                                title: 'Общая сумма кредита',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            repaidAmountCredit: {
+                                title: 'Погашенная сумма',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            balanceCredit: {
+                                title: 'Остаток суммы кредита',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            monthlyPaymentCredit: {
+                                title: 'Ежемесячный платёж',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            finalPaymentCreditDate: {
+                                title: 'Окончательный срок выплаты',
+                                placeholder: '25.02.2020',
+                                value: '',
+                                config: {
+                                    altFormat: 'd.m.Y',
+                                    altInput: true,
+                                    dateFormat: 'Y-m-d'
+                                },
+                                tooltip: 'tooltip text',
+                            },
+                            purposeCredit: {
+                                selected: null,
+                                title: 'Назначение кредита',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: trans('business.create.theme.options'),
+                            },
+                            jointPropertyEstate: {
+                                selected: null,
+                                title: 'Совместная собственность недвижимости',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: trans('business.create.theme.options'),
+                            },
+                            typeRelationshipCoowners: {
+                                selected: null,
+                                title: 'Тип взаимоотношений сообственников',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: trans('business.create.theme.options'),
+                            },
+                            monthlyUtilityCosts: {
+                                title: 'Ежемесячные расходы на комуннальные платежи',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            houseBookNumber: {
+                                title: 'Номер домовой книги',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                            },
 
+                            presenceChanging: {
+                                selected: null,
+                                title: 'Наличие чейнджа',
+                                placeholder: 'Выберите',
+                                selectedLabel: '',
+                                selectLabel: '',
+                                deselectLabel: '',
+                                options: trans('business.create.theme.options'),
+                            },
+                            costChanging: {
+                                title: 'Стоимость чейнджа',
+                                placeholder: '1 000',
+                                value: '',
+                                tooltip: 'tooltip text',
+                                prevTxt: 'zł',
+                            },
+                            leaseTermTo: {
+                                title: 'Срок аренды до',
+                                placeholder: '25.02.2020',
+                                value: '',
+                                config: {
+                                    altFormat: 'd.m.Y',
+                                    altInput: true,
+                                    dateFormat: 'Y-m-d'
+                                },
+                                tooltip: 'tooltip text',
+                            },
+                        }]
                         //endregion
                     }
                 },
@@ -1209,24 +1352,6 @@
                         form: {
                             objects: [
                                 {
-                                    categoryProperty: {
-                                        selected: null,
-                                        title: 'Тип собственности объекта',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    typeProperty: {
-                                        selected: null,
-                                        title: 'Тип недвижимости',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
                                     numberSquareMeters: {
                                         title: 'Количество кв. метров',
                                         placeholder: '12',
@@ -2450,20 +2575,19 @@
             submit() {
                 console.log('submit!');
                 let vm = this;
-                if(vm.model){
-                    axios.put('/business/'+vm.model.id, {
+                if (vm.model) {
+                    axios.put('/business/' + vm.model.id, {
                         business: this.business
                     }).then(responce => {
-                        if(responce.data.status === 'ok'){
+                        if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
                         }
                     })
-                }
-                else {
+                } else {
                     axios.post('/business', {
                         business: this.business
                     }).then(responce => {
-                        if(responce.data.status === 'ok'){
+                        if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
                         }
                     })
@@ -2483,16 +2607,18 @@
 
                 this.steps[index].active = true;
             },
-            fetchBusiness(){
+            fetchBusiness() {
                 axios.get('/business-get-categories').then(responce => {
                     vm.categories = responce.data;
                 })
             }
         },
-        mounted(){
-          this.model = JSON.parse(this.$refs['business-form'].dataset.business)
-            if(this.model){
-                this.business = this.model;
+        mounted() {
+            if (this.id) {
+                axios.get('/business-get-by-id/'+this.id).then(responce => {
+                    this.business = {...this.business, ...responce.data.business};
+                    this.business.options = {...this.business.options, ...responce.data.options};
+                })
             }
         }
     }

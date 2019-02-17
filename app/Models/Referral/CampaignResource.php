@@ -76,4 +76,9 @@ class CampaignResource extends Model
         return $this->belongsTo('App\Models\Referral\Campaign');
     }
 
+    public function invitations()
+    {
+        return $this->hasMany('App\Models\Referral\Invitation');
+    }
+
 }

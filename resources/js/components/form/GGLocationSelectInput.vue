@@ -33,14 +33,16 @@
             allowempty: {default: false},
             size: {default: 'is-3'},
             type: {default: 'country'},
-            placeholder: {default: trans('strings.select_placeholder')},
+           placeholder: {default: trans('strings.select_placeholder')},
+           // placeholder: {default: 'asdasd'},
 
 
         },
         data() {
             return {
                 selectedValue: null,
-                selectedLabel: trans('strings.selected_label'),
+               selectedLabel: trans('strings.selected_label'),
+               //selectedLabel: 'asdasd',
                 selectLabel: '',
                 deselectLabel: '',
                 options: [],
@@ -99,8 +101,10 @@
                 handler(value) {
                     if (value === 'country') {
                         this.label = trans('strings.country');
+                        //this.label = 'asdasdas';
                     } else if (value === 'city') {
-                        this.label = trans('strings.city');
+                         this.label = trans('strings.city');
+                        //this.label = 'asdas';
                     }
                 }
             }

@@ -17,5 +17,8 @@ class Partner extends Model
     public function invitations(){
         return $this->hasMany('App\Models\Referral\Invitation');
     }
+    public function bookmarks(){
+        return $this->belongsToMany('App\Models\Referral\Campaign');
+    }
 
 }

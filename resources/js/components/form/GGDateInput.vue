@@ -35,14 +35,17 @@
             iconLeft: {default: '/svg/icons/ic_calendar.svg'},
             iconRight: {default: null},
             size: {default: 'is-6'},
-            value: '',
+            value: {default:null},
             label: '',
             config:{
                 default: function () {
                     return {
                         altFormat: 'd.m.Y',
                         altInput: true,
-                        dateFormat: 'Y-m-d'
+                        dateFormat: 'Y-m-d',
+                        onChange: function(selectedDates, dateStr, instance) {
+                           this.inputChange
+                        },
                     }
                 }
             },

@@ -22,76 +22,82 @@
 
         <nav class="broker-pa__offers-nav mb-2">
             <ul class="buttons has-addons">
-                <li :class="{'is-active':showTab.details}" class="button h-3 is-outlined is-info is-size-875 px-1" @click="toggleTab('details')">Сводная</li>
-                <li :class="{'is-active':showTab.payments}" class="button h-3 is-outlined is-info is-size-875 px-1" @click="toggleTab('payments')">Выплаты</li>
-                <li :class="{'is-active':showTab.condition}" class="button h-3 is-outlined is-info is-size-875 px-1" @click="toggleTab('condition')">Условия</li>
-                <li :class="{'is-active':showTab.instruments}" class="button h-3 is-outlined is-info is-size-875 px-1" @click="toggleTab('instruments')">Инструменты</li>
-                <li :class="{'is-active':showTab.instructions}" class="button h-3 is-outlined is-info is-size-875 px-1" @click="toggleTab('instructions')">Инструкции</li>
+                <li :class="{'is-active':showTab.details}" class="button h-3 is-outlined is-info is-size-875 px-1"
+                    @click="toggleTab('details')">Сводная
+                </li>
+                <li :class="{'is-active':showTab.payments}" class="button h-3 is-outlined is-info is-size-875 px-1"
+                    @click="toggleTab('payments')">Выплаты
+                </li>
+                <li :class="{'is-active':showTab.condition}" class="button h-3 is-outlined is-info is-size-875 px-1"
+                    @click="toggleTab('condition')">Условия
+                </li>
+                <li :class="{'is-active':showTab.instruments}" class="button h-3 is-outlined is-info is-size-875 px-1"
+                    @click="toggleTab('instruments')">Инструменты
+                </li>
+                <li :class="{'is-active':showTab.instructions}" class="button h-3 is-outlined is-info is-size-875 px-1"
+                    @click="toggleTab('instructions')">Инструкции
+                </li>
             </ul>
         </nav>
 
         <!--details-->
         <section class="section is-paddingless content" v-if="showTab.details">
             <div class="box broker-pa__details">
-            <div class="columns is-multiline">
-            <div class="column is-3">
-                <figure class="broker-pa__details__thumb">
-                    <img src="https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto" alt="">
-                </figure>
-                <button class="button is-info h-3 is-size-875 is-fullwidth has-text-weight-bold mb-1"
-                        @click="showModal('modal-create-offer-link')">
+                <div class="columns is-multiline">
+                    <div class="column is-3">
+                        <figure class="broker-pa__details__thumb">
+                            <img src="https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto" alt="">
+                        </figure>
+                        <button class="button is-info h-3 is-size-875 is-fullwidth has-text-weight-bold mb-1"
+                                @click="showModal(offer.resources[0].id)">
                             <span class="icon">
                                  <img src="/svg/icons/ic_connect_offer.svg" alt="" class="svg">
                             </span>
-                    <span>Подключить оффер</span>
-                </button>
-                <div class="has-text-grey-light is-size-875 broker-pa__details__add-offer-desc">
-                    <i>Кликните, что бы получить доступ к инструментам</i>
-                </div>
-
-                <!-- Modal -->
-                <broker-offers-modal-create-link></broker-offers-modal-create-link>
-
-            </div>
-            <div class="column is-9">
-                <h3>Основная информация</h3>
-                <div class="broker-pa__details__main-info is-size-875">
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Статус</span>
-                        <span>{{offer.status}}</span>
+                            <span>Подключить оффер</span>
+                        </button>
+                        <div class="has-text-grey-light is-size-875 broker-pa__details__add-offer-desc">
+                            <i>Кликните, что бы получить доступ к инструментам</i>
+                        </div>
                     </div>
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Сайт</span>
-                        <span>
+                    <div class="column is-9">
+                        <h3>Основная информация</h3>
+                        <div class="broker-pa__details__main-info is-size-875">
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Статус</span>
+                                <span>{{offer.status}}</span>
+                            </div>
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Сайт</span>
+                                <span>
                                    <a href="#" class="link-with-icon">
-                                       <img src="http://marketplacenew.local/svg/icons/ic_details.svg">
+                                       <img src="/svg/icons/ic_details.svg">
                                        <span class="has-text-decoration-underline">{{offer.site}}</span></a>
                                 </span>
-                    </div>
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Время одобрения (в днях):</span>
-                        <span>{{offer.approve_days}}</span>
-                    </div>
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Время оплаты (в днях):</span>
-                        <span>{{offer.pay_days}}</span>
-                    </div>
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Cookie LTV (дней):</span>
-                        <span>{{offer.clt_days}}</span>
-                    </div>
-                    <div class="broker-pa__details__main-info__item">
-                        <span>Страна офиса:</span>
-                        <span>{{offer.country.translation.ru}}</span>
+                            </div>
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Время одобрения (в днях):</span>
+                                <span>{{offer.approve_days}}</span>
+                            </div>
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Время оплаты (в днях):</span>
+                                <span>{{offer.pay_days}}</span>
+                            </div>
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Cookie LTV (дней):</span>
+                                <span>{{offer.clt_days}}</span>
+                            </div>
+                            <div class="broker-pa__details__main-info__item">
+                                <span>Страна офиса:</span>
+                                <span>{{offer.country.translation.ru}}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3>Описание оффера</h3>
+                        <p>
+                            {{offer.description.ru}}
+                        </p>
                     </div>
                 </div>
-                <hr>
-                <h3>Описание оффера</h3>
-                <p>
-                    {{offer.description.ru}}
-                </p>
-            </div>
-        </div>
             </div>
         </section>
         <!--condition-->
@@ -113,7 +119,9 @@
                            <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                         </span>
                     </td>
-                    <td class="has-text-basic"><span class="icon"><img :src="(condition.pivot.status)?'/svg/icons/ic_unlocked.svg':'/svg/icons/ic_locked.svg'" class="svg" alt=""></span></td>
+                    <td class="has-text-basic"><span class="icon"><img
+                        :src="(condition.pivot.status)?'/svg/icons/ic_unlocked.svg':'/svg/icons/ic_locked.svg'"
+                        class="svg" alt=""></span></td>
                     <td class="has-text-basic">{{(condition.description)?condition.description.ru:''}}</td>
                 </tr>
                 </tbody>
@@ -132,7 +140,8 @@
                 <p>
                     Большая часть сделок по готовому бизнесу — это продажа недорогих предприятий. Их стоимость сильно
                     зависит от
-                    показателей прибыльности, также на нее влияет размер и цена прилагаемых активов. Как правило, работающий
+                    показателей прибыльности, также на нее влияет размер и цена прилагаемых активов. Как правило,
+                    работающий
                     бизнес можно приобрести даже за 250'000 — 300'000 рублей.
                 </p>
                 <p>
@@ -157,16 +166,18 @@
                 <div class="filter-table-offers-links__type is-flex">
                     <div class="filter-table-offers-links__type__title">Категории:</div>
                     <ul>
-                        <li><span class="is-active">Все</span></li>
-                        <li><span>Лендинг</span></li>
-                        <li><span>Баннеры</span></li>
+                        <li><span @click="category = 'all'" :class="{'is-active':(category == 'all')}">Все</span></li>
+                        <li><span @click="category = 'Лендинг'" :class="{'is-active':(category == 'Лендинг')}">Лендинг</span></li>
+                        <li><span @click="category = 'Баннер'" :class="{'is-active':(category == 'Баннер')}">Баннер</span></li>
                     </ul>
                 </div>
                 <div class="filter-table-offers-links__type is-flex">
                     <div class="filter-table-offers-links__type__title">Тип:</div>
                     <ul>
-                        <li><span class="is-active">Все</span></li>
-                        <li><span>Стандартные</span></li>
+                        <li><span @click="type = 'all'" :class="{'is-active':(type == 'all')}">Все</span></li>
+                        <li><span @click="type = 'Стандартный'" :class="{'is-active':(type == 'Стандартный')}">Стандартный</span></li>
+                        <li><span @click="type = 'Флэш'" :class="{'is-active':(type == 'Флэш')}">Флэш</span></li>
+                        <li><span @click="type = 'Изображение'" :class="{'is-active':(type == 'Изображение')}">Изображение</span></li>
                     </ul>
                 </div>
             </div>
@@ -187,7 +198,7 @@
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
-                <tr v-for="resource in offer.resources">
+                <tr v-for="resource in filteredItems">
                     <td>{{(resource.name)?resource.name.ru:'N/A'}}</td>
                     <td>{{resource.type}}</td>
                     <td>{{resource.resource_type}}</td>
@@ -195,11 +206,11 @@
                     <td>{{(resource.cr)?resource.cr:'N/A'}}</td>
                     <td>
                         <div class="is-flex">
-                            <a href="#" class="link-with-icon mr-1">
+                            <a :href="resource.url.ru" class="link-with-icon mr-1">
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">Перейти на сайт</span>
                             </a>
-                            <a href="#" class="link-with-icon">
+                            <a @click="showModal(resource.id)" class="link-with-icon">
                                 <img src="/svg/icons/ic_link.svg">
                                 <span class="has-text-decoration-underline">Сгенерировать ссылку</span>
                             </a>
@@ -251,18 +262,29 @@
                 </tbody>
             </table>
         </section>
+        <!-- Modal -->
+        <broker-offers-modal-create-link v-if="show" :nameId="nameId" v-model="modal" :offer="offer"></broker-offers-modal-create-link>
+
     </div>
 </template>
 
 <script>
+    import ModalCreateLink from "../offers/ModalCreateLink";
 
     export default {
         name: "WebOffer",
-        props: {id: {default: null}},
-        components: {},
+        props: {
+            id: {default: null},
+        },
+        components: {ModalCreateLink},
         data() {
             return {
-                loaded:false,
+                loaded: false,
+                modal: false,
+                show:false,
+                nameId:null,
+                category:'all',
+                type:'all',
                 showTab: {
                     details: true,
                     condition: false,
@@ -273,17 +295,34 @@
                 offer: {}
             }
         },
+        computed:{
+            filteredItems() {
+                return this.offer.resources.filter(resource => {
+                    if(this.category !== 'all') {
+                        return resource.type.toLowerCase().indexOf(this.category.toLowerCase()) > -1
+                    }
+                    if(this.type !== 'all'){
+                        return resource.resource_type.toLowerCase().indexOf(this.type.toLowerCase()) > -1
+                    }
+                    return true;
+                })
+            }
+        },
         methods: {
             fetchOffer(id) {
                 let vm = this;
                 axios.get('/offer-get/' + id).then(responce => {
-                    console.log(responce.data);
                     vm.offer = responce.data;
                     this.loaded = true;
                 })
             },
+            showModal(id) {
+                this.nameId = id;
+                this.modal = true;
+                this.show = true;
+            },
             toggleTab(tab) {
-                for(let el in this.showTab){
+                for (let el in this.showTab) {
                     this.showTab[el] = false;
                 }
                 this.showTab[tab] = true
