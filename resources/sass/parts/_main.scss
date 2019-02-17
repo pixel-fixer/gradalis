@@ -40,6 +40,10 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 
 .mb-1 {
     margin-bottom: 1rem !important;
@@ -81,6 +85,13 @@ body {
     margin-top: 0 !important;
 }
 
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
 .p-0 {
     padding: 0 !important;
 }

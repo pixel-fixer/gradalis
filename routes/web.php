@@ -130,6 +130,9 @@ Route::get('/broker/{vue_capture?}', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/vacancy', function () {
+    return view('vacancy.index');
+});
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
