@@ -26,16 +26,30 @@
     &__count-clients {
         color: $light-grayish-blue;
         font-weight: 900;
-        font-size: 12.5rem;
+        font-size: 5rem;
         line-height: 1em;
+        display: flex;
+        justify-content: center;
+        @media screen and (min-width: $desktop) {
+            font-size: 12.5rem;
+            justify-content: flex-start;
+        }
         &-desc {
-            font-size: 2rem;
-            line-height: 3rem;
+            font-size: 1.5rem;
+            line-height: normal;
             color: $very-dark-blue-2;
             font-weight: 200;
             display: flex;
             height: 100%;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            @media screen and (min-width: $desktop) {
+                font-size: 2rem;
+                line-height: 3rem;
+                justify-content: flex-start;
+                text-align: left;
+            }
         }
     }
 
@@ -46,7 +60,7 @@
         &__item {
             figure {
                 height: 16.375rem;
-                max-width: 16.375rem;
+                //max-width: 16.375rem;
                 width: 100%;
                 img {
                     border-radius: $radius;

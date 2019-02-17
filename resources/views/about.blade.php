@@ -5,9 +5,11 @@
     @include('includes.breadcrumb')
 
     <div class="about">
-        <div class="container pt-1">
-            <h1 class="section-title">О компании</h1>
-        </div>
+        <section class="section pt-1 pb-0">
+            <div class="container">
+                <h1 class="section-title mb-0">О компании</h1>
+            </div>
+        </section>
         <section class="section pt-1">
             <div class="container">
                 <div class="columns is-multiline">
@@ -39,8 +41,8 @@
                         </span>
                         </div>
                     </div>
-                    <div class="column is-7"><span class="about__count-clients">49 508</span></div>
-                    <div class="column is-5">
+                    <div class="column is-7-desktop is-12-tablet"><span class="about__count-clients">49 508</span></div>
+                    <div class="column is-5-desktop is-12-tablet">
                     <span class="about__count-clients-desc">
                         клиентов поверили в наши возможности и силы
                     </span>
@@ -112,22 +114,26 @@
         <section class="section">
             <div class="container">
                 <div class="columns is-multiline">
-                    <div class="column is-4">
+                    <div class="column is-4 is-hidden-touch">
                         <img src="/img/about-2.jpg" alt="">
                     </div>
-                    <div class="column is-8">
+                    <div class="column is-8-desktop is-12-tablet">
                         <div class="content">
                             <h2 class="mb-2">Ценности и задачи</h2>
+                            <img src="/img/about-2.jpg" alt="" class="is-hidden-desktop mb-1 mr-1" align="left">
                             <p>
                                 «Участники модного рынка начали заблаговременно смотреть на возможности, а не просто
                                 фокусироваться на предстоящих вызовах», — говорится в исследовании. Авторы ожидают, что
-                                основной импульс роста будет поступать с рынков люксовых товаров, а также от развивающихся
+                                основной импульс роста будет поступать с рынков люксовых товаров, а также от
+                                развивающихся
                                 рынков в Азии.
                             </p>
                             <p>
-                                В отрасли возникнут опасливые настроения из-за ослабления ключевых экономических показателей
+                                В отрасли возникнут опасливые настроения из-за ослабления ключевых экономических
+                                показателей
                                 и других потенциально дестабилизирующих сил, ожидают в BoF и McKinsey. Не так давно
-                                появилась такая модная тенденция как стол-матрешка. Конечно, такие варианты были всегда, но
+                                появилась такая модная тенденция как стол-матрешка. Конечно, такие варианты были всегда,
+                                но
                                 в последнее время такие решения стали очень популярны не только в маленьких квартирах.
                             </p>
                         </div>
