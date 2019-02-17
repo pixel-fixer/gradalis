@@ -59,36 +59,13 @@
                             <div slot="body">
                                 <div class="content">
                                     <div class="columns is-multiline">
-                                        <div class="column is-12">
-                                            <div class="field">
-                                                <label
-                                                    class="label label_req"><span>{{formNewRequestView.object.title}}</span></label>
-                                                <div class="control">
-                                                    <multiselect
-                                                        v-model="formNewRequestView.object.selected"
-                                                        :deselect-label="''"
-                                                        track-by="name"
-                                                        label="name"
-                                                        openDirection="bottom"
-                                                        :placeholder="formNewRequestView.object.placeholder"
-                                                        :options="formsOptions.objects.options"
-                                                        :searchable="true"
-                                                        :allow-empty="false"
-                                                        :selectLabel="''"
-                                                        :selectedLabel="''">
-                                                        <template slot="singleLabel" slot-scope="props"><img
-                                                            class="option__image" :src="props.option.img">
-                                                            <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
-                                                        </template>
-                                                        <template slot="option" slot-scope="props">
-                                                            <img class="option__image" :src="props.option.img">
-                                                            <div class="option__desc"><span class="option__title">{{ props.option.name }}</span>
-                                                            </div>
-                                                        </template>
-                                                    </multiselect>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <g-g-select-input v-model="formNewRequestView.object.selected" :size="'is-12'"
+                                                          :placeholder="formNewRequestView.object.placeholder"
+                                                          :label="formNewRequestView.object.title" :searchable="true"
+                                                          :options="formsOptions.objects.options"
+                                                          :withImg="true">
+                                        </g-g-select-input>
+
 
                                         <g-g-date-input v-model="formNewRequestView.date.value"
                                                         :label="formNewRequestView.date.title"
@@ -401,17 +378,17 @@
 <script>
     import UploadDocuments from '../../UploadDocuments'
     import Modal from '../../Modal'
-    import Multiselect from 'vue-multiselect'
     import GGDateInput from '../../form/GGDateInput'
     import GGTextarea from '../../form/GGTextarea'
+    import GGSelectInput from '../../form/GGSelectInput';
 
     export default {
         components: {
             UploadDocuments,
             Modal,
-            Multiselect,
             GGDateInput,
             GGTextarea,
+            GGSelectInput
         },
         data: () => ({
             ui: {

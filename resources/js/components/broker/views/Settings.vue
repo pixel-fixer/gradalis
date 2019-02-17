@@ -193,34 +193,11 @@
                                             :required="true">
                           </g-g-select-input>
 
-                          <div class="column is-6">
-                              <div class="field">
-                                  <label
-                                      class="label label_req"><span>{{formPaymentAccount.typePayment.title}}</span></label>
-                                  <div class="control">
-                                      <multiselect
-                                          v-model="formPaymentAccount.typePayment.selected"
-                                          :deselect-label="''"
-                                          track-by="name"
-                                          label="name"
-                                          openDirection="bottom"
-                                          :placeholder="formPaymentAccount.typePayment.placeholder"
-                                          :options="formPaymentAccountOptions.typePayment.options"
-                                          :searchable="true"
-                                          :allow-empty="false"
-                                          :selectLabel="''"
-                                          :selectedLabel="''">
-                                          <template slot="singleLabel" slot-scope="props"><img class="option__image" :src="props.option.img">
-                                              <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
-                                          </template>
-                                          <template slot="option" slot-scope="props">
-                                              <img class="option__image" :src="props.option.img">
-                                              <div class="option__desc"><span class="option__title">{{ props.option.name }}</span></div>
-                                          </template>
-                                      </multiselect>
-                                  </div>
-                              </div>
-                          </div>
+                          <g-g-select-input v-model="formPaymentAccount.typePayment.selected" :size="'is-6'"
+                                            :placeholder="formPaymentAccount.typePayment.placeholder" :label="formPaymentAccount.typePayment.title"
+                                            :searchable="true" :options="formPaymentAccountOptions.typePayment.options"
+                                            :withImg="true" :required="true">
+                          </g-g-select-input>
 
                           <g-g-select-input v-model="formPaymentAccount.accountCurrency.selected"
                                             :size="'is-6'"

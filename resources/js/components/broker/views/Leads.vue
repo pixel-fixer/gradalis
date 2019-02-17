@@ -39,38 +39,11 @@
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <!--<g-g-select-input v-model="form.offer.selected" :size="'is-8'"-->
-                                      <!--:placeholder="form.offer.placeholder" :label="form.offer.title"-->
-                                      <!--:searchable="true" :options="formOptions.offer.options"></g-g-select-input>-->
-
-                    <div class="column is-8">
-                        <div class="field">
-                            <label
-                                class="label label_req"><span>{{form.offer.title}}</span></label>
-                            <div class="control">
-                                <multiselect
-                                    v-model="form.offer.selected"
-                                    :deselect-label="''"
-                                    track-by="name"
-                                    label="name"
-                                    openDirection="bottom"
-                                    :placeholder="form.offer.placeholder"
-                                    :options="formOptions.offer.options"
-                                    :searchable="true"
-                                    :allow-empty="false"
-                                    :selectLabel="''"
-                                    :selectedLabel="''">
-                                    <template slot="singleLabel" slot-scope="props"><img class="option__image" :src="props.option.img">
-                                        <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
-                                    </template>
-                                    <template slot="option" slot-scope="props">
-                                        <img class="option__image" :src="props.option.img">
-                                        <div class="option__desc"><span class="option__title">{{ props.option.name }}</span></div>
-                                    </template>
-                                </multiselect>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-select-input v-model="form.offer.selected" :size="'is-8'"
+                                      :placeholder="form.offer.placeholder" :label="form.offer.title"
+                                      :searchable="true" :options="formOptions.offer.options"
+                                      :withImg="true">
+                    </g-g-select-input>
 
                     <g-g-select-input v-model="form.sorting.selected" :size="'is-4'"
                                       :placeholder="form.sorting.placeholder" :label="form.sorting.title"
@@ -168,7 +141,6 @@
 </template>
 
 <script>
-    import Multiselect from 'vue-multiselect'
     import BarChart from '../BarChart.js';
     import LineChart from '../LineChart.js';
     import GGSelectInput from '../../form/GGSelectInput';
@@ -182,7 +154,7 @@
     export default {
         name: "BrokerLeads",
         components: {
-            Multiselect, BarChart, LineChart, GGSelectInput, flatPickr
+            BarChart, LineChart, GGSelectInput, flatPickr
         },
         data() {
             return {
