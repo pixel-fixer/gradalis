@@ -127,6 +127,10 @@ Route::get('/broker/{vue_capture?}', function () {
 });
 
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');
