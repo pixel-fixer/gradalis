@@ -18,7 +18,20 @@
                              :selectLabel="selectLabel"
                              :selectedLabel="selectedLabel">
                     <span slot="noResult">{{noResult}}</span>
-                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
+
+
+                    <template v-if="!withImg" slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
+
+                    <template slot="singleLabel" slot-scope="props" v-if="withImg">
+                        <img class="option__image" :src="props.option.img">
+                        <span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span>
+                    </template>
+                    <template slot="option" slot-scope="props" v-if="withImg">
+                        <img class="option__image" :src="props.option.img">
+                        <div class="option__desc"><span class="option__title">{{ props.option.name }}</span>
+                        </div>
+                    </template>
+
                 </multiselect>
             </div>
         </div>
@@ -44,6 +57,7 @@
             addClass: {default: ''},
             closeOnSelect: {default: true},
             required: {default: false},
+            withImg: {default: false},
         },
         data() {
             return {
