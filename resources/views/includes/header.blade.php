@@ -3,7 +3,7 @@
         <nav class="navbar header__line-top is-flex">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    <img src="{{ asset('/svg/logo.svg') }}" width="155" height="48"
+                    <img src="{{ asset('/svg/logo.svg') }}" width="245" height="48"
                          alt="{{ config('app.name', 'Laravel') }}">
                 </a>
             {{--<div class="navbar-item navbar-contacts is-hidden-mobile">--}}
