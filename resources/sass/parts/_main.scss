@@ -136,6 +136,10 @@ body {
     padding-top: 1rem !important;
 }
 
+.pb-1 {
+    padding-bottom: 1rem !important;
+}
+
 .py-1 {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
@@ -196,6 +200,9 @@ hr {
 
 .has-align-items-end {
     align-items: flex-end;
+}
+.has-align-items-center {
+    align-items: center;
 }
 
 .has-text-decoration-underline {

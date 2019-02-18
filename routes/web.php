@@ -103,6 +103,12 @@ Route::get('/vacancy', function () {
 Route::get('/vacancy/single', function () {
     return view('vacancy.show');
 });
+Route::get('/contacts', function () {
+    return view('contacts');
+});
+Route::get('/reviews', function () {
+    return view('reviews');
+});
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {

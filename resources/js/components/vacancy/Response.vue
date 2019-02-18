@@ -34,7 +34,7 @@
         <div class="content w-full" slot="footer">
             <div class="columns is-multiline">
                 <div class="column is-12">
-                    <button @click="sendResponse"
+                    <button @click="send"
                             class="button is-info is-fullwidth has-text-weight-bold h-3 is-size-875">
                         Откликнуться
                     </button>
@@ -107,8 +107,8 @@
             }
         },
         methods: {
-            sendResponse() {
-                console.log('sendResponse');
+            send() {
+                console.log('send Response');
             },
         }
     }

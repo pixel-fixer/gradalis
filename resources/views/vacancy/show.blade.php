@@ -89,6 +89,6 @@
         </div>
     </section>
 
-    <vacancy-responce v-model="vacancy.showResponseModal"></vacancy-responce>
+    <vacancy-response v-model="vacancy.showResponseModal"></vacancy-response>
 
 @endsection

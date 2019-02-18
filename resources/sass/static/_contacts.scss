@@ -1,0 +1,9 @@
+@import '../variables';
+
+.contacts {
+    &__item {
+        &__desc {
+            color: #6B87A4;
+        }
+    }
+}

@@ -37,8 +37,10 @@
 
             figure {
                 height: 2rem;
+                margin: 0;
             }
-            svg {
+            svg,
+            img {
                 width: 2rem;
                 height: 2rem;
                 margin-right: .5rem;
@@ -62,6 +64,7 @@
                 font-size: .875rem;
                 line-height: normal;
                 justify-content: center;
+                text-align: left;
             }
         }
     }
