@@ -124,6 +124,10 @@ p,
 /* Buttons */
 
 .button {
+    white-space: normal;
+    @media screen and (min-width: $tablet) {
+        white-space: nowrap;
+    }
 
     .icon {
         svg {

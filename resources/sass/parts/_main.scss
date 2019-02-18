@@ -29,6 +29,14 @@ body {
             animation: spinAround 500ms infinite linear;
         }
     }
+
+    &.h-3 {
+        height: auto;
+        min-height: 3rem;
+        @media screen and (min-width: $tablet) {
+            height: 3rem;
+        }
+    }
 }
 
 .my-0 {
@@ -40,6 +48,7 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 .mx-0 {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -92,6 +101,7 @@ body {
 .mr-0 {
     margin-right: 0 !important;
 }
+
 .p-0 {
     padding: 0 !important;
 }
@@ -115,6 +125,11 @@ body {
 .px-0 {
     padding-right: 0 !important;
     padding-left: 0 !important;
+}
+
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .pt-1 {
@@ -147,6 +162,7 @@ body {
 .h-full {
     height: 100%;
 }
+
 .w-full {
     width: 100%;
 }
@@ -347,6 +363,7 @@ a {
 
     &.has-action {
         cursor: pointer;
+
         &:hover,
         &.is-active {
             svg {

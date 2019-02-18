@@ -2003,7 +2003,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Chat",
-                "reference": "90b25e85945678cec6ae9b8e537a7f46ab24e90e",
+                "reference": "9df5e1811aa2b67ef0b1934387889d535f2f0a6c",
                 "shasum": null
             },
             "require": {
@@ -2037,7 +2037,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Objects",
-                "reference": "9201efca19b851b0cefda0959d0e4a0580ac5a2c",
+                "reference": "5e579a4109e942cca25be81fa6b3cdd227354171",
                 "shasum": null
             },
             "require": {
@@ -2072,7 +2072,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
+                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
                 "shasum": null
             },
             "require": {
@@ -2107,7 +2107,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
+                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
                 "shasum": null
             },
             "require": {
@@ -3187,26 +3187,26 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.1.5",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5"
+                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/e62f8b459bee0a880c8976c316e82638a74510b5",
-                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/11f0b270669a55f90093d63ddb5214e0f7c279da",
+                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.2",
+                "php": "^7.0",
                 "psr/log": "^1.0",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.0",
+                "phpunit/phpunit": "^7.5",
                 "symfony/var-dumper": "^4.2"
             },
             "type": "library",
@@ -3233,7 +3233,7 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2019-02-15T12:11:38+00:00"
+            "time": "2019-01-14T09:15:47+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

@@ -68,4 +68,14 @@
 
         }
     }
+
+    &__salary {
+
+        @media screen and (min-width: $tablet) {
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
 }

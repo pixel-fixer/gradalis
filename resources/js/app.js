@@ -63,12 +63,19 @@ Vue.component('broker-offers-modal-create-link', require('./components/broker/of
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
 Vue.component('broker', require('./components/broker/broker').default);
 
+const VacancyResponce = () => import('./components/vacancy/responce');
+Vue.component('vacancy-responce', VacancyResponce);
+
 const app = new Vue({
     el: '#app',
     data: {
         object: {
             // Переменные, используемые на странице объекта
             showDetailedInformation: false
+        },
+        vacancy: {
+            // Переменные, используемые на страницах вакансий
+            showResponseModal: false
         }
     },
     router,

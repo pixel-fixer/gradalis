@@ -100,6 +100,9 @@ Route::get('/about', function () {
 Route::get('/vacancy', function () {
     return view('vacancy.index');
 });
+Route::get('/vacancy/single', function () {
+    return view('vacancy.show');
+});
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
