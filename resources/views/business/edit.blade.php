@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="container">
-                <form-add-business ref="business-form" data-business="{{ $business }}"></form-add-business>
+                <form-add-business :id="{{ $business_id }}"></form-add-business>
             </div>
         </section>
     </div>

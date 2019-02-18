@@ -15,8 +15,8 @@ class BusinessController extends Controller
 
         $businesses = Business::whereIn('status', [Business::STATUS_SOLD_OUT, Business::STATUS_APPROUVED])->with('city')->with('city.country')->with('category');
         if (!empty($query['country'])) {
-            $businesses->whereHas('city.country',function ($q) use ($query) {
-                $q->where('id', (int) $query['country']);
+            $businesses->whereHas('city.country', function ($q) use ($query) {
+                $q->where('id', (int)$query['country']);
             });
         }
 
@@ -46,16 +46,28 @@ class BusinessController extends Controller
         return response()->json($responce);
     }
 
-    public function getCategories(){
+    public function getById(Business $business)
+    {
+        $data['options'] = $business->options;
+        unset($business->options);
+        $business->country_id = $business->country_id;
+        $data['business'] = $business;
+
+        return $data;
+    }
+
+    public function getCategories()
+    {
         return BusinessCategory::all();
     }
 
-    public function imageUpload(Request $request){
+    public function imageUpload(Request $request)
+    {
         $request->validate([
             'file' => 'required|file|image|max:2048'
         ]);
 
-        $image = $request->file('file')->store('business/'.auth()->user()->id);
+        $image = $request->file('file')->store('business/' . auth()->user()->id);
 
         return response(['message' => 'Изображение добавлено', 'image' => $image], 201);
     }

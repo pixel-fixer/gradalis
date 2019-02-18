@@ -40,14 +40,12 @@ class BusinessController extends Controller
         }
 
         Schema::enableForeignKeyConstraints();
-        return response()->json(['status'=>'ok']);
+        return response()->json(['status' => 'ok']);
     }
 
     public function edit(Business $business)
     {
-        $business->country_id = $business->country_id;
-        $business->images = [];
-        $data['business'] = $business;
+        $data['business_id'] = $business->id;
         return view('business.edit', $data);
     }
 
@@ -61,6 +59,6 @@ class BusinessController extends Controller
         $business->update($businessData);
 
         Schema::enableForeignKeyConstraints();
-        return response()->json(['status'=>'ok']);
+        return response()->json(['status' => 'ok']);
     }
 }

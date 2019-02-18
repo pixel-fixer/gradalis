@@ -29,6 +29,14 @@ body {
             animation: spinAround 500ms infinite linear;
         }
     }
+
+    &.h-3 {
+        height: auto;
+        min-height: 3rem;
+        @media screen and (min-width: $tablet) {
+            height: 3rem;
+        }
+    }
 }
 
 .my-0 {
@@ -39,6 +47,11 @@ body {
 .my-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .mb-1 {
@@ -81,6 +94,14 @@ body {
     margin-top: 0 !important;
 }
 
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
 .p-0 {
     padding: 0 !important;
 }
@@ -106,8 +127,17 @@ body {
     padding-left: 0 !important;
 }
 
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .pt-1 {
     padding-top: 1rem !important;
+}
+
+.pb-1 {
+    padding-bottom: 1rem !important;
 }
 
 .py-1 {
@@ -135,6 +165,10 @@ body {
 
 .h-full {
     height: 100%;
+}
+
+.w-full {
+    width: 100%;
 }
 
 .is-flex-1 {
@@ -166,6 +200,9 @@ hr {
 
 .has-align-items-end {
     align-items: flex-end;
+}
+.has-align-items-center {
+    align-items: center;
 }
 
 .has-text-decoration-underline {
@@ -333,6 +370,7 @@ a {
 
     &.has-action {
         cursor: pointer;
+
         &:hover,
         &.is-active {
             svg {

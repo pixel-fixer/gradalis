@@ -3,6 +3,15 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const RealTime = () => import('./components/broker/views/RealTime');
+const Balance = () => import('./components/broker/views/Balance');
+const Leads = () => import('./components/broker/views/Leads');
+const Settings = () => import('./components/broker/views/Settings');
+const SummaryIndicators = () => import('./components/broker/views/SummaryIndicators');
+const WebOffers = () => import('./components/broker/views/WebOffers');
+const WebOffer = () => import('./components/broker/views/WebOffer');
+
+
 export default new Router({
     mode: 'history',
     scrollBehavior: () => ({y: 0}),
@@ -27,12 +36,12 @@ export default new Router({
 
         /* Broker */
         {path: '/broker/', redirect: '/broker/summary'},
-        {path: '/broker/realtime', component: require('./components/broker/views/RealTime').default},
-        {path: '/broker/balance', component: require('./components/broker/views/Balance').default},
-        {path: '/broker/leads', component: require('./components/broker/views/Leads').default},
-        {path: '/broker/settings', component: require('./components/broker/views/Settings').default},
-        {path: '/broker/summary', component: require('./components/broker/views/SummaryIndicators').default},
-        {path: '/broker/web-offers', component: require('./components/broker/views/WebOffers').default},
-        {path: '/broker/web-offer/:id', component: require('./components/broker/views/WebOffer').default},
+        {path: '/broker/realtime', component: RealTime},
+        {path: '/broker/balance', component: Balance},
+        {path: '/broker/leads', component: Leads},
+        {path: '/broker/settings', component: Settings},
+        {path: '/broker/summary', component: SummaryIndicators},
+        {path: '/broker/web-offers', component: WebOffers},
+        {path: '/broker/web-offer/:id', component: WebOffer},
     ]
 })

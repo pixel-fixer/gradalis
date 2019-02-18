@@ -1,25 +1,25 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
-                    <div class="modal-close" @click="$emit('close')"></div>
-                    <div class="modal-header">
-                        <slot name="header">
-                            default header
-                        </slot>
-                    </div>
+        <div class="modal is-active">
+            <div class="modal-background" @click="$emit('close')"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <slot name="header">
+                        default header
+                    </slot>
+                    <button class="delete close-modal" @click="$emit('close')"
+                            aria-label="close"></button>
+                </header>
 
-                    <div class="modal-body">
-                        <slot name="body">
-                            default body
-                        </slot>
-                    </div>
+                <section class="modal-card-body">
+                    <slot name="body">
+                        default body
+                    </slot>
+                </section>
 
-                    <div class="modal-footer">
-                        <slot name="footer"></slot>
-                    </div>
-                </div>
+                <footer class="modal-card-foot">
+                    <slot name="footer"></slot>
+                </footer>
             </div>
         </div>
     </transition>
@@ -32,57 +32,6 @@
 </script>
 
 <style scoped>
-    .modal-mask {
-        position: fixed;
-        z-index: 9998;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, .5);
-        display: table;
-        transition: opacity .3s ease;
-    }
-    .modal-close{
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 0px 3px 0px 3px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-color: rgba(0, 0, 0, 0.4);
-    }
-    .modal-wrapper {
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    .modal-container {
-        position: relative;
-        width: 545px;
-        margin: 0px auto;
-        padding: 25px 25px;
-        background-color: #fff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-        transition: all .3s ease;
-        border-radius: 3px;
-    }
-
-    .modal-header h3 {
-        font-style: normal;
-        font-weight: 900;
-        line-height: 32px;
-        font-size: 24px;
-        color: #1C2940;
-    }
-
-    .modal-body {
-        margin: 20px 0;
-    }
-
-    .modal-default-button {
-        float: right;
-    }
-
     /*
      * The following styles are auto-applied to elements with
      * transition="modal" when their visibility is toggled
@@ -100,8 +49,8 @@
         opacity: 0;
     }
 
-    .modal-enter .modal-container,
-    .modal-leave-active .modal-container {
+    .modal-enter .modal-card,
+    .modal-leave-active .modal-card {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
     }

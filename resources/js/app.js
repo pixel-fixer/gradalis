@@ -11,6 +11,7 @@ import store from './store'
 import lodash from 'lodash';
 
 window.Vue = Vue;
+
 window.trans = (string) => _.get(window.i18n, string);
 window.lang = document.documentElement.lang;
 Vue.prototype.trans = (string, args) => {
@@ -22,13 +23,12 @@ Vue.prototype.trans = (string, args) => {
     return value;
 };
 
-Vue.use(VueSweetalert2)
-Vue.use(VTooltip)
-Vue.use(PortalVue)
-Vue.use(Vuebar)
-Vue.use(Vuelidate)
+Vue.use(VueSweetalert2);
+Vue.use(VTooltip);
+Vue.use(PortalVue);
+Vue.use(Vuebar);
+Vue.use(Vuelidate);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
@@ -51,8 +51,8 @@ Vue.component('profile', require('./components/profile/profile').default);
  * Глобальный mixin для полей с переводом. Текущий язык берется из атрибута lang.
  */
 Vue.mixin({
-    methods:{
-        $t(translatableObject){
+    methods: {
+        $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
         }
     }
@@ -63,12 +63,32 @@ Vue.component('broker-offers-modal-create-link', require('./components/broker/of
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
 Vue.component('broker', require('./components/broker/broker').default);
 
+const VacancyResponse = () => import('./components/vacancy/Response');
+Vue.component('vacancy-response', VacancyResponse);
+
+
+// review
+const AddReview = () => import('./components/reviews/Add');
+const ShowReview = () => import('./components/reviews/Show');
+Vue.component('add-review', AddReview);
+Vue.component('show-review', ShowReview);
+// end
+
 const app = new Vue({
     el: '#app',
     data: {
         object: {
             // Переменные, используемые на странице объекта
             showDetailedInformation: false
+        },
+        vacancy: {
+            // Переменные, используемые на страницах вакансий
+            showResponseModal: false
+        },
+        reviews: {
+            // Переменные, используемые на страницах отзывов
+            showAddReviewModal: false,
+            showSingleReviewModal: false
         }
     },
     router,
@@ -79,6 +99,9 @@ const app = new Vue({
         },
         hideModal(id) {
             document.getElementById(id).classList.remove('is-active');
+        },
+        showSingleReviewModal(id) {
+            this.reviews.showSingleReviewModal = true;
         }
     }
 });
@@ -94,6 +117,7 @@ inlineSVG.init({
 
 
 import Swiper from 'swiper';
+
 window.Swiper = Swiper;
 
 /**

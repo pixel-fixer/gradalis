@@ -13,6 +13,10 @@ class Campaign extends Model
     const TYPE_FRANCHISE = 2;
     const TYPE_SERVICE = 3;
 
+    const STATUS_AWAIT = 0;
+    const STATUS_APPROVED = 1;
+    const STATUS_DECLINED = 2;
+
     const CAMPAIGN_STATUS_BASE = 1;
 
     public $translatable = ['name','description'];
@@ -39,6 +43,14 @@ class Campaign extends Model
 
     public function country(){
         return $this->belongsTo('App\Models\Country');
+    }
+
+    public function invitations(){
+        return $this->hasMany('App\Models\Referral\Invitation');
+    }
+
+    public function bookmarker(){
+        return $this->belongsToMany('App\Models\Referral\Partner')->wherePivot('partner_id', auth()->user()->id);
     }
 
     public static function getTypes()

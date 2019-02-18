@@ -11,6 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 mix.disableSuccessNotifications();
+
+// Override mix internal webpack output configuration
+mix.config.webpackConfig.output = {
+    chunkFilename: 'js/[name].bundle.js',
+    publicPath: '/',
+};
 mix.webpackConfig({
     module: {
         rules: [

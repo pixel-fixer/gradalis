@@ -6,6 +6,9 @@
         <div class="container">
             <example-form-filter v-on:change-filter="changeFilter"></example-form-filter>
         </div>
+        <template v-if="loaderBusinesses">
+            <div class="loader"></div>
+        </template>
         <div class="container">
             <!-- Cards objects -->
             <div class="columns is-multiline">
@@ -63,7 +66,8 @@
         data() {
             return {
                 businesses: {},
-                form: {}
+                form: {},
+                loaderBusinesses: false
             }
         },
         name: "BusinessList",
@@ -74,6 +78,7 @@
             },
             fetchBusinesses(page = 1) {
                 let vm = this;
+                vm.loaderBusinesses = true;
                 axios.get('/business-get?page=' + page, {
                     params: {
                         region: vm.form.region,
@@ -86,11 +91,12 @@
                         query: vm.form.query
                     }
                 }).then(responce => {
+                    vm.loaderBusinesses = false;
                     vm.businesses = responce.data
                     vm.changeHisory(page);
                 })
             },
-            changeHisory(page){
+            changeHisory(page) {
                 const params = new URLSearchParams(location.search);
                 if (page > 1) {
                     params.set('page', page);
@@ -99,7 +105,7 @@
                 }
 
                 for (const [key, value] of Object.entries(this.form)) {
-                    if( value !== null ) {
+                    if (value !== null) {
                         params.set(key, value);
                     }
                 }

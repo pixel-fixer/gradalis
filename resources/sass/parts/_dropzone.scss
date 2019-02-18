@@ -35,10 +35,20 @@
             display: flex;
             justify-content: center;
 
-            svg {
+            figure {
+                height: 2rem;
+                margin: 0;
+            }
+            svg,
+            img {
                 width: 2rem;
                 height: 2rem;
                 margin-right: .5rem;
+            }
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             &__title {
@@ -54,6 +64,7 @@
                 font-size: .875rem;
                 line-height: normal;
                 justify-content: center;
+                text-align: left;
             }
         }
     }

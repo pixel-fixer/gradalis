@@ -58,13 +58,13 @@ DESCRIPTION;
                 'name'        => 'Активная дебетовая карта',
                 'campaign_id' => $campaign->id,
                 'country_id'  => rand(1, 2),
-                'cpl'         => rand(10, 30) . '%',
-                'cps'         => rand(10, 30) . '%'
+                'cpl'         => rand(10, 30),
+                'cps'         => rand(10, 30)
             ]);
             for ($i = 0; $i <= 4; $i++) {
                 $type = rand(1, 2);
                 $campaignResource = CampaignResource::create([
-                    'url'           => 'http://google.com',
+                    'url'           => config('app.url'),
                     'type'          => $type,
                     'resource_type' => ($type === 2) ? rand(2, 3) : 1,
                     'width'         => ($type === 2) ? 250 : null,
@@ -96,13 +96,13 @@ DESCRIPTION;
                 'name'        => 'Активная дебетовая карта',
                 'campaign_id' => $campaign->id,
                 'country_id'  => rand(1, 2),
-                'cpl'         => rand(10, 30) . '%',
-                'cps'         => rand(10, 30) . '%'
+                'cpl'         => rand(10, 30),
+                'cps'         => rand(10, 30)
             ]);
             for ($i = 0; $i <= 4; $i++) {
                 $type = rand(1, 2);
                 $campaignResource = CampaignResource::create([
-                    'url'         => 'http://google.com',
+                    'url'         => config('app.url'),
                     'type'        => $type,
                     'resource_type' => ($type === 2) ? rand(2, 3) : 1,
                     'width'       => ($type === 2) ? 250 : null,

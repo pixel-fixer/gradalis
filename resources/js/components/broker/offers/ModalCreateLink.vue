@@ -1,10 +1,10 @@
 <template>
-    <div class="modal modal-create-offer-link" id="modal-create-offer-link">
+    <div :class="{'is-active':modal}" class="modal modal-create-offer-link" id="modal-create-offer-link">
         <div class="modal-background" @click="$root.hideModal('modal-create-offer-link')"></div>
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title mb-0">Создать ссылку</p>
-                <button class="delete close-modal" @click="$root.hideModal('modal-create-offer-link')"
+                <button class="delete close-modal" @click="close"
                         aria-label="close"></button>
             </header>
             <section class="modal-card-body">
@@ -13,11 +13,11 @@
                     <label class="label"><span>Оффер</span></label>
                     <div class="control">
                         <div class="field-control-offer-link is-flex">
-                            <figure>
-                                <img src="https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto"
-                                         alt="">
-                            </figure>
-                            <span class="is-size-875">Банк Хоум Кредит: Дебетовая карта Польза</span>
+                            <!--<figure>-->
+                            <!--<img src="https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto"-->
+                            <!--alt="">-->
+                            <!--</figure>-->
+                            <span class="is-size-875">{{offer.name.ru}}</span>
                             <div class="icons is-right">
                                  <span class="icon is-small" v-tooltip="'Go to offer'">
                                      <a href="#">
@@ -28,40 +28,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="field">
-                    <label
-                        class="label"><span>{{form.title.title}}</span></label>
-                    <div class="control">
-                        <multiselect
-                            v-model="form.title.selected"
-                            :deselect-label="form.title.deselectLabel"
-                            track-by="name"
-                            label="name"
-                            openDirection="bottom"
-                            :placeholder="form.title.placeholder"
-                            :options="form.title.options"
-                            :searchable="true"
-                            :allow-empty="false"
-                            :selectLabel="form.title.selectLabel"
-                            :selectedLabel="form.title.selectedLabel">
-                            <template slot="singleLabel" slot-scope="{ option }">{{ option.name
-                                }}
-                            </template>
-                        </multiselect>
-                    </div>
-                </div>
-
+                <g-g-select-input v-model="name" :size="'is-12'"
+                                  :placeholder="title.placeholder"
+                                  @input="updateInvitation"
+                                  :label="title.title" :searchable="true"
+                                  :options="nameOptions"></g-g-select-input>
                 <div class="field">
                     <label class="label"><span>Субаакаунт</span></label>
                     <div class="columns is-multiline list-wrap list-subaccount"
-                         v-for="(item, index) in form.listSubAccount">
+                         v-for="(item, index) in listSubAccount">
                         <div class="column">
                             <div class="field">
                                 <div class="control has-icons-right has-icons-right_1">
                                     <input type="text"
                                            class="input is-size-875"
-                                           v-model="form.listSubAccount[index].value"
-                                           :placeholder="form.listSubAccount[index].placeholder"
+                                           @input="updateInvitation"
+                                           v-model="item.value"
+                                           :placeholder="subAccountPlaceHolder"
                                     >
                                 </div>
                             </div>
@@ -69,7 +52,7 @@
                         <div class="column is-narrow">
                             <button class="button is-warning is-outlined button-remove"
                                     v-tooltip="'Удалить'"
-                                    @click="removeSubAccount()"
+                                    @click="removeSubAccount(index)"
                             >
                                 &times;<span class="is-size-875 is-hidden-tablet">Удалить</span>
                             </button>
@@ -81,30 +64,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="field">
-                    <label class="label"><span>{{form.targetLink.title}}</span></label>
-                    <div class="control has-icons-right has-icons-right_1">
-                        <input type="text"
-                               class="input is-size-875"
-                               v-model="form.targetLink.value"
-                               :placeholder="form.targetLink.placeholder"
-                        >
-                        <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="form.targetLink.tooltip">
-                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                  </span>
-                        </div>
-                    </div>
-                </div>
                 <div class="field">
                     <label
-                        class="label"><span>{{form.linkToOffer.title}}</span></label>
+                        class="label"><span>{{linkToOffer.title}}</span></label>
                     <div class="control has-icons-right has-icons-right_1">
-                                <textarea class="textarea is-size-875" v-model="form.linkToOffer.value"
-                                          :placeholder="form.linkToOffer.placeholder"></textarea>
+                                <textarea class="textarea is-size-875" v-model="linkToOffer.value"
+                                          :placeholder="linkToOffer.placeholder"></textarea>
                         <div class="icons is-right">
-                                  <span class="icon is-small" v-tooltip="form.linkToOffer.tooltip">
+                                  <span class="icon is-small" v-tooltip="linkToOffer.tooltip">
                                     <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                   </span>
                         </div>
@@ -120,58 +87,107 @@
 </template>
 
 <script>
-    import Multiselect from 'vue-multiselect';
-
+    import GGSelectInput from '../../form/GGSelectInput'
     export default {
+        props: {
+            value: {default: false},
+            offer: {default: null},
+            nameId: {default: null},
+        },
         name: "ModalCreateLink",
         components: {
-            Multiselect
+            GGSelectInput,
         },
         data() {
             return {
-                form: {
-                    linkToOffer: {
-                        value: "",
-                        title: "Ссылка на оффер",
-                        placeholder: "Ссылка на оффер",
-                        tooltip: "tooltip text"
-                    },
-                    targetLink: {
-                        value: "",
-                        title: "Целевая ссылка",
-                        placeholder: "utm_code",
-                        tooltip: "tooltip text"
-                    },
-                    title: {
-                        selected: null,
-                        title: 'Название',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-                    listSubAccount: [
-                        {
-                            value: "",
-                            placeholder: "sub_account"
-                        }
-                    ]
-                }
+                modal: false,
+                country: null,
+                invitation: null,
+                created: false,
+                linkToOffer: {
+                    value: "",
+                    title: "Ссылка на оффер",
+                    placeholder: "Ссылка на оффер",
+                    tooltip: "tooltip text"
+                },
+                name: null,
+                nameOptions: [],
+                title: {
+                    title: 'Название',
+                    placeholder: 'Выберите',
+                },
+                subAccount: [],
+                listSubAccount: [{
+                    value: ''
+                }],
+                subAccountPlaceHolder: "sub_account"
             }
         },
         methods: {
+
             addSubAccount() {
-                // Добавление SubAccount
+                this.listSubAccount.push(
+                    {
+                        value: ""
+                    }
+                )
+            },
+            close() {
+                this.modal = false;
+                this.$emit('input', this.modal);
             },
             removeSubAccount(index) {
-                // Удаление SubAccount
+                this.listSubAccount.splice(index, 1);
+            },
+            updateInvitation() {
+                let vm = this;
+                if (!vm.created) {
+                    axios.post('/invitation-create', {
+                        campaign_id: vm.offer.id,
+                        resource_id: vm.name,
+                    }).then(responce => {
+                        vm.invitation = responce.data;
+                        vm.linkToOffer.value = 'http://ref.' + domain + '/invitation/' + vm.invitation.token
+                        vm.created = true;
+                    });
+                } else {
+                    axios.post('/invitation-create', {
+                        id: vm.invitation.id,
+                        resource_id: vm.name,
+                        sub_account: vm.listSubAccount,
+                    });
+                }
+            },
+        },
+        mounted() {
+
+            for (let index in this.offer.resources) {
+
+                let resource = this.offer.resources[index]
+                this.nameOptions.push({
+                    'id': resource.id,
+                    'name': resource.name.ru + '-' + resource.type + '-' + resource.resource_type
+                });
+                if (this.nameId) {
+                    this.name = this.nameId;
+                }
+            }
+            if (this.nameId) {
+                this.name = this.nameId
+            }
+            this.updateInvitation();
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    this.modal = value;
+                }
+            },
+            nameId: {
+                handler(value) {
+                    this.name = value;
+                }
             },
         }
     }

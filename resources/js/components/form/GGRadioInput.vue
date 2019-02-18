@@ -7,7 +7,8 @@
                     <input type="radio"
                            :name="name"
                            :value="item.value"
-                           v-model="value">
+                           v-model="inputValue"
+                           @click="inputChange">
                     <span>{{item.title}}</span>
                 </label>
             </div>
@@ -23,13 +24,27 @@
             list: null,
             name: '',
             size: {default: 'is-6'},
-            value: '',
+            value: {default: null},
+
             label: '',
             placeholder: {default: 'Поиск'}
         },
+        data() {
+            return {
+                inputValue: null,
+            }
+        },
         methods: {
             inputChange() {
-                this.$emit('input', this.value);
+                this.$emit('input', this.inputValue);
+            }
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    this.inputValue = value;
+                }
             }
         }
     }
