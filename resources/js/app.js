@@ -9,6 +9,14 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
 import store from './store'
 import lodash from 'lodash';
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyDs7VrVm9-Uc98tTj0eYIRgNkisaLQsWlg',
+        libraries: 'places', // This is required if you use the Autocomplete plugin
+    },
+});
 
 window.Vue = Vue;
 
@@ -74,6 +82,9 @@ Vue.component('add-review', AddReview);
 Vue.component('show-review', ShowReview);
 // end
 
+const Map = () => import('./components/Map');
+Vue.component('google-map', Map);
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -88,7 +99,8 @@ const app = new Vue({
         reviews: {
             // Переменные, используемые на страницах отзывов
             showAddReviewModal: false,
-            showSingleReviewModal: false
+            showSingleReviewModal: false,
+            showSingleReviewModalID: null
         }
     },
     router,
@@ -102,6 +114,7 @@ const app = new Vue({
         },
         showSingleReviewModal(id) {
             this.reviews.showSingleReviewModal = true;
+            this.reviews.showSingleReviewModalID = id;
         }
     }
 });
