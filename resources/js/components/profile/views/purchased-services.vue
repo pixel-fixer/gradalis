@@ -26,10 +26,10 @@
                                 </td>
                                 <td :class="getStatusClass(orderedService.status)">{{getStatusLabel(orderedService.status)}}</td>
                                 <td>
-                                    <a href="#" class="link-with-icon">
+                                    <router-link :to="'/profile/purchased-services/' + orderedService.id" :breadcrumb="orderedService.name" class="link-with-icon">
                                         <img src="/svg/icons/ic_details.svg" alt="Details">
                                         <span class="has-text-decoration-underline">Посмотреть результат</span>
-                                    </a>
+                                    </router-link>
                                 </td>
                             </tr>
                      </tbody>
