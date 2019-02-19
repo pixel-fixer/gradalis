@@ -108,6 +108,9 @@ Route::get('/contacts', function () {
 Route::get('/reviews', function () {
     return view('reviews');
 });
+Route::get('/help', function () {
+    return view('help');
+});
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {

@@ -2,12 +2,13 @@
     <!-- ... -->
     <div class="swiper-reviews-media-wrap">
         <div class="swiper-container swiper-reviews-media">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="swiper-reviews-media-gallery">
                 <!-- It is important to set "left" style prop on every slide -->
                 <div class="swiper-slide"
                      v-for="(slide, index) in virtualData.slides"
                      :key="index"
                      :style="{left: `${virtualData.offset}px`}"
+                     :data-src="slide.full"
                 >
                     <a :href="slide.full"><img :src="slide.thumb" alt=""></a>
                 </div>
@@ -21,6 +22,9 @@
 </template>
 <script>
     import Swiper from 'swiper/dist/js/swiper.esm.bundle';
+
+    import 'lightgallery.js';
+    import 'lightgallery.js/dist/css/lightgallery.css';
 
     export default {
         data() {
@@ -93,5 +97,8 @@
                 },
             });
         },
+        updated() {
+            lightGallery(document.getElementById('swiper-reviews-media-gallery'));
+        }
     };
 </script>

@@ -21,7 +21,7 @@
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-4">
-                    <article class="card-review" @click="showSingleReviewModal()">
+                    <article class="card-review" @click="showSingleReviewModal(1)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -35,7 +35,7 @@
                     </article>
                 </div>
                 <div class="column is-4">
-                    <article class="card-review">
+                    <article class="card-review"  @click="showSingleReviewModal(2)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -49,7 +49,7 @@
                     </article>
                 </div>
                 <div class="column is-4">
-                    <article class="card-review">
+                    <article class="card-review"  @click="showSingleReviewModal(3)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -63,7 +63,7 @@
                     </article>
                 </div>
                 <div class="column is-4">
-                    <article class="card-review">
+                    <article class="card-review"  @click="showSingleReviewModal(4)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -77,7 +77,7 @@
                     </article>
                 </div>
                 <div class="column is-4">
-                    <article class="card-review">
+                    <article class="card-review"  @click="showSingleReviewModal(5)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -91,7 +91,7 @@
                     </article>
                 </div>
                 <div class="column is-4">
-                    <article class="card-review">
+                    <article class="card-review"  @click="showSingleReviewModal(6)">
                         <figure class="mb-0-5">
                             <img
                                 src="https://avatars.mds.yandex.net/get-pdb/25978/51b72f68-915e-4759-b9c6-b9d4246eb992/s1200"
@@ -115,5 +115,5 @@
     </section>
 
     <add-review v-model="reviews.showAddReviewModal"></add-review>
-    <show-review v-model="reviews.showSingleReviewModal"></show-review>
+    <show-review v-model="reviews.showSingleReviewModal" :id="showSingleReviewModalID"></show-review>
 @endsection

@@ -67,6 +67,7 @@
         },
         props: {
             value: {default: null},
+            id: {default: null},
         },
         data: () => ({
             title: 'Оставить отзыв о нашей работе',
