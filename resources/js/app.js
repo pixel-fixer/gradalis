@@ -115,6 +115,17 @@ const app = new Vue({
         showSingleReviewModal(id) {
             this.reviews.showSingleReviewModal = true;
             this.reviews.showSingleReviewModalID = id;
+        },
+        toggleClassActive(event) {
+            console.log(event.target);
+            let el = null;
+            if (event.target.tagName === 'a') {
+                el = event.target;
+            } else {
+                el = event.target.closest('a');
+            }
+            el.classList.toggle("is-active");
+            el.classList.toggle("has-text-weight-bold");
         }
     }
 });
