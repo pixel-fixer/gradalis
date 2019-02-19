@@ -92,7 +92,6 @@ Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
 
-
 Route::get('/about', function () {
     return view('about');
 });
@@ -157,6 +156,7 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
 
     Route::get('purchased_services', 'ProfileController@getPurchasedServices');
+    Route::get('/api/purchased_service/{service}', 'ProfileController@getPurchasedService')->middleware('BelongsToAuthUser:service');
 
     Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
 

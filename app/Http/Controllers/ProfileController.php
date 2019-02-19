@@ -137,6 +137,11 @@ class ProfileController extends Controller
         return OrderedService::where('user_id', Auth::id())->with('service')->get();
     }
 
+    public function getPurchasedService(OrderedService $service)
+    {
+        return $service;
+    }
+
     /**
      * Список транзакций на странице баланса
      */

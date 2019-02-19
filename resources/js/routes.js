@@ -39,7 +39,7 @@ export default new Router({
             name: 'purchased-service-detail',
             path: '/profile/purchased-services/:id',
             component: require('./components/profile/views/purchased-service').default,
-            meta: {breadcrumb: {  parent: 'purchased-services', label: 'Детальная услуга' }}  
+            meta: {breadcrumb: {  parent: 'purchased-services', label: 'Детальная услуга' }},
         },
         {path: '/profile/favorites', component: require('./components/profile/views/favorites').default, meta: {breadcrumb:{parent: 'profile', label: 'Избранное'}} },
         {path: '/profile/legal', component: require('./components/profile/views/legal').default, meta: {breadcrumb:{parent: 'profile', label: 'Условия договора'}} },
@@ -60,5 +60,8 @@ export default new Router({
         {path: '/broker/summary', component: SummaryIndicators},
         {path: '/broker/web-offers', component: WebOffers},
         {path: '/broker/web-offer/:id', component: WebOffer},
+
+        /* 404 */
+        { path: "*", beforeEnter: () => { window.location.pathname = '/404'}  }
     ]
 })
