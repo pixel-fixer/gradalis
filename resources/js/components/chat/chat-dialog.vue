@@ -41,6 +41,7 @@
                             <div class="chat-messages__message__wrap">
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
                                 <span class="chat-messages__message__time">{{getTime(message.created_at)}}</span><br>
+                                <div v-for="video in getYouTubeVideos(message.text)" v-html="video"></div>
                                 <div class="chat-messages__message__text">{{message.text}}</div>
                                 <div class="chat-messages__message__files">
                                     <a :href="file.url.origin"
@@ -154,6 +155,7 @@
                 }
 
                 for(let message of this.dialog.messages){
+                    this.getYouTubeVideos(message.text);
                     if(message.from.id == stackEl.user.id){
                         stackEl.messages.push(message)
                     }else{
@@ -320,6 +322,28 @@
                 this.attachment.base64 = null
                 this.attachment.file = null
                 this.$refs.file.value = ''
+            },
+            getYouTubeVideos(message){
+                let parsedVideos = [];
+                let links = message.match(/(www)?\.youtube\.com(\S+)\s?/gi) //TODO доработать парсинг для разных случаев как тут? https://gist.github.com/takien/4077195 
+                if(links){
+                    for(let link of links){
+                        parsedVideos.push(`<iframe width="100%" height="200" src="https://www.youtube.com/embed/${this.getYouTubeID(link)}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
+                    }
+                }
+                return parsedVideos;
+            },
+            getYouTubeID(url){
+                var ID = '';
+                url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+                if(url[2] !== undefined) {
+                    ID = url[2].split(/[^0-9a-z_\-]/i);
+                    ID = ID[0];
+                }
+                else {
+                    ID = url;
+                }
+                return ID;
             }
         }
     }
