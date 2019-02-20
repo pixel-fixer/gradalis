@@ -56,7 +56,7 @@
                                     class="tag is-danger is-rounded tag__count">{{count(Auth::user()->unreadNotifications)}}</span>
                             @endunless
                         </a>
-                        <a href="/profile/#favorites" class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
+                        <a href="/profile/favorites" class="navbar-item rounded"><img src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                                             alt="Fav"></a>
                         <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">

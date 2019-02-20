@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
 
-                                <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold" @click="setStatusSold(object.type, object.id)">Продано</a>
+                                <a v-if="object.status !== 3" class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold" @click="setStatusSold(object.type, object.id)">Продано</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Загрузить
                                     документы</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Подключить
@@ -128,119 +128,6 @@
                             </div>
                         </div>
                     </article>
-
-                    <!-- <article class="box card-object-pa is-paddingless">
-                        <div class="card-object-pa__body p-1-5">
-                            <div class="columns is-multiline">
-                                <div class="column is-4">
-                                    <figure class="card-object-pa__thumb">
-                                        <img
-                                            src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg"
-                                            alt="">
-                                    </figure>
-                                </div>
-                                <div class="column is-8">
-                                    <div class="card-object-pa__header is-flex">
-                                        <h3 class="card-object-pa__title">
-                                            Мини-отель в собственность с видом
-                                            на Невский проспект</h3>
-                                        <a href="#"
-                                            class="card-object-pa__link-edit is-size-875 is-flex link-with-icon">
-                                            <img src="/svg/icons/ic_edit.svg" class="svg"
-                                                    alt="Edit">
-                                            <span class="has-text-decoration-underline">Изменить</span>
-                                        </a>
-                                    </div>
-                                    <address class="is-size-875 is-flex">
-                                        <img src="/svg/icons/ic_location.svg" class="svg"
-                                                alt="Location">
-                                        <span>Россия, г. Ростов-на-Дону</span>
-                                    </address>
-                                    <div class="card-object-pa__price is-flex">
-                                        <div class="price-info">
-                                            <span class="tag is-danger price-sale">-15%</span>
-                                            <div class="price">$2 500 000</div>
-                                            <span class="price-old">$2 000 000</span>
-                                        </div>
-                                        <a href="#" class="has-text-decoration-underline is-size-875">Опустить
-                                            цену</a>
-                                    </div>
-                                    <div class="card-object-pa__progress">
-                                        <div class="card-object-pa__progress__title is-size-875">
-                                            На модерации до 12 марта 2019
-                                        </div>
-                                        <div class="card-object-pa__progress__bar">
-                                            <div class="columns is-gapless">
-                                                <div class="column is-6">
-                                                    <progress class="progress is-warning is-small" value="100" max="100">
-                                                        60%
-                                                    </progress>
-                                                </div>
-                                                <div class="column is-3">
-                                                    <progress class="progress is-success is-small" value="0" max="100">
-                                                        60%
-                                                    </progress>
-                                                </div>
-                                                <div class="column is-3">
-                                                    <progress class="progress is-success is-small" value="0" max="100">
-                                                        60%
-                                                    </progress>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-object-pa__statistics is-flex is-size-875">
-                                        <div class="card-object-pa__statistics__item is-flex">
-                                            <img src="/svg/icons/ic_eye.svg" class="svg"
-                                                    alt="Eye">
-                                            <span>289 просмотров</span>
-                                        </div>
-                                        <div class="card-object-pa__statistics__item is-flex">
-                                            <img src="/svg/icons/ic_favorites-2.svg" class="svg"
-                                                    alt="Favorites">
-                                            <span>15 в избранном</span>
-                                        </div>
-                                        <div class="card-object-pa__statistics__item is-flex is-ok">
-                                            <img src="/svg/icons/ic_document.svg" class="svg"
-                                                    alt="Document">
-                                            <span>5 документов</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button
-                                            class="button is-outlined h-3 has-text-weight-bold is-size-875" disabled>
-                                            Нет новых запросов
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-object-pa__footer p-1-5">
-                            <div class="buttons">
-                                <div class="dropdown">
-                                    <div class="dropdown-trigger">
-                                        <button class="button is-warning is-size-875 h-3 has-text-weight-bold"
-                                                aria-haspopup="true"
-                                                aria-controls="dropdown-services-1">
-                                            <span>Услуги</span>
-                                            <div class="multiselect__select"></div>
-                                        </button>
-                                    </div>
-                                    <div class="dropdown-menu" id="dropdown-services-1" role="menu">
-                                        <div class="dropdown-content is-paddingless">
-                                            <a class="dropdown-item" href="#">Item</a>
-                                            <hr class="dropdown-divider is-marginless">
-                                            <a class="dropdown-item" href="#">Item</a>
-                                            <hr class="dropdown-divider is-marginless">
-                                            <a class="dropdown-item" href="#">Item</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Продано</a>
-                            </div>
-                        </div>
-                    </article> -->
                 </div>
             </div>
         </section>

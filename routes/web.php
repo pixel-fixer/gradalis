@@ -45,8 +45,6 @@ Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/services', 'ServiceController@index')->middleware('auth');
-
 Route::get('/news', function () {
     return view('news');
 })->middleware('auth');
@@ -60,6 +58,7 @@ Route::get('/ui', function () {
 })->middleware('auth');
 
 Route::get('services/list', 'ServiceController@list');
+Route::get('/services', 'ServiceController@index')->middleware('auth');
 
 Route::get('/spa/favorites', function () {
     return view('spa.favorites');
@@ -92,7 +91,6 @@ Route::get('/add-business', function () {
 Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
-
 
 Route::get('/about', function () {
     return view('about');
@@ -169,6 +167,7 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
 
     Route::get('purchased_services', 'ProfileController@getPurchasedServices');
+    Route::get('/api/purchased_service/{service}', 'ProfileController@getPurchasedService')->middleware('BelongsToAuthUser:service');
 
     Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
 
@@ -180,5 +179,5 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 });
 
-/* Фикс для возможных конфликтов роутор даравела и личного кабинета */
-Route::get('/profile/{vue_capture?}', 'ProfileController@index')->where('profile', '[\/\w\.-]*')->middleware('auth');
+/* Фикс для возможных конфликтов роутов ларавела и личного кабинета */
+Route::get('/profile/{vue_capture?}', 'ProfileController@index')->where('vue_capture', '[\/\w\.-]*')->middleware('auth');

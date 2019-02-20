@@ -1,5 +1,6 @@
 <template>
     <div class="profile">
+        <!-- <app-breadcrumbs></app-breadcrumbs> -->
         <breadcrumbs></breadcrumbs>
         <div class="columns">
             <div class="column is-4">
