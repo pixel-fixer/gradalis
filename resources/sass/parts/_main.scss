@@ -66,8 +66,8 @@ body {
     margin-bottom: 0 !important;
 }
 
-.mb-1-75 {
-    margin-bottom: 1.75rem !important;
+.mt-1-75 {
+    margin-top: 1.75rem !important;
 }
 
 .mb-2 {
@@ -196,6 +196,10 @@ hr {
 
 .has-align-self-center {
     align-self: center;
+}
+
+.has-align-self-end {
+    align-self: flex-end;
 }
 
 .has-align-items-end {

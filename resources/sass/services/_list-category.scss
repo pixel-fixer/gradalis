@@ -1,0 +1,103 @@
+@import '../variables';
+
+.category-service-list {
+    background-color: $white;
+    border-radius: $radius;
+    box-shadow: $box-shadow;
+    border: 1px solid $input-border-color;
+
+    &__item-wrap {
+        .category-service-list__item {
+            align-items: center;
+            padding: 0.25rem 1rem;
+            line-height: normal;
+            min-height: 3rem;
+            border-bottom: 1px solid $input-border-color;
+            border-right: 0;
+            //border-right: 1px solid $input-border-color;
+            color: $very-dark-blue-2;
+
+            &__icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-right: .75rem;
+
+                svg {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+
+            &__title {
+
+            }
+
+            &:hover,
+            &.is-active {
+                color: $cyan;
+
+                svg {
+                    path {
+                        fill: $cyan;
+                    }
+                }
+            }
+
+            &.is-active {
+                border: 0.125rem solid $cyan !important;
+            }
+        }
+
+        &:last-child {
+            .category-service-list__item {
+                border-bottom: 0;
+            }
+        }
+
+        @media screen and (min-width: $tablet) {
+            .category-service-list__item {
+                border-right: 1px solid $input-border-color;
+            }
+            &:nth-last-child(1),
+            &:nth-last-child(2),
+            &:nth-last-child(3) {
+                .category-service-list__item {
+                    border-bottom: 0;
+                }
+            }
+
+            &:nth-child(3n) {
+                .category-service-list__item {
+                    border-right: 0;
+                }
+            }
+        }
+
+        @media screen and (min-width: $desktop) {
+            .category-service-list__item {
+                border-right: 1px solid $input-border-color;
+            }
+            &:nth-last-child(1),
+            &:nth-last-child(2),
+            &:nth-last-child(3),
+            &:nth-last-child(4),
+            &:nth-last-child(5),
+            &:nth-last-child(6) {
+                .category-service-list__item {
+                    border-bottom: 0;
+                }
+            }
+            &:nth-child(3n) {
+                .category-service-list__item {
+                    border-right: 1px solid $input-border-color;
+                }
+            }
+            &:nth-child(6n) {
+                .category-service-list__item {
+                    border-right: 0;
+                }
+            }
+        }
+    }
+}
+

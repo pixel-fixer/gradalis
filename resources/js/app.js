@@ -82,6 +82,12 @@ Vue.component('add-review', AddReview);
 Vue.component('show-review', ShowReview);
 // end
 
+// services
+const ServicesFilter = () => import('./components/services/Filter');
+Vue.component('services-filter', ServicesFilter);
+
+
+// map
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
 

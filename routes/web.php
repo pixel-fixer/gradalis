@@ -113,6 +113,17 @@ Route::get('/help', function () {
     return view('help');
 });
 
+// Services
+Route::get('/services-new', function () {
+    return view('services.index');
+});
+Route::get('/services-new/category', function () {
+    return view('services.category');
+});
+
+
+
+
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
     Route::resource('business', 'BusinessController')->middleware('auth');
