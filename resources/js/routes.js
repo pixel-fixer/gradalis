@@ -19,7 +19,7 @@ export default new Router({
         /* Seller */
         {
             path: '/profile/',
-            // redirect: '/profile/products',
+            redirect: '/profile/products',
             name: 'profile',
             meta: { breadcrumb: { label: 'Профиль' }}
         },
@@ -33,13 +33,13 @@ export default new Router({
             path: '/profile/purchased-services', 
             component: require('./components/profile/views/purchased-services').default,
             name: 'purchased-services',
-            meta: { breadcrumb: { parent: 'profile', label: 'Купленные продукт' }}   
+            meta: { breadcrumb: { parent: 'profile', label: 'Купленные продукты' }}   
         },
         {
             name: 'purchased-service-detail',
             path: '/profile/purchased-services/:id',
             component: require('./components/profile/views/purchased-service').default,
-            meta: {breadcrumb: {  parent: 'purchased-services', label: 'Детальная услуга' }},
+            meta: { breadcrumb: {  parent: 'purchased-services', label: 'Детальная услуга' }},
         },
         {path: '/profile/favorites', component: require('./components/profile/views/favorites').default, meta: {breadcrumb:{parent: 'profile', label: 'Избранное'}} },
         {path: '/profile/legal', component: require('./components/profile/views/legal').default, meta: {breadcrumb:{parent: 'profile', label: 'Условия договора'}} },
@@ -62,6 +62,6 @@ export default new Router({
         {path: '/broker/web-offer/:id', component: WebOffer},
 
         /* 404 */
-        { path: "*", beforeEnter: () => { window.location.pathname = '/404'}  }
+        //{ path: "*", beforeEnter: () => { window.location.pathname = '/404'}  }
     ]
 })

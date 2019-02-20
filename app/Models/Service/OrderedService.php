@@ -10,6 +10,8 @@ class OrderedService extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    public $with = ['service'];
+
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');

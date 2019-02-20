@@ -16,9 +16,10 @@ class BelongsToAuthUser
     {
         $model = $request->route($param);
 
-        if($model->user_id == Auth::id())
+        if($model->user_id == Auth::id()){
             return $next($request);
-        else
+        }else{
             return response(['message' => "${param} not belongs to current user"], 403);
+        }
     }
 }
