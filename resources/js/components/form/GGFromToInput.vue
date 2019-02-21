@@ -5,13 +5,13 @@
                 class="label label_req"><span>{{label}}</span></label>
             <div class="field has-addons ">
                 <p :class="{'is-expanded': size === 'is-6'}" class="control control-text-left control-text-left_3em">
-                    <input type="number" class="input is-size-875"
-                           v-model="from">
+                    <input @input="inputChange" type="number" class="input is-size-875"
+                           v-model="inputValue.from">
                     <span class="text is-left is-size-875">{{textFrom}}&nbsp;</span>
                 </p>
                 <p :class="{'is-expanded': size === 'is-6'}" class="control control-text-left control-text-left_3em">
-                    <input type="number" class="input is-size-875"
-                           v-model="to">
+                    <input @input="inputChange" type="number" class="input is-size-875"
+                           v-model="inputValue.to">
                     <span class="text is-left is-size-875">{{textTo}} </span>
                 </p>
             </div>
@@ -34,20 +34,24 @@
         },
         data() {
             return {
-                inputValue: [0, 0]
+                inputValue: {
+                    from:null,
+                    to:null,
+                }
             }
         },
         watch: {
-            from: {
+            value: {
                 immediate: true,
                 handler(value) {
-                    this.inputValue[0] = value;
-                }
-            },
-            to: {
-                immediate: true,
-                handler(value) {
-                    this.inputValue[0] = value;
+                    if (value) {
+                        this.inputValue = value;
+                    } else {
+                        this.inputValue = {
+                            from:null,
+                            to:null,
+                        }
+                    }
                 }
             }
         },

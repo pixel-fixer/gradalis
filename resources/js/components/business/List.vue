@@ -30,7 +30,7 @@
                 ></business-card>
             </div>
             <!-- Pagination -->
-            <pagination :data="businesses" @pagination-change-page="fetchBusinesses">
+            <pagination :data="businesses" :show-disabled="true" @pagination-change-page="fetchBusinesses">
                 <span slot="prev-nav">
                      <a class="pagination-previous  pagination-nav button is-link">
                          <span class="pagination-nav__icon">

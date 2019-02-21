@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\Business;
 use App\Models\Business\BusinessCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\Models\Media;
+
 
 class BusinessController extends Controller
 {
@@ -51,6 +54,16 @@ class BusinessController extends Controller
         $data['options'] = $business->options;
         unset($business->options);
         $business->country_id = $business->country_id;
+        $images               = $business->getMedia('business/' . auth()->user()->id);
+        dd($images);
+        $data['images'] = [];
+        foreach ($images as $i => $image) {
+            $data['images'][$i]['url']   = $image->getFullUrl();
+            $data['images'][$i]['size']  = $image->size;
+            $data['images'][$i]['image'] = 'business/' . auth()->user()->id . '/' . $image->file_name;
+            $data['images'][$i]['type']  = $image->mime_type;
+            $data['images'][$i]['name']  = $image->file_name;
+        }
         $data['business'] = $business;
 
         return $data;
@@ -70,5 +83,18 @@ class BusinessController extends Controller
         $image = $request->file('file')->store('business/' . auth()->user()->id);
 
         return response(['message' => 'Изображение добавлено', 'image' => $image], 201);
+    }
+
+    public function imageRemove(Request $request)
+    {
+        $image = $request->get('image');
+        $name = basename($image);
+        $collection = dirname($image);
+        $media = Media::where('collection_name',$collection)->where('file_name',$name)->first();
+        if($media) {
+            $media->delete();
+        }
+        Storage::delete($image);
+        return response(['message' => 'Изображение удалено'], 201);
     }
 }

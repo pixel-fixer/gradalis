@@ -33,7 +33,7 @@ class BusinessController extends Controller
     {
         Schema::disableForeignKeyConstraints();
         $businessData = $request->get('business');
-
+        $businessData['user_id'] = auth()->user()->id;
         $business = Business::create($businessData);
         foreach ($businessData['images'] as $image) {
             $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);

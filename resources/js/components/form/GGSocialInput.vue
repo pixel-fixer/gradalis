@@ -1,55 +1,67 @@
 <template>
     <div class="columns is-multiline">
         <div class="column is-12 pb-0">
-            <h3>Группы в социальных сетях</h3>
+            <h3>{{trans('business.create.socNetItems.title')}}</h3>
         </div>
-        <g-g-select-input :size="'is-6'" v-model="saleGroupsSocNet.value" :label="saleGroupsSocNet.title"
-                          :placeholder="saleGroupsSocNet.placeholder" :options="options"></g-g-select-input>
-        <g-g-select-input :allowempty="true" :multiple="true" :size="'is-6'" :type="'number'" v-model="selectedGroups"
-                          :label="socNetList.title"
-                          :placeholder="socNetList.placeholder" :options="options"></g-g-select-input>
+        <g-g-select-input :size="'is-6'" v-model="form.saleGroupsSocNet"
+                          :label="trans('business.create.saleGroupsSocNet.title')"
+                          :placeholder="trans('business.create.saleGroupsSocNet.placeholder')"
+                          :options="trans('business.create.yn.options')"></g-g-select-input>
+        <g-g-select-input :allowempty="true" :multiple="true" :size="'is-6'" :type="'number'" v-model="form.socNetList"
+                          :label="trans('business.create.socNetList.title')"
+                          :placeholder="trans('business.create.socNetList.placeholder')"
+                          :options="trans('business.create.socNetList.options')"></g-g-select-input>
 
-        <template v-for="(item, index) in socNetItems">
+        <template v-for="(item, index) in form.socNetItems">
             <div class="column is-12">
                 <div class="columns is-multiline">
                     <div class="column is-12 pb-0">
                         <h3>Группа в {{item.title}}</h3>
                     </div>
-                    <g-g-input :size="'is-6'" v-model="item.link.value" :label="item.link.title"
-                               :placeholder="item.link.placeholder"></g-g-input>
-                    <g-g-input :size="'is-6'" :type="'number'" v-model="item.countUsers.value"
-                               :label="item.countUsers.title" :placeholder="item.countUsers.placeholder"></g-g-input>
-                    <g-g-select-input :size="'is-6'" :type="'number'" v-model="item.haveIncome.value"
-                                      :label="item.haveIncome.title"
-                                      :placeholder="item.haveIncome.placeholder" :options="options"></g-g-select-input>
+                    <g-g-input @input="inputChange" :size="'is-6'" v-model="item.link"
+                               :label="trans('business.create.socNetItems.link.title')"
+                               :placeholder="trans('business.create.socNetItems.link.placeholder')"></g-g-input>
+                    <g-g-input @input="inputChange" :size="'is-6'" :type="'number'" v-model="item.countUsers"
+                               :label="trans('business.create.socNetItems.countUsers.title')"
+                               :placeholder="trans('business.create.socNetItems.countUsers.placeholder')"></g-g-input>
+                    <g-g-select-input @input="inputChange" :size="'is-6'" :type="'number'" v-model="item.haveIncome"
+                                      :label="trans('business.create.socNetItems.haveIncome.title')"
+                                      :placeholder="trans('business.create.socNetItems.haveIncome.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.incomeYear.value"
-                               :label="item.incomeYear.title" :placeholder="item.incomeYear.placeholder"></g-g-input>
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.incomeQuarter.value"
-                               :label="item.incomeQuarter.title"
-                               :placeholder="item.incomeQuarter.placeholder"></g-g-input>
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.turnoverYear.value"
-                               :label="item.turnoverYear.title"
-                               :placeholder="item.turnoverYear.placeholder"></g-g-input>
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.turnoverQuarter.value"
-                               :label="item.turnoverQuarter.title"
-                               :placeholder="item.turnoverQuarter.placeholder"></g-g-input>
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.expensesYear.value"
-                               :label="item.expensesYear.title"
-                               :placeholder="item.expensesYear.placeholder"></g-g-input>
-                    <g-g-input :prevText="'zt'" :type="'number'" v-model="item.expensesQuarter.value"
-                               :label="item.expensesQuarter.title"
-                               :placeholder="item.expensesQuarter.placeholder"></g-g-input>
+                    <g-g-input @input="inputChange" :prevText="'zt'" :type="'number'" v-model="item.incomeYear"
+                               :label="trans('business.create.socNetItems.incomeYear.title')"
+                               :placeholder="trans('business.create.socNetItems.incomeYear.placeholder')"></g-g-input>
+                    <g-g-input  @input="inputChange":prevText="'zt'" :type="'number'" v-model="item.incomeQuarter"
+                               :label="trans('business.create.socNetItems.incomeQuarter.title')"
+                               :placeholder="trans('business.create.socNetItems.incomeQuarter.placeholder')"></g-g-input>
+                    <g-g-input @input="inputChange" :prevText="'zt'" :type="'number'" v-model="item.turnoverYear"
+                               :label="trans('business.create.socNetItems.turnoverYear.title')"
+                               :placeholder="trans('business.create.socNetItems.turnoverYear.placeholder')"></g-g-input>
+                    <g-g-input @input="inputChange" :prevText="'zt'" :type="'number'" v-model="item.turnoverQuarter"
+                               :label="trans('business.create.socNetItems.turnoverQuarter.title')"
+                               :placeholder="trans('business.create.socNetItems.turnoverQuarter.placeholder')"></g-g-input>
+                    <g-g-input @input="inputChange" :prevText="'zt'" :type="'number'" v-model="item.expensesYear"
+                               :label="trans('business.create.socNetItems.expensesYear.title')"
+                               :placeholder="trans('business.create.socNetItems.expensesYear.placeholder')"></g-g-input>
+                    <g-g-input @input="inputChange" :prevText="'zt'" :type="'number'" v-model="item.expensesQuarter"
+                               :label="trans('business.create.socNetItems.expensesQuarter.title')"
+                               :placeholder="trans('business.create.socNetItems.expensesQuarter.placeholder')"></g-g-input>
 
-                    <g-g-select-input :size="'is-6'" :type="'number'" v-model="item.themes.value"
-                                      :label="item.themes.title"
-                                      :placeholder="item.themes.placeholder" :options="options"></g-g-select-input>
-                    <g-g-select-input :size="'is-6'" :type="'number'" v-model="item.lang.value" :label="item.lang.title"
-                                      :placeholder="item.lang.placeholder" :options="options"></g-g-select-input>
-                    <g-g-select-input :size="'is-6'" :type="'number'" v-model="item.methodTransferGroup.value"
-                                      :label="item.methodTransferGroup.title"
-                                      :placeholder="item.methodTransferGroup.placeholder"
-                                      :options="options"></g-g-select-input>
+                    <g-g-select-input @input="inputChange" :size="'is-6'" :type="'number'" v-model="item.themes"
+                                      :multiple="true"
+                                      :label="trans('business.create.socNetItems.themes.title')"
+                                      :placeholder="trans('business.create.socNetItems.themes.placeholder')"
+                                      :options="trans('business.create.socNetItems.themes.options')"></g-g-select-input>
+                    <g-g-select-input @input="inputChange" :size="'is-6'" :type="'number'" v-model="item.lang"
+                                      :label="trans('business.create.socNetItems.lang.title')"
+                                      :placeholder="trans('business.create.socNetItems.lang.placeholder')"
+                                      :options="trans('business.create.socNetItems.lang.options')"></g-g-select-input>
+                    <g-g-select-input @input="inputChange" :size="'is-6'" :type="'number'" v-model="item.methodTransferGroup"
+                                      :multiple="true"
+                                      :label="trans('business.create.socNetItems.methodTransferGroup.title')"
+                                      :placeholder="trans('business.create.socNetItems.methodTransferGroup.placeholder')"
+                                      :options="trans('business.create.socNetItems.methodTransferGroup.options')"></g-g-select-input>
 
                 </div>
             </div>
@@ -65,183 +77,84 @@
         name: "GGSocialInput",
         components: {GGInput, GGSelectInput},
         props: {
-            //value: null,
+            value: {default:null},
             label: '',
             placeholder: {default: 'Поиск'}
         },
         data() {
             return {
-                selectedGroups: null,
-                saleGroupsSocNet: {
-                    value: null,
-                    title: 'Передаются ли группы в социальных сетях?',
-                    placeholder: 'Выберите',
-                    selectedLabel: '',
-                    selectLabel: '',
-                    deselectLabel: '',
-                    noResult: 'Ничего не найдено'
-                },
-                socNetList: {
-                    value: null,
-                    title: 'Укажите социальные сети',
-                    placeholder: 'Выберите',
-                    selectedLabel: '',
-                    selectLabel: '',
-                    deselectLabel: '',
-                    noResult: 'Ничего не найдено'
-                },
-                socNetItems: [{
-                    title: 'Facebook',
-                    link: {
-                        title: 'Ссылка на группу',
-                        placeholder: 'https://',
-                        value: '',
-                        tooltip: 'tooltip text',
-                    },
-                    countUsers: {
-                        title: 'Объём пользователей группы',
-                        placeholder: '11000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                    },
-                    haveIncome: {
-                        selected: null,
-                        title: 'Получаете ли доход с группы?',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: trans('business.create.theme.options'),
-                        noResult: 'Ничего не найдено'
-                    },
-                    incomeYear: {
-                        title: 'Доход с группы в год',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    incomeQuarter: {
-                        title: 'Доход с группы в квартал ',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    turnoverYear: {
-                        title: 'Оборот с группы в год',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    turnoverQuarter: {
-                        title: 'Оборот с группы в квартал ',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    expensesYear: {
-                        title: 'Расходы с группы в год',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    expensesQuarter: {
-                        title: 'Расходы с группы в квартал ',
-                        placeholder: '1 000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł',
-                    },
-                    themes: {
-                        selected: null,
-                        title: 'Тематика группы',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: trans('business.create.theme.options'),
-                        noResult: 'Ничего не найдено'
-                    },
-                    lang: {
-                        selected: null,
-                        title: 'Языковой сегмент группы',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: trans('business.create.theme.options'),
-                        noResult: 'Ничего не найдено'
-                    },
-                    methodTransferGroup: {
-                        selected: null,
-                        title: 'Способ передачи группы',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: trans('business.create.theme.options'),
-                        noResult: 'Ничего не найдено'
-                    },
+                form: {
+                    saleGroupsSocNet: null,
+                    socNetList: null,
+                    socNetItems: [{
+                        title: null,
+                        countUsers: null,
+                        incomeYear: null,
+                        incomeQuarter: null,
+                        turnoverYear: null,
+                        turnoverQuarter: null,
+                        expensesYear: null,
+                        expensesQuarter: null,
+                        themes: null,
+                        lang: null,
+                        methodTransferGroup: null,
 
-                }],
-                options: trans('business.create.theme.options'),
+                    }],
+                },
             }
         },
 
         watch: {
-            selectedGroups: {
+            value: {
                 immediate: true,
                 handler(value) {
-                    //console.log('changed')
+                    if (value) {
+                        this.form = value;
+                    } else {
+                        this.form = {
+                            saleGroupsSocNet: null,
+                                socNetList: null,
+                                socNetItems: [{
+                                title: null,
+                                countUsers: null,
+                                incomeYear: null,
+                                incomeQuarter: null,
+                                turnoverYear: null,
+                                turnoverQuarter: null,
+                                expensesYear: null,
+                                expensesQuarter: null,
+                                themes: null,
+                                lang: null,
+                                methodTransferGroup: null,
+
+                            }]
+                        }
+                    }
                 }
             }
         },
         methods: {
             inputChange() {
-                this.$emit('input', this.socNetItems);
+                this.$emit('input', this.form);
             },
-            addItem() {
-                this.list.push({
-                    post: {
-                        selected: null,
-                        title: 'Должность',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    termsContractDismissal: {
-                        selected: null,
-                        title: 'Условия договора об увольнении',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    monthlyWages: {
-                        title: 'Месячная заработная плата',
-                        placeholder: '1000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł'
-                    },
-                    taxAmountPerMonth: {
-                        title: 'Сумма налогов, в месяц',
-                        placeholder: '1000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł'
-                    },
+            addItem(title) {
+                this.form.socNetItems.push({
+                    title: title,
+                    countUsers: null,
+                    incomeYear: null,
+                    incomeQuarter: null,
+                    turnoverYear: null,
+                    turnoverQuarter: null,
+                    expensesYear: null,
+                    expensesQuarter: null,
+                    themes: null,
+                    lang: null,
+                    methodTransferGroup: null,
+
                 });
             },
             removeItem(index) {
-                this.list.splice(index, 1);
+                this.form.socNetItems.splice(index, 1);
             },
         }
     }

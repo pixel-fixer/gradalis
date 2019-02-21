@@ -149,6 +149,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/business-get-by-id/{business}', 'BusinessController@getById')->middleware('auth');
     Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
     Route::post('/business-image-upload', 'BusinessController@imageUpload')->middleware('auth');
+    Route::post('/business-image-remove', 'BusinessController@imageRemove')->middleware('auth');
 });
 //endregion
 
