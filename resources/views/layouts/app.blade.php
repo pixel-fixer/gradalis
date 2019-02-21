@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="/js/lang.js"></script>
+    <script src="/js/user.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->

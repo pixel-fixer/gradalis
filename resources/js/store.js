@@ -5,6 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-      lang: document.documentElement.lang
+      lang: document.documentElement.lang,
+      user: window.user
+    },
+    mutations: {
+
+    },
+    actions: {
+
     }
   })

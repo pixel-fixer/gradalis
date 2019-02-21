@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business\Business;
-
+use Auth;
 class CoreController extends Controller
 {
-
-
     public function lang()
     {
         //    $strings = Cache::rememberForever('lang.js', function () {
@@ -24,6 +22,13 @@ class CoreController extends Controller
 //        return $strings});
         header('Content-Type: text/javascript');
         echo('window.i18n = ' . json_encode($strings) . ';');
+        exit();
+    }
+  
+    public function user()
+    {
+        header('Content-Type: text/javascript');
+        echo('window.user = ' . json_encode(Auth::user()) . ';');
         exit();
     }
 }

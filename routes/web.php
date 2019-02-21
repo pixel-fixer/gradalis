@@ -23,6 +23,9 @@ Route::domain('ref.'.config('app.domain'))->group(function () {
 // JS Localization
 Route::get('/js/lang.js','CoreController@lang')->name('assets.lang');
 
+//User data for vuex
+Route::get('/js/user.js','CoreController@user')->name('assets.user');
+
 Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
     Route::get('', 'ChatController@index');
     Route::post('dialog', 'ChatController@newDialog');
