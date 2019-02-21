@@ -57,23 +57,25 @@
         background-color: $white;
         border-top: 1px solid rgba(207, 218, 230, 0.50);
         border-bottom: 1px solid rgba(207, 218, 230, 0.50);
-        &__item {
-            figure {
-                height: 16.375rem;
-                //max-width: 16.375rem;
-                width: 100%;
-                img {
-                    border-radius: $radius;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-            &__position {
-
-            }
-        }
     }
 }
 
+.our-team {
+    &__item {
+        figure {
+            height: 16.375rem;
+            //max-width: 16.375rem;
+            width: 100%;
+            img {
+                border-radius: $radius;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        &__position {
+
+        }
+    }
+}
