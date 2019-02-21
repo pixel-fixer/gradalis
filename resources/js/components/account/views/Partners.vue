@@ -1,11 +1,12 @@
 <template>
+
     <div class="container broker-pa">
 
 
         <div class="broker-pa__header">
             <div class="columns is-multiline">
                 <div class="column is-8-desktop is-12-tablet">
-                    <h1 class="section-title mb-0-5">Лиды</h1>
+                    <h1 class="section-title mb-0-5">Партнеры</h1>
                 </div>
                 <div class="column is-4-desktop is-12-tablet">
                     <div class="buttons">
@@ -15,6 +16,44 @@
                         </span>
                             <span>Помощь</span>
                         </button>
+                        <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1 mb-0"
+                                @click="showModalRef= true">
+                        <span class="icon">
+                          <img src="/svg/icons/ic_code.svg" alt="" class="svg">
+                        </span>
+                            <span class="has-text-decoration-underline">Ваша реферальная ссылка</span>
+                        </button>
+
+                        <modal v-if="showModalRef"
+                               @close="showModalRef = false">
+                            <div slot="header">
+                                <p class="modal-card-title mb-0">Header</p>
+                            </div>
+
+                            <div slot="body">
+
+                            </div>
+                            <div slot="footer">
+
+                            </div>
+                        </modal>
+
+                    </div>
+                </div>
+                <div class="column is-8-desktop is-12-tablet">
+                    <div class="buttons has-addons mb-0 mr-1 has-justify-content-start">
+                        <router-link :to="{ path: '/account/partners/'}"
+                                     class="button h-3 is-outlined is-info is-size-875 mb-0 is-active">
+                            <span>Активные партнеры</span>
+                        </router-link>
+                        <router-link :to="{ path: '/account/partners/future'}"
+                                     class="button h-3 is-outlined is-info is-size-875 mb-0">
+                            <span>Будущие партнеры</span>
+                        </router-link>
+                    </div>
+                </div>
+                <div class="column is-4-desktop is-12-tablet">
+                    <div class="buttons">
                         <div
                             class="control has-icons-left has-icons-left_1">
                             <flat-pickr
@@ -36,18 +75,19 @@
             </div>
         </div>
 
+
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="form.offer.selected" :size="'is-8'"
-                                      :placeholder="form.offer.placeholder" :label="form.offer.title"
-                                      :searchable="true" :options="formOptions.offer.options"
-                                      :withImg="true">
-                    </g-g-select-input>
-
+                    <g-g-select-input v-model="form.typeData.selected" :size="'is-4'"
+                                      :placeholder="form.typeData.placeholder" :label="form.typeData.title"
+                                      :searchable="true" :options="form.typeData.options"></g-g-select-input>
+                    <g-g-select-input v-model="form.comparison.selected" :size="'is-4'"
+                                      :placeholder="form.comparison.placeholder" :label="form.comparison.title"
+                                      :searchable="true" :options="form.comparison.options"></g-g-select-input>
                     <g-g-select-input v-model="form.sorting.selected" :size="'is-4'"
                                       :placeholder="form.sorting.placeholder" :label="form.sorting.title"
-                                      :searchable="true" :options="formOptions.sorting.options"></g-g-select-input>
+                                      :searchable="true" :options="form.sorting.options"></g-g-select-input>
                 </div>
             </div>
 
@@ -102,48 +142,94 @@
             <table class="table is-fullwidth is-size-875">
                 <thead>
                 <tr>
-                    <th>ID лида</th>
-                    <th>Дата создания</th>
-                    <th>Кол-во входов</th>
-                    <th>Кол-во заказов</th>
+                    <th>ID</th>
+                    <th>Аккаунт</th>
+                    <th>Дата регистрации</th>
+                    <th>Страна</th>
+                    <th>Сообщ. на модер.</th>
+                    <th>Клики</th>
+                    <th>Лиды</th>
+                    <th>Сумма к выплате</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
                 <tr>
                     <td>2210</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
-                    <td>12</td>
+                    <td class="has-vertical-align-middle">
+                        <div class="name-account">
+                            <figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt="">
+                            </figure>
+                            <span>Димитрий</span>
+                        </div>
+                    </td>
+                    <td class="has-text-basic">28.09.2018</td>
+                    <td class="has-text-basic">Россия</td>
                     <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
+                        <a href="#" class="has-text-decoration-underline">
+                            12 сообщений
                         </a>
+                    </td>
+                    <td>12 525</td>
+                    <td>1 525</td>
+                    <td class="has-text-weight-bold">€ 11 690.00</td>
+                    <td>
+                        <div class="is-flex">
+                            <a href="#" class="link-with-icon mr-1">
+                                <img src="/svg/icons/ic_details.svg">
+                                <span class="has-text-decoration-underline">В аккаунт</span>
+                            </a>
+                            <a href="#" class="link-with-icon">
+                                <img src="/svg/icons/ic_profile_settings.svg">
+                                <span class="has-text-decoration-underline">Настройки</span>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td>2211</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
-                    <td>12</td>
+                    <td>2210</td>
+                    <td class="has-vertical-align-middle">
+                        <div class="name-account">
+                            <figure><img src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg" alt="">
+                            </figure>
+                            <span>Димитрий</span>
+                        </div>
+                    </td>
+                    <td class="has-text-basic">28.09.2018</td>
+                    <td class="has-text-basic">Россия</td>
                     <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
+                        <a href="#" class="has-text-decoration-underline">
+                            12 сообщений
                         </a>
+                    </td>
+                    <td>12 525</td>
+                    <td>1 525</td>
+                    <td class="has-text-weight-bold">€ 11 690.00</td>
+                    <td>
+                        <div class="is-flex">
+                            <a href="#" class="link-with-icon mr-1">
+                                <img src="/svg/icons/ic_details.svg">
+                                <span class="has-text-decoration-underline">В аккаунт</span>
+                            </a>
+                            <a href="#" class="link-with-icon">
+                                <img src="/svg/icons/ic_profile_settings.svg">
+                                <span class="has-text-decoration-underline">Настройки</span>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </section>
     </div>
+
 </template>
 
 <script>
     import BarChart from '../../charts/BarChart.js';
     import LineChart from '../../charts/LineChart.js';
     import GGSelectInput from '../../form/GGSelectInput';
+    import Modal from '../../Modal';
 
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
@@ -152,12 +238,13 @@
     flatpickr.localize(Russian);
 
     export default {
-        name: "BrokerLeads",
+        name: "AccountPartners",
         components: {
-            BarChart, LineChart, GGSelectInput, flatPickr
+            BarChart, LineChart, GGSelectInput, flatPickr, Modal
         },
         data() {
             return {
+                showModalRef: false,
                 form: {
                     rangeDates: {
                         placeholder: '25.02.2018 - 03.03.2018',
@@ -169,38 +256,53 @@
                             dateFormat: 'Y-m-d'
                         }
                     },
-                    offer: {
+                    typeData: {
                         selected: null,
-                        title: 'Оффер',
+                        title: 'Данные в графике',
                         placeholder: 'Выберите',
                         selectedLabel: '',
                         selectLabel: '',
                         deselectLabel: '',
+                        options: [
+                            {id: '1', name: 'Item 1'},
+                            {id: '2', name: 'Item 2'},
+                            {id: '3', name: 'Item 3'},
+                            {id: '4', name: 'Item 4'},
+                        ],
+                        noResult: 'Ничего не найдено'
+                    },
+                    comparison: {
+                        selected: null,
+                        title: 'Сравнение',
+                        placeholder: 'Выберите',
+                        selectedLabel: '',
+                        selectLabel: '',
+                        deselectLabel: '',
+                        options: [
+                            {id: '1', name: 'Item 1'},
+                            {id: '2', name: 'Item 2'},
+                            {id: '3', name: 'Item 3'},
+                            {id: '4', name: 'Item 4'},
+                        ],
                         noResult: 'Ничего не найдено'
                     },
                     sorting: {
                         selected: null,
                         title: 'Сортировка',
                         placeholder: 'Выберите',
-                    },
-                },
-                formOptions: {
-                    offer: {
-                        options: [
-                            {id: '1', name: 'Item 1', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '2', name: 'Item 2', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '3', name: 'Item 3', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '4', name: 'Item 4', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                        ]
-                    },
-                    sorting: {
+                        selectedLabel: '',
+                        selectLabel: '',
+                        deselectLabel: '',
                         options: [
                             {id: '1', name: 'Item 1'},
                             {id: '2', name: 'Item 2'},
                             {id: '3', name: 'Item 3'},
                             {id: '4', name: 'Item 4'},
-                        ]
+                        ],
+                        noResult: 'Ничего не найдено'
                     },
+
+
                 },
                 datacollection: {
                     labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Мая', 'Июнь', 'Июль'],

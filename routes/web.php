@@ -92,6 +92,7 @@ Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
 
+//region Static
 Route::get('/about', function () {
     return view('about');
 });
@@ -110,14 +111,25 @@ Route::get('/reviews', function () {
 Route::get('/help', function () {
     return view('help');
 });
+//endregion
 
-// Services
+//region Services
 Route::get('/services-new', function () {
     return view('services.index');
 });
 Route::get('/services-new/category', function () {
     return view('services.category');
 });
+Route::get('/services-new/single', function () {
+    return view('services.single.main');
+});
+//endregion
+
+//region Account Routes
+Route::namespace('Account')->prefix('account')->group(function () {
+    Route::get('/{vue_capture?}', 'AccountController@index')->where('vue_capture', '.*')->middleware('auth');;
+});
+//endregion
 
 
 

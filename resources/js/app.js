@@ -86,6 +86,8 @@ Vue.component('show-review', ShowReview);
 const ServicesFilter = () => import('./components/services/Filter');
 Vue.component('services-filter', ServicesFilter);
 
+// account
+Vue.component('account', require('./components/account/Account').default);
 
 // map
 const Map = () => import('./components/Map');
