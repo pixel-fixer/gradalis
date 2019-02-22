@@ -7,28 +7,39 @@
             <div class="column is-12">
                 <div class="columns is-multiline list-wrap"
                      v-for="(item, index) in list">
-                    <g-g-select-input  v-model="item.direction.selected" :placeholder="item.direction.placeholder" :label="item.direction.title" :searchable="true" :options="options"></g-g-select-input>
+                    <g-g-select-input @input="inputChange" :size="'is-3'" v-model="item.direction"
+                                      :placeholder="trans('business.create.contractors.direction.placeholder')"
+                                      :label="trans('business.create.contractors.direction.title')"
+                                      :options="trans('business.create.contractors.direction.options')"></g-g-select-input>
 
-                    <g-g-input v-model="item.name.value" :label="item.name.title" :placeholder="item.name.placeholder"></g-g-input>
-
+                    <g-g-input @input="inputChange" v-model="item.name"
+                               :label="trans('business.create.contractors.name.title')"
+                               :placeholder="trans('business.create.contractors.name.placeholder')">
+                    </g-g-input>
                     <div class="column is-6">
                         <div class="columns is-multiline">
                             <div class="column">
                                 <div class="columns is-multiline">
-                                    <g-g-input :size="'is-6'" :type="'phone'" v-model="item.phone.value" :label="item.phone.title" :placeholder="item.phone.placeholder"></g-g-input>
-                                    <g-g-input :size="'is-6'" :type="'email'" v-model="item.mail.value" :label="item.mail.title" :placeholder="item.mail.placeholder"></g-g-input>
+                                    <g-g-input @input="inputChange" :size="'is-6'" v-model="item.phone"
+                                               :label="trans('business.create.contractors.phone.title')"
+                                               :placeholder="trans('business.create.contractors.phone.placeholder')">
+                                    </g-g-input>
+                                    <g-g-input @input="inputChange" :size="'is-6'" v-model="item.mail"
+                                               :label="trans('business.create.contractors.mail.title')"
+                                               :placeholder="trans('business.create.contractors.mail.placeholder')">
+                                    </g-g-input>
                                 </div>
                             </div>
                             <div class="column is-narrow">
                                 <button class="button is-warning is-outlined button-remove"
-                                        v-tooltip="'Удалить этого контрагента'"
+                                        v-tooltip="trans('business.create.contractors.remove')"
                                         @click="removeContractors(index)">
-                                    &times;<span class="is-size-875 is-hidden-tablet">Удалить этого контрагента</span>
+                                    &times;<span class="is-size-875 is-hidden-tablet">{{trans('business.create.contractors.remove')}}</span>
                                 </button>
                                 <button class="button is-info is-outlined button-add"
-                                        v-tooltip="'Добавить контрагента'"
+                                        v-tooltip="trans('business.create.contractors.add')"
                                         @click="addContractors">
-                                    +<span class="is-size-875 is-hidden-tablet">Добавить контрагента</span>
+                                    +<span class="is-size-875 is-hidden-tablet">{{trans('business.create.contractors.add')}}</span>
                                 </button>
                             </div>
 
@@ -46,47 +57,24 @@
 <script>
     import GGInput from './GGInput'
     import GGSelectInput from './GGSelectInput'
+
     export default {
         name: "GGContragentsInput",
-        components:{GGInput,GGSelectInput},
+        components: {GGInput, GGSelectInput},
         props: {
-            //value: null,
-            label:'',
+            value: {default:null},
+            label: '',
             placeholder: {default: 'Поиск'}
         },
-        data(){
-            return{
+        data() {
+            return {
 
                 list: [
                     {
-                        direction: {
-                            selected: null,
-                            title: 'Направление контрагента',
-                            placeholder: 'Выберите',
-                            selectedLabel: '',
-                            selectLabel: '',
-                            deselectLabel: '',
-
-                            noResult: 'Ничего не найдено'
-                        },
-                        name: {
-                            title: 'Название юридического лица',
-                            placeholder: 'Укажите название',
-                            value: '',
-                            tooltip: 'tooltip text'
-                        },
-                        phone: {
-                            title: 'Телефон',
-                            placeholder: '+48 456 566-09-23',
-                            value: '',
-                            tooltip: 'tooltip text'
-                        },
-                        mail: {
-                            title: 'Почта',
-                            placeholder: 'agent@mail.com',
-                            value: '',
-                            tooltip: 'tooltip text'
-                        },
+                        direction: null,
+                        name: null,
+                        phone: null,
+                        mail: null
                     },
                 ],
                 options: trans('business.create.theme.options'),
@@ -98,38 +86,32 @@
             },
             addContractors() {
                 this.list.push({
-                    direction: {
-                        selected: null,
-                        title: 'Направление контрагента',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    name: {
-                        title: 'Название юридического лица',
-                        placeholder: 'Укажите название',
-                        value: '',
-                        tooltip: 'tooltip text'
-                    },
-                    phone: {
-                        title: 'Телефон',
-                        placeholder: '+48 456 566-09-23',
-                        value: '',
-                        tooltip: 'tooltip text'
-                    },
-                    mail: {
-                        title: 'Почта',
-                        placeholder: 'agent@mail.com',
-                        value: '',
-                        tooltip: 'tooltip text'
-                    },
+                    direction: null,
+                    name: null,
+                    phone: null,
+                    mail: null
                 });
             },
             removeContractors(index) {
                 this.list.splice(index, 1);
             },
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    if (value) {
+                        this.list = value;
+                    } else {
+                        this.list = [{
+                            direction: null,
+                            name: null,
+                            phone: null,
+                            mail: null
+                        }]
+                    }
+                }
+            }
         }
     }
 </script>

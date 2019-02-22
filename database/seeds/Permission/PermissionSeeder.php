@@ -34,10 +34,12 @@ class PermissionSeeder extends Seeder
      *
      */
     private $allPerms = [
-        'Чат: модерация сообщений',
-        'Чат: модерация сообщений (свои пользователи)',
-        'sell',
-        'buy'
+        'business-sell',
+        'business-buy',
+        //Чат: модерация сообщений
+        'Chat_message-moderate',
+        //Чат: модерация сообщений (свои пользователи)
+        'Chat_message-moderate-my-users',
     ];
     
     /**

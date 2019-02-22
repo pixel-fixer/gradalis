@@ -21,7 +21,10 @@
                         </div>
                         <div class="news-single__thumb">
                             <img src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg" alt="">
-                            {{--<iframe src="https://www.youtube.com/embed/o-JTKEGz9Lw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>--}}
+                            {{--<video class="w-full" controls="">--}}
+                                {{--<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">--}}
+                                {{--Your browser does not support HTML5 video.--}}
+                            {{--</video>--}}
                         </div>
                         <div class="content">
                             <p style="font-style: italic; font-size: 18px; color: #596C80;">

@@ -23,7 +23,7 @@
 
 <script>
     import Multiselect from 'vue-multiselect';
-    import LineChart from './LineChart.js';
+    import LineChart from '../charts/LineChart.js';
     import GGSelectInput from '../form/GGSelectInput';
 
     export default {

@@ -1,9 +1,9 @@
 <template>
     <div :class="size" class="column">
-        <div class="field mt-2-5">
+        <div :class="{'mt-2-5':margin}" class="field">
             <div class="control">
                 <label class="checkbox is-info is-size-875 h3">
-                    <input type="checkbox" v-model="inputValue" @change="inputChange">
+                    <input type="checkbox" v-model="inputValue">
                     <span>{{label}}</span>
                 </label>
             </div>
@@ -16,28 +16,21 @@
     export default {
         name: "GGCheckBoxInput",
         props: {
+            margin:{default:true},
             size: {default: 'is-6'},
             value: {default: null},
             label: '',
         },
-        data() {
-            return {
-                inputValue: null,
+        computed: {
+            inputValue: {
+                get: function () {
+                    return this.value
+                },
+                set: function (value) {
+                    this.$emit('input', value);
+                },
             }
         },
-        methods: {
-            inputChange() {
-                this.$emit('input', this.inputValue);
-            }
-        },
-        watch: {
-            value: {
-                immediate: true,
-                handler(value) {
-                    this.inputValue = value;
-                }
-            }
-        }
     }
 </script>
 

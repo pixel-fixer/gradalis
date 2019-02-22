@@ -11,6 +11,9 @@ const SummaryIndicators = () => import('./components/broker/views/SummaryIndicat
 const WebOffers = () => import('./components/broker/views/WebOffers');
 const WebOffer = () => import('./components/broker/views/WebOffer');
 
+const AccountPartners = () => import('./components/account/views/Partners');
+const AccountPartnersFuture = () => import('./components/account/views/FuturePartners');
+const AccountPartnerSettings = () => import('./components/account/views/SettingsPartner');
 
 export default new Router({
     mode: 'history',
@@ -67,6 +70,12 @@ export default new Router({
         {path: '/broker/summary', component: SummaryIndicators},
         {path: '/broker/web-offers', component: WebOffers},
         {path: '/broker/web-offer/:id', component: WebOffer},
+
+        /* Account */
+        {path: '/account/', redirect: '/account/partners'},
+        {path: '/account/partners', component: AccountPartners},
+        {path: '/account/partners/future', component: AccountPartnersFuture},
+        {path: '/account/partners/single/settings', component: AccountPartnerSettings},
 
         /* 404 */
         //TODO сделать 404 в SPA роутах

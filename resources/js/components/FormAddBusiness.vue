@@ -259,174 +259,7 @@
                 </div>
                 <div class="columns is-multiline">
                     <div class="column is-12">
-                        <div class="add-business__objects-list">
-                            <div class="add-business__objects-item px-1-5"
-                                 v-for="(object, index) in business.options.objects">
-                                <h3 class="mb-1">Объект №{{index + 1}}</h3>
-                                <div class="columns is-multiline list-wrap">
-                                    <g-g-select-input v-model="object.categoryProperty" :size="'is-6'"
-                                                      :placeholder="trans('business.create.categoryProperty.placeholder')"
-                                                      :label="trans('business.create.categoryProperty.title')"
-                                                      :options="trans('business.create.categoryProperty.options')">
-                                    </g-g-select-input>
-                                    <g-g-select-input v-model="object.typeProperty" :size="'is-6'"
-                                                      :placeholder="trans('business.create.typeProperty.placeholder')"
-                                                      :label="trans('business.create.typeProperty.title')" :searchable="true"
-                                                      :options="trans('business.create.typeProperty.options')"></g-g-select-input>
-
-                                    <g-g-input :type="'number'"
-                                               :prevText="trans('business.create.numberSquareMeters.prevText')"
-                                               :size="'is-6'"
-                                               v-model="object.numberSquareMeters"
-                                               :label="trans('business.create.numberSquareMeters.title')"
-                                               :placeholder="trans('business.create.numberSquareMeters.placeholder')">
-                                    </g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.priceSquareMeters"
-                                               :label="trans('business.create.priceSquareMeters.title')"
-                                               :placeholder="trans('business.create.priceSquareMeters.placeholder')">
-                                    </g-g-input>
-
-                                    <g-g-check-box-input :size="'is-3'" v-model="object.priceIncludingVAT"
-                                                     :label="trans('business.create.priceIncludingVAT.title')">
-                                    </g-g-check-box-input>
-
-                                    <g-g-check-box-input :size="'is-3'" v-model="object.titleDocuments"
-                                                         :label="trans('business.create.titleDocuments.title')">
-                                    </g-g-check-box-input>
-                                    <g-g-check-box-input :size="'is-3'" v-model="object.restrictionsOperation"
-                                                         :label="trans('business.create.restrictionsOperation.title')">
-                                    </g-g-check-box-input>
-
-                                    <g-g-select-input :size="'is-6'" v-model="object.listRestrictionsOperation"
-                                                      :multiple="true"
-                                                      :placeholder="trans('business.create.listRestrictionsOperation.placeholder')"
-                                                      :label="trans('business.create.listRestrictionsOperation.title')"
-                                                      :options="trans('business.create.listRestrictionsOperation.options')"></g-g-select-input>
-
-                                    <g-g-check-box-input :size="'is-3'" v-model="object.refRegisterEstate"
-                                                         :label="trans('business.create.refRegisterEstate.title')">
-                                    </g-g-check-box-input>
-                                    <g-g-check-box-input :size="'is-3'" v-model="object.technicalPropertyPlan"
-                                                         :label="trans('business.create.technicalPropertyPlan.title')">
-                                    </g-g-check-box-input>
-                                    <g-g-check-box-input :size="'is-6'" v-model="object.coordinationRedevelopment"
-                                                         :label="trans('business.create.coordinationRedevelopment.title')">
-                                    </g-g-check-box-input>
-
-                                    <g-g-check-box-input :size="'is-6'" v-model="object.availabilityMortgage"
-                                                         :label="trans('business.create.availabilityMortgage.title')">
-                                    </g-g-check-box-input>
-
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.totalAmountMortgage"
-                                               :label="trans('business.create.availabilityMortgage.title')"
-                                               :placeholder="trans('business.create.availabilityMortgage.placeholder')">
-                                    </g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.repaidAmountMortgage"
-                                               :label="trans('business.create.repaidAmountMortgage.title')"
-                                               :placeholder="trans('business.create.repaidAmountMortgage.placeholder')">
-                                    </g-g-input>
-
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.balanceMortgage"
-                                               :label="trans('business.create.balanceMortgage.title')"
-                                               :placeholder="trans('business.create.balanceMortgage.placeholder')">
-                                    </g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.monthlyPaymentMortgage"
-                                               :label="trans('business.create.monthlyPaymentMortgage.title')"
-                                               :placeholder="trans('business.create.monthlyPaymentMortgage.placeholder')">
-                                    </g-g-input>
-
-                                    <g-g-date-input v-model="object.finalPaymentMortgageDate"
-                                                    :label="trans('business.create.finalPaymentMortgageDate.title')"
-                                                    :placeholder="trans('business.create.finalPaymentMortgageDate.placeholder')"></g-g-date-input>
-
-                                    <g-g-select-input v-model="object.availabilityLoanSecuredObject.selected"
-                                                      :size="'is-6'"
-                                                      :placeholder="object.availabilityLoanSecuredObject.placeholder"
-                                                      :label="object.availabilityLoanSecuredObject.title"
-                                                      :searchable="true"
-                                                      :options="object.availabilityLoanSecuredObject.options"></g-g-select-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.totalAmountCredit.value"
-                                               :label="object.totalAmountCredit.title"
-                                               :placeholder="object.totalAmountCredit.placeholder"></g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.repaidAmountCredit.value"
-                                               :label="object.repaidAmountCredit.title"
-                                               :placeholder="object.repaidAmountCredit.placeholder"></g-g-input>
-
-                                    <g-g-input :type="'number'" :prevText="'zt'" v-model="object.balanceCredit.value"
-                                               :label="object.balanceCredit.title"
-                                               :placeholder="object.balanceCredit.placeholder"></g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'"
-                                               v-model="object.monthlyPaymentCredit.value"
-                                               :label="object.monthlyPaymentCredit.title"
-                                               :placeholder="object.monthlyPaymentCredit.placeholder"></g-g-input>
-                                    <g-g-date-input :size="'is-3'" v-model="object.finalPaymentCreditDate.value"
-                                                    :label="object.finalPaymentCreditDate.title"
-                                                    :placeholder="object.finalPaymentCreditDate.placeholder"></g-g-date-input>
-                                    <g-g-select-input :size="'is-3'" v-model="object.purposeCredit.selected"
-                                                      :placeholder="object.purposeCredit.placeholder"
-                                                      :label="object.purposeCredit.title" :searchable="true"
-                                                      :options="object.purposeCredit.options"></g-g-select-input>
-
-                                    <g-g-select-input :size="'is-6'" v-model="object.jointPropertyEstate.selected"
-                                                      :placeholder="object.jointPropertyEstate.placeholder"
-                                                      :label="object.jointPropertyEstate.title" :searchable="true"
-                                                      :options="object.jointPropertyEstate.options"></g-g-select-input>
-                                    <g-g-select-input :size="'is-6'" v-model="object.typeRelationshipCoowners.selected"
-                                                      :placeholder="object.typeRelationshipCoowners.placeholder"
-                                                      :label="object.typeRelationshipCoowners.title" :searchable="true"
-                                                      :options="object.typeRelationshipCoowners.options"></g-g-select-input>
-
-                                    <g-g-input :size="'is-6'" :type="'number'" :prevText="'zt'"
-                                               v-model="object.monthlyUtilityCosts.value"
-                                               :label="object.monthlyUtilityCosts.title"
-                                               :placeholder="object.monthlyUtilityCosts.placeholder"></g-g-input>
-
-
-                                    <template>
-                                        <!--Если аренда-->
-                                        <g-g-select-input v-model="object.presenceChanging.selected" :size="'is-6'"
-                                                          :placeholder="object.presenceChanging.placeholder"
-                                                          :label="object.presenceChanging.title" :searchable="true"
-                                                          :options="object.presenceChanging.options"></g-g-select-input>
-                                        <g-g-input :size="'is-6'" :type="'number'" :prevText="'zt'"
-                                                   v-model="object.costChanging.value"
-                                                   :label="object.costChanging.title"
-                                                   :placeholder="object.costChanging.placeholder"></g-g-input>
-                                        <g-g-date-input v-model="object.leaseTermTo.value"
-                                                        :label="object.leaseTermTo.title"
-                                                        :placeholder="object.leaseTermTo.placeholder"></g-g-date-input>
-
-                                    </template>
-
-                                    <g-g-input :size="'is-6'" :type="'number'" v-model="object.houseBookNumber.value"
-                                               :label="object.houseBookNumber.title"
-                                               :placeholder="object.houseBookNumber.placeholder"></g-g-input>
-
-                                    <div class="column is-6">
-                                        <button class="button is-warning is-outlined button-remove">
-                                            &times;<span class="is-size-875">Удалить объект</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="px-1-5 mb-1">
-                            <div class="columns is-multiline">
-                                <div class="column is-6">
-                                    <button class="button is-info is-outlined button-add">
-                                        +<span class="is-size-875">Добавить еще один объект</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <g-g-business-object-input v-model="business.options.objects"></g-g-business-object-input>
                     </div>
                 </div>
 
@@ -477,40 +310,51 @@
                 </div>
 
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="steps[4].form.transferWorkSchemes.selected"
-                                      :placeholder="steps[4].form.transferWorkSchemes.placeholder"
-                                      :label="steps[4].form.transferWorkSchemes.title" :searchable="true"
-                                      :options="steps[4].form.transferWorkSchemes.options"></g-g-select-input>
-                    <g-g-input :type="'number'" :prevText="'Месяцев'" v-model="steps[4].form.monthTeach.value"
-                               :label="steps[4].form.monthTeach.title"
-                               :placeholder="steps[4].form.monthTeach.placeholder"></g-g-input>
-                    <g-g-select-input v-model="steps[4].form.readyTrainingMaterials.selected"
-                                      :placeholder="steps[4].form.readyTrainingMaterials.placeholder"
-                                      :label="steps[4].form.readyTrainingMaterials.title" :searchable="true"
-                                      :options="steps[4].form.readyTrainingMaterials.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[4].form.typeTrainingMaterials.selected"
-                                      :placeholder="steps[4].form.typeTrainingMaterials.placeholder"
-                                      :label="steps[4].form.typeTrainingMaterials.title" :searchable="true"
-                                      :options="steps[4].form.typeTrainingMaterials.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[4].form.transferCustomerBase.selected"
-                                      :placeholder="steps[4].form.transferCustomerBase.placeholder"
-                                      :label="steps[4].form.transferCustomerBase.title" :searchable="true"
-                                      :options="steps[4].form.transferCustomerBase.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[4].form.typeTransferCustomerBase.selected"
-                                      :placeholder="steps[4].form.typeTransferCustomerBase.placeholder"
-                                      :label="steps[4].form.typeTransferCustomerBase.title" :searchable="true"
-                                      :options="steps[4].form.typeTransferCustomerBase.options"></g-g-select-input>
-                    <g-g-select-input :size="'is-6'" v-model="steps[4].form.haveContractors.selected"
-                                      :placeholder="steps[4].form.haveContractors.placeholder"
-                                      :label="steps[4].form.haveContractors.title" :searchable="true"
-                                      :options="steps[4].form.haveContractors.options"></g-g-select-input>
 
-                    <g-g-contragents-input :label="steps[4].form.contractors.title"></g-g-contragents-input>
-                    <g-g-workers-input :label="steps[4].form.staff.title"></g-g-workers-input>
+                    <g-g-select-input v-model="business.options.transferWorkSchemes"
+                                      :label="trans('business.create.transferWorkSchemes.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <g-g-input :type="'number'" :prevText="trans('business.create.monthTeach.prevText')"
+                               v-model="business.options.monthTeach"
+                               :label="trans('business.create.monthTeach.title')"
+                               :placeholder="trans('business.create.monthTeach.placeholder')">
+                    </g-g-input>
 
-                    <g-g-certificates-input :label="steps[4].form.certificates.title"></g-g-certificates-input>
+                    <g-g-select-input v-model="business.options.readyTrainingMaterials"
+                                      :label="trans('business.create.readyTrainingMaterials.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-certificates-input :label="steps[4].form.certificates.title"></g-g-certificates-input>
+                    <g-g-select-input :size="'is-3'" v-model="business.options.typeTrainingMaterials"
+                                      :multiple="true"
+                                      :placeholder="trans('business.create.typeTrainingMaterials.placeholder')"
+                                      :label="trans('business.create.typeTrainingMaterials.title')"
+                                      :options="trans('business.create.typeTrainingMaterials.options')"></g-g-select-input>
+
+                    <g-g-select-input v-model="business.options.transferCustomerBase"
+                                      :label="trans('business.create.transferCustomerBase.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+
+                    <g-g-select-input :size="'is-3'" v-model="business.options.typeTransferCustomerBase"
+                                      :multiple="true"
+                                      :placeholder="trans('business.create.typeTransferCustomerBase.placeholder')"
+                                      :label="trans('business.create.typeTransferCustomerBase.title')"
+                                      :options="trans('business.create.typeTransferCustomerBase.options')"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.haveContractors"
+                                      :label="trans('business.create.haveContractors.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+
+                    <g-g-contragents-input :label="trans('business.create.contractors.title')"></g-g-contragents-input>
+                    <g-g-workers-input :label="trans('business.create.staff.title')"></g-g-workers-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.willStaffLeave"
+                                      :label="trans('business.create.willStaffLeave.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <g-g-certificates-input
+                        :label="trans('business.create.certificates.title')"></g-g-certificates-input>
                 </div>
 
                 <div class="step__footer">
@@ -559,64 +403,70 @@
                 </div>
 
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="steps[5].form.techDocEquipmentCD.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.techDocEquipmentCD.placeholder"
-                                      :label="steps[5].form.techDocEquipmentCD.title" :searchable="true"
-                                      :options="steps[5].form.techDocEquipmentCD.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[5].form.techDocEquipment.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.techDocEquipment.placeholder"
-                                      :label="steps[5].form.techDocEquipment.title" :searchable="true"
-                                      :options="steps[5].form.techDocEquipment.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[5].form.conditionProperty.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.conditionProperty.placeholder"
-                                      :label="steps[5].form.conditionProperty.title" :searchable="true"
-                                      :options="steps[5].form.conditionProperty.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[5].form.conditionEquipment.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.conditionEquipment.placeholder"
-                                      :label="steps[5].form.conditionEquipment.title" :searchable="true"
-                                      :options="steps[5].form.conditionEquipment.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[5].form.pledgeEquipment.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.pledgeEquipment.placeholder"
-                                      :label="steps[5].form.pledgeEquipment.title" :searchable="true"
-                                      :options="steps[5].form.techDocEquipmentCD.options"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.techDocEquipmentCD"
+                                      :label="trans('business.create.techDocEquipmentCD.title')"
+                                      :placeholder="trans('business.create.have.placeholder')"
+                                      :options="trans('business.create.have.options')"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.techDocEquipment"
+                                      :label="trans('business.create.techDocEquipment.title')"
+                                      :placeholder="trans('business.create.have.placeholder')"
+                                      :options="trans('business.create.have.options')"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.conditionProperty"
+                                      :label="trans('business.create.conditionProperty.title')"
+                                      :placeholder="trans('business.create.conditionProperty.placeholder')"
+                                      :options="trans('business.create.conditionProperty.options')"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.conditionEquipment"
+                                      :label="trans('business.create.conditionEquipment.title')"
+                                      :placeholder="trans('business.create.conditionEquipment.placeholder')"
+                                      :options="trans('business.create.conditionEquipment.options')"></g-g-select-input>
+                    <g-g-select-input :size="'is-6'" v-model="business.options.pledgeEquipment"
+                                      :label="trans('business.create.pledgeEquipment.title')"
+                                      :placeholder="trans('business.create.yn.placeholder')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <g-g-input :type="'number'" :prevText="'zt'"
+                               v-model="business.options.totalAmountCredit"
+                               :label="trans('business.create.totalAmountCredit.title')"
+                               :placeholder="trans('business.create.totalAmountCredit.placeholder')">
+                    </g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'"
+                               v-model="business.options.repaidAmountCredit"
+                               :label="trans('business.create.repaidAmountCredit.title')"
+                               :placeholder="trans('business.create.repaidAmountCredit.placeholder')">
+                    </g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'"
+                               v-model="business.options.balanceCredit"
+                               :label="trans('business.create.balanceCredit.title')"
+                               :placeholder="trans('business.create.balanceCredit.placeholder')">
+                    </g-g-input>
+                    <g-g-input :type="'number'" :prevText="'zt'"
+                               v-model="business.options.monthlyPaymentCredit"
+                               :label="trans('business.create.monthlyPaymentCredit.title')"
+                               :placeholder="trans('business.create.monthlyPaymentCredit.placeholder')">
+                    </g-g-input>
+                    <g-g-date-input :size="'is-3'" v-model="business.options.finalPaymentCreditDate"
+                                    :label="trans('business.create.finalPaymentCreditDate.title')"
+                                    :placeholder="trans('business.create.finalPaymentCreditDate.placeholder')"></g-g-date-input>
 
-                    <g-g-input :size="'is-3'" :type="'number'" :prevText="'zt'"
-                               v-model="steps[5].form.totalAmountCredit.value"
-                               :label="steps[5].form.totalAmountCredit.title"
-                               :placeholder="steps[5].form.totalAmountCredit.placeholder"></g-g-input>
-                    <g-g-input :size="'is-3'" :type="'number'" :prevText="'zt'"
-                               v-model="steps[5].form.repaidAmountCredit.value"
-                               :label="steps[5].form.repaidAmountCredit.title"
-                               :placeholder="steps[5].form.repaidAmountCredit.placeholder"></g-g-input>
+                    <g-g-select-input v-model="business.options.purposeCredit" :size="'is-3'"
+                                      :placeholder="trans('business.create.purposeCredit.placeholder')"
+                                      :label="trans('business.create.purposeCredit.title')" :searchable="true"
+                                      :options="trans('business.create.purposeCredit.options')"></g-g-select-input>
 
-                    <g-g-input :size="'is-3'" :type="'number'" :prevText="'zt'"
-                               v-model="steps[5].form.balanceCredit.value" :label="steps[5].form.balanceCredit.title"
-                               :placeholder="steps[5].form.balanceCredit.placeholder"></g-g-input>
-                    <g-g-input :size="'is-3'" :type="'number'" :prevText="'zt'"
-                               v-model="steps[5].form.monthlyPaymentCredit.value"
-                               :label="steps[5].form.monthlyPaymentCredit.title"
-                               :placeholder="steps[5].form.monthlyPaymentCredit.placeholder"></g-g-input>
+                    <g-g-select-input v-model="business.options.listTransferredProperty" :size="'is-6'"
+                                      :multiple="true"
+                                      :placeholder="trans('business.create.listTransferredProperty.placeholder')"
+                                      :label="trans('business.create.listTransferredProperty.title')" :searchable="true"
+                                      :options="trans('business.create.listTransferredProperty.options')"></g-g-select-input>
+                    <g-g-select-input v-model="business.options.deductionsDepreciation" :size="'is-3'"
+                                      :placeholder="trans('business.create.deductionsDepreciation.placeholder')"
+                                      :label="trans('business.create.deductionsDepreciation.title')" :searchable="true"
+                                      :options="trans('business.create.deductionsDepreciation.options')"></g-g-select-input>
 
-                    <g-g-date-input :size="'is-3'" v-model="steps[5].form.finalPaymentCreditDate.value"
-                                    :label="steps[5].form.finalPaymentCreditDate.title"
-                                    :placeholder="steps[5].form.finalPaymentCreditDate.placeholder"></g-g-date-input>
-                    <g-g-select-input v-model="steps[5].form.purposeCredit.selected" :size="'is-3'"
-                                      :placeholder="steps[5].form.purposeCredit.placeholder"
-                                      :label="steps[5].form.purposeCredit.title" :searchable="true"
-                                      :options="steps[5].form.purposeCredit.options"></g-g-select-input>
-
-                    <g-g-select-input v-model="steps[5].form.listTransferredProperty.selected" :size="'is-6'"
-                                      :placeholder="steps[5].form.listTransferredProperty.placeholder"
-                                      :label="steps[5].form.listTransferredProperty.title" :searchable="true"
-                                      :options="steps[5].form.listTransferredProperty.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[5].form.deductionsDepreciation.selected" :size="'is-3'"
-                                      :placeholder="steps[5].form.deductionsDepreciation.placeholder"
-                                      :label="steps[5].form.deductionsDepreciation.title" :searchable="true"
-                                      :options="steps[5].form.deductionsDepreciation.options"></g-g-select-input>
-                    <g-g-input :size="'is-3'" :type="'number'" :prevText="'%'"
-                               v-model="steps[5].form.amountDeductionsProfits.value"
-                               :label="steps[5].form.amountDeductionsProfits.title"
-                               :placeholder="steps[5].form.amountDeductionsProfits.placeholder"></g-g-input>
+                    <g-g-input :type="'number'" :prevText="'%'"
+                               v-model="business.options.amountDeductionsProfits"
+                               :label="trans('business.create.amountDeductionsProfits.title')"
+                               :placeholder="trans('business.create.amountDeductionsProfits.placeholder')">
+                    </g-g-input>
                 </div>
                 <div class="step__footer">
                     <div class="columns is-multiline">
@@ -665,187 +515,200 @@
                     </div>
 
                     <div class="columns is-multiline">
-                        <g-g-select-input v-model="steps[6].form.saleSite.selected"
-                                          :placeholder="steps[6].form.saleSite.placeholder"
-                                          :label="steps[6].form.saleSite.title" :searchable="true"
-                                          :options="steps[6].form.saleSite.options"></g-g-select-input>
+                        <g-g-select-input v-model="business.options.saleSite" :size="'is-3'"
+                                          :placeholder="trans('business.create.saleSite.placeholder')"
+                                          :label="trans('business.create.saleSite.title')" :searchable="true"
+                                          :options="trans('business.create.yn.options')"></g-g-select-input>
+
                         <g-g-input :type="'number'" :iconLeft="'/svg/icons/ic_calendar.svg'"
-                                   v-model="steps[6].form.yearCreationSite.value"
-                                   :label="steps[6].form.yearCreationSite.title"
-                                   :placeholder="steps[6].form.yearCreationSite.placeholder"></g-g-input>
-                        <g-g-select-input :size="'is-6'" v-model="steps[6].form.cms.selected"
-                                          :placeholder="steps[6].form.cms.placeholder" :label="steps[6].form.cms.title"
-                                          :searchable="true" :options="steps[6].form.cms.options"></g-g-select-input>
+                                   v-model="business.options.yearCreationSite"
+                                   :label="trans('business.create.saleSite.title')"
+                                   :placeholder="trans('business.create.saleSite.placeholder')"></g-g-input>
 
-                        <g-g-select-input :size="'is-6'" v-model="steps[6].form.themeSite.selected"
-                                          :placeholder="steps[6].form.themeSite.placeholder"
-                                          :label="steps[6].form.themeSite.title" :searchable="true"
-                                          :options="steps[6].form.themeSite.options"></g-g-select-input>
-                        <g-g-select-input v-model="steps[6].form.salePhone.selected"
-                                          :placeholder="steps[6].form.salePhone.placeholder"
-                                          :label="steps[6].form.salePhone.title" :searchable="true"
-                                          :options="steps[6].form.salePhone.options"></g-g-select-input>
-                        <g-g-input :type="'number'" v-model="steps[6].form.phone.value"
-                                   :label="steps[6].form.phone.title"
-                                   :placeholder="steps[6].form.phone.placeholder"></g-g-input>
+                        <g-g-select-input :size="'is-6'" v-model="business.options.cms"
+                                          :placeholder="trans('business.create.cms.placeholder')"
+                                          :label="trans('business.create.cms.title')"
+                                          :options="trans('business.create.cms.options')"></g-g-select-input>
 
-                        <g-g-select-input :size="'is-6'" v-model="steps[6].form.intellectualProperty.selected"
-                                          :placeholder="steps[6].form.intellectualProperty.placeholder"
-                                          :label="steps[6].form.intellectualProperty.title" :searchable="true"
-                                          :options="steps[6].form.intellectualProperty.options"></g-g-select-input>
-                        <g-g-select-input :size="'is-6'" v-model="steps[6].form.intellectualPropertyList.selected"
-                                          :placeholder="steps[6].form.intellectualPropertyList.placeholder"
-                                          :label="steps[6].form.intellectualPropertyList.title" :searchable="true"
-                                          :options="steps[6].form.intellectualPropertyList.options"></g-g-select-input>
+                        <g-g-select-input :size="'is-6'" v-model="business.options.themeSite"
+                                          :placeholder="trans('business.create.themeSite.placeholder')"
+                                          :label="trans('business.create.themeSite.title')" :searchable="true"
+                                          :options="trans('business.create.themeSite.options')"></g-g-select-input>
+                        <g-g-select-input v-model="business.options.salePhone"
+                                          :placeholder="trans('business.create.salePhone.placeholder')"
+                                          :label="trans('business.create.salePhone.title')"
+                                          :options="trans('business.create.yn.options')"></g-g-select-input>
+                        <g-g-input :type="'number'" v-model="business.options.phone"
+                                   :label="trans('business.create.phone.title')"
+                                   :placeholder="trans('business.create.phone.placeholder')"></g-g-input>
+
+                        <g-g-select-input :size="'is-6'" v-model="business.options.intellectualProperty"
+                                          :placeholder="trans('business.create.intellectualProperty.placeholder')"
+                                          :label="trans('business.create.intellectualProperty.title')"
+                                          :options="trans('business.create.yn.options')">
+                        </g-g-select-input>
+
+                        <g-g-select-input :size="'is-6'" v-model="business.options.intellectualPropertyList"
+                                          :multiple="true"
+                                          :placeholder="trans('business.create.intellectualPropertyList.placeholder')"
+                                          :label="trans('business.create.intellectualPropertyList.title')" :searchable="true"
+                                          :options="trans('business.create.intellectualPropertyList.options')">
+                        </g-g-select-input>
 
                         <template>
                             <div class="column is-12 pb-0">
                                 <h3>Трафик и SEO</h3>
                             </div>
-                            <g-g-input :size="'is-6'" :type="'number'" v-model="steps[6].form.visitorsPerDay.value"
-                                       :label="steps[6].form.visitorsPerDay.title"
-                                       :placeholder="steps[6].form.visitorsPerDay.placeholder"></g-g-input>
-                            <g-g-input :size="'is-6'" :type="'number'" v-model="steps[6].form.viewsPerDay.value"
-                                       :label="steps[6].form.viewsPerDay.title"
-                                       :placeholder="steps[6].form.viewsPerDay.placeholder"></g-g-input>
+                            <g-g-input :size="'is-6'" :type="'number'" v-model="business.options.visitorsPerDay"
+                                       :label="trans('business.create.visitorsPerDay.title')"
+                                       :placeholder="trans('business.create.visitorsPerDay.placeholder')"></g-g-input>
+                            <g-g-input :size="'is-6'" :type="'number'" v-model="business.options.viewsPerDay"
+                                       :label="trans('business.create.viewsPerDay.title')"
+                                       :placeholder="trans('business.create.viewsPerDay.placeholder')"></g-g-input>
 
-                            <g-g-select-input :size="'is-6'" v-model="steps[6].form.natureTraffic.selected"
-                                              :placeholder="steps[6].form.natureTraffic.placeholder"
-                                              :label="steps[6].form.natureTraffic.title" :searchable="true"
-                                              :options="steps[6].form.natureTraffic.options"></g-g-select-input>
-                            <g-g-select-input :size="'is-6'" v-model="steps[6].form.sourcesTraffic.selected"
-                                              :placeholder="steps[6].form.sourcesTraffic.placeholder"
-                                              :label="steps[6].form.sourcesTraffic.title" :searchable="true"
-                                              :options="steps[6].form.sourcesTraffic.options"></g-g-select-input>
+                            <g-g-select-input :size="'is-6'" v-model="business.options.natureTraffic"
+                                              :placeholder="trans('business.create.natureTraffic.placeholder')"
+                                              :label="trans('business.create.natureTraffic.title')" :searchable="true"
+                                              :options="trans('business.create.natureTraffic.options')"></g-g-select-input>
+                            <g-g-select-input :size="'is-6'" v-model="business.options.sourcesTraffic"
+                                              :multiple="true"
+                                              :placeholder="trans('business.create.sourcesTraffic.placeholder')"
+                                              :label="trans('business.create.sourcesTraffic.title')"
+                                              :options="trans('business.create.sourcesTraffic.options')"></g-g-select-input>
 
-                            <g-g-input :size="'is-6'" :type="'number'" v-model="steps[6].form.sourceGoogle.value"
-                                       :label="steps[6].form.sourceGoogle.title"
-                                       :placeholder="steps[6].form.sourceGoogle.placeholder"></g-g-input>
-                            <g-g-input :size="'is-6'" :type="'number'" v-model="steps[6].form.sourceYandex.value"
-                                       :label="steps[6].form.sourceYandex.title"
-                                       :placeholder="steps[6].form.sourceYandex.placeholder"></g-g-input>
+                            <g-g-input :size="'is-6'" :type="'number'" v-model="business.options.sourceGoogle"
+                                       :label="trans('business.create.sourceGoogle.title')"
+                                       :placeholder="trans('business.create.sourceGoogle.placeholder')"></g-g-input>
+                            <g-g-input :size="'is-6'" :type="'number'" v-model="business.options.sourceYandex"
+                                       :label="trans('business.create.sourceYandex.title')"
+                                       :placeholder="trans('business.create.sourceYandex.placeholder')"></g-g-input>
 
-                            <g-g-input :size="'is-12'" :type="'number'"
-                                       v-model="steps[6].form.additionalInformationTraffic.value"
-                                       :label="steps[6].form.additionalInformationTraffic.title"
-                                       :placeholder="steps[6].form.additionalInformationTraffic.placeholder"></g-g-input>
+                            <g-g-textarea :size="'is-12'"
+                                       v-model="business.options.additionalInformationTraffic"
+                                       :label="trans('business.create.additionalInformationTraffic.title')"
+                                       :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
                             <div class="column is-12 pb-0">
                                 <h3>Доходы сайта</h3>
                             </div>
-                            <g-g-select-input v-model="steps[6].form.haveIncomeSite.selected"
-                                              :placeholder="steps[6].form.haveIncomeSite.placeholder"
-                                              :label="steps[6].form.haveIncomeSite.title" :searchable="true"
-                                              :options="steps[6].form.haveIncomeSite.options"></g-g-select-input>
+                            <g-g-select-input v-model="business.options.haveIncomeSite"
+                                              :placeholder="trans('business.create.haveIncomeSite.placeholder')"
+                                              :label="trans('business.create.haveIncomeSite.title')"
+                                              :options="trans('business.create.yn.options')"></g-g-select-input>
                             <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.averageMonthlyIncome.value"
-                                       :label="steps[6].form.averageMonthlyIncome.title"
-                                       :placeholder="steps[6].form.averageMonthlyIncome.placeholder"></g-g-input>
-                            <g-g-select-input :size="'is-6'" v-model="steps[6].form.sourcesIncome.selected"
-                                              :placeholder="steps[6].form.sourcesIncome.placeholder"
-                                              :label="steps[6].form.sourcesIncome.title" :searchable="true"
-                                              :options="steps[6].form.sourcesIncome.options"></g-g-select-input>
+                                       v-model="business.options.averageMonthlyIncome"
+                                       :label="trans('business.create.averageMonthlyIncome.title')"
+                                       :placeholder="trans('business.create.averageMonthlyIncome.placeholder')"></g-g-input>
+                            <g-g-select-input :size="'is-6'" v-model="business.options.sourcesIncome"
+                                              :multiple="true"
+                                              :placeholder="trans('business.create.sourcesIncome.placeholder')"
+                                              :label="trans('business.create.sourcesIncome.title')"
+                                              :options="trans('business.create.sourcesIncome.options')"></g-g-select-input>
+                            <g-g-input :prevText="'zt'" :type="'number'"
+                                       v-model="business.options.contextualAdvertising"
+                                       :label="trans('business.create.contextualAdvertising.title')"
+                                       :placeholder="trans('business.create.contextualAdvertising.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'zt'" :type="'number'"
+                                       v-model="business.options.contextualAdvertisingGAdsens"
+                                       :label="trans('business.create.contextualAdvertisingGAdsens.title')"
+                                       :placeholder="trans('business.create.contextualAdvertisingGAdsens.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'zt'" :type="'number'"
+                                       v-model="business.options.bannerTizerNetworks"
+                                       :label="trans('business.create.bannerTizerNetworks.title')"
+                                       :placeholder="trans('business.create.bannerTizerNetworks.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'zt'" :type="'number'" v-model="business.options.cpa"
+                                       :label="trans('business.create.cpa.title')"
+                                       :placeholder="trans('business.create.cpa.placeholder')"></g-g-input>
 
-                            <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.contextualAdvertising.value"
-                                       :label="steps[6].form.contextualAdvertising.title"
-                                       :placeholder="steps[6].form.contextualAdvertising.placeholder"></g-g-input>
-                            <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.contextualAdvertisingGAdsens.value"
-                                       :label="steps[6].form.contextualAdvertisingGAdsens.title"
-                                       :placeholder="steps[6].form.contextualAdvertisingGAdsens.placeholder"></g-g-input>
-                            <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.bannerTizerNetworks.value"
-                                       :label="steps[6].form.bannerTizerNetworks.title"
-                                       :placeholder="steps[6].form.bannerTizerNetworks.placeholder"></g-g-input>
-                            <g-g-input :prevText="'zt'" :type="'number'" v-model="steps[6].form.cpa.value"
-                                       :label="steps[6].form.cpa.title"
-                                       :placeholder="steps[6].form.cpa.placeholder"></g-g-input>
-
-                            <g-g-radio-input :size="'is-6'" v-model="steps[6].form.banMonetizationSystems.value"
-                                             :label="steps[6].form.banMonetizationSystems.title"
-                                             :list="{'value':steps[6].form.banMonetizationSystems.value,'title':steps[6].form.banMonetizationSystems.title}"></g-g-radio-input>
-                            <g-g-input :size="'is-12'" :type="'number'"
-                                       v-model="steps[6].form.additionalInformationIncome.value"
-                                       :label="steps[6].form.additionalInformationIncome.title"
-                                       :placeholder="steps[6].form.additionalInformationIncome.placeholder"></g-g-input>
+                            <g-g-check-box-input :margin="false" :size="'is-6'" v-model="business.options.banMonetizationSystems"
+                                             :label="trans('business.create.banMonetizationSystems.title')"></g-g-check-box-input>
+                            <g-g-textarea :size="'is-12'"
+                                       v-model="business.options.additionalInformationIncome"
+                                       :label="trans('business.create.banMonetizationSystems.title')"
+                                       :placeholder="trans('business.create.banMonetizationSystems.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
                             <div class="column is-12 pb-0">
                                 <h3>Расходы сайта</h3>
                             </div>
-                            <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.averageMonthlyExpensesSite.value"
-                                       :label="steps[6].form.averageMonthlyExpensesSite.title"
-                                       :placeholder="steps[6].form.averageMonthlyExpensesSite.placeholder"></g-g-input>
-                            <g-g-select-input v-model="steps[6].form.categoriesExpensesSite.selected"
-                                              :placeholder="steps[6].form.categoriesExpensesSite.placeholder"
-                                              :label="steps[6].form.categoriesExpensesSite.title" :searchable="true"
-                                              :options="steps[6].form.categoriesExpensesSite.options"></g-g-select-input>
+                            <g-g-input :size="'is-6'" :prevText="'zt'" :type="'number'"
+                                       v-model="business.options.averageMonthlyExpensesSite"
+                                       :label="trans('business.create.averageMonthlyExpensesSite.title')"
+                                       :placeholder="trans('business.create.averageMonthlyExpensesSite.placeholder')"></g-g-input>
+                            <g-g-select-input v-model="business.options.categoriesExpensesSite"
+                                              :multiple="true"
+                                              :placeholder="trans('business.create.categoriesExpensesSite.placeholder')"
+                                              :label="trans('business.create.categoriesExpensesSite.title')"
+                                              :options="trans('business.create.categoriesExpensesSite.options')"></g-g-select-input>
 
                             <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.contentExpensesSite.value"
-                                       :label="steps[6].form.contentExpensesSite.title"
-                                       :placeholder="steps[6].form.contentExpensesSite.placeholder"></g-g-input>
+                                       v-model="business.options.contentExpensesSite"
+                                       :label="trans('business.create.contentExpensesSite.title')"
+                                       :placeholder="trans('business.create.contentExpensesSite.placeholder')"></g-g-input>
                             <g-g-input :prevText="'zt'" :type="'number'"
-                                       v-model="steps[6].form.hostingExpensesSite.value"
-                                       :label="steps[6].form.hostingExpensesSite.title"
-                                       :placeholder="steps[6].form.hostingExpensesSite.placeholder"></g-g-input>
-                            <g-g-input :prevText="'zt'" :type="'number'" v-model="steps[6].form.otherExpensesSite.value"
-                                       :label="steps[6].form.otherExpensesSite.title"
-                                       :placeholder="steps[6].form.otherExpensesSite.placeholder"></g-g-input>
+                                       v-model="business.options.hostingExpensesSite"
+                                       :label="trans('business.create.hostingExpensesSite.title')"
+                                       :placeholder="trans('business.create.hostingExpensesSite.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'zt'" :type="'number'"
+                                       v-model="business.options.otherExpensesSite"
+                                       :label="trans('business.create.otherExpensesSite.title')"
+                                       :placeholder="trans('business.create.otherExpensesSite.placeholder')"></g-g-input>
 
-                            <g-g-input :size="'is-12'" :type="'number'"
-                                       v-model="steps[6].form.additionalInformationExpensesSite.value"
-                                       :label="steps[6].form.additionalInformationExpensesSite.title"
-                                       :placeholder="steps[6].form.additionalInformationExpensesSite.placeholder"></g-g-input>
+                            <g-g-textarea :size="'is-12'"
+                                       v-model="business.options.additionalInformationExpensesSite"
+                                       :label="trans('business.create.additionalInformationExpensesSite.title')"
+                                       :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
                             <div class="column is-12 pb-0">
                                 <h3>О контенте и дизайне</h3>
                             </div>
-                            <g-g-select-input :size="'is-6'" v-model="steps[6].form.siteDesign.selected"
-                                              :placeholder="steps[6].form.siteDesign.placeholder"
-                                              :label="steps[6].form.siteDesign.title" :searchable="true"
-                                              :options="steps[6].form.siteDesign.options"></g-g-select-input>
+                            <g-g-select-input :size="'is-6'" v-model="business.options.siteDesign"
+                                              :placeholder="trans('business.create.siteDesign.placeholder')"
+                                              :label="trans('business.create.siteDesign.title')"
+                                              :options="trans('business.create.yn.options')"></g-g-select-input>
 
                             <div class="column is-12 pb-0">
                                 <label class="label"><span>Фото и картинки на сайте</span></label>
                             </div>
                             <g-g-input :size="'is-6'" :prevText="'%'" :type="'number'"
-                                       v-model="steps[6].form.imgSiteOwn.value" :label="steps[6].form.imgSiteOwn.title"
-                                       :placeholder="steps[6].form.imgSiteOwn.placeholder"></g-g-input>
+                                       v-model="business.options.imgSiteOwn"
+                                       :label="trans('business.create.imgSiteOwn.title')"
+                                       :placeholder="trans('business.create.imgSiteOwn.placeholder')"></g-g-input>
                             <g-g-input :size="'is-6'" :prevText="'%'" :type="'number'"
-                                       v-model="steps[6].form.imgSiteOtherSources.value"
-                                       :label="steps[6].form.imgSiteOtherSources.title"
-                                       :placeholder="steps[6].form.imgSiteOtherSources.placeholder"></g-g-input>
+                                       v-model="business.options.imgSiteOtherSources"
+                                       :label="trans('business.create.imgSiteOtherSources.title')"
+                                       :placeholder="trans('business.create.imgSiteOtherSources.placeholder')"></g-g-input>
 
                             <div class="column is-12 pb-0">
                                 <label
                                     class="label"><span>Тексты на сайте</span></label>
                             </div>
-                            <g-g-input :prevText="'%'" :type="'number'" v-model="steps[6].form.textSiteCopyright.value"
-                                       :label="steps[6].form.textSiteCopyright.title"
-                                       :placeholder="steps[6].form.textSiteCopyright.placeholder"></g-g-input>
                             <g-g-input :prevText="'%'" :type="'number'"
-                                       v-model="steps[6].form.textSiteManualRewrite.value"
-                                       :label="steps[6].form.textSiteManualRewrite.title"
-                                       :placeholder="steps[6].form.textSiteManualRewrite.placeholder"></g-g-input>
-                            <g-g-input :prevText="'%'" :type="'number'" v-model="steps[6].form.textSiteSavePaste.value"
-                                       :label="steps[6].form.textSiteSavePaste.title"
-                                       :placeholder="steps[6].form.textSiteSavePaste.placeholder"></g-g-input>
-                            <g-g-input :prevText="'%'" :type="'number'" v-model="steps[6].form.textSiteGenerated.value"
-                                       :label="steps[6].form.textSiteGenerated.title"
-                                       :placeholder="steps[6].form.textSiteGenerated.placeholder"></g-g-input>
+                                       v-model="business.options.textSiteCopyright"
+                                       :label="trans('business.create.textSiteCopyright.title')"
+                                       :placeholder="trans('business.create.textSiteCopyright.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'%'" :type="'number'"
+                                       v-model="business.options.textSiteManualRewrite"
+                                       :label="trans('business.create.textSiteManualRewrite.title')"
+                                       :placeholder="trans('business.create.textSiteManualRewrite.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'%'" :type="'number'"
+                                       v-model="business.options.textSiteSavePaste"
+                                       :label="trans('business.create.textSiteSavePaste.title')"
+                                       :placeholder="trans('business.create.textSiteSavePaste.placeholder')"></g-g-input>
+                            <g-g-input :prevText="'%'" :type="'number'"
+                                       v-model="business.options.textSiteGenerated"
+                                       :label="trans('business.create.textSiteGenerated.title')"
+                                       :placeholder="trans('business.create.textSiteGenerated.placeholder')"></g-g-input>
 
-                            <g-g-input :size="'is-12'" :type="'number'"
-                                       v-model="steps[6].form.additionalInformationContentSite.value"
-                                       :label="steps[6].form.additionalInformationContentSite.title"
-                                       :placeholder="steps[6].form.additionalInformationContentSite.placeholder"></g-g-input>
+                            <g-g-textarea :size="'is-12'"
+                                       v-model="business.options.additionalInformationContentSite"
+                                       :label="trans('business.create.additionalInformationContentSite.title')"
+                                       :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-textarea>
                         </template>
 
                     </div>
@@ -853,7 +716,7 @@
 
                 <hr>
                 <div class="px-1-5">
-                    <g-g-social-input></g-g-social-input>
+                    <!--<g-g-social-input v-model="business.options.socNet"></g-g-social-input>-->
                     <div class="step__footer">
                         <div class="columns is-multiline">
                             <div class="column is-12">
@@ -900,72 +763,68 @@
                     </div>
                 </div>
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="steps[7].form.typeAudience.selected" :size="'is-6'"
-                                      :placeholder="steps[7].form.typeAudience.placeholder"
-                                      :label="steps[7].form.typeAudience.title" :searchable="true"
-                                      :options="steps[7].form.typeAudience.options"></g-g-select-input>
+                    <g-g-select-input v-model="business.options.typeAudience" :size="'is-6'"
+                                      :placeholder="trans('business.create.typeAudience.placeholder')"
+                                      :label="trans('business.create.typeAudience.title')"
+                                      :options="trans('business.create.typeAudience.options')"></g-g-select-input>
 
                     <template>
                         <div class="column is-12 pb-0">
                             <h3>B2C</h3>
                         </div>
-                        <g-g-select-input v-model="steps[7].form.b2c.genderTargetAudience.selected"
-                                          :placeholder="steps[7].form.b2c.genderTargetAudience.placeholder"
-                                          :label="steps[7].form.b2c.genderTargetAudience.title" :searchable="true"
-                                          :options="steps[7].form.b2c.genderTargetAudience.options"></g-g-select-input>
-                        <g-g-from-to-input v-model="steps[7].form.b2c.ageMenFrom.value"
-                                           :label="steps[7].form.b2c.ageMenFrom.title"></g-g-from-to-input>
-                        <g-g-from-to-input v-model="steps[7].form.b2c.ageMenFrom.value"
-                                           :label="steps[7].form.b2c.ageWomenFrom.title"></g-g-from-to-input>
-                        <g-g-from-to-input v-model="steps[7].form.b2c.sexRatio.value" :textFrom="'м %'" :textTo="'ж %'"
-                                           :label="steps[7].form.b2c.sexRatio.title"></g-g-from-to-input>
-
-
-                        <g-g-select-input v-model="steps[7].form.b2c.familyStatusClients.selected" :size="'is-12'"
-                                          :placeholder="steps[7].form.b2c.familyStatusClients.placeholder"
-                                          :label="steps[7].form.b2c.familyStatusClients.title" :searchable="true"
-                                          :options="steps[7].form.b2c.familyStatusClients.options"></g-g-select-input>
-
-                        <g-g-input :type="'number'" :prevText="'zt'" v-model="steps[7].form.b2c.aloneClients.value"
-                                   :label="steps[7].form.b2c.aloneClients.title"
-                                   :placeholder="steps[7].form.b2c.aloneClients.placeholder"></g-g-input>
-                        <g-g-input :type="'number'" :prevText="'zt'" v-model="steps[7].form.b2c.couplesClients.value"
-                                   :label="steps[7].form.b2c.couplesClients.title"
-                                   :placeholder="steps[7].form.b2c.couplesClients.placeholder"></g-g-input>
-                        <g-g-input :type="'number'" :prevText="'zt'"
-                                   v-model="steps[7].form.b2c.familiesWithChildrenClients.value"
-                                   :label="steps[7].form.b2c.familiesWithChildrenClients.title"
-                                   :placeholder="steps[7].form.b2c.familiesWithChildrenClients.placeholder"></g-g-input>
-
-                        <g-g-select-input v-model="steps[7].form.b2c.socialStatusClients.selected" :size="'is-12'"
-                                          :placeholder="steps[7].form.b2c.socialStatusClients.placeholder"
-                                          :label="steps[7].form.b2c.socialStatusClients.title" :searchable="true"
-                                          :options="steps[7].form.b2c.socialStatusClients.options"></g-g-select-input>
-
-                        <g-g-input :type="'number'" :prevText="'zt'" v-model="steps[7].form.b2c.childClients.value"
-                                   :label="steps[7].form.b2c.childClients.title"
-                                   :placeholder="steps[7].form.b2c.childClients.placeholder"></g-g-input>
-                        <g-g-input :type="'number'" :prevText="'zt'" v-model="steps[7].form.b2c.studentsClients.value"
-                                   :label="steps[7].form.b2c.studentsClients.title"
-                                   :placeholder="steps[7].form.b2c.studentsClients.placeholder"></g-g-input>
-                        <g-g-input :type="'number'" :prevText="'zt'" v-model="steps[7].form.b2c.pensionersClients.value"
-                                   :label="steps[7].form.b2c.pensionersClients.title"
-                                   :placeholder="steps[7].form.b2c.pensionersClients.placeholder"></g-g-input>
-
+                        <g-g-select-input v-model="business.options.genderTargetAudience"
+                                          :placeholder="trans('business.create.genderTargetAudience.placeholder')"
+                                          :label="trans('business.create.genderTargetAudience.title')"
+                                          :options="trans('business.create.genderTargetAudience.options')">
+                        </g-g-select-input>
+                        <g-g-from-to-input v-model="business.options.ageMen"
+                                           :label="trans('business.create.ageMenFrom.title')"></g-g-from-to-input>
+                        <g-g-from-to-input v-model="business.options.ageWomen"
+                                           :label="trans('business.create.ageWomenFrom.title')"></g-g-from-to-input>
+                        <g-g-from-to-input v-model="business.options.sexRatio" :textFrom="'м %'" :textTo="'ж %'"
+                                           :label="trans('business.create.sexRatio.title')"></g-g-from-to-input>
+                        <g-g-select-input v-model="business.options.familyStatusClients" :size="'is-12'"
+                                          :multiple="true"
+                                          :placeholder="trans('business.create.familyStatusClients.placeholder')"
+                                          :label="trans('business.create.familyStatusClients.title')"
+                                          :options="trans('business.create.familyStatusClients.options')"></g-g-select-input>
+                        <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.aloneClients"
+                                   :label="trans('business.create.aloneClients.title')"
+                                   :placeholder="trans('business.create.aloneClients.placeholder')"></g-g-input>
+                        <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.couplesClients"
+                                   :label="trans('business.create.couplesClients.title')"
+                                   :placeholder="trans('business.create.couplesClients.placeholder')"></g-g-input>
+                        <g-g-input :type="'number'" :prevText="'%'"
+                                   v-model="business.options.familiesWithChildrenClients"
+                                   :label="trans('business.create.familiesWithChildrenClients.title')"
+                                   :placeholder="trans('business.create.familiesWithChildrenClients.placeholder')"></g-g-input>
+                        <g-g-select-input v-model="business.options.socialStatusClients" :size="'is-12'"
+                                          :multiple="true"
+                                          :placeholder="trans('business.create.socialStatusClients.placeholder')"
+                                          :label="trans('business.create.socialStatusClients.title')"
+                                          :options="trans('business.create.socialStatusClients.options')"></g-g-select-input>
+                        <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.childClients"
+                                   :label="trans('business.create.childClients.title')"
+                                   :placeholder="trans('business.create.childClients.placeholder')"></g-g-input>
+                        <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.studentsClients"
+                                   :label="trans('business.create.studentsClients.title')"
+                                   :placeholder="trans('business.create.studentsClients.placeholder')"></g-g-input>
+                        <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.pensionersClients"
+                                   :label="trans('business.create.pensionersClients.title')"
+                                   :placeholder="trans('business.create.pensionersClients.placeholder')"></g-g-input>
                         <g-g-from-to-input :size="'is-6'"
-                                           v-model="steps[7].form.b2c.averageIncomeTargetClientsFrom.value"
-                                           :label="steps[7].form.b2c.averageIncomeTargetClientsFrom.title"></g-g-from-to-input>
+                                           v-model="business.options.averageIncomeTargetClientsFrom"
+                                           :label="trans('business.create.averageIncomeTargetClientsFrom.title')"></g-g-from-to-input>
                         <g-g-input :size="'is-6'" :type="'number'" :prevText="'zt'"
-                                   v-model="steps[7].form.b2c.averageCheckClients.value"
-                                   :label="steps[7].form.b2c.averageCheckClients.title"
-                                   :placeholder="steps[7].form.b2c.averageCheckClients.placeholder"></g-g-input>
-
-                        <g-g-select-input v-model="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.selected"
+                                   v-model="business.options.averageCheckClients"
+                                   :label="trans('business.create.averageCheckClients.title')"
+                                   :placeholder="trans('business.create.averageCheckClients.placeholder')"></g-g-input>
+                        <g-g-select-input v-model="business.options.mainAdvertisingSourcesAttractClients"
+                                          :multiple="true"
                                           :size="'is-6'"
-                                          :placeholder="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.placeholder"
-                                          :label="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.title"
-                                          :searchable="true"
-                                          :options="steps[7].form.b2c.mainAdvertisingSourcesAttractClients.options"></g-g-select-input>
+                                          :placeholder="trans('business.create.mainAdvertisingSourcesAttractClients.placeholder')"
+                                          :label="trans('business.create.mainAdvertisingSourcesAttractClients.title')"
+                                          :options="trans('business.create.mainAdvertisingSourcesAttractClients.options')"></g-g-select-input>
 
                     </template>
 
@@ -973,33 +832,33 @@
                         <div class="column is-12 pb-0">
                             <h3>B2B</h3>
                         </div>
-                        <g-g-select-input v-model="steps[7].form.b2b.mainCategoryBusinessPartners.selected"
+                        <g-g-select-input v-model="business.options.mainCategoryBusinessPartners"
                                           :size="'is-6'"
-                                          :placeholder="steps[7].form.b2b.mainCategoryBusinessPartners.placeholder"
-                                          :label="steps[7].form.b2b.mainCategoryBusinessPartners.title"
-                                          :searchable="true"
-                                          :options="steps[7].form.b2b.mainCategoryBusinessPartners.options"></g-g-select-input>
-                        <g-g-select-input v-model="steps[7].form.b2b.haveExistingContracts.selected" :size="'is-6'"
-                                          :placeholder="steps[7].form.b2b.haveExistingContracts.placeholder"
-                                          :label="steps[7].form.b2b.haveExistingContracts.title" :searchable="true"
-                                          :options="steps[7].form.b2b.haveExistingContracts.options"></g-g-select-input>
-                        <g-g-contracts-input v-model="steps[7].form.b2b.listContracts"></g-g-contracts-input>
+                                          :multiple="true"
+                                          :placeholder="trans('business.create.mainCategoryBusinessPartners.placeholder')"
+                                          :label="trans('business.create.mainCategoryBusinessPartners.title')"
+                                          :options="trans('business.create.mainCategoryBusinessPartners.options')"></g-g-select-input>
+                        <g-g-select-input v-model="business.options.haveExistingContracts" :size="'is-6'"
+                                          :placeholder="trans('business.create.haveExistingContracts.placeholder')"
+                                          :label="trans('business.create.haveExistingContracts.title')" :searchable="true"
+                                          :options="trans('business.create.haveExistingContracts.options')"></g-g-select-input>
+                        <g-g-contracts-input v-model="business.options.listContracts"></g-g-contracts-input>
 
                         <g-g-input :size="'is-6'" :type="'number'"
-                                   v-model="steps[7].form.b2b.countPerpetualServiceContracts.value"
-                                   :label="steps[7].form.b2b.countPerpetualServiceContracts.title"
-                                   :placeholder="steps[7].form.b2b.countPerpetualServiceContracts.placeholder"></g-g-input>
+                                   v-model="business.options.countPerpetualServiceContracts"
+                                   :label="trans('business.create.countPerpetualServiceContracts.title')"
+                                   :placeholder="trans('business.create.countPerpetualServiceContracts.placeholder')"></g-g-input>
                         <g-g-input :size="'is-6'" :type="'number'" :prevText="'zt'"
-                                   v-model="steps[7].form.b2b.averageCheckClients.value"
-                                   :label="steps[7].form.b2b.averageCheckClients.title"
-                                   :placeholder="steps[7].form.b2b.averageCheckClients.placeholder"></g-g-input>
+                                   v-model="business.options.averageCheckClients"
+                                   :label="trans('business.create.averageCheckClients.title')"
+                                   :placeholder="trans('business.create.averageCheckClients.placeholder')"></g-g-input>
 
-                        <g-g-select-input v-model="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.selected"
+                        <g-g-select-input v-model="business.options.mainAdvertisingSourcesAttractClients"
                                           :size="'is-6'"
-                                          :placeholder="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.placeholder"
-                                          :label="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.title"
-                                          :searchable="true"
-                                          :options="steps[7].form.b2b.mainAdvertisingSourcesAttractClients.options"></g-g-select-input>
+                                          :multiple="true"
+                                          :placeholder="trans('business.create.mainAdvertisingSourcesAttractClients.placeholder')"
+                                          :label="trans('business.create.mainAdvertisingSourcesAttractClients.title')"
+                                          :options="trans('business.create.mainAdvertisingSourcesAttractClients.options')"></g-g-select-input>
                     </template>
 
                 </div>
@@ -1048,35 +907,42 @@
                     </div>
                 </div>
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="steps[8].form.legalStatus.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.legalStatus.placeholder"
-                                      :label="steps[8].form.legalStatus.title" :searchable="true"
-                                      :options="steps[8].form.legalStatus.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[8].form.taxSystem.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.taxSystem.placeholder"
-                                      :label="steps[8].form.taxSystem.title" :searchable="true"
-                                      :options="steps[8].form.taxSystem.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[8].form.changesProfileLegalEntity.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.changesProfileLegalEntity.placeholder"
-                                      :label="steps[8].form.changesProfileLegalEntity.title" :searchable="true"
-                                      :options="steps[8].form.changesProfileLegalEntity.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[8].form.havePenalties.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.havePenalties.placeholder"
-                                      :label="steps[8].form.havePenalties.title" :searchable="true"
-                                      :options="steps[8].form.havePenalties.options"></g-g-select-input>
-                    <g-g-select-input :multiple="true" v-model="steps[8].form.listPenalties.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.listPenalties.placeholder"
-                                      :label="steps[8].form.listPenalties.title" :searchable="true"
-                                      :options="steps[8].form.listPenalties.options"></g-g-select-input>
-                    <g-g-select-input v-model="steps[8].form.haveDisputableSituations.selected" :size="'is-6'"
-                                      :placeholder="steps[8].form.haveDisputableSituations.placeholder"
-                                      :label="steps[8].form.haveDisputableSituations.title" :searchable="true"
-                                      :options="steps[8].form.haveDisputableSituations.options"></g-g-select-input>
-                    <g-g-select-input :multiple="true" v-model="steps[8].form.listDisputableSituations.selected"
-                                      :size="'is-6'" :placeholder="steps[8].form.listDisputableSituations.placeholder"
-                                      :label="steps[8].form.listDisputableSituations.title" :searchable="true"
-                                      :options="steps[8].form.listDisputableSituations.options"></g-g-select-input>
-
+                    <g-g-select-input v-model="business.options.legalStatus" :size="'is-6'"
+                                      :placeholder="trans('business.create.legalStatus.placeholder')"
+                                      :label="trans('business.create.legalStatus.title')"
+                                      :options="trans('business.create.legalStatus.options')"></g-g-select-input>
+                    <g-g-select-input v-model="business.options.taxSystem" :size="'is-6'"
+                                      :placeholder="trans('business.create.taxSystem.placeholder')"
+                                      :label="trans('business.create.taxSystem.title')"
+                                      :options="trans('business.create.taxSystem.options')"></g-g-select-input>
+                    <g-g-select-input v-model="business.options.changesProfileLegalEntity" :size="'is-6'"
+                                      :placeholder="trans('business.create.changesProfileLegalEntity.placeholder')"
+                                      :label="trans('business.create.changesProfileLegalEntity.title')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <g-g-select-input v-model="business.options.havePenalties" :size="'is-6'"
+                                      :placeholder="trans('business.create.havePenalties.placeholder')"
+                                      :label="trans('business.create.havePenalties.title')"
+                                      :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <g-g-select-input :multiple="true"
+                                      v-model="business.options.listPenalties"
+                                      :size="'is-6'"
+                                      :placeholder="trans('business.create.listPenalties.placeholder')"
+                                      :label="trans('business.create.listPenalties.title')"
+                                      :options="trans('business.create.listPenalties.options')">
+                    </g-g-select-input>
+                    <g-g-select-input v-model="business.options.haveDisputableSituations"
+                                      :size="'is-6'"
+                                      :placeholder="trans('business.create.haveDisputableSituations.placeholder')"
+                                      :label="trans('business.create.haveDisputableSituations.title')"
+                                      :options="trans('business.create.yn.options')">
+                    </g-g-select-input>
+                    <g-g-select-input :multiple="true"
+                                      v-model="business.options.listDisputableSituations"
+                                      :size="'is-6'"
+                                      :placeholder="trans('business.create.listDisputableSituations.placeholder')"
+                                      :label="trans('business.create.listDisputableSituations.title')"
+                                      :options="trans('business.create.listDisputableSituations.options')">
+                    </g-g-select-input>
                 </div>
                 <div class="step__footer">
                     <div class="columns is-multiline">
@@ -1106,6 +972,7 @@
     import {VStepper} from 'vue-stepper-component';
     import Multiselect from 'vue-multiselect';
     import GGSelectInput from './form/GGSelectInput';
+    import GGBusinessObjectInput from './form/GGBusinessObjectInput';
     import GGContractsInput from './form/GGContractsInput';
     import GGCategoryButton from './form/GGCategoryButton';
     import GGSocialInput from './form/GGSocialInput';
@@ -1131,6 +998,7 @@
         components: {
             GGTextarea,
             GGContractsInput,
+            GGBusinessObjectInput,
             GGCategoryButton,
             GGSocialInput,
             GGFromToInput,
@@ -1146,10 +1014,11 @@
             GGLocationSelectInput,
             VStepper, Multiselect, vueSlider, flatPickr
         },
-        props:{id:{default:null}},
+        props: {id: {default: null}},
         data() {
             return {
                 model: null,
+                rent: false,
                 business: {
                     category: null,
                     country_id: null,
@@ -1166,7 +1035,7 @@
                         //region Step 1
                         addresses: null,
                         nameLegalEntity: null,
-                        partBusiness:  'part',
+                        partBusiness: 'part',
                         numberShares: null,
                         descriptionBusiness: null,
                         yearFoundationBusiness: null,
@@ -1182,141 +1051,111 @@
                         negativeScenario: null,
                         //endregion
                         //region Step 3
-                        objects:[{
-                            categoryProperty:null,
-                            typeProperty: null,
-                            numberSquareMeters: null,
-                            priceSquareMeters: null,
-                            priceIncludingVAT: null,
-                            titleDocuments: null,
-                            restrictionsOperation: null,
-                            listRestrictionsOperation: null,
-                            refRegisterEstate: null,
-                            technicalPropertyPlan: null,
-                            coordinationRedevelopment: null,
-                            availabilityMortgage: null,
-                            totalAmountMortgage: null,
-                            repaidAmountMortgage: null,
-                            balanceMortgage: null,
-                            monthlyPaymentMortgage: null,
-                            finalPaymentMortgageDate: null,
-                            availabilityLoanSecuredObject: {
-                                selected: null,
-                                title: 'Наличие кредита под залог объекта',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            totalAmountCredit: {
-                                title: 'Общая сумма кредита',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            repaidAmountCredit: {
-                                title: 'Погашенная сумма',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            balanceCredit: {
-                                title: 'Остаток суммы кредита',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            monthlyPaymentCredit: {
-                                title: 'Ежемесячный платёж',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            finalPaymentCreditDate: {
-                                title: 'Окончательный срок выплаты',
-                                placeholder: '25.02.2020',
-                                value: '',
-                                config: {
-                                    altFormat: 'd.m.Y',
-                                    altInput: true,
-                                    dateFormat: 'Y-m-d'
-                                },
-                                tooltip: 'tooltip text',
-                            },
-                            purposeCredit: {
-                                selected: null,
-                                title: 'Назначение кредита',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            jointPropertyEstate: {
-                                selected: null,
-                                title: 'Совместная собственность недвижимости',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            typeRelationshipCoowners: {
-                                selected: null,
-                                title: 'Тип взаимоотношений сообственников',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            monthlyUtilityCosts: {
-                                title: 'Ежемесячные расходы на комуннальные платежи',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            houseBookNumber: {
-                                title: 'Номер домовой книги',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-
-                            presenceChanging: {
-                                selected: null,
-                                title: 'Наличие чейнджа',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            costChanging: {
-                                title: 'Стоимость чейнджа',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            leaseTermTo: {
-                                title: 'Срок аренды до',
-                                placeholder: '25.02.2020',
-                                value: '',
-                                config: {
-                                    altFormat: 'd.m.Y',
-                                    altInput: true,
-                                    dateFormat: 'Y-m-d'
-                                },
-                                tooltip: 'tooltip text',
-                            },
-                        }]
+                        objects: [],
+                        //endregion
+                        //region Step 4
+                        transferWorkSchemes: null,
+                        monthTeach: null,
+                        readyTrainingMaterials: null,
+                        typeTrainingMaterials: null,
+                        transferCustomerBase: null,
+                        typeTransferCustomerBase: null,
+                        haveContractors: null,
+                        contractors: [],
+                        staff: [],
+                        willStaffLeave: null,
+                        certificates: [],
+                        //endregion
+                        // region Step 5
+                        techDocEquipmentCD: null,
+                        techDocEquipment: null,
+                        conditionProperty: null,
+                        conditionEquipment: null,
+                        pledgeEquipment: null,
+                        totalAmountCredit: null,
+                        repaidAmountCredit: null,
+                        balanceCredit: null,
+                        monthlyPaymentCredit: null,
+                        finalPaymentCreditDate: null,
+                        purposeCredit: null,
+                        listTransferredProperty: null,
+                        deductionsDepreciation: null,
+                        amountDeductionsProfits: null,
+                        //endregion
+                        //region Step 6
+                        saleSite: null,
+                        yearCreationSite: null,
+                        cms: null,
+                        themeSite: null,
+                        salePhone: null,
+                        phone: null,
+                        intellectualProperty: null,
+                        intellectualPropertyList: null,
+                        visitorsPerDay: null,
+                        viewsPerDay: null,
+                        natureTraffic: null,
+                        sourcesTraffic: null,
+                        sourceGoogle: null,
+                        sourceYandex: null,
+                        additionalInformationTraffic: null,
+                        haveIncomeSite: null,
+                        averageMonthlyIncome: null,
+                        sourcesIncome: null,
+                        contextualAdvertising: null,
+                        contextualAdvertisingGAdsens: null,
+                        bannerTizerNetworks: null,
+                        cpa: null,
+                        banMonetizationSystems: null,
+                        additionalInformationIncome: null,
+                        averageMonthlyExpensesSite: null,
+                        categoriesExpensesSite: null,
+                        contentExpensesSite: null,
+                        hostingExpensesSite: null,
+                        otherExpensesSite: null,
+                        additionalInformationExpensesSite: null,
+                        siteDesign: null,
+                        imgSiteOwn: null,
+                        imgSiteOtherSources: null,
+                        textSiteCopyright: null,
+                        textSiteManualRewrite: null,
+                        textSiteSavePaste: null,
+                        textSiteGenerated: null,
+                        additionalInformationContentSite: null,
+                        socNet: [],
+                        //endregion
+                        //region Step 7
+                        typeAudience: null,
+                        genderTargetAudience: null,
+                        ageMen: null,
+                        ageWomen: null,
+                        sexRatio: null,
+                        familyStatusClients: null,
+                        aloneClients: null,
+                        couplesClients: null,
+                        familiesWithChildrenClients: null,
+                        socialStatusClients: null,
+                        childClients: null,
+                        studentsClients: null,
+                        pensionersClients: null,
+                        averageIncomeTargetClientsFrom: null,
+                        averageIncomeTargetClientsTo: null,
+                        averageCheckClients: null,
+                        mainAdvertisingSourcesAttractClients: null,
+                        mainCategoryBusinessPartners: null,
+                        haveExistingContracts: null,
+                        listContracts: [],
+                        countPerpetualServiceContracts: null,
+                        averageCheckClients: null,
+                        mainAdvertisingSourcesAttractClients: null,
+                        //endregion
+                        //region Step 8
+                        legalStatus: null,
+                        taxSystem: null,
+                        changesProfileLegalEntity: null,
+                        havePenalties: null,
+                        listPenalties: null,
+                        haveDisputableSituations: null,
+                        listDisputableSituations: null,
                         //endregion
                     }
                 },
@@ -1349,1224 +1188,31 @@
                         title: "Недвижимость",
                         active: false,
                         success: false,
-                        form: {
-                            objects: [
-                                {
-                                    numberSquareMeters: {
-                                        title: 'Количество кв. метров',
-                                        placeholder: '12',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'кв.м.',
-                                    },
-                                    priceSquareMeters: {
-                                        title: 'Цена за кв. метр',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    priceIncludingVAT: {
-                                        title: 'Цена с учетом НДС',
-                                        value: false,
-                                    },
-                                    titleDocuments: {
-                                        selected: null,
-                                        title: 'Правоустанавливающие документы',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    restrictionsOperation: {
-                                        selected: null,
-                                        title: 'Огрничения по эксплуатции',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    listRestrictionsOperation: {
-                                        selected: null,
-                                        title: 'Укажите ограничения',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                        noResult: 'Ничего не найдено'
-                                    },
-                                    refRegisterEstate: {
-                                        selected: null,
-                                        title: 'Справка из регистра недв. и зданий',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    technicalPropertyPlan: {
-                                        selected: null,
-                                        title: 'Технический план недвижимости',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    coordinationRedevelopment: {
-                                        selected: null,
-                                        title: 'Согласование перепланировок',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    availabilityMortgage: {
-                                        selected: null,
-                                        title: 'Наличие ипотеки по объекту',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    totalAmountMortgage: {
-                                        title: 'Общая сумма ипотеки',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    repaidAmountMortgage: {
-                                        title: 'Погашенная сумма',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    balanceMortgage: {
-                                        title: 'Остаток суммы ипотеки',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    monthlyPaymentMortgage: {
-                                        title: 'Ежемесячный платёж',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    finalPaymentMortgageDate: {
-                                        title: 'Окончательный срок выплаты',
-                                        tooltip: 'tooltip text',
-                                        placeholder: '25.02.2020',
-                                        value: '',
-                                    },
-                                    availabilityLoanSecuredObject: {
-                                        selected: null,
-                                        title: 'Наличие кредита под залог объекта',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    totalAmountCredit: {
-                                        title: 'Общая сумма кредита',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    repaidAmountCredit: {
-                                        title: 'Погашенная сумма',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    balanceCredit: {
-                                        title: 'Остаток суммы кредита',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    monthlyPaymentCredit: {
-                                        title: 'Ежемесячный платёж',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    finalPaymentCreditDate: {
-                                        title: 'Окончательный срок выплаты',
-                                        placeholder: '25.02.2020',
-                                        value: '',
-                                        config: {
-                                            altFormat: 'd.m.Y',
-                                            altInput: true,
-                                            dateFormat: 'Y-m-d'
-                                        },
-                                        tooltip: 'tooltip text',
-                                    },
-                                    purposeCredit: {
-                                        selected: null,
-                                        title: 'Назначение кредита',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    jointPropertyEstate: {
-                                        selected: null,
-                                        title: 'Совместная собственность недвижимости',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    typeRelationshipCoowners: {
-                                        selected: null,
-                                        title: 'Тип взаимоотношений сообственников',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    monthlyUtilityCosts: {
-                                        title: 'Ежемесячные расходы на комуннальные платежи',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    houseBookNumber: {
-                                        title: 'Номер домовой книги',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                    },
-
-                                    presenceChanging: {
-                                        selected: null,
-                                        title: 'Наличие чейнджа',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                    },
-                                    costChanging: {
-                                        title: 'Стоимость чейнджа',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    leaseTermTo: {
-                                        title: 'Срок аренды до',
-                                        placeholder: '25.02.2020',
-                                        value: '',
-                                        config: {
-                                            altFormat: 'd.m.Y',
-                                            altInput: true,
-                                            dateFormat: 'Y-m-d'
-                                        },
-                                        tooltip: 'tooltip text',
-                                    },
-                                },
-                            ],
-                        }
                     },
                     4: {
                         title: "Бизнес-процессы",
-                        active:
-                            false,
-                        success:
-                            false,
-                        form: {
-                            transferWorkSchemes: {
-                                selected: null,
-                                title: 'Передаете ли схемы работы?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            monthTeach: {
-                                title: 'Сколько времени будете обучать?',
-                                placeholder: '1',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'Месяцев'
-                            },
-                            readyTrainingMaterials: {
-                                selected: null,
-                                title: 'Готовы ли обучающие материалы?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            typeTrainingMaterials: {
-                                selected: null,
-                                title: 'Тип обучающих материалов',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            transferCustomerBase: {
-                                selected: null,
-                                title: 'Передаёте базы клиентов?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            typeTransferCustomerBase: {
-                                selected: null,
-                                title: 'Тип передачи базы',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            haveContractors: {
-                                selected: null,
-                                title: 'Есть ли контрагенты?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            contractors: {
-                                title: 'Контрагенты',
-                                list: [
-                                    {
-                                        direction: {
-                                            selected: null,
-                                            title: 'Направление контрагента',
-                                            placeholder: 'Выберите',
-                                            selectedLabel: '',
-                                            selectLabel: '',
-                                            deselectLabel: '',
-                                            options: trans('business.create.theme.options'),
-                                            noResult: 'Ничего не найдено'
-                                        },
-                                        name: {
-                                            title: 'Название юридического лица',
-                                            placeholder: 'Укажите название',
-                                            value: '',
-                                            tooltip: 'tooltip text'
-                                        },
-                                        phone: {
-                                            title: 'Телефон',
-                                            placeholder: '+48 456 566-09-23',
-                                            value: '',
-                                            tooltip: 'tooltip text'
-                                        },
-                                        mail: {
-                                            title: 'Почта',
-                                            placeholder: 'agent@mail.com',
-                                            value: '',
-                                            tooltip: 'tooltip text'
-                                        },
-                                    },
-                                ]
-                            },
-                            staff: {
-                                title: 'Персонал',
-                            },
-                            willStaffLeave: {
-                                selected: null,
-                                title: 'Уйдет ли персонал за собственником?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                            },
-                            certificates: {
-                                title: 'Услуги и сертификаты',
-                            },
-
-                        }
+                        active:false,
+                        success:false,
                     },
                     5: {
                         title: "Материальные активы",
                         active: false,
                         success: false,
-                        form: {
-                            techDocEquipmentCD: {
-                                selected: null,
-                                title: 'Техническая документация на оборудование (чеки или договор)?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            techDocEquipment: {
-                                selected: null,
-                                title: 'Техническая документация на оборудование?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            conditionProperty: {
-                                selected: null,
-                                title: 'Состояние имущества (по оценке собственника)',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            conditionEquipment: {
-                                selected: null,
-                                title: 'Состояние оборудования, транспорта, техники (по оценке собственника)',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            pledgeEquipment: {
-                                selected: null,
-                                title: 'Залог на оборудование, транспорт и дугие материльные активы?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-
-                            totalAmountCredit: {
-                                title: 'Общая сумма кредита',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            repaidAmountCredit: {
-                                title: 'Погашенная сумма',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            balanceCredit: {
-                                title: 'Остаток суммы кредита',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            monthlyPaymentCredit: {
-                                title: 'Ежемесячный платёж',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-
-                            finalPaymentCreditDate: {
-                                title: 'Окончательный срок выплаты',
-                                placeholder: '25.02.2020',
-                                value: '',
-                                config: {
-                                    altFormat: 'd.m.Y',
-                                    altInput: true,
-                                    dateFormat: 'Y-m-d'
-                                }
-                            },
-                            purposeCredit: {
-                                selected: null,
-                                title: 'Назначение кредита',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            listTransferredProperty: {
-                                selected: null,
-                                title: 'Перечень имущества передаваемого продавцом',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-
-                            deductionsDepreciation: {
-                                selected: null,
-                                title: 'Отчисления на амортизцию',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            amountDeductionsProfits: {
-                                title: 'Объем отчислений от прибыли',
-                                placeholder: '75',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                            },
-
-                        }
                     },
                     6: {
                         title: "Нематериальные активы",
                         active: false,
                         success: false,
-                        form: {
-                            saleSite: {
-                                selected: null,
-                                title: 'Продается ли сайт?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            yearCreationSite: {
-                                title: 'Год создания сайта',
-                                placeholder: '2010',
-                                value: '',
-                            },
-                            cms: {
-                                selected: null,
-                                title: 'Система управления сайтом',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            themeSite: {
-                                selected: null,
-                                title: 'Тематика сайта',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            salePhone: {
-                                selected: null,
-                                title: 'Продается ли телефон?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            phone: {
-                                title: 'Номер телефона',
-                                placeholder: '880005553535',
-                                value: '',
-                                tooltip: 'tooltip text'
-                            },
-                            intellectualProperty: {
-                                selected: null,
-                                title: 'Интеллектуальная собственность?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            intellectualPropertyList: {
-                                selected: null,
-                                title: 'Укажите объекты интеллектуальной собственности',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-
-                            visitorsPerDay: {
-                                title: 'Посетителей в день',
-                                placeholder: '18 300',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-                            viewsPerDay: {
-                                title: 'Просмотров в день',
-                                placeholder: '12 300',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-                            natureTraffic: {
-                                selected: null,
-                                title: 'Характер трафика',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            sourcesTraffic: {
-                                selected: null,
-                                title: 'Источники трафика',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            sourceGoogle: {
-                                title: 'Источник: Google',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-                            sourceYandex: {
-                                title: 'Источник: Яндекс',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-                            additionalInformationTraffic: {
-                                title: 'Дополнительная информация по трафику',
-                                placeholder: 'Опишите дополнительную информацию по вашему трафику',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-
-                            haveIncomeSite: {
-                                selected: null,
-                                title: 'Получаете ли доход из сайта?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            averageMonthlyIncome: {
-                                title: 'Среднемесячный доход',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            sourcesIncome: {
-                                selected: null,
-                                title: 'Источники дохода',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            contextualAdvertising: {
-                                title: 'Контекстная реклама',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            contextualAdvertisingGAdsens: {
-                                title: 'Из них Google Adsens',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            bannerTizerNetworks: {
-                                title: 'Баннерные и тизирные сети',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            cpa: {
-                                title: 'CPA',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            banMonetizationSystems: {
-                                title: 'Бан в системах монетизации',
-                                value: false,
-                            },
-                            additionalInformationIncome: {
-                                title: 'Дополнительная информация по доходам',
-                                placeholder: 'Опишите дополнительную информацию по доходам',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-
-                            averageMonthlyExpensesSite: {
-                                title: 'Среднемесячный расход',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            categoriesExpensesSite: {
-                                selected: null,
-                                title: 'Категории расходов',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            contentExpensesSite: {
-                                title: 'Контент',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            hostingExpensesSite: {
-                                title: 'Хостинг и администрирование',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            otherExpensesSite: {
-                                title: 'Иные расходы',
-                                placeholder: '1 000',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: 'zł',
-                            },
-                            additionalInformationExpensesSite: {
-                                title: 'Дополнительная информация по расходам',
-                                placeholder: 'Опишите дополнительную информацию по расходам',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-
-                            siteDesign: {
-                                selected: null,
-                                title: 'Дизайн сайта',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-
-                            imgSiteOwn: {
-                                title: 'Собственные',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-                            imgSiteOtherSources: {
-                                title: 'Из других источников',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-
-                            textSiteCopyright: {
-                                title: 'Копирайт',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-                            textSiteManualRewrite: {
-                                title: 'Ручной рерайт',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-                            textSiteSavePaste: {
-                                title: 'Копи-паст',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-                            textSiteGenerated: {
-                                title: 'Генерированый',
-                                placeholder: '50',
-                                value: '',
-                                tooltip: 'tooltip text',
-                                prevTxt: '%',
-                                optionSlider: {
-                                    tooltip: false,
-                                    min: 0,
-                                    max: 100
-                                },
-                            },
-                            additionalInformationContentSite: {
-                                title: 'Дополнительная информация по контенту и дизайну',
-                                placeholder: 'Опишите дополнительную информацию по контенту и дизайну',
-                                value: '',
-                                tooltip: 'tooltip text',
-                            },
-
-                            socNetItems: [
-                                {
-                                    title: 'Facebook',
-                                    link: {
-                                        title: 'Ссылка на группу в Facebook',
-                                        placeholder: 'https://',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                    },
-                                    countUsers: {
-                                        title: 'Объём пользователей группы в Facebook',
-                                        placeholder: '11000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                    },
-                                    haveIncome: {
-                                        selected: null,
-                                        title: 'Получаете ли доход с группы?',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                        noResult: 'Ничего не найдено'
-                                    },
-                                    incomeYear: {
-                                        title: 'Доход с группы в год',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    incomeQuarter: {
-                                        title: 'Доход с группы в квартал ',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    turnoverYear: {
-                                        title: 'Оборот с группы в год',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    turnoverQuarter: {
-                                        title: 'Оборот с группы в квартал ',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    expensesYear: {
-                                        title: 'Расходы с группы в год',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    expensesQuarter: {
-                                        title: 'Расходы с группы в квартал ',
-                                        placeholder: '1 000',
-                                        value: '',
-                                        tooltip: 'tooltip text',
-                                        prevTxt: 'zł',
-                                    },
-                                    themes: {
-                                        selected: null,
-                                        title: 'Тематика группы',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                        noResult: 'Ничего не найдено'
-                                    },
-                                    lang: {
-                                        selected: null,
-                                        title: 'Языковой сегмент группы',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                        noResult: 'Ничего не найдено'
-                                    },
-                                    methodTransferGroup: {
-                                        selected: null,
-                                        title: 'Способ передачи группы',
-                                        placeholder: 'Выберите',
-                                        selectedLabel: '',
-                                        selectLabel: '',
-                                        deselectLabel: '',
-                                        options: trans('business.create.theme.options'),
-                                        noResult: 'Ничего не найдено'
-                                    },
-
-                                }
-                            ]
-                        }
                     },
                     7: {
                         title: "Целевая аудитория",
                         active: false,
                         success: false,
-                        form: {
-                            typeAudience: {
-                                selected: null,
-                                title: 'Тип аудитории на которую расчитан бизнес',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            b2c: {
-                                genderTargetAudience: {
-                                    selected: null,
-                                    title: 'Пол целевой аудитории',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                                ageMenFrom: {
-                                    title: 'Возраст мужчин',
-                                    placeholder: '20',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                ageMenTo: {
-                                    title: 'Возраст мужчин',
-                                    placeholder: '48',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                ageWomenFrom: {
-                                    title: 'Возраст женщин',
-                                    placeholder: '20',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                ageWomenTo: {
-                                    title: 'Возраст женщин',
-                                    placeholder: '48',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                sexRatio: {
-                                    title: 'Соотношение полов',
-                                    value: 50,
-                                    optionSlider: {
-                                        tooltip: 'always',
-                                        formatter: '{value}%',
-                                        min: 0,
-                                        max: 100,
-                                        tooltipStyle: {
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "transparent",
-                                            "color": "#1C2940",
-                                            "top": ".5rem",
-                                            "position": "relative"
-
-                                        }
-                                    }
-                                },
-
-                                familyStatusClients: {
-                                    selected: null,
-                                    title: 'Семейный статус клиентов',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                                aloneClients: {
-                                    title: 'Соотношение одиноких',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-                                couplesClients: {
-                                    title: 'Соотношение пар',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-                                familiesWithChildrenClients: {
-                                    title: 'Соотношение семей с детьми',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-
-                                socialStatusClients: {
-                                    selected: null,
-                                    title: 'Социальные статусы клиентов',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                                childClients: {
-                                    title: 'Соотношение детей',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-                                studentsClients: {
-                                    title: 'Соотношение студентов',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-                                pensionersClients: {
-                                    title: 'Соотношение пенсонеров',
-                                    placeholder: '50',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: '%',
-                                },
-
-                                averageIncomeTargetClientsFrom: {
-                                    title: 'Средний уровень доходов целевых клиентов',
-                                    placeholder: '1000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                averageIncomeTargetClientsTo: {
-                                    title: 'Средний уровень доходов целевых клиентов',
-                                    placeholder: '1000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-
-                                averageCheckClients: {
-                                    title: 'Средний чек клиента',
-                                    placeholder: '1000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
-                                mainAdvertisingSourcesAttractClients: {
-                                    selected: null,
-                                    title: 'Основные рекламные источники привлечение клиентов',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                            },
-                            b2b: {
-                                mainCategoryBusinessPartners: {
-                                    selected: null,
-                                    title: 'Основаня категория партнёров по бизнесу',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                                haveExistingContracts: {
-                                    selected: null,
-                                    title: 'Наличие действущих контрактов?',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                                listContracts: [],
-                                countPerpetualServiceContracts: {
-                                    title: 'Количество бессрочных договров на оказания улсуг',
-                                    placeholder: '4',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                },
-                                averageCheckClients: {
-                                    title: 'Средний чек клиента',
-                                    placeholder: '1000',
-                                    value: '',
-                                    tooltip: 'tooltip text',
-                                    prevTxt: 'zł',
-                                },
-                                mainAdvertisingSourcesAttractClients: {
-                                    selected: null,
-                                    title: 'Основные рекламные источники привлечение клиентов',
-                                    placeholder: 'Выберите',
-                                    selectedLabel: '',
-                                    selectLabel: '',
-                                    deselectLabel: '',
-                                    options: trans('business.create.theme.options'),
-                                    noResult: 'Ничего не найдено'
-                                },
-                            }
-                        }
                     },
                     8: {
                         title: "Юридическое состояние",
                         active: false,
                         success: false,
-                        form: {
-                            legalStatus: {
-                                selected: null,
-                                title: 'Юридический статус',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            taxSystem: {
-                                selected: null,
-                                title: 'Система налогообложения',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            changesProfileLegalEntity: {
-                                selected: null,
-                                title: 'Были изменения профиля деятельности в юридическом лице?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            havePenalties: {
-                                selected: null,
-                                title: 'Непокрытые штрафные санкции, наложенные фискальными органами?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            listPenalties: {
-                                selected: null,
-                                title: 'Укажите штрафные санкции',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            haveDisputableSituations: {
-                                selected: null,
-                                title: 'Вовлечение в спорные/коммерческие/административные ситуации?',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                            listDisputableSituations: {
-                                selected: null,
-                                title: 'Укажите типы спорных ситуаций',
-                                placeholder: 'Выберите',
-                                selectedLabel: '',
-                                selectLabel: '',
-                                deselectLabel: '',
-                                options: trans('business.create.theme.options'),
-                                noResult: 'Ничего не найдено'
-                            },
-                        }
                     },
                 }
             }
@@ -2595,14 +1241,9 @@
             },
             toggleStep(index) {
                 let vm = this;
-
                 Object.keys(this.steps).forEach(function (item) {
-                    // console.log(item); // key
-                    // console.log(vm.steps[item]); // value
                     vm.steps[item].active = false;
                 });
-
-                // console.log(index);
                 this.step = parseInt(index, 10);
 
                 this.steps[index].active = true;
@@ -2615,9 +1256,10 @@
         },
         mounted() {
             if (this.id) {
-                axios.get('/business-get-by-id/'+this.id).then(responce => {
+                axios.get('/business-get-by-id/' + this.id).then(responce => {
                     this.business = {...this.business, ...responce.data.business};
                     this.business.options = {...this.business.options, ...responce.data.options};
+                    this.business.images = responce.data.images;
                 })
             }
         }

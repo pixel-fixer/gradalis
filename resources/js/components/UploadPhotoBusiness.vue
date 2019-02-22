@@ -37,11 +37,12 @@
             vueDropzone: vue2Dropzone
         },
         props: {
-            value: null
+            value: {default: null},
         },
         data: function () {
             return {
                 images: [],
+                initialized: false,
                 dropzoneOptions: {
                     url: '/business-image-upload',
                     thumbnailWidth: 40,
@@ -91,7 +92,7 @@
             },
             attachListener: function (file, response) {
                 this.images.push(response.image);
-                this.$emit('input',this.images);
+                this.$emit('input', this.images);
                 file.previewElement.querySelector('.dz-image').addEventListener("click", function (e) {
                     // Логика установки картинки обложкой
                     console.log('click');
@@ -99,10 +100,22 @@
                 });
 
             },
-            removeFile:function(file, error, xhr){
-                let image = JSON.parse(file.xhr.response).image;
-                let index = this.images.indexOf(image);
-                this.images.splice(index, 1);
+            removeFile: function (file, error, xhr) {
+                let name = '';
+                if (file.xhr) {
+                    let image = JSON.parse(file.xhr.response).image;
+                    name = image;
+                    this.images.indexOf(image);
+                } else {
+                    let image = this.images.indexOf(file.image);
+                    name = file.image;
+                    this.images.splice(image, 1);
+                }
+                axios.post('/business-image-remove/', {
+                    image: name
+                }).then(responce => {
+                });
+
             },
             uploadProgress: function (file, progress, bytesSent) {
                 var progressElement = file.previewElement.querySelector("[data-dz-uploadprogress]");
@@ -113,10 +126,22 @@
             value: {
                 immediate: true,
                 handler(value) {
-                    if (value !== null && value !== []) {
-                        this.images = value;
-                    } else {
-                        this.images = null;
+                    this.images = value;
+                }
+
+            },
+            images: {
+                immediate: true,
+                handler(value) {
+                    console.log(this.value);
+                    if (this.value.length > 0 && !this.initialized) {
+                        console.log(this.value);
+                        value.forEach(el => {
+                            var file = {size: el.size, name: el.name, type: el.type, image: el.image};
+                            var url = el.url;
+                            this.$refs.photoBusinessDropzone.manuallyAddFile(file, url);
+                        });
+                        this.initialized = true;
                     }
                 }
             }

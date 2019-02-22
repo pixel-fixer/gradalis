@@ -43,6 +43,7 @@
 @import "parts/stepper";
 @import "parts/dropzone";
 @import "parts/loader";
+@import "parts/timeline-process";
 
 @import "objects/card";
 @import "objects/form";
@@ -59,6 +60,8 @@
 
 @import "services/card";
 @import "services/buttons";
+@import "services/list-category";
+@import "services/main";
 
 @import "pa/main";
 @import "pa/balance";

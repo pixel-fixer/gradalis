@@ -6,7 +6,6 @@
                 <multiselect v-model="selectedValue"
                              :deselect-label="deselectLabel"
                              track-by="id"
-                             @input="selectChange"
                              label="name"
                              :class="{'multiselect_multiple':multiple,addClass}"
                              :multiple="multiple"
@@ -61,35 +60,47 @@
         },
         data() {
             return {
-                selectedValue: null,
                 selectedLabel: 'Выбрано',
                 selectLabel: '',
                 deselectLabel: '',
             }
         },
+        computed: {
+            selectedValue: {
+                get: function () {
+                    let data = new Array();
+                    if (this.value !== null) {
+                        if (!this.multiple) {
+                            this.options.forEach(val => {
+                                if (val.id === this.value) {
+                                    data.push(val);
+                                }
+                            })
+                        } else if (this.value !== null) {
+                            this.options.forEach(val => {
+                                if (this.value.indexOf(val.id) > -1) {
+                                    data.push(val);
+                                }
+                            })
 
-        methods: {
-            selectChange() {
-                this.$emit('input', this.selectedValue.id);
+                        }
+                        return data;
+                    }
+                    return null
+                },
+                set: function (v) {
+                    if (!this.multiple) {
+                        this.$emit('input', v.id);
+                    } else {
+                        let values = new Array();
+                        v.forEach(el => {
+                            values.push(el.id);
+                        })
+                        this.$emit('input', values);
+                    }
+                },
             }
         },
-        watch: {
-            value: {
-                immediate: true,
-                handler(value) {
-                    if (value !== null) {
-                        for (const [key, val] of Object.entries(this.options)) {
-
-                            if (val.id === this.value) {
-                                this.selectedValue = val;
-                            }
-                        }
-                    } else {
-                        this.selectedValue = null;
-                    }
-                }
-            }
-        }
     }
 </script>
 

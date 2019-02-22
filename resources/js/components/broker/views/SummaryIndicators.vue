@@ -292,8 +292,8 @@
 
 <script>
     import Multiselect from 'vue-multiselect';
-    import BarChart from '../BarChart.js';
-    import LineChart from '../LineChart.js';
+    import BarChart from '../../charts/BarChart.js';
+    import LineChart from '../../charts/LineChart.js';
     import GGSelectInput from '../../form/GGSelectInput';
 
     import flatPickr from 'vue-flatpickr-component';

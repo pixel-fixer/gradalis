@@ -95,6 +95,7 @@ Route::get('/add-business/method', function () {
     return view('add-business-method');
 });
 
+//region Static
 Route::get('/about', function () {
     return view('about');
 });
@@ -113,6 +114,28 @@ Route::get('/reviews', function () {
 Route::get('/help', function () {
     return view('help');
 });
+//endregion
+
+//region Services
+Route::get('/services-new', function () {
+    return view('services.index');
+});
+Route::get('/services-new/category', function () {
+    return view('services.category');
+});
+Route::get('/services-new/single', function () {
+    return view('services.single.main');
+});
+//endregion
+
+//region Account Routes
+Route::namespace('Account')->prefix('account')->group(function () {
+    Route::get('/{vue_capture?}', 'AccountController@index')->where('vue_capture', '.*')->middleware('auth');;
+});
+//endregion
+
+
+
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
@@ -141,6 +164,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/business-get-by-id/{business}', 'BusinessController@getById')->middleware('auth');
     Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
     Route::post('/business-image-upload', 'BusinessController@imageUpload')->middleware('auth');
+    Route::post('/business-image-remove', 'BusinessController@imageRemove')->middleware('auth');
 });
 //endregion
 

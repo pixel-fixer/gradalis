@@ -58,7 +58,7 @@
                         <div class="our-team__item">
                             <figure class="mb-0-5">
                                 <img src="https://s.pfst.net/2015.10/8515416672106b1d8b1dd45a0495f01e4b8a4d03b652_b.jpg"
-                                     alt="">
+                                     alt="" class="has-border-radius">
                             </figure>
                             <h3>Станислав Суслов</h3>
                             <div class="team__item__position is-size-875 has-text-basic">
@@ -70,7 +70,7 @@
                         <div class="our-team__item">
                             <figure class="mb-0-5">
                                 <img src="https://s.pfst.net/2015.10/8515416672106b1d8b1dd45a0495f01e4b8a4d03b652_b.jpg"
-                                     alt="">
+                                     alt="" class="has-border-radius">
                             </figure>
                             <h3>Станислав Суслов</h3>
                             <div class="team__item__position is-size-875 has-text-basic">
@@ -82,7 +82,7 @@
                         <div class="our-team__item">
                             <figure class="mb-0-5">
                                 <img src="https://s.pfst.net/2015.10/8515416672106b1d8b1dd45a0495f01e4b8a4d03b652_b.jpg"
-                                     alt="">
+                                     alt="" class="has-border-radius">
                             </figure>
                             <h3>Станислав Суслов</h3>
                             <div class="team__item__position is-size-875 has-text-basic">
@@ -94,7 +94,7 @@
                         <div class="our-team__item">
                             <figure class="mb-0-5">
                                 <img src="https://s.pfst.net/2015.10/8515416672106b1d8b1dd45a0495f01e4b8a4d03b652_b.jpg"
-                                     alt="">
+                                     alt="" class="has-border-radius">
                             </figure>
                             <h3>Станислав Суслов</h3>
                             <div class="team__item__position is-size-875 has-text-basic">
@@ -115,12 +115,12 @@
             <div class="container">
                 <div class="columns is-multiline">
                     <div class="column is-4 is-hidden-touch">
-                        <img src="/img/about-2.jpg" alt="">
+                        <img src="/img/about-2.jpg" alt="" class="has-border-radius">
                     </div>
                     <div class="column is-8-desktop is-12-tablet">
                         <div class="content">
                             <h2 class="mb-2">Ценности и задачи</h2>
-                            <img src="/img/about-2.jpg" alt="" class="is-hidden-desktop mb-1 mr-1" align="left">
+                            <img src="/img/about-2.jpg" alt="" class="is-hidden-desktop mb-1 mr-1 has-border-radius" align="left">
                             <p>
                                 «Участники модного рынка начали заблаговременно смотреть на возможности, а не просто
                                 фокусироваться на предстоящих вызовах», — говорится в исследовании. Авторы ожидают, что

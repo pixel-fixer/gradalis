@@ -7,27 +7,41 @@
             <div class="column is-12">
                 <div class="columns is-multiline list-wrap"
                      v-for="(item, index) in list">
-                    <g-g-select-input  v-model="item.post.selected" :placeholder="item.post.placeholder" :label="item.post.title" :searchable="true" :options="options"></g-g-select-input>
-                    <g-g-select-input  v-model="item.termsContractDismissal.selected" :placeholder="item.termsContractDismissal.placeholder" :label="item.termsContractDismissal.title" :searchable="true" :options="options"></g-g-select-input>
+
+                    <g-g-select-input @input="inputChange" :size="'is-3'" v-model="item.post"
+                                      :placeholder="trans('business.create.staff.post.placeholder')"
+                                      :label="trans('business.create.staff.post.title')"
+                                      :options="trans('business.create.staff.post.options')"></g-g-select-input>
+
+                    <g-g-select-input @input="inputChange" :size="'is-3'" v-model="item.termsContractDismissal"
+                                      :placeholder="trans('business.create.staff.termsContractDismissal.placeholder')"
+                                      :label="trans('business.create.staff.termsContractDismissal.title')"
+                                      :options="trans('business.create.staff.termsContractDismissal.options')"></g-g-select-input>
 
                     <div class="column is-6">
                         <div class="columns is-multiline">
                             <div class="column">
                                 <div class="columns is-multiline">
-                                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="item.monthlyWages.value" :label="item.monthlyWages.title" :placeholder="item.monthlyWages.placeholder"></g-g-input>
-                                    <g-g-input :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="item.taxAmountPerMonth.value" :label="item.taxAmountPerMonth.title" :placeholder="item.taxAmountPerMonth.placeholder"></g-g-input>
+                                    <g-g-input @input="inputChange" :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="item.monthlyWages"
+                                         :label="trans('business.create.staff.monthlyWages.title')"
+                                         :placeholder="trans('business.create.staff.monthlyWages.placeholder')">
+                                    </g-g-input>
+                                    <g-g-input @input="inputChange" :type="'number'" :prevText="'zt'" :size="'is-6'" v-model="item.taxAmountPerMonth"
+                                         :label="trans('business.create.staff.taxAmountPerMonth.title')"
+                                         :placeholder="trans('business.create.staff.taxAmountPerMonth.placeholder')">
+                                    </g-g-input>
                                 </div>
                             </div>
                             <div class="column is-narrow">
                                 <button class="button is-warning is-outlined button-remove"
-                                        v-tooltip="'Удалить этого сотрудника'"
+                                        v-tooltip="trans('business.create.staff.remove')"
                                         @click="removeStaff(index)">
-                                    &times;<span class="is-size-875 is-hidden-tablet">Удалить этого сотрудника</span>
+                                    &times;<span class="is-size-875 is-hidden-tablet">{{trans('business.create.staff.remove')}}</span>
                                 </button>
                                 <button class="button is-info is-outlined button-add"
-                                        v-tooltip="'Добавить сотрудника'"
+                                        v-tooltip="trans('business.create.staff.add')"
                                         @click="addStaff">
-                                    +<span class="is-size-875 is-hidden-tablet">Добавить сотрудника</span>
+                                    +<span class="is-size-875 is-hidden-tablet">{{trans('business.create.staff.add')}}</span>
                                 </button>
                             </div>
                         </div>
@@ -47,7 +61,7 @@
         name: "GGWorkersInput",
         components:{GGInput,GGSelectInput},
         props: {
-            //value: null,
+            value: {default:null},
             label:'',
             placeholder: {default: 'Поиск'}
         },
@@ -56,38 +70,10 @@
 
                 list: [
                     {
-                        post: {
-                            selected: null,
-                            title: 'Должность',
-                            placeholder: 'Выберите',
-                            selectedLabel: '',
-                            selectLabel: '',
-                            deselectLabel: '',
-                            noResult: 'Ничего не найдено'
-                        },
-                        termsContractDismissal: {
-                            selected: null,
-                            title: 'Условия договора об увольнении',
-                            placeholder: 'Выберите',
-                            selectedLabel: '',
-                            selectLabel: '',
-                            deselectLabel: '',
-                            noResult: 'Ничего не найдено'
-                        },
-                        monthlyWages: {
-                            title: 'Месячная заработная плата',
-                            placeholder: '1000',
-                            value: '',
-                            tooltip: 'tooltip text',
-                            prevTxt: 'zł'
-                        },
-                        taxAmountPerMonth: {
-                            title: 'Сумма налогов, в месяц',
-                            placeholder: '1000',
-                            value: '',
-                            tooltip: 'tooltip text',
-                            prevTxt: 'zł'
-                        },
+                        post: null,
+                        termsContractDismissal: null,
+                        monthlyWages:null,
+                        taxAmountPerMonth: null,
                     },
                 ],
                 options: trans('business.create.theme.options'),
@@ -99,43 +85,32 @@
             },
             addStaff() {
                 this.list.push({
-                    post: {
-                        selected: null,
-                        title: 'Должность',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    termsContractDismissal: {
-                        selected: null,
-                        title: 'Условия договора об увольнении',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    monthlyWages: {
-                        title: 'Месячная заработная плата',
-                        placeholder: '1000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł'
-                    },
-                    taxAmountPerMonth: {
-                        title: 'Сумма налогов, в месяц',
-                        placeholder: '1000',
-                        value: '',
-                        tooltip: 'tooltip text',
-                        prevTxt: 'zł'
-                    },
+                    post: null,
+                    termsContractDismissal: null,
+                    monthlyWages:null,
+                    taxAmountPerMonth: null,
                 });
             },
             removeStaff(index) {
                 this.list.splice(index, 1);
             },
+        },
+        watch: {
+            value: {
+                immediate: true,
+                handler(value) {
+                    if (value) {
+                        this.list = value;
+                    } else {
+                        this.list = [{
+                            post: null,
+                            termsContractDismissal: null,
+                            monthlyWages:null,
+                            taxAmountPerMonth: null,
+                        }]
+                    }
+                }
+            }
         }
     }
 </script>

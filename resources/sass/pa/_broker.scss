@@ -476,3 +476,26 @@
         }
     }
 }
+
+
+.broker-data-indicator-wrap_partners {
+    justify-content: space-between;
+    border: 1px solid rgba($light-grayish-blue, 0.5);
+    border-radius: $radius;
+
+
+    .broker-data-indicator {
+        padding: 1.125rem;
+        flex: 1;
+        text-align: center;
+        &__title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:not(:last-child) {
+            border-right: 1px solid rgba($light-grayish-blue, 0.5);
+        }
+    }
+}
