@@ -140,14 +140,11 @@ Route::get('/services-new/single/cases', function () {
 });
 //endregion
 
-//region Account Routes
-Route::namespace('Account')->prefix('account')->group(function () {
+//region ACCOUNT Routes
+Route::middleware(['role:Акаунт-менеджер'])->namespace('Account')->prefix('account')->group(function () {
     Route::get('/{vue_capture?}', 'AccountController@index')->where('vue_capture', '.*')->middleware('auth');;
 });
 //endregion
-
-
-
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
@@ -157,26 +154,35 @@ Route::namespace('Business')->group(function () {
 
 
 //region BROKER Routes
-Route::namespace('Broker')->prefix('broker')->group(function () {
+Route::middleware(['role:Медиа-баер'])->namespace('Broker')->prefix('broker')->group(function () {
     Route::get('/{vue_capture?}', 'BrokerController@index')->where('vue_capture', '.*')->middleware('auth');;
 });
 //endregion
 
 //region API Routes
-Route::namespace('Api')->group(function () {
-    Route::get('/location-get-countries', 'LocationController@getCountries')->middleware('auth');
-    Route::get('/location-get-cities', 'LocationController@getCities')->middleware('auth');
+Route::namespace('Api')->middleware('auth')->group(function () {
+    Route::middleware(['role:Акаунт-менеджер'])->group(function(){
+        Route::post('/account-get-partners', 'AccountController@getPartners');
+        Route::post('/account-chart-data', 'AccountController@getChartData');
+    });
 
-    Route::post('/offer-bookmark', 'OfferController@bookmark')->middleware('auth');
-    Route::post('/offer-all', 'OfferController@index')->middleware('auth');
-    Route::get('/offer-get/{id}', 'OfferController@get')->middleware('auth');
-    Route::post('/invitation-create', 'OfferController@invitationCreate')->middleware('auth');
+    Route::get('/location-get-countries', 'LocationController@getCountries');
+    Route::get('/location-get-cities', 'LocationController@getCities');
 
-    Route::get('/business-get', 'BusinessController@get')->middleware('auth');
-    Route::get('/business-get-by-id/{business}', 'BusinessController@getById')->middleware('auth');
-    Route::get('/business-get-categories', 'BusinessController@getCategories')->middleware('auth');
-    Route::post('/business-image-upload', 'BusinessController@imageUpload')->middleware('auth');
-    Route::post('/business-image-remove', 'BusinessController@imageRemove')->middleware('auth');
+    Route::post('/business-image-upload', 'BusinessController@imageUpload');
+
+    Route::middleware(['role:Медиа-баер'])->group(function() {
+        Route::post('/offer-bookmark', 'OfferController@bookmark');
+        Route::post('/offer-all', 'OfferController@index');
+        Route::get('/offer-get/{id}', 'OfferController@get');
+        Route::post('/invitation-create', 'OfferController@invitationCreate');
+    });
+
+    Route::get('/business-get', 'BusinessController@get');
+    Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
+    Route::get('/business-get-categories', 'BusinessController@getCategories');
+    Route::post('/business-image-upload', 'BusinessController@imageUpload');
+    Route::post('/business-image-remove', 'BusinessController@imageRemove');
 });
 //endregion
 

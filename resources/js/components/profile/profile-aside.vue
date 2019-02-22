@@ -2,7 +2,7 @@
 <div>
     <aside class="pt-1">
         <div class="buttons has-addons has-addons-fullwidth field" v-if="$userCan('object-sell')">
-            <a href="#" class="control button is-warning h-3 is-size-875 has-text-weight-bold">Продать бизнес</a>
+            <a href="/business/create" class="control button is-warning h-3 is-size-875 has-text-weight-bold">Продать бизнес</a>
             <a href="#" class="control button is-info h-3 is-size-875 has-text-weight-bold">Продать франшизу</a>
         </div>
         <nav class="aside-nav">

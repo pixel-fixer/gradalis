@@ -210,8 +210,15 @@
         },
         data() {
             return {
-
+                partners:null
             }
+        },
+        created(){
+            axios.post('/account-get-partners',
+                {}
+            ).then(responce => {
+                this.partners = responce.data;
+            })
         },
     }
 </script>

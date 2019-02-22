@@ -15,6 +15,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
     $cities = [1, 2562]; //Москва и Варшава
+    $countries = [1, 2]; //Россия и Польша
+    $i = rand(0,1);
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -28,7 +30,8 @@ $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
             'personal_selection' => false,
             'offer' =>  false 
         ],
-        'city_id' => $cities[rand(0,1)],
+        'city_id' => $cities[$i],
+        'country_id' => $countries[$i],
         'sum_from' => 10000,
         'sum_to' => 1000000
     ];

@@ -20,6 +20,9 @@ class RoleSeeder extends Seeder
         'Исполнитель',
         'Media buyer',
         'Account manager'
+        'Исполнитель',
+        'Акаунт-менеджер',
+        'Медиа-баер'
     ];
     
     /**
