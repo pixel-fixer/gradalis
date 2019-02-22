@@ -152,7 +152,7 @@
     <div class="container">
 
         <!-- ToDo: Other menu in Broker Personal Area -->
-        @if(Auth::check() && (Auth::user()->hasRole('Покупатель') || Auth::user()->hasRole('Продавец')))
+        @if(Auth::check() && (Auth::user()->hasRole('Покупатель') || Auth::user()->hasRole('Продавец')) || Auth::user()->hasRole('Админ'))
         <!-- Desktop Menu-->
         <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
             <div class="navbar-start main-menu">
