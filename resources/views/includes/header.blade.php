@@ -78,8 +78,8 @@
                                 src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span
                                 class="is-hidden-tablet-only">{{ __('Login') }}</span></a>
                         <div class="buttons has-addons buttons-business is-hidden-mobile">
-                            <a class="button is-link" data-desc="Регистрация">Купить бизнес</a>
-                            <a class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
+                            <a href="/register/seller" class="button is-link" data-desc="Регистрация">Купить бизнес</a>
+                            <a href="/register/seller" class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
                         </div>
                     </div>
                 @else

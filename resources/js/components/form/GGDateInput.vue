@@ -44,7 +44,6 @@
                         altFormat: 'd.m.Y',
                         altInput: true,
                         dateFormat: 'Y-m-d',
-                        ...options
                     }
                 }
             },

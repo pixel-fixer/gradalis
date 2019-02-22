@@ -160,23 +160,25 @@ Route::middleware(['role:Медиа-баер'])->namespace('Broker')->prefix('br
 //endregion
 
 //region API Routes
-Route::namespace('Api')->middleware('auth')->group(function () {
-    Route::middleware(['role:Акаунт-менеджер'])->group(function(){
+Route::namespace('Api')
+    //->middleware('auth')
+    ->group(function () {
+    //Route::middleware(['role:Акаунт-менеджер'])->group(function(){
         Route::post('/account-get-partners', 'AccountController@getPartners');
         Route::post('/account-chart-data', 'AccountController@getChartData');
-    });
+    //});
 
     Route::get('/location-get-countries', 'LocationController@getCountries');
     Route::get('/location-get-cities', 'LocationController@getCities');
 
     Route::post('/business-image-upload', 'BusinessController@imageUpload');
 
-    Route::middleware(['role:Медиа-баер'])->group(function() {
+    //Route::middleware(['role:Медиа-баер'])->group(function() {
         Route::post('/offer-bookmark', 'OfferController@bookmark');
         Route::post('/offer-all', 'OfferController@index');
         Route::get('/offer-get/{id}', 'OfferController@get');
         Route::post('/invitation-create', 'OfferController@invitationCreate');
-    });
+    //});
 
     Route::get('/business-get', 'BusinessController@get');
     Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
