@@ -1,7 +1,7 @@
 <template>
 <div>
     <aside class="pt-1">
-        <div class="buttons has-addons has-addons-fullwidth field">
+        <div class="buttons has-addons has-addons-fullwidth field" v-if="$userCan('object-sell')">
             <a href="#" class="control button is-warning h-3 is-size-875 has-text-weight-bold">Продать бизнес</a>
             <a href="#" class="control button is-info h-3 is-size-875 has-text-weight-bold">Продать франшизу</a>
         </div>
@@ -21,14 +21,14 @@
                         <!-- <span class="aside-nav__item__count">129</span> -->
                     </router-link>
                 </li>
-                <li class="aside-nav__item">
+                <li class="aside-nav__item" v-if="$userCan('object-sell')">
                     <router-link to="/profile/objects" tag="a">
                         <img src="/svg/icons/ic_objects.svg" class="svg" alt="Objects">
                         <span class="aside-nav__item__title has-text-weight-bold">Ваши объекты</span>
                         <!-- <span class="aside-nav__item__count">5</span> -->
                     </router-link>
                 </li>
-                <li class="aside-nav__item">
+                <li class="aside-nav__item" v-if="$userCan('object-sell')">
                     <router-link to="/profile/view-requests" tag="a">
                         <img src="/svg/icons/ic_eye.svg" class="svg" alt="Eye">
                         <span class="aside-nav__item__title has-text-weight-bold">Запросы на просмотр</span>
@@ -42,10 +42,10 @@
                         <!-- <span class="aside-nav__item__count tag is-danger is-rounded tag__count is-flex">12</span> -->
                      </router-link>
                 </li>
-                <li class="aside-nav__item">
+                <li class="aside-nav__item" v-if="$userCan('object-buy')">
                      <router-link to="/profile/trips" tag="a">
                         <img src="/svg/icons/ic_aircraft.svg" class="svg">
-                        <span class="aside-nav__item__title has-text-weight-bold">Ваши поездки (buyer)</span>
+                        <span class="aside-nav__item__title has-text-weight-bold">Ваши поездки</span>
                      </router-link>
                 </li>
                 <li class="aside-nav__item">

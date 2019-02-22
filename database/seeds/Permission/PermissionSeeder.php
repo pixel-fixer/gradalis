@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-
+use App\Models\Auth\User;
+use Spatie\Permission\Models\Role;
 class PermissionSeeder extends Seeder
 {
     
@@ -34,12 +35,12 @@ class PermissionSeeder extends Seeder
      *
      */
     private $allPerms = [
-        'business-sell',
-        'business-buy',
+        'object-sell',
+        'object-buy',
         //Чат: модерация сообщений
-        'Chat_message-moderate',
+        'сhat_message-moderate',
         //Чат: модерация сообщений (свои пользователи)
-        'Chat_message-moderate-my-users',
+        'сhat_message-moderate-my-users',
     ];
     
     /**
@@ -73,5 +74,9 @@ class PermissionSeeder extends Seeder
                 ['guard_name' => 'web']
             );
         }
+
+        Role::where('name', 'Админ')->first()->givePermissionTo('сhat_message-moderate');
+        Role::where('name', 'Покупатель')->first()->givePermissionTo('object-buy');
+        Role::where('name', 'Продавец')->first()->givePermissionTo('object-sell');
     }
 }

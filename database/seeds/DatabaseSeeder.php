@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             'roles',
             'model_has_roles',
             'model_has_permissions',
+            'role_has_permissions',
+            'permissions',
             'businesses',
             'business_categories',
             'franchises',
@@ -50,7 +52,6 @@ class DatabaseSeeder extends Seeder
             'payment_transactions',
             'view_requests'
         ]);
-
 
         Schema::enableForeignKeyConstraints();
 

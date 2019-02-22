@@ -56,19 +56,26 @@ Vue.component('upload-photo-business', require('./components/UploadPhotoBusiness
 Vue.component('profile', require('./components/profile/profile').default);
 
 /**
- * Глобальный mixin для полей с переводом. Текущий язык берется из атрибута lang.
+ * Глобальные миксины
  */
 Vue.mixin({
     methods: {
         $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
         },
-        userCan(permission){
+        $userCan(permission){
             if(!this.$store.state.user)
                 return false;
-               
-            let permissions = this.$store.state.user.permissions
-
+            return _.find(this.$store.state.user.permissions, item => {
+                return item.name == permission
+            })
+        },
+        $userIs(role){
+            if(!this.$store.state.user)
+                return false;
+            return _.find(this.$store.state.user.roles, item => {
+                return item.name == role
+            })
         }
     }
 })
@@ -78,8 +85,7 @@ Vue.component('broker-offers-modal-create-link', require('./components/broker/of
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
 Vue.component('broker', require('./components/broker/broker').default);
 
-const VacancyResponse = () => import('./components/vacancy/Response');
-Vue.component('vacancy-response', VacancyResponse);
+Vue.component('vacancy-response', () => import('./components/vacancy/Response'));
 
 
 // review

@@ -27,8 +27,9 @@ class CoreController extends Controller
   
     public function user()
     {
-        $user = Auth::user()->load(['roles', 'permissions']);
+        $user = Auth::user()->load(['roles']);
         $user->canModerateMessages = $user->canModerateMessages();
+        $user->permissions = $user->getPermissionsViaRoles();
 
         header('Content-Type: text/javascript');
         echo('window.user = ' . json_encode($user) . ';');

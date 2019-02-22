@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
-
 class RoleSeeder extends Seeder
 {
     /**
@@ -30,10 +29,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-        
-        foreach ($this->allRoles as $role) {
-            Role::create(['name' => $role]);
+        foreach ($this->allRoles as $roleName) {
+            Role::create(['name' => $roleName]);
         }
         
         $user = \App\Models\Auth\User::find(1);
