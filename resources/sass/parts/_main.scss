@@ -184,6 +184,7 @@ body {
 
 .has-border-radius {
     border-radius: $radius;
+
     &_top {
         border-top-right-radius: $radius;
         border-top-left-radius: $radius;
@@ -201,6 +202,11 @@ body {
 hr {
     &.hr-basic {
         background-color: rgba(#CFDAE6, .5);
+        height: 1px;
+    }
+
+    &.is-info {
+        background-color: $cyan;
         height: 1px;
     }
 }
@@ -227,6 +233,10 @@ hr {
     box-shadow: $box-shadow;
 }
 
+.has-flex-column {
+    flex-direction: column;
+}
+
 .has-align-self-center {
     align-self: center;
 }
@@ -248,7 +258,7 @@ hr {
 }
 
 .has-line-height-normal {
-    line-height: normal;
+    line-height: normal !important;
 }
 
 .has-text-uppercase {
@@ -269,17 +279,18 @@ ol,
 
         li {
             position: relative;
-            min-height: 3rem;
-            margin-bottom: 1.25rem;
+            min-height: 4rem;
+            margin: 0;
+            padding: 1.5rem 0;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
 
             &:before {
-                content: counter(li); /* Use the counter as content */
-                counter-increment: li; /* Increment the counter by 1 */
                 position: absolute;
                 left: -4rem;
-                top: 0;
+                top: .75rem;
                 width: 3rem;
                 height: 3rem;
                 background-color: rgba($cyan, 0.1);
@@ -289,6 +300,69 @@ ol,
                 font-size: 1rem;
                 line-height: 3rem;
                 text-align: center;
+            }
+        }
+
+        > li {
+
+            &:before {
+                content: counter(li); /* Use the counter as content */
+                counter-increment: li; /* Increment the counter by 1 */
+            }
+
+            > ol {
+                counter-reset: li2; /* Инициируем счетчик вложенного списка */
+                li {
+                    &:before {
+                        content: counter(li) "." counter(li2); /* Use the counter as content */
+                        counter-increment: li2; /* Increment the counter by 1 */
+                    }
+                }
+            }
+
+
+        }
+
+        &.is-outlined {
+            li {
+                &:before {
+                    background-color: transparent;
+                    border: 1px solid;
+                    border-color: rgba($cyan, 0.3);
+                }
+                > ol {
+                    li {
+                        &:before {
+                            border-color: $light-grayish-blue !important;
+                            color: $light-grayish-blue !important;
+                        }
+                    }
+                }
+            }
+
+            &.is-link {
+                li {
+                    &:before {
+                        border-color: $blue;
+                        color: $blue;
+                    }
+                }
+            }
+        }
+
+        &.is-striped {
+            > li {
+                &:not(:last-child) {
+                    &:after {
+                        position: absolute;
+                        content: "";
+                        left: -2.5rem;
+                        bottom: 0;
+                        width: calc(100% + 2.5rem);
+                        height: 1px;
+                        background-color: rgba($light-grayish-blue, 0.5);
+                    }
+                }
             }
         }
     }

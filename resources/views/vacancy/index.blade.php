@@ -34,7 +34,7 @@
                         </p>
                     </div>
                     <div class="buttons mb-1">
-                        <a href="#" class="button is-info is-outlined h-3 px-1 has-text-weight-bold is-size-875">
+                        <a href="/vacancy/single" class="button is-info is-outlined h-3 px-1 has-text-weight-bold is-size-875">
                             Подробнее
                         </a>
                     </div>
@@ -61,7 +61,7 @@
                         </p>
                     </div>
                     <div class="buttons mb-1">
-                        <a href="#" class="button is-info is-outlined h-3 px-1 has-text-weight-bold is-size-875">
+                        <a href="/vacancy/single" class="button is-info is-outlined h-3 px-1 has-text-weight-bold is-size-875">
                             Подробнее
                         </a>
                     </div>

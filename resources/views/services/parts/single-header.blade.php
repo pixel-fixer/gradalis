@@ -15,10 +15,10 @@
 
                     <nav class="section-services-single-header__nav">
                         <ul class="buttons has-addons is-size-875 is-flex is-marginless">
-                            <li><a href="#" class="is-active">Процесс</a></li>
-                            <li><a href="#">Портфолио</a></li>
-                            <li><a href="#">О команде</a></li>
-                            <li><a href="#">Подробнее</a></li>
+                            <li><a href="/services-new/single/process" class="is-active">Процесс</a></li>
+                            <li><a href="/services-new/single/cases">Портфолио</a></li>
+                            <li><a href="/services-new/single/team">О команде</a></li>
+                            <li><a href="/services-new/single/details">Подробнее</a></li>
                         </ul>
                     </nav>
 

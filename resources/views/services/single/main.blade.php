@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="has-text-centered mt-1">
-                                <a href="#" class="has-text-decoration-underline is-size-875">Подробнее о процессе</a>
+                                <a href="/services-new/single/process" class="has-text-decoration-underline is-size-875">Подробнее о процессе</a>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                                 </div>
                                 <div class="column is-6">
                                     <div class="is-flex has-align-items-center has-justify-content-center h-full">
-                                        <a href="#" class="button is-info is-size-875 has-text-weight-bold h-3 px-1">Подробнее
+                                        <a href="/services-new/single/team" class="button is-info is-size-875 has-text-weight-bold h-3 px-1">Подробнее
                                             о команде</a>
                                     </div>
                                 </div>
@@ -305,23 +305,7 @@
             </div>
         </section>
 
-        <section class="section has-background-white">
-            <div class="container">
-                <h2 class="mb-1">Похожие продукты</h2>
-
-                <div class="columns is-multiline">
-                    <div class="column is-4-desktop is-6-tablet">
-                        @include('services.parts.card')
-                    </div>
-                    <div class="column is-4-desktop is-6-tablet">
-                        @include('services.parts.card')
-                    </div>
-                    <div class="column is-4-desktop is-6-tablet">
-                        @include('services.parts.card')
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('services.parts.single-similar')
 
     </div>
 @endsection

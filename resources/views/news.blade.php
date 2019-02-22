@@ -127,6 +127,9 @@
                                     <div class="card-news__excerpt">
                                         Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                     </div>
+                                    <div class="mt-1">
+                                        <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
+                                    </div>
                                 </article>
                             </div>
                             <div class="column is-6">
@@ -149,6 +152,9 @@
                                     <div class="card-news__excerpt">
                                         Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                     </div>
+                                    <div class="mt-1">
+                                        <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
+                                    </div>
                                 </article>
                             </div>
                             <div class="column is-6">
@@ -170,6 +176,9 @@
                                     <div class="card-news__excerpt">
                                         Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
                                     </div>
+                                    <div class="mt-1">
+                                        <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
+                                    </div>
                                 </article>
                             </div>
                             <div class="column is-6">
@@ -187,6 +196,9 @@
                                         рубль</h3>
                                     <div class="card-news__excerpt">
                                         Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75 рублям
+                                    </div>
+                                    <div class="mt-1">
+                                        <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
                                     </div>
                                 </article>
                             </div>

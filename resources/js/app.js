@@ -138,7 +138,6 @@ const app = new Vue({
             this.reviews.showSingleReviewModalID = id;
         },
         toggleClassActive(event) {
-            console.log(event.target);
             let el = null;
             if (event.target.tagName === 'a') {
                 el = event.target;
@@ -148,7 +147,7 @@ const app = new Vue({
             el.classList.toggle("is-active");
             el.classList.toggle("has-text-weight-bold");
         }
-    }
+    },
 });
 
 import inlineSVG from 'inline-svg';
@@ -314,4 +313,24 @@ function closeDropdowns() {
     $dropdowns.forEach(function ($el) {
         $el.classList.remove('is-active');
     });
+}
+
+
+/**
+ *  Tabs
+ */
+window.openTab = function openTab(evt, tabName) {
+    let i, x, tablinks;
+    let target = evt.target;
+    let tabsWrap = target.closest(".tabs-wrap");
+    x = tabsWrap.querySelectorAll(".content-tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    tablinks = tabsWrap.querySelectorAll(".tab");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+    }
+    tabsWrap.querySelector('#'+tabName).style.display = "block";
+    evt.currentTarget.className += " is-active";
 }

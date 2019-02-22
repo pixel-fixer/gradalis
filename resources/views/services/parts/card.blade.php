@@ -42,6 +42,6 @@
     </div>
     <div class="card-service-2__footer">
         <a class="button is-link is-outlined is-size-875 has-text-weight-bold h-3">Заказать</a>
-        <a class="button is-clear is-clear_close is-size-875 h-3" href="#"><span class="has-text-decoration-underline">Подробнее</span></a>
+        <a class="button is-clear is-clear_close is-size-875 h-3" href="/services-new/single"><span class="has-text-decoration-underline">Подробнее</span></a>
     </div>
 </div>

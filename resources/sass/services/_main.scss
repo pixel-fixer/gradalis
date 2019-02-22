@@ -232,3 +232,15 @@ a.services-single__case-card {
         }
     }
 }
+
+.box {
+    .tab.button {
+        color: $very-dark-blue-2;
+        border-color: transparent;
+        &:hover,
+        &.is-active {
+            border-color: $cyan;
+            background-color: $white;
+        }
+    }
+}

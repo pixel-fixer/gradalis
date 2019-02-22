@@ -140,10 +140,10 @@
                     <img src="{{ asset('/svg/icons/ic_franchise.svg') }}" alt="Franchise"
                          class="icon"><span>Франшизы</span>
                 </a>
-                <a class="navbar-item">
+                <a href="/services-new" class="navbar-item">
                     <img src="{{ asset('/svg/icons/ic_product.svg') }}" alt="Product" class="icon"><span>Продукты компании</span>
                 </a>
-                <a class="navbar-item">
+                <a href="/news" class="navbar-item">
                     <img src="{{ asset('/svg/icons/ic_news.svg') }}" alt="News" class="icon"><span>Новости</span>
                 </a>
 
@@ -154,18 +154,20 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            About
+                        <a href="/about" class="navbar-item">
+                            О компании
                         </a>
-                        <a class="navbar-item">
-                            Jobs
+                        <a href="/contacts" class="navbar-item">
+                            Контакты
                         </a>
-                        <a class="navbar-item">
-                            Contact
+                        <a href="/vacancy" class="navbar-item">
+                            Вакансии
                         </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
+                        <a href="/reviews" class="navbar-item">
+                            Отзывы
+                        </a>
+                        <a href="/help" class="navbar-item">
+                            Помощь
                         </a>
                     </div>
                 </div>
@@ -180,13 +182,10 @@
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>English</span>
                         </a>
                         <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Polski</span>
                         </a>
                     </div>
                 </div>
@@ -259,9 +258,6 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
                     <div class="dropdown-content">
-                        <a href="#" class="dropdown-item navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
                         <a href="#" class="dropdown-item navbar-item">
                             <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
                         </a>

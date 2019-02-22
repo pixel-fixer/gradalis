@@ -596,7 +596,13 @@ table.table {
 /* Progress */
 .progress {
     border-radius: $radius;
+    &[value] {
+        border-radius: $radius;
 
+        &::-webkit-progress-value {
+            border-radius: $radius;
+        }
+    }
     &.is-small {
         height: .375rem;
     }

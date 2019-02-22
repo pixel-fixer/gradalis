@@ -72,15 +72,6 @@
         }
 
         &__bar {
-            progress {
-                &[value] {
-                    border-radius: $radius;
-
-                    &::-webkit-progress-value {
-                        border-radius: $radius;
-                    }
-                }
-            }
             >.columns {
                 >.column {
                     padding-right: 0.125rem !important;

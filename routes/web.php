@@ -126,6 +126,18 @@ Route::get('/services-new/category', function () {
 Route::get('/services-new/single', function () {
     return view('services.single.main');
 });
+Route::get('/services-new/single/process', function () {
+    return view('services.single.process');
+});
+Route::get('/services-new/single/team', function () {
+    return view('services.single.team');
+});
+Route::get('/services-new/single/details', function () {
+    return view('services.single.details');
+});
+Route::get('/services-new/single/cases', function () {
+    return view('services.single.cases');
+});
 //endregion
 
 //region Account Routes

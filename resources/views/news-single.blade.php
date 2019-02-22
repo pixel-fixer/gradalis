@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="news-single__thumb">
-                            <img src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg" alt="">
+                            <img src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg" alt="" class="has-border-radius">
                             {{--<video class="w-full" controls="">--}}
                                 {{--<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">--}}
                                 {{--Your browser does not support HTML5 video.--}}
@@ -112,6 +112,9 @@
                                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75
                                                     рублям
                                                 </div>
+                                                <div class="mt-1">
+                                                    <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
+                                                </div>
                                             </article>
                                         </div>
                                         <div class="column is-6-tablet is-12-desktop">
@@ -131,6 +134,9 @@
                                                 <div class="card-news__excerpt">
                                                     Курс доллара в четверг падал ниже 66 рублей, евро подбирался к 75
                                                     рублям
+                                                </div>
+                                                <div class="mt-1">
+                                                    <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
                                                 </div>
                                             </article>
                                         </div>

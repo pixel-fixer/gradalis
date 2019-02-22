@@ -2,7 +2,7 @@
     <div class="category-service-list">
         <div class="columns is-multiline is-gapless">
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_briefcase.svg" class="svg" alt="">
                     </figure>
@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_lawyer.svg" class="svg" alt="">
                     </figure>
@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_web-dev.svg" class="svg" alt="">
                     </figure>
@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_idea.svg" class="svg" alt="">
                     </figure>
@@ -42,7 +42,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_briefcase.svg" class="svg" alt="">
                     </figure>
@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_lawyer.svg" class="svg" alt="">
                     </figure>
@@ -62,7 +62,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_shopping-cart.svg" class="svg" alt="">
                     </figure>
@@ -72,7 +72,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_flag.svg" class="svg" alt="">
                     </figure>
@@ -82,7 +82,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_paint-palette.svg" class="svg" alt="">
                     </figure>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_petri-dish.svg" class="svg" alt="">
                     </figure>
@@ -102,7 +102,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex is-active">
+                <a href="/services-new/category" class="category-service-list__item is-flex is-active">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_shopping-cart.svg" class="svg" alt="">
                     </figure>
@@ -112,7 +112,7 @@
                 </a>
             </div>
             <div class="column is-2-desktop is-4-tablet category-service-list__item-wrap">
-                <a href="#" class="category-service-list__item is-flex">
+                <a href="/services-new/category" class="category-service-list__item is-flex">
                     <figure class="category-service-list__item__icon">
                         <img src="/svg/icons/services/category/ic_flag.svg" class="svg" alt="">
                     </figure>
