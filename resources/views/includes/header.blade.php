@@ -2,8 +2,8 @@
     <div class="container">
         <nav class="navbar header__line-top is-flex">
             <div class="navbar-brand">
-                <a class="navbar-item" href="{{ url('/') }}">
-                    <img src="{{ asset('/svg/logo.svg') }}" width="245" height="48"
+                <a class="navbar-item py-0" href="{{ url('/') }}">
+                    <img src="{{ asset('/svg/logo.svg') }}" width="320" height="64"
                          alt="{{ config('app.name', 'Laravel') }}">
                 </a>
             {{--<div class="navbar-item navbar-contacts is-hidden-mobile">--}}
@@ -200,21 +200,7 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                    <a class="navbar-link">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>English</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Polski</span>
-                        </a>
-                    </div>
-                </div>
+                @include('includes.navbar-lang-desktop')
             </div>
         </nav>
 
@@ -274,25 +260,7 @@
             </div>
 
 
-            <div class="dropdown is-right navbar-item navbar-lang">
-
-                <div class="dropdown-trigger">
-                    <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
-                    <div class="dropdown-content">
-                        <a href="#" class="dropdown-item navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a href="#" class="dropdown-item navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @include('includes.navbar-lang-mobile')
 
         </div>
         @endif
@@ -326,24 +294,7 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                    <a class="navbar-link">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                    </div>
-                </div>
+                @include('includes.navbar-lang-desktop')
             </div>
         </nav>
 
@@ -424,24 +375,7 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                    <a class="navbar-link">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                    </div>
-                </div>
+                @include('includes.navbar-lang-desktop')
             </div>
         </nav>
 

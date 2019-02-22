@@ -633,7 +633,7 @@
                                            @click="showModal('modal-ask-documents')"
                                            class="button is-success is-fullwidth has-text-weight-bold is-size-875">Получить
                                             документы</a>
-                                        <a href="#"
+                                        <a href="/services-new"
                                            class="button is-success is-outlined is-fullwidth has-text-weight-bold is-size-875">Заказать
                                             продукт</a>
                                     </div>

@@ -13,6 +13,9 @@
 
                 .navbar-item {
                     max-width: 100%;
+                    img {
+                        max-height: 4rem;
+                    }
                 }
             }
 
@@ -359,6 +362,12 @@
         .navbar-item {
             font-weight: 400;
             font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            .icon {
+                width: 1.375rem !important;
+                height: 1rem !important;
+            }
         }
     }
 

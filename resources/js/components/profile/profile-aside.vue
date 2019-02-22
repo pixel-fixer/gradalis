@@ -62,6 +62,7 @@
                 </li>
                 <li class="aside-nav__item">
                     <router-link to="/profile/balance" tag="a">
+                        <img src="/svg/icons/ic_cash.svg" class="svg" height="16" width="16">
                         <span class="aside-nav__item__title has-text-weight-bold">Баланс</span>
                     </router-link>
                 </li>

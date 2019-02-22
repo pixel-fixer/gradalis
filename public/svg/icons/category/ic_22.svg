@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="13px" viewBox="0 0 18 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_21</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-529.000000, -2946.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#3" transform="translate(498.000000, 88.000000)">
+                        <g id="ic_21" transform="translate(0.000000, 100.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <polyline id="Stroke-1" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="14.0873739 8.3774875 15.8261565 9.3592375 5.39137391 13.8279875 0.173982609 10.7342375 1.91311304 10.0690812"></polyline>
+                            <polyline id="Stroke-3" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="9.21746087 10.4707188 5.39137391 12.109375 0.173982609 9.015625 1.91311304 8.35046875"></polyline>
+                            <polyline id="Stroke-5" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="14.0885565 6.659425 15.8259478 7.6404875 11.9998609 9.3592375"></polyline>
+                            <polyline id="Stroke-7" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="9.21728696 8.67190938 5.3912 10.3906594 0.173808696 7.29690938 10.9564174 3.17190938 15.8259826 5.92190938 11.9998957 7.64065938"></polyline>
+                            <polyline id="Stroke-10" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="4.34772174 5.57815938 9.21728696 8.67190938 9.21728696 12.1094094"></polyline>
+                            <polyline id="Stroke-11" stroke="#8B97A9" stroke-width="1.04347826" stroke-linecap="round" stroke-linejoin="round" points="7.13033043 4.54690938 11.9998957 7.64065938 11.9998957 11.0781594"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

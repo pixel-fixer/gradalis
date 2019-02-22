@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-56.000000, -3040.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#1" transform="translate(24.000000, 88.000000)">
+                        <g id="ic_7" transform="translate(0.000000, 196.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M5.72493,10.974965 L10.62493,10.974965" id="Stroke-1" stroke="#8B97A9" stroke-width="1.05"></path>
+                            <path d="M5.72493,12.374965 L10.62493,12.374965" id="Stroke-2" stroke="#8B97A9" stroke-width="1.05"></path>
+                            <polygon id="Stroke-3" stroke="#8B97A9" stroke-width="1.05" points="8.17493 4.674965 8.87808 6.057465 10.44993 6.279365 9.31243 7.355265 9.58123 8.874965 8.17493 8.157465 6.76898 8.874965 7.03743 7.355265 5.89993 6.279365 7.47178 6.057465"></polygon>
+                            <path d="M2.22493,14.824965 C1.64533,14.824965 1.17493,14.354915 1.17493,13.774965 L1.17493,12.724965 L3.27493,12.724965 L3.27493,13.774965 C3.27493,14.354915 2.80488,14.824965 2.22493,14.824965 Z" id="Stroke-4" stroke="#8B97A9" stroke-width="1.05"></path>
+                            <path d="M2.22493,14.824965 L12.02493,14.824965 C12.60488,14.824965 13.07493,14.354915 13.07493,13.774965 L13.07493,2.924965 L5.02493,2.924965 L5.02493,2.049965 C5.02493,1.566615 4.63328,1.174965 4.14993,1.174965 C3.66658,1.174965 3.27493,1.566615 3.27493,2.049965 L3.27493,12.724965" id="Stroke-6" stroke="#8B97A9" stroke-width="1.05"></path>
+                            <path d="M13.07493,2.924965 L14.82493,2.924965 L14.82493,2.224965 C14.82493,1.645365 14.35488,1.174965 13.77493,1.174965 L4.14993,1.174965" id="Stroke-8" stroke="#8B97A9" stroke-width="1.05"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
