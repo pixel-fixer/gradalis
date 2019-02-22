@@ -18,7 +18,9 @@ class RoleSeeder extends Seeder
         'Главный брокер',
         'Продавец',
         'Покупатель',
-        'Исполнитель'
+        'Исполнитель',
+        'Media buyer',
+        'Account manager'
     ];
     
     /**
@@ -28,6 +30,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        
         foreach ($this->allRoles as $role) {
             Role::create(['name' => $role]);
         }

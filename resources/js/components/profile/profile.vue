@@ -7,7 +7,7 @@
                 <profile-aside></profile-aside>
             </div>
             <div class="column is-8">
-                <router-view :user="user"></router-view>
+                <router-view v-if="user" :user="user"></router-view>
             </div>
         </div>
     </div>
@@ -18,15 +18,13 @@ import Breadcrumbs from './breadcrumbs'
 import ProfileAside from './profile-aside'
 
 export default {
-    props: ['user'],
+    //props: ['user'],
     components: { Breadcrumbs, ProfileAside },
     data: () => ({
-
-    })
+        user: null
+    }),
+    mounted(){
+        this.user = this.$store.state.user
+    }
 }
 </script>
-
-<style>
-
-</style>
-

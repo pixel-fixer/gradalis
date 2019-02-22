@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('city_id')->unsigned()->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone')->nullable();
+            $table->string('phone')->nullable(); //TODO сделать поле обязательным?
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('balance')->unsigned()->default(0);

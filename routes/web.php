@@ -169,6 +169,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::get('/api/objects', 'ProfileController@getObjects');
 
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
+
+    Route::get('/api/trips', 'ProfileController@getTrips');
 });
 
 /* Фикс для возможных конфликтов роутов ларавела и личного кабинета */

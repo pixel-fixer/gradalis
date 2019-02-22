@@ -35,9 +35,9 @@
                                 height="64" width="64">
                     </simple-svg>
                     <div>
-                        <a @click.prevent="openNewDialogModal('Написать в тех. поддержку', 'support')" href="">Напишите брокеру</a>
+                        <a @click.prevent="openNewDialogModal('Написать брокеру', 'broker')"  href="">Напишите брокеру</a>
                         или напишите в
-                        <a @click.prevent="openNewDialogModal('Написать брокеру', 'broker')" href="">техническую поддержку</a>
+                        <a @click.prevent="openNewDialogModal('Написать в тех. поддержку', 'support')" href="">техническую поддержку</a>
                     </div>
                 </div>
             </transition>

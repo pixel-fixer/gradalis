@@ -12,23 +12,39 @@
             {{--</div>--}}
 
             <!-- ToDo: Show only in Broker Personal Area -->
-                <div class="navbar-item is-hidden-touch">
-                    <div class="manager is-flex">
-                        <figure class="manager__avatar">
-                            <img src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
-                                 alt="">
-                        </figure>
-                        <div class="manager__info">
-                            <div class="manager__name has-text-weight-bold">Ваш менеджер: Ирина</div>
-                            <div class="is-flex">
-                                <a href="#" class="manager__phone is-size-875"><img src="/svg/icons/ic_call.svg" alt=""
-                                                                                    class="svg"><span>+38 (450) 566-56-43</span></a>
-                                <a href="#" class="manager__chat is-size-875"><img src="/svg/icons/chat/ic_person.svg"
-                                                                                   alt="" class="svg"><span>Написать в чат</span></a>
+            @auth
+                @if(Auth::user()->user_id)
+                    <div class="navbar-item is-hidden-touch">
+                        <div class="manager is-flex">
+                            @if(Auth::user()->user->avatar)
+                                <figure class="manager__avatar">
+                                    <img src="{{Auth::user()->user->avatar}}">
+                                </figure>
+                            @endif
+                            <div class="manager__info">
+                                <div class="manager__name has-text-weight-bold">
+                                    @if(Auth::user()->user->hasAnyRole(['Account managaer', 'Media buyer']))
+                                        Ваш менеджер:
+                                    @elseif(Auth::user()->user->hasAnyRole(['Покупатель', 'Продавец']))
+                                        Ваш брокер:
+                                    @endif
+                                    {{Auth::user()->user->first_name}}
+                                </div>
+                                <div class="is-flex">
+                                    @if(Auth::user()->user->phone)
+                                    <a href="#" class="manager__phone is-size-875">
+                                        <img src="/svg/icons/ic_call.svg" alt="" class="svg">
+                                        <span>{{Auth::user()->user->phone}}</span>
+                                    </a>
+                                    @endif
+                                    <a href="/profile/chat/new-dialog/{{Auth::user()->user->id}}" class="manager__chat is-size-875"><img src="/svg/icons/chat/ic_person.svg"
+                                                                                    alt="" class="svg"><span>Написать в чат</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+            @endauth
             </div>
 
 
@@ -70,6 +86,8 @@
                                 <div class="dropdown-content is-paddingless">
                                     <a class="dropdown-item" href="/profile">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
+                                    <a class="dropdown-item" href="/profile/chat">Сообщения</a>
+                                    <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Выйти
@@ -81,7 +99,7 @@
                         {{--<a href="/profile" class="navbar-item basic user"><img src="{{ Auth::user()->avatar }}"--}}
                         {{--alt="User"><span--}}
                         {{--class="is-hidden-mobile">{{ Auth::user()->full_name }}</span></a>--}}
-                        <a href="/profile/#balance" class="navbar-item basic is-hidden-mobile"><img
+                        <a href="/profile/balance" class="navbar-item basic is-hidden-mobile"><img
                                 src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                 alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
 

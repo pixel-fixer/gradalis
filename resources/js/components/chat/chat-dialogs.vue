@@ -86,6 +86,8 @@
         },
         methods:{
             socketConnect(){
+                if(typeof window.Echo == 'undefined')
+                    return;
                 for(let dialog of this.dialogs){
                     window.Echo
                         .private('Chat.Dialog.' + dialog.id)

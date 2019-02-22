@@ -18,7 +18,7 @@
                 <td class="has-text-weight-bold has-vertical-align-middle">{{request.user.full_name}}</td>
                 <td class="has-text-basic has-vertical-align-middle">{{request.user.city.name}}</td> 
                 <td class="has-text-weight-bold has-vertical-align-middle">€{{request.user.sum_to}}</td>
-                <td style="white-space: nowrap"><a :href="'/business/'+ $t(request.object.url)">{{ $t(request.object.name) }}</a></td>
+                <td style="white-space: nowrap"><a :href="'/business/'+ $t(request.object.url)">{{request.object.name}}</a></td>
                 <td class="has-text-warning has-vertical-align-middle">
                     <div class="buttons">
                         <template v-if="request.status == 'new'">
@@ -53,7 +53,6 @@ export default {
     methods:{
         getData(){
             axios.get('/profile/view_requests').then( res => {
-                console.log(res.data);
                 this.firstLoad = false;
                 this.requests = res.data
             }).catch(e => {

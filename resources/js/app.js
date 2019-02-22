@@ -62,6 +62,13 @@ Vue.mixin({
     methods: {
         $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
+        },
+        userCan(permission){
+            if(!this.$store.state.user)
+                return false;
+               
+            let permissions = this.$store.state.user.permissions
+
         }
     }
 })

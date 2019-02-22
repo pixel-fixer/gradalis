@@ -12,6 +12,8 @@ use App\Models\Franchise\Franchise;
 use App\Models\Service\OrderedService;
 use App\Models\PaymentTransaction;
 use App\Models\ViewRequest;
+use App\Models\Travel\Travel;
+
 class ProfileController extends Controller
 {
     /**
@@ -19,16 +21,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        //TODO Или выдать permission нужным ролям?
-        $user->canModerateMessages = $user->canModerateMessages();
-
-        $roles = $user->roles->pluck('name')->all();
-        $user = $user->toArray();
-        $user['roles'] = $roles; //Почему то работает только так.
-
-        return view('profile.profile', compact('user'));
+        return view('profile.profile');
     }
 
     /**
@@ -216,5 +209,10 @@ class ProfileController extends Controller
         $object->save();
 
         return response(['message' => 'Статус объекта изменен'], 200);
+    }
+
+    public function getTrips()
+    {
+        return Travel::where('user_id', Auth::id())->get(); 
     }
 }

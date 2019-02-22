@@ -7,15 +7,13 @@ use Illuminate\Database\Migrations\Migration;
 class AlterUsersTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
      * @return void
      */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('note')->nullable();
-            $table->integer('broker_id')->nullable();
+            $table->integer('user_id')->nullable();
         });
     }
 
@@ -28,7 +26,7 @@ class AlterUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('note');
-            $table->dropColumn('broker_id');
+            $table->dropColumn('user_id');
         });
     }
 }

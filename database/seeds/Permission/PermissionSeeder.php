@@ -36,6 +36,8 @@ class PermissionSeeder extends Seeder
     private $allPerms = [
         'Чат: модерация сообщений',
         'Чат: модерация сообщений (свои пользователи)',
+        'sell',
+        'buy'
     ];
     
     /**
@@ -45,6 +47,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        
         foreach ( $this->allModels as $model ) {
             $resourcePermissions = [
                 "create $model"       => "create $model",

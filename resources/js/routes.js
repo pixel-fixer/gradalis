@@ -25,7 +25,14 @@ export default new Router({
         },
         {
             path: '/profile/chat', component: require('./components/profile/views/chat').default,
-            meta: { breadcrumb: { label: 'Сообщения', parent: 'profile' }}
+            meta: { breadcrumb: { label: 'Сообщения', parent: 'profile' }},
+            children: [
+                {
+                    path: 'new-dialog/:user_id',
+                    component: require('./components/profile/views/chat').default,
+                    name: 'new-dialog'
+                }
+            ]
         },
         {path: '/profile/settings', component: require('./components/profile/views/settings').default},
         {path: '/profile/products', component: require('./components/profile/views/products').default},
@@ -48,8 +55,8 @@ export default new Router({
         {path: '/profile/view-requests', component: require('./components/profile/views/view-requests').default, meta: {breadcrumb:{parent: 'profile', label: 'Запросы на просмотр'}}},
 
         /* Buyer */
-        {path: '/profile/trips', component: require('./components/profile/views/trips').default},
-        {path: '/profile/trips-single', component: require('./components/profile/views/tripsDetails').default},
+        {path: '/profile/trips', component: require('./components/profile/views/trips').default, meta: { breadcrumb: {  parent: 'profile', label: 'Ваши поездки' }}},
+        {path: '/profile/trips/:id', component: require('./components/profile/views/trips-detail').default},
 
         /* Broker */
         {path: '/broker/', redirect: '/broker/summary'},
@@ -62,6 +69,7 @@ export default new Router({
         {path: '/broker/web-offer/:id', component: WebOffer},
 
         /* 404 */
+        //TODO сделать 404 в SPA роутах
         //{ path: "*", beforeEnter: () => { window.location.pathname = '/404'}  }
     ]
 })

@@ -18,13 +18,13 @@ class ChatController extends Controller
     public function index()
     {
         $user = Auth::user();
-
+ 
         //TODO Или выдать permission нужным ролям?
         $user->canModerateMessages = $user->canModerateMessages();
 
         $roles = $user->roles->pluck('name')->all();
         $user = $user->toArray();
-        $user['roles'] = $roles; //Почему то работает только так.
+        $user['roles'] = $roles;
         return view('chat', compact('user'));
     }
 

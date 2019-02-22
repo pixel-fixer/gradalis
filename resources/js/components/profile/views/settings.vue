@@ -44,7 +44,7 @@ export default {
                     this.$refs.avatar.querySelector('img').src = res.data.avatar;
                     this.$swal({ type: 'success', text: res.data.message });
                 }).catch(e => {
-                     this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+                    this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                 })
         }
     }

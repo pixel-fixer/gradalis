@@ -73,15 +73,18 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         return $this->BelongsTo('App\Models\City');
     }
-
-    public function broker()
+    
+    /**
+     * Это может быть или менеджер, или брокер, в зависимости от роли пользователя
+     */
+    public function user()
     {
-        return $this->belongsTo('App\Models\Auth\User', 'broker_id', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'user_id', 'id');
     }
 
     public function users()
     {
-        $this->hasMany('App\Models\Auth\User', 'id', 'broker_id');
+        $this->hasMany('App\Models\Auth\User', 'id', 'user_id');
     }
 
     public function canModerateMessages()
