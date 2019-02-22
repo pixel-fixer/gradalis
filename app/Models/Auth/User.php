@@ -79,8 +79,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         return $this->BelongsTo('App\Models\Country');
     }
 
-    public function broker()
-
     /**
      * Это может быть или менеджер, или брокер, в зависимости от роли пользователя
      */
