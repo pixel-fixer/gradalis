@@ -1,5 +1,10 @@
 ###Доступные команды:
 
+
+###Доступы
+Login manager1@manager.com "Акаунт менеджер"
+Password secret
+
 ###Установка пакетов, которые используются:
 #### laravel-echo-server setup  [https://github.com/tlaverdure/laravel-echo-server](https://github.com/tlaverdure/laravel-echo-server)
 
