@@ -4,10 +4,10 @@
             <div class="columns is-multiline">
                 <g-g-select-input v-model="form.type" :label="'Тип инвестирования'" :placeholder="'Выберите тип'"
                                   :options="typeOptions"></g-g-select-input>
-                <g-g-select-input v-model="form.country" :label="'Страна'" :placeholder="'Страна'"
-                                  :options="countryOptions"></g-g-select-input>
-                <g-g-select-input v-model="form.region" :label="'Регион'" :placeholder="'Регион'"
-                                  :options="regionOptions"></g-g-select-input>
+                <g-g-location-select-input v-model="country" :type="'country'"></g-g-location-select-input>
+                <g-g-location-select-input v-model="region" :type="'region'"></g-g-location-select-input>
+                <g-g-location-select-input v-model="city" :type="'city'"></g-g-location-select-input>
+
                 <g-g-category-button v-model="form.category">
 
                 </g-g-category-button>
@@ -49,6 +49,7 @@
 
 <script>
     import GGCategoryButton from '../form/GGCategoryButton'
+    import GGLocationSelectInput from '../form/GGLocationSelectInput'
     import GGSelectInput from '../form/GGSelectInput'
     import GGInput from '../form/GGInput'
     import GGRangeSlider from '../form/GGRangeSlider'
@@ -59,6 +60,7 @@
             GGRangeSlider,
             GGInput,
             GGSelectInput,
+            GGLocationSelectInput,
             GGCategoryButton
         },
         data() {
@@ -67,16 +69,9 @@
                     {id: 'type_1', name: 'Бизнес в продаже'},
                     {id: 'type_2', name: 'Бизнес в аренде'},
                 ],
-                countryOptions: [
-                    {id: 1, name: 'Россия'},
-                    {id: 2, name: 'Польша'},
-                ],
-                regionOptions: [
-                    {id: 1, name: 'Region 1'},
-                    {id: 2, name: 'Region 2'},
-                    {id: 3, name: 'Region 3'},
-                    {id: 4, name: 'Region 4'}
-                ],
+                country:1,
+                region:1,
+                city:1,
                 profitAdds: {
                     add1: {
                         text: 'до €500 тыс.',
@@ -148,9 +143,10 @@
                 },
                 form: {
                     type: null,
-                    country: null,
+                    country: 1,
                     category:null,
-                    region: null,
+                    region: 1,
+                    city: 1,
                     price: null,
                     profit: null,
                     payback: null,
@@ -166,6 +162,7 @@
                 this.form.type = null;
                 this.form.country = null;
                 this.form.region = null;
+                this.form.city = null;
                 this.form.price = null;
                 this.form.profit = null;
                 this.form.payback = null;

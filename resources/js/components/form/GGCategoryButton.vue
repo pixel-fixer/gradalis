@@ -23,7 +23,7 @@
                                             v-for="category in categories"
                                             class="category-list__item">
                                             <figure class="category-list__item__icon">
-                                                <img src="/svg/icons/ic_info.svg" class="svg" alt="">
+                                                <img :src="'/svg/icons/category/'+category.icon" class="svg" alt="">
                                             </figure>
                                             <span>{{category.translation.ru}}</span>
                                         </li>

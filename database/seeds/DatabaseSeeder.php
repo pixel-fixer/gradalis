@@ -60,6 +60,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
+        $this->call(DistrictSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);

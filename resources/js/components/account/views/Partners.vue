@@ -27,11 +27,11 @@
                         <modal v-if="showModalRef"
                                @close="showModalRef = false">
                             <div slot="header">
-                                <p class="modal-card-title mb-0">Header</p>
+                                <p class="modal-card-title mb-0">Сылка</p>
                             </div>
 
                             <div slot="body">
-
+                                <a href="#">https://ref.market.local/parner-invitation/4</a>
                             </div>
                             <div slot="footer">
 
@@ -80,6 +80,7 @@
             <div class="column">
                 <div class="columns is-multiline">
                     <g-g-select-input v-model="form.typeData" :size="'is-4'"
+                                      @input=""
                                       :placeholder="trans('account.data_in_chart.placeholder')"
                                       :label="trans('account.data_in_chart.title')"
                                       :searchable="true"
@@ -116,17 +117,18 @@
                     <div class="buttons has-addons mb-0">
                         <button class="button h-3 is-outlined is-info is-size-875 is-medium mb-0"
                                 v-bind:class="{ 'is-active': typeChart=='line'}"
-                                @click="typeChart='line'">
+                                @click="switchLine">
                             <span class="icon is-medium">
                                 <img src="/svg/icons/ic_line-chart.svg" alt=""
                                      class="svg"></span>
                         </button>
-                        <button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"
-                                v-bind:class="{ 'is-active': typeChart=='bar'}"
-                                @click="typeChart='bar'">
-                            <span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""
-                                                              class="svg"></span>
-                        </button>
+                        <!--TODO Bar chart-->
+                        <!--<button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"-->
+                                <!--v-bind:class="{ 'is-active': typeChart=='bar'}"-->
+                                <!--@click="switchBar">-->
+                            <!--<span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""-->
+                                                              <!--class="svg"></span>-->
+                        <!--</button>-->
                     </div>
                 </div>
             </div>
@@ -138,7 +140,7 @@
         <div class="mb-2">
             <line-chart ref="lineChart" v-model="datacollection" :dataset="datacollection" :height="260"
                         v-if="typeChart=='line'"/>
-            <bar-chart ref="barChart" :dataset="datacollection" :height="260"
+            <bar-chart ref="barChart" v-model="datacollection" :dataset="datacollection" :height="260"
                        v-if="typeChart=='bar'"/>
         </div>
 
@@ -184,7 +186,7 @@
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <a href="#" class="link-with-icon">
+                            <a href="/account/partners/single/settings" class="link-with-icon">
                                 <img src="/svg/icons/ic_profile_settings.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
                             </a>
@@ -234,51 +236,9 @@
                             dateFormat: 'Y-m-d'
                         }
                     },
-                    typeData: {
-                        selected: null,
-                        title: 'Данные в графике',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-                    comparison: {
-                        selected: null,
-                        title: 'Сравнение',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-                    sorting: {
-                        selected: null,
-                        title: 'Сортировка',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
+                    typeData: 1,
+                    comparison: null,
+                    sorting: null,
 
 
                 },
@@ -354,6 +314,14 @@
             }
         },
         methods: {
+            switchBar(){
+                this.typeChart='bar'
+                this.$refs['barChart'].renderChart(this.datacollection,this.options)
+            },
+            switchLine(){
+                this.typeChart='line'
+                this.$refs['lineChart'].renderChart(this.datacollection,this.options)
+            },
             fetchPartners() {
                 let vm = this;
                 axios.post('/account-get-partners', {
@@ -381,7 +349,7 @@
                         vm.datacollection.labels.push(el.date);
                         vm.datacollection.datasets[0].data.push(el.views + 0);
                     });
-                    vm.$refs['lineChart'].renderChart(vm.datacollection,vm.options)
+                    this.switchLine();
                 })
             },
 

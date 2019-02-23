@@ -13,15 +13,15 @@ class CountrySeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        $translations = [
-            'ru' => 'Россия',
-            'en' => 'Russia',
-            'pl' => 'Rosja'
-        ];
-        $country = new Country();
-        $country->name = 'russia';
-        $country->setTranslations('translation', $translations);
-        $country->save();
+//        $translations = [
+//            'ru' => 'Россия',
+//            'en' => 'Russia',
+//            'pl' => 'Rosja'
+//        ];
+//        $country = new Country();
+//        $country->name = 'russia';
+//        $country->setTranslations('translation', $translations);
+//        $country->save();
 
         $translations = [
             'ru' => 'Польша',

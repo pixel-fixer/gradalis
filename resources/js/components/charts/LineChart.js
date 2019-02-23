@@ -4,10 +4,6 @@ export default {
     extends: Line,
     props: {
         value: null,
-        // dataset: {
-        //     type: Object,
-        //     default: null
-        // },
         options: {
             type: Object,
             default: function () {

@@ -20,6 +20,6 @@ $factory->define(Business::class, function (Faker $faker) {
         'revenue'       => $price/4,
         'discount'       => rand(0,15),
         'weight' => array_rand(array(1,2,3,4,null)),
-        'category_id'   => rand(1, 2)
+        'category_id'   => rand(1, 4)
     ];
 });

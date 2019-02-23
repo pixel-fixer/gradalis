@@ -22,26 +22,7 @@ class BusinessSeeder extends Seeder
     {
         ini_set('memory_limit', '1024M');
         Schema::disableForeignKeyConstraints();
-        $businessCategory = new BusinessCategory();
-        $translations = [
-            'ru' => 'Недвижимость',
-            'en' => 'Realty',
-            'pl' => 'Nieruchomości',
-        ];
-        $businessCategory->name = "Недвижимость";
-        $businessCategory->setTranslations('translation', $translations);
-        $businessCategory->save();
-
-        $businessCategory = new BusinessCategory();
-        $translations = [
-            'ru' => 'Фармацевтика',
-            'en' => 'Pharmaceuticals',
-            'pl' => 'Farmaceutyki',
-        ];
-        $businessCategory->name = "Фармацевтика";
-        $businessCategory->setTranslations('translation', $translations);
-        $businessCategory->save();
-
+        $this->saveCategories();
         factory(Business::class, 20)->make()->each(function ($business) {
             foreach (Language::all() as $lang) {
                 $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
@@ -60,6 +41,22 @@ class BusinessSeeder extends Seeder
 
 
         Schema::enableForeignKeyConstraints();
+    }
+
+    protected function saveCategories(){
+        $categories = [
+          ['icon' => 'ic_12.svg', 'name'=> 'Комерч. недвижимость'],
+          ['icon' => 'ic_2.svg', 'name'=> 'Аптечный бизнс'],
+          ['icon' => 'ic_1.svg', 'name'=> 'Автомойки, сервисы, СТО'],
+          ['icon' => 'ic_7.svg', 'name'=> 'Готовый бизнес под ключ']
+        ];
+        foreach ($categories as $category){
+            $businessCategory = new BusinessCategory();
+            $businessCategory->name = $category['name'];
+            $businessCategory->icon = $category['icon'];
+            $businessCategory->setTranslation('translation','ru', $category['name']);
+            $businessCategory->save();
+        }
     }
 
 

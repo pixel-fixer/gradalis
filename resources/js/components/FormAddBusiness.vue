@@ -48,27 +48,7 @@
                 <div class="columns is-multiline">
                     <g-g-category-button v-model="business.category_id" :size="'is-6'"></g-g-category-button>
                     <g-g-location-select-input v-model="business.country_id" :size="'is-6'"></g-g-location-select-input>
-
-                    <div class="column is-6">
-                        <div class="field">
-                            <label class="label label_req"><span>{{region.title}}</span></label>
-                            <div class="control">
-                                <multiselect
-                                    :deselect-label="region.deselectLabel"
-                                    track-by="name"
-                                    label="name"
-                                    openDirection="bottom"
-                                    :placeholder="region.placeholder"
-                                    :options="region.options"
-                                    :searchable="true"
-                                    :allow-empty="false"
-                                    :selectLabel="region.selectLabel"
-                                    :selectedLabel="region.selectedLabel">
-                                    <template slot="singleLabel" slot-scope="{ option }">{{ option.name }}</template>
-                                </multiselect>
-                            </div>
-                        </div>
-                    </div>
+                    <g-g-location-select-input :size="'is-6'" v-model="business.district_id" :type="'region'"></g-g-location-select-input>
                     <g-g-location-select-input :type="'city'" v-model="business.city_id"
                                                :size="'is-6'"></g-g-location-select-input>
 
@@ -1029,7 +1009,7 @@
                     price: null,
                     revenue: null,
                     profitability: null,
-                    district_id: 1,
+                    district_id: null,
                     images: [],
                     options: {
                         //region Step 1
@@ -1158,15 +1138,6 @@
                         listDisputableSituations: null,
                         //endregion
                     }
-                },
-                region: {
-                    selected: null,
-                    title: 'Регион',
-                    placeholder: 'Выберите',
-                    selectedLabel: '',
-                    selectLabel: '',
-                    deselectLabel: '',
-                    options: trans('business.create.theme.options'),
                 },
                 accept: {
                     value: false,

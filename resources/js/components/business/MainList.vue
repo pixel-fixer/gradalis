@@ -1,19 +1,7 @@
 <template>
     <div class="columns is-multiline">
         <business-card v-for="business in businesses.data"
-                       :businessId="business.id"
-                       :status="business.status"
-                       :name="business.name"
-                       :price="business.price"
-                       :category="business.category"
-                       :revenue="business.revenue"
-                       :profit="business.profit"
-                       :payback="business.payback"
-                       :profitability="business.profitability"
-                       :city="business.city"
-                       :country="business.city.country"
-                       :weight="business.weight"
-                       :discount="business.discount"
+                       :business="business"
                        v-bind:key="business.id"
         ></business-card>
     </div>

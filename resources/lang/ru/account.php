@@ -4,6 +4,7 @@ return [
     'partners'          => 'Партнеры',
     'active_partners'   => 'Активные партнеры',
     'future_partners'   => 'Будущие партнеры',
+    'data_in_chart'     => 'Данные в графике',
     'help'              => 'Помощь',
     'your_ref_link'     => 'Ваша реферальная ссылка',
     'day'               => 'День',
@@ -18,29 +19,29 @@ return [
     'in_account'        => 'В аккаунт',
     'settings'          => 'Настройки',
     'leads'             => 'Лиды',
-    'clicks'             => 'Клики',
+    'clicks'            => 'Клики',
     'sort'              => [
-        'title'   => 'Сортировка',
-        'placeholder'   => 'Выберите',
-        'options' => [
+        'title'       => 'Сортировка',
+        'placeholder' => 'Выберите',
+        'options'     => [
             ['id' => 1, 'name' => 'Показы'],
             ['id' => 2, 'name' => 'Клики'],
             ['id' => 3, 'name' => 'Регистрации']
         ]
     ],
     'compare'           => [
-        'title'   => 'Сравнить',
-        'placeholder'   => 'Выберите',
-        'options' => [
+        'title'       => 'Сравнить',
+        'placeholder' => 'Выберите',
+        'options'     => [
             ['id' => 1, 'name' => 'Показы'],
             ['id' => 2, 'name' => 'Клики'],
             ['id' => 3, 'name' => 'Регистрации']
         ]
     ],
     'data_in_chart'     => [
-        'title'   => 'Партнеры',
-        'placeholder'   => 'Выберите',
-        'options' => [
+        'title'       => 'Партнеры',
+        'placeholder' => 'Выберите',
+        'options'     => [
             ['id' => 1, 'name' => 'Показы'],
             ['id' => 2, 'name' => 'Клики'],
             ['id' => 3, 'name' => 'Регистрации']

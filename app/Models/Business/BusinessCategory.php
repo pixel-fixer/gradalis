@@ -11,7 +11,7 @@ class BusinessCategory extends Model
 
     protected $table = 'business_categories';
     public $timestamps = true;
-    protected $fillable = array('parent_id','name', 'translatio');
+    protected $fillable = array('parent_id','name', 'translation','icon');
     public $translatable = ['translation'];
 
     public function businesses()

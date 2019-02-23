@@ -47,7 +47,7 @@ DESCRIPTION;
                 'name'       => $business->name,
                 'target_id'  => $business->id,
                 'type'       => 'App\Models\Business\Business',
-                'country_id' => rand(1, 2),
+                'country_id' => 1,
                 'site'       => 'http://google.com',
                 'status'     => rand(0, 1)
             ]);
@@ -57,7 +57,7 @@ DESCRIPTION;
             $campaignTarget = CampaignTarget::create([
                 'name'        => 'Активная дебетовая карта',
                 'campaign_id' => $campaign->id,
-                'country_id'  => rand(1, 2),
+                'country_id'  => 1,
                 'cpl'         => rand(10, 30),
                 'cps'         => rand(10, 30)
             ]);
@@ -85,7 +85,7 @@ DESCRIPTION;
                 'name'       => $franchise->name,
                 'target_id'  => $franchise->id,
                 'type'       => 'App\Models\Franchise\Franchise',
-                'country_id' => rand(1, 2),
+                'country_id' => 1,
                 'site'       => 'http://google.com',
                 'status'     => rand(0, 1)
             ]);
@@ -95,7 +95,7 @@ DESCRIPTION;
             $campaignTarget = CampaignTarget::create([
                 'name'        => 'Активная дебетовая карта',
                 'campaign_id' => $campaign->id,
-                'country_id'  => rand(1, 2),
+                'country_id'  => 1,
                 'cpl'         => rand(10, 30),
                 'cps'         => rand(10, 30)
             ]);

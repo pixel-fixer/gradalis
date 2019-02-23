@@ -64,6 +64,7 @@
                         for (const [key, val] of Object.entries(vm.options)) {
                             if (val.id === vm.value) {
                                 vm.selectedValue = val;
+                                vm.label = 'Страна';
                             }
                         }
                     }
@@ -75,6 +76,19 @@
                         for (const [key, val] of Object.entries(vm.options)) {
                             if (val.id === vm.value) {
                                 vm.selectedValue = val;
+                                vm.label = 'Город';
+                            }
+                        }
+                    }
+                })
+            } else if (this.type === 'region') {
+                axios.get('/location-get-regions').then(responce => {
+                    vm.options = responce.data;
+                    if (vm.value) {
+                        for (const [key, val] of Object.entries(vm.options)) {
+                            if (val.id === vm.value) {
+                                vm.selectedValue = val;
+                                vm.label = 'Регион';
                             }
                         }
                     }
@@ -101,10 +115,10 @@
                 handler(value) {
                     if (value === 'country') {
                         this.label = trans('strings.country');
-                        //this.label = 'asdasdas';
                     } else if (value === 'city') {
                          this.label = trans('strings.city');
-                        //this.label = 'asdas';
+                    }else if (value === 'region') {
+                         this.label = trans('strings.region');
                     }
                 }
             }

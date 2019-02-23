@@ -55,7 +55,6 @@ class BusinessController extends Controller
         unset($business->options);
         $business->country_id = $business->country_id;
         $images               = $business->getMedia('business/' . auth()->user()->id);
-        dd($images);
         $data['images'] = [];
         foreach ($images as $i => $image) {
             $data['images'][$i]['url']   = $image->getFullUrl();

@@ -148,13 +148,13 @@ Route::middleware(['role:Акаунт-менеджер'])->namespace('Account')-
 
 //region BUSINESS Routes
 Route::namespace('Business')->group(function () {
-    Route::resource('business', 'BusinessController')->middleware('auth');
+    Route::resource('business', 'BusinessController');
 });
 //endregion
 
 
 //region BROKER Routes
-Route::middleware(['role:Медиа-баер'])->namespace('Broker')->prefix('broker')->group(function () {
+Route::namespace('Broker')->prefix('broker')->group(function () {
     Route::get('/{vue_capture?}', 'BrokerController@index')->where('vue_capture', '.*')->middleware('auth');;
 });
 //endregion
@@ -170,6 +170,7 @@ Route::namespace('Api')
 
     Route::get('/location-get-countries', 'LocationController@getCountries');
     Route::get('/location-get-cities', 'LocationController@getCities');
+    Route::get('/location-get-regions', 'LocationController@grtRegions');
 
     Route::post('/business-image-upload', 'BusinessController@imageUpload');
 
