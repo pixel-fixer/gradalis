@@ -17,9 +17,10 @@
                             <img src="/svg/icons/ic_sale.svg" alt="Sale">
                         </span>
                 <a v-if="(business.status == 2)" href="#" class="info-icon object-favorite"
-                   @click.prevent="toggleFavorite(businessId, 'business')"
-                   v-tooltip="'Добавить в избранное'">
-                    :class="{active: isFavorite}"
+                   @click.prevent="toggleFavorite(business.id, 'business')"
+                   v-tooltip="'Добавить в избранное'"
+                   :class="{'active': isFavorite}">
+
                     <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
                 </a>
 
