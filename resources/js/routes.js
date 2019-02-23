@@ -10,6 +10,7 @@ const Settings = () => import('./components/broker/views/Settings');
 const SummaryIndicators = () => import('./components/broker/views/SummaryIndicators');
 const WebOffers = () => import('./components/broker/views/WebOffers');
 const WebOffer = () => import('./components/broker/views/WebOffer');
+const BrokerChat = () => import('./components/broker/views/Chat');
 
 const AccountPartners = () => import('./components/account/views/Partners');
 const AccountPartnersFuture = () => import('./components/account/views/FuturePartners');
@@ -66,6 +67,17 @@ export default new Router({
         {path: '/broker/realtime', component: RealTime},
         {path: '/broker/balance', component: Balance},
         {path: '/broker/leads', component: Leads},
+        {
+            path: '/broker/chat', component: BrokerChat,
+            meta: { breadcrumb: { label: 'Сообщения', parent: 'broker' }},
+            children: [
+                {
+                    path: 'new-dialog/:user_id',
+                    component: BrokerChat,
+                    name: 'new-dialog'
+                }
+            ]
+        },
         {path: '/broker/settings', component: Settings},
         {path: '/broker/summary', component: SummaryIndicators},
         {path: '/broker/web-offers', component: WebOffers},

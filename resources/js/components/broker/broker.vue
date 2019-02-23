@@ -1,10 +1,15 @@
 <template>
-    <router-view></router-view>
+    <router-view v-if="user" :user="user"></router-view>
 </template>
 
 <script>
     export default {
-        data: () => ({})
+        data: () => ({
+            user: null
+        }),
+        mounted(){
+            this.user = this.$store.state.user
+        }
     }
 </script>
 
