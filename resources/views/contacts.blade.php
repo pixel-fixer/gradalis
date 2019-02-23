@@ -98,7 +98,7 @@
                             </div>
                             <div class="column is-6">
                                 <div>
-                                    <span class="is-size-875">022245, ul. Dluga 52, Warsaw 00-241, Poland</span>
+                                    <span class="is-size-875">022245, ul. Vogla 28, Warsaw 02-963, Poland</span>
                                 </div>
                             </div>
                         </div>
