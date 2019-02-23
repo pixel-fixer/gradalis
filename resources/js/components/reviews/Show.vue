@@ -39,7 +39,7 @@
                         <span class="has-text-decoration-underline">Пользовательское соглашение и политика конфиденциальности</span></a>
                 </div>
             </div>
-
+ 
             <SliderMaterials></SliderMaterials>
 
         </div>

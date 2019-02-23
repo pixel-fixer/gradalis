@@ -85,15 +85,17 @@ Vue.component('broker-offers-modal-create-link', require('./components/broker/of
 Vue.component('broker-real-time-indicators', require('./components/broker/RealTimeIndicators').default);
 Vue.component('broker', require('./components/broker/broker').default);
 
-Vue.component('vacancy-response', () => import('./components/vacancy/Response'));
+const VacancyResponce = () => import('./components/reviews/Add');
+
+Vue.component('vacancy-response', VacancyResponce);
 
 
 // review
-const AddReview = () => import('./components/reviews/Add');
-const ShowReview = () => import('./components/reviews/Show');
-Vue.component('add-review', AddReview);
-Vue.component('show-review', ShowReview);
-// end
+// const AddReview = () => import('./components/reviews/Add');
+// const ShowReview = () => import('./components/reviews/Show');
+Vue.component('add-review', require('./components/reviews/Add').default);
+Vue.component('show-review', require('./components/reviews/Show').default);
+// end 
 
 // services
 const ServicesFilter = () => import('./components/services/Filter');
