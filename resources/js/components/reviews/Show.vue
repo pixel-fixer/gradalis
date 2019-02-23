@@ -57,7 +57,7 @@
     import SliderMaterials from './SliderMaterials';
 
     export default {
-        name: "modalAddReview",
+        name: "modalShowReviews",
         components: {
             Modal,
             GGTextarea,

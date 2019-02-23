@@ -50,11 +50,11 @@ Route::get('/register/buyer', function () {
 
 Route::get('/news', function () {
     return view('news');
-})->middleware('auth');
+});
 
 Route::get('/news-single', function () {
     return view('news-single');
-})->middleware('auth');
+});
 
 Route::get('/ui', function () {
     return view('ui');

@@ -115,5 +115,5 @@
     </section>
 
     <add-review v-model="reviews.showAddReviewModal"></add-review>
-    <show-review v-model="reviews.showSingleReviewModal" :id="showSingleReviewModalID"></show-review>
+    <show-review v-model="reviews.showSingleReviewModal" :id="reviews.showSingleReviewModalID"></show-review>
 @endsection
