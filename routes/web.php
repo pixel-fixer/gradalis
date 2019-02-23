@@ -208,8 +208,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
 
     Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
 
-    Route::get('view_requests', 'ProfileController@getViewRequests');
-    Route::patch('view_request/{view_request}/{status}', 'ProfileController@setViewRequestStatus');
+    Route::get('requests/{type}', 'ProfileController@getObjectRequests');
+    Route::patch('request/{view_request}/{status}', 'ProfileController@setObjectRequestStatus');
 
     Route::get('/api/objects', 'ProfileController@getObjects');
 

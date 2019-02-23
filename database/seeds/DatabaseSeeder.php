@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'admin_notifications',
             'service_categories',
             'payment_transactions',
-            'view_requests'
+            'object_requests'
         ]);
 
         Schema::enableForeignKeyConstraints();
@@ -65,7 +65,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
         $this->call(FranchisePackageSeeder::class);
-
 
         $this->call(ReferralUsersSeeder::class);
         $this->call(PartnerSeeder::class);
@@ -82,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DialogSeeder::class);
         $this->call(AdminNofiticationSeeder::class);
         $this->call(PaymentTransactionSeeder::class);
-        $this->call(ViewRequestSeeder::class);
+        $this->call(ObjectRequestSeeder::class);
 
         Model::reguard();
     }

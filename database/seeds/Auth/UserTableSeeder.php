@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
             'offer'                  => false,
         ];
 
-        $cities = [1, 2562]; //Москва и Варшава
+        $cities = [1, 57]; //Москва и Варшава
 
         // Add the master administrator, user id of 1
         User::create([
@@ -57,6 +57,30 @@ class UserTableSeeder extends Seeder
             'first_name'        => 'Default',
             'last_name'         => 'User',
             'email'             => 'user@user.com',
+            'password'          => Hash::make('secret'),
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
+        ]);
+
+        User::create([
+            'first_name'        => 'Seller',
+            'last_name'         => 'Seller',
+            'email'             => 'seller@user.com',
+            'password'          => Hash::make('secret'),
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
+        ]);
+
+        User::create([
+            'first_name'        => 'Buyer',
+            'last_name'         => 'Buyer',
+            'email'             => 'buyer@user.com',
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,

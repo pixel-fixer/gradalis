@@ -3,7 +3,7 @@
         <nav class="navbar header__line-top is-flex">
             <div class="navbar-brand">
                 <a class="navbar-item py-0" href="{{ url('/') }}">
-                    <img src="{{ asset('/svg/logo.svg') }}" width="320" height="64"
+                    <img src="{{ asset('/svg/logo.svg') }}" height="64"
                          alt="{{ config('app.name', 'Laravel') }}">
                 </a>
             {{--<div class="navbar-item navbar-contacts is-hidden-mobile">--}}
@@ -13,7 +13,8 @@
 
             <!-- ToDo: Show only in Broker Personal Area -->
                 @auth
-                    @if(Auth::user()->user_id)
+                    {{-- @if(Auth::user()->user_id) --}}
+                    @if(false)
                         <div class="navbar-item is-hidden-touch">
                             <div class="manager is-flex">
                                 @if(Auth::user()->user->avatar)
@@ -23,9 +24,10 @@
                                 @endif
                                 <div class="manager__info">
                                     <div class="manager__name has-text-weight-bold">
-                                        @if(Auth::user()->user->hasAnyRole(['Account managaer', 'Media buyer']))
+                                        {{Auth::user()->hasAnyRole(['Account-manager', 'Media buyer'])}}
+                                        @if(Auth::user()->hasAnyRole(['Account-manager', 'Media buyer']))
                                             Ваш менеджер:
-                                        @elseif(Auth::user()->user->hasAnyRole(['Покупатель', 'Продавец']))
+                                        @elseif(Auth::user()->hasAnyRole(['Покупатель', 'Продавец']))
                                             Ваш брокер:
                                         @endif
                                         {{Auth::user()->user->first_name}}
@@ -109,9 +111,6 @@
                             </div>
                             <div class="dropdown-menu" id="dropdown-user-menu" role="menu">
                                 <div class="dropdown-content is-paddingless">
-                                    <a class="dropdown-item" href="/profile">Личный кабинет</a>
-                                    <hr class="dropdown-divider is-marginless">
-                                    <a class="dropdown-item" href="/profile/chat">Сообщения</a>
                                     @php
                                         $url = '/profile';
                                         if(auth()->user()->hasRole('Акаунт-менеджер')){
@@ -119,6 +118,8 @@
                                         }
                                     @endphp
                                     <a class="dropdown-item" href="{{$url}}">Личный кабинет</a>
+                                    <hr class="dropdown-divider is-marginless">
+                                    <a class="dropdown-item" href="/profile/chat">Сообщения</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

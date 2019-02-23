@@ -73,7 +73,11 @@ class PermissionSeeder extends Seeder
                 ['name' => $perm],
                 ['guard_name' => 'web']
             );
+        
         }
+
+        User::whereId(1)->first()->assignRole('Продавец');
+        User::whereId(4)->first()->assignRole('Покупатель');
 
         Role::where('name', 'Админ')->first()->givePermissionTo('сhat_message-moderate');
         Role::where('name', 'Покупатель')->first()->givePermissionTo('object-buy');

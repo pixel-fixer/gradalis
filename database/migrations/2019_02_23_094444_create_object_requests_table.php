@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateViewRequestsTable extends Migration
+class CreateObjectRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateViewRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('view_requests', function (Blueprint $table) {
+        Schema::create('object_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->dateTime('view_at');
             $table->morphs('object');
+            $table->enum('type', ['view', 'doc']);
             $table->enum('status', ['new', 'rejected', 'accepted'])->default('new');
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CreateViewRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('view_requests');
+        Schema::dropIfExists('object_requests');
     }
 }

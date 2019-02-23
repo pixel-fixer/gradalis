@@ -14,7 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
-    $cities = [1, 2562]; //Москва и Варшава
+    $cities = [1, 57]; //Москва и Варшава
     $countries = [1, 2]; //Россия и Польша
     $i = rand(0,1);
     return [

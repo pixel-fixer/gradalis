@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 class ViewRequest extends Model
 {
     protected $fillable = ['user_id', 'view_at', 'object_id', 'object_type', 'status'];
-
+    protected $table='object_requests';
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');

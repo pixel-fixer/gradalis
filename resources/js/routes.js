@@ -55,7 +55,7 @@ export default new Router({
         {path: '/profile/legal', component: require('./components/profile/views/legal').default, meta: {breadcrumb:{parent: 'profile', label: 'Условия договора'}} },
         {path: '/profile/balance', component: require('./components/profile/views/balance').default, meta: {breadcrumb:{parent: 'profile', label: 'Баланс'}} },
         {path: '/profile/objects', component: require('./components/profile/views/objects').default, meta: {breadcrumb:{parent: 'profile', label: 'Ваши объекты'}} },
-        {path: '/profile/view-requests', component: require('./components/profile/views/view-requests').default, meta: {breadcrumb:{parent: 'profile', label: 'Запросы на просмотр'}}},
+        {path: '/profile/object-requests/:type', component: require('./components/profile/views/object-requests').default, meta: {breadcrumb:{parent: 'profile', label: 'Запросы'}}},
 
         /* Buyer */
         {path: '/profile/trips', component: require('./components/profile/views/trips').default, meta: { breadcrumb: {  parent: 'profile', label: 'Ваши поездки' }}},

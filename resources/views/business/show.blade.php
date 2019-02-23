@@ -120,11 +120,16 @@
                                 </div>
                             </div>
                             <div class="object__broker__bottom is-flex">
-                                <button class="button is-success is-size-875 has-text-weight-bold modal-button"
+                                {{-- TODO временная заглушка --}}
+                                <a href="/profile/chat" class="button is-success is-size-875 has-text-weight-bold modal-button">
+                                    <img src="{{ asset('/svg/icons/ic_ask_question.svg') }}" alt="">
+                                    <span>Задать вопрос по объекту</span>
+                                </a>
+                                {{-- <button class="button is-success is-size-875 has-text-weight-bold modal-button"
                                         @click="showModal('modal-question-object')">
                                     <img src="{{ asset('/svg/icons/ic_ask_question.svg') }}" alt="">
                                     <span>Задать вопрос по объекту</span>
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
 

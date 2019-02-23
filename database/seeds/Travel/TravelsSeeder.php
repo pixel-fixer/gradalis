@@ -14,7 +14,7 @@ class TravelsSeeder extends Seeder
     {
         Travel::create([
             'ordered_services_id' => 1,
-            'user_id' => 1,
+            'user_id' => 4,
             'user_meeting_comment' => 'Комментарий пользователя о встречах',
             'user_consult_comment' =>  'Комментарий пользователя о консультациях'
         ]);

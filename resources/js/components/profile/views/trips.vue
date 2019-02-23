@@ -1,6 +1,6 @@
 <template>
     <section class="section pt-1 px-0">
-        <h1 class="section-title mb-1-75">Ваши поездки</h1>
+        <h1 class="section-title mb-1-75">Ваши показы</h1>
         <table class="table is-fullwidth is-size-875">
             <thead>
             <tr>

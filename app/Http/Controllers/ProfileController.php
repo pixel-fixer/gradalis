@@ -13,7 +13,7 @@ use App\Models\Service\OrderedService;
 use App\Models\PaymentTransaction;
 use App\Models\ViewRequest;
 use App\Models\Travel\Travel;
-
+use App\Models\Auth\User;
 class ProfileController extends Controller
 {
     /**
@@ -145,8 +145,9 @@ class ProfileController extends Controller
         return PaymentTransaction::where('user_id', Auth::id())->orderBy('created_at')->get();
     }
 
-    public function getViewRequests()
+    public function getObjectRequests($type)
     {
+
         //TODO похоже на дичь, подумать.
         $business = Business::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
         $franchise = Franchise::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
@@ -156,15 +157,21 @@ class ProfileController extends Controller
         })->reject(function ($item) {
             return empty($item);
         });
-      
+
         $view_requests_mapped = [];
-        foreach($view_requests->all() as $array){
+        foreach($view_requests->values()->all() as $array){
             $view_requests_mapped = array_merge($view_requests_mapped, $array);
         }
-        return $view_requests_mapped;  
+
+        $view_requests_mapped = array_filter($view_requests_mapped, function($item) use ($type){
+            return $item['type'] == $type;
+        });
+
+        //var_dump($view_requests_mapped);
+        return array_values($view_requests_mapped);  
     }
 
-    public function setViewRequestStatus(ViewRequest $view_request, $status)
+    public function setObjectRequestStatus(ViewRequest $view_request, $status)
     {
         $view_request->status = $status;
         $view_request->save();
