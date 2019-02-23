@@ -2,7 +2,7 @@
      <section class="section pt-1 px-0">
 
 <!-- <button @click="addTofavorites(2, 'business')">Добавить бизнес с id=2 в избранное</button> -->
-<button @click="toggleFavorite(3, 'franchise')">Добавить франшизу с id=3 в избранное</button>
+<!-- <button @click="toggleFavorite(3, 'franchise')">Добавить франшизу с id=3 в избранное</button> -->
 
                     <h1 class="section-title mb-1-75">Избранное</h1>
                     <div v-if="firstLoad">...</div>
