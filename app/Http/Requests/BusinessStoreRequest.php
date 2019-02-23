@@ -24,7 +24,33 @@ class BusinessStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category'      => 'required',
+            'country_id'    => 'required',
+            'city_id'       => 'required',
+            'name'          => 'required',
+            'description'   => 'required',
+            'payback'       => 'required',
+            'price'         => 'required',
+            'revenue'       => 'required',
+            'profitability' => 'required',
+            'district_id'   => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'category.required'      => 'Категория не выбранна',
+            'country_id.required'    => 'Страна не выбранна',
+            'city_id.required'       => 'Город не выбран',
+            'name.required'          => 'Название бизнеса не указано',
+            'description.required'   => 'Описание бизнеса не указано',
+            'payback.required'       => 'Окупаемость бизнеса не указана',
+            'price.required'         => 'Цена бизнеса не указана',
+            'revenue.required'       => 'Доход бизнеса не указан',
+            'profitability.required' => 'Рентабельность бизнеса не указана',
+            'district_id.required'   => 'Регион не выбран',
+
         ];
     }
 }

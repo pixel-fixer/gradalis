@@ -1430,10 +1430,10 @@
                     }).then(responce => {
                         if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
-                        }else{
-
                         }
-                    })
+                    }).catch(e => {
+                        this.$swal({ type: 'error', title: 'Ошибка!', text: 'Не все поля были заполнны'});
+                    });
                 } else {
                     axios.post('/business', {
                         business: this.business
@@ -1441,7 +1441,10 @@
                         if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
                         }
-                    })
+                    }).catch(e => {
+                        let errors = e.response.data.errors;
+                        this.$swal({ type: 'error', title: 'Ошибка!', text: errors[Object.keys(errors)[0]]});
+                    });
                 }
             },
             toggleStep(index) {
