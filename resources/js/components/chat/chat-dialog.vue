@@ -36,7 +36,7 @@
                     <div class="chat-messages__list">
                         <div class="chat-messages__message"
                              v-for="message in stack.messages"
-                             :class="{'status-moderating': message.status == 0 && userCan('Chat_message-moderate')}"
+                             :class="{'status-moderating': message.status == 0 && $userCan('Chat_message-moderate')}"
                              :key="message.id">
                             <div class="chat-messages__message__wrap">
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
@@ -55,7 +55,7 @@
                             <chat-message-status
                                     :message="message"
                                     v-if="user.id === stack.user.id"></chat-message-status>
-                            <div class="chat-messages__message__mode-btns" v-if="userCan('Chat_message-moderate') && message.status == 0">
+                            <div class="chat-messages__message__mode-btns" v-if="$userCan('Chat_message-moderate') && message.status == 0">
                                 <a href="" class="chat-messages__message__accept" @click.prevent="acceptMessage(message.id)">
                                     <img src="/svg/icons/chat/chat_message_ok.svg" alt="">
                                     Одобрить
