@@ -101,9 +101,15 @@
                         <a href="/profile/favorites" class="navbar-item rounded"><img
                                 src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                 alt="Fav"></a>
+                        @php
+                            $url = '/profile';
+                            if(auth()->user()->hasRole('Акаунт-менеджер')){
+                                $url = '/account';
+                            }
+                        @endphp
                         <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
-                                <a href="/profile" class="navbar-item basic user">
+                                <a href="{{$url}}" class="navbar-item basic user">
                                     <img src="{{ (Auth::user()->avatar) ?: asset('/svg/icons/ic_login.svg') }}"
                                          aria-haspopup="true"
                                          aria-controls="dropdown-user-menu"><span
@@ -111,12 +117,7 @@
                             </div>
                             <div class="dropdown-menu" id="dropdown-user-menu" role="menu">
                                 <div class="dropdown-content is-paddingless">
-                                    @php
-                                        $url = '/profile';
-                                        if(auth()->user()->hasRole('Акаунт-менеджер')){
-                                            $url = '/account';
-                                        }
-                                    @endphp
+
                                     <a class="dropdown-item" href="{{$url}}">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="/profile/chat">Сообщения</a>
