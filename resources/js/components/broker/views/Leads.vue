@@ -92,9 +92,9 @@
         </div>
 
         <div class="mb-2">
-            <line-chart :chartdata="datacollection" :height="260"
+            <line-chart ref="lineChart" v-model="datacollection" :dataset="datacollection" :height="260"
                         v-if="typeChart=='line'"/>
-            <bar-chart :chartdata="datacollection" :height="260"
+            <bar-chart ref="barChart" v-model="datacollection" :dataset="datacollection" :height="260"
                        v-if="typeChart=='bar'"/>
         </div>
 
@@ -158,6 +158,12 @@
         },
         data() {
             return {
+                showModalRef: false,
+                partners: null,
+                partnersIds: [],
+                chart: {
+                    data: null
+                },
                 form: {
                     rangeDates: {
                         placeholder: '25.02.2018 - 03.03.2018',
@@ -217,9 +223,104 @@
                             // cubicInterpolationMode: 'monotone'
                         }
                     ]
+                },options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                color: "#CFDAE6",
+                                drawTicks: false,
+                                // zeroLineColor: "#0070D9",
+                            },
+                            ticks: {
+                                fontColor: "#B4C4DB",
+                                fontSize: 14,
+                                fontFamily: "'Roboto', sans-serif",
+                                padding: 10,
+                            },
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                color: "#CFDAE6",
+                                drawTicks: false,
+                                zeroLineColor: "#0070D9",
+                            },
+                            ticks: {
+                                fontColor: "#B4C4DB",
+                                fontSize: 14,
+                                fontFamily: "'Roboto', sans-serif",
+                                beginAtZero: true,
+                                padding: 10,
+                            },
+
+                        }]
+                    },
+                    tooltips: {
+                        backgroundColor: '#1C2940',
+                        titleFontFamily: "'Roboto', sans-serif",
+                        bodyFontFamily: "'Roboto', sans-serif",
+                        footerFontFamily: "'Roboto', sans-serif",
+                        cornerRadius: 3,
+                    },
+                    legend: {
+                        display: true,
+                        textAlign: 'left',
+                        labels: {
+                            // boxWidth: 8,
+                            usePointStyle: true,
+                            fontColor: '#B4C4DB',
+                            fontSize: 14,
+                            fontFamily: "'Roboto', sans-serif",
+                        }
+                    },
                 },
                 typeChart: 'line',
             }
+        },
+        methods: {
+            switchBar(){
+                this.typeChart='bar'
+                this.$refs['barChart'].renderChart(this.datacollection,this.options)
+            },
+            switchLine(){
+                this.typeChart='line'
+                this.$refs['lineChart'].renderChart(this.datacollection,this.options)
+            },
+            fetchPartners() {
+                let vm = this;
+                axios.post('/account-get-partners', {
+                    approved: true
+                }).then(responce => {
+                    vm.partners = responce.data;
+                    responce.data.forEach(partner => {
+                        vm.partnersIds.push(partner.id);
+                        this.$nextTick(() => {
+                            vm.fetchChartData();
+                        });
+                    });
+
+                })
+            },
+            fetchChartData() {
+                let vm = this;
+                axios.post('/account-chart-data', {
+                    partners: this.partnersIds
+                }).then(responce => {
+                    vm.chart.data = responce.data;
+                    vm.datacollection.labels = [];
+                    vm.datacollection.datasets[0].data = [];
+                    vm.chart.data.forEach(el => {
+                        vm.datacollection.labels.push(el.date);
+                        vm.datacollection.datasets[0].data.push(el.views + 0);
+                    });
+                    this.switchLine();
+                })
+            },
+
+        },
+        created() {
+            this.fetchPartners();
         },
     }
 </script>
