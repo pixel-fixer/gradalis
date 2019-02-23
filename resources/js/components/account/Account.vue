@@ -4,7 +4,13 @@
 
 <script>
     export default {
-        data: () => ({})
+        data: () => ({
+            user: null
+        }),
+        mounted(){
+
+            this.user = this.$store.state.user
+        }
     }
 </script>
 

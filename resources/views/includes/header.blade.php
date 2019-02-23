@@ -297,7 +297,7 @@
                     <a href="/broker/leads" class="navbar-item">
                         <img src="{{ asset('/svg/icons/ic_leads.svg') }}" class="icon"><span>Лиды</span>
                     </a>
-                    <a class="navbar-item">
+                    <a href="/broker/chat" class="navbar-item">
                         <img src="{{ asset('/svg/icons/ic_messages.svg') }}" class="icon"><span>Сообщения</span>
                     </a>
                     <a href="/broker/settings" class="navbar-item">

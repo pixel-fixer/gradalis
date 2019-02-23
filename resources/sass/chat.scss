@@ -5,7 +5,9 @@
   box-shadow: 0px 6px 10px rgba(23,44,76, 0.1);
   background: #fff;
   display: flex;
-
+    &__full{
+        max-width: 100% !important;
+    }
   input{
     font-family: "Roboto", sans-serif;
     font-style: normal;

@@ -17,7 +17,7 @@
                 </simple-svg><span>Написать брокеру</span>
             </a>
         </div>
-        <div class="chat">
+        <div :class="size" class="chat">
             <chat-dialogs :dialogs="dialog_list"
                           @search="onDialogsSearch"
                           :selected="dialog_id"
@@ -75,7 +75,10 @@
     export default {
         name: "chat",
         components: { ChatDialogs, ChatDialog, 'simple-svg': SimpleSVG, Modal },
-        props: ['user'],
+        props: {
+            user,
+            size:{default:''}
+        },
         data: () => ({
             dialog_id: null,
             dialog: null,
