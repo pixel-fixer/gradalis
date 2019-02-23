@@ -66,9 +66,9 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
-            'first_name'        => 'Seller',
-            'last_name'         => 'Seller',
-            'email'             => 'seller@user.com',
+            'first_name'        => 'Buyer',
+            'last_name'         => 'Buyer',
+            'email'             => 'buyer@user.com',
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,
@@ -78,9 +78,9 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
-            'first_name'        => 'Buyer',
-            'last_name'         => 'Buyer',
-            'email'             => 'buyer@user.com',
+            'first_name'        => 'Seller',
+            'last_name'         => 'Seller',
+            'email'             => 'seller@user.com',
             'password'          => Hash::make('secret'),
             'email_verified_at' => \Carbon\Carbon::now(),
             'subscribes'        => $subscribes,
