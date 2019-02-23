@@ -1212,7 +1212,7 @@
                 price:0,
                 package:'',
                 business: {
-                    category: null,
+                    category_id: null,
                     country_id: null,
                     city_id: null,
                     name: null,
