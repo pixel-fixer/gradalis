@@ -25,6 +25,7 @@ class Franchise extends Model
     public    $timestamps   = true;
     public    $translatable = ['url','name', 'description', 'seo_title', 'seo_description', 'seo_keywords', 'education'];
     protected $table        = 'franchises';
+    protected $appends = ['type'];
     protected $fillable     = array(
         'name',
         'description',
@@ -57,6 +58,11 @@ class Franchise extends Model
     protected $casts = [
         'price' => 'array',
     ];
+
+    public function getTypeAttribute()
+    {
+        return "franchise";
+    }
 
     public static function getStatuses()
     {
@@ -99,7 +105,7 @@ class Franchise extends Model
      *
      * @return mixed
      */
-    /*public function scopeGetAllFranchises(){
+    /*public function scopeGetAllFranchises(){ 
         $lang = app()->getLocale();
         $language = Language::where('lang',$lang)->first();
         return $this->leftJoin('franchise_translations', 'franchises.id', '=', 'franchise_translations.franchise_id')->where('franchise_translations.lang_id', $language->id)
@@ -116,5 +122,14 @@ class Franchise extends Model
     public function view_request()
     {
         return $this->morphMany('App\Models\ViewRequest', 'object');
+    }
+
+    public function getNameAttribute($value): string
+    {
+        $data = json_decode($value, true);
+        if(!$data){
+            return $value;
+        }
+        return json_decode($value, true)[app()->getLocale()];
     }
 }

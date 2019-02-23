@@ -200,8 +200,8 @@ Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
     Route::post('password', 'ProfileController@updatePassword');
 
     Route::get('favorite', 'ProfileController@getFavorites');
-    Route::post('favorites/business/{object}', 'ProfileController@addBusinessToFavorites');
-    Route::post('favorites/franchise/{object}', 'ProfileController@addFranchiseToFavorites');
+    Route::post('favorites/business/{object}', 'ProfileController@toggleFavoriteBusiness');
+    Route::post('favorites/franchise/{object}', 'ProfileController@toggleFavoriteFranchise');
 
     Route::get('purchased_services', 'ProfileController@getPurchasedServices');
     Route::get('/api/purchased_service/{service}', 'ProfileController@getPurchasedService')->middleware('BelongsToAuthUser:service');

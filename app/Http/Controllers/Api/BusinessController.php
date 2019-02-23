@@ -16,7 +16,7 @@ class BusinessController extends Controller
     {
         $query = $request->all();
 
-        $businesses = Business::whereIn('status', [Business::STATUS_SOLD_OUT, Business::STATUS_APPROUVED])->with('city')->with('city.country')->with('category');
+        $businesses = Business::whereIn('status', [Business::STATUS_SOLD_OUT, Business::STATUS_APPROUVED])->with(['city','city.country', 'category', 'favorites']);
         if (!empty($query['country'])) {
             $businesses->whereHas('city.country', function ($q) use ($query) {
                 $q->where('id', (int)$query['country']);

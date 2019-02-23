@@ -113,16 +113,18 @@ class ProfileController extends Controller
         return Auth::user()->favorites()->with('favoriteable.category')->get();
     }
 
-    public function addBusinessToFavorites(Business $object)
+    public function toggleFavoriteBusiness(Business $object)
     {
-        if(!$object->isFavorited())
-            $object->addFavorite();
+        $object->toggleFavorite();
+
+        return ['message' => $object->isFavorited() ? 'Бизнес добавлен в избранное': 'Бизнес удален из избранного'];
     }
 
-    public function addFranchiseToFavorites(Franchise $object)
+    public function toggleFavoriteFranchise(Franchise $object)
     {
-        if(!$object->isFavorited())
-            $object->addFavorite();
+        $object->toggleFavorite();
+
+        return ['message' => $object->isFavorited() ? 'Франшиза добавлена в избранное' : 'Франшиза удалена из избранного'];
     }
 
     public function getPurchasedServices()

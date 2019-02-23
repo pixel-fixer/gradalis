@@ -1,40 +1,44 @@
 <template>
     <section class="section pt-1 px-0">
-                    <h1 class="section-title mb-1-75">Купленные продукты</h1>
-                    <table class="table is-fullwidth is-size-875">
-                        <thead>
-                        <tr>
-                            <th style="padding-right: 0;">№</th>
-                            <th>Назавание продукта</th>
-                            <th>Статус</th>
-                            <th>Результат</th>
-                        </tr>
-                        </thead>
-                        <tbody class="box is-paddingless">
-                            <tr v-for="orderedService in services"> 
-                                <td class="has-text-basic">1</td>
-                                <td>
-                                    <div class="is-flex card-service_table">
-                                        <figure class="card-service_table__icon" v-if="orderedService.service.icon">
-                                            <img :src="orderedService.service.icon" alt="">
-                                        </figure>
-                                        <div class="card-service_table__info">
-                                            <h4>{{ $t(orderedService.service.name) }}</h4>
-                                            <time>{{ getDateTime(orderedService.created_at)}}</time>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td :class="getStatusClass(orderedService.status)">{{getStatusLabel(orderedService.status)}}</td>
-                                <td>
-                                    <router-link :to="'/profile/purchased-services/' + orderedService.id" :breadcrumb="orderedService.name" class="link-with-icon">
-                                        <img src="/svg/icons/ic_details.svg" alt="Details">
-                                        <span class="has-text-decoration-underline">Посмотреть результат</span>
-                                    </router-link>
-                                </td>
-                            </tr>
-                     </tbody>
-                    </table>
-                </section>
+        <h1 class="section-title mb-1-75">Купленные продукты</h1>
+        <table class="table is-fullwidth is-size-875">
+            <thead>
+            <tr>
+                <th style="padding-right: 0;">№</th>
+                <th>Назавание продукта</th>
+                <th>Статус</th>
+                <th>Результат</th>
+            </tr>
+            </thead>
+            <tbody class="box is-paddingless">
+                <tr v-for="orderedService in services"> 
+                    <td class="has-text-basic">1</td>
+                    <td>
+                        <div class="is-flex card-service_table">
+                            <figure class="card-service_table__icon" v-if="orderedService.service.icon">
+                                <img :src="orderedService.service.icon" alt="">
+                            </figure>
+                            <div class="card-service_table__info">
+                                <h4>{{ $t(orderedService.service.name) }}</h4>
+                                <time>{{ getDateTime(orderedService.created_at)}}</time>
+                            </div>
+                        </div>
+                    </td>
+                    <td :class="getStatusClass(orderedService.status)">{{getStatusLabel(orderedService.status)}}</td>
+                    <td>
+                        <a href="/services-new/single" class="link-with-icon">
+                            <img src="/svg/icons/ic_details.svg" alt="Details">
+                            <span class="has-text-decoration-underline">Посмотреть результат</span>
+                        </a>
+                        <!-- <router-link :to="'/profile/purchased-services/' + orderedService.id" :breadcrumb="orderedService.name" class="link-with-icon">
+                            <img src="/svg/icons/ic_details.svg" alt="Details">
+                            <span class="has-text-decoration-underline">Посмотреть результат</span>
+                        </router-link> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </template>
 
 <script>

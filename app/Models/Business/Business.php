@@ -35,6 +35,7 @@ class Business extends Model implements HasMedia
     protected $table        = 'businesses';
     public    $timestamps   = true;
     public    $translatable = ['url', 'name', 'description', 'seo_title', 'seo_description', 'seo_keywords'];
+    protected $appends = ['type'];
     protected $fillable     = array(
         'part',
         'url',
@@ -62,6 +63,11 @@ class Business extends Model implements HasMedia
         'category_id',
         'options'
     );
+
+    public function getTypeAttribute()
+    {
+        return "business";
+    }
 
     public function registerMediaConversions(Media $media = null)
     {

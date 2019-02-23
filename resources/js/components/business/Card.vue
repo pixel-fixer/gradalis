@@ -17,7 +17,9 @@
                             <img src="/svg/icons/ic_sale.svg" alt="Sale">
                         </span>
                 <a v-if="(business.status == 2)" href="#" class="info-icon object-favorite"
+                   @click.prevent="toggleFavorite(businessId, 'business')"
                    v-tooltip="'Добавить в избранное'">
+                    :class="{active: isFavorite}"
                     <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
                 </a>
 
@@ -86,12 +88,21 @@
         },
         methods: {
             formatPrice(value) {
-                return value.toLocaleString('pl-PL', {style: 'currency', currency: 'PLN'})
+                return value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' })
+            },
+            /**
+             * @param {integer} id
+             * @param {string} type - business или franchise
+             */
+            toggleFavorite(id, type){
+                axios.post('/profile/favorites/' + type + '/' + id)
+                    .then( res => {
+                        this.$swal({ type: 'success', text: res.data.message });
+                        this.$emit('fetch-data');
+                    }).catch( e => {
+                        this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+                    })
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>
