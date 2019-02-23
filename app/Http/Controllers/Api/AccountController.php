@@ -43,11 +43,19 @@ class AccountController extends Controller
         } else {
             $invitations->where('created_at', '>=', Carbon::now()->subMonth());
         }
-        $dates = $invitations->get()
-            ->groupBy(function ($invitation) {
+        $dates = $invitations->get();
+        if ($req['dateType'] == 'week') {
+            $labels = $dates->groupBy(function ($invitation) {
+                return $invitation->created_at->startOfWeek()->format('d.m.Y') . '-' . $invitation->created_at->endOfWeek()->format('d.m.Y');
+            });
+
+        } else {
+            $labels = $dates->groupBy(function ($invitation) {
                 return $invitation->created_at->format('d-m-Y');
             });
-        $data['result'] = $dates->transform(function ($invitation, $key) {
+        }
+
+        $data['result'] = $labels->transform(function ($invitation, $key) {
             $views = 0;
             $clicks = 0;
             $registered = 0;

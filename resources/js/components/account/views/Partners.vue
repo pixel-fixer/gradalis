@@ -100,17 +100,23 @@
             <div class="column is-narrow">
                 <div class="is-flex has-align-items-end h-full">
                     <div class="buttons mb-0 mr-1">
-                        <button class="button h-3 is-outlined is-info is-size-875 px-1 mb-0">
+                        <button @click="fetchChartData" class="button h-3 is-outlined is-info is-size-875 px-1 mb-0">
                             <span class="icon icon-1 is-small"><img src="/svg/icons/ic_reload.svg" alt=""
                                                                     class="svg"></span>
                         </button>
                     </div>
 
                     <div class="buttons has-addons mb-0 mr-1">
-                        <button class="button h-3 is-outlined is-info is-size-875 mb-0 is-active">
+                        <button class="button h-3 is-outlined is-info is-size-875 mb-0"
+                                v-bind:class="{ 'is-active': dateType=='day'}"
+                                @click="switchDateType('day')"
+                        >
                             <span>{{trans('account.day')}}</span>
                         </button>
-                        <button class="button h-3 is-outlined is-size-875 mb-0 is-info">
+                        <button class="button h-3 is-outlined is-size-875 mb-0 is-info"
+                                v-bind:class="{ 'is-active': dateType=='week'}"
+                                @click="switchDateType('week')"
+                        >
                             <span>{{trans('account.week')}}</span>
                         </button>
                     </div>
@@ -118,18 +124,18 @@
                     <div class="buttons has-addons mb-0">
                         <button class="button h-3 is-outlined is-info is-size-875 is-medium mb-0"
                                 v-bind:class="{ 'is-active': typeChart=='line'}"
-                                @click="switchLine">
+                                @click="switchChart('line')">
                             <span class="icon is-medium">
                                 <img src="/svg/icons/ic_line-chart.svg" alt=""
                                      class="svg"></span>
                         </button>
-                        <!--TODO Bar chart-->
-                        <!--<button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"-->
-                        <!--v-bind:class="{ 'is-active': typeChart=='bar'}"-->
-                        <!--@click="switchBar">-->
-                        <!--<span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""-->
-                        <!--class="svg"></span>-->
-                        <!--</button>-->
+                        <button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"
+                                v-bind:class="{ 'is-active': typeChart=='bar'}"
+                                @click="switchChart('bar')">
+                        <span class="icon is-medium">
+                            <img src="/svg/icons/ic_analytics-2.svg" alt=""
+                                 class="svg"></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -140,9 +146,9 @@
 
         <div class="mb-2">
             <line-chart ref="lineChart" v-model="datacollection" :dataset="datacollection" :height="260"
-                        v-if="typeChart=='line'"/>
+                        v-show="typeChart=='line'"/>
             <bar-chart ref="barChart" v-model="datacollection" :dataset="datacollection" :height="260"
-                       v-if="typeChart=='bar'"/>
+                       v-show="typeChart=='bar'"/>
         </div>
 
         <section class="section is-paddingless content">
@@ -227,8 +233,8 @@
                     data: null
                 },
                 typeData: 1,
-                comparison: null,
-                sorting: null,
+                comparison: 1,
+                sorting: 1,
                 rangeDates: {
                     placeholder: '25.02.2018 - 03.03.2018',
                     value: '',
@@ -308,19 +314,33 @@
                     },
                 },
                 typeChart: 'line',
+                dateType: 'day',
+                from: null,
+                to: null
             }
         },
         methods: {
             dateChanged(val) {
-                this.fetchChartData(val[0], val[1])
+                this.from = val[0];
+                this.to = val[1];
+                this.fetchChartData()
             },
-            switchBar() {
-                this.typeChart = 'bar'
-                this.$refs['barChart'].renderChart(this.datacollection, this.options)
+            switchDateType(type = 'day') {
+                this.dateType = type;
+                this.fetchChartData()
             },
-            switchLine() {
-                this.typeChart = 'line'
-                this.$refs['lineChart'].renderChart(this.datacollection, this.options)
+            switchChart(type = 'line') {
+                if (type == 'bar') {
+                    this.typeChart = 'bar';
+                    this.$nextTick(() => {
+                        this.$refs['barChart'].renderChart(this.datacollection, this.options)
+                    })
+                } else if (type == 'line') {
+                    this.typeChart = 'line';
+                    this.$nextTick(() => {
+                        this.$refs['lineChart'].renderChart(this.datacollection, this.options)
+                    })
+                }
             },
             switchData(type) {
                 this.datacollection.labels = [];
@@ -329,19 +349,55 @@
                     Object.keys(this.chart.data).forEach(el => {
                         this.datacollection.labels.push(this.chart.data[el].date);
                         this.datacollection.datasets[0].data.push(this.chart.data[el].views + 0);
+                        this.datacollection.datasets[0].label = trans('account.views');
                     });
                 } else if (type == 'clicks') {
                     Object.keys(this.chart.data).forEach(el => {
                         this.datacollection.labels.push(this.chart.data[el].date);
                         this.datacollection.datasets[0].data.push(this.chart.data[el].clicks + 0);
+                        this.datacollection.datasets[0].label = trans('account.clicks');
                     });
                 } else if (type = 'registered') {
                     Object.keys(this.chart.data).forEach(el => {
                         this.datacollection.labels.push(this.chart.data[el].date);
                         this.datacollection.datasets[0].data.push(this.chart.data[el].registered + 0);
+                        this.datacollection.datasets[0].label = trans('account.registrations');
                     });
                 }
-                this.switchLine();
+                this.switchChart(this.typeChart);
+            },
+            switchComapre(type) {
+                if (this.datacollection.datasets.length == 1) {
+                    this.datacollection.datasets.push({
+                        label: 'Все показы',
+                        backgroundColor: '#9C27B0',
+                        borderColor: '#9C27B0',
+                        borderWidth: 2,
+                        data: [40, 39, 10, 40, 39, 80, 40],
+                        fill: false,
+                        lineTension: 0,
+                        pointBorderWidth: 4,
+                        // cubicInterpolationMode: 'monotone'
+                    });
+                }
+                this.datacollection.datasets[1].data = [];
+                if (type == 'views') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.datasets[1].data.push(this.chart.data[el].views + 0);
+                        this.datacollection.datasets[1].label = trans('account.views');
+                    });
+                } else if (type == 'clicks') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.datasets[1].data.push(this.chart.data[el].clicks + 0);
+                        this.datacollection.datasets[1].label = trans('account.clicks');
+                    });
+                } else if (type = 'registered') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.datasets[1].data.push(this.chart.data[el].registered + 0);
+                        this.datacollection.datasets[1].label = trans('account.registrations');
+                    });
+                }
+                this.switchChart(this.typeChart);
             },
             fetchPartners() {
                 let vm = this;
@@ -352,19 +408,20 @@
                     responce.data.forEach(partner => {
                         vm.partnersIds.push(partner.id);
                     });
-                        vm.fetchChartData();
+                    vm.fetchChartData();
 
                 })
             },
-            fetchChartData(from, to) {
+            fetchChartData() {
                 let vm = this;
-                let data = {}
-                data.partners = vm.partnersIds
-                if (from) {
-                    data.from = from;
+                let data = {};
+                data.partners = vm.partnersIds;
+                data.dateType = vm.dateType;
+                if (vm.from) {
+                    data.from = vm.from;
                 }
-                if (to) {
-                    data.to = to;
+                if (vm.to) {
+                    data.to = vm.to;
                 }
                 axios.post('/account-chart-data', {
                     data: data
@@ -390,6 +447,23 @@
                         } else if (value == 3) {
                             this.switchData('registered');
                         }
+                    }
+                }
+            },
+            comparison: {
+                immediate: false,
+                handler(value) {
+                    if (value > 1) {
+                        if (value == 2) {
+                            this.switchComapre('views');
+                        } else if (value == 3) {
+                            this.switchComapre('clicks');
+                        } else if (value == 4) {
+                            this.switchComapre('registered');
+                        }
+                    } else {
+                        this.datacollection.datasets = this.datacollection.datasets.slice(0, 1);
+                        this.switchChart();
                     }
                 }
             }
