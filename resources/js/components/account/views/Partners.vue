@@ -172,7 +172,7 @@
                         </div>
                     </td>
                     <td class="has-text-basic">{{partner.created_at}}</td>
-                    <!--<td class="has-text-basic">{{partner.user.country.translation.ru}}</td>-->
+                    <td class="has-text-basic">{{partner.user.country.translation.ru}}</td>
                     <td class="has-text-basic">
                         <a href="#" class="has-text-decoration-underline">
                             {{partner.moderate_messages}} сообщений

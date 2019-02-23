@@ -30,8 +30,8 @@ $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
             'personal_selection' => false,
             'offer' =>  false 
         ],
-        'city_id' => $cities[$i],
-        'country_id' => $countries[$i],
+        'city_id' => 1,
+        'country_id' => 1,
         'sum_from' => 10000,
         'sum_to' => 1000000
     ];
