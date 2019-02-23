@@ -26,7 +26,9 @@
                                :country="business.city.country"
                                :weight="business.weight"
                                :discount="business.discount"
+                               :isFavorite="business.favorites.length > 0"
                                v-bind:key="business.id"
+                               v-on:fetch-data="fetchBusinesses()"
                 ></business-card>
             </div>
             <!-- Pagination -->

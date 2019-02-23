@@ -131,9 +131,15 @@
                         <span class="info-icon object-promo">
                             <img src="{{ asset('/svg/icons/ic_recommended.svg') }}" alt="Recommended">
                         </span>
-                        <a href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
-                            <img src="{{ asset('/svg/icons/ic_favorites_white.svg') }}" alt="Fav">
-                        </a>
+                        @if($business->favorites->isEmpty())
+                            <a href="#"  @click="toggleFavorite( {{$business->id}}, 'business')"  class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
+                                <img src="{{ asset('/svg/icons/ic_favorites_white.svg') }}" alt="Fav">
+                            </a>
+                        @else
+                            <a href="#"  @click="toggleFavorite( {{$business->id}}, 'business')"  class="info-icon object-favorite active" v-tooltip="'Удалить из избранного'">
+                                <img src="{{ asset('/svg/icons/ic_favorites_white.svg') }}" alt="Fav">
+                            </a>
+                        @endif
 
                         {{--<span class="tag is-warning tag-object-sold">Продано</span>--}}
 

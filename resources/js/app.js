@@ -146,6 +146,19 @@ const app = new Vue({
             }
             el.classList.toggle("is-active");
             el.classList.toggle("has-text-weight-bold");
+        },
+        /**
+         * @param {integer} id
+         * @param {string} type - business или franchise
+         */
+        toggleFavorite(id, type){
+            axios.post('/profile/favorites/' + type + '/' + id)
+                .then( res => {
+                    this.$swal({ type: 'success', text: res.data.message });
+                    this.$emit('fetch-data');
+                }).catch( e => {
+                    this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+                })
         }
     },
 });

@@ -2,11 +2,11 @@
      <section class="section pt-1 px-0">
 
 <!-- <button @click="addTofavorites(2, 'business')">Добавить бизнес с id=2 в избранное</button> -->
-<!-- <button @click="addTofavorites(3, 'franchise')">Добавить франшизу с id=3 в избранное</button> -->
+<button @click="toggleFavorite(3, 'franchise')">Добавить франшизу с id=3 в избранное</button>
 
                     <h1 class="section-title mb-1-75">Избранное</h1>
-
-                    <div class="columns is-multiline">
+                    <div v-if="firstLoad">...</div>
+                    <div class="columns is-multiline" v-else-if='favoritesMapped.length > 0'>
                         <div class="column is-6" v-for="favorite in favoritesMapped">
                             <div class="card card-object">
                                 <div class="card-image">
@@ -20,16 +20,13 @@
                                         <span class="term">{{favorite.profitability}} месяцев</span>
                                     </span>
 
-                                    <!-- <a href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
+                                    <a href="#" @click.prevent="toggleFavorite(favorite.id)" class="info-icon object-favorite active" v-tooltip="'Удалить из избранного'">
                                         <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
-                                    </a> -->
-                                    <!-- <a href="#" class="info-icon object-favorite" v-tooltip="'Удалить'">
-                                       Удалить
-                                    </a> -->
+                                    </a>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-object__header">
-                                        <h3 class="title">{{ $t(favorite.name) }}</h3>
+                                        <h3 class="title">{{ favorite.name }}</h3>
                                         <p class="location"><img src="/svg/icons/ic_location.svg"
                                                                  alt="Fav"><span>Россия, г. Санкт-Петербург</span>
                                         </p>
@@ -60,8 +57,14 @@
                                             <div class="price">{{ $t(favorite.price) }}</div>
                                         </div>
                                         <!-- ToDo: Для seller -->
-                                        <a class="button is-link is-outlined is-fullwidth has-text-weight-bold">Подробнее
-                                            о бизнесе</a>
+                                        <a :href="(favorite.type =='business' ? '/business/' + favorite.id : '/franchise/' + favorite.id)" class="button is-link is-outlined is-fullwidth has-text-weight-bold">
+                                            <template v-if="favorite.type =='business'">
+                                                Подробнее о бизнесе
+                                            </template>
+                                            <template v-else>
+                                                Подробнее о франшизе
+                                            </template>
+                                        </a>
                                         <!-- ToDo: Для buyer -->
                                         <!--<div class="columns is-multiline">-->
                                             <!--<div class="column is-6">-->
@@ -93,14 +96,15 @@
                         </div>
                         
                     </div>
-
+                    <div v-else>Список избранного пуст</div>
                 </section>
 </template>
 
 <script>
 export default {
     data: () =>({
-        favorites: []
+        favorites: [],
+        firstLoad: true
     }),
     mounted(){
         this.getData()
@@ -115,11 +119,19 @@ export default {
     methods:{
         getData(){
             axios.get('/profile/favorite')
-                .then( res => this.favorites = res.data)
+                .then( res =>{
+                    this.favorites = res.data
+                    this.firstLoad = false;
+                })
                 .catch(e => alert(e.response.data.message))
         },
-        addTofavorites($id, $type){
-            axios.post('/profile/favorites/' + $type + '/' + $id)
+        toggleFavorite(id, type){
+            axios.post('/profile/favorites/' + type + '/' + id).then( res => {
+                this.$swal({ type: 'success', text: res.data.message });
+                this.getData()
+            }).catch( e => {
+                this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+            })
         }
     }
 }

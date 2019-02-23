@@ -16,7 +16,11 @@
                 <span v-if="(discount && status != 3)" class="info-icon object-sale">
                             <img src="/svg/icons/ic_sale.svg" alt="Sale">
                         </span>
-                <a v-if="(status == 2)" href="#" class="info-icon object-favorite" v-tooltip="'Добавить в избранное'">
+                <a v-if="(status == 2)"
+                    @click.prevent="toggleFavorite(businessId, 'business')"
+                    class="info-icon object-favorite"
+                    :class="{active: isFavorite}"
+                    v-tooltip="(isFavorite ? 'Удалить из избранного' : 'Добавить в избранное')">
                     <img src="/svg/icons/ic_favorites_white.svg" alt="Fav">
                 </a>
 
@@ -84,7 +88,8 @@
             'city',
             'country',
             'weight',
-            'discount'
+            'discount',
+            'isFavorite'
         ],
         components: {},
         data() {
@@ -95,11 +100,20 @@
         methods: {
             formatPrice(value) {
                 return value.toLocaleString('pl-PL', { style: 'currency', currency: 'PLN' })
+            },
+            /**
+             * @param {integer} id
+             * @param {string} type - business или franchise
+             */
+            toggleFavorite(id, type){
+                axios.post('/profile/favorites/' + type + '/' + id)
+                    .then( res => {
+                        this.$swal({ type: 'success', text: res.data.message });
+                        this.$emit('fetch-data');
+                    }).catch( e => {
+                        this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
+                    })
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>
