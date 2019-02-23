@@ -3,10 +3,11 @@ import {Line} from 'vue-chartjs'
 export default {
     extends: Line,
     props: {
-        chartdata: {
-            type: Object,
-            default: null
-        },
+        value: null,
+        // dataset: {
+        //     type: Object,
+        //     default: null
+        // },
         options: {
             type: Object,
             default: function () {
@@ -65,10 +66,19 @@ export default {
             }
         }
     },
-    mounted() {
-        this.renderChart(this.chartdata, this.options)
+    computed: {
+        chartData: function () {
+            return this.value;
+        }
     },
-    methods: {
-
-    }
+    watch: {
+        value: function () {
+            this._chart.destroy();
+            console.log(this._chart);
+            this.renderChart(this.chartData, this.options);
+        }
+    },
+    mounted() {
+        //this.renderChart(this.chartData, this.options)
+    },
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-56.000000, -2881.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#1" transform="translate(24.000000, 88.000000)">
+                        <g id="ic_2" transform="translate(0.000000, 37.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M1.97690526,13.9606842 C0.970010526,12.9537895 0.970010526,11.3205789 1.97690526,10.3136842 L10.3135368,1.97705263 C11.3204316,0.969789474 12.9536421,0.969789474 13.9605368,1.97705263 C14.9678,2.98431579 14.9678,4.61715789 13.9605368,5.62405263 L5.62390526,13.9606842 C4.61701053,14.9675789 2.98416842,14.9675789 1.97690526,13.9606842 Z" id="Stroke-1" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M11.4993737,7.85222632 L14.0245316,10.3773842 C14.9964263,11.3492789 14.9964263,12.9250158 14.0245316,13.8965421 L13.8966895,14.0247526 C12.9247947,14.9966474 11.3494263,14.9966474 10.3771632,14.0247526 L7.85237368,11.4992263" id="Stroke-3" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M4.16908421,7.81623158 L1.91324211,5.56038947 C0.940978947,4.58849474 0.940978947,3.01275789 1.91324211,2.04086316 L2.04108421,1.91338947 C3.01261053,0.941126316 4.58871579,0.941126316 5.56024211,1.91338947 L7.81571579,4.16886316" id="Stroke-5" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M7.96879474,5.38984737 L7.96879474,6.12668947" id="Stroke-7" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M7.96879474,6.86353158 L7.96879474,7.60037368" id="Stroke-9" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M7.96879474,8.33721579 L7.96879474,9.07405789" id="Stroke-11" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M9.44247895,6.86353158 L9.44247895,7.60037368" id="Stroke-13" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M9.44247895,8.33721579 L9.44247895,9.07405789" id="Stroke-15" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M6.49511053,6.86353158 L6.49511053,7.60037368" id="Stroke-17" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M6.49511053,8.33721579 L6.49511053,9.07405789" id="Stroke-19" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                            <path d="M7.96879474,9.8109 L7.96879474,10.5477421" id="Stroke-21" stroke="#8B97A9" stroke-width="1.10526316"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -33,21 +33,17 @@
             </div>
             <!-- Pagination -->
             <pagination :data="businesses" :show-disabled="true" @pagination-change-page="fetchBusinesses">
-                <span slot="prev-nav">
-                     <a class="pagination-previous  pagination-nav button is-link">
+                     <a :disabled="prevDisabled" slot="prev-nav" class="pagination-previous  pagination-nav button is-link">
                          <span class="pagination-nav__icon">
                              <img src="/svg/icons/ic_arrow_right.svg" class="svg"/>
                          </span>
                         <span class="pagination-nav__title">Предыдущая страница</span>
                      </a>
-                </span>
-                <span slot="next-nav">
-                     <a class="pagination-next pagination-nav button is-link">
+                     <a :disabled="nextDisabled" slot="next-nav" class="pagination-next pagination-nav button is-link">
                          <span class="pagination-nav__title">Следующая страница</span>
                          <span class="pagination-nav__icon">
                              <img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span>
                      </a>
-                </span>
             </pagination>
 
         </div>
@@ -69,7 +65,9 @@
             return {
                 businesses: {},
                 form: {},
-                loaderBusinesses: false
+                loaderBusinesses: false,
+                prevDisabled:false,
+                nextDisabled:false
             }
         },
         name: "BusinessList",
@@ -93,6 +91,16 @@
                         query: vm.form.query
                     }
                 }).then(responce => {
+                    if(page == 1){
+                        vm.prevDisabled = true;
+                    }else{
+                        vm.prevDisabled = false;
+                    }
+                    if(page == responce.data.last_page){
+                        vm.nextDisabled = true;
+                    }else{
+                        vm.nextDisabled = false;
+                    }
                     vm.loaderBusinesses = false;
                     vm.businesses = responce.data
                     vm.changeHisory(page);

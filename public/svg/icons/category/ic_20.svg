@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_20</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-530.000000, -2880.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#3" transform="translate(498.000000, 88.000000)">
+                        <g id="ic_20" transform="translate(1.000000, 37.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M7.99982222,1.55604878 C6.21066667,-0.274682927 3.30933333,-0.274682927 1.51982222,1.55604878 C-0.269688889,3.38714634 -0.269688889,6.35568293 1.51982222,8.18641463 L7.99982222,14.8171463 L14.4801778,8.18641463 C16.2696889,6.35568293 16.2696889,3.38714634 14.4801778,1.55604878 C12.6906667,-0.274682927 9.78933333,-0.274682927 7.99982222,1.55604878 Z" id="Stroke-1" stroke="#8B97A9" stroke-width="1.06666667" stroke-linecap="round"></path>
+                            <polyline id="Stroke-3" stroke="#8B97A9" stroke-width="1.06666667" stroke-linecap="round" points="0.888711111 7.40970732 5.51093333 7.40970732 6.93315556 4.84873171 8.71093333 9.60482927 10.4887111 7.04385366 15.1109333 7.04385366"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

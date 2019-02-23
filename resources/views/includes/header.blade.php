@@ -2,8 +2,8 @@
     <div class="container">
         <nav class="navbar header__line-top is-flex">
             <div class="navbar-brand">
-                <a class="navbar-item" href="{{ url('/') }}">
-                    <img src="{{ asset('/svg/logo.svg') }}" width="245" height="48"
+                <a class="navbar-item py-0" href="{{ url('/') }}">
+                    <img src="{{ asset('/svg/logo.svg') }}" width="320" height="64"
                          alt="{{ config('app.name', 'Laravel') }}">
                 </a>
             {{--<div class="navbar-item navbar-contacts is-hidden-mobile">--}}
@@ -45,6 +45,25 @@
                     </div>
                 @endif
             @endauth
+                @if(Auth::check() && (Auth::user()->hasRole('Продавец') || Auth::user()->hasRole('Покупатель')))
+                <div class="navbar-item is-hidden-touch">
+                    <div class="manager is-flex">
+                        <figure class="manager__avatar">
+                            <img src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                 alt="">
+                        </figure>
+                        <div class="manager__info">
+                            <div class="manager__name has-text-weight-bold">Ваш менеджер: Ирина</div>
+                            <div class="is-flex">
+                                <a href="#" class="manager__phone is-size-875"><img src="/svg/icons/ic_call.svg" alt=""
+                                                                                    class="svg"><span>+38 (450) 566-56-43</span></a>
+                                <a href="#" class="manager__chat is-size-875"><img src="/svg/icons/chat/ic_person.svg"
+                                                                                   alt="" class="svg"><span>Написать в чат</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
 
 
@@ -59,8 +78,8 @@
                                 src="{{ asset('/svg/icons/ic_login.svg') }}" alt="Login"><span
                                 class="is-hidden-tablet-only">{{ __('Login') }}</span></a>
                         <div class="buttons has-addons buttons-business is-hidden-mobile">
-                            <a class="button is-link" data-desc="Регистрация">Купить бизнес</a>
-                            <a class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
+                            <a href="/register/seller" class="button is-link" data-desc="Регистрация">Купить бизнес</a>
+                            <a href="/register/seller" class="button is-warning" data-desc="Регистрация">Продать бизнес</a>
                         </div>
                     </div>
                 @else
@@ -87,6 +106,13 @@
                                     <a class="dropdown-item" href="/profile">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="/profile/chat">Сообщения</a>
+                                    @php
+                                    $url = '/profile';
+                                    if(auth()->user()->hasRole('Акаунт-менеджер')){
+                                        $url = '/account';
+                                    }
+                                    @endphp
+                                    <a class="dropdown-item" href="{{$url}}">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -126,7 +152,7 @@
     <div class="container">
 
         <!-- ToDo: Other menu in Broker Personal Area -->
-
+        @if(Auth::check() && (Auth::user()->hasRole('Покупатель') || Auth::user()->hasRole('Продавец')) || Auth::user()->hasRole('Админ'))
         <!-- Desktop Menu-->
         <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
             <div class="navbar-start main-menu">
@@ -174,21 +200,7 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                    <a class="navbar-link">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>English</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Polski</span>
-                        </a>
-                    </div>
-                </div>
+                @include('includes.navbar-lang-desktop')
             </div>
         </nav>
 
@@ -248,31 +260,14 @@
             </div>
 
 
-            <div class="dropdown is-right navbar-item navbar-lang">
-
-                <div class="dropdown-trigger">
-                    <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
-                    <div class="dropdown-content">
-                        <a href="#" class="dropdown-item navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a href="#" class="dropdown-item navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @include('includes.navbar-lang-mobile')
 
         </div>
+        @endif
 
+        @if(Auth::check() && Auth::user()->hasRole('Медиа-баер'))
         <!-- Desktop Menu Broker-->
-        <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation"
-             style="display: none !important;">
+        <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
             <div class="navbar-start main-menu">
                 <a class="navbar-item is-active">
                     <img src="{{ asset('/svg/icons/ic_complete_stat.svg') }}"
@@ -299,24 +294,7 @@
             </div>
 
             <div class="navbar-end">
-                <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                    <a class="navbar-link">
-                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                             class="icon"><span>Русский</span>
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                        <a class="navbar-item">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                        </a>
-                    </div>
-                </div>
+                @include('includes.navbar-lang-desktop')
             </div>
         </nav>
 
@@ -381,6 +359,77 @@
             </div>
 
         </div>
+        @endif
+
+        @if(Auth::check() && Auth::user()->hasRole('Акаунт-менеджер'))
+        <!-- Desktop Menu Broker-->
+        <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
+            <div class="navbar-start main-menu">
+                <a class="navbar-item is-active">
+                    <img src="{{ asset('/svg/icons/ic_partners.svg') }}"
+                         class="icon"><span>Партнеры</span>
+                </a>
+                <a class="navbar-item">
+                    <img src="{{ asset('/svg/icons/ic_messages.svg') }}" class="icon"><span>Сообщения</span>
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                @include('includes.navbar-lang-desktop')
+            </div>
+        </nav>
+
+        <!-- Tablet and mobile Menu-->
+        <div class="header__line-bottom header__line-bottom_mobile is-flex is-hidden-desktop"
+             style="display: none !important;">
+
+            <div class="dropdown is-left navbar-item navbar-main-menu main-menu">
+
+                <div class="dropdown-trigger">
+                    <div class="navbar-link navbar-item" aria-haspopup="true" aria-controls="dropdown-menu-main-mobile">
+                        <img src="{{ asset('/svg/icons/ic_partners.svg') }}"
+                             class="icon"><span>Сводные показатели</span>
+                    </div>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu-main-mobile" role="menu">
+                    <div class="dropdown-content">
+                        <a class="navbar-item is-active">
+                            <img src="{{ asset('/svg/icons/ic_complete_stat.svg') }}"
+                                 class="icon"><span>Партнеры</span>
+                        </a>
+                        <a class="navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_messages.svg') }}" class="icon"><span>Сообщения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="dropdown is-right navbar-item navbar-lang">
+
+                <div class="dropdown-trigger">
+                    <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
+                        <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
+                             class="icon"><span>Русский</span>
+                    </div>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                        <a href="#" class="dropdown-item navbar-item">
+                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @endif
     </div>
 
     @guest

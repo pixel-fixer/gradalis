@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="13px" viewBox="0 0 18 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_19</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-529.000000, -2850.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#3" transform="translate(498.000000, 88.000000)">
+                        <g id="ic_19" transform="translate(0.000000, 5.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M13.4804293,3.81056071 C13.4804293,4.70195357 10.8138927,5.42481071 7.52491707,5.42481071 C4.23594146,5.42481071 1.56940488,4.70195357 1.56940488,3.81056071 C1.56940488,2.91916786 4.23594146,2.19631071 7.52491707,2.19631071 C10.8138927,2.19631071 13.4804293,2.91916786 13.4804293,3.81056071 Z" id="Stroke-1" stroke="#8B97A9" stroke-width="1.17073171" stroke-linecap="round"></path>
+                            <path d="M1.56940488,3.81056071 C1.56940488,3.81056071 1.2833561,10.4973821 7.52491707,10.4973821" id="Stroke-3" stroke="#8B97A9" stroke-width="1.17073171" stroke-linecap="round"></path>
+                            <path d="M7.52499512,10.4975786 C13.7665561,10.4975786 13.4805073,3.81075714 13.4805073,3.81075714 L14.8545561,3.81075714 C15.3607024,3.81075714 15.7708488,4.22365 15.7708488,4.73279286 L15.7708488,4.9634 C15.7708488,6.23704286 14.7452878,7.26947143 13.4805073,7.26947143 L13.022361,7.26947143" id="Stroke-5" stroke="#8B97A9" stroke-width="1.17073171" stroke-linecap="round"></path>
+                            <path d="M13.392,9.11527143 C14.3106341,9.50027143 14.8546341,9.97916429 14.8546341,10.4977357 C14.8546341,11.7709857 11.5730732,12.8034143 7.52507317,12.8034143 C3.47668293,12.8034143 0.195121951,11.7709857 0.195121951,10.4977357 C0.195121951,9.99605714 0.704390244,9.5317 1.56956098,9.15298571" id="Stroke-7" stroke="#8B97A9" stroke-width="1.17073171" stroke-linecap="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

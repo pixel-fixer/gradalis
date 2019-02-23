@@ -14,6 +14,16 @@ class ReferralUsersSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
+
+        //Заполнение акаунт-менеджеров
+        $i = 1;
+        factory(User::class, 2)->make()->each(function ($user) use (&$i) {
+            $user->email = 'manager'.$i.'@manager.com';
+            $user->assignRole('Акаунт-менеджер');
+            $user->save();
+            $i++;
+        });
+
         $invitations = InvitationCounter::where('status', '>=', 1)->get()->unique('user_id');
         foreach ($invitations as $invitation) {
             $user = User::find($invitation->user_id);

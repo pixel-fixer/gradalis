@@ -64,9 +64,11 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessSeeder::class);
         $this->call(FranchiseSeeder::class);
         $this->call(FranchisePackageSeeder::class);
+
+
+        $this->call(ReferralUsersSeeder::class);
         $this->call(PartnerSeeder::class);
         $this->call(CampaignSeeder::class);
-        $this->call(ReferralUsersSeeder::class);
         $this->call(ConditionSeeder::class);
         $this->call(ServiceCategorySeeder::class);
         $this->call(ServicesSeeder::class);

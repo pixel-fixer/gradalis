@@ -104,7 +104,7 @@
                     </div>
                     <div class="column is-12">
                         <div class="has-text-centered">
-                            <a href="#" class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1">Посмотреть
+                            <a href="/vacancy" class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1">Посмотреть
                                 все ваканасии компании</a>
                         </div>
                     </div>

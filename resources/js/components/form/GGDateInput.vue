@@ -28,33 +28,32 @@
 
 <script>
     import flatPickr from 'vue-flatpickr-component';
+
     export default {
         name: "GGDateInput",
-        components:{flatPickr},
+        components: {flatPickr},
         props: {
             iconLeft: {default: '/svg/icons/ic_calendar.svg'},
             iconRight: {default: null},
             size: {default: 'is-6'},
-            value: {default:null},
+            value: {default: null},
             label: '',
-            config:{
+            config: {
                 default: function () {
                     return {
                         altFormat: 'd.m.Y',
                         altInput: true,
-                        dateFormat: 'Y-m-d'
+                        dateFormat: 'Y-m-d',
                     }
                 }
             },
             placeholder: {default: 'Поиск'},
             required: {default: false},
         },
-        data(){
-          return{
-
-          }
+        data() {
+            return {}
         },
-        computed:{
+        computed: {
             inputValue: {
                 get: function () {
                     return this.value

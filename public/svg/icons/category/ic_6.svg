@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="18px" viewBox="0 0 15 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_6</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-57.000000, -3007.000000)" id="Group-8">
+            <g transform="translate(32.000000, 2756.000000)">
+                <g id="Category-Selector">
+                    <g id="Category#1" transform="translate(24.000000, 88.000000)">
+                        <g id="ic_6" transform="translate(0.000000, 164.000000)">
+                            <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                            <path d="M13.3576432,1.14346667 C13.3576432,1.14346667 11.7853459,0.515555556 8.49985946,0.177777778 C5.21472432,0.515555556 3.64242703,1.14346667 3.64242703,1.14346667 C3.83004865,3.15946667 2.17553514,3.95626667 2.17553514,3.95626667 C2.37123784,13.5488 8.49985946,15.8222222 8.49985946,15.8222222 C8.49985946,15.8222222 14.6288324,13.5488 14.8241838,3.95626667 C14.8241838,3.95626667 13.1700216,3.15946667 13.3576432,1.14346667 Z" id="Stroke-1" stroke="#8B97A9" stroke-width="1.06666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M11.662127,6.93340444 C11.662127,8.70051556 10.2465324,10.1334044 8.49996486,10.1334044 C6.7533973,10.1334044 5.3378027,8.70051556 5.3378027,6.93340444 C5.3378027,5.16593778 6.7533973,3.73340444 8.49996486,3.73340444 C10.2465324,3.73340444 11.662127,5.16593778 11.662127,6.93340444 Z" id="Stroke-3" stroke="#8B97A9" stroke-width="1.06666667" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <polyline id="Stroke-5" stroke="#8B97A9" stroke-width="1.06666667" stroke-linecap="round" stroke-linejoin="round" points="7.09455946 6.57784889 8.14861351 7.64451556 9.90537027 5.86673778"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

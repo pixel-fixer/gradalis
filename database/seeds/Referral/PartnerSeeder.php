@@ -14,13 +14,17 @@ class PartnerSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
+        $managers = User::role('Акаунт-менеджер')->get()->pluck('id');
         $users = User::all();
-        foreach ($users as $user){
+        factory(User::class, 20)->create()->each(function ($partner) use ($managers) {
             Partner::create([
-               'user_id' => $user->id,
-               'balance' => 0,
+               'user_id' => $partner->id,
+               'apa_id' => rand($managers[0],$managers[1]),
+               'hold' => rand(10000,50000),
+               'balance' => rand(1000,5000),
+               'status' => rand(0,2)
             ]);
-        }
+        });
         Schema::enableForeignKeyConstraints();
     }
 }

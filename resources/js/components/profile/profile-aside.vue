@@ -3,7 +3,7 @@
     <aside class="pt-1">
         <div class="buttons has-addons has-addons-fullwidth field" v-if="$userCan('object-sell')">
             <a href="/business/create" class="control button is-warning h-3 is-size-875 has-text-weight-bold">Продать бизнес</a>
-            <a href="/franchise/create" class="control button is-info h-3 is-size-875 has-text-weight-bold">Продать франшизу</a>
+            <a href="#" class="control button is-info h-3 is-size-875 has-text-weight-bold">Продать франшизу</a>
         </div>
         <nav class="aside-nav">
             <ul>
@@ -62,6 +62,7 @@
                 </li>
                 <li class="aside-nav__item">
                     <router-link to="/profile/balance" tag="a">
+                        <img src="/svg/icons/ic_cash.svg" class="svg" height="16" width="16">
                         <span class="aside-nav__item__title has-text-weight-bold">Баланс</span>
                     </router-link>
                 </li>

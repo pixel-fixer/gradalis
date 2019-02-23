@@ -636,9 +636,10 @@
                                     </div>
                                     <div class="buttons">
                                         <a href="#"
+                                           @click="showModal('modal-ask-documents')"
                                            class="button is-success is-fullwidth has-text-weight-bold is-size-875">Получить
                                             документы</a>
-                                        <a href="#"
+                                        <a href="/services-new"
                                            class="button is-success is-outlined is-fullwidth has-text-weight-bold is-size-875">Заказать
                                             продукт</a>
                                     </div>
@@ -684,6 +685,24 @@
             <footer class="modal-card-foot">
                 <button class="button is-success">Save changes</button>
                 <button class="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal-ask-documents">
+        <div class="modal-background" @click="hideModal('modal-ask-documents')"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Ваш запрос принят</p>
+                <button class="delete close-modal" @click="hideModal('modal-ask-documents')"
+                        aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <p>Спасибо мы отправили запрос</p>
+            </section>
+            <footer class="modal-card-foot">
+                <button @click="hideModal('modal-ask-documents')" class="button is-success">Закрыть</button>
             </footer>
         </div>
     </div>

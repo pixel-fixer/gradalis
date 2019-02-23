@@ -106,6 +106,8 @@ Vue.component('account', require('./components/account/Account').default);
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
 
+import inlineSVG from 'inline-svg';
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -160,10 +162,8 @@ const app = new Vue({
                     this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                 })
         }
-    },
+    }
 });
-
-import inlineSVG from 'inline-svg';
 
 inlineSVG.init({
     svgSelector: 'img.svg', // the class attached to all images that should be inlined
@@ -171,7 +171,6 @@ inlineSVG.init({
 }, function () {
     console.log('All SVGs inlined');
 });
-
 
 import Swiper from 'swiper';
 

@@ -27,7 +27,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password', 'phone', 'city_id', 'subscribes'
+        'first_name','last_name', 'email', 'password', 'phone', 'city_id', 'subscribes','country_id'
     ];
 
     /**
@@ -73,7 +73,12 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         return $this->BelongsTo('App\Models\City');
     }
-    
+
+    public function country()
+    {
+        return $this->BelongsTo('App\Models\Country');
+    }
+
     /**
      * Это может быть или менеджер, или брокер, в зависимости от роли пользователя
      */
