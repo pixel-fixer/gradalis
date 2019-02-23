@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Referral\Invitation;
 use App\Models\Referral\InvitationCounter;
 use App\Models\Referral\Partner;
 use Carbon\Carbon;
@@ -15,8 +14,8 @@ class AccountController extends Controller
 {
     public function getPartners(Request $request)
     {
-        $blocked  = $request->get('blocked');
-        $await    = $request->get('await');
+        $blocked = $request->get('blocked');
+        $await = $request->get('await');
         $approved = $request->get('approved');
         $partners = Partner::where('apa_id', auth()->user()->id);
         if ($blocked) {
@@ -34,12 +33,17 @@ class AccountController extends Controller
 
     public function getChartData(Request $request)
     {
-        $partners    = $request->get('partners');
+        $partners = $request->get('partners');
         $invitations = InvitationCounter::whereHas('invitation', function ($q) use ($partners) {
             $q->whereIn('partner_id', $partners);
         })
-        ->where('created_at','>=',Carbon::now()->subMonth())
-        ->groupBy('date')->get([
+            ->where('created_at', '>=', Carbon::now()->subMonth());
+        if ($request->has('day')) {
+            $invitations->groupBy('date');
+        } elseif ($request->has('week')) {
+            $invitations->groupBy('date');
+        }
+        $invitations->get([
             DB::raw('Date(created_at) as date'),
             DB::raw('COUNT(*) as "clicks"'),
             DB::raw('SUM(count) as "views"'),

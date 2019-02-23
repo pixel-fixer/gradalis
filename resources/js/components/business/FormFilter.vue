@@ -17,26 +17,20 @@
                                   :label="'Чистая прибыль в месяц'"></g-g-range-slider>
                 <g-g-range-slider v-model="form.payback" :adds="paybackAdds" :placeholder="'Количество месяцев'"
                                   :label="'Окупаемость в месяцах'" :max="36"></g-g-range-slider>
-                <g-g-input :label="'Название или ID'" v-model="form.query"></g-g-input>
-                <div class="column is-full">
-                    <div class="columns">
-                        <div class="column is-6 has-align-self-center">
+                <g-g-input :size="'is-3'" :label="'Название или ID'" v-model="form.query"></g-g-input>
 
+                <div class="column is-9 mt-1-5">
+                    <div class="columns has-justify-content-end form-controls">
+                        <div class="column is-narrow">
+                            <button @click="clearFilter" class="button is-fullwidth is-size-875" type="reset">
+                                <span>&times;</span>
+                                Сбросить поиск
+                            </button>
                         </div>
                         <div class="column is-6">
-                            <div class="columns has-justify-content-end form-controls">
-                                <div class="column is-narrow">
-                                    <button @click="clearFilter" class="button is-fullwidth is-size-875" type="reset">
-                                        <span>&times;</span>
-                                        Сбросить поиск
-                                    </button>
-                                </div>
-                                <div class="column is-6">
-                                    <button class="button is-link has-text-weight-bold is-fullwidth" type="submit">Найти
-                                        бизнес
-                                    </button>
-                                </div>
-                            </div>
+                            <button class="button is-link has-text-weight-bold is-fullwidth" type="submit">Найти
+                                бизнес
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -69,9 +63,9 @@
                     {id: 'type_1', name: 'Бизнес в продаже'},
                     {id: 'type_2', name: 'Бизнес в аренде'},
                 ],
-                country:1,
-                region:1,
-                city:1,
+                country: 1,
+                region: 1,
+                city: 1,
                 profitAdds: {
                     add1: {
                         text: 'до €500 тыс.',
@@ -144,7 +138,7 @@
                 form: {
                     type: null,
                     country: 1,
-                    category:null,
+                    category: null,
                     region: 1,
                     city: 1,
                     price: null,

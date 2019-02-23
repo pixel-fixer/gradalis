@@ -101,9 +101,15 @@
                         <a href="/profile/favorites" class="navbar-item rounded"><img
                                 src="{{ asset('/svg/icons/ic_favorites.svg') }}"
                                 alt="Fav"></a>
+                        @php
+                            $url = '/profile';
+                            if(auth()->user()->hasRole('Акаунт-менеджер')){
+                                $url = '/account';
+                            }
+                        @endphp
                         <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
-                                <a href="/profile" class="navbar-item basic user">
+                                <a href="{{$url}}" class="navbar-item basic user">
                                     <img src="{{ (Auth::user()->avatar) ?: asset('/svg/icons/ic_login.svg') }}"
                                          aria-haspopup="true"
                                          aria-controls="dropdown-user-menu"><span
@@ -111,12 +117,7 @@
                             </div>
                             <div class="dropdown-menu" id="dropdown-user-menu" role="menu">
                                 <div class="dropdown-content is-paddingless">
-                                    @php
-                                        $url = '/profile';
-                                        if(auth()->user()->hasRole('Акаунт-менеджер')){
-                                            $url = '/account';
-                                        }
-                                    @endphp
+
                                     <a class="dropdown-item" href="{{$url}}">Личный кабинет</a>
                                     <hr class="dropdown-divider is-marginless">
                                     <a class="dropdown-item" href="/profile/chat">Сообщения</a>
@@ -307,24 +308,7 @@
                 </div>
 
                 <div class="navbar-end">
-                    <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                        <a class="navbar-link">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                                 class="icon"><span>Русский</span>
-                        </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                            <a class="navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                            <a class="navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                        </div>
-                    </div>
+                    @include('includes.navbar-lang-desktop')
                 </div>
             </nav>
 
@@ -367,27 +351,8 @@
                 </div>
 
 
-                <div class="dropdown is-right navbar-item navbar-lang">
-
-                    <div class="dropdown-trigger">
-                        <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                                 class="icon"><span>Русский</span>
-                        </div>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                            <a href="#" class="dropdown-item navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                            <a href="#" class="dropdown-item navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="navbar-end">
+                    @include('includes.navbar-lang-mobile')
                 </div>
 
             </div>
@@ -443,21 +408,7 @@
                 </div>
 
                 <div class="navbar-end">
-                    <div class="navbar-item has-dropdown is-hoverable navbar-lang">
-                        <a class="navbar-link">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                                 class="icon"><span>Русский</span>
-                        </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>English</span>
-                            </a>
-                            <a class="navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Polski</span>
-                            </a>
-                        </div>
-                    </div>
+                    @include('includes.navbar-lang-desktop')
                 </div>
             </nav>
 
@@ -519,24 +470,8 @@
                 </div>
 
 
-                <div class="dropdown is-right navbar-item navbar-lang">
-
-                    <div class="dropdown-trigger">
-                        <div class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu-lang-mobile">
-                            <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang"
-                                 class="icon"><span>Русский</span>
-                        </div>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu-lang-mobile" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                            <a href="#" class="dropdown-item navbar-item">
-                                <img src="{{ asset('/svg/icons/ic_flag_russian.svg') }}" alt="Lang" class="icon"><span>Русский</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="navbar-end">
+                    @include('includes.navbar-lang-mobile')
                 </div>
 
             </div>
