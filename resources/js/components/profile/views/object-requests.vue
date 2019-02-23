@@ -73,6 +73,7 @@ export default {
                 }).catch(e => {
                     this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                 })
+                
         }
     }
 }
