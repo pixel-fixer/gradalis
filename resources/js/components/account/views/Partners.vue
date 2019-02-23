@@ -172,7 +172,7 @@
                         </div>
                     </td>
                     <td class="has-text-basic">{{partner.created_at}}</td>
-                    <td class="has-text-basic">{{partner.user.country.translation.ru}}</td>
+                    <!--<td class="has-text-basic">{{partner.user.country.translation.ru}}</td>-->
                     <td class="has-text-basic">
                         <a href="#" class="has-text-decoration-underline">
                             {{partner.moderate_messages}} сообщений
@@ -221,7 +221,7 @@
         data() {
             return {
                 showModalRef: false,
-                partners: null,
+                partners: [],
                 partnersIds: [],
                 chart: {
                     data: null
@@ -351,10 +351,8 @@
                     vm.partners = responce.data;
                     responce.data.forEach(partner => {
                         vm.partnersIds.push(partner.id);
-                        vm.$nextTick(() => {
-                            vm.fetchChartData();
-                        });
                     });
+                        vm.fetchChartData();
 
                 })
             },
