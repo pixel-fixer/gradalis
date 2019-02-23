@@ -58,10 +58,10 @@
                             </div>
                             <div class="swiper-container gallery-thumbs swiper-object-thumbs">
                                 <div class="swiper-wrapper">
-                                    @foreach($business->getMedia('business/'.auth()->user()->id) as $image)
-                                        <div class="swiper-slide"
-                                             style="background-image:url({{$image->getUrl()}})"></div>
-                                    @endforeach
+                                    {{--@foreach($business->getMedia('business/'.auth()->user()->id) as $image)--}}
+                                        {{--<div class="swiper-slide"--}}
+                                             {{--style="background-image:url({{$image->getUrl()}})"></div>--}}
+                                    {{--@endforeach--}}
                                     <div class="swiper-slide"
                                          style="background-image:url(https://photo.hotellook.com/image_v2/crop/2272683466/1200/630.auto)"></div>
                                     <div class="swiper-slide"
