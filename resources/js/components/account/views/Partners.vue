@@ -58,9 +58,10 @@
                             class="control has-icons-left has-icons-left_1">
                             <flat-pickr
                                 class="input is-size-875"
-                                v-model="form.rangeDates.value"
-                                :placeholder="form.rangeDates.placeholder"
-                                :config="form.rangeDates.config"
+                                @on-close="dateChanged"
+                                v-model="rangeDates.value"
+                                :placeholder="rangeDates.placeholder"
+                                :config="rangeDates.config"
                             >
 
                             </flat-pickr>
@@ -79,17 +80,17 @@
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="form.typeData" :size="'is-4'"
+                    <g-g-select-input v-model="typeData" :size="'is-4'"
                                       @input=""
                                       :placeholder="trans('account.data_in_chart.placeholder')"
                                       :label="trans('account.data_in_chart.title')"
                                       :searchable="true"
                                       :options="trans('account.data_in_chart.options')"></g-g-select-input>
-                    <g-g-select-input v-model="form.compare" :size="'is-4'"
+                    <g-g-select-input v-model="comparison" :size="'is-4'"
                                       :placeholder="trans('account.compare.placeholder')"
                                       :label="trans('account.compare.title')"
                                       :searchable="true" :options="trans('account.compare.options')"></g-g-select-input>
-                    <g-g-select-input v-model="form.sort" :size="'is-4'"
+                    <g-g-select-input v-model="sorting" :size="'is-4'"
                                       :placeholder="trans('account.sort.placeholder')"
                                       :label="trans('account.sort.title')"
                                       :searchable="true" :options="trans('account.sort.options')"></g-g-select-input>
@@ -124,10 +125,10 @@
                         </button>
                         <!--TODO Bar chart-->
                         <!--<button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"-->
-                                <!--v-bind:class="{ 'is-active': typeChart=='bar'}"-->
-                                <!--@click="switchBar">-->
-                            <!--<span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""-->
-                                                              <!--class="svg"></span>-->
+                        <!--v-bind:class="{ 'is-active': typeChart=='bar'}"-->
+                        <!--@click="switchBar">-->
+                        <!--<span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""-->
+                        <!--class="svg"></span>-->
                         <!--</button>-->
                     </div>
                 </div>
@@ -225,22 +226,18 @@
                 chart: {
                     data: null
                 },
-                form: {
-                    rangeDates: {
-                        placeholder: '25.02.2018 - 03.03.2018',
-                        value: '',
-                        config: {
-                            mode: "range",
-                            altFormat: 'd.m.Y',
-                            altInput: true,
-                            dateFormat: 'Y-m-d'
-                        }
-                    },
-                    typeData: 1,
-                    comparison: null,
-                    sorting: null,
-
-
+                typeData: 1,
+                comparison: null,
+                sorting: null,
+                rangeDates: {
+                    placeholder: '25.02.2018 - 03.03.2018',
+                    value: '',
+                    config: {
+                        mode: "range",
+                        altFormat: 'd.m.Y',
+                        altInput: true,
+                        dateFormat: 'Y-m-d'
+                    }
                 },
                 datacollection: {
                     labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Мая', 'Июнь', 'Июль'],
@@ -314,13 +311,37 @@
             }
         },
         methods: {
-            switchBar(){
-                this.typeChart='bar'
-                this.$refs['barChart'].renderChart(this.datacollection,this.options)
+            dateChanged(val) {
+                this.fetchChartData(val[0], val[1])
             },
-            switchLine(){
-                this.typeChart='line'
-                this.$refs['lineChart'].renderChart(this.datacollection,this.options)
+            switchBar() {
+                this.typeChart = 'bar'
+                this.$refs['barChart'].renderChart(this.datacollection, this.options)
+            },
+            switchLine() {
+                this.typeChart = 'line'
+                this.$refs['lineChart'].renderChart(this.datacollection, this.options)
+            },
+            switchData(type) {
+                this.datacollection.labels = [];
+                this.datacollection.datasets[0].data = [];
+                if (type == 'views') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.labels.push(this.chart.data[el].date);
+                        this.datacollection.datasets[0].data.push(this.chart.data[el].views + 0);
+                    });
+                } else if (type == 'clicks') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.labels.push(this.chart.data[el].date);
+                        this.datacollection.datasets[0].data.push(this.chart.data[el].clicks + 0);
+                    });
+                } else if (type = 'registered') {
+                    Object.keys(this.chart.data).forEach(el => {
+                        this.datacollection.labels.push(this.chart.data[el].date);
+                        this.datacollection.datasets[0].data.push(this.chart.data[el].registered + 0);
+                    });
+                }
+                this.switchLine();
             },
             fetchPartners() {
                 let vm = this;
@@ -330,26 +351,28 @@
                     vm.partners = responce.data;
                     responce.data.forEach(partner => {
                         vm.partnersIds.push(partner.id);
-                        this.$nextTick(() => {
+                        vm.$nextTick(() => {
                             vm.fetchChartData();
                         });
                     });
 
                 })
             },
-            fetchChartData() {
+            fetchChartData(from, to) {
                 let vm = this;
+                let data = {}
+                data.partners = vm.partnersIds
+                if (from) {
+                    data.from = from;
+                }
+                if (to) {
+                    data.to = to;
+                }
                 axios.post('/account-chart-data', {
-                    partners: this.partnersIds
+                    data: data
                 }).then(responce => {
-                    vm.chart.data = responce.data;
-                    vm.datacollection.labels = [];
-                    vm.datacollection.datasets[0].data = [];
-                    vm.chart.data.forEach(el => {
-                        vm.datacollection.labels.push(el.date);
-                        vm.datacollection.datasets[0].data.push(el.views + 0);
-                    });
-                    this.switchLine();
+                    vm.chart.data = responce.data.result;
+                    vm.switchData('views');
                 })
             },
 
@@ -357,6 +380,22 @@
         created() {
             this.fetchPartners();
         },
+        watch: {
+            typeData: {
+                immediate: false,
+                handler(value) {
+                    if (value) {
+                        if (value == 1) {
+                            this.switchData('views');
+                        } else if (value == 2) {
+                            this.switchData('clicks');
+                        } else if (value == 3) {
+                            this.switchData('registered');
+                        }
+                    }
+                }
+            }
+        }
     }
 </script>
 

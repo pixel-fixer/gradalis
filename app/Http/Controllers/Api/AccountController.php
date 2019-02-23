@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Referral\Invitation;
 use App\Models\Referral\InvitationCounter;
 use App\Models\Referral\Partner;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Http\Request;
 
 
@@ -15,8 +13,8 @@ class AccountController extends Controller
 {
     public function getPartners(Request $request)
     {
-        $blocked  = $request->get('blocked');
-        $await    = $request->get('await');
+        $blocked = $request->get('blocked');
+        $await = $request->get('await');
         $approved = $request->get('approved');
         $partners = Partner::where('apa_id', auth()->user()->id);
         if ($blocked) {
@@ -34,18 +32,35 @@ class AccountController extends Controller
 
     public function getChartData(Request $request)
     {
-        $partners    = $request->get('partners');
-        $invitations = InvitationCounter::whereHas('invitation', function ($q) use ($partners) {
-            $q->whereIn('partner_id', $partners);
-        })
-        ->where('created_at','>=',Carbon::now()->subMonth())
-        ->groupBy('date')->get([
-            DB::raw('Date(created_at) as date'),
-            DB::raw('COUNT(*) as "clicks"'),
-            DB::raw('SUM(count) as "views"'),
-            DB::raw("SUM(if(status = 1, 1, 0)) AS 'registered'")
-        ]);
-        return response()->json($invitations);
+        $req = $request->get('data');
+
+        $invitations = InvitationCounter::whereHas('invitation', function ($q) use ($req) {
+            $q->whereIn('partner_id', $req['partners']);
+        });
+        if (isset($req['from']) && isset($req['to'])) {
+            $invitations->where('created_at', '>=', Carbon::parse($req['from']));
+            $invitations->where('created_at', '<=', Carbon::parse($req['to']));
+        } else {
+            $invitations->where('created_at', '>=', Carbon::now()->subMonth());
+        }
+        $dates = $invitations->get()
+            ->groupBy(function ($invitation) {
+                return $invitation->created_at->format('d-m-Y');
+            });
+        $data['result'] = $dates->transform(function ($invitation, $key) {
+            $views = 0;
+            $clicks = 0;
+            $registered = 0;
+            foreach ($invitation as $item) {
+                $views += $item->count;
+                $clicks++;
+                if ($item->status == InvitationCounter::STATUS_REGISTERED) {
+                    $registered++;
+                }
+            }
+            return ['date' => $key, 'views' => $views, 'clicks' => $clicks, 'registered' => $registered];
+        });
+        return response()->json($data);
     }
 
 
