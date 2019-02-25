@@ -2,17 +2,17 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
+use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Image\Exceptions\InvalidManipulation;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
-use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property mixed active
@@ -27,7 +27,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password', 'phone', 'city_id', 'subscribes','country_id'
+        'first_name', 'last_name', 'email', 'password', 'phone', 'city_id', 'subscribes', 'country_id'
     ];
 
     /**
@@ -99,10 +99,11 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     public function dialog()
     {
-       return $this->belongsTo('App\Chat\Dialog');
+        return $this->belongsTo('App\Chat\Dialog');
     }
-    
-    public function isActive() {
+
+    public function isActive()
+    {
         return $this->active;
     }
 
@@ -111,13 +112,13 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         try {
             $this->addMediaConversion('avatar')
                 ->crop(Manipulations::CROP_CENTER, 160, 160);
-        } catch ( InvalidManipulation $e ) {
+        } catch (InvalidManipulation $e) {
             \Log::error('Avatar conversion failed.');
         }
     }
 
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('avatar')->singleFile();       
+        $this->addMediaCollection('avatar')->singleFile();
     }
 }

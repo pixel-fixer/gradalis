@@ -8,8 +8,12 @@ import PortalVue from 'portal-vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import router from './routes'
 import store from './store'
-import lodash from 'lodash';
 import * as VueGoogleMaps from 'vue2-google-maps'
+import inlineSVG from 'inline-svg';
+import Swiper from 'swiper';
+import VueMomentTz from 'vue-moment-tz';
+
+import VSwitch from 'v-switch-case';
 
 Vue.use(VueGoogleMaps, {
     load: {
@@ -35,8 +39,27 @@ Vue.use(VueSweetalert2);
 Vue.use(VTooltip);
 Vue.use(PortalVue);
 Vue.use(Vuebar);
+Vue.use(VSwitch);
+Vue.use(VueMomentTz);
 Vue.use(Vuelidate);
 
+function errorResponseHandler(error) {
+    // check for errorHandle config
+    if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
+        return Promise.reject(error);
+    }
+
+    // if has response show the error
+    if (error.response) {
+        Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
+    }
+}
+
+// apply interceptor on response
+window.axios.interceptors.response.use(
+    response => response,
+    errorResponseHandler
+);
 Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
@@ -63,15 +86,15 @@ Vue.mixin({
         $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
         },
-        $userCan(permission){
-            if(!this.$store.state.user)
+        $userCan(permission) {
+            if (!this.$store.state.user)
                 return false;
             return _.find(this.$store.state.user.permissions, item => {
                 return item.name == permission
             })
         },
-        $userIs(role){
-            if(!this.$store.state.user)
+        $userIs(role) {
+            if (!this.$store.state.user)
                 return false;
             return _.find(this.$store.state.user.roles, item => {
                 return item.name == role
@@ -107,8 +130,6 @@ Vue.component('account', require('./components/account/Account').default);
 // map
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
-
-import inlineSVG from 'inline-svg';
 
 const app = new Vue({
     el: '#app',
@@ -155,14 +176,14 @@ const app = new Vue({
          * @param {integer} id
          * @param {string} type - business или franchise
          */
-        toggleFavorite(id, type){
+        toggleFavorite(id, type) {
             axios.post('/profile/favorites/' + type + '/' + id)
-                .then( res => {
-                    this.$swal({ type: 'success', text: res.data.message });
+                .then(res => {
+                    this.$swal({type: 'success', text: res.data.message});
                     this.$emit('fetch-data');
-                }).catch( e => {
-                    this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
-                })
+                }).catch(e => {
+                this.$swal({type: 'error', title: e.response.status, text: e.response.data.message});
+            })
         }
     }
 });
@@ -173,8 +194,6 @@ inlineSVG.init({
 }, function () {
     console.log('All SVGs inlined');
 });
-
-import Swiper from 'swiper';
 
 window.Swiper = Swiper;
 
@@ -345,6 +364,6 @@ window.openTab = function openTab(evt, tabName) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" is-active", "");
     }
-    tabsWrap.querySelector('#'+tabName).style.display = "block";
+    tabsWrap.querySelector('#' + tabName).style.display = "block";
     evt.currentTarget.className += " is-active";
 }

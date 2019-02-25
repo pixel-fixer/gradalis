@@ -193,10 +193,11 @@
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <a href="/account/partners/single/settings" class="link-with-icon">
+                            <router-link class="link-with-icon" :tag="'a'" :to="{ name: 'partner-settings', params: { userId: partner.id} }">
+
                                 <img src="/svg/icons/ic_profile_settings.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
-                            </a>
+                            </router-link>
                         </div>
                     </td>
                 </tr>

@@ -186,10 +186,7 @@
         </section>
 
         <div class="columns is-multiline">
-            <div class="column is-6">
-                <broker-real-time-indicators></broker-real-time-indicators>
-            </div>
-            <div class="column is-6">
+            <div class="column is-12">
                 <broker-real-time-indicators></broker-real-time-indicators>
             </div>
         </div>

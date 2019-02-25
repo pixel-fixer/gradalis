@@ -16,6 +16,11 @@ Broadcast::channel('Chat.Dialog.{id}', function ($user, $id) {
     //return (int) $user->id === (int) $id;
 });
 
+Broadcast::channel('chart.data.{id}', function ($user, $id) {
+    return true;
+    //return (int) $user->id === (int) $id;
+});
+
 //Broadcast::channel('App.User.{id}', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
 //});

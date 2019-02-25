@@ -14,14 +14,30 @@
                         <span class="icon">
                           <img src="/svg/icons/ic_lifesaver-2.svg" alt="" class="svg">
                         </span>
-                            <span>Помощь</span>
+                            <span>{{trans('account.help')}}</span>
                         </button>
-                        <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1 mb-0">
+                        <button class="button is-outlined is-info is-size-875 has-text-weight-bold h-3 px-1 mb-0"
+                                @click="showModalRef= true">
                         <span class="icon">
                           <img src="/svg/icons/ic_code.svg" alt="" class="svg">
                         </span>
-                            <span class="has-text-decoration-underline">Ваша реферальная ссылка</span>
+                            <span class="has-text-decoration-underline">{{trans('account.your_ref_link')}}</span>
                         </button>
+
+                        <modal v-if="showModalRef"
+                               @close="showModalRef = false">
+                            <div slot="header">
+                                <p class="modal-card-title mb-0">Сылка</p>
+                            </div>
+
+                            <div slot="body">
+                                <a href="#">https://ref.market.local/parner-invitation/4</a>
+                            </div>
+                            <div slot="footer">
+
+                            </div>
+                        </modal>
+
                     </div>
                 </div>
                 <div class="column is-8-desktop is-12-tablet">
@@ -45,106 +61,61 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Имя партнера</th>
-                    <th>Дата регистрации</th>
-                    <th>Страна</th>
+                    <th>{{trans('account.account')}}</th>
+                    <th>{{trans('account.reg_date')}}</th>
+                    <th>{{trans('account.country')}}</th>
                     <th>Skype</th>
                     <th>Telegram</th>
-                    <th>Админ</th>
-                    <th>Статус</th>
+                    <th>{{trans('account.status')}}</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
-                <tr>
-                    <td class="has-vertical-align-middle">2210</td>
+                <tr v-for="partner in partners">
+                    <td class="has-vertical-align-middle">{{partner.id}}</td>
                     <td class="has-vertical-align-middle">
-                        Димитрий
+                        <div class="name-account">
+                            <figure><img :src="(partner.user.avatar)?partner.user.avatar:'/svg/icons/ic_login.svg'"
+                                         alt="">
+                            </figure>
+                            <span>{{partner.user.first_name}}</span>
+                        </div>
                     </td>
-                    <td class="has-text-basic has-vertical-align-middle">28.09.2018 в 14:15</td>
-                    <td class="has-text-basic has-vertical-align-middle">Россия</td>
-                    <td class="has-vertical-align-middle">dmitry83</td>
-                    <td class="has-vertical-align-middle">@dmitry</td>
+                    <td class="has-text-basic">{{partner.created_at}}</td>
+                    <td class="has-text-basic">{{partner.user.country.translation.ru}}</td>
+                    <td class="has-vertical-align-middle">{{(partner.skype)?partner.skype:'-'}}</td>
+                    <td class="has-vertical-align-middle">{{(partner.skype)?partner.telegram:'-'}}</td>
+                    <!--<td class="has-text-basic has-vertical-align-middle">-->
+                    <!--<a href="#" class="has-text-decoration-underline">-->
+                    <!--Дмитрий-->
+                    <!--</a>-->
+                    <!--</td>-->
                     <td class="has-text-basic has-vertical-align-middle">
-                        <a href="#" class="has-text-decoration-underline">
-                            Дмитрий
-                        </a>
+                        <span v-if="partner.status == 0">{{trans('account.await')}}</span>
+                        <button v-if="partner.status == 1"
+                                @click="changeStatus('block',partner.id)"
+                                class="button is-outlined is-danger is-size-875 has-text-weight-bold">
+                            {{trans('account.block')}}
+                        </button>
+                        <button v-if="partner.status == 2"
+                                @click="changeStatus('unblock',partner.id)"
+                                class="button is-outlined is-success is-size-875 has-text-weight-bold">
+                            {{trans('account.unblock')}}
+                        </button>
                     </td>
-                    <td class="has-text-basic has-vertical-align-middle">Ожидает одобрения</td>
-                    <td class="has-vertical-align-middle">
+                    <td>
                         <div class="is-flex">
                             <a href="#" class="link-with-icon mr-1">
                                 <img src="/svg/icons/ic_details.svg">
-                                <span class="has-text-decoration-underline">В аккаунт</span>
+                                <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <a href="#" class="link-with-icon">
+                            <a href="/account/partners/single/settings" class="link-with-icon">
                                 <img src="/svg/icons/ic_profile_settings.svg">
-                                <span class="has-text-decoration-underline">Настройки</span>
+                                <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
                             </a>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="has-vertical-align-middle">2210</td>
-                    <td class="has-vertical-align-middle">
-                        Димитрий
-                    </td>
-                    <td class="has-text-basic has-vertical-align-middle">28.09.2018 в 14:15</td>
-                    <td class="has-text-basic has-vertical-align-middle">Россия</td>
-                    <td class="has-vertical-align-middle">dmitry83</td>
-                    <td class="has-vertical-align-middle">@dmitry</td>
-                    <td class="has-text-basic has-vertical-align-middle">
-                        <a href="#" class="has-text-decoration-underline">
-                            Дмитрий
-                        </a>
-                    </td>
-                    <td class="has-text-basic has-vertical-align-middle">
-                        <button class="button is-outlined is-danger is-size-875 has-text-weight-bold">Заблокировать</button>
-                    </td>
-                    <td class="has-vertical-align-middle">
-                        <div class="is-flex">
-                            <a href="#" class="link-with-icon mr-1">
-                                <img src="/svg/icons/ic_details.svg">
-                                <span class="has-text-decoration-underline">В аккаунт</span>
-                            </a>
-                            <a href="#" class="link-with-icon">
-                                <img src="/svg/icons/ic_profile_settings.svg">
-                                <span class="has-text-decoration-underline">Настройки</span>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="has-vertical-align-middle">2210</td>
-                    <td class="has-vertical-align-middle">
-                        Димитрий
-                    </td>
-                    <td class="has-text-basic has-vertical-align-middle">28.09.2018 в 14:15</td>
-                    <td class="has-text-basic has-vertical-align-middle">Россия</td>
-                    <td class="has-vertical-align-middle">dmitry83</td>
-                    <td class="has-vertical-align-middle">@dmitry</td>
-                    <td class="has-text-basic has-vertical-align-middle">
-                        <a href="#" class="has-text-decoration-underline">
-                            Дмитрий
-                        </a>
-                    </td>
-                    <td class="has-text-basic has-vertical-align-middle">
-                        <button class="button is-outlined is-success is-size-875 has-text-weight-bold">Разблокировать</button>
-                    </td>
-                    <td class="has-vertical-align-middle">
-                        <div class="is-flex">
-                            <a href="#" class="link-with-icon mr-1">
-                                <img src="/svg/icons/ic_details.svg">
-                                <span class="has-text-decoration-underline">В аккаунт</span>
-                            </a>
-                            <a href="#" class="link-with-icon">
-                                <img src="/svg/icons/ic_profile_settings.svg">
-                                <span class="has-text-decoration-underline">Настройки</span>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-
                 </tbody>
             </table>
         </section>
@@ -154,46 +125,46 @@
             <div class="broker-data-indicator-wrap_partners is-flex">
                 <div class="broker-data-indicator">
                     <div class="broker-data-indicator__title">
-                        <span class="is-size-875 has-text-basic">Количество показов</span>
+                        <span class="is-size-875 has-text-basic">{{trans('account.view_count')}}</span>
                         <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                     </div>
                     <div class="broker-data-indicator__value has-text-weight-bold">
-                        12 580
+                        {{views}}
                     </div>
                 </div>
                 <div class="broker-data-indicator">
                     <div class="broker-data-indicator__title">
-                        <span class="is-size-875 has-text-basic">Количество хитов</span>
+                        <span class="is-size-875 has-text-basic">{{trans('account.hit_count')}}</span>
                         <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                     </div>
                     <div class="broker-data-indicator__value has-text-weight-bold">
-                        12 580
+                        {{hits}}
                     </div>
                 </div>
                 <div class="broker-data-indicator">
                     <div class="broker-data-indicator__title">
-                        <span class="is-size-875 has-text-basic">Количество кликов</span>
+                        <span class="is-size-875 has-text-basic">{{trans('account.click_count')}}</span>
                         <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                     </div>
                     <div class="broker-data-indicator__value has-text-weight-bold">
-                        12 580
+                        {{clicks}}
                     </div>
                 </div>
                 <div class="broker-data-indicator">
                     <div class="broker-data-indicator__title">
-                        <span class="is-size-875 has-text-basic">Количество регистраций</span>
+                        <span class="is-size-875 has-text-basic">{{trans('account.reg_count')}}</span>
                         <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                     </div>
                     <div class="broker-data-indicator__value has-text-weight-bold">
-                        12 580
+                        {{regs}}
                     </div>
                 </div>
             </div>
@@ -203,22 +174,64 @@
 </template>
 
 <script>
+    import Modal from '../../Modal';
     export default {
         name: "AccountPartnersFuture",
-        components: {
-
-        },
+        components: {Modal},
         data() {
             return {
-                partners:null
+                showModalRef: false,
+                partners: null,
+                partnersIds: [],
+                views: null,
+                hits: null,
+                clicks: null,
+                regs: null
             }
         },
-        created(){
-            axios.post('/account-get-partners',
-                {}
-            ).then(responce => {
-                this.partners = responce.data;
-            })
+        methods: {
+            changeStatus(status, partner_id) {
+                let vm = this;
+                axios.post('/account-partner-status-change', {
+                    status: status,
+                    partner_id: partner_id
+                }).then(responce => {
+                    if (responce.data.status == 'ok') {
+                        vm.fetchPartners();
+                        vm.$swal({type: 'success', title: '', text: trans('account.status_changed_message')})
+                    }
+                })
+            },
+            fetchPartners() {
+                let vm = this;
+                axios.post('/account-get-partners', {
+                    await: true,
+                    blocked: true,
+                    approved: true,
+                }).then(responce => {
+                    vm.partners = responce.data;
+                    responce.data.forEach(partner => {
+                        vm.partnersIds.push(partner.id);
+                    });
+                    this.fetchSummary();
+                })
+            },
+            fetchSummary() {
+                let vm = this;
+                axios.post('/account-get-summary', {
+                    partners: vm.partnersIds
+                }).then(responce => {
+                    let data = responce.data;
+                    vm.views = data.views;
+                    vm.hits = data.hits;
+                    vm.clicks = data.clicks;
+                    vm.regs = data.regs;
+
+                })
+            }
+        },
+        created() {
+            this.fetchPartners();
         },
     }
 </script>

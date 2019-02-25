@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
       lang: document.documentElement.lang,
-      user: window.user
+      user: window.user,
+      partner: window.partner,
     },
     mutations: {
 
