@@ -14,7 +14,7 @@ class Partner extends Model
     const STATUS_BLOCKED = 2;
     public $timestamps = true;
     protected $table = 'partners';
-    protected $fillable = array('user_id', 'balance', 'status', 'apa_id', 'hold', 'skype', 'telegram');
+    protected $fillable = array('user_id', 'balance', 'status', 'apa_id', 'hold', 'skype', 'telegram', 'open_commission');
 
     public static function getStatuses()
     {

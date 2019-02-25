@@ -12,6 +12,53 @@ use Illuminate\Http\Request;
 class BrokerController extends Controller
 {
 
+    public function getSummary()
+    {
+
+
+        $partner = Partner::where('user_id', auth()->user()->id)->first();
+
+        $counters = InvitationCounter::whereHas('invitation', function ($q) use ($partner) {
+            $q->where('partner_id', $partner->id);
+        })->get()->groupBy('invitation.partner_id');
+        $data = $counters->map(function ($counter) {
+            $data['views'] = $counter->sum('count');
+            $data['hits'] = $counter->count();
+            $data['open_leads'] = $counter->sum('open_leads');
+            $data['approved_leads'] = $counter->sum('approved_leads');
+            $data['payed_targets'] = $counter->sum('payed_targets');
+            $data['open_commission'] = $counter->sum('open_commission');
+            $data['approved_commission'] = $counter->sum('approved_commission');
+            return $data;
+        });
+        return response()->json($data);
+    }
+
+    public function getOffersSummary()
+    {
+        $partner = Partner::where('user_id', auth()->user()->id)->first();
+        $data['views'] = 0;
+        $data['hits'] = 0;
+
+
+        $campaigns = InvitationCounter::with('invitation')->with('invitation.campaign')->whereHas('invitation', function ($q) use ($partner) {
+            $q->where('partner_id', $partner->id);
+        })->get()->groupBy('invitation.campaign.id');
+
+        $data = $campaigns->map(function ($campaign) {
+            $data['views'] = $campaign->sum('count');
+            $data['hits'] = $campaign->count();
+            $data['open_leads'] = $campaign->sum('open_leads');
+            $data['approved_leads'] = $campaign->sum('approved_leads');
+            $data['payed_targets'] = $campaign->sum('payed_targets');
+            $data['open_commission'] = $campaign->sum('open_commission');
+            $data['approved_commission'] = $campaign->sum('approved_commission');
+            return $data;
+        });
+
+        return response()->json($data);
+    }
+
     public function getChartData(Request $request)
     {
         $req = $request->get('data');

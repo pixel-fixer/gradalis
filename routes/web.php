@@ -173,6 +173,8 @@ Route::namespace('Api')
         Route::post('/account-chart-data', 'AccountController@getChartData');
         //});
         Route::post('/broker-chart-data', 'BrokerController@getChartData');
+        Route::get('/broker-get-summary', 'BrokerController@getSummary');
+        Route::get('/broker-get-offers-summary', 'BrokerController@getOffersSummary');
 
         Route::get('/location-get-countries', 'LocationController@getCountries');
         Route::get('/location-get-cities', 'LocationController@getCities');

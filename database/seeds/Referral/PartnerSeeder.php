@@ -22,6 +22,7 @@ class PartnerSeeder extends Seeder
                'telegram' => 'usertelegram',
                'apa_id' => rand($managers[0],$managers[1]),
                'hold' => rand(10000,50000),
+               'open_commission' => rand(1000,3000),
                'balance' => rand(1000,5000),
                'status' => rand(0,2)
             ]);
