@@ -281,13 +281,14 @@
         <!-- Desktop Menu Broker-->
             <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
                 <div class="navbar-start main-menu">
-                    @if(Auth::check() && Auth::user()->hasRole('Акаунт-менеджер'))
+                    @if(Auth::user()->hasRole('Акаунт-менеджер'))
                         <a href="/account" class="navbar-item ">
                             <img src="{{ asset('/svg/icons/ic_partners.svg') }}"
                                  class="icon"><span>Партнеры</span>
                         </a>
                     @endif
-                    <a href="/account" class="navbar-item">
+
+                    <a href="/broker/realtime" class="navbar-item">
                         <img src="{{ asset('/svg/icons/ic_real_stats.svg') }}" class="icon"><span>Статистика</span>
                     </a>
                     <a href="/broker/web-offers" class="navbar-item">

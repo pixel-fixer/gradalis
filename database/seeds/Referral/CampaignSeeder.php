@@ -93,7 +93,7 @@ DESCRIPTION;
             $campaign->setTranslation('description', 'ru', $description);
             $campaign->save();
             $campaignTarget = CampaignTarget::create([
-                'name'        => 'Активная дебетовая карта',
+                'name'        => 'Покупка услуги заполнения.',
                 'campaign_id' => $campaign->id,
                 'country_id'  => 1,
                 'cpl'         => rand(10, 30),
@@ -102,12 +102,12 @@ DESCRIPTION;
             for ($i = 0; $i <= 4; $i++) {
                 $type = rand(1, 2);
                 $campaignResource = CampaignResource::create([
-                    'url'         => config('app.url'),
-                    'type'        => $type,
+                    'url'           => config('app.url'),
+                    'type'          => $type,
                     'resource_type' => ($type === 2) ? rand(2, 3) : 1,
-                    'width'       => ($type === 2) ? 250 : null,
-                    'height'      => ($type === 2) ? 250 : null,
-                    'campaign_id' => $campaign->id
+                    'width'         => ($type === 2) ? 250 : null,
+                    'height'        => ($type === 2) ? 250 : null,
+                    'campaign_id'   => $campaign->id
                 ]);
                 $campaignResource->setTranslations('name', $names);
                 $campaignResource->save();
@@ -125,7 +125,7 @@ DESCRIPTION;
 
 
                 foreach (Invitation::all() as $invitation) {
-                    factory(User::class, 2)->create()->each(function ($user) use ($invitation, $faker) {
+                    factory(User::class, 2)->create()->each(function ($user) use ($invitation, $faker, $campaignTarget) {
                         $date = Carbon::now()->subDays(random_int(1, 370))->format('Y-m-d H:i:s');
                         $status = rand(0, 2);
                         $data = [
@@ -142,7 +142,10 @@ DESCRIPTION;
                         if ($status > 0) {
                             $data['user_id'] = $user->id;
                         }
-                        InvitationCounter::create($data);
+                        $counter = InvitationCounter::create($data);
+                        $status = rand(0, 2);
+                        $sum = ($status == 0) ? $campaignTarget->cpl : $campaignTarget->cps;
+                        $counter->targets()->attach($campaignTarget->id, ['type' => rand(0, 1), 'status' => $status, 'sum' => $sum]);
                     });
                 }
             }

@@ -3,7 +3,7 @@
         <div class="broker-pa__header">
             <div class="columns is-multiline">
                 <div class="column is-8-desktop is-12-tablet">
-                    <h1 class="section-title mb-0-5">В реальном времени</h1>
+                    <h1 class="section-title mb-0-5">{{trans('account.in_realtime')}}</h1>
                 </div>
                 <div class="column is-4-desktop is-12-tablet">
                     <div class="buttons">
@@ -11,7 +11,7 @@
                         <span class="icon">
                           <img src="/svg/icons/ic_lifesaver-2.svg" alt="" class="svg">
                         </span>
-                            <span>Помощь</span>
+                            <span>{{trans('account.help')}}</span>
                         </button>
                     </div>
                 </div>
@@ -25,156 +25,91 @@
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.views')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{views}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.hits')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{hits}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Appr. Leads</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.open_leads')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{open_leads}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Целей оплачено</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.approved_leads')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{approved_leads}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.payed_targets')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{payed_targets}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.open_commission')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{open_commission}}
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="broker-data-indicator">
                             <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
+                                <span class="is-size-875 has-text-basic">{{trans('account.approved_commission')}}</span>
                                 <span class="icon icon-1" v-tooltip="'tooltip text'">
                                    <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                 </span>
                             </div>
                             <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="broker-data-indicator">
-                            <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
-                                <span class="icon icon-1" v-tooltip="'tooltip text'">
-                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                </span>
-                            </div>
-                            <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="broker-data-indicator">
-                            <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
-                                <span class="icon icon-1" v-tooltip="'tooltip text'">
-                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                </span>
-                            </div>
-                            <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="broker-data-indicator">
-                            <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
-                                <span class="icon icon-1" v-tooltip="'tooltip text'">
-                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                </span>
-                            </div>
-                            <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="broker-data-indicator">
-                            <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
-                                <span class="icon icon-1" v-tooltip="'tooltip text'">
-                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                </span>
-                            </div>
-                            <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="broker-data-indicator">
-                            <div class="broker-data-indicator__title">
-                                <span class="is-size-875 has-text-basic">Показы</span>
-                                <span class="icon icon-1" v-tooltip="'tooltip text'">
-                                   <img src="/svg/icons/ic_help.svg" class="svg" alt="">
-                                </span>
-                            </div>
-                            <div class="broker-data-indicator__value has-text-weight-bold">
-                                12 580
+                                {{approved_commission}}
                             </div>
                         </div>
                     </div>
@@ -186,10 +121,7 @@
         </section>
 
         <div class="columns is-multiline">
-            <div class="column is-6">
-                <broker-real-time-indicators></broker-real-time-indicators>
-            </div>
-            <div class="column is-6">
+            <div class="column is-12">
                 <broker-real-time-indicators></broker-real-time-indicators>
             </div>
         </div>
@@ -301,6 +233,38 @@
 
 <script>
 
+    export default {
+        name: "RealTime",
+        components: {},
+        data() {
+            return {
+                offers: [],
+                views: 0,
+                hits: 0,
+                open_leads: 0,
+                approved_leads: 0,
+                payed_targets: 0,
+                open_commission: 0,
+                approved_commission: 0,
+            }
+        },
+        created() {
+            let vm = this;
+            axios.get('/broker-get-summary').then(responce => {
+                let data = responce.data;
+                vm.views = data.views;
+                vm.hits = data.hits;
+                vm.open_leads = data.open_leads;
+                vm.approved_leads = data.approved_leads;
+                vm.payed_targets = data.payed_targets;
+                vm.open_commission = data.open_commission;
+                vm.approved_commission = data.approved_commission;
+            });
+            axios.get('/broker-get-offers-summary').then(responce => {
+                vm.offers = responce.data;
+            });
+        }
+    }
 </script>
 
 <style scoped>

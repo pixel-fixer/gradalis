@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business\Business;
+use App\Models\Referral\Partner;
 use Auth;
 class CoreController extends Controller
 {
@@ -31,12 +32,15 @@ class CoreController extends Controller
             $user = Auth::user()->load(['roles']);
             $user->canModerateMessages = $user->canModerateMessages();
             $user->permissions = $user->getPermissionsViaRoles();
+            $partner = Partner::where('user_id',$user->id)->first();
         }else{
-            $user = null; 
+            $user = null;
+            $partner = null;
         }
 
         header('Content-Type: text/javascript');
         echo('window.user = ' . json_encode($user) . ';');
+        echo('window.partner = ' . json_encode($partner) . ';');
         exit();
     }
 }

@@ -11,23 +11,79 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
+    public function partnerStatusChange(Request $request)
+    {
+        $partner_id = $request->get('partner_id');
+        $partner = Partner::find($partner_id);
+        switch ($request->get('status')) {
+            case 'block':
+                $partner->status = 2;
+                break;
+            case 'unblock':
+                $partner->status = 1;
+                break;
+        }
+        $partner->save();
+        return response()->json(['status' => 'ok']);
+    }
+
+    public function getSummary(Request $request)
+    {
+        $partners = $request->get('partners');
+
+        $invitations = InvitationCounter::whereHas('invitation', function ($q) use ($partners) {
+            $q->whereIn('partner_id', $partners);
+        })->get();
+
+        $data['views'] = 0;
+        $data['clicks'] = 0;
+        $data['regs'] = 0;
+        foreach ($invitations as $invitation) {
+            $data['views'] += $invitation->count;
+            $data['clicks']++;
+            if ($invitation->status == InvitationCounter::STATUS_REGISTERED) {
+                $data['regs']++;
+            }
+        }
+        $data['hits'] = $data['views'];
+
+        return response()->json($data);
+    }
+
     public function getPartners(Request $request)
     {
         $blocked = $request->get('blocked');
         $await = $request->get('await');
         $approved = $request->get('approved');
-        $partners = Partner::where('apa_id', auth()->user()->id);
-        if ($blocked) {
-            $partners->where('status', Partner::STATUS_BLOCKED);
-        }
-        if ($await) {
-            $partners->where('status', Partner::STATUS_AWAIT);
-        }
-        if ($approved) {
-            $partners->where('status', Partner::STATUS_APPROUVED);
-        }
-        $partners = $partners->with('user')->with('user.country')->moderatedMessagesCount()->get();
+        $query = Partner::where('apa_id', auth()->user()->id)->with('user')->with('user.country')->moderatedMessagesCount();
+
+        $query->where(function ($q) use ($blocked, $approved, $await) {
+            if ($blocked) {
+                $q->orWhere('status', Partner::STATUS_BLOCKED);
+            }
+            if ($await) {
+                $q->orWhere('status', Partner::STATUS_AWAIT);
+            }
+            if ($approved) {
+                $q->orWhere('status', Partner::STATUS_APPROUVED);
+            }
+        });
+
+        $partners = $query->get();
         return response()->json($partners);
+    }
+
+    public function getPartner(Partner $partner)
+    {
+        $data['user'] = $partner->user;
+        $data['partner'] = $partner;
+        return response()->json($data);
+    }
+    public function updatePartner(Partner $partner)
+    {
+        $data['user'] = $partner->user;
+        $data['partner'] = $partner;
+        return response()->json($data);
     }
 
     public function getChartData(Request $request)

@@ -1,23 +1,25 @@
 <template>
     <div class="">
         <div class="columns is-multiline">
-            <g-g-select-input v-model="form.typeData.selected" :size="'is-4'"
-                              :placeholder="form.typeData.placeholder" :label="form.typeData.title"
-                              :searchable="true" :options="form.typeData.options"></g-g-select-input>
-            <g-g-select-input v-model="form.comparison.selected" :size="'is-4'"
-                              :placeholder="form.comparison.placeholder" :label="form.comparison.title"
-                              :searchable="true" :options="form.comparison.options"></g-g-select-input>
-            <g-g-select-input v-model="form.time.selected" :size="'is-4'"
-                              :placeholder="form.time.placeholder" :label="form.time.title"
-                              :searchable="true" :options="form.time.options"></g-g-select-input>
+            <g-g-select-input v-model="typeData" :size="'is-4'"
+                              @input=""
+                              :placeholder="trans('account.data_in_chart.placeholder')"
+                              :label="trans('account.data_in_chart.title')"
+                              :searchable="true"
+                              :options="trans('account.data_in_chart.options')"></g-g-select-input>
+            <g-g-select-input v-model="comparison" :size="'is-4'"
+                              :placeholder="trans('account.compare.placeholder')"
+                              :label="trans('account.compare.title')"
+                              :searchable="true" :options="trans('account.compare.options')"></g-g-select-input>
+            <g-g-select-input v-model="time" :size="'is-4'"
+                              :placeholder="trans('account.time.placeholder')"
+                              :label="trans('account.time.title')"
+                              :searchable="true" :options="trans('account.time.options')"></g-g-select-input>
         </div>
         <div class="chart-time-zone is-size-875">
             (GMT+03:00) Москва
         </div>
-
-        <div class="mb-2">
-            <line-chart :chartdata="datacollection" :height="260"/>
-        </div>
+        <real-time-chart :chartCompareData="chartCompare" :chartTypeTime="chartTypeTime" :chartTypeData="chartType"/>
     </div>
 </template>
 
@@ -25,77 +27,39 @@
     import Multiselect from 'vue-multiselect';
     import LineChart from '../charts/LineChart.js';
     import GGSelectInput from '../form/GGSelectInput';
+    import RealTimeChart from '../RealTimeChart'
 
     export default {
         name: "BrokerRealTimeIndicators",
         components: {
-            Multiselect, LineChart, GGSelectInput
+            Multiselect, LineChart, GGSelectInput, RealTimeChart
         },
+
         data() {
             return {
-                form: {
-                    typeData: {
-                        selected: null,
-                        title: 'Данные в графике',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-                    comparison: {
-                        selected: null,
-                        title: 'Сравнение',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-                    time: {
-                        selected: null,
-                        title: 'Время',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ],
-                        noResult: 'Ничего не найдено'
-                    },
-
-
+                typeData: 1,
+                time: 1,
+                comparison: 1,
+            }
+        },
+        computed:{
+            chartType: {
+                get: function () {
+                    return this.typeData
                 },
-                datacollection: {
-                    labels: ['- 6 мин.', '- 5 мин.', '- 4 мин.', '- 3 мин.', '- 2 мин.', '- 1 мин.', '0 мин.'],
-                    datasets: [
-                        {
-                            label: 'Все показы',
-                            backgroundColor: '#0070D9',
-                            borderColor: '#0070D9',
-                            borderWidth: 2,
-                            data: [40, 39, 10, 40, 39, 80, 40],
-                            fill: false,
-                            lineTension: 0,
-                            pointBorderWidth: 4,
-                        }
-                    ]
+            },
+            chartCompare: {
+                get: function () {
+                    return this.comparison
+                },
+            },
+            chartTypeTime: {
+                get: function () {
+                    if(this.time == 1){
+                        return 'minute'
+                    }else if(this.time == 2){
+                        return 'hour'
+                    }
                 },
             }
         },

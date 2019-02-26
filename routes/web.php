@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,17 +17,17 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::domain('ref.'.config('app.domain'))->group(function () {
-    Route::get('invitation/{token}','InvitationController@invitation');
+Route::domain('ref.' . config('app.domain'))->group(function () {
+    Route::get('invitation/{token}', 'InvitationController@invitation');
 });
 
 // JS Localization
-Route::get('/js/lang.js','CoreController@lang')->name('assets.lang');
+Route::get('/js/lang.js', 'CoreController@lang')->name('assets.lang');
 
 //User data for vuex
-Route::get('/js/user.js','CoreController@user')->name('assets.user');
+Route::get('/js/user.js', 'CoreController@user')->name('assets.user');
 
-Route::group(['prefix' => 'chat',  'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'chat', 'middleware' => 'auth'], function () {
     Route::get('', 'ChatController@index');
     Route::post('dialog', 'ChatController@newDialog');
     Route::get('dialogs', 'ChatController@getDialogs');
@@ -163,36 +164,43 @@ Route::namespace('Broker')->prefix('broker')->group(function () {
 Route::namespace('Api')
     //->middleware('auth')
     ->group(function () {
-    //Route::middleware(['role:Акаунт-менеджер'])->group(function(){
+        //Route::middleware(['role:Акаунт-менеджер'])->group(function(){
         Route::post('/account-get-partners', 'AccountController@getPartners');
+        Route::get('/account-partner/{partner}', 'AccountController@getPartner');
+        Route::post('/account-partner/{partner}/update', 'AccountController@updatePartner');
+        Route::post('/account-get-summary', 'AccountController@getSummary');
+        Route::post('/account-partner-status-change', 'AccountController@partnerStatusChange');
         Route::post('/account-chart-data', 'AccountController@getChartData');
-    //});
+        //});
+        Route::post('/broker-chart-data', 'BrokerController@getChartData');
+        Route::get('/broker-get-summary', 'BrokerController@getSummary');
+        Route::get('/broker-get-offers-summary', 'BrokerController@getOffersSummary');
 
-    Route::get('/location-get-countries', 'LocationController@getCountries');
-    Route::get('/location-get-cities', 'LocationController@getCities');
-    Route::get('/location-get-regions', 'LocationController@grtRegions');
+        Route::get('/location-get-countries', 'LocationController@getCountries');
+        Route::get('/location-get-cities', 'LocationController@getCities');
+        Route::get('/location-get-regions', 'LocationController@grtRegions');
 
-    Route::post('/business-image-upload', 'BusinessController@imageUpload');
+        Route::post('/business-image-upload', 'BusinessController@imageUpload');
 
-    //Route::middleware(['role:Медиа-баер'])->group(function() {
+        //Route::middleware(['role:Медиа-баер'])->group(function() {
         Route::post('/offer-bookmark', 'OfferController@bookmark');
         Route::post('/offer-all', 'OfferController@index');
         Route::get('/offer-get/{id}', 'OfferController@get');
         Route::post('/invitation-create', 'OfferController@invitationCreate');
-    //});
+        //});
 
-    Route::get('/business-get', 'BusinessController@get');
-    Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
-    Route::get('/business-get-categories', 'BusinessController@getCategories');
-    Route::post('/business-image-upload', 'BusinessController@imageUpload');
-    Route::post('/business-image-remove', 'BusinessController@imageRemove');
-});
+        Route::get('/business-get', 'BusinessController@get');
+        Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
+        Route::get('/business-get-categories', 'BusinessController@getCategories');
+        Route::post('/business-image-upload', 'BusinessController@imageUpload');
+        Route::post('/business-image-remove', 'BusinessController@imageRemove');
+    });
 //endregion
 
 /**
  * Личный кабинет
  * */
-Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', 'ProfileController@index');
     Route::post('avatar', 'ProfileController@uploadAvatar');
     Route::post('update', 'ProfileController@update');
