@@ -166,8 +166,14 @@ class ChatController extends Controller
 
     public function getDialog(Dialog $dialog)
     {
-        //TODO search
-        $dialog = $dialog->load(['messages' => function($query){
+        $search = request()->get('search', null);
+
+        $dialog = $dialog->load(['messages' => function($query) use ($search){
+
+            if($search){
+                $query->where('text', 'LIKE', '%'.$search.'%');
+            }
+
             $query->with(['from','media']);
 
             //Если пользователь может модерировать сообщения, или это его сообшения

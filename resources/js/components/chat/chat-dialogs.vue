@@ -21,8 +21,8 @@
                 </div>
             </div>
         </transition-group>
-        <div v-else-if="search">Диалогов не найдено</div>
-        <div v-else-if="!firstLoad">Диалогов нет</div>
+        <div v-else-if="search" class="chat__list__no-dialogs">Диалогов не найдено</div>
+        <div v-else-if="!firstLoad" class="chat__list__no-dialogs">Диалогов нет</div>
         <div class="flex-push"></div>
         <div class="chat__list__settings" ref="chat_list_settings">
             <a href="" @click.prevent="ui.showSettings = !ui.showSettings" :class="{active: ui.showSettings}">

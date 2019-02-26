@@ -56,6 +56,13 @@ class Message extends Model implements HasMedia
         return $mediaMapped;
     }
 
+    public function getTextAttribute($text){
+        if(!$text)
+            return '';
+        else
+            return $text;
+    }
+
     public function dialog()
     {
         return $this->belongsTo(Dialog::class);

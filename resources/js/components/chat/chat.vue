@@ -28,6 +28,7 @@
                 <chat-dialog v-if="dialog"
                              :dialog="dialog"
                              @fresh="getDialog(dialog_id)"
+                             @search="getDialog(dialog_id, $event)"
                              :user="user"
                              :key="dialog_id"></chat-dialog>
                 <div v-else class="chat__no-dialog">
@@ -134,10 +135,10 @@
                         this.dialog_list = res.data
                     })
             },
-            getDialog(id){
+            getDialog(id , search = null){
                 this.dialog_id = id;
                 axios.get(`/chat/dialog/${id}`,
-                    { params: { search: this.search.messages} })
+                    { params: { search: search} })
                     .then(res => {
                         this.dialog = res.data
                         this.dialog.messages = this.dialog.messages.slice()

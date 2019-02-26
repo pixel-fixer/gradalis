@@ -2,26 +2,22 @@
     <div class="chat__dialog">
         <div class="chat__dialog__top" ref="dialogTop">
             <transition name="slide-fade"
-                        mode="out-in"
                         tag="div"
                         v-on:after-enter="afterDialogSearchTransition">
-                <div key="1"
-                     v-if="!ui.showDialogSearch"
-                     class="flex flex-between flex-center">
-                    <div class="chat__dialog__top__theme" v-html="dialog.theme"></div>
-                    <div class="chat__dialog__search-btn" @click="ui.showDialogSearch = true">
-                        <img src="/svg/icons/chat/chat_search.svg" alt="">
-                    </div>
-                </div>
-                <div v-else key="2"
-                     class="chat__dialog__search">
-                    <img src="/svg/icons/chat/chat_search.svg" alt="">
-                    <input type="text">
-                    <button @click="ui.showDialogSearch = false">X</button>
+                <div v-if="ui.showDialogSearch">
+                    <input type="text" placeholder="Поиск по истории сообщений" v-model="search" @input="onMessagesSearch">
                 </div>
             </transition>
+            <div class="flex flex-between flex-center">
+                <div class="chat__dialog__top__theme" v-html="dialog.theme"></div>
+            </div>
+            <div class="chat__dialog__search-btn" @click="ui.showDialogSearch = true">
+                <img src="/svg/icons/chat/chat_search.svg" alt="">
+            </div>
         </div>
+        <!-- <div v-if="search" class="chat__dialog__is-searching">поиск</div> -->
         <div class="chat-messages" v-if="messagesMapped.length > 0" v-bar>
+         
             <div class="chat-messages__scroll" ref="message_list">
 
                 <!--<div class="chat-messages__wrap">-->
@@ -41,8 +37,7 @@
                             <div class="chat-messages__message__wrap">
                                 <span class="chat-messages__message__user">{{user.id == stack.user.id ? 'Вы' : stack.user.full_name}}</span>
                                 <span class="chat-messages__message__time">{{getTime(message.created_at)}}</span><br>
-                                <div v-for="video in getYouTubeVideos(message.text)" v-html="video"></div>
-                                <div class="chat-messages__message__text">{{message.text}}</div>
+                                <div v-for="video in getYouTubeVideos(message.text)" v-html="video"></div>                             
                                 <div class="chat-messages__message__files">
                                     <a :href="file.url.origin"
                                        v-for="file in message.media_links"
@@ -51,6 +46,7 @@
                                         <span v-else>{{file.file_name}}</span>
                                     </a>
                                 </div>
+                                <div class="chat-messages__message__text">{{message.text}}</div>
                             </div>
                             <chat-message-status
                                     :message="message"
@@ -74,12 +70,33 @@
 
             </div>
         </div>
-        <div v-else style="text-align: center;flex: 1 1 0%;  color: #4857CE;  font-size: 17px;  align-items: center;  display: flex; justify-content: center;">Сообщений нет</div>
+        <div v-else-if="search" class="chat__dialog__no-messages">Сообщений не найдено</div>
+        <div v-else class="chat__dialog__no-messages">Сообщений нет</div>
         <div class="chat__dialog__new-message">
-            <div v-if="attachment.base64" class="chat__dialog__new-message__files">
-                <img v-if="ifFileIsImage(attachment.mime)" :src="attachment.base64">
-                <div>{{uploadedFileName}}</div>
-                <button @click="clearFile">удалить</button>
+            <div v-if="attachment.isLoaded" class="chat__dialog__new-message__files">
+                <div class="chat__dialog__new-message__file" :class="{'is-image': ifFileIsImage(attachment.mime)}">
+                    <div v-if="ifFileIsImage(attachment.mime)">
+                        <img :src="attachment.base64">
+                        <div class="chat__dialog__new-message__file__delete" @click="clearFile">
+                            <simple-svg class="icon-close"
+                                :filepath="'/svg/icons/chat/ic_close.svg'"
+                                height="10" width="10">
+                             </simple-svg>
+                        </div>
+                    </div>
+                    <div v-else class="is-document"><simple-svg class="icon-doc" :filepath="'/svg/icons/chat/ic_document.svg'" height="20" width="20"></simple-svg>
+                        <div>
+                            <div>{{uploadedFileName}}</div>
+                            <div class="chat__dialog__new-message__file__size">{{(attachment.size / 1024 / 1024).toFixed(2)}}Мб</div>
+                        </div>
+                        <div class="chat__dialog__new-message__file__delete" @click="clearFile">
+                            <simple-svg class="icon-close"
+                                :filepath="'/svg/icons/chat/ic_close.svg'"
+                                height="10" width="10">
+                             </simple-svg>
+                        </div>
+                    </div>                  
+                </div>
             </div>
             <form action="" @submit.prevent="sendMessage">
                 <label for="chat_file_attachment" class="chat__dialog__new-message__attach">
@@ -138,7 +155,9 @@
             attachment: {
                 file: null,
                 status: null,
-                base64: null
+                base64: null,
+                size: null,
+                isLoaded: false
             }
         }),
         mounted(){
@@ -214,12 +233,13 @@
                 this.scrollToEnd()
 
                 let formData = new FormData()
-
                 formData.append('text', this.message);
                 formData.append('dialog_id', this.dialog.id);
-
                 if(this.attachment.file)
                     formData.append('file', this.attachment.file)
+
+                this.message = ''
+                this.clearFile()
 
                 axios.post('/chat/message',
                     formData,
@@ -240,8 +260,9 @@
 
                              new Audio('/chat_message_sent.mp3').play()
                             //this.messages.push(res.data)
-                    }).catch(err => {
-                        //TODO Добавлять сообщения, которое не отправлено, или показывать тост с ошибкой?
+                    }).catch(e => {
+                        this.isSendingMessage = false;
+                        this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                     })
             },
             acceptMessage(id){
@@ -290,19 +311,21 @@
             },
             handleFileUpload(){
                 this.attachment.file = this.$refs.file.files[0]
+                this.attachment.size = this.$refs.file.files[0].size;
                 this.getFile(this.attachment.file)
             },
             getFile(file) {
+                this.attachment.isLoaded = false;
                 return new Promise((resolve, reject) => {
                     const fReader = new FileReader();
                     const img = document.createElement('img');
 
                     fReader.onload = () => {
                         file = fReader.result;
-                        console.log(file);
-                        //Определить mime
                         this.attachment.mime = this.getFileMimeType(fReader.result)
-                        this.attachment.base64 = fReader.result
+                         this.attachment.isLoaded = true;
+                        if(this.ifFileIsImage(this.attachment.mime))
+                            this.attachment.base64 = fReader.result
                         resolve();
                     }
 
@@ -322,6 +345,8 @@
                 this.attachment.base64 = null
                 this.attachment.file = null
                 this.$refs.file.value = ''
+                this.attachment.size = null
+                this.attachment.isLoaded = false;
             },
             getYouTubeVideos(message){
                 let parsedVideos = [];
@@ -344,7 +369,11 @@
                     ID = url;
                 }
                 return ID;
-            }
+            },
+            onMessagesSearch: _.debounce( function(){
+                this.$emit('search', this.search)
+            }, 1000)
+        
         }
     }
 </script>
