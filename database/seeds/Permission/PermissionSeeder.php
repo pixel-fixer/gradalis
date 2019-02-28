@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use App\Models\Auth\User;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
+
 class PermissionSeeder extends Seeder
 {
     
@@ -50,7 +52,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
         
         foreach ( $this->allModels as $model ) {
             $resourcePermissions = [
