@@ -49,8 +49,10 @@ function errorResponseHandler(error) {
         return Promise.reject(error);
     }
 
-    // if has response show the error
     if (error.response) {
+    //Если это не ошибка валидации ларавела
+    //TODO добавить редирект на login, если авторизация истекла
+    if(error.response.status !== 422)
         Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
     }
 }
@@ -99,6 +101,24 @@ Vue.mixin({
             return _.find(this.$store.state.user.roles, item => {
                 return item.name == role
             })
+        },
+        $getDateTime(dbDateTime){
+            var monthNames = [
+                'Январь',
+                'Февраль',
+                'Март',
+                'Апрель',
+                'Май',
+                'Июнь',
+                'Июль',
+                'Август',
+                'Сентябрь',
+                'Ноябрь',
+                'Декабрь',
+            ];
+
+            var date =  new Date(Date.parse(dbDateTime.replace('-','/','g')));
+            return date.getDate() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + date.getFullYear()
         }
     }
 })

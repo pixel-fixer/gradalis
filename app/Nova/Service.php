@@ -69,16 +69,22 @@ class Service extends Resource
             ID::make()->sortable(),
 
             Indicator::make(__('fields.status'), 'status')->labels([
-                0 => 'Не автивен',
-                1 => 'Активен'
+                0 => 'Черновик',
+                1 => 'На модерации',
+                2 => 'Отключен',
+                3 => 'Активен',
             ])->colors([
-                0 => 'red',
+                0 => 'orange',
                 1 => 'green',
+                2 => 'red',
+                3 => 'green',
             ])->onlyOnIndex()->sortable(),
 
             Select::make(__('fields.status'), 'status')->options([
-                0 => __('fields.status_disabled'),
-                1 => __('fields.status_active')
+                0 => __('fields.status_draft'),
+                1 => __('fields.status_moderation'),
+                2 => __('fields.status_disabled'),
+                3 => __('fields.status_active')
             ])
                 ->displayUsingLabels()
                 ->onlyOnForms(),

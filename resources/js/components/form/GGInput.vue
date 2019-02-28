@@ -17,6 +17,7 @@
                        v-model="inputValue"
                        @input="inputChange"
                        v-on:keydown="keyMonitor"
+                       :required="required ? true: false"
                        :placeholder="placeholder">
 
                 <div v-if="iconLeft" class="icons is-left">

@@ -25,7 +25,7 @@
                 @click="toggleCategory(category.id)"
                 :key="category.id"
                 :class="{'is-active': categoriesFilter.indexOf(category.id) >=0}"
-                class="button is-outlined is-info is-size-875 has-text-weight-bold">{{ $t(category.name )}}</button>
+                class="button is-outlined is-info is-size-875 has-text-weight-bold">{{ category.name }}</button>
        
         </div>
         <div >
@@ -37,7 +37,7 @@
                                 <figure class="card-service__icon" v-if="product.icon">
                                     <img :src="product.icon" alt="">
                                 </figure>
-                                <h4 class="card-service__title">{{ $t(product.name) }}</h4>
+                                <h4 class="card-service__title">{{ product.name }}</h4>
                             </div>
                             <div class="card-service__info">
                                 <div class="card-service__excerpt is-size-875" v-if="product.small_text">{{ $t(product.small_text) }}</div>

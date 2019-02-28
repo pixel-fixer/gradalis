@@ -224,6 +224,12 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 
     Route::get('/api/trips', 'ProfileController@getTrips');
+
+    Route::get('/api/user-service', 'Api\ServiceController@getUserServices');
+    Route::get('/api/user-service/{service}', 'Api\ServiceController@getUserService');
+    Route::get('/api/service-categories', 'Api\ServiceController@getServiceCategories');
+    Route::post('/api/user-service', 'Api\ServiceController@addUserService');
+    Route::post('/api/user-service/{service}', 'Api\ServiceController@updateUserService');
 });
 
 /* Фикс для возможных конфликтов роутов ларавела и личного кабинета */

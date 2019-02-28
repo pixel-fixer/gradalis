@@ -26,6 +26,27 @@ label.label {
     }
 }
 
+.input{
+    &__lang-switch{
+        a{
+            display: inline-block;
+            margin: 0 2px;
+            &.active{
+                font-weight: bold;
+            }
+            &.is-empty{
+                color: red;
+            }
+        }
+    }
+}
+.multilang-field{
+    .label{
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
 input.input,
 textarea.textarea {
 

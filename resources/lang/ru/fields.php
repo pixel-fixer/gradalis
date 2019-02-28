@@ -11,6 +11,8 @@ return [
     'text'              => 'Текст',
     'action_link'       => 'Действие',
     'status'            => 'Статус',
+    'status_draft'     => 'Черновик',
+    'status_moderation'     => 'На модерации',
     'status_active'     => 'Активен',
     'status_disabled'   => 'Не активен',
     'created_at'        => 'Создано',

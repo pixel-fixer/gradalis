@@ -79,6 +79,12 @@
                         <span class="aside-nav__item__title has-text-weight-bold">Условия и договора</span>
                      </router-link>
                 </li>
+                <li class="aside-nav__item">
+                    <router-link to="/profile/user-service" tag="a">
+                        <img src="/svg/icons/ic_product.svg" class="svg">
+                        <span class="aside-nav__item__title has-text-weight-bold">Конструктор услуг</span>
+                    </router-link>
+                </li>
             </ul>
         </nav>
     </aside>

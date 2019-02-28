@@ -40,6 +40,10 @@ export default {
         getPath(route){
             if(typeof route.meta.breadcrumb == 'undefined')
                 return;
+            
+            //TODO get dynamic data from component
+            // if(typeof route.matched !== 'undefined')
+            //     console.log(route.matched[0].components.default.breadcrumb)
 
             this.links.push({
                 label: route.meta.breadcrumb.label,

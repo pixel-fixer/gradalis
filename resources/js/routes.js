@@ -126,6 +126,16 @@ export default new Router({
             name: 'partner-settings'
         },
 
+        /* Custom services */
+        {
+            path: '/profile/user-service', component: require('./components/profile/views/user_service/user-services').default, 
+            meta: {breadcrumb: {parent: 'profile', label: 'Ваши услуги'} }
+        },
+        {
+            path: '/profile/user-service/:id', component: require('./components/profile/views/user_service/user-service').default, 
+            meta: {breadcrumb: {parent: 'profile', label: 'Ваша услуга'} },
+        },
+
         /* 404 */
         //TODO сделать 404 в SPA роутах
         //{ path: "*", beforeEnter: () => { window.location.pathname = '/404'}  }

@@ -530,7 +530,7 @@ table.table {
         &.box {
             display: table-row-group;
             color: $very-dark-blue-2;
-
+            background: #fff;
             tr {
                 &:last-child {
                     td {
