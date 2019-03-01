@@ -21,6 +21,8 @@ Route::domain('ref.' . config('app.domain'))->group(function () {
     Route::get('invitation/{token}', 'InvitationController@invitation');
 });
 
+Route::get('/set-locale/{locale}', 'CoreController@setLocale');
+
 // JS Localization
 Route::get('/js/lang.js', 'CoreController@lang')->name('assets.lang');
 

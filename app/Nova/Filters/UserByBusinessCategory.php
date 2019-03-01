@@ -35,7 +35,7 @@ class UserByBusinessCategory extends BooleanFilter
         $query->whereHas('roles', function ($query){
             $query->where('name', 'Продавец');
         })
-        ->where('broker_id', $request->user()->id);
+        ->where('user_id', $request->user()->id);
 
 
         if($object__ids) {

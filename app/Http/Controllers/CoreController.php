@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Business\Business;
 use App\Models\Referral\Partner;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 class CoreController extends Controller
 {
     public function lang()
@@ -42,5 +43,11 @@ class CoreController extends Controller
         echo('window.user = ' . json_encode($user) . ';');
         echo('window.partner = ' . json_encode($partner) . ';');
         exit();
+    }
+
+    public function setLocale($locale)
+    {
+        App::setLocale($locale);
+        return Redirect::back();
     }
 }

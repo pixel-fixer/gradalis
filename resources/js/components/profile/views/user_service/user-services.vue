@@ -19,7 +19,7 @@
                                 <img :src="service.icon" alt="">
                             </figure>
                             <div class="card-service_table__info">
-                                <h4>{{ service.name }}</h4>
+                                <h4>{{ $t(service.name) }}</h4>
                                 <time>{{ $getDateTime(service.created_at)}}</time>
                             </div>
                         </div>

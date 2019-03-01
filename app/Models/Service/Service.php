@@ -4,6 +4,7 @@ namespace App\Models\Service;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use function GuzzleHttp\json_decode;
 
 class Service extends Model
 {
@@ -30,6 +31,19 @@ class Service extends Model
 
     protected $guarded = ['id'];
 
+    /* json поля для кастомных услуг */
+    protected $casts = [
+        'promo_video' => 'array',
+    ];
+
+    /* Дефолтные значения для json полей */
+    public function getPromoVideoAttribute($value){
+        if(!$value)
+            return ['link' => '', 'description' => ''];
+        else
+            return json_decode($value);
+    }
+
     public function category()
     {
         return $this->belongsTo('App\Models\Service\ServiceCategory');
@@ -52,4 +66,5 @@ class Service extends Model
             self::STATUS_ACTIVE => __('fields.status_active'),
         ];
     }
+
 }

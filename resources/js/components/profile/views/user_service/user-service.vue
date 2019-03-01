@@ -22,27 +22,49 @@
                 v-model="form.price_for"
                 placeholder="единицу услуги"
                 label="Цена за"></g-g-input> -->
-
             <multilang-input v-model="form.price_for" size="is-6" label="Цена за"></multilang-input>
+            <g-g-textarea :size="'is-12'"
+                v-model="form.preview_text"
+                placeholder=""
+                label="Аннотация"></g-g-textarea>       
+
         </div>
          <div class="tabs">
             <ul>
-                <li :class="{'is-active': active_tab == 'process'}" @click="active_tab = 'process'"><a>Процесс</a></li>
-                <li :class="{'is-active': active_tab == 'portfolio'}" @click="active_tab = 'portfolio'"><a>Портфолио</a></li>
-                <li :class="{'is-active': active_tab == 'team'}"  @click="active_tab = 'team'"><a>О команде</a></li>
-                <li :class="{'is-active': active_tab == 'promovideo'}"  @click="active_tab = 'promovideo'"><a>Промо-видео</a></li>
-                <li :class="{'is-active': active_tab == 'more'}"  @click="active_tab = 'more'"><a>Подробнее</a></li>
+                <li :class="{'is-active': ui.active_tab == 'process'}" @click="ui.active_tab = 'process'"><a>Процесс</a></li>
+                <li :class="{'is-active': ui.active_tab == 'portfolio'}" @click="ui.active_tab = 'portfolio'"><a>Портфолио</a></li>
+                <li :class="{'is-active': ui.active_tab == 'team'}"  @click="ui.active_tab = 'team'"><a>О команде</a></li>
+                <li :class="{'is-active': ui.active_tab == 'promo_video'}"  @click="ui.active_tab = 'promo_video'"><a>Промо-видео</a></li>
+                <li :class="{'is-active': ui.active_tab == 'detail_text'}"  @click="ui.active_tab = 'detail_text'"><a>Подробнее</a></li>
             </ul>
         </div>
-        <div>
-            <transition name="fade" mode="out-in">
-                <div v-if="active_tab == 'process'" key="process">
+        <div class="tabs-content">
+            <transition-group name="fade" mode="out-in">
+                <div v-show="ui.active_tab == 'process'" key="process">
                     process
                 </div>
-                <div v-if="active_tab == 'portfolio'" key="portfolio">
+                <div v-show="ui.active_tab == 'portfolio'" key="portfolio">
                     portfolio
                 </div>
-            </transition> 
+                <div v-show="ui.active_tab == 'team'" key="team">
+                    <team></team>
+                </div>
+                <div v-show="ui.active_tab == 'promo_video'" key="promo_video">
+                    <g-g-input type="text" :size="'is-12'"
+                        v-model="form.promo_video.link"
+                        placeholder=""
+                        label="Ссылка на youtube"></g-g-input>       
+                    <g-g-textarea :size="'is-12'"
+                        v-model="form.promo_video.description"
+                        placeholder=""
+                        label="Описание"></g-g-textarea>       
+                </div>
+                <div v-show="ui.active_tab == 'detail_text'" key="detail_text">
+                    <quill-editor ref="myTextEditor"
+                      v-model="form.detail_text"
+                      :options="editorOptions"></quill-editor>
+                </div>
+            </transition-group> 
         </div> 
         <form @submit.prevent="save">
             <button class="button is-primary">Сохранить</button>
@@ -57,10 +79,16 @@ import GGInput from './../../../form/GGInput'
 import GGTextarea from './../../../form/GGTextarea'
 import GGSelectInput from './../../../form/GGSelectInput'
 import MultilangInput from './../../../form/multilang-input'
+import Team from './team'
+
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+import { quillEditor } from 'vue-quill-editor'
 
 export default {
     breadcrumb: () =>({
-        label: this.title,
+        label: 'Крошки',
         parent: 'profile'
     }),
     // beforeRouteEnter (to, from, next) {
@@ -77,19 +105,42 @@ export default {
         GGInput,
         GGTextarea,
         GGSelectInput,
-        MultilangInput
+        MultilangInput,
+        quillEditor,
+        Team
     },
     data: () => ({
         isLoaded: false,
+        ui:{
+            active_tab: 'team'
+        },
+        editorOptions: {
+            modules: {
+                toolbar: [
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'header': 1 }, { 'header': 2 }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'script': 'sub' }, { 'script': 'super' }],
+                [{ 'indent': '-1' }, { 'indent': '+1' }],
+                [{ 'direction': 'rtl' }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                [{ 'font': [] }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['clean'],
+                ['link', 'image', 'video']
+                ]
+          },
+        },
         types: [
             { id: 1, name: 'Для продавца' },
             { id: 2, name: 'Для покупателя' }
         ],
         service: null,
         service_categories: null,
-        title: 'Название услуги',
         form: null,
-        active_tab: 'portfolio'
     }),
     mounted(){
         this.getData()
@@ -128,5 +179,10 @@ export default {
 </script>
 
 <style>
-
-</style>
+.quill-editor {
+    background: #fff;
+}
+.tabs-content{
+    margin-bottom: 20px;
+}
+</style>    

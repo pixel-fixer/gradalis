@@ -5,10 +5,10 @@
     </a>
 
     <div class="navbar-dropdown">
-        <a class="navbar-item">
+        <a href="/set-locale/en" class="navbar-item">
             <img src="{{ asset('/svg/icons/ic_flag_uk.svg') }}" alt="Lang" class="icon"><span>English</span>
         </a>
-        <a class="navbar-item">
+        <a href="/set-locale/pl" class="navbar-item">
             <img src="{{ asset('/svg/icons/ic_flag_poland.svg') }}" alt="Lang" class="icon"><span>Polski</span>
         </a>
     </div>
