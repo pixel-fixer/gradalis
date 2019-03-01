@@ -2,7 +2,11 @@
 
 namespace App\Models\Referral;
 
+use Carbon\Carbon;
+use DB;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 class Partner extends Model
 {
@@ -12,9 +16,9 @@ class Partner extends Model
     const STATUS_APPROUVED = 1;
     //Заблокирован
     const STATUS_BLOCKED = 2;
-    public $timestamps = true;
-    protected $table = 'partners';
-    protected $fillable = array('user_id', 'balance', 'status', 'apa_id', 'hold', 'skype', 'telegram', 'open_commission');
+    public    $timestamps = true;
+    protected $table      = 'partners';
+    protected $fillable   = array('user_id', 'balance', 'status', 'apa_id', 'hold', 'skype', 'telegram', 'open_commission');
 
     public static function getStatuses()
     {
@@ -67,9 +71,134 @@ class Partner extends Model
         return $this->hasMany('App\Models\Referral\Invitation');
     }
 
+    public static function partnerSummary($partner_id)
+    {
+        return DB::table('counter_target')
+            ->select([
+                DB::raw('sum(invitation_counter.count) as views'),
+                DB::raw('count(invitation_counter.id) as hits'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 0, 1, 0)) as open_leads'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 1, 1, 0)) as approved_leads'),
+                DB::raw('sum(if(counter_target.type = 1 and counter_target.status = 1, 1, 0)) as payed_targets'),
+                DB::raw('sum(if(counter_target.status = 0, counter_target.sum, 0)) as open_commission'),
+                DB::raw('sum(if(counter_target.status = 1, counter_target.sum, 0)) as approved_commission'),
+            ])
+            ->join('invitation_counter', 'counter_target.counter_id', '=', 'invitation_counter.id')
+            ->join('invitations', 'invitation_counter.invitation_id', '=', 'invitations.id')
+            ->where('invitations.partner_id', $partner_id);
+    }
+
+    public static function partnersSummary($partners_ids)
+    {
+        return DB::table('counter_target')
+            ->select([
+                DB::raw('sum(invitation_counter.count) as views'),
+                DB::raw('count(invitation_counter.id) as hits'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 0, 1, 0)) as open_leads'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 1, 1, 0)) as approved_leads'),
+                DB::raw('sum(if(counter_target.type = 1 and counter_target.status = 1, 1, 0)) as payed_targets'),
+                DB::raw('sum(if(counter_target.status = 0, counter_target.sum, 0)) as open_commission'),
+                DB::raw('sum(if(counter_target.status = 1, counter_target.sum, 0)) as approved_commission'),
+            ])
+            ->join('invitation_counter', 'counter_target.counter_id', '=', 'invitation_counter.id')
+            ->join('invitations', 'invitation_counter.invitation_id', '=', 'invitations.id')
+            ->whereIn('invitations.partner_id', $partners_ids);
+    }
+
+    public static function partnerOffersSummary($partners_id)
+    {
+        return DB::table('counter_target')
+            ->select([
+                'campaigns.id',
+                DB::raw("JSON_EXTRACT(campaigns.name,'$.ru') AS name"),
+                DB::raw('sum(invitation_counter.count) as views'),
+                DB::raw('count(invitation_counter.id) as hits'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 0, 1, 0)) as open_leads'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 1, 1, 0)) as approved_leads'),
+                DB::raw('sum(if(counter_target.type = 1 and counter_target.status = 1, 1, 0)) as payed_targets'),
+                DB::raw('sum(if(counter_target.status = 0, counter_target.sum, 0)) as open_commission'),
+                DB::raw('sum(if(counter_target.status = 1, counter_target.sum, 0)) as approved_commission'),
+            ])
+            ->join('invitation_counter', 'counter_target.counter_id', '=', 'invitation_counter.id')
+            ->join('invitations', 'invitation_counter.invitation_id', '=', 'invitations.id')
+            ->join('campaigns', 'invitations.campaign_id', '=', 'campaigns.id')
+            ->where('invitations.partner_id', $partners_id)
+            ->groupBy('invitations.campaign_id');
+    }
+
+
+    public static function partnerLeadsSummary(int $partners_id, string $dateType = 'day', $from = null, $to = null, int $campaign_id = null)
+    {
+        $dateString = '';
+        if ($dateType === 'day') {
+            $dateString = "DATE_FORMAT(counter_target.updated_at, '%d.%m.%Y') as date";
+        } elseif ($dateType === 'week') {
+            $dateString = "CONCAT( year(counter_target.updated_at) , '-',DATE_FORMAT(counter_target.updated_at,'%v')) AS date";
+        }
+        $data = DB::table('counter_target')
+            ->select([
+                'campaigns.id',
+                DB::raw($dateString),
+                DB::raw("JSON_EXTRACT(campaigns.name,'$.ru') AS name"),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 0, 1, 0)) as open_leads'),
+                DB::raw('sum(if(counter_target.type = 0 and counter_target.status = 1, 1, 0)) as approved_leads'),
+            ])
+            ->join('invitation_counter', 'counter_target.counter_id', '=', 'invitation_counter.id')
+            ->join('invitations', 'invitation_counter.invitation_id', '=', 'invitations.id')
+            ->join('campaigns', 'invitations.campaign_id', '=', 'campaigns.id')
+            ->where('invitations.partner_id', $partners_id)
+            ->where('counter_target.type', 0);
+        if ($campaign_id !== null) {
+            $data->where('invitations.campaign_id', $campaign_id);
+        }
+        if ($from !== null) {
+            $data->where('counter_target.updated_at', '>=', $from->format('Y-m-d'));
+        }
+        if ($to !== null) {
+            $data->where('counter_target.updated_at', '<=', $to->format('Y-m-d'));
+        }
+        if ($dateType === 'day') {
+            $data->groupBy(DB::raw("DAY(counter_target.updated_at)"));
+        } elseif ($dateType === 'week') {
+            $data->groupBy(DB::raw("WEEK(counter_target.updated_at)"));
+        }
+        $data->orderBy('counter_target.updated_at');
+        return $data;
+    }
+
+    public static function partnerLeadsDetails(int $partners_id, $from = null, $to = null, int $campaign_id = null)
+    {
+        $dateString = '';
+        $data       = DB::table('counter_target')
+            ->select([
+                'campaigns.id',
+                DB::raw("JSON_EXTRACT(campaigns.name,'$.ru') AS name"),
+                DB::raw("counter_target.id AS lead_id"),
+                DB::raw("counter_target.created_at"),
+            ])
+            ->join('invitation_counter', 'counter_target.counter_id', '=', 'invitation_counter.id')
+            ->join('invitations', 'invitation_counter.invitation_id', '=', 'invitations.id')
+            ->join('campaigns', 'invitations.campaign_id', '=', 'campaigns.id')
+            ->where('invitations.partner_id', $partners_id)
+            ->where('counter_target.type', 0);
+        if ($campaign_id !== null) {
+            $data->where('invitations.campaign_id', $campaign_id);
+        }
+        if ($from !== null) {
+            $data->where('counter_target.created_at', '>=', $from->format('Y-m-d'));
+        }
+        if ($to !== null) {
+            $data->where('counter_target.created_at', '<=', $to->format('Y-m-d'));
+        }
+
+        $data->orderBy('counter_target.created_at');
+        return $data;
+    }
+
     public function bookmarks()
     {
         return $this->belongsToMany('App\Models\Referral\Campaign');
     }
+
 
 }

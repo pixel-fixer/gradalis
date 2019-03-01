@@ -145,7 +145,7 @@ DESCRIPTION;
                         $counter = InvitationCounter::create($data);
                         $status = rand(0, 2);
                         $sum = ($status == 0) ? $campaignTarget->cpl : $campaignTarget->cps;
-                        $counter->targets()->attach($campaignTarget->id, ['type' => rand(0, 1), 'status' => $status, 'sum' => $sum]);
+                        $counter->targets()->attach($campaignTarget->id, ['type' => rand(0, 1), 'status' => $status, 'sum' => $sum,'created_at'=>$date,'updated_at'=>$date]);
                     });
                 }
             }

@@ -189,41 +189,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="">1</td>
-                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
-                    <td class="">12 580</td>
-                    <td class="">14 580</td>
-                    <td class="">1 580</td>
-                    <td class="">8</td>
-                    <td class="">2</td>
-                    <td class="">2</td>
-                    <td class="has-text-weight-bold">0.00</td>
-                    <td class="has-text-weight-bold">0.00</td>
-                </tr>
-                <tr>
-                    <td class="">2</td>
-                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
-                    <td class="">12 580</td>
-                    <td class="">14 580</td>
-                    <td class="">1 580</td>
-                    <td class="">8</td>
-                    <td class="">2</td>
-                    <td class="">2</td>
-                    <td class="has-text-weight-bold ">0.00</td>
-                    <td class="has-text-weight-bold">0.00</td>
-                </tr>
-                <tr>
-                    <td class="">3</td>
-                    <td class="has-text-basic has-line-height-normal"><a href="#">Невский проспеспект...</a></td>
-                    <td class="">12 580</td>
-                    <td class="">14 580</td>
-                    <td class="">1 580</td>
-                    <td class="">8</td>
-                    <td class="">2</td>
-                    <td class="">2</td>
-                    <td class="has-text-weight-bold">0.00</td>
-                    <td class="has-text-weight-bold">0.00</td>
+                <tr v-for="offer in offers">
+                    <td class="">{{offer.id}}</td>
+                    <td class="has-text-basic has-line-height-normal"><router-link :to="{ path: '/broker/web-offer/'+ offer.id}">{{offer.name}}</router-link></td>
+                    <td class="">{{offer.views}}</td>
+                    <td class="">{{offer.hits}}</td>
+                    <td class="">{{offer.hits}}</td>
+                    <td class="">{{offer.open_leads}}</td>
+                    <td class="">{{offer.approved_leads}}</td>
+                    <td class="">{{offer.payed_targets}}</td>
+                    <td class="has-text-weight-bold">{{offer.open_commission}}</td>
+                    <td class="has-text-weight-bold">{{offer.approved_commission}}</td>
                 </tr>
                 </tbody>
             </table>

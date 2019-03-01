@@ -50,7 +50,8 @@ class DatabaseSeeder extends Seeder
             'admin_notifications',
             'service_categories',
             'payment_transactions',
-            'object_requests'
+            'object_requests',
+            'counter_target'
         ]);
 
         Schema::enableForeignKeyConstraints();
