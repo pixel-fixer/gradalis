@@ -184,17 +184,17 @@
                             {{partner.moderate_messages}} сообщений
                         </a>
                     </td>
-                    <td>12 525</td>
-                    <td>1 525</td>
-                    <td class="has-text-weight-bold">{{partner.balance}}</td>
+                    <td>{{partner.hits}}</td>
+                    <td>{{partner.approved_leads}}</td>
+                    <td class="has-text-weight-bold">{{partner.approved_commission}}</td>
                     <td>
                         <div class="is-flex">
                             <a href="#" class="link-with-icon mr-1">
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <router-link class="link-with-icon" :tag="'a'" :to="{ name: 'partner-settings', params: { userId: partner.id} }">
-
+                            <router-link class="link-with-icon" :tag="'a'"
+                                         :to="{ name: 'partner-settings', params: { userId: partner.id} }">
                                 <img src="/svg/icons/ic_profile_settings.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
                             </router-link>

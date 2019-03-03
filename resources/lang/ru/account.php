@@ -76,6 +76,13 @@ return [
             ['id' => 2, 'name' => '1 час']
         ]
     ],
+    'offer'                   => [
+        'title'       => 'Оффер',
+        'placeholder' => 'Выберите',
+        'options'     => [
+            ['id' => 1, 'name' => 'Все офферы']
+        ]
+    ],
     'compare'                => [
         'title'       => 'Сравнить',
         'placeholder' => 'Выберите',

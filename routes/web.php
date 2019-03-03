@@ -178,10 +178,14 @@ Route::namespace('Api')
         Route::post('/account-get-summary', 'AccountController@getSummary');
         Route::post('/account-partner-status-change', 'AccountController@partnerStatusChange');
         Route::post('/account-chart-data', 'AccountController@getChartData');
+
         //});
         Route::post('/broker-chart-data', 'BrokerController@getChartData');
         Route::get('/broker-get-summary', 'BrokerController@getSummary');
+        Route::get('/broker-get-offers', 'BrokerController@getOffers');
         Route::get('/broker-get-offers-summary', 'BrokerController@getOffersSummary');
+        Route::post('/broker-lead-chart-data', 'BrokerController@getLeadChartData');
+        Route::post('/broker-get-leads-details', 'BrokerController@getLeadsDetails');
 
         Route::get('/location-get-countries', 'LocationController@getCountries');
         Route::get('/location-get-cities', 'LocationController@getCities');

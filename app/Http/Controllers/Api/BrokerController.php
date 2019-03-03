@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Referral\Campaign;
+use App\Models\Referral\Invitation;
 use App\Models\Referral\InvitationCounter;
 use App\Models\Referral\Partner;
 use Carbon\Carbon;
@@ -14,54 +16,59 @@ class BrokerController extends Controller
 
     public function getSummary()
     {
-
-
         $partner = Partner::where('user_id', auth()->user()->id)->first();
-
-        $counters = InvitationCounter::whereHas('invitation', function ($q) use ($partner) {
-            $q->where('partner_id', $partner->id);
-        })->get()->groupBy('invitation.partner_id');
-        $data = $counters->map(function ($counter) {
-            $data['views'] = $counter->sum('count');
-            $data['hits'] = $counter->count();
-            $data['open_leads'] = $counter->sum('open_leads');
-            $data['approved_leads'] = $counter->sum('approved_leads');
-            $data['payed_targets'] = $counter->sum('payed_targets');
-            $data['open_commission'] = $counter->sum('open_commission');
-            $data['approved_commission'] = $counter->sum('approved_commission');
-            return $data;
-        });
+        $data    = Partner::partnerSummary($partner->id)->first();
         return response()->json($data);
     }
 
     public function getOffersSummary()
     {
         $partner = Partner::where('user_id', auth()->user()->id)->first();
-        $data['views'] = 0;
-        $data['hits'] = 0;
+        $data    = Partner::partnerOffersSummary($partner->id)->get();
+        return response()->json($data);
 
+    }
 
-        $campaigns = InvitationCounter::with('invitation')->with('invitation.campaign')->whereHas('invitation', function ($q) use ($partner) {
-            $q->where('partner_id', $partner->id);
-        })->get()->groupBy('invitation.campaign.id');
+    public function getLeadChartData(Request $request)
+    {
+        $req         = $request->get('data');
+        $dateType    = (isset($req['dateType'])) ? $req['dateType'] : 'day';
+        $from        = (isset($req['from'])) ? Carbon::parse($req['from']) : null;
+        $to          = (isset($req['to'])) ? Carbon::parse($req['to']) : null;
+        $campaign_id = (isset($req['campaign_id'])) ? $req['campaign_id'] : null;
+        $partner     = Partner::where('user_id', auth()->user()->id)->first();
+        $data        = Partner::partnerLeadsSummary($partner->id, $dateType, $from, $to, $campaign_id);
+        return response()->json($data->get());
+    }
 
-        $data = $campaigns->map(function ($campaign) {
-            $data['views'] = $campaign->sum('count');
-            $data['hits'] = $campaign->count();
-            $data['open_leads'] = $campaign->sum('open_leads');
-            $data['approved_leads'] = $campaign->sum('approved_leads');
-            $data['payed_targets'] = $campaign->sum('payed_targets');
-            $data['open_commission'] = $campaign->sum('open_commission');
-            $data['approved_commission'] = $campaign->sum('approved_commission');
+    public function getLeadsDetails(Request $request)
+    {
+        $req         = $request->get('data');
+        $from        = (isset($req['from'])) ? Carbon::parse($req['from']) : null;
+        $to          = (isset($req['to'])) ? Carbon::parse($req['to']) : null;
+        $campaign_id = (isset($req['campaign_id'])) ? $req['campaign_id'] : null;
+        $partner     = Partner::where('user_id', auth()->user()->id)->first();
+        $data        = Partner::partnerLeadsDetails($partner->id, $from, $to, $campaign_id);
+        return response()->json($data->get());
+    }
+
+    public function getOffers(Request $request)
+    {
+        $partner_id = Partner::where('user_id', auth()->user()->id)->first()->id;
+        $data       = Invitation::whereHas('campaign', function ($q) use ($partner_id) {
+            $q->where('partner_id', $partner_id);
+        })->with('campaign')->get()->map(function ($invitation) {
+            $data         = [];
+            $data['id']   = $invitation->campaign->id;
+            $data['name'] = $invitation->campaign->name;
             return $data;
         });
-
         return response()->json($data);
     }
 
     public function getChartData(Request $request)
     {
-        $req = $request->get('data');
+        $req    = $request->get('data');
         $format = 'Y-m-d H:i';
         if ($request->get('type') == 'minute') {
             $format = 'Y-m-d H:i';
@@ -82,11 +89,11 @@ class BrokerController extends Controller
         $labels = $dates->groupBy(function ($invitation) use ($format) {
             return $invitation->updated_at->format($format);
         });
-        $dates = $this->getLabels($request->get('type'));
+        $dates  = $this->getLabels($request->get('type'));
 
         $results = $labels->transform(function ($invitation, $key) {
-            $views = 0;
-            $clicks = 0;
+            $views      = 0;
+            $clicks     = 0;
             $registered = 0;
             foreach ($invitation as $item) {
                 $views += $item->count;
@@ -109,15 +116,40 @@ class BrokerController extends Controller
 
         if ($type == 'minute') {
             $start = Carbon::now()->subMinutes(10);
-            $end = Carbon::now();
+            $end   = Carbon::now();
             for ($d = $start; $d < $end; $d->addMinute()) {
                 $data[$d->format('Y-m-d H:i')] = ['date' => $d->format('Y-m-d H:i'), 'views' => 0, 'clicks' => 0, 'registered' => 0];
             };
         } elseif ($type == 'hour') {
             $start = Carbon::now()->subHours(10);
-            $end = Carbon::now();
+            $end   = Carbon::now();
             for ($d = $start; $d < $end; $d->addHour()) {
                 $data[$d->format('Y-m-d H')] = ['date' => $d->format('Y-m-d H'), 'views' => 0, 'clicks' => 0, 'registered' => 0];
+            };
+        }
+        return $data;
+    }
+
+    /**
+     * @param string $type
+     * @param Carbon $start
+     * @param Carbon|null $end
+     * @return array
+     */
+    protected function getLeadsLabels(string $type = 'day', Carbon $start, Carbon $end = null): array
+    {
+        if ($end === null) {
+            $end = Carbon::now();
+        }
+        $data = [];
+        if ($type == 'day') {
+            for ($d = $start; $d < $end; $d->addDay()) {
+                $data[$d->format('Y-m-d H:i')] = ['date' => $d->format('Y-m-d'), 'approved_leads' => 0];
+            };
+        } elseif ($type == 'week') {
+            $start = $start->startOfWeek();
+            for ($d = $start; $d < $end; $d->addWeek()) {
+                $data[$d->format('Y-m-d H')] = ['date' => $d->format('Y-m-d') . ' - ' . $d->addDays(6)->format('Y-m-d'), 'approved_leads' => 0];
             };
         }
         return $data;
