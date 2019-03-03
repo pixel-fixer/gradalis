@@ -34,6 +34,6 @@ class InvitationCounter extends Model
             'counter_target',
             'counter_id',
             'target_id'
-        )->withPivot('sum', 'status', 'type');
+        )->withPivot('sum', 'status', 'type')->withTimestamps();
     }
 }

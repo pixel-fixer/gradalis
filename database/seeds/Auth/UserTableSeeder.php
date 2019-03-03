@@ -89,6 +89,18 @@ class UserTableSeeder extends Seeder
             'sum_to' => 1000000
         ]);
 
+        User::create([
+            'first_name'        => 'Content',
+            'last_name'         => 'Manager',
+            'email'             => 'content@user.com',
+            'password'          => Hash::make('secret'),
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'subscribes'        => $subscribes,
+            'city_id' => $cities[rand(0,1)],
+            'sum_from' => 10000,
+            'sum_to' => 1000000
+        ]);
+
         $this->enableForeignKeys();
     }
 }

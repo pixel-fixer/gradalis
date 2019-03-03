@@ -13,7 +13,7 @@
                               :label="trans('business.create.neededLicenses.title')" :searchable="true"
                               :placeholder="trans('business.create.yn.placeholder')"
                               :options="trans('business.create.yn.options')"></g-g-select-input>
-            <div class="column is-12">
+            <div v-if="form.neededLicenses == 1" class="column is-12">
                 <div class="columns is-multiline list-wrap"
                      v-for="(item, index) in form.list">
                     <div class="column is-12">
@@ -71,7 +71,7 @@
             return {
                 form: {
                     havePurchasedServices: null,
-                    neededLicenses: null,
+                    neededLicenses: 2,
                     list: [{
                         document: null,
                         type: null,

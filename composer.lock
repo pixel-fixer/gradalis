@@ -180,16 +180,16 @@
         },
         {
             "name": "coderello/laravel-nova-lang",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/coderello/laravel-nova-lang.git",
-                "reference": "36c115309630b3c903c6ac58587777fc27b37cbc"
+                "reference": "f1e6fe76313b4c471307eddceeb3d19424beb2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/36c115309630b3c903c6ac58587777fc27b37cbc",
-                "reference": "36c115309630b3c903c6ac58587777fc27b37cbc",
+                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/f1e6fe76313b4c471307eddceeb3d19424beb2b3",
+                "reference": "f1e6fe76313b4c471307eddceeb3d19424beb2b3",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,7 @@
                 "nova",
                 "support"
             ],
-            "time": "2019-02-27T07:45:25+00:00"
+            "time": "2019-03-01T09:00:00+00:00"
         },
         {
             "name": "dmitrybubyakin/nova-medialibrary-field",
@@ -2003,8 +2003,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Chat",
-                "reference": "9df5e1811aa2b67ef0b1934387889d535f2f0a6c",
-                "shasum": null
+                "reference": "9df5e1811aa2b67ef0b1934387889d535f2f0a6c"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -2037,8 +2036,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Objects",
-                "reference": "5e579a4109e942cca25be81fa6b3cdd227354171",
-                "shasum": null
+                "reference": "5e579a4109e942cca25be81fa6b3cdd227354171"
             },
             "require": {
                 "php": ">=7.1.0",
@@ -2072,8 +2070,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
-                "shasum": null
+                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d"
             },
             "require": {
                 "php": ">=7.1.0",
@@ -2107,8 +2104,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
-                "shasum": null
+                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49"
             },
             "require": {
                 "php": ">=7.1.0",
@@ -3187,26 +3183,26 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da"
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/11f0b270669a55f90093d63ddb5214e0f7c279da",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/e62f8b459bee0a880c8976c316e82638a74510b5",
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.0",
+                "php": "^7.2",
                 "psr/log": "^1.0",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^8.0",
                 "symfony/var-dumper": "^4.2"
             },
             "type": "library",
@@ -3233,20 +3229,20 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2019-01-14T09:15:47+00:00"
+            "time": "2019-02-15T12:11:38+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.5.6",
+            "version": "7.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "bced3ce9ed69a1060fa978842c7fb5f87a5f7f67"
+                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/bced3ce9ed69a1060fa978842c7fb5f87a5f7f67",
-                "reference": "bced3ce9ed69a1060fa978842c7fb5f87a5f7f67",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/6ffb8a41e60f024abd35ff47e08628354d6efd0e",
+                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e",
                 "shasum": ""
             },
             "require": {
@@ -3257,7 +3253,7 @@
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "league/flysystem": "^1.0.8",
                 "maennchen/zipstream-php": "~0.4",
-                "php": "^7.1",
+                "php": "^7.2",
                 "spatie/image": "^1.4.0",
                 "spatie/pdf-to-image": "^1.2",
                 "spatie/temporary-directory": "^1.1"
@@ -3271,8 +3267,8 @@
                 "guzzlehttp/guzzle": "^6.3",
                 "league/flysystem-aws-s3-v3": "^1.0.13",
                 "mockery/mockery": "^1.0.0",
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
-                "phpunit/phpunit": "^7.0|^8.0",
+                "orchestra/testbench": "~3.8.0",
+                "phpunit/phpunit": "^8.0",
                 "spatie/phpunit-snapshot-assertions": "^2.0"
             },
             "suggest": {
@@ -3316,7 +3312,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2019-02-27T07:27:31+00:00"
+            "time": "2019-02-27T09:31:55+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -6140,33 +6136,33 @@
         },
         {
             "name": "nette/finder",
-            "version": "v2.4.2",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0"
+                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/ee951a656cb8ac622e5dd33474a01fd2470505a0",
-                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0",
+                "url": "https://api.github.com/repos/nette/finder/zipball/6be1b83ea68ac558aff189d640abe242e0306fe2",
+                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2",
                 "shasum": ""
             },
             "require": {
-                "nette/utils": "~2.4",
-                "php": ">=5.6.0"
+                "nette/utils": "^2.4 || ~3.0.0",
+                "php": ">=7.1"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "~2.0",
+                "nette/tester": "^2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
@@ -6198,7 +6194,7 @@
                 "iterator",
                 "nette"
             ],
-            "time": "2018-06-28T11:49:23+00:00"
+            "time": "2019-02-28T18:13:25+00:00"
         },
         {
             "name": "nette/neon",

@@ -28474,7 +28474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: 'Тип',
                 className: 'text-left'
 
-            }, { data: 'status', title: 'Статус', searchable: true, className: 'text-left' }, { data: 'price.ru', name: 'price', title: 'Стоимость', className: 'text-left',
+            }, { data: 'status', title: 'Статус', searchable: true, className: 'text-left' }, { data: 'price', name: 'price', title: 'Стоимость', className: 'text-left',
                 createdCell: function createdCell(cell, cellData, rowData) {
                     var price = Number(cellData).toLocaleString('ru-RU') + ' р.';
                     $(cell).empty().append(price);

@@ -3,6 +3,7 @@
 namespace Marketplace\Translatable;
 
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Translatable extends Field
 {
@@ -16,9 +17,9 @@ class Translatable extends Field
     /**
      * Create a new field.
      *
-     * @param  string  $name
-     * @param  string|null  $attribute
-     * @param  mixed|null  $resolveCallback
+     * @param  string $name
+     * @param  string|null $attribute
+     * @param  mixed|null $resolveCallback
      * @return void
      */
     public function __construct($name, $attribute = null, $resolveCallback = null)
@@ -30,30 +31,24 @@ class Translatable extends Field
         }, config('translatable.locales'));
 
         $this->withMeta([
-            'locales' => $locales,
+            'locales'     => $locales,
             'indexLocale' => app()->getLocale()
         ]);
     }
-
     /**
-     * Resolve the given attribute from the given resource.
+     * Hydrate the given attribute on the model based on the incoming request.
      *
-     * @param  mixed  $resource
-     * @param  string  $attribute
-     * @return mixed
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param  string $requestAttribute
+     * @param  object $model
+     * @param  string $attribute
+     * @return void
      */
-    protected function resolveAttribute($resource, $attribute)
-    {
-        if (method_exists($resource, 'getTranslations')) {
-            return $resource->getTranslations($attribute);
-        }
-        return data_get($resource, $attribute);
-    }
 
     /**
      * Set the locales to display / edit.
      *
-     * @param  array  $locales
+     * @param  array $locales
      * @return $this
      */
     public function locales(array $locales)
@@ -102,5 +97,42 @@ class Translatable extends Field
     public function truncate()
     {
         return $this->withMeta(['truncate' => true]);
+    }
+
+    /**
+     * Hydrate the given attribute on the model based on the incoming request.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param  string $requestAttribute
+     * @param  object $model
+     * @param  string $attribute
+     * @return mixed
+     */
+    protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
+    {
+        if ($request->exists($requestAttribute)) {
+            foreach ($request[$requestAttribute] as $lang => $translation) {
+                if (auth()->user()->hasPermissionTo("translate-{$lang}")) {
+                    $model->{$attribute} = $translation;
+                }
+            }
+
+
+        }
+    }
+
+    /**
+     * Resolve the given attribute from the given resource.
+     *
+     * @param  mixed $resource
+     * @param  string $attribute
+     * @return mixed
+     */
+    protected function resolveAttribute($resource, $attribute)
+    {
+        if (method_exists($resource, 'getTranslations')) {
+            return $resource->getTranslations($attribute);
+        }
+        return data_get($resource, $attribute);
     }
 }

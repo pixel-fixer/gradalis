@@ -48,7 +48,8 @@
                 <div class="columns is-multiline">
                     <g-g-category-button v-model="business.category_id" :size="'is-6'"></g-g-category-button>
                     <g-g-location-select-input v-model="business.country_id" :size="'is-6'"></g-g-location-select-input>
-                    <g-g-location-select-input :size="'is-6'" v-model="business.district_id" :type="'region'"></g-g-location-select-input>
+                    <g-g-location-select-input :size="'is-6'" v-model="business.district_id"
+                                               :type="'region'"></g-g-location-select-input>
                     <g-g-location-select-input :type="'city'" v-model="business.city_id"
                                                :size="'is-6'"></g-g-location-select-input>
 
@@ -327,13 +328,19 @@
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-contragents-input :label="trans('business.create.contractors.title')"></g-g-contragents-input>
-                    <g-g-workers-input :label="trans('business.create.staff.title')"></g-g-workers-input>
+                    <g-g-contragents-input v-if="business.options.haveContractors == 1"
+                                           :label="trans('business.create.contractors.title')"></g-g-contragents-input>
+                    <g-g-workers-input v-model="business.options.staff"
+                                       :label="trans('business.create.staff.title')"></g-g-workers-input>
                     <g-g-select-input :size="'is-6'" v-model="business.options.willStaffLeave"
                                       :label="trans('business.create.willStaffLeave.title')"
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
+                    <template v-if="business.options.willStaffLeave == 1">
+                        <g-g-leaving-workers-input v-model="business.options.leavingStaff"></g-g-leaving-workers-input>
+                    </template>
                     <g-g-certificates-input
+
                         :label="trans('business.create.certificates.title')"></g-g-certificates-input>
                 </div>
 
@@ -403,35 +410,36 @@
                                       :label="trans('business.create.pledgeEquipment.title')"
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
-                    <g-g-input :type="'number'" :prevText="'zt'"
-                               v-model="business.options.totalAmountCredit"
-                               :label="trans('business.create.totalAmountCredit.title')"
-                               :placeholder="trans('business.create.totalAmountCredit.placeholder')">
-                    </g-g-input>
-                    <g-g-input :type="'number'" :prevText="'zt'"
-                               v-model="business.options.repaidAmountCredit"
-                               :label="trans('business.create.repaidAmountCredit.title')"
-                               :placeholder="trans('business.create.repaidAmountCredit.placeholder')">
-                    </g-g-input>
-                    <g-g-input :type="'number'" :prevText="'zt'"
-                               v-model="business.options.balanceCredit"
-                               :label="trans('business.create.balanceCredit.title')"
-                               :placeholder="trans('business.create.balanceCredit.placeholder')">
-                    </g-g-input>
-                    <g-g-input :type="'number'" :prevText="'zt'"
-                               v-model="business.options.monthlyPaymentCredit"
-                               :label="trans('business.create.monthlyPaymentCredit.title')"
-                               :placeholder="trans('business.create.monthlyPaymentCredit.placeholder')">
-                    </g-g-input>
-                    <g-g-date-input :size="'is-3'" v-model="business.options.finalPaymentCreditDate"
-                                    :label="trans('business.create.finalPaymentCreditDate.title')"
-                                    :placeholder="trans('business.create.finalPaymentCreditDate.placeholder')"></g-g-date-input>
+                    <template v-if="business.options.pledgeEquipment == 1">
+                        <g-g-input :type="'number'" :prevText="'zt'"
+                                   v-model="business.options.totalAmountCredit"
+                                   :label="trans('business.create.totalAmountCredit.title')"
+                                   :placeholder="trans('business.create.totalAmountCredit.placeholder')">
+                        </g-g-input>
+                        <g-g-input :type="'number'" :prevText="'zt'"
+                                   v-model="business.options.repaidAmountCredit"
+                                   :label="trans('business.create.repaidAmountCredit.title')"
+                                   :placeholder="trans('business.create.repaidAmountCredit.placeholder')">
+                        </g-g-input>
+                        <g-g-input :type="'number'" :prevText="'zt'"
+                                   v-model="business.options.balanceCredit"
+                                   :label="trans('business.create.balanceCredit.title')"
+                                   :placeholder="trans('business.create.balanceCredit.placeholder')">
+                        </g-g-input>
+                        <g-g-input :type="'number'" :prevText="'zt'"
+                                   v-model="business.options.monthlyPaymentCredit"
+                                   :label="trans('business.create.monthlyPaymentCredit.title')"
+                                   :placeholder="trans('business.create.monthlyPaymentCredit.placeholder')">
+                        </g-g-input>
+                        <g-g-date-input :size="'is-3'" v-model="business.options.finalPaymentCreditDate"
+                                        :label="trans('business.create.finalPaymentCreditDate.title')"
+                                        :placeholder="trans('business.create.finalPaymentCreditDate.placeholder')"></g-g-date-input>
 
-                    <g-g-select-input v-model="business.options.purposeCredit" :size="'is-3'"
-                                      :placeholder="trans('business.create.purposeCredit.placeholder')"
-                                      :label="trans('business.create.purposeCredit.title')" :searchable="true"
-                                      :options="trans('business.create.purposeCredit.options')"></g-g-select-input>
-
+                        <g-g-select-input v-model="business.options.purposeCredit" :size="'is-3'"
+                                          :placeholder="trans('business.create.purposeCredit.placeholder')"
+                                          :label="trans('business.create.purposeCredit.title')" :searchable="true"
+                                          :options="trans('business.create.purposeCredit.options')"></g-g-select-input>
+                    </template>
                     <g-g-select-input v-model="business.options.listTransferredProperty" :size="'is-6'"
                                       :multiple="true"
                                       :placeholder="trans('business.create.listTransferredProperty.placeholder')"
@@ -442,7 +450,7 @@
                                       :label="trans('business.create.deductionsDepreciation.title')" :searchable="true"
                                       :options="trans('business.create.deductionsDepreciation.options')"></g-g-select-input>
 
-                    <g-g-input :type="'number'" :prevText="'%'"
+                    <g-g-input v-if="business.options.deductionsDepreciation == 1" :type="'number'" :prevText="'%'"
                                v-model="business.options.amountDeductionsProfits"
                                :label="trans('business.create.amountDeductionsProfits.title')"
                                :placeholder="trans('business.create.amountDeductionsProfits.placeholder')">
@@ -531,7 +539,8 @@
                         <g-g-select-input :size="'is-6'" v-model="business.options.intellectualPropertyList"
                                           :multiple="true"
                                           :placeholder="trans('business.create.intellectualPropertyList.placeholder')"
-                                          :label="trans('business.create.intellectualPropertyList.title')" :searchable="true"
+                                          :label="trans('business.create.intellectualPropertyList.title')"
+                                          :searchable="true"
                                           :options="trans('business.create.intellectualPropertyList.options')">
                         </g-g-select-input>
 
@@ -564,9 +573,9 @@
                                        :placeholder="trans('business.create.sourceYandex.placeholder')"></g-g-input>
 
                             <g-g-textarea :size="'is-12'"
-                                       v-model="business.options.additionalInformationTraffic"
-                                       :label="trans('business.create.additionalInformationTraffic.title')"
-                                       :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-textarea>
+                                          v-model="business.options.additionalInformationTraffic"
+                                          :label="trans('business.create.additionalInformationTraffic.title')"
+                                          :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
@@ -602,12 +611,13 @@
                                        :label="trans('business.create.cpa.title')"
                                        :placeholder="trans('business.create.cpa.placeholder')"></g-g-input>
 
-                            <g-g-check-box-input :margin="false" :size="'is-6'" v-model="business.options.banMonetizationSystems"
-                                             :label="trans('business.create.banMonetizationSystems.title')"></g-g-check-box-input>
+                            <g-g-check-box-input :margin="false" :size="'is-6'"
+                                                 v-model="business.options.banMonetizationSystems"
+                                                 :label="trans('business.create.banMonetizationSystems.title')"></g-g-check-box-input>
                             <g-g-textarea :size="'is-12'"
-                                       v-model="business.options.additionalInformationIncome"
-                                       :label="trans('business.create.banMonetizationSystems.title')"
-                                       :placeholder="trans('business.create.banMonetizationSystems.placeholder')"></g-g-textarea>
+                                          v-model="business.options.additionalInformationIncome"
+                                          :label="trans('business.create.banMonetizationSystems.title')"
+                                          :placeholder="trans('business.create.banMonetizationSystems.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
@@ -638,9 +648,9 @@
                                        :placeholder="trans('business.create.otherExpensesSite.placeholder')"></g-g-input>
 
                             <g-g-textarea :size="'is-12'"
-                                       v-model="business.options.additionalInformationExpensesSite"
-                                       :label="trans('business.create.additionalInformationExpensesSite.title')"
-                                       :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-textarea>
+                                          v-model="business.options.additionalInformationExpensesSite"
+                                          :label="trans('business.create.additionalInformationExpensesSite.title')"
+                                          :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-textarea>
                         </template>
 
                         <template>
@@ -686,11 +696,11 @@
                                        :placeholder="trans('business.create.textSiteGenerated.placeholder')"></g-g-input>
 
                             <g-g-textarea :size="'is-12'"
-                                       v-model="business.options.additionalInformationContentSite"
-                                       :label="trans('business.create.additionalInformationContentSite.title')"
-                                       :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-textarea>
+                                          v-model="business.options.additionalInformationContentSite"
+                                          :label="trans('business.create.additionalInformationContentSite.title')"
+                                          :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-textarea>
                         </template>
-
+                        <g-g-social-input v-model="business.options.socNet"></g-g-social-input>
                     </div>
                 </div>
 
@@ -748,7 +758,7 @@
                                       :label="trans('business.create.typeAudience.title')"
                                       :options="trans('business.create.typeAudience.options')"></g-g-select-input>
 
-                    <template>
+                    <template v-if="(business.options.typeAudience == 1 || business.options.typeAudience == 3)">
                         <div class="column is-12 pb-0">
                             <h3>B2C</h3>
                         </div>
@@ -808,7 +818,7 @@
 
                     </template>
 
-                    <template>
+                    <template v-if="(business.options.typeAudience == 2 || business.options.typeAudience == 3)">
                         <div class="column is-12 pb-0">
                             <h3>B2B</h3>
                         </div>
@@ -820,7 +830,8 @@
                                           :options="trans('business.create.mainCategoryBusinessPartners.options')"></g-g-select-input>
                         <g-g-select-input v-model="business.options.haveExistingContracts" :size="'is-6'"
                                           :placeholder="trans('business.create.haveExistingContracts.placeholder')"
-                                          :label="trans('business.create.haveExistingContracts.title')" :searchable="true"
+                                          :label="trans('business.create.haveExistingContracts.title')"
+                                          :searchable="true"
                                           :options="trans('business.create.haveExistingContracts.options')"></g-g-select-input>
                         <g-g-contracts-input v-model="business.options.listContracts"></g-g-contracts-input>
 
@@ -969,185 +980,214 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="box px-0 pb-0">
-                        <div class="px-1-5">
-                            <div class="content">
-                                <h3 class="mb-1">Способы размещения объявления до 50 дней</h3>
-                                <p>Публикация вашего бизнеса на проекте абсолютно бесплатна. Мы отправим ваше объявление на
-                                    модерацию и после проверки опубликуем его в каталоге бизнесов.</p>
-                            </div>
-                            <div class="ways-place-ads">
-                                <div class="columns is-multiline is-gapless">
-                                    <div class="column is-4">
-                                        <div class="ways-place-ads__item">
-                                            <div class="ways-place-ads__item__info">
-                                                <input @click="togglePackage(1)" type="radio" name="ways-place-ads" class="radio-wpa" id="wpa-basic" checked>
-                                                <label for="wpa-basic" v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
-                                                    <div class="content">
-                                                        <h4>Обычная продажа</h4>
-                                                        <div class="text is-size-875">62% на успех в продаже</div>
-                                                        <div class="ways-place-ads__item__info__price has-text-weight-bold">Бесплатно</div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="ways-place-ads__item__services">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-4">
-                                        <div class="ways-place-ads__item">
-                                            <div class="ways-place-ads__item__info">
-                                                <input @click="togglePackage(2)" type="radio" name="ways-place-ads" class="radio-wpa" id="wpa-economy">
-                                                <label for="wpa-economy" v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
-                                                    <div class="content">
-                                                        <h4>Комплекс «Эконом»</h4>
-                                                        <span class="tag is-danger has-text-weight-bold">-9%</span>
-                                                        <div class="text is-size-875"><b>×5</b> просмотров</div>
-                                                        <div class="has-text-success is-size-875"><b>+19%</b> к успеху продажи бизнеса</div>
-                                                        <div class="ways-place-ads__item__info__price has-text-weight-bold">€15 за 50 дней</div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="ways-place-ads__item__services">
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="column is-4">
-                                        <div class="ways-place-ads__item">
-                                            <div class="ways-place-ads__item__info">
-                                                <input @click="togglePackage(3)" type="radio" name="ways-place-ads" class="radio-wpa" id="wpa-lux">
-                                                <label for="wpa-lux" v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
-                                                    <div class="content">
-                                                        <h4>«Люкс продажа»</h4>
-                                                        <span class="tag is-danger has-text-weight-bold">-22%</span>
-                                                        <div class="text is-size-875"><b>×30</b> просмотров</div>
-                                                        <div class="has-text-success is-size-875"><b>+88%</b> к успеху продажи бизнеса</div>
-                                                        <div class="ways-place-ads__item__info__price has-text-weight-bold">€50 за 50 дней</div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="ways-place-ads__item__services">
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card card-service">
-                                                    <div class="card-service__body">
-                                                        <div class="is-flex">
-                                                            <figure class="card-service__icon"><img
-                                                                src="http://marketplacenew.local/svg/icons/services/ic_translate.svg" alt="">
-                                                            </figure>
-                                                            <h4 class="card-service__title">Перевод документов</h4></div>
-                                                        <div class="card-service__info">
-                                                            <div class="card-service__excerpt is-size-875">
-                                                                Наши специалисты переведут документы на английский и русский.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ways-place-ads-footer px-1-5 is-flex">
-                            <div class="is-flex ways-place-ads-footer-price-info-wrap">
-                                <h3>Итого:</h3>
-                                <div class="ways-place-ads-footer-price-info">
-                                    <span class="price-old has-text-weight-bold">${{price+20}}</span>
-                                    <span class="price-now has-text-weight-bold">${{price}}</span>
-                                    <span v-if="(economy > 0)" class="price-sale">Экономия <span class="has-text-weight-bold has-text-danger">-{{economy}}%</span></span>
-                                </div>
-                            </div>
-                            <div>
-                                <button @click="submit" class="button is-warning h-3 is-size-875 has-text-weight-bold px-1">Продать бизнес {{package}}</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="check-sell-business-myself">
-                        <div class="field">
-                            <div class="control">
-                                <label class="checkbox">
-                                    <input type="checkbox"
-                                           checked>
-                                    <span>Я хочу продавать бизнес самостоятельно</span>
-                                </label>
-                                <div class="icons is-right">
+                <div class="box px-0 pb-0">
+                    <div class="px-1-5">
+                        <div class="check-sell-business-myself mt-1 mb-1">
+                            <div class="field">
+                                <div class="control">
+                                    <label class="checkbox">
+                                        <input type="checkbox"
+                                               checked>
+                                        <span>Я хочу продавать бизнес самостоятельно</span>
+                                    </label>
+                                    <div class="icons is-right">
                                   <span class="icon is-small" v-tooltip="'tooltip text'">
                                     <img src="/svg/icons/ic_help.svg" class="svg" alt="">
                                   </span>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="content">
+                            <h3 class="mb-1">Способы размещения объявления до 50 дней</h3>
+                            <p>Публикация вашего бизнеса на проекте абсолютно бесплатна. Мы отправим ваше объявление на
+                                модерацию и после проверки опубликуем его в каталоге бизнесов.</p>
+                        </div>
+
+                        <div class="ways-place-ads">
+                            <div class="columns is-multiline is-gapless">
+                                <div class="column is-4">
+                                    <div class="ways-place-ads__item">
+                                        <div class="ways-place-ads__item__info">
+                                            <input @click="togglePackage(1)" type="radio" name="ways-place-ads"
+                                                   class="radio-wpa" id="wpa-basic" checked>
+                                            <label for="wpa-basic"
+                                                   v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
+                                                <div class="content">
+                                                    <h4>Обычная продажа</h4>
+                                                    <div class="text is-size-875">62% на успех в продаже</div>
+                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                        Бесплатно
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="ways-place-ads__item__services">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="ways-place-ads__item">
+                                        <div class="ways-place-ads__item__info">
+                                            <input @click="togglePackage(2)" type="radio" name="ways-place-ads"
+                                                   class="radio-wpa" id="wpa-economy">
+                                            <label for="wpa-economy"
+                                                   v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
+                                                <div class="content">
+                                                    <h4>Комплекс «Эконом»</h4>
+                                                    <span class="tag is-danger has-text-weight-bold">-9%</span>
+                                                    <div class="text is-size-875"><b>×5</b> просмотров</div>
+                                                    <div class="has-text-success is-size-875"><b>+19%</b> к успеху
+                                                        продажи бизнеса
+                                                    </div>
+                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                        €15 за 50 дней
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="ways-place-ads__item__services">
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column is-4">
+                                    <div class="ways-place-ads__item">
+                                        <div class="ways-place-ads__item__info">
+                                            <input @click="togglePackage(3)" type="radio" name="ways-place-ads"
+                                                   class="radio-wpa" id="wpa-lux">
+                                            <label for="wpa-lux"
+                                                   v-tooltip="'25 567 пользователей выбрали этот тарифный план'">
+                                                <div class="content">
+                                                    <h4>«Люкс продажа»</h4>
+                                                    <span class="tag is-danger has-text-weight-bold">-22%</span>
+                                                    <div class="text is-size-875"><b>×30</b> просмотров</div>
+                                                    <div class="has-text-success is-size-875"><b>+88%</b> к успеху
+                                                        продажи бизнеса
+                                                    </div>
+                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                        €50 за 50 дней
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="ways-place-ads__item__services">
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-service">
+                                                <div class="card-service__body">
+                                                    <div class="is-flex">
+                                                        <figure class="card-service__icon"><img
+                                                            src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
+                                                            alt="">
+                                                        </figure>
+                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                    <div class="card-service__info">
+                                                        <div class="card-service__excerpt is-size-875">
+                                                            Наши специалисты переведут документы на английский и
+                                                            русский.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ways-place-ads-footer px-1-5 is-flex">
+                        <div class="is-flex ways-place-ads-footer-price-info-wrap">
+                            <h3>Итого:</h3>
+                            <div class="ways-place-ads-footer-price-info">
+                                <span class="price-old has-text-weight-bold">${{price+20}}</span>
+                                <span class="price-now has-text-weight-bold">${{price}}</span>
+                                <span v-if="(economy > 0)" class="price-sale">Экономия <span
+                                    class="has-text-weight-bold has-text-danger">-{{economy}}%</span></span>
+                            </div>
+                        </div>
+                        <div>
+                            <button @click="submit" class="button is-warning h-3 is-size-875 has-text-weight-bold px-1">
+                                Продать бизнес {{package}}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1175,6 +1215,7 @@
     import GGCertificatesInput from './form/GGCertificatesInput';
     import GGContragentsInput from './form/GGContragentsInput';
     import GGWorkersInput from './form/GGWorkersInput';
+    import GGLeavingWorkersInput from './form/GGLeavingWorkersInput';
     import GGLocationSelectInput from './form/GGLocationSelectInput';
     import vueSlider from 'vue-slider-component';
     import flatPickr from 'vue-flatpickr-component';
@@ -1199,6 +1240,7 @@
             GGCertificatesInput,
             GGContragentsInput,
             GGWorkersInput,
+            GGLeavingWorkersInput,
             GGSelectInput,
             GGLocationSelectInput,
             VStepper, Multiselect, vueSlider, flatPickr
@@ -1208,9 +1250,9 @@
             return {
                 model: null,
                 rent: false,
-                economy:0,
-                price:0,
-                package:'',
+                economy: 0,
+                price: 0,
+                package: '',
                 business: {
                     category_id: null,
                     country_id: null,
@@ -1252,18 +1294,19 @@
                         typeTrainingMaterials: null,
                         transferCustomerBase: null,
                         typeTransferCustomerBase: null,
-                        haveContractors: null,
-                        contractors: [],
-                        staff: [],
-                        willStaffLeave: null,
-                        certificates: [],
+                        haveContractors: 2,
+                        contractors: null,
+                        staff: null,
+                        willStaffLeave: 2,
+                        leavingStaff: null,
+                        certificates: null,
                         //endregion
                         // region Step 5
                         techDocEquipmentCD: null,
                         techDocEquipment: null,
                         conditionProperty: null,
                         conditionEquipment: null,
-                        pledgeEquipment: null,
+                        pledgeEquipment: 2,
                         totalAmountCredit: null,
                         repaidAmountCredit: null,
                         balanceCredit: null,
@@ -1271,7 +1314,7 @@
                         finalPaymentCreditDate: null,
                         purposeCredit: null,
                         listTransferredProperty: null,
-                        deductionsDepreciation: null,
+                        deductionsDepreciation: 2,
                         amountDeductionsProfits: null,
                         //endregion
                         //region Step 6
@@ -1313,7 +1356,7 @@
                         textSiteSavePaste: null,
                         textSiteGenerated: null,
                         additionalInformationContentSite: null,
-                        socNet: [],
+                        socNet: null,
                         //endregion
                         //region Step 7
                         typeAudience: null,
@@ -1374,8 +1417,8 @@
                     },
                     4: {
                         title: "Бизнес-процессы",
-                        active:false,
-                        success:false,
+                        active: false,
+                        success: false,
                     },
                     5: {
                         title: "Материальные активы",
@@ -1406,19 +1449,19 @@
             }
         },
         methods: {
-            togglePackage(pack){
-                if(pack == 3){
-                    this.economy=22;
-                        this.price=50;
-                        this.package='с пакетом «Люкс продажа»';
-                }else if(pack == 2){
-                    this.economy=9;
-                        this.price=15;
-                        this.package='с пакетом «Эконом»';
-                }else if(pack == 1){
-                    this.economy=0;
-                        this.price=0;
-                        this.package='';
+            togglePackage(pack) {
+                if (pack == 3) {
+                    this.economy = 22;
+                    this.price = 50;
+                    this.package = 'с пакетом «Люкс продажа»';
+                } else if (pack == 2) {
+                    this.economy = 9;
+                    this.price = 15;
+                    this.package = 'с пакетом «Эконом»';
+                } else if (pack == 1) {
+                    this.economy = 0;
+                    this.price = 0;
+                    this.package = '';
                 }
             },
             submit() {
@@ -1432,7 +1475,7 @@
                             window.location.href = '/profile/objects';
                         }
                     }).catch(e => {
-                        this.$swal({ type: 'error', title: 'Ошибка!', text: 'Не все поля были заполнны'});
+                        this.$swal({type: 'error', title: 'Ошибка!', text: 'Не все поля были заполнны'});
                     });
                 } else {
                     axios.post('/business', {
@@ -1443,7 +1486,7 @@
                         }
                     }).catch(e => {
                         let errors = e.response.data.errors;
-                        this.$swal({ type: 'error', title: 'Ошибка!', text: errors[Object.keys(errors)[0]]});
+                        this.$swal({type: 'error', title: 'Ошибка!', text: errors[Object.keys(errors)[0]]});
                     });
                 }
             },

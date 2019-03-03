@@ -109,10 +109,7 @@
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <a href="/account/partners/single/settings" class="link-with-icon">
-                                <img src="/svg/icons/ic_profile_settings.svg">
-                                <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
-                            </a>
+                           <message-modal></message-modal>
                         </div>
                     </td>
                 </tr>
@@ -169,15 +166,17 @@
                 </div>
             </div>
         </section>
+        <portal-target name="modals"></portal-target>
     </div>
 
 </template>
 
 <script>
     import Modal from '../../Modal';
+    import MessageModal from '../../modals/MessageModal';
     export default {
         name: "AccountPartnersFuture",
-        components: {Modal},
+        components: {Modal,MessageModal},
         data() {
             return {
                 showModalRef: false,
