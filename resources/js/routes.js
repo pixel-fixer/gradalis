@@ -16,6 +16,9 @@ const AccountPartners = () => import('./components/account/views/Partners');
 const AccountPartnersFuture = () => import('./components/account/views/FuturePartners');
 const AccountPartnerSettings = () => import('./components/account/views/SettingsPartner');
 
+const ServiceBuyCompanyLegalEntities = () => import('./components/profile/views/services/buy-company/LegalEntities');
+const ServiceBuyCompanyDocuments = () => import('./components/profile/views/services/buy-company/Documents');
+
 export default new Router({
     mode: 'history',
     scrollBehavior: () => ({y: 0}),
@@ -124,6 +127,17 @@ export default new Router({
             component: AccountPartnerSettings,
             props: true,
             name: 'partner-settings'
+        },
+
+        /* Services */
+        // ToDo: поправить ссылки
+        {
+            path: '/profile/services/buy-company/legal-entities', component: ServiceBuyCompanyLegalEntities,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        {
+            path: '/profile/services/buy-company/documents', component: ServiceBuyCompanyDocuments,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
         },
 
         /* Custom services */

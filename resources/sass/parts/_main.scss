@@ -90,6 +90,10 @@ body {
     margin-top: 1rem !important;
 }
 
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
 .mt-2-5 {
     margin-top: 2.5rem !important;
 }
@@ -273,6 +277,10 @@ hr {
     text-transform: uppercase;
 }
 
+.has-flip-horizontally {
+    transform: scale(-1, 1);
+}
+
 .section-title {
     margin-bottom: 2rem;
 }
@@ -406,6 +414,10 @@ ol,
 
 .has-text-basic {
     color: $text;
+}
+
+.has-text-dark-blue {
+    color: $very-dark-blue-2;
 }
 
 .has-vertical-align-middle {
