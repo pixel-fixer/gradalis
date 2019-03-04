@@ -15,6 +15,9 @@ import VueMomentTz from 'vue-moment-tz';
 
 import VSwitch from 'v-switch-case';
 
+import Sticky from 'sticky-js';
+var sticky = new Sticky('.sticky');
+
 Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyDs7VrVm9-Uc98tTj0eYIRgNkisaLQsWlg',

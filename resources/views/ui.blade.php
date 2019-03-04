@@ -29,6 +29,83 @@
                             </div>
                         </div>
                     </div>
+                    <div class="notification notification_v2 is-success">
+                        <div class="notification__icon">
+                            <img src="/svg/icons/notification/ic_warning_success.svg" class="svg" alt="">
+                        </div>
+                        <div class="notification__content-wrap">
+                            <h5 class="notification__title has-text-weight-bold is-marginless">
+                                Примите к сведению
+                            </h5>
+                            <div class="notification__content is-size-875">
+                                Давно выяснено, что при оценке дизайна и композиции читаемый текст
+                                мешает сосредоточиться. Lorem Ipsum используют потому, что тот
+                                обеспечивает
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification is-warning">
+                        <button class="delete"></button>
+                        <div class="notification__icon">
+                            <img src="/svg/icons/notification/ic_warning_warning.svg" class="svg" alt="">
+                        </div>
+                        <div class="notification__content-wrap">
+                            <h5 class="notification__title has-text-weight-bold">
+                                Важно
+                            </h5>
+                            <div class="notification__content is-size-875">
+                                Добрый день, Андрей. Спасибо за регистрацию на нашем портале. Выбирайте продукты и
+                                начинайте продавать свой бизнес или франшизу.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification notification_v2 is-warning">
+                        <div class="notification__icon">
+                            <img src="/svg/icons/notification/ic_warning_warning.svg" class="svg" alt="">
+                        </div>
+                        <div class="notification__content-wrap">
+                            <h5 class="notification__title has-text-weight-bold is-marginless">
+                                Важно
+                            </h5>
+                            <div class="notification__content is-size-875">
+                                Давно выяснено, что при оценке дизайна и композиции читаемый текст
+                                мешает сосредоточиться. Lorem Ipsum используют потому, что тот
+                                обеспечивает
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notification is-danger">
+                        <button class="delete"></button>
+                        <div class="notification__icon">
+                            <img src="/svg/icons/notification/ic_warning_danger.svg" class="svg" alt="">
+                        </div>
+                        <div class="notification__content-wrap">
+                            <h5 class="notification__title has-text-weight-bold">
+                                Внимание!
+                            </h5>
+                            <div class="notification__content is-size-875">
+                                Добрый день, Андрей. Спасибо за регистрацию на нашем портале. Выбирайте продукты и
+                                начинайте продавать свой бизнес или франшизу.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification notification_v2 is-danger">
+                        <div class="notification__icon">
+                            <img src="/svg/icons/notification/ic_warning_danger.svg" class="svg" alt="">
+                        </div>
+                        <div class="notification__content-wrap">
+                            <h5 class="notification__title has-text-weight-bold is-marginless">
+                                Внимание!
+                            </h5>
+                            <div class="notification__content is-size-875">
+                                Давно выяснено, что при оценке дизайна и композиции читаемый текст
+                                мешает сосредоточиться. Lorem Ipsum используют потому, что тот
+                                обеспечивает
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

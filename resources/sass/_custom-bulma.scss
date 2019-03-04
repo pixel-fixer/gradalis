@@ -497,11 +497,72 @@ p,
     }
 
     &.is-warning {
+        border: 1px solid $yellow;
+        background-color: rgba($yellow, 0.07);
 
+        .notification__title {
+            color: $yellow;
+        }
+
+        .notification__content {
+            color: $yellow;
+        }
+
+        .delete {
+            &:before,
+            &:after {
+                background-color: lighten($yellow, 5);
+            }
+
+            &:hover {
+                &:before,
+                &:after {
+                    background-color: darken($yellow, 5);
+                }
+            }
+        }
     }
 
     &.is-danger {
+        border: 1px solid $red;
+        background-color: rgba($red, 0.07);
 
+        .notification__title {
+            color: $red;
+        }
+
+        .notification__content {
+            color: $red;
+        }
+
+        .delete {
+            &:before,
+            &:after {
+                background-color: lighten($red, 5);
+            }
+
+            &:hover {
+                &:before,
+                &:after {
+                    background-color: darken($red, 5);
+                }
+            }
+        }
+    }
+
+    &_v2 {
+        border-right: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+        &.is-success {
+            border-left: .1875rem solid #8ABD8A;
+        }
+        &.is-warning {
+            border-left: .1875rem solid $yellow;
+        }
+        &.is-danger {
+            border-left: .1875rem solid $red;
+        }
     }
 }
 
@@ -530,7 +591,7 @@ table.table {
         &.box {
             display: table-row-group;
             color: $very-dark-blue-2;
-            background: #fff;
+            background: $white !important;
             tr {
                 &:last-child {
                     td {
