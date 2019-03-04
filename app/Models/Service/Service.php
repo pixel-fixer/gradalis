@@ -4,7 +4,6 @@ namespace App\Models\Service;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-use function GuzzleHttp\json_decode;
 
 class Service extends Model
 {
