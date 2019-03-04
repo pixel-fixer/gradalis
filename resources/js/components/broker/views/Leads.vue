@@ -5,7 +5,7 @@
         <div class="broker-pa__header">
             <div class="columns is-multiline">
                 <div class="column is-8-desktop is-12-tablet">
-                    <h1 class="section-title mb-0-5">Лиды</h1>
+                    <h1 class="section-title mb-0-5">{{trans('account.leads')}}</h1>
                 </div>
                 <div class="column is-4-desktop is-12-tablet">
                     <div class="buttons">
@@ -115,33 +115,19 @@
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
-                <tr>
-                    <td>2210</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
+                <tr v-for="item in detailList">
+                    <td>{{item.lead_id}}</td>
+                    <td class="has-text-basic">{{item.date}} <span style="color: #8B97A9;"> в {{item.time}} (Польша)</span></td>
+                    <td>{{item.login_count}}</td>
                     <td>12</td>
                     <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2211</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
-                    <td>12</td>
-                    <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
-                        </a>
+                        <message-modal :title="trans('account.write_message')"></message-modal>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </section>
+        <portal-target name="modals"></portal-target>
     </div>
 </template>
 
@@ -153,13 +139,14 @@
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
     import 'flatpickr/dist/flatpickr.css';
+    import MessageModal from '../../modals/MessageModal';
 
     flatpickr.localize(Russian);
 
     export default {
         name: "BrokerLeads",
         components: {
-            BarChart, LineChart, GGSelectInput, flatPickr
+            BarChart, LineChart, GGSelectInput, flatPickr,MessageModal
         },
         data() {
             return {
@@ -231,7 +218,10 @@
                                 fontFamily: "'Roboto', sans-serif",
                                 beginAtZero: true,
                                 padding: 10,
+                                suggestedMin: 0,
+                                suggestedMax: 5
                             },
+                            stepSize: 1
 
                         }]
                     },

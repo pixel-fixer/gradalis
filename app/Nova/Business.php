@@ -139,9 +139,9 @@ class Business extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
-            BelongsToField::make('Категория', 'category', 'App\Nova\BusinessCategory')->searchable(false),
-            BelongsToField::make('Город', 'city', 'App\Nova\City'),
-            BelongsToField::make('Пользователь','user', 'App\Nova\User')
+            BelongsToField::make('Категория', 'category', 'App\Nova\BusinessCategory'),
+            BelongsToField::make('Город', 'city', 'App\Nova\City')->searchable(),
+            BelongsToField::make('Пользователь','user', 'App\Nova\User')->searchable()
         ];
     }
 

@@ -18,8 +18,8 @@
                 <g-g-range-slider v-model="form.payback" :adds="paybackAdds" :placeholder="'Количество месяцев'"
                                   :label="'Окупаемость в месяцах'" :max="36"></g-g-range-slider>
                 <g-g-input :size="'is-3'" :label="'Название или ID'" v-model="form.query"></g-g-input>
-
-                <div class="column is-9 mt-1-5">
+                <g-g-check-box-input  :size="'is-2'" v-model="form.saled" :label="trans('business.saled')"></g-g-check-box-input>
+                <div class="column is-7 mt-1-5">
                     <div class="columns has-justify-content-end form-controls">
                         <div class="column is-narrow">
                             <button @click="clearFilter" class="button is-fullwidth is-size-875" type="reset">
@@ -45,6 +45,7 @@
     import GGCategoryButton from '../form/GGCategoryButton'
     import GGLocationSelectInput from '../form/GGLocationSelectInput'
     import GGSelectInput from '../form/GGSelectInput'
+    import GGCheckBoxInput from '../form/GGCheckBoxInput'
     import GGInput from '../form/GGInput'
     import GGRangeSlider from '../form/GGRangeSlider'
 
@@ -55,7 +56,8 @@
             GGInput,
             GGSelectInput,
             GGLocationSelectInput,
-            GGCategoryButton
+            GGCategoryButton,
+            GGCheckBoxInput
         },
         data() {
             return {
@@ -136,6 +138,7 @@
                     }
                 },
                 form: {
+                    saled:true,
                     type: null,
                     country: 1,
                     category: null,

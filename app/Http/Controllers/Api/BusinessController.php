@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Business\Business;
 use App\Models\Business\BusinessCategory;
+use App\Models\Buyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\Models\Media;
@@ -12,6 +13,23 @@ use Spatie\MediaLibrary\Models\Media;
 
 class BusinessController extends Controller
 {
+    public function reserve(Request $request)
+    {
+        Buyer::where('status',0)
+            ->where('target_id',$request->get('id'))
+            ->where('target_type',Business::class)
+            ->delete();
+
+        $business = Business::find($request->get('id'));
+        $business->status = Business::STATUS_RESERVED;
+        $business->save();
+        $buyer = Buyer::create([
+            'user_id' => auth()->user()->id,
+            'status' => 0
+        ]);
+        $business->buyer()->save($buyer);
+    }
+
     public function get(Request $request)
     {
         $query = $request->all();
@@ -25,6 +43,10 @@ class BusinessController extends Controller
 
         if (!empty($query['query'])) {
             $businesses->where('name', 'like', '%' . $query['query'] . '%');
+        }
+
+        if (isset($query['saled']) && $query['saled'] == "false") {
+            $businesses->where('status', Business::STATUS_APPROUVED);
         }
 
         if (!empty($query['category'])) {

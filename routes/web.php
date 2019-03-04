@@ -200,6 +200,7 @@ Route::namespace('Api')
         Route::post('/invitation-create', 'OfferController@invitationCreate');
         //});
 
+        Route::post('/business-reserve', 'BusinessController@reserve');
         Route::get('/business-get', 'BusinessController@get');
         Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
         Route::get('/business-get-categories', 'BusinessController@getCategories');

@@ -19,17 +19,17 @@
             </div>
             <!-- Pagination -->
             <pagination :data="businesses" :show-disabled="true" @pagination-change-page="fetchBusinesses">
-                     <a :disabled="prevDisabled" slot="prev-nav" class="pagination-previous  pagination-nav button is-link">
+                <a :disabled="prevDisabled" slot="prev-nav" class="pagination-previous  pagination-nav button is-link">
                          <span class="pagination-nav__icon">
                              <img src="/svg/icons/ic_arrow_right.svg" class="svg"/>
                          </span>
-                        <span class="pagination-nav__title">Предыдущая страница</span>
-                     </a>
-                     <a :disabled="nextDisabled" slot="next-nav" class="pagination-next pagination-nav button is-link">
-                         <span class="pagination-nav__title">Следующая страница</span>
-                         <span class="pagination-nav__icon">
+                    <span class="pagination-nav__title">Предыдущая страница</span>
+                </a>
+                <a :disabled="nextDisabled" slot="next-nav" class="pagination-next pagination-nav button is-link">
+                    <span class="pagination-nav__title">Следующая страница</span>
+                    <span class="pagination-nav__icon">
                              <img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span>
-                     </a>
+                </a>
             </pagination>
 
         </div>
@@ -50,10 +50,21 @@
         data() {
             return {
                 businesses: {},
-                form: {},
+                form: {
+                    saled: true,
+                    type: null,
+                    country: 1,
+                    category: null,
+                    region: 1,
+                    city: 1,
+                    price: null,
+                    profit: null,
+                    payback: null,
+                    query: null
+                },
                 loaderBusinesses: false,
-                prevDisabled:false,
-                nextDisabled:false
+                prevDisabled: false,
+                nextDisabled: false
             }
         },
         name: "BusinessList",
@@ -65,27 +76,16 @@
             fetchBusinesses(page = 1) {
                 let vm = this;
                 vm.loaderBusinesses = true;
-                axios.get('/business-get?page=' + page, {
-                    params: {
-                        region: vm.form.region,
-                        category: vm.form.category,
-                        country: vm.form.country,
-                        city: vm.form.city,
-                        type: vm.form.type,
-                        price: vm.form.price,
-                        profit: vm.form.profit,
-                        payback: vm.form.payback,
-                        query: vm.form.query
-                    }
-                }).then(responce => {
-                    if(page == 1){
+                console.log(vm.form);
+                axios.get('/business-get?page=' + page, {params: vm.form}).then(responce => {
+                    if (page == 1) {
                         vm.prevDisabled = true;
-                    }else{
+                    } else {
                         vm.prevDisabled = false;
                     }
-                    if(page == responce.data.last_page){
+                    if (page == responce.data.last_page) {
                         vm.nextDisabled = true;
-                    }else{
+                    } else {
                         vm.nextDisabled = false;
                     }
                     vm.loaderBusinesses = false;

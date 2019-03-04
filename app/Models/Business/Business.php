@@ -2,6 +2,7 @@
 
 namespace App\Models\Business;
 
+use App\Models\Buyer;
 use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -24,6 +25,8 @@ class Business extends Model implements HasMedia
     const STATUS_SOLD_OUT = 3;
     //Отклонен
     const STATUS_DECLINED = 4;
+    //Отклонен
+    const STATUS_RESERVED = 5;
 
     //Весь Бизнес
     const PART_ALL = 1;
@@ -97,6 +100,11 @@ class Business extends Model implements HasMedia
         return $this->belongsTo('App\Models\Referral\Campaign', 'target_id')->where('type', '=', Campaign::TYPE_BUSINESS);
     }
 
+    public function buyer()
+    {
+        return $this->morphMany(Buyer::class, 'target','target_type','target_id','id');
+    }
+
     public function getCountryIdAttribute()
     {
         return $this->city->country_id;
@@ -143,6 +151,7 @@ class Business extends Model implements HasMedia
             self::STATUS_APPROUVED => 'Одобрен',
             self::STATUS_SOLD_OUT  => 'Продан',
             self::STATUS_DECLINED  => 'Отклонен',
+            self::STATUS_RESERVED  => 'Зарезервирован',
         ];
     }
 

@@ -7,6 +7,8 @@
                              :deselect-label="deselectLabel"
                              track-by="id"
                              label="name"
+                             @select="selectValue"
+                             @remove="removeValue"
                              :class="{'multiselect_multiple':multiple,addClass}"
                              :multiple="multiple"
                              :placeholder="placeholder"
@@ -64,6 +66,14 @@
                 selectLabel: '',
                 deselectLabel: '',
             }
+        },
+        methods:{
+            selectValue(val){
+                this.$emit('select',val);
+            },
+            removeValue(val){
+                this.$emit('remove',val);
+            },
         },
         computed: {
             selectedValue: {

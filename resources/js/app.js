@@ -63,6 +63,7 @@ window.axios.interceptors.response.use(
     errorResponseHandler
 );
 Vue.component('business-list', require('./components/business/List.vue').default);
+Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
 
@@ -84,6 +85,10 @@ Vue.component('profile', require('./components/profile/profile').default);
  * Глобальные миксины
  */
 Vue.mixin({
+
+    destroyed() {
+        console.log("I've been destroyed");
+    },
     methods: {
         $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
