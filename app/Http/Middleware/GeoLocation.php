@@ -11,7 +11,8 @@ class GeoLocation
     /**
      * Определяем гео-локацию по IP. Можно было использовать популярный https://github.com/Torann/laravel-geoip,
      * но он тянет странные зависимости, пока не стал ставить. Пока обычный реквест на http://ip-api.com
-     *
+     * Еще вот этот сервис выглядит неплохо https://ipstack.com/product
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
