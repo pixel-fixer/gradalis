@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section pt-1 pb-0 px-0">
-            <h1 class="section-title mb-1-75">Покупка юридического лица</h1>
+            <h1 class="section-title mb-1-75">{{trans('services.buyCompany.title')}}</h1>
         </section>
         <section class="section pt-0 px-0">
             <div class="buttons mb-2">

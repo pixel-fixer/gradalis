@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section pt-1 pb-0 px-0">
-            <h1 class="section-title mb-1-75">Покупка юридического лица</h1>
+            <h1 class="section-title mb-1-75">{{trans('services.buyCompany.title')}}</h1>
         </section>
         <section class="section pt-0 px-0">
             <div class="buttons mb-2">
@@ -30,30 +30,40 @@
                             <th>Подробности</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-for="document in documents">
                         <tr>
-                            <td class="has-text-weight-bold">Договор найма</td>
-                            <td class="has-text-basic">12 марта 2019</td>
-                            <td><span class="has-text-warning">Изменен</span></td>
-                            <td><span class="has-text-info has-text-decoration-underline">Посмотреть</span></td>
+                            <td class="has-text-weight-bold">{{document.title}}</td>
+                            <td class="has-text-basic">{{document.date}}</td>
+                            <td><span
+                                :class="{'has-text-warning' : document.statusID===1, 'has-text-success' : document.statusID===2 }">{{document.status}}</span>
+                            </td>
+                            <td>
+                                <a class="has-text-info has-text-decoration-underline"
+                                   @click="document.showDetails= !document.showDetails">
+                                    {{showHideText(document.showDetails)}}
+                                </a>
+                            </td>
                         </tr>
-                        <tr class="service-tr-add-action">
+                        <tr class="service-tr-add-action" v-show="document.showDetails">
                             <td colspan="4" class="is-paddingless">
                                 <div class="p-1-5 is-flex has-align-items-center mr-1">
-                                    <a href="#" class="service-tr-add-action__document-action is-flex has-align-items-center">
+                                    <a href="#"
+                                       class="service-tr-add-action__document-action is-flex has-align-items-center">
                                         <span class="icon">
                                             <img src="/svg/icons/files/ic_pdf.svg" alt="" class="svg">
                                         </span>
                                         <span>Скачать документ</span>
                                     </a>
-                                    <label class="service-tr-add-action__document-action is-flex has-align-items-center">
+                                    <label
+                                        class="service-tr-add-action__document-action is-flex has-align-items-center">
                                         <span class="icon">
                                             <img src="/svg/icons/ic_add_files.svg" alt="" class="svg">
                                         </span>
                                         <span>Загрузите документ</span>
                                         <input type="file" name="nameDoc" style="display: none;">
                                     </label>
-                                    <div class="has-text-basic service-tr-add-action__document-info ml-1 is-flex has-align-items-center">
+                                    <div
+                                        class="has-text-basic service-tr-add-action__document-info ml-1 is-flex has-align-items-center">
                                         <span class="mr-1">12.03.2019</span>
                                         <span class="mr-1">filename.jpg</span>
                                         <span class="service-tr-add-action__document-remove">
@@ -91,7 +101,7 @@
 
             <div class="buttons mt-2">
                 <a href="#" class="button is-info h-3 is-size-875 has-text-weight-bold px-1">
-                    <span>Оформить доверенность</span>
+                    <span>Перейти к покупке</span>
                     <span class="icon"><img src="/svg/icons/ic_arrow_right.svg" alt=""
                                             class="svg"></span>
                 </a>
@@ -175,6 +185,29 @@
         },
         props: ['user'],
         data: () => ({
+            documents: [
+                {
+                    title: 'Договор найма',
+                    date: '12 марта 2019',
+                    statusID: 1,
+                    status: 'Изменен',
+                    showDetails: false,
+                },
+                {
+                    title: 'Пошлина',
+                    date: '12 марта 2019',
+                    statusID: 2,
+                    status: 'Одобрен',
+                    showDetails: false,
+                },
+                {
+                    title: 'Страховка',
+                    date: '12 марта 2019',
+                    statusID: 2,
+                    status: 'Одобрен',
+                    showDetails: false,
+                },
+            ],
             modalsShow: {
                 payment: false,
                 paymentSuccess: false,
@@ -228,7 +261,13 @@
 
         },
         methods: {
-
+            showHideText(status) {
+                if (status == false) {
+                    return 'Просмотреть';
+                } else {
+                    return 'Скрыть';
+                }
+            }
         }
     }
 </script>

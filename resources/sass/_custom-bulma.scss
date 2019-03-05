@@ -260,6 +260,7 @@ p,
 
         &.is-success {
             background-color: lighten($green, 3);
+
             .icon {
                 svg {
                     path {
@@ -275,6 +276,7 @@ p,
 
         &.is-danger {
             background-color: lighten($red, 3);
+
             .icon {
                 svg {
                     path {
@@ -592,12 +594,15 @@ p,
         border-right: 0 !important;
         border-top: 0 !important;
         border-bottom: 0 !important;
+
         &.is-success {
             border-left: .1875rem solid #8ABD8A;
         }
+
         &.is-warning {
             border-left: .1875rem solid $yellow;
         }
+
         &.is-danger {
             border-left: .1875rem solid $red;
         }
@@ -630,6 +635,7 @@ table.table {
             display: table-row-group;
             color: $very-dark-blue-2;
             background: $white !important;
+
             tr {
                 &:last-child {
                     td {
@@ -695,6 +701,7 @@ table.table {
 /* Progress */
 .progress {
     border-radius: $radius;
+
     &[value] {
         border-radius: $radius;
 
@@ -702,7 +709,26 @@ table.table {
             border-radius: $radius;
         }
     }
+
     &.is-small {
         height: .375rem;
+    }
+}
+
+
+/* Tabs */
+.tabs {
+    li {
+        a {
+            background-color: #EBF1F9;
+            border-top-left-radius: $radius;
+            border-top-right-radius: $radius;
+        }
+
+        &.is-active {
+            a {
+                background-color: $white;
+            }
+        }
     }
 }
