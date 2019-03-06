@@ -12,7 +12,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import inlineSVG from 'inline-svg';
 import Swiper from 'swiper';
 import VueMomentTz from 'vue-moment-tz';
-
+import VueMq from 'vue-mq'
 import VSwitch from 'v-switch-case';
 
 import Sticky from 'sticky-js';
@@ -24,6 +24,14 @@ Vue.use(VueGoogleMaps, {
         libraries: 'places', // This is required if you use the Autocomplete plugin
     },
 });
+
+Vue.use(VueMq, {
+    breakpoints: {
+        mobile: 768,
+        tablet: 1024,
+        desktop: 1215,
+    }
+})
 
 window.Vue = Vue;
 
@@ -69,6 +77,7 @@ Vue.component('business-list', require('./components/business/List.vue').default
 Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
+Vue.component('chat-widget', require('./components/chat/chat-widget.vue').default);
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/business/FormFilter.vue').default);

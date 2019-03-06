@@ -19,7 +19,7 @@
                                 <img :src="orderedService.service.icon" alt="">
                             </figure>
                             <div class="card-service_table__info">
-                                <h4>{{ orderedService.service.name }}</h4>
+                                <h4>{{ $t(orderedService.service.name) }}</h4>
                                 <time>{{ $getDateTime(orderedService.created_at)}}</time>
                             </div>
                         </div>

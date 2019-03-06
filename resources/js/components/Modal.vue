@@ -2,7 +2,7 @@
     <transition name="modal">
         <div class="modal is-active">
             <div class="modal-background" @click="$emit('close')"></div>
-            <div class="modal-card">
+            <div class="modal-card" :style="style">
                 <header class="modal-card-head">
                     <slot name="header">
                         default header
@@ -27,7 +27,21 @@
 
 <script>
     export default {
+        props: {
+            width: {
+                default: ''
+            }
+        },
         name: "modal",
+        computed: {
+            style: function(){
+                let style = {}
+                if(this.width){
+                    style.width = this.width;    
+                }
+                return style;
+            }
+        }
     }
 </script>
 

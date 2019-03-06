@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
+use App\Models\ObjectRequest;
 
 class Business extends Model implements HasMedia
 {
@@ -166,6 +167,11 @@ class Business extends Model implements HasMedia
 
     public function view_request()
     {
-        return $this->morphMany('App\Models\ViewRequest', 'object');
+        return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_VIEW);
+    }
+
+    public function doc_request()
+    {
+        return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_DOC);
     }
 }

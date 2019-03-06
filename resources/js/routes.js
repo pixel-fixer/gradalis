@@ -26,7 +26,7 @@ export default new Router({
         /* Seller */
         {
             path: '/profile/',
-            redirect: '/profile/products',
+            redirect: '/profile/purchased-services',
             name: 'profile',
             meta: {breadcrumb: {label: 'Профиль'}}
         },
@@ -46,11 +46,11 @@ export default new Router({
             component: require('./components/profile/views/settings').default,
             meta: {breadcrumb: {parent: 'profile', label: 'Настройки'}}
         },
-        {
-            path: '/profile/products',
-            component: require('./components/profile/views/products').default,
-            meta: {breadcrumb: {parent: 'profile', label: 'Продукты'}}
-        },
+        // {
+        //     path: '/profile/products',
+        //     component: require('./components/profile/views/products').default,
+        //     meta: {breadcrumb: {parent: 'profile', label: 'Продукты'}}
+        // },
         {
             path: '/profile/purchased-services',
             component: require('./components/profile/views/purchased-services').default,

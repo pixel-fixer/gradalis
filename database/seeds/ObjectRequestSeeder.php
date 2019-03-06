@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\ViewRequest;
+use App\Models\ObjectRequest;
 use Carbon\Carbon;
 use App\Models\Business\Business;
 class ObjectRequestSeeder extends Seeder
@@ -14,10 +14,10 @@ class ObjectRequestSeeder extends Seeder
     public function run()
     {
         $business = Business::whereUserId(1)->get();
-        $types = ['view', 'doc'];
+        $types = [ObjectRequest::TYPE_DOC, ObjectRequest::TYPE_VIEW];
 
         foreach($business as $b){
-            ViewRequest::create([
+            ObjectRequest::create([
                 'user_id' => 1,
                 'object_id' => $b->id,
                 'object_type' => 'App\Models\Business\Business',

@@ -14,10 +14,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property DateTime created_at
  * @property DateTime updated_at
  */
-class ViewRequest extends Model
+class ObjectRequest extends Model
 {
     protected $fillable = ['user_id', 'view_at', 'object_id', 'object_type', 'status'];
     protected $table='object_requests';
+    protected $with = ['user.city', 'object'];
+
+    const TYPE_VIEW = 1;
+    const TYPE_DOC = 2;
+
+    const STATUS_NEW = 1;
+    const STATUS_ACCEPTED = 2;
+    const STATUS_REJECTED = 3;
+    
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User');

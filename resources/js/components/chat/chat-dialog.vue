@@ -8,10 +8,16 @@
                     <input type="text" placeholder="Поиск по истории сообщений" v-model="search" @input="onMessagesSearch">
                 </div>
             </transition>
-            <div class="flex flex-between flex-center">
+            <div class="flex flex-center">
+                <div @click="$emit('show-menu')">
+                    <simple-svg class="chat__dialog__menu-icon"
+                        :filepath="'/svg/icons/ic_menu.svg'"
+                        height="16" width="16">
+                    </simple-svg>
+                </div>
                 <div class="chat__dialog__top__theme" v-html="dialog.theme"></div>
             </div>
-            <div class="chat__dialog__search-btn" @click="ui.showDialogSearch = true">
+            <div class="chat__dialog__search-btn" @click="(ui.showDialogSearch = !ui.showDialogSearch)">
                 <img src="/svg/icons/chat/chat_search.svg" alt="">
             </div>
         </div>
@@ -139,7 +145,7 @@
     export default {
         name: "chat-dialog",
         components: { 'simple-svg': SimpleSVG, Modal, ChatMessageStatus, ChatPreloader },
-        props: ['dialog', 'user'],
+        props: ['dialog', 'user', 'isCompactChat'],
         data: () => ({
             ui: {
                 showDialogSearch: false,

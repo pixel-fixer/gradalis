@@ -82,7 +82,7 @@
             @include('includes.messages')
             @yield('content')
         </main>
-
+        <chat-widget></chat-widget>
         @include('includes.footer')
     </div>
 </body>

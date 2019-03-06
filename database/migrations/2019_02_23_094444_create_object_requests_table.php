@@ -18,8 +18,8 @@ class CreateObjectRequestsTable extends Migration
             $table->integer('user_id');
             $table->dateTime('view_at');
             $table->morphs('object');
-            $table->enum('type', ['view', 'doc']);
-            $table->enum('status', ['new', 'rejected', 'accepted'])->default('new');
+            $table->integer('type');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

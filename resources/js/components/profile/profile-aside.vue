@@ -8,13 +8,6 @@
         <nav class="aside-nav">
             <ul>
                 <li class="aside-nav__item">
-                    <router-link to="/profile/products" tag="a">
-                        <img src="/svg/icons/ic_product.svg" class="svg">
-                        <span class="aside-nav__item__title has-text-weight-bold">Продукты</span>
-                        <!-- <span class="aside-nav__item__count">24</span> -->
-                    </router-link>
-                </li>
-                <li class="aside-nav__item">
                     <router-link to="/profile/purchased-services" tag="a">
                         <img src="/svg/icons/ic_cart_c.svg" class="svg">
                         <span class="aside-nav__item__title has-text-weight-bold">Купленные продукты</span>

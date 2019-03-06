@@ -1,6 +1,6 @@
 <template>
     <div class="chat-container">
-        <div class="chat-links">
+        <div class="chat-links" v-if="!isWidget">
             <a href="" class="chat-links__link" @click.prevent="openNewDialogModal('Написать в тех. поддержку', 'support')">
                 <simple-svg class="chat-links__link__icon"
                             :filepath="'/svg/icons/chat/ic_support.svg'"
@@ -17,31 +17,36 @@
                 </simple-svg><span>Написать брокеру</span>
             </a>
         </div>
-        <div :class="size" class="chat">
-            <chat-dialogs :dialogs="dialog_list"
-                          @search="onDialogsSearch"
-                          :selected="dialog_id"
-                          @new-message="onNewMessage($event)"
-                          @select="getDialog($event)"
-                          ></chat-dialogs>
-            <transition name="fade" mode="out-in">
-                <chat-dialog v-if="dialog"
-                             :dialog="dialog"
-                             @fresh="getDialog(dialog_id)"
-                             @search="getDialog(dialog_id, $event)"
-                             :user="user"
-                             :key="dialog_id"></chat-dialog>
-                <div v-else class="chat__no-dialog">
-                    <simple-svg class="chat__no-dialog__icon" :filepath="'/svg/icons/chat/ic_messages.svg'"
-                                height="64" width="64">
-                    </simple-svg>
-                    <div>
-                        <a @click.prevent="openNewDialogModal('Написать брокеру', 'broker')"  href="">Напишите брокеру</a>
-                        или напишите в
-                        <a @click.prevent="openNewDialogModal('Написать в тех. поддержку', 'support')" href="">техническую поддержку</a>
+        <div :class="[ size, {'is-compact': isCompactChat}]" class="chat">
+                <transition :name="isCompactChat ? 'slide-left' : ''">
+                    <chat-dialogs v-show="ui.showDialogs"
+                                :dialogs="dialog_list"
+                                @search="onDialogsSearch"
+                                :selected="dialog_id"
+                                @new-message="onNewMessage($event)"
+                                @select="getDialog($event)">
+                    </chat-dialogs>
+                </transition>
+                <transition name="fade" mode="out-in">
+                    <chat-dialog v-if="dialog"
+                                :dialog="dialog"
+                                @show-menu="ui.showDialogs = true" 
+                                @fresh="getDialog(dialog_id)"
+                                @search="getDialog(dialog_id, $event)"
+                                :user="user"
+                                :is-compact-chat="isCompactChat"
+                                :key="dialog_id"></chat-dialog>
+                    <div v-else class="chat__no-dialog">
+                        <simple-svg class="chat__no-dialog__icon" :filepath="'/svg/icons/chat/ic_messages.svg'"
+                                    height="64" width="64">
+                        </simple-svg>
+                        <div>
+                            <a @click.prevent="openNewDialogModal('Написать брокеру', 'broker')"  href="">Напишите брокеру</a>
+                            или напишите в
+                            <a @click.prevent="openNewDialogModal('Написать в тех. поддержку', 'support')" href="">техническую поддержку</a>
+                        </div>
                     </div>
-                </div>
-            </transition>
+                </transition>
         </div>
 
         <modal v-if="ui.modal.show" @close="ui.modal.show = false">
@@ -62,7 +67,6 @@
                 </form>
             </div>
         </modal>
-        <!-- <p>Роли пользователя: {{ user.roles.join(', ') }}</p> -->
     </div>
 </template>
 
@@ -78,7 +82,15 @@
         components: { ChatDialogs, ChatDialog, 'simple-svg': SimpleSVG, Modal },
         props: {
             user,
-            size:{default:''}
+            size: {default:''}, 
+            isWidget: {
+                default: false
+            }
+        },
+        computed: {
+            isCompactChat: function(){
+                return this.isWidget || this.$mq == 'mobile'
+            }
         },
         data: () => ({
             dialog_id: null,
@@ -100,7 +112,8 @@
                 modal: {
                     show: false,
                     header: ""
-                }
+                },
+                showDialogs: true
             }
         }),
         mounted(){
@@ -136,6 +149,9 @@
                     })
             },
             getDialog(id , search = null){
+                //Если мобильный вид, или виджет, закрываем диалоги
+                if(this.isCompactChat)
+                    this.ui.showDialogs = false;
                 this.dialog_id = id;
                 axios.get(`/chat/dialog/${id}`,
                     { params: { search: search} })
@@ -179,7 +195,23 @@
             }, 1000),
             userCanWriteToBroker(){
                 return this.user.roles.find( v => ( v == 'Продавец' || v == 'Покупатель' ) )
+            },
+            test(){
+                console.log('asdasd')
             }
         }
     }
 </script>
+
+<style>
+.slide-left-leave-active,
+.slide-left-enter-active {
+  transition: 0.3s;
+}
+.slide-left-enter {
+  transform: translate(-100%, 0);
+}
+.slide-left-leave-to {
+  transform: translate(-100%, 0);
+}
+</style>
