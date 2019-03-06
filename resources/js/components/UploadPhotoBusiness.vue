@@ -46,7 +46,7 @@
                 dropzoneOptions: {
                     url: '/business-image-upload',
                     thumbnailWidth: 40,
-                    maxFilesize: 0.5,
+                    maxFilesize: 8,
                     headers: {
                         'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
                     },

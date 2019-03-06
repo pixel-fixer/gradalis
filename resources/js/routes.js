@@ -18,6 +18,9 @@ const AccountPartnerSettings = () => import('./components/account/views/Settings
 
 const ServiceBuyCompanyLegalEntities = () => import('./components/profile/views/services/buy-company/LegalEntities');
 const ServiceBuyCompanyDocuments = () => import('./components/profile/views/services/buy-company/Documents');
+const ServiceBuyCompanyResults = () => import('./components/profile/views/services/buy-company/Results');
+const ServiceBuyCompanyForm = () => import('./components/profile/views/services/buy-company/Form');
+const ServiceRecruitingForm = () => import('./components/profile/views/services/recruiting/Form');
 
 export default new Router({
     mode: 'history',
@@ -139,14 +142,28 @@ export default new Router({
             path: '/profile/services/buy-company/documents', component: ServiceBuyCompanyDocuments,
             meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
         },
+        {
+            path: '/profile/services/buy-company/results', component: ServiceBuyCompanyResults,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        {
+            path: '/profile/services/buy-company/create', component: ServiceBuyCompanyForm,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        //---
+        {
+            path: '/profile/services/recruiting/create', component: ServiceRecruitingForm,
+            meta: {breadcrumb: {parent: 'profile', label: 'Подбор персонала'} }
+        },
+        //---
 
         /* Custom services */
         {
-            path: '/profile/user-service', component: require('./components/profile/views/user_service/user-services').default, 
+            path: '/profile/user-service', component: require('./components/profile/views/user_service/user-services').default,
             meta: {breadcrumb: {parent: 'profile', label: 'Ваши услуги'} }
         },
         {
-            path: '/profile/user-service/:id', component: require('./components/profile/views/user_service/user-service').default, 
+            path: '/profile/user-service/:id', component: require('./components/profile/views/user_service/user-service').default,
             meta: {breadcrumb: {parent: 'profile', label: 'Ваша услуга'} },
         },
 
