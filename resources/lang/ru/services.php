@@ -4,11 +4,23 @@ return [
     //region Покупка юридического лица
     'buyCompany' => [
         'title' => 'Покупка юридического лица',
+        'step2Desc' => 'Данная форма не является обязательна к заполнению. В случае если вы являетесь юридическим лицом и не желаете предоставлять свои данные. Можете перейти на следующий шаг',
+    ],
+    //endregion
+
+    ////region Подбор персонала
+    'recruiting' => [
+        'title' => 'Подбор персонала',
     ],
     //endregion
     'basicInformation' => 'Основная информация',
     'legalEntityData' => 'Данные юридического лица',
     'orderFormation' => 'Формирование заказа',
+    'tenantData' => 'Данные нанимателя',
+    'leaseSheet' => 'Лист по найму',
+    'orderService' => 'Заказать услугу',
+    'vacancy' => 'Вакансия',
+    'removeVacancy' => 'Удалить вакансию',
     'create' => [
         'surname' => [
             'title' => 'Ваша фамилия',
@@ -42,7 +54,6 @@ return [
             'title' => 'Контактный Skype',
             'placeholder' => 'Укажите Ваш Skype аккаунт',
         ],
-        'step2Desc' => 'Данная форма не является обязательна к заполнению. В случае если вы являетесь юридическим лицом и не желаете предоставлять свои данные. Можете перейти на следующий шаг',
 
         'nameLegalEntity' => [
             'title' => 'Название юридического лица',
@@ -113,6 +124,165 @@ return [
         ],
         'additionalWishes' => [
             'title' => 'Дополнительные пожелания',
+            'placeholder' => 'Укажите Ваши пожелания',
+        ],
+        'placeWork' => [
+            'title' => 'Место работы',
+        ],
+        'termEmployment' => [
+            'title' => 'Срок найма',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item'],
+                ['id' => 2, 'name' => 'Item'],
+                ['id' => 3, 'name' => 'Item'],
+            ]
+        ],
+        'fieldActivity' => [
+            'title' => 'Сфера деятельности',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item'],
+                ['id' => 2, 'name' => 'Item'],
+                ['id' => 3, 'name' => 'Item'],
+            ]
+        ],
+
+        'termsEmployment' => [
+            'title' => 'Условия найма',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'С включением в штат'],
+                ['id' => 2, 'name' => 'По лизингу'],
+            ]
+        ],
+        'availabilityPhoto' => [
+            'title' => 'Наличие фото',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Да'],
+                ['id' => 2, 'name' => 'Нет'],
+            ]
+        ],
+        'specialty' => [
+            'title' => 'Специальность',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item'],
+                ['id' => 2, 'name' => 'Item'],
+                ['id' => 3, 'name' => 'Item'],
+            ]
+        ],
+        'termContract' => [
+            'title' => 'Срок контракта',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item'],
+                ['id' => 2, 'name' => 'Item'],
+                ['id' => 3, 'name' => 'Item'],
+            ]
+        ],
+        'termContractLeasing' => [
+            'title' => 'Срок найма',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item'],
+                ['id' => 2, 'name' => 'Item'],
+                ['id' => 3, 'name' => 'Item'],
+            ]
+        ],
+        'numberEmployees' => [
+            'title' => 'Количество сотрудников',
+            'placeholder' => 'Введите количество сотрудников',
+        ],
+        'availabilityResume' => [
+            'title' => 'Наличие резюме',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Да'],
+                ['id' => 2, 'name' => 'Нет'],
+            ]
+        ],
+        'monthlySalary' => [
+            'title' => 'Ежемесячный оклад',
+        ],
+        'ratePerHour' => [
+            'title' => 'Ставка в час',
+        ],
+        'workingHoursPerMonth' => [
+            'title' => 'Отработка часов в месяц',
+        ],
+        'taxIncluded' => [
+            'title' => 'С учетом налогов',
+        ],
+        'taxAgencyIncluded' => [
+            'title' => 'С учетом доли агентства',
+        ],
+        'preferences' => [
+            'title' => 'Преференции',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'experienceInProfession' => [
+            'title' => 'Опыт работы по профессии',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'gender' => [
+            'title' => 'Пол',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'education' => [
+            'title' => 'Образование',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'scheduleWork' => [
+            'title' => 'График работы',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'typeEmployment' => [
+            'title' => 'Тип занятости',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'modeWork' => [
+            'title' => 'Режим работы',
+            'placeholder' => 'Выберите',
+            'options' => [
+                ['id' => 1, 'name' => 'Item 2'],
+                ['id' => 2, 'name' => 'Item 3'],
+                ['id' => 3, 'name' => 'Item 4'],
+            ]
+        ],
+        'wishesEmployer' => [
+            'title' => 'Пожелания нанимателя',
             'placeholder' => 'Укажите Ваши пожелания',
         ],
 

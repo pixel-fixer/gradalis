@@ -123,7 +123,7 @@
                                         <button
                                             class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
                                             @click="toggleStep(3)">
-                                            <span>{{trans('strings.step')}} 2: {{steps[3].title}}</span>
+                                            <span>{{trans('strings.step')}} 3: {{steps[3].title}}</span>
                                             <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                         </button>
                                         <button class="button is-clear is-clear_close is-size-875 h-3"
