@@ -112,7 +112,17 @@
                     </div>
                 </div>
             </div>
-
+        </section>
+        <section class="section pt-0 px-0">
+            <div class="buttons">
+                <a href="#" class="button is-size-875 h-3 is-info is-outlined has-text-weight-bold px-1">
+                    <span class="icon"><img src="/svg/icons/ic_ask_question.svg" alt="" class="svg"></span>
+                    <span>Написать менеджеру продукта</span>
+                </a>
+                <a href="#" class="button is-size-875 h-3 is-info is-outlined has-text-weight-bold px-1">
+                    <span>Оставить отзыв</span>
+                </a>
+            </div>
         </section>
 
     </div>

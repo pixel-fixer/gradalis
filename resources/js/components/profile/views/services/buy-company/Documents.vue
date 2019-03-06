@@ -8,7 +8,7 @@
                 <a href="#" class="button is-info h-3 is-size-875 has-text-weight-bold px-1">
                     <span class="icon has-flip-horizontally"><img src="/svg/icons/ic_arrow_right.svg" alt=""
                                                                   class="svg"></span>
-                    <span>Вернуться назад</span>
+                    <span>{{trans('strings.comeBack')}}</span>
                 </a>
             </div>
             <div>
@@ -100,88 +100,28 @@
             </div>
 
             <div class="buttons mt-2">
-                <a href="#" class="button is-info h-3 is-size-875 has-text-weight-bold px-1">
+                <button class="button is-info h-3 is-size-875 has-text-weight-bold px-1"
+                        @click="modalsShow.payment = true">
                     <span>Перейти к покупке</span>
                     <span class="icon"><img src="/svg/icons/ic_arrow_right.svg" alt=""
                                             class="svg"></span>
-                </a>
+                </button>
             </div>
         </section>
 
+        <modalPaymentService :show="modalsShow.payment" @close="modalsShow.payment = false" @success="paymentSuccess"></modalPaymentService>
+        <modalPaymentServiceSuccess :show="modalsShow.paymentSuccess" @close="modalsShow.paymentSuccess = false"></modalPaymentServiceSuccess>
 
-        <button class="button" @click="modalsShow.payment = true">Оплатить</button>
-        <button class="button" @click="modalsShow.paymentSuccess = true">Успешная оплата</button>
-
-
-        <modal v-if="modalsShow.payment" @close="modalsShow.payment = false">
-            <div slot="header">
-                <p class="modal-card-title mb-0">Оплата услуги</p>
-            </div>
-
-            <div slot="body">
-                <div class="content">
-                    <div class="columns is-multiline">
-                        <g-g-select-input v-model="formPayment.type" :size="'is-6'"
-                                          :label="'Предпочитаемый тип оплаты'" :searchable="true"
-                                          :options="typesPayment"
-                                          :withImg="true">
-                        </g-g-select-input>
-                        <g-g-select-input v-model="formPayment.currency" :size="'is-6'"
-                                          :placeholder="'Выберите'"
-                                          :label="'Валюта счета'" :searchable="true"
-                                          :options="typesCurrency">
-                        </g-g-select-input>
-                    </div>
-                    <hr class="hr-basic">
-                    <div class="is-size-875 has-text-centered">Общая стоимость</div>
-                    <div class="has-text-centered has-text-weight-bold is-size-5">€2000</div>
-                </div>
-            </div>
-            <div class="content w-full" slot="footer">
-                <div class="columns is-multiline">
-                    <div class="column is-12">
-                        <button
-                            class="button is-link is-fullwidth has-text-weight-bold h-3 is-size-875">
-                            Оплатить
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-        </modal>
-        <modal v-if="modalsShow.paymentSuccess" @close="modalsShow.paymentSuccess = false">
-            <div slot="header">
-
-            </div>
-
-            <div slot="body">
-                <div class="content">
-                    <div class="has-text-centered has-text-weight-bold">
-                        <img src="/svg/icons/notification/ic_thankyou.svg" alt="">
-                    </div>
-                    <div class="has-text-centered has-text-weight-bold is-size-4">Успешная оплата</div>
-                    <div class="is-size-875 has-text-centered has-text-basic">Спасибо, что пользуетесь нашими услугами
-                    </div>
-                </div>
-            </div>
-            <div slot="footer">
-
-            </div>
-
-
-        </modal>
     </div>
 </template>
 
 <script>
-    import Modal from '../../../../Modal'
-    import GGSelectInput from '../../../../form/GGSelectInput'
+    import modalPaymentService from '../modals/Payment'
+    import modalPaymentServiceSuccess from '../modals/PaymentSuccess'
 
     export default {
         components: {
-            Modal,
-            GGSelectInput
+            modalPaymentService, modalPaymentServiceSuccess
         },
         props: ['user'],
         data: () => ({
@@ -212,50 +152,6 @@
                 payment: false,
                 paymentSuccess: false,
             },
-            formPayment: {
-                type: null,
-                currency: null,
-            },
-            typesPayment: [
-                {
-                    id: 1,
-                    name: 'Item 1',
-                    img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
-                },
-                {
-                    id: 2,
-                    name: 'Item 2',
-                    img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
-                },
-                {
-                    id: 3,
-                    name: 'Item 3',
-                    img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
-                },
-                {
-                    id: 4,
-                    name: 'Item 4',
-                    img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
-                },
-            ],
-            typesCurrency: [
-                {
-                    id: 1,
-                    name: 'Item 1',
-                },
-                {
-                    id: 2,
-                    name: 'Item 2',
-                },
-                {
-                    id: 3,
-                    name: 'Item 3',
-                },
-                {
-                    id: 4,
-                    name: 'Item 4',
-                },
-            ]
         }),
         mounted() {
 
@@ -267,7 +163,11 @@
                 } else {
                     return 'Скрыть';
                 }
-            }
+            },
+            paymentSuccess() {
+                this.modalsShow.payment = false;
+                this.modalsShow.paymentSuccess = true;
+            },
         }
     }
 </script>
