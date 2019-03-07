@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Business\Business;
 use Illuminate\Http\Request;
-
+use App;
+use Session;
 class HomeController extends Controller
 {
     /**

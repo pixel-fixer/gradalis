@@ -51,7 +51,8 @@ class DatabaseSeeder extends Seeder
             'service_categories',
             'payment_transactions',
             'object_requests',
-            'counter_target'
+            'counter_target',
+            'dialog_user'
         ]);
 
         Schema::enableForeignKeyConstraints();

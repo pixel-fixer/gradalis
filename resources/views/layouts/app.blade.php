@@ -82,7 +82,9 @@
             @include('includes.messages')
             @yield('content')
         </main>
-        <chat-widget></chat-widget>
+        @auth
+            <chat-widget></chat-widget>
+        @endauth
         @include('includes.footer')
     </div>
 </body>
