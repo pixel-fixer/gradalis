@@ -14,7 +14,8 @@ class AddLocaleGeoColumnsToMessages extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            //
+            $table->string('locale')->after('read_by');
+            $table->json('ip_info')->after('locale');
         });
     }
 
@@ -26,7 +27,8 @@ class AddLocaleGeoColumnsToMessages extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            //
+            $table->dropColumn('locale');
+            $table->dropColumn('ip_info');
         });
     }
 }
