@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Chat\Dialog;
-
 class DialogSeeder extends Seeder
 {
     /**
@@ -76,5 +75,10 @@ class DialogSeeder extends Seeder
            'object_id' => 4,
            'object_type' => 'App\Models\Business\Business'
         ]);
+
+        /* Добаим первых 3-х юзеров к ко всем диалогам */ 
+        foreach(Dialog::all() as $dialog){
+            $dialog->users()->attach([1,2,3]);
+        }
     }
 }

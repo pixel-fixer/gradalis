@@ -121,4 +121,10 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     {
         $this->addMediaCollection('avatar')->singleFile();
     }
+
+    /* Диалоги чата в которые добавлен текущий пользователь */
+    public function dialogs()
+    {
+        return $this->belongsToMany('App\Models\Chat\Dialog');
+    }
 }
