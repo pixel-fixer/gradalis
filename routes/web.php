@@ -57,11 +57,11 @@ Route::get('/register/buyer', function () {
 });
 
 Route::get('/news', function () {
-    return view('news');
+    return view('news.index');
 });
 
 Route::get('/news-single', function () {
-    return view('news-single');
+    return view('news.show');
 });
 
 Route::get('/ui', function () {

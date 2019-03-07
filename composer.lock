@@ -1250,16 +1250,16 @@
         },
         {
             "name": "kabbouchi/nova-impersonate",
-            "version": "v1.0.11",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KABBOUCHI/nova-impersonate.git",
-                "reference": "03e8faa8907118a84ce40ac9b14a1847f37c051e"
+                "reference": "5b441948248eeca09afb01920cc9c246264ea8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KABBOUCHI/nova-impersonate/zipball/03e8faa8907118a84ce40ac9b14a1847f37c051e",
-                "reference": "03e8faa8907118a84ce40ac9b14a1847f37c051e",
+                "url": "https://api.github.com/repos/KABBOUCHI/nova-impersonate/zipball/5b441948248eeca09afb01920cc9c246264ea8dc",
+                "reference": "5b441948248eeca09afb01920cc9c246264ea8dc",
                 "shasum": ""
             },
             "require": {
@@ -1288,7 +1288,7 @@
                 "laravel",
                 "nova"
             ],
-            "time": "2019-02-11T12:37:43+00:00"
+            "time": "2019-03-07T08:27:33+00:00"
         },
         {
             "name": "lab404/laravel-impersonate",
@@ -2003,7 +2003,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Chat",
-                "reference": "9df5e1811aa2b67ef0b1934387889d535f2f0a6c",
+                "reference": "90b25e85945678cec6ae9b8e537a7f46ab24e90e",
                 "shasum": null
             },
             "require": {
@@ -2037,7 +2037,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Objects",
-                "reference": "5e579a4109e942cca25be81fa6b3cdd227354171",
+                "reference": "9201efca19b851b0cefda0959d0e4a0580ac5a2c",
                 "shasum": null
             },
             "require": {
@@ -2072,7 +2072,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Referrals",
-                "reference": "3857ea5005e43c2e616d6718bf936e03a43a5735",
+                "reference": "a851a5a8fde26e3ad3721aee8a94ce5fdf4d949d",
                 "shasum": null
             },
             "require": {
@@ -2107,7 +2107,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Translatable",
-                "reference": "af66ee43b32de4dc80dfef526ff88758ae687dee",
+                "reference": "1ed8bded4b89d0414651086b2572c7a5ea3a4a49",
                 "shasum": null
             },
             "require": {
@@ -3187,26 +3187,26 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da"
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/11f0b270669a55f90093d63ddb5214e0f7c279da",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/e62f8b459bee0a880c8976c316e82638a74510b5",
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.0",
+                "php": "^7.2",
                 "psr/log": "^1.0",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^8.0",
                 "symfony/var-dumper": "^4.2"
             },
             "type": "library",
@@ -3233,20 +3233,20 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2019-01-14T09:15:47+00:00"
+            "time": "2019-02-15T12:11:38+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.5.6",
+            "version": "7.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "bced3ce9ed69a1060fa978842c7fb5f87a5f7f67"
+                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/bced3ce9ed69a1060fa978842c7fb5f87a5f7f67",
-                "reference": "bced3ce9ed69a1060fa978842c7fb5f87a5f7f67",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/6ffb8a41e60f024abd35ff47e08628354d6efd0e",
+                "reference": "6ffb8a41e60f024abd35ff47e08628354d6efd0e",
                 "shasum": ""
             },
             "require": {
@@ -3257,7 +3257,7 @@
                 "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "league/flysystem": "^1.0.8",
                 "maennchen/zipstream-php": "~0.4",
-                "php": "^7.1",
+                "php": "^7.2",
                 "spatie/image": "^1.4.0",
                 "spatie/pdf-to-image": "^1.2",
                 "spatie/temporary-directory": "^1.1"
@@ -3271,8 +3271,8 @@
                 "guzzlehttp/guzzle": "^6.3",
                 "league/flysystem-aws-s3-v3": "^1.0.13",
                 "mockery/mockery": "^1.0.0",
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
-                "phpunit/phpunit": "^7.0|^8.0",
+                "orchestra/testbench": "~3.8.0",
+                "phpunit/phpunit": "^8.0",
                 "spatie/phpunit-snapshot-assertions": "^2.0"
             },
             "suggest": {
@@ -3316,20 +3316,20 @@
                 "media",
                 "spatie"
             ],
-            "time": "2019-02-27T07:27:31+00:00"
+            "time": "2019-02-27T09:31:55+00:00"
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.35.0",
+            "version": "2.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "c29eaa782e222299bd669feb37a39285c04f2ee4"
+                "reference": "0d9c442dc4361ce829986697bc436578d816a9ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/c29eaa782e222299bd669feb37a39285c04f2ee4",
-                "reference": "c29eaa782e222299bd669feb37a39285c04f2ee4",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/0d9c442dc4361ce829986697bc436578d816a9ca",
+                "reference": "0d9c442dc4361ce829986697bc436578d816a9ca",
                 "shasum": ""
             },
             "require": {
@@ -3381,7 +3381,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2019-03-01T19:52:03+00:00"
+            "time": "2019-03-05T14:58:35+00:00"
         },
         {
             "name": "spatie/laravel-translatable",
@@ -5004,16 +5004,16 @@
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "754bb4d075d7fb2b23b1a416802c0e45884df495"
+                "reference": "725711022be71c6fa2e7bc8f9648bf125986f027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/754bb4d075d7fb2b23b1a416802c0e45884df495",
-                "reference": "754bb4d075d7fb2b23b1a416802c0e45884df495",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/725711022be71c6fa2e7bc8f9648bf125986f027",
+                "reference": "725711022be71c6fa2e7bc8f9648bf125986f027",
                 "shasum": ""
             },
             "require": {
@@ -5074,7 +5074,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2019-02-18T19:54:27+00:00"
+            "time": "2019-03-05T09:24:51+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",

@@ -16,9 +16,6 @@
         font-size: 0.875rem;
         text-decoration-color: rgba($cyan, 0.3);
     }
-    .button {
-        height: 3rem;
-    }
     .checkbox {
         font-size: 0.875rem;
         color: #596C80;
@@ -28,12 +25,17 @@
 
 .container {
     &_auth {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2.5rem;
-        margin-bottom: 6rem;
+        max-width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        @media screen and (min-width: $tablet) {
+            margin-top: 2.5rem;
+            margin-bottom: 6rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

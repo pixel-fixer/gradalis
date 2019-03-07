@@ -189,6 +189,11 @@
 
                 }
 
+                .navbar-end {
+                    justify-content: flex-end;
+                    margin-left: auto;
+                }
+
                 .dropdown {
                     height: auto;
 
@@ -316,7 +321,7 @@
             width: 100%;
             background-color: $white;
             box-shadow: 0 -4px 6px 0 rgba(23, 44, 77, 0.10);
-            z-index: 5;
+            z-index: 10;
             display: flex;
             justify-content: center;
             padding: 1rem;
