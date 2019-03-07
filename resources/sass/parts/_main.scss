@@ -15,6 +15,10 @@ body {
     flex-direction: column;
 }
 
+.is-borderless {
+    border: 0 !important;
+}
+
 .button {
     &_bas-big {
         font-size: .875rem;

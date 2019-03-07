@@ -464,11 +464,18 @@ p,
     &__content {
         &-wrap {
             padding-left: 3rem;
+            & > .is-flex {
+
+            }
         }
     }
 
     &__title {
 
+    }
+
+    time {
+        opacity: 0.5;
     }
 
     > .delete {
@@ -513,7 +520,8 @@ p,
         border: 1px solid #8ABD8A;
         background-color: rgba(#36A236, 0.07);
 
-        .notification__title {
+        .notification__title,
+        time {
             color: #257025;
         }
 
@@ -540,7 +548,8 @@ p,
         border: 1px solid $yellow;
         background-color: rgba($yellow, 0.07);
 
-        .notification__title {
+        .notification__title,
+        time {
             color: $yellow;
         }
 
@@ -567,7 +576,8 @@ p,
         border: 1px solid $red;
         background-color: rgba($red, 0.07);
 
-        .notification__title {
+        .notification__title,
+        time {
             color: $red;
         }
 

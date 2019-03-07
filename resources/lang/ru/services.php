@@ -21,6 +21,9 @@ return [
     'orderService' => 'Заказать услугу',
     'vacancy' => 'Вакансия',
     'removeVacancy' => 'Удалить вакансию',
+    'addVacancy' => 'Добавить вакансию',
+    'jobVacancy' => 'Вакансия на должность',
+    'requirementsVacancy' => 'Требования к вакансии',
     'create' => [
         'surname' => [
             'title' => 'Ваша фамилия',

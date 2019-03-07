@@ -1,0 +1,36 @@
+@import '../variables';
+
+.accordion {
+    .card {
+        box-shadow: none;
+        background-color: transparent;
+        &-header {
+            box-shadow: none;
+            &-title,
+            &-icon {
+                padding: 0.75rem 1.5rem;
+            }
+            &-icon {
+                transform: rotate(180deg);
+                svg {
+                    width: 1rem;
+                    path {
+                        fill: $navbar-dropdown-arrow;
+                    }
+                }
+            }
+        }
+
+        &.box {
+            background-color: $white;
+            box-shadow: $box-shadow;
+        }
+    }
+    &-body {
+        .card {
+            &-content {
+                padding: 0;
+            }
+        }
+    }
+}
