@@ -99,3 +99,45 @@
 
     }
 }
+
+
+.vacancy-list-candidates {
+    &__item {
+        &__thumb {
+            width: 14.5rem;
+            height: 14.5rem;
+            max-width: 100%;
+
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        &__bas-info {
+            padding: 0 3rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__name {
+            line-height: normal;
+        }
+
+        &__main-info {
+            &__item {
+                &__title {
+                    line-height: 1.125rem;
+                }
+                &__val {
+                    font-size: 1.125rem;
+                }
+            }
+        }
+    }
+}

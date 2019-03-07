@@ -104,146 +104,184 @@
                         <template v-for="(item, index) in form.vacancy">
                             <div class="mb-2">
                                 <h3 class="mb-1"><span>{{trans('services.vacancy')}} №{{index+1}}</span></h3>
-                                <div class="box px-0">
-                                    <div class="px-1-5">
-                                        <div class="columns is-multiline">
-                                            <g-g-select-input v-model="item.termsEmployment"
-                                                              :label="trans('services.create.termsEmployment.title')"
-                                                              :placeholder="trans('services.create.termsEmployment.placeholder')"
-                                                              :options="trans('services.create.termsEmployment.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.availabilityPhoto"
-                                                              :label="trans('services.create.availabilityPhoto.title')"
-                                                              :placeholder="trans('services.create.availabilityPhoto.placeholder')"
-                                                              :options="trans('services.create.availabilityPhoto.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.specialty"
-                                                              :label="trans('services.create.specialty.title')"
-                                                              :placeholder="trans('services.create.specialty.placeholder')"
-                                                              :options="trans('services.create.specialty.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.availabilityResume"
-                                                              :label="trans('services.create.availabilityResume.title')"
-                                                              :placeholder="trans('services.create.availabilityResume.placeholder')"
-                                                              :options="trans('services.create.availabilityResume.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-input :size="'is-6'" v-model="item.numberEmployees"
-                                                       :label="trans('services.create.numberEmployees.title')"
-                                                       :placeholder="'10'"
-                                                       :type="'number'"></g-g-input>
+                                <div class="box is-paddingless">
+                                    <bulma-accordion class="vacancy-list-candidates"
+                                                     :slide="{
+                                                                    duration: '.3s',
+                                                                    timerFunc: 'ease'
+                                                                }">
+                                        <bulma-accordion-item>
+                                            <h4 slot="title">
+                                                {{trans('services.jobVacancy')}}
+                                            </h4>
+                                            <div slot="content">
+                                                <div class="px-1-5">
+                                                    <div class="columns is-multiline">
+                                                        <g-g-select-input v-model="item.termsEmployment"
+                                                                          :label="trans('services.create.termsEmployment.title')"
+                                                                          :placeholder="trans('services.create.termsEmployment.placeholder')"
+                                                                          :options="trans('services.create.termsEmployment.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.availabilityPhoto"
+                                                                          :label="trans('services.create.availabilityPhoto.title')"
+                                                                          :placeholder="trans('services.create.availabilityPhoto.placeholder')"
+                                                                          :options="trans('services.create.availabilityPhoto.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.specialty"
+                                                                          :label="trans('services.create.specialty.title')"
+                                                                          :placeholder="trans('services.create.specialty.placeholder')"
+                                                                          :options="trans('services.create.specialty.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.availabilityResume"
+                                                                          :label="trans('services.create.availabilityResume.title')"
+                                                                          :placeholder="trans('services.create.availabilityResume.placeholder')"
+                                                                          :options="trans('services.create.availabilityResume.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-input :size="'is-6'" v-model="item.numberEmployees"
+                                                                   :label="trans('services.create.numberEmployees.title')"
+                                                                   :placeholder="'10'"
+                                                                   :type="'number'"></g-g-input>
 
-                                            <!-- Если контракт-->
-                                            <g-g-select-input v-model="item.termContract"
-                                                              :label="trans('services.create.termContract.title')"
-                                                              :placeholder="trans('services.create.termContract.placeholder')"
-                                                              :options="trans('services.create.termContract.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-input :type="'number'" :prevText="'zł'"
-                                                       :size="'is-6'"
-                                                       v-model="item.monthlySalary"
-                                                       :label="trans('services.create.monthlySalary.title')"
-                                                       :placeholder="'1000'">
-                                            </g-g-input>
-                                            <g-g-select-input v-model="item.preferences"
-                                                              :label="trans('services.create.preferences.title')"
-                                                              :placeholder="trans('services.create.preferences.placeholder')"
-                                                              :options="trans('services.create.preferences.options')"
-                                                              :size="'is-6'"
-                                                              :multiple="true"
-                                                              :closeOnSelect="false"></g-g-select-input>
-                                            <g-g-check-box-input :margin="false" :size="'is-12'"
-                                                                 v-model="item.taxIncluded"
-                                                                 :label="trans('services.create.taxIncluded.title')"></g-g-check-box-input>
-                                            <!-- End Если контракт-->
-
-
-                                            <!-- Если лизинг-->
-                                            <g-g-select-input v-model="item.termContractLeasing"
-                                                              :label="trans('services.create.termContractLeasing.title')"
-                                                              :placeholder="trans('services.create.termContractLeasing.placeholder')"
-                                                              :options="trans('services.create.termContractLeasing.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-input :type="'number'" :prevText="'zł'"
-                                                       :size="'is-6'"
-                                                       v-model="item.ratePerHour"
-                                                       :label="trans('services.create.ratePerHour.title')"
-                                                       :placeholder="'1000'">
-                                            </g-g-input>
-                                            <g-g-input :type="'number'"
-                                                       :size="'is-6'"
-                                                       v-model="item.workingHoursPerMonth"
-                                                       :label="trans('services.create.workingHoursPerMonth.title')"
-                                                       :placeholder="'44'">
-                                            </g-g-input>
-                                            <g-g-check-box-input :margin="false" :size="'is-12'"
-                                                                 v-model="item.taxAgencyIncluded"
-                                                                 :label="trans('services.create.taxAgencyIncluded.title')"></g-g-check-box-input>
-                                            <!-- End Если лизинг-->
+                                                        <!-- Если контракт-->
+                                                        <g-g-select-input v-model="item.termContract"
+                                                                          :label="trans('services.create.termContract.title')"
+                                                                          :placeholder="trans('services.create.termContract.placeholder')"
+                                                                          :options="trans('services.create.termContract.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-input :type="'number'" :prevText="'zł'"
+                                                                   :size="'is-6'"
+                                                                   v-model="item.monthlySalary"
+                                                                   :label="trans('services.create.monthlySalary.title')"
+                                                                   :placeholder="'1000'">
+                                                        </g-g-input>
+                                                        <g-g-select-input v-model="item.preferences"
+                                                                          :label="trans('services.create.preferences.title')"
+                                                                          :placeholder="trans('services.create.preferences.placeholder')"
+                                                                          :options="trans('services.create.preferences.options')"
+                                                                          :size="'is-6'"
+                                                                          :multiple="true"
+                                                                          :closeOnSelect="false"></g-g-select-input>
+                                                        <g-g-check-box-input :margin="false" :size="'is-12'"
+                                                                             v-model="item.taxIncluded"
+                                                                             :label="trans('services.create.taxIncluded.title')"></g-g-check-box-input>
+                                                        <!-- End Если контракт-->
 
 
-                                            <div class="column is-12">
-                                                <button
-                                                    class="button h-3 is-info is-size-875 has-text-weight-bold is-outlined px-1">
-                                                    {{trans('strings.save')}}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr class="hr-basic">
-                                    <div class="px-1-5">
-                                        <div class="columns is-multiline">
-                                            <g-g-select-input v-model="item.experienceInProfession"
-                                                              :label="trans('services.create.experienceInProfession.title')"
-                                                              :placeholder="trans('services.create.experienceInProfession.placeholder')"
-                                                              :options="trans('services.create.experienceInProfession.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.gender"
-                                                              :label="trans('services.create.gender.title')"
-                                                              :placeholder="trans('services.create.gender.placeholder')"
-                                                              :options="trans('services.create.gender.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.education"
-                                                              :label="trans('services.create.education.title')"
-                                                              :placeholder="trans('services.create.education.placeholder')"
-                                                              :options="trans('services.create.education.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.scheduleWork"
-                                                              :label="trans('services.create.scheduleWork.title')"
-                                                              :placeholder="trans('services.create.scheduleWork.placeholder')"
-                                                              :options="trans('services.create.scheduleWork.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.typeEmployment"
-                                                              :label="trans('services.create.typeEmployment.title')"
-                                                              :placeholder="trans('services.create.typeEmployment.placeholder')"
-                                                              :options="trans('services.create.typeEmployment.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-select-input v-model="item.modeWork"
-                                                              :label="trans('services.create.modeWork.title')"
-                                                              :placeholder="trans('services.create.modeWork.placeholder')"
-                                                              :options="trans('services.create.modeWork.options')"
-                                                              :size="'is-6'"></g-g-select-input>
-                                            <g-g-textarea :size="'is-12'"
-                                                          v-model="item.wishesEmployer"
-                                                          :label="trans('services.create.wishesEmployer.title')"
-                                                          :placeholder="trans('services.create.wishesEmployer.placeholder')"></g-g-textarea>
+                                                        <!-- Если лизинг-->
+                                                        <g-g-select-input v-model="item.termContractLeasing"
+                                                                          :label="trans('services.create.termContractLeasing.title')"
+                                                                          :placeholder="trans('services.create.termContractLeasing.placeholder')"
+                                                                          :options="trans('services.create.termContractLeasing.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-input :type="'number'" :prevText="'zł'"
+                                                                   :size="'is-6'"
+                                                                   v-model="item.ratePerHour"
+                                                                   :label="trans('services.create.ratePerHour.title')"
+                                                                   :placeholder="'1000'">
+                                                        </g-g-input>
+                                                        <g-g-input :type="'number'"
+                                                                   :size="'is-6'"
+                                                                   v-model="item.workingHoursPerMonth"
+                                                                   :label="trans('services.create.workingHoursPerMonth.title')"
+                                                                   :placeholder="'44'">
+                                                        </g-g-input>
+                                                        <g-g-check-box-input :margin="false" :size="'is-12'"
+                                                                             v-model="item.taxAgencyIncluded"
+                                                                             :label="trans('services.create.taxAgencyIncluded.title')"></g-g-check-box-input>
+                                                        <!-- End Если лизинг-->
 
 
-                                            <div class="column is-12">
-                                                <div class="buttons">
-                                                    <button
-                                                        class="button h-3 is-info is-size-875 has-text-weight-bold is-outlined px-1">
-                                                        {{trans('strings.save')}}
-                                                    </button>
-                                                    <button
-                                                        class="button h-3 is-warning has-text-weight-bold is-outlined px-1 button-remove">
-                                                        <span class="icon">&times;</span>
-                                                        <span
-                                                            class="is-size-875">{{trans('services.removeVacancy')}}</span>
-                                                    </button>
+                                                        <div class="column is-12">
+                                                            <button
+                                                                class="button h-3 is-info is-size-875 has-text-weight-bold is-outlined px-1">
+                                                                {{trans('strings.save')}}
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </bulma-accordion-item>
+                                        <hr class="hr-basic is-marginless">
+                                        <bulma-accordion-item>
+                                            <h4 slot="title">
+                                                {{trans('services.requirementsVacancy')}}
+                                            </h4>
+                                            <div slot="content">
+                                                <div class="px-1-5">
+                                                    <div class="columns is-multiline">
+                                                        <g-g-select-input v-model="item.experienceInProfession"
+                                                                          :label="trans('services.create.experienceInProfession.title')"
+                                                                          :placeholder="trans('services.create.experienceInProfession.placeholder')"
+                                                                          :options="trans('services.create.experienceInProfession.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.gender"
+                                                                          :label="trans('services.create.gender.title')"
+                                                                          :placeholder="trans('services.create.gender.placeholder')"
+                                                                          :options="trans('services.create.gender.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.education"
+                                                                          :label="trans('services.create.education.title')"
+                                                                          :placeholder="trans('services.create.education.placeholder')"
+                                                                          :options="trans('services.create.education.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.scheduleWork"
+                                                                          :label="trans('services.create.scheduleWork.title')"
+                                                                          :placeholder="trans('services.create.scheduleWork.placeholder')"
+                                                                          :options="trans('services.create.scheduleWork.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.typeEmployment"
+                                                                          :label="trans('services.create.typeEmployment.title')"
+                                                                          :placeholder="trans('services.create.typeEmployment.placeholder')"
+                                                                          :options="trans('services.create.typeEmployment.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-select-input v-model="item.modeWork"
+                                                                          :label="trans('services.create.modeWork.title')"
+                                                                          :placeholder="trans('services.create.modeWork.placeholder')"
+                                                                          :options="trans('services.create.modeWork.options')"
+                                                                          :size="'is-6'"></g-g-select-input>
+                                                        <g-g-textarea :size="'is-12'"
+                                                                      v-model="item.wishesEmployer"
+                                                                      :label="trans('services.create.wishesEmployer.title')"
+                                                                      :placeholder="trans('services.create.wishesEmployer.placeholder')"></g-g-textarea>
+
+
+                                                        <div class="column is-12">
+                                                            <div class="buttons">
+                                                                <button
+                                                                    class="button h-3 is-info is-size-875 has-text-weight-bold is-outlined px-1">
+                                                                    {{trans('strings.save')}}
+                                                                </button>
+                                                                <button
+                                                                    class="button h-3 is-warning has-text-weight-bold is-outlined px-1 button-remove">
+                                                                    <span class="icon">&times;</span>
+                                                                    <span
+                                                                        class="is-size-875">{{trans('services.removeVacancy')}}</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </bulma-accordion-item>
+                                    </bulma-accordion>
+                                </div>
+                                <div class="buttons">
+                                    <button class="button is-info is-outlined button-add h-3 has-text-weight-bold">
+                                        <span class="icon">+</span>
+                                        <span class="is-size-875">{{trans('services.addVacancy')}}</span>
+                                    </button>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="checkbox is-info is-size-875" v-model="form.accept">
+                                            <input type="checkbox" name="remember">
+                                            <span>{{trans('strings.accept')}} <a href="#" class="has-text-info is-link">{{trans('strings.termsThisSection')}}</a></span>
+                                        </label>
                                     </div>
+                                </div>
+                                <div>
+                                    <div class="is-size-875">Общая стоимость</div>
+                                    <div class="has-text-weight-bold is-size-5">€2000</div>
                                 </div>
                             </div>
                         </template>
@@ -293,6 +331,9 @@
 
     import UploadPhotoVideo from './UploadPhotoVideo'
 
+
+    import {BulmaAccordion, BulmaAccordionItem} from "vue-bulma-accordion";
+
     export default {
         components: {
             GGInput,
@@ -301,11 +342,13 @@
             modalPaymentService,
             modalPaymentServiceSuccess,
             UploadPhotoVideo,
-            GGCheckBoxInput
+            GGCheckBoxInput,
+            BulmaAccordion,
+            BulmaAccordionItem
         },
         props: ['user'],
         data: () => ({
-            step: 2,
+            step: 1,
             steps: {
                 1: {
                     title: trans('services.tenantData'),
@@ -361,20 +404,9 @@
                         wishesEmployer: null,
                     }
                 ],
-
                 //endregion
 
-                //region Step 3
-                typeLegalEntityOrder: null,
-                typeActivityOrder: null,
-                ageLegalEntity: null,
-                activityWorkingLegalEntity: null,
-                countryOrder: null,
-                regionOrder: null,
-                cityOrder: null,
-                annualTurnover: null,
-                additionalWishes: null,
-                //endregion
+                accept: false
             },
             modalsShow: {
                 payment: false,

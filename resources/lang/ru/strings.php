@@ -19,5 +19,7 @@ return [
     'comeBack'            => 'Вернуться назад',
     'send'                => 'Отправить',
     'upTo5Pieces'         => 'до 5 штук',
+    'accept'              => 'Принимаю',
+    'termsThisSection'    => 'условия данного раздела',
 
 ];

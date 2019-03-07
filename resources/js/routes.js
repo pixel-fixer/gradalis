@@ -21,6 +21,7 @@ const ServiceBuyCompanyDocuments = () => import('./components/profile/views/serv
 const ServiceBuyCompanyResults = () => import('./components/profile/views/services/buy-company/Results');
 const ServiceBuyCompanyForm = () => import('./components/profile/views/services/buy-company/Form');
 const ServiceRecruitingForm = () => import('./components/profile/views/services/recruiting/Form');
+const ServiceRecruitingProcess = () => import('./components/profile/views/services/recruiting/Process');
 
 export default new Router({
     mode: 'history',
@@ -153,6 +154,10 @@ export default new Router({
         //---
         {
             path: '/profile/services/recruiting/create', component: ServiceRecruitingForm,
+            meta: {breadcrumb: {parent: 'profile', label: 'Подбор персонала'} }
+        },
+        {
+            path: '/profile/services/recruiting/process', component: ServiceRecruitingProcess,
             meta: {breadcrumb: {parent: 'profile', label: 'Подбор персонала'} }
         },
         //---
