@@ -1,7 +1,7 @@
 <template>
-    <div class="column is-12">
+    <div>
         <div class="add-business__objects-list">
-            <div class="add-business__objects-item px-1-5 list-wrap"
+            <div class="add-business__objects-item px-1-5 mb-2 list-wrap"
                  v-for="(object, index) in businessObjects">
                 <h3 class="mb-1">Объект №{{index + 1}}</h3>
                 <div class="columns is-multiline ">
@@ -23,20 +23,23 @@
                                :placeholder="trans('business.create.numberSquareMeters.placeholder')">
                     </g-g-input>
                     <g-g-input :type="'number'" :prevText="'zt'"
+                               :size="'is-6-tablet is-3-desktop'"
                                v-model="object.priceSquareMeters"
                                :label="trans('business.create.priceSquareMeters.title')"
                                :placeholder="trans('business.create.priceSquareMeters.placeholder')">
                     </g-g-input>
 
-                    <g-g-check-box-input :size="'is-3'" v-model="object.priceIncludingVAT"
+                    <g-g-check-box-input :size="'is-6-tablet is-3-desktop'" v-model="object.priceIncludingVAT"
                                          :label="trans('business.create.priceIncludingVAT.title')">
                     </g-g-check-box-input>
                     <template v-if="object.categoryProperty == 1">
                         <g-g-select-input v-model="object.titleDocuments"
+                                          :size="'is-6-tablet is-3-desktop'"
                                           :label="trans('business.create.titleDocuments.title')"
                                           :placeholder="trans('business.create.yn.placeholder')"
                                           :options="trans('business.create.yn.options')"></g-g-select-input>
                         <g-g-select-input v-model="object.restrictionsOperation"
+                                          :size="'is-6-tablet is-3-desktop'"
                                           :label="trans('business.create.restrictionsOperation.title')"
                                           :placeholder="trans('business.create.yn.placeholder')"
                                           :options="trans('business.create.yn.options')"></g-g-select-input>
@@ -49,10 +52,12 @@
                                           :options="trans('business.create.listRestrictionsOperation.options')"></g-g-select-input>
 
                         <g-g-select-input v-model="object.refRegisterEstate"
+                                          :size="'is-6-tablet is-3-desktop'"
                                           :label="trans('business.create.refRegisterEstate.title')"
                                           :placeholder="trans('business.create.yn.placeholder')"
                                           :options="trans('business.create.yn.options')"></g-g-select-input>
                         <g-g-select-input v-model="object.technicalPropertyPlan"
+                                          :size="'is-6-tablet is-3-desktop'"
                                           :label="trans('business.create.technicalPropertyPlan.title')"
                                           :placeholder="trans('business.create.yn.placeholder')"
                                           :options="trans('business.create.yn.options')"></g-g-select-input>
@@ -134,7 +139,8 @@
                                           :label="trans('business.create.jointPropertyEstate.title')"
                                           :placeholder="trans('business.create.yn.placeholder')"
                                           :options="trans('business.create.yn.options')"></g-g-select-input>
-                        <g-g-select-input v-if="object.jointPropertyEstate == 1" :size="'is-6'" v-model="object.typeRelationshipCoowners"
+                        <g-g-select-input v-if="object.jointPropertyEstate == 1" :size="'is-6'"
+                                          v-model="object.typeRelationshipCoowners"
                                           :label="trans('business.create.typeRelationshipCoowners.title')"
                                           :placeholder="trans('business.create.typeRelationshipCoowners.placeholder')"
                                           :options="trans('business.create.typeRelationshipCoowners.options')"></g-g-select-input>
@@ -171,10 +177,13 @@
                     </g-g-input>
 
                     <div class="column is-6">
-                        <button class="button is-warning is-outlined button-remove"
-                                @click="removeObject">
-                            &times;<span class="is-size-875">{{trans('business.create.remove_object')}}</span>
-                        </button>
+                        <div class="buttons">
+                            <button class="button is-warning is-outlined button-remove"
+                                    @click="removeObject">
+                                <span class="icon is-marginless">&times;</span>
+                                <span class="is-size-875">{{trans('business.create.remove_object')}}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,13 +192,16 @@
         <div class="px-1-5 mb-1">
             <div class="columns is-multiline">
                 <div class="column is-6">
-                    <button class="button is-info is-outlined button-add"
-                            @click="addObject">
-                        <span v-if="value.length > 0"
-                              class="is-size-875">+ {{trans('business.create.add_object')}}</span>
-                        <span v-if="value.length == 0"
-                              class="is-size-875">+ {{trans('business.create.add_new_object')}}</span>
-                    </button>
+                    <div class="buttons">
+                        <button class=" button is-info is-outlined button-add h-3"
+                                @click="addObject">
+                            <span class="icon is-marginless">+</span>
+                            <span v-if="value.length > 0"
+                                  class="is-size-875">{{trans('business.create.add_object')}}</span>
+                            <span v-if="value.length == 0"
+                                  class="is-size-875">{{trans('business.create.add_new_object')}}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

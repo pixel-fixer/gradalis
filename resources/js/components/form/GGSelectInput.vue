@@ -1,6 +1,6 @@
 <template>
     <div :class="size" class="column">
-        <div class="field">
+        <div class="field is-flex has-flex-column has-justify-content-end h-full">
             <label class="label" :class="{ 'label_req': required }"><span>{{label}}</span></label>
             <div class="control">
                 <multiselect v-model="selectedValue"

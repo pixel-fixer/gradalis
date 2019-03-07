@@ -111,6 +111,9 @@
         &-item {
             padding-bottom: 2rem;
             border-bottom: 1px solid rgba($light-grayish-blue, .5);
+            &:not(:first-child) {
+                padding-top: 2rem;
+            }
         }
     }
 

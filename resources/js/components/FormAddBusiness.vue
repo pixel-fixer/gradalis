@@ -238,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="columns is-multiline">
+                <div class="columns is-multiline ">
                     <div class="column is-12">
                         <g-g-business-object-input v-model="business.options.objects"></g-g-business-object-input>
                     </div>
@@ -293,33 +293,39 @@
                 <div class="columns is-multiline">
 
                     <g-g-select-input v-model="business.options.transferWorkSchemes"
+                                      :size="'is-3-desktop is-6-tablet'"
                                       :label="trans('business.create.transferWorkSchemes.title')"
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
                     <g-g-input :type="'number'" :prevText="trans('business.create.monthTeach.prevText')"
+                               :size="'is-3-desktop is-6-tablet'"
                                v-model="business.options.monthTeach"
                                :label="trans('business.create.monthTeach.title')"
                                :placeholder="trans('business.create.monthTeach.placeholder')">
                     </g-g-input>
 
                     <g-g-select-input v-model="business.options.readyTrainingMaterials"
+                                      :size="'is-3-desktop is-6-tablet'"
                                       :label="trans('business.create.readyTrainingMaterials.title')"
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-select-input :size="'is-3'" v-model="business.options.typeTrainingMaterials"
+                    <g-g-select-input :size="'is-3-desktop is-6-tablet'" v-model="business.options.typeTrainingMaterials"
                                       :multiple="true"
+                                      :closeOnSelect="false"
                                       :placeholder="trans('business.create.typeTrainingMaterials.placeholder')"
                                       :label="trans('business.create.typeTrainingMaterials.title')"
                                       :options="trans('business.create.typeTrainingMaterials.options')"></g-g-select-input>
 
                     <g-g-select-input v-model="business.options.transferCustomerBase"
+                                      :size="'is-3-desktop is-6-tablet'"
                                       :label="trans('business.create.transferCustomerBase.title')"
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-select-input :size="'is-3'" v-model="business.options.typeTransferCustomerBase"
+                    <g-g-select-input :size="'is-3-desktop is-6-tablet'" v-model="business.options.typeTransferCustomerBase"
                                       :multiple="true"
+                                      :closeOnSelect="false"
                                       :placeholder="trans('business.create.typeTransferCustomerBase.placeholder')"
                                       :label="trans('business.create.typeTransferCustomerBase.title')"
                                       :options="trans('business.create.typeTransferCustomerBase.options')"></g-g-select-input>

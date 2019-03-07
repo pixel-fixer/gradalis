@@ -5,11 +5,11 @@
                 <h3>{{label}}</h3>
             </div>
 
-            <g-g-select-input @input="inputChange" :size="'is-6'" v-model="form.havePurchasedServices"
+            <g-g-select-input @input="inputChange" :size="'is-6-desktop is-12-tablet'" v-model="form.havePurchasedServices"
                               :placeholder="trans('business.create.yn.placeholder')"
                               :label="trans('business.create.havePurchasedServices.title')"
                               :options="trans('business.create.yn.options')"></g-g-select-input>
-            <g-g-select-input @input="inputChange" :size="'is-6'" v-model="form.neededLicenses"
+            <g-g-select-input @input="inputChange" :size="'is-6-desktop is-12-tablet'" v-model="form.neededLicenses"
                               :label="trans('business.create.neededLicenses.title')" :searchable="true"
                               :placeholder="trans('business.create.yn.placeholder')"
                               :options="trans('business.create.yn.options')"></g-g-select-input>
@@ -20,30 +20,38 @@
                         <div class="columns is-multiline">
                             <div class="column">
                                 <div class="columns is-multiline">
-                                    <g-g-select-input @input="inputChange" :size="'is-3'" v-model="item.document"
+                                    <g-g-select-input @input="inputChange" :size="'is-3-desktop is-6-tablet'" v-model="item.document"
                                                       :placeholder="trans('business.create.certificates.document.placeholder')"
                                                       :label="trans('business.create.certificates.document.title')"
                                                       :options="trans('business.create.certificates.document.options')"></g-g-select-input>
-                                    <g-g-select-input @input="inputChange" :size="'is-3'" v-model="item.type"
+                                    <g-g-select-input @input="inputChange" :size="'is-3-desktop is-6-tablet'" v-model="item.type"
                                                       :placeholder="trans('business.create.certificates.type.placeholder')"
                                                       :label="trans('business.create.certificates.type.title')"
                                                       :options="trans('business.create.certificates.type.options')"></g-g-select-input>
-                                    <g-g-date-input @input="inputChange" :size="'is-6'" v-model="item.licensePeriod"
+                                    <g-g-date-input @input="inputChange" :size="'is-6-desktop is-12-tablet'" v-model="item.licensePeriod"
                                                     :label="trans('business.create.certificates.licensePeriod.title')"
                                                     :placeholder="trans('business.create.certificates.licensePeriod.placeholder')"></g-g-date-input>
                                 </div>
                             </div>
                             <div class="column is-narrow">
-                                <button class="button is-warning is-outlined button-remove"
-                                        v-tooltip="trans('business.create.certificates.remove')"
-                                        @click="removeCertificates(index)">
-                                    &times;<span class="is-size-875 is-hidden-tablet">{{trans('business.create.certificates.remove')}}</span>
-                                </button>
-                                <button class="button is-info is-outlined button-add"
-                                        v-tooltip="trans('business.create.certificates.add')"
-                                        @click="addCertificates">
-                                    +<span class="is-size-875 is-hidden-tablet">{{trans('business.create.certificates.add')}}</span>
-                                </button>
+                                <div class="buttons has-justify-content-center h-full">
+                                    <button class="button is-warning is-outlined button-remove"
+                                            v-tooltip="trans('business.create.certificates.remove')"
+                                            @click="removeCertificates(index)">
+                                     <span class="icon is-marginless">
+                                    &times;
+                                    </span>
+                                        <span class="is-size-875 is-hidden-tablet">{{trans('business.create.certificates.remove')}}</span>
+                                    </button>
+                                    <button class="button is-info is-outlined button-add"
+                                            v-tooltip="trans('business.create.certificates.add')"
+                                            @click="addCertificates">
+                                     <span class="icon is-marginless">
+                                    +
+                                    </span>
+                                        <span class="is-size-875 is-hidden-tablet">{{trans('business.create.certificates.add')}}</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +71,7 @@
         name: "GGCertificatesInput",
         components: {GGDateInput, GGSelectInput},
         props: {
-            value:{default:null},
+            value: {default: null},
             label: '',
             placeholder: {default: 'Поиск'}
         },
@@ -102,7 +110,7 @@
                     if (value) {
                         this.form = value;
                     } else {
-                        this.form =  {
+                        this.form = {
                             havePurchasedServices: null,
                             neededLicenses: null,
                             list: [{

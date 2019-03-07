@@ -3,9 +3,9 @@
         <div class="columns is-multiline list-wrap"
         v-for="item in list">
 
-            <g-g-input :size="'is-6'" @input="inputChange" v-model="item.address" :label="trans('business.create.address.title')" :placeholder="trans('business.create.address.placeholder')"></g-g-input>
+            <g-g-input :size="'is-12-tablet is-6-desktop'" @input="inputChange" v-model="item.address" :label="trans('business.create.address.title')" :placeholder="trans('business.create.address.placeholder')"></g-g-input>
             
-            <div class="column is-6">
+            <div class="column is-12-tablet is-6-desktop">
                 <div class="columns is-multiline">
                     <div class="column">
                         <div class="columns is-multiline">
@@ -16,16 +16,24 @@
                         </div>
                     </div>
                     <div class="column is-narrow">
-                        <button class="button is-warning is-outlined button-remove"
-                                v-tooltip="trans('business.create.remove_address')"
-                                @click="removeAddress(item)">
-                            &times;<span class="is-size-875 is-hidden-tablet">trans('business.create.remove_address')</span>
-                        </button>
-                        <button class="button is-info is-outlined button-add"
-                                v-tooltip="trans('business.create.add_address')"
-                                @click="addAddress">
-                            +<span class="is-size-875 is-hidden-tablet">trans('business.create.remove_address')</span>
-                        </button>
+                        <div class="buttons has-justify-content-center">
+                            <button class="button is-warning is-outlined button-remove"
+                                    v-tooltip="trans('business.create.remove_address')"
+                                    @click="removeAddress(item)">
+                                <span class="icon is-marginless">
+                                    &times;
+                                </span>
+                                <span class="is-size-875 is-hidden-tablet">{{ trans('business.create.remove_address') }}</span>
+                            </button>
+                            <button class="button is-info is-outlined button-add"
+                                    v-tooltip="trans('business.create.add_address')"
+                                    @click="addAddress">
+                                <span class="icon is-marginless">
+                                    +
+                                </span>
+                                <span class="is-size-875 is-hidden-tablet">{{ trans('business.create.add_address') }}</span>
+                            </button>
+                        </div>
                     </div>
 
 

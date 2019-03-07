@@ -830,18 +830,23 @@ input[type=number]::-webkit-outer-spin-button {
         .button {
             &-add,
             &-remove {
-                border-radius: 1.25rem;
-                min-width: 2.5rem;
-                height: 2.5rem;
-                margin-top: 2rem;
+                border-radius: 1.5rem;
+                min-width: 3rem;
+                height: 3rem;
                 text-align: center;
                 font-size: 1.25rem;
                 line-height: 1em;
                 padding: .5rem;
-
+                margin-top: 1rem;
+                margin-right: 0;
+                @media screen and (min-width: $tablet) {
+                    margin-top: 1.75rem;
+                }
                 span {
-                    margin-left: .5rem;
-                    margin-right: .25rem;
+                    &:not(.icon) {
+                        //margin-left: .5rem;
+                        margin-right: .25rem;
+                    }
                 }
             }
 
@@ -865,7 +870,7 @@ input[type=number]::-webkit-outer-spin-button {
                 }
 
                 &-remove {
-                    display: block;
+                    display: flex;
                 }
             }
         }

@@ -1,6 +1,6 @@
 <template>
-    <div :class="size" class="column">
-        <div :class="{'mt-2-5':margin}" class="field">
+    <div :class="size" class="column is-flex has-align-items-end">
+        <div class="field">
             <div class="control">
                 <label class="checkbox is-info is-size-875 h3">
                     <input type="checkbox" v-model="inputValue">
@@ -16,7 +16,6 @@
     export default {
         name: "GGCheckBoxInput",
         props: {
-            margin:{default:true},
             size: {default: 'is-6'},
             value: {default: null},
             label: '',

@@ -742,3 +742,10 @@ table.table {
         }
     }
 }
+
+/* Radio */
+.radio {
+    & + .radio {
+        margin-left: 0;
+    }
+}
