@@ -451,7 +451,7 @@
                                       :placeholder="trans('business.create.listTransferredProperty.placeholder')"
                                       :label="trans('business.create.listTransferredProperty.title')" :searchable="true"
                                       :options="trans('business.create.listTransferredProperty.options')"></g-g-select-input>
-                    <g-g-select-input v-model="business.options.deductionsDepreciation" :size="'is-3'"
+                    <g-g-select-input v-model="business.options.deductionsDepreciation" :size="'is-3-desktop is-6-tablet'"
                                       :placeholder="trans('business.create.deductionsDepreciation.placeholder')"
                                       :label="trans('business.create.deductionsDepreciation.title')" :searchable="true"
                                       :options="trans('business.create.deductionsDepreciation.options')"></g-g-select-input>
@@ -706,7 +706,9 @@
                                           :label="trans('business.create.additionalInformationContentSite.title')"
                                           :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-textarea>
                         </template>
-                        <g-g-social-input v-model="business.options.socNet"></g-g-social-input>
+                        <div class="column is-12">
+                            <g-g-social-input v-model="business.options.socNet"></g-g-social-input>
+                        </div>
                     </div>
                 </div>
 
@@ -769,15 +771,19 @@
                             <h3>B2C</h3>
                         </div>
                         <g-g-select-input v-model="business.options.genderTargetAudience"
+                                          :size="'is-6-desktop is-12-tablet'"
                                           :placeholder="trans('business.create.genderTargetAudience.placeholder')"
                                           :label="trans('business.create.genderTargetAudience.title')"
                                           :options="trans('business.create.genderTargetAudience.options')">
                         </g-g-select-input>
                         <g-g-from-to-input v-model="business.options.ageMen"
+                                           :size="'is-3-desktop is-4-tablet'"
                                            :label="trans('business.create.ageMenFrom.title')"></g-g-from-to-input>
                         <g-g-from-to-input v-model="business.options.ageWomen"
+                                           :size="'is-3-desktop is-4-tablet'"
                                            :label="trans('business.create.ageWomenFrom.title')"></g-g-from-to-input>
                         <g-g-from-to-input v-model="business.options.sexRatio" :textFrom="'м %'" :textTo="'ж %'"
+                                           :size="'is-3-desktop is-4-tablet'"
                                            :label="trans('business.create.sexRatio.title')"></g-g-from-to-input>
                         <g-g-select-input v-model="business.options.familyStatusClients" :size="'is-12'"
                                           :multiple="true"
@@ -785,12 +791,15 @@
                                           :label="trans('business.create.familyStatusClients.title')"
                                           :options="trans('business.create.familyStatusClients.options')"></g-g-select-input>
                         <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.aloneClients"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    :label="trans('business.create.aloneClients.title')"
                                    :placeholder="trans('business.create.aloneClients.placeholder')"></g-g-input>
                         <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.couplesClients"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    :label="trans('business.create.couplesClients.title')"
                                    :placeholder="trans('business.create.couplesClients.placeholder')"></g-g-input>
                         <g-g-input :type="'number'" :prevText="'%'"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    v-model="business.options.familiesWithChildrenClients"
                                    :label="trans('business.create.familiesWithChildrenClients.title')"
                                    :placeholder="trans('business.create.familiesWithChildrenClients.placeholder')"></g-g-input>
@@ -800,12 +809,15 @@
                                           :label="trans('business.create.socialStatusClients.title')"
                                           :options="trans('business.create.socialStatusClients.options')"></g-g-select-input>
                         <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.childClients"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    :label="trans('business.create.childClients.title')"
                                    :placeholder="trans('business.create.childClients.placeholder')"></g-g-input>
                         <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.studentsClients"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    :label="trans('business.create.studentsClients.title')"
                                    :placeholder="trans('business.create.studentsClients.placeholder')"></g-g-input>
                         <g-g-input :type="'number'" :prevText="'%'" v-model="business.options.pensionersClients"
+                                   :size="'is-3-desktop is-4-tablet'"
                                    :label="trans('business.create.pensionersClients.title')"
                                    :placeholder="trans('business.create.pensionersClients.placeholder')"></g-g-input>
                         <g-g-from-to-input :size="'is-6'"
@@ -962,8 +974,8 @@
             </div>
         </div>
         <div v-show="step === 9">
-            <div class="box step">
-                <div class="step__header">
+            <div class="box step px-0 pb-0">
+                <div class="step__header px-1-5">
                     <div class="columns is-multiline">
                         <div class="column is-6">
                             <h3><img src="/svg/icons/ic_law_form.svg" alt=""
@@ -986,7 +998,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box px-0 pb-0">
+                <div class="box px-0 pb-0 no-box-shadow">
                     <div class="px-1-5">
                         <div class="check-sell-business-myself mt-1 mb-1">
                             <div class="field">
