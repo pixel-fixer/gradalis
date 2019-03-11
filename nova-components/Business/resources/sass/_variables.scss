@@ -1,0 +1,189 @@
+//
+//// Body
+//$body-bg: #f8fafc;
+//
+//// Typography
+//$font-family-sans-serif: "Nunito", sans-serif;
+//$font-size-base: 0.9rem;
+//$line-height-base: 1.6;
+//
+//// Colors
+//$blue: #3490dc;
+//$indigo: #6574cd;
+//$purple: #9561e2;
+//$pink: #f66D9b;
+//$red: #e3342f;
+//$orange: #f6993f;
+//$yellow: #ffed4a;
+//$green: #38c172;
+//$teal: #4dc0b5;
+//$cyan: #6cb2eb;
+
+// Set your brand colors
+$mp-blue: #4857CE;
+$mp-orange: #F37C22;
+$mp-green: #36A236;
+$mp-red: #E62E2E;
+$body-bg: #F7FBFF;
+$white: #ffffff;
+$pure-blue: #0070D9;
+
+$very-dark-blue: #162540;
+$very-dark-blue-2: #1C2940;
+$mostly-dark-blue-2: #4B5A73;
+$mostly-dark-blue: #6b87a4;
+$dark-grayish-blue: #8b97a9;
+$light-grayish-blue: #B4C4DB;
+
+$input-placeholder-color: $light-grayish-blue;
+
+//Colors social
+$color-fb: #3C5A99;
+$color-ok: #ED812B;
+$color-vk: #45668E;
+
+$transition: all 0.2s ease-in-out;
+
+// Update Bulma's global variables
+$family-sans-serif: "Roboto", sans-serif;
+$body-background-color: $body-bg;
+$navbar-item-img-max-height: 3rem;
+$navbar-item-hover-background-color: rgba(0, 112, 217, 0.1);
+$navbar-item-hover-color: $very-dark-blue;
+$navbar-item-color: $very-dark-blue;
+$navbar-item-active-color: $very-dark-blue;
+$navbar-item-active-background-color: $navbar-item-hover-background-color;
+$navbar-dropdown-arrow: #8B97A9;
+
+$gap: 64px;
+$tablet: 768px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 1120px + (2 * $gap);
+$fullhd: 1120px + (2 * $gap);
+
+$navbar-height: 2.875rem;
+$navbar-divider-background-color: rgba(207, 218, 230, 0.5);
+$navbar-divider-height: 1px;
+
+$footer-background-color: $very-dark-blue-2;
+//$footer-padding: 3rem 0rem 3rem 0rem;
+
+$green: $mp-green;
+$blue: $mp-blue;
+$yellow: $mp-orange;
+$red: $mp-red;
+$cyan: $pure-blue;
+
+$body-color: $very-dark-blue-2;
+$title-size: 2.5rem;
+$title-color: $very-dark-blue-2;
+$title-line-height: initial;
+
+//$section-padding: 4rem 1.5rem;
+$section-padding: 4rem 1rem;
+$radius: 0.1875rem;
+
+$box-radius: $radius;
+$box-shadow: 0 4px 6px 0 rgba(23, 44, 77, 0.10);
+$box-padding: 1.5rem;
+
+$text: #596C80;
+$label-color: $text;
+$label-weight: 400;
+
+
+$input-color: $very-dark-blue-2;
+$input-focus-color: $title-color;
+$input-border-color: #CEDCF0;
+$input-focus-border-color: $cyan;
+$input-hover-border-color: $light-grayish-blue;
+$input-shadow: 0 1px 3px 0 rgba(54, 66, 156, 0.15);
+$input-focus-box-shadow-size: 0 1px 3px 0;
+$input-focus-box-shadow-color: rgba(54, 66, 156, 0.15);
+//$input-disabled-color: $input-placeholder-color;
+$input-disabled-background-color: rgba(#DAE4F2, 0.3);
+$input-disabled-border-color: rgba($label-color, 0.3);
+
+/* Breadcrumb */
+$breadcrumb-item-color: $cyan;
+$breadcrumb-item-active-color: $label-color;
+$breadcrumb-item-hover-color: $breadcrumb-item-active-color;
+$breadcrumb-item-padding-vertical: 0;
+$breadcrumb-item-padding-horizontal: 0.75rem;
+
+/* Button */
+$button-color: $label-color;
+$button-background-color: $body-bg;
+$button-border-color: #C5D2E5;
+$button-hover-color: $button-color;
+$button-hover-border-color: $button-border-color;
+$button-focus-color: $button-color;
+$button-focus-border-color: $button-border-color;
+$button-focus-box-shadow-size: 0;
+//$button-static-color: $input-focus-border-color;
+//$button-static-background-color: $button-background-color;
+//$button-static-border-color: $button-border-color;
+
+
+/* Pagination */
+$pagination-color: $cyan;
+$pagination-hover-color: $label-color;
+$pagination-current-color: $pagination-hover-color;
+$pagination-current-background-color: trasparent;
+$pagination-min-width: 1.25rem;
+
+/* Modal */
+$modal-content-width: 34rem;
+$modal-card-head-background-color: $white;
+$modal-card-head-border-bottom: none;
+$modal-card-foot-border-top: none;
+$modal-card-head-radius: $radius;
+$modal-card-foot-radius: $radius;
+$modal-card-title-color: $very-dark-blue-2;
+$modal-card-head-padding: 1.5rem;
+$modal-card-body-padding: 0rem 1.5rem;
+//$modal-close-right: 0;
+//$modal-close-top: 0;
+
+/* Blockquote */
+$content-blockquote-background-color: transparent;
+$content-blockquote-border-left: 0;
+$content-blockquote-padding: 1.5rem 2.25rem;
+
+/* Tag */
+$tag-background-color: rgba($label-color, 0.1);
+$tag-color: $label-color;
+
+/* Dropdown */
+$dropdown-content-shadow: $input-shadow;
+$dropdown-content-offset: 0.5rem;
+$dropdown-divider-background-color: rgba($input-border-color, 0.5);
+$dropdown-item-hover-background-color: rgba($input-border-color, 0.3);
+
+/* Notification */
+$notification-padding: 1.5rem;
+
+/* Progress */
+$progress-bar-background-color: rgba(#C5D2E5, .5);
+
+
+/* Table */
+$table-striped-row-even-background-color: rgba(#CFDAE6, 0.2);
+$table-striped-row-even-hover-background-color: rgba(#CFDAE6, 0.3);
+
+
+/* Card */
+$card-shadow: $box-shadow;
+
+/* Tabs */
+$tabs-border-bottom-width: 0;
+$tabs-toggle-link-border-width: 0;
+$tabs-link-color: $very-dark-blue-2;
+$tabs-link-hover-color: $very-dark-blue-2;
+$tabs-link-active-color: $very-dark-blue-2;
+//$tabs-boxed-link-hover-background-color: $white;
+//$tabs-boxed-link-hover-border-bottom-color
+//$tabs-boxed-link-active-background-color: $white;
+//$tabs-boxed-link-active-border-color
+//$tabs-toggle-link-hover-background-color: $white;
+//$tabs-toggle-link-active-background-color: $white;

@@ -55,11 +55,12 @@
 
                     <g-g-address-input v-model="business.options.addresses"></g-g-address-input>
 
-                    <g-g-input :size="'is-6'" v-model="business.options.nameLegalEntity"
-                               :label="trans('business.create.nameLegalEntity.title')"
-                               :placeholder="trans('business.create.nameLegalEntity.placeholder')"></g-g-input>
-                    <g-g-input :size="'is-6'" v-model="business.name" :label="trans('business.create.name.title')"
-                               :placeholder="trans('business.create.name.placeholder')"></g-g-input>
+                    <g-g-translatable-input :size="'is-6'" v-model="business.options.nameLegalEntity"
+                                            :label="trans('business.create.nameLegalEntity.title')"
+                                            :placeholder="trans('business.create.nameLegalEntity.placeholder')"></g-g-translatable-input>
+                    <g-g-translatable-input :size="'is-6'" v-model="business.name"
+                                            :label="trans('business.create.name.title')"
+                                            :placeholder="trans('business.create.name.placeholder')"></g-g-translatable-input>
                     <g-g-radio-input v-model="business.options.partBusiness"
                                      :label="trans('business.create.partBusiness.title')"
                                      :list="trans('business.create.partBusiness.list')"></g-g-radio-input>
@@ -69,27 +70,28 @@
                                :label="trans('business.create.numberShares.title')"
                                :placeholder="trans('business.create.numberShares.placeholder')"></g-g-input>
 
-                    <g-g-textarea :size="'is-12'" v-model="business.description"
-                                  :label="trans('business.create.description.title')"
-                                  :placeholder="trans('business.create.description.placeholder')"></g-g-textarea>
+                    <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.description"
+                                            :label="trans('business.create.description.title')"
+                                            :placeholder="trans('business.create.description.placeholder')"></g-g-translatable-input>
 
                     <g-g-input :type="'number'" :iconLeft="'/svg/icons/ic_calendar.svg'" :size="'is-6'"
                                v-model="business.options.yearFoundationBusiness"
                                :label="trans('business.create.yearFoundationBusiness.title')"
                                :placeholder="trans('business.create.yearFoundationBusiness.placeholder')"></g-g-input>
-                    <g-g-input :size="'is-6'" v-model="business.options.reasonSale"
-                               :label="trans('business.create.reasonSale.title')"
-                               :placeholder="trans('business.create.reasonSale.placeholder')"></g-g-input>
+
+                    <g-g-translatable-input :size="'is-6'" v-model="business.options.reasonSale"
+                                            :label="trans('business.create.reasonSale.title')"
+                                            :placeholder="trans('business.create.reasonSale.placeholder')"></g-g-translatable-input>
 
                     <div class="column is-12">
                         <upload-photo-business v-model="business.images"></upload-photo-business>
                     </div>
-                    <g-g-input :size="'is-6'" v-model="business.options.nameVideoReview"
-                               :label="trans('business.create.nameVideoReview.title')"
-                               :placeholder="trans('business.create.nameVideoReview.placeholder')"></g-g-input>
-                    <g-g-input :size="'is-6'" v-model="business.options.linkVideoReview"
-                               :label="trans('business.create.linkVideoReview.title')"
-                               :placeholder="trans('business.create.linkVideoReview.placeholder')"></g-g-input>
+                    <g-g-translatable-input :size="'is-6'" v-model="business.options.nameVideoReview"
+                                            :label="trans('business.create.nameVideoReview.title')"
+                                            :placeholder="trans('business.create.nameVideoReview.placeholder')"></g-g-translatable-input>
+                    <g-g-translatable-input :size="'is-6'" v-model="business.options.linkVideoReview"
+                                            :label="trans('business.create.linkVideoReview.title')"
+                                            :placeholder="trans('business.create.linkVideoReview.placeholder')"></g-g-translatable-input>
                     <div class="column is-12">
                         <div class="field">
                             <div class="control">
@@ -335,6 +337,7 @@
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
                     <g-g-contragents-input v-if="business.options.haveContractors == 1"
+                                           v-model="business.options.contractors"
                                            :label="trans('business.create.contractors.title')"></g-g-contragents-input>
                     <g-g-workers-input v-model="business.options.staff"
                                        :label="trans('business.create.staff.title')"></g-g-workers-input>
@@ -346,7 +349,7 @@
                         <g-g-leaving-workers-input v-model="business.options.leavingStaff"></g-g-leaving-workers-input>
                     </template>
                     <g-g-certificates-input
-
+                        v-model="business.options.certificates"
                         :label="trans('business.create.certificates.title')"></g-g-certificates-input>
                 </div>
 
@@ -578,10 +581,9 @@
                                        :label="trans('business.create.sourceYandex.title')"
                                        :placeholder="trans('business.create.sourceYandex.placeholder')"></g-g-input>
 
-                            <g-g-textarea :size="'is-12'"
-                                          v-model="business.options.additionalInformationTraffic"
-                                          :label="trans('business.create.additionalInformationTraffic.title')"
-                                          :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-textarea>
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationTraffic"
+                                                    :label="trans('business.create.additionalInformationTraffic.title')"
+                                                    :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-translatable-input>
                         </template>
 
                         <template>
@@ -653,10 +655,9 @@
                                        :label="trans('business.create.otherExpensesSite.title')"
                                        :placeholder="trans('business.create.otherExpensesSite.placeholder')"></g-g-input>
 
-                            <g-g-textarea :size="'is-12'"
-                                          v-model="business.options.additionalInformationExpensesSite"
-                                          :label="trans('business.create.additionalInformationExpensesSite.title')"
-                                          :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-textarea>
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationExpensesSite"
+                                                    :label="trans('business.create.additionalInformationExpensesSite.title')"
+                                                    :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-translatable-input>
                         </template>
 
                         <template>
@@ -701,10 +702,9 @@
                                        :label="trans('business.create.textSiteGenerated.title')"
                                        :placeholder="trans('business.create.textSiteGenerated.placeholder')"></g-g-input>
 
-                            <g-g-textarea :size="'is-12'"
-                                          v-model="business.options.additionalInformationContentSite"
-                                          :label="trans('business.create.additionalInformationContentSite.title')"
-                                          :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-textarea>
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationContentSite"
+                                                    :label="trans('business.create.additionalInformationContentSite.title')"
+                                                    :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-translatable-input>
                         </template>
                         <div class="column is-12">
                             <g-g-social-input v-model="business.options.socNet"></g-g-social-input>
@@ -1228,6 +1228,7 @@
     import GGDateInput from './form/GGDateInput';
     import GGFromToInput from './form/GGFromToInput';
     import GGInput from './form/GGInput';
+    import GGTranslatableInput from './form/GGTranslatableInput';
     import GGTextarea from './form/GGTextarea';
     import GGAddressInput from './form/GGAddressInput';
     import GGCertificatesInput from './form/GGCertificatesInput';
@@ -1244,6 +1245,7 @@
     export default {
         name: "form-add-bussines",
         components: {
+            GGTranslatableInput,
             GGTextarea,
             GGContractsInput,
             GGBusinessObjectInput,
@@ -1485,8 +1487,8 @@
             submit() {
                 console.log('submit!');
                 let vm = this;
-                if (vm.model) {
-                    axios.put('/business/' + vm.model.id, {
+                if (vm.id) {
+                    axios.put('/business/' + vm.id, {
                         business: this.business
                     }).then(responce => {
                         if (responce.data.status === 'ok') {

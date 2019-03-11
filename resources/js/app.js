@@ -16,6 +16,7 @@ import VueMq from 'vue-mq'
 import VSwitch from 'v-switch-case';
 
 import Sticky from 'sticky-js';
+
 var sticky = new Sticky('.sticky');
 
 import {BulmaAccordion, BulmaAccordionItem} from "vue-bulma-accordion";
@@ -63,10 +64,10 @@ function errorResponseHandler(error) {
     }
 
     if (error.response) {
-    //Если это не ошибка валидации ларавела
-    //TODO добавить редирект на login, если авторизация истекла
-    if(error.response.status !== 422)
-        Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
+        //Если это не ошибка валидации ларавела
+        //TODO добавить редирект на login, если авторизация истекла
+        if (error.response.status !== 422)
+            Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
     }
 }
 
@@ -76,6 +77,7 @@ window.axios.interceptors.response.use(
     errorResponseHandler
 );
 Vue.component('business-list', require('./components/business/List.vue').default);
+
 Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
@@ -121,7 +123,7 @@ Vue.mixin({
                 return item.name == role
             })
         },
-        $getDateTime(dbDateTime){
+        $getDateTime(dbDateTime) {
             var monthNames = [
                 'Январь',
                 'Февраль',
@@ -136,7 +138,7 @@ Vue.mixin({
                 'Декабрь',
             ];
 
-            var date =  new Date(Date.parse(dbDateTime.replace('-','/','g')));
+            var date = new Date(Date.parse(dbDateTime.replace('-', '/', 'g')));
             return date.getDate() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + date.getFullYear()
         }
     }
@@ -376,7 +378,7 @@ if ($dropdowns.length > 0) {
     $dropdowns.forEach(function ($el) {
         $el.addEventListener('click', function (event) {
             let target = event.target;
-            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active'))) {
+            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active')) && !target.classList.contains('is-info') && !target.classList.contains('is-clear')) {
                 return;
             } else {
                 event.stopPropagation();

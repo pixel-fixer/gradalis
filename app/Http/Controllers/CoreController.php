@@ -22,9 +22,19 @@ class CoreController extends Controller
             $strings[$name] = require $file;
         }
 
+
+        $locales = array_map(function ($value) {
+            return __($value);
+        }, config('translatable.locales'));
+
+        $data = [
+            'locales'     => $locales,
+            'indexLocale' => app()->getLocale()
+        ];
 //        return $strings});
         header('Content-Type: text/javascript');
         echo('window.i18n = ' . json_encode($strings) . ';');
+        echo('window.locales = ' . json_encode($data) . ';');
         exit();
     }
   

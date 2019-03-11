@@ -1,0 +1,61 @@
+@import '../variables';
+
+.modal {
+    transition: all .3s ease;
+    &-background {
+        background-color: rgba(#0B101A, .9);
+    }
+
+    &-content {
+
+    }
+
+    &-card {
+        max-width: 95%;
+        border-radius: $radius;
+        transition: all .3s ease;
+        &_big {
+            max-width: 95%;
+            width: 46rem;
+        }
+        &-head {
+            &_bb {
+                border-bottom: 1px solid lighten($navbar-dropdown-arrow, 30);
+            }
+        }
+
+        &-title {
+            font-weight: 900;
+        }
+
+        &-body {    
+            // overflow: visible;
+        }
+
+        &-foot {
+
+        }
+    }
+
+    .close-modal {
+        &.delete {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: $radius;
+            //border-top-right-radius: 0;
+            border-top-right-radius: $radius;
+            background-color: rgba(black, .4);
+            width: 1.5rem;
+            height: 1.5rem;
+            max-width: 1.5rem;
+            max-height: 1.5rem;
+
+            &:hover {
+                background-color: rgba(black, .8);
+            }
+        }
+    }
+}

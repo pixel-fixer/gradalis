@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="column is-8">
                                     <div class="card-object-pa__header is-flex">
-                                        <h3 class="card-object-pa__title">{{object.name}}</h3>
+                                        <h3 class="card-object-pa__title">{{object.name[$store.state.lang]}}</h3>
                                         <a :href="`/business/${object.id}/edit`" class="card-object-pa__link-edit is-size-875 is-flex link-with-icon">
                                             &nbsp;<img src="/svg/icons/ic_edit.svg" class="svg"
                                                     alt="Edit">

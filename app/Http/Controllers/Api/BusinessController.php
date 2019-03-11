@@ -75,7 +75,7 @@ class BusinessController extends Controller
     {
         $data['options'] = $business->options;
         unset($business->options);
-        $business->country_id = $business->country_id;
+
         $images               = $business->getMedia('business/' . auth()->user()->id);
         $data['images'] = [];
         foreach ($images as $i => $image) {

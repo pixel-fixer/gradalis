@@ -56,13 +56,6 @@ Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/news', function () {
-    return view('news.index');
-});
-
-Route::get('/news-single', function () {
-    return view('news.show');
-});
 
 Route::get('/ui', function () {
     return view('ui');
@@ -170,6 +163,13 @@ Route::namespace('Business')->group(function () {
 });
 //endregion
 
+//region News Routes
+Route::namespace('News')->group(function () {
+    Route::get('news', 'NewsController@index');
+    Route::get('news/{slug}', 'NewsController@show');
+});
+//endregion
+
 
 //region BROKER Routes
 Route::namespace('Broker')->prefix('broker')->group(function () {
@@ -209,6 +209,9 @@ Route::namespace('Api')
         Route::get('/offer-get/{id}', 'OfferController@get');
         Route::post('/invitation-create', 'OfferController@invitationCreate');
         //});
+
+        Route::get('/news-get', 'NewsController@get');
+        Route::get('/news-get-categories', 'NewsController@getCategories');
 
         Route::post('/business-reserve', 'BusinessController@reserve');
         Route::get('/business-get', 'BusinessController@get');

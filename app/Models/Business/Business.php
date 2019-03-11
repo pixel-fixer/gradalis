@@ -121,24 +121,24 @@ class Business extends Model implements HasMedia
         return $this->price * config('currency.PLN_BTC');
     }
 
-    public function getDescriptionAttribute($value): string
-    {
-        $data = json_decode($value, true);
-        if(!$data){
-            return $value;
-        }
-        return json_decode($value, true)[app()->getLocale()];
-    }
-
-
-    public function getNameAttribute($value): string
-    {
-        $data = json_decode($value, true);
-        if(!$data){
-            return $value;
-        }
-        return json_decode($value, true)[app()->getLocale()];
-    }
+//    public function getDescriptionAttribute($value): string
+//    {
+//        $data = json_decode($value, true);
+//        if(!$data){
+//            return $value;
+//        }
+//        return json_decode($value, true)[app()->getLocale()];
+//    }
+//
+//
+//    public function getNameAttribute($value): string
+//    {
+//        $data = json_decode($value, true);
+//        if(!$data){
+//            return $value;
+//        }
+//        return json_decode($value, true)[app()->getLocale()];
+//    }
 
     protected $casts = [
         'options' => 'array',
