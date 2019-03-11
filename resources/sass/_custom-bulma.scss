@@ -738,8 +738,15 @@ table.table {
         &.is-active {
             a {
                 background-color: $white;
+                color: $cyan;
             }
         }
+        &:hover {
+            a {
+                color: $cyan;
+            }
+        }
+
     }
 }
 

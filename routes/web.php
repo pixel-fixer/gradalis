@@ -124,6 +124,16 @@ Route::get('/help', function () {
 });
 //endregion
 
+//region Franchises
+//Route::get('/franchises', function () {
+//    return view('franchises.index');
+//});
+Route::get('/franchises/single', function () {
+    return view('franchises.show');
+});
+
+//endregion
+
 //region Services
 Route::get('/services-new', function () {
     return view('services.index');

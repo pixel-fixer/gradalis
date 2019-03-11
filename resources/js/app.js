@@ -18,6 +18,8 @@ import VSwitch from 'v-switch-case';
 import Sticky from 'sticky-js';
 var sticky = new Sticky('.sticky');
 
+import {BulmaAccordion, BulmaAccordionItem} from "vue-bulma-accordion";
+
 Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyDs7VrVm9-Uc98tTj0eYIRgNkisaLQsWlg',
@@ -168,8 +170,16 @@ Vue.component('account', require('./components/account/Account').default);
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
 
+// franchise
+const ModalBuyFranchise = () => import('./components/franchises/ModalBuyFranchise');
+Vue.component('modal-buy-franchise', ModalBuyFranchise);
+
 const app = new Vue({
     el: '#app',
+    components: {
+        BulmaAccordion,
+        BulmaAccordionItem
+    },
     data: {
         object: {
             // Переменные, используемые на странице объекта
@@ -184,7 +194,11 @@ const app = new Vue({
             showAddReviewModal: false,
             showSingleReviewModal: false,
             showSingleReviewModalID: null
-        }
+        },
+        franchise: {
+            // Переменные, используемые на странице франшизы
+            showModalBuy: false
+        },
     },
     router,
     store,
