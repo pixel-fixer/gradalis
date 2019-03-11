@@ -85,6 +85,7 @@ class BusinessController extends Controller
             $data['images'][$i]['type']  = $image->mime_type;
             $data['images'][$i]['name']  = $image->file_name;
         }
+        $business->country_id = $business->city->country_id;
         $data['business'] = $business;
 
         return $data;
