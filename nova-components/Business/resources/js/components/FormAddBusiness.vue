@@ -84,7 +84,9 @@
                                             :placeholder="trans('business.create.reasonSale.placeholder')"></g-g-translatable-input>
 
                     <div class="column is-12">
-                        <upload-photo-business v-model="business.images"></upload-photo-business>
+                        <files-upload ref="filesUpload" :remove-url="/business-image-remove/"
+                                      v-model="business.media"></files-upload>
+                        <!--<upload-photo-business v-model="business.images"></upload-photo-business>-->
                     </div>
                     <g-g-translatable-input :size="'is-6'" v-model="business.options.nameVideoReview"
                                             :label="trans('business.create.nameVideoReview.title')"
@@ -978,6 +980,7 @@
 </template>
 
 <script>
+    import FilesUpload from './FilesUpload';
     import {VStepper} from 'vue-stepper-component';
     import Multiselect from 'vue-multiselect';
     import GGSelectInput from './form/GGSelectInput';
@@ -1007,6 +1010,7 @@
     export default {
         name: "FormAddBusiness",
         components: {
+            FilesUpload,
             GGTranslatableInput,
             GGTextarea,
             GGContractsInput,
@@ -1242,23 +1246,36 @@
                 }
             },
             submit() {
+                console.log('submit!');
                 let vm = this;
+                let formData = new FormData();
+                let business = JSON.stringify(this.business);
+                let files = vm.$refs['filesUpload'].getAllFiles();
+                files.forEach(file => {
+                    formData.append("files[]", file);
+                })
+                formData.append("business", business);
                 if (vm.id) {
-                    axios.put('/nova-vendor/business/update/' + vm.id, {
-                        business: this.business
+                    formData.append('_method', 'PUT');
+                    axios.post('/business/' + vm.id, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
                     }).then(responce => {
                         if (responce.data.status === 'ok') {
-                            this.$router.replace({ name: 'business-index'});
+                            window.location.href = '/profile/objects';
                         }
                     }).catch(e => {
                         this.$swal({type: 'error', title: 'Ошибка!', text: 'Не все поля были заполнны'});
                     });
                 } else {
-                    axios.post('/nova-vendor/business/create', {
-                        business: this.business
+                    axios.post('/business', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
                     }).then(responce => {
                         if (responce.data.status === 'ok') {
-                            this.$router.replace({ name: 'business-index'});
+                            window.location.href = '/profile/objects';
                         }
                     }).catch(e => {
                         let errors = e.response.data.errors;

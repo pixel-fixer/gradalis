@@ -64,30 +64,20 @@ class HomeController extends Controller
     {
         $data['options'] = $business->options;
         unset($business->options);
-
-        $images = $business->getMedia('business/' . auth()->user()->id);
-        $data['images'] = [];
-        foreach ($images as $i => $image) {
-            $data['images'][$i]['url'] = $image->getFullUrl();
-            $data['images'][$i]['size'] = $image->size;
-            $data['images'][$i]['image'] = 'business/' . auth()->user()->id . '/' . $image->file_name;
-            $data['images'][$i]['type'] = $image->mime_type;
-            $data['images'][$i]['name'] = $image->file_name;
-        }
+        $business->getMedia('business');
         $business->country_id = $business->city->country_id;
         $data['business'] = $business;
-
         return $data;
     }
 
     public function update(Request $request, Business $business)
     {
         Schema::disableForeignKeyConstraints();
-        $businessData = $request->get('business');
+        $businessData = json_decode($request->get('business'),true);
         $business->update($businessData);
-//        foreach ($businessData['images'] as $image) {
-//            $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
-//        }
+        foreach ($request->file('files') as $file) {
+            $business->addMedia($file)->toMediaCollection('business','business');
+        }
         Schema::enableForeignKeyConstraints();
         return response()->json(['status' => 'ok']);
     }
