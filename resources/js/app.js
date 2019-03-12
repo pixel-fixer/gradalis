@@ -174,6 +174,10 @@ Vue.component('google-map', Map);
 // franchise
 const ModalBuyFranchise = () => import('./components/franchises/ModalBuyFranchise');
 Vue.component('modal-buy-franchise', ModalBuyFranchise);
+const ModalAddReviewFranchise = () => import('./components/franchises/ModalAddReview');
+Vue.component('modal-add-review-franchise', ModalAddReviewFranchise);
+const ModalShowReviewFranchise = () => import('./components/franchises/ModalShowReview');
+Vue.component('modal-show-review-franchise', ModalShowReviewFranchise);
 
 const app = new Vue({
     el: '#app',
@@ -198,7 +202,9 @@ const app = new Vue({
         },
         franchise: {
             // Переменные, используемые на странице франшизы
-            showModalBuy: false
+            showModalBuy: false,
+            showModalAddReview: false,
+            showModalShowReview: false
         },
     },
     router,

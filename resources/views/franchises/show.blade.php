@@ -599,8 +599,8 @@
                                                 оборудование, все в собственности. Для посетителей, желающих провести
                                                 время в кофейне, сделана комфортная зона на 30 посадочными мест </p>
                                             <div class="buttons">
-                                                <button
-                                                    class="button is-success px-1 has-text-weight-bold is-size-875 h-3">
+                                                <button @click="franchise.showModalBuy = true"
+                                                        class="button is-success px-1 has-text-weight-bold is-size-875 h-3">
                                                     Купить франшизу
                                                 </button>
                                             </div>
@@ -644,11 +644,12 @@
                                                                 <div slot="title" class="mb-0">
                                                                     <span
                                                                         class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
-                                                                        <span class="show">Читать статью</span>
-                                                                        <span class="hide">Закрыть статью</span>
+                                                                         <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
                                                                     </span>
                                                                 </div>
-                                                                <div slot="content" class="pb-1 franchise-news__excerpt is-size-875">
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
                                                                     <!-- Continue News -->
                                                                     <p>Кофейня находится в помещении площадью 57 кв.м.
                                                                         Удачная
@@ -697,11 +698,12 @@
                                                                 <div slot="title" class="mb-0">
                                                                     <span
                                                                         class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
-                                                                        <span class="show">Читать статью</span>
-                                                                        <span class="hide">Закрыть статью</span>
+                                                                         <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
                                                                     </span>
                                                                 </div>
-                                                                <div slot="content" class="pb-1 franchise-news__excerpt is-size-875">
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
                                                                     <!-- Continue News -->
                                                                     <p>Кофейня находится в помещении площадью 57 кв.м.
                                                                         Удачная
@@ -750,11 +752,12 @@
                                                                 <div slot="title" class="mb-0">
                                                                     <span
                                                                         class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
-                                                                        <span class="show">Читать статью</span>
-                                                                        <span class="hide">Закрыть статью</span>
+                                                                         <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
                                                                     </span>
                                                                 </div>
-                                                                <div slot="content" class="pb-1 franchise-news__excerpt is-size-875">
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
                                                                     <!-- Continue News -->
                                                                     <p>Кофейня находится в помещении площадью 57 кв.м.
                                                                         Удачная
@@ -770,13 +773,253 @@
                                                     </div>
                                                 </article>
                                             </div>
+                                            <div class="buttons">
+                                                <button @click="franchise.showModalBuy = true"
+                                                        class="button is-success px-1 has-text-weight-bold is-size-875 h-3">
+                                                    Купить франшизу
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div id="tab-open-projects" class="content-tab" style="display: none;">
-                                        <h2>Открытые проекты</h2>
+                                        <div class="content">
+                                            <h2>Открытые проекты</h2>
+                                            <div>
+                                                <article class="franchise-news">
+                                                    <div class="columns is-multiline">
+                                                        <div class="column is-6">
+                                                            <figure class="franchise-news__thumb is-marginless">
+                                                                <img
+                                                                    src="http://tourismtur.ru/wp-content/uploads/%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20Viva%20la%20Hotel/1.jpg"
+                                                                    alt="" class="has-border-radius">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="column is-6">
+                                                            <h3 class="franchise-news__title">Первая попытка
+                                                                обучения —
+                                                                Char-RNN</h3>
+                                                            <div
+                                                                class="location is-size-875 is-flex has-align-items-center">
+                                                                <div class="icon is-flex has-justify-content-start"><img
+                                                                        src="http://marketplacenew.local/svg/icons/ic_location.svg"
+                                                                        alt=""></div>
+                                                                <div>Poland, Warsaw, Zamkowy Square 1/13, 00-262</div>
+                                                            </div>
+                                                            <div class="is-size-875 has-text-dark-blue mt-1">
+                                                                <div>Zamkowy Square 1/13, 00-262 Warsaw, Poland</div>
+                                                                <div>Телефон/Факс: (22) 635 1881.</div>
+                                                                <div>E-mail: wcit.ag.mufa@supermedia.pl</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <!-- Excerpt News -->
+                                                        <p class="franchise-news__excerpt is-size-875">
+                                                            Кофейня расположена в локации с крайне высоким трафиком.
+                                                            Вокруг большое количество бизнес-центров, гостиниц и т.п.
+                                                            Первый, не цокольный этаж. Свой отдельный вход с первой
+                                                            линии. В качестве наружной рекламы, установлена яркая
+                                                            световая вывеска. Согласована с комитетом по рекламе.
+                                                        </p>
+                                                        <bulma-accordion :slide="{
+                                                                    duration: '.3s',
+                                                                    timerFunc: 'ease'
+                                                                }"
+                                                                         :dropdown="true"
+                                                                         class="accordion_flip accordion_with-excerpt px-0">
+                                                            <bulma-accordion-item>
+                                                                <div slot="title" class="mb-0">
+                                                                    <span
+                                                                        class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
+                                                                        <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
+                                                                    </span>
+                                                                </div>
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
+                                                                    <!-- Continue News -->
+                                                                    <p>Кофейня находится в помещении площадью 57 кв.м.
+                                                                        Удачная
+                                                                        планировка – максимум открытого пространства,
+                                                                        подсобное
+                                                                        помещение и уборная. Сделан дизайнерский ремонт.
+                                                                        Установлена
+                                                                        качественное новое оборудование, все в
+                                                                        собственности.</p>
+                                                                </div>
+                                                            </bulma-accordion-item>
+                                                        </bulma-accordion>
+                                                    </div>
+                                                </article>
+                                                <article class="franchise-news">
+                                                    <div class="columns is-multiline">
+                                                        <div class="column is-6">
+                                                            <figure class="franchise-news__thumb is-marginless">
+                                                                <img
+                                                                    src="http://tourismtur.ru/wp-content/uploads/%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20Viva%20la%20Hotel/1.jpg"
+                                                                    alt="" class="has-border-radius">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="column is-6">
+                                                            <h3 class="franchise-news__title">Первая попытка
+                                                                обучения —
+                                                                Char-RNN</h3>
+                                                            <div
+                                                                class="location is-size-875 is-flex has-align-items-center">
+                                                                <div class="icon is-flex has-justify-content-start"><img
+                                                                        src="http://marketplacenew.local/svg/icons/ic_location.svg"
+                                                                        alt=""></div>
+                                                                <div>Poland, Warsaw, Zamkowy Square 1/13, 00-262</div>
+                                                            </div>
+                                                            <div class="is-size-875 has-text-dark-blue mt-1">
+                                                                <div>Zamkowy Square 1/13, 00-262 Warsaw, Poland</div>
+                                                                <div>Телефон/Факс: (22) 635 1881.</div>
+                                                                <div>E-mail: wcit.ag.mufa@supermedia.pl</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <!-- Excerpt News -->
+                                                        <p class="franchise-news__excerpt is-size-875">
+                                                            Кофейня расположена в локации с крайне высоким трафиком.
+                                                            Вокруг большое количество бизнес-центров, гостиниц и т.п.
+                                                            Первый, не цокольный этаж. Свой отдельный вход с первой
+                                                            линии. В качестве наружной рекламы, установлена яркая
+                                                            световая вывеска. Согласована с комитетом по рекламе.
+                                                        </p>
+                                                        <bulma-accordion :slide="{
+                                                                    duration: '.3s',
+                                                                    timerFunc: 'ease'
+                                                                }"
+                                                                         :dropdown="true"
+                                                                         class="accordion_flip accordion_with-excerpt px-0">
+                                                            <bulma-accordion-item>
+                                                                <div slot="title" class="mb-0">
+                                                                    <span
+                                                                        class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
+                                                                        <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
+                                                                    </span>
+                                                                </div>
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
+                                                                    <!-- Continue News -->
+                                                                    <p>Кофейня находится в помещении площадью 57 кв.м.
+                                                                        Удачная
+                                                                        планировка – максимум открытого пространства,
+                                                                        подсобное
+                                                                        помещение и уборная. Сделан дизайнерский ремонт.
+                                                                        Установлена
+                                                                        качественное новое оборудование, все в
+                                                                        собственности.</p>
+                                                                </div>
+                                                            </bulma-accordion-item>
+                                                        </bulma-accordion>
+                                                    </div>
+                                                </article>
+                                                <article class="franchise-news">
+                                                    <div class="columns is-multiline">
+                                                        <div class="column is-6">
+                                                            <figure class="franchise-news__thumb is-marginless">
+                                                                <img
+                                                                    src="http://tourismtur.ru/wp-content/uploads/%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20Viva%20la%20Hotel/1.jpg"
+                                                                    alt="" class="has-border-radius">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="column is-6">
+                                                            <h3 class="franchise-news__title">Первая попытка
+                                                                обучения —
+                                                                Char-RNN</h3>
+                                                            <div
+                                                                class="location is-size-875 is-flex has-align-items-center">
+                                                                <div class="icon is-flex has-justify-content-start"><img
+                                                                        src="http://marketplacenew.local/svg/icons/ic_location.svg"
+                                                                        alt=""></div>
+                                                                <div>Poland, Warsaw, Zamkowy Square 1/13, 00-262</div>
+                                                            </div>
+                                                            <div class="is-size-875 has-text-dark-blue mt-1">
+                                                                <div>Zamkowy Square 1/13, 00-262 Warsaw, Poland</div>
+                                                                <div>Телефон/Факс: (22) 635 1881.</div>
+                                                                <div>E-mail: wcit.ag.mufa@supermedia.pl</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <!-- Excerpt News -->
+                                                        <p class="franchise-news__excerpt is-size-875">
+                                                            Кофейня расположена в локации с крайне высоким трафиком.
+                                                            Вокруг большое количество бизнес-центров, гостиниц и т.п.
+                                                            Первый, не цокольный этаж. Свой отдельный вход с первой
+                                                            линии. В качестве наружной рекламы, установлена яркая
+                                                            световая вывеска. Согласована с комитетом по рекламе.
+                                                        </p>
+                                                        <bulma-accordion :slide="{
+                                                                    duration: '.3s',
+                                                                    timerFunc: 'ease'
+                                                                }"
+                                                                         :dropdown="true"
+                                                                         class="accordion_flip accordion_with-excerpt px-0">
+                                                            <bulma-accordion-item>
+                                                                <div slot="title" class="mb-0">
+                                                                    <span
+                                                                        class="has-text-info has-text-decoration-underline has-text-weight-normal is-size-875">
+                                                                        <span class="show">Смотреть полностью</span>
+                                                                        <span class="hide">Закрыть</span>
+                                                                    </span>
+                                                                </div>
+                                                                <div slot="content"
+                                                                     class="pb-1 franchise-news__excerpt is-size-875">
+                                                                    <!-- Continue News -->
+                                                                    <p>Кофейня находится в помещении площадью 57 кв.м.
+                                                                        Удачная
+                                                                        планировка – максимум открытого пространства,
+                                                                        подсобное
+                                                                        помещение и уборная. Сделан дизайнерский ремонт.
+                                                                        Установлена
+                                                                        качественное новое оборудование, все в
+                                                                        собственности.</p>
+                                                                </div>
+                                                            </bulma-accordion-item>
+                                                        </bulma-accordion>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                            <div class="buttons">
+                                                <button @click="franchise.showModalBuy = true"
+                                                        class="button is-success px-1 has-text-weight-bold is-size-875 h-3">
+                                                    Купить франшизу
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="tab-reviews" class="content-tab" style="display: none;">
-                                        <h2>Отзывы</h2>
+                                        <div class="content">
+                                            <div class="columns is-multiline">
+                                                <div class="column">
+                                                    <h2>Отзывы о франшизе</h2>
+                                                </div>
+                                                <div class="column is-narrow">
+                                                    <div class="buttons">
+                                                        <button @click="franchise.showModalAddReview = true"
+                                                                class="button is-info px-1 has-text-weight-bold is-size-875 h-3">
+                                                            Добавить отзыв
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="is-size-875">
+                                                <p>Целесообразно собрать отзывы и определить удовлетворенность
+                                                    франчайзи, сильные и слабые стороны работы франчайзера, четкость
+                                                    обратной связи с ним, наличие поддержки, соблюдение
+                                                    обязательств, скорость решения задач, адекватность товара или
+                                                    услуги текущим тенденциям, спросу, эффективность маркетинговых
+                                                    инструментов, ценообразование и своевременность поставок</p>
+                                            </div>
+                                            <button @click="franchise.showModalShowReview = true"
+                                                    class="button is-info px-1 has-text-weight-bold is-size-875 h-3">
+                                                Просмотреть отзыв
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="column is-4">
@@ -874,6 +1117,12 @@
 
     <!-- Modal -->
     <modal-buy-franchise :show="franchise.showModalBuy" @close="franchise.showModalBuy = false"></modal-buy-franchise>
+
+    <!-- Modal -->
+    <modal-add-review-franchise :show="franchise.showModalAddReview" @close="franchise.showModalAddReview = false"></modal-add-review-franchise>
+
+    <!-- Modal -->
+    <modal-show-review-franchise :show="franchise.showModalShowReview" @close="franchise.showModalShowReview = false"></modal-show-review-franchise>
 
     <!-- Modal -->
     <div class="modal" id="modal-how-purchase">
