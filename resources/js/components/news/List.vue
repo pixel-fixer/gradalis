@@ -7,6 +7,20 @@
                 <news-card v-for="item in news" v-bind:key="item.id" :news="item"></news-card>
             </div>
         </main>
+        <!-- Pagination -->
+        <pagination :data="news" :show-disabled="true" @pagination-change-page="fetchNews">
+            <a :disabled="prevDisabled" slot="prev-nav" class="pagination-previous pagination-nav button is-link">
+                         <span class="pagination-nav__icon">
+                             <img src="/svg/icons/ic_arrow_right.svg" class="svg"/>
+                         </span>
+                <span class="pagination-nav__title">Предыдущая страница</span>
+            </a>
+            <a :disabled="nextDisabled" slot="next-nav" class="pagination-next pagination-nav button is-link">
+                <span class="pagination-nav__title">Следующая страница</span>
+                <span class="pagination-nav__icon">
+                             <img src="/svg/icons/ic_arrow_right.svg" class="svg"/></span>
+            </a>
+        </pagination>
     </div>
 </template>
 
@@ -30,7 +44,7 @@
                 nextDisabled: false
             }
         },
-        name: "BusinessList",
+        name: "NewsList",
         methods: {
             changeFilter(data) {
                 this.form = data;
@@ -40,20 +54,19 @@
                 let vm = this;
                 vm.loaderNews = true;
                 axios.get('/news-get?page=' + page, {params: vm.form}).then(responce => {
-                    if (page == 1) {
+                    if (page === 1) {
                         vm.prevDisabled = true;
                     } else {
                         vm.prevDisabled = false;
                     }
-                    if (page == responce.data.last_page) {
+                    if (page === responce.data.last_page) {
                         vm.nextDisabled = true;
                     } else {
                         vm.nextDisabled = false;
                     }
 
                     vm.loaderNews = false;
-                    vm.news = responce.data.data
-                    console.log(vm.news);
+                    vm.news = responce.data.data;
                     vm.changeHisory(page);
                 })
             },
