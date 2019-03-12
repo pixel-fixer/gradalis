@@ -150,5 +150,7 @@
 
 
 <style>
-
+.dz-details{
+    opacity:0
+}
 </style>
