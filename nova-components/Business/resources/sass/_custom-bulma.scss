@@ -430,7 +430,7 @@ p,
     &.has-addons {
         &.has-addons-fullwidth {
             .control {
-
+                margin-bottom: 0px;
                 &:not(:last-child) {
                     margin-right: 1px;
                 }

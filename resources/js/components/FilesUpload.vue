@@ -8,7 +8,7 @@
 
         <vue-dropzone ref="dropzone" id="dropzone-photo-business" :options="dropzoneOptions"
                       :useCustomSlot=true
-                      v-on:vdropzone-success="attachListener"
+                      v-on:vdropzone-file-added="attachListener"
                       v-on:vdropzone-removed-file="removeFile"
                       v-on:vdropzone-upload-progress="uploadProgress"
         >
@@ -38,17 +38,18 @@
         },
         props: {
             value: {default: null},
+            removeUrl:{default:null}
         },
         data: function () {
             return {
                 images: [],
                 initialized: false,
                 dropzoneOptions: {
-                    url: '/business-image-upload',
+                    url: '/',
                     thumbnailWidth: 40,
                     maxFilesize: 8,
                     maxFiles: 10,
-                    acceptedFiles: 'image/jpg,image/jpeg',
+                    acceptedFiles: 'application/pdf,image/jpg,image/jpeg',
                     headers: {
                         'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
                     },
@@ -94,30 +95,20 @@
                 </div>`;
             },
             attachListener: function (file, response) {
-                this.images.push(response.image);
-                this.$emit('input', this.images);
                 file.previewElement.querySelector('.dz-image').addEventListener("click", function (e) {
                     // Логика установки картинки обложкой
                     console.log('click');
-                    console.log(e);
+                    console.log(this);
                 });
 
             },
-            removeFile: function (file, error, xhr) {
-                let name = '';
-                if (file.xhr) {
-                    let image = JSON.parse(file.xhr.response).image;
-                    name = image;
-                    this.images.indexOf(image);
-                } else {
-                    let image = this.images.indexOf(file.image);
-                    name = file.image;
-                    this.images.splice(image, 1);
+            removeFile: function (file) {
+                if (this.value) {
+                    axios.post(this.removeUrl + file.model_id, {
+                        id: file.id
+                    }).then(responce => {
+                    });
                 }
-                axios.post('/business-image-remove/', {
-                    image: name
-                }).then(responce => {
-                });
 
             },
             uploadProgress: function (file, progress, bytesSent) {
@@ -132,25 +123,26 @@
             value: {
                 immediate: true,
                 handler(value) {
-                    this.images = value;
+                    if (value && value.length > 0 && !this.initialized) {
+                        value.forEach(el => {
+                            if(el.mime_type === 'application/pdf'){
+                                el.mime_type = 'image/jpg'
+                            }
+                            let file = {
+                                size: el.size,
+                                name: el.file_name,
+                                type: el.mime_type,
+                                id: el.id,
+                                model_id: el.model_id,
+                                image: el.file_name + "-thumb.jpg"
+                            };
+                            let url = '/storage/' + el.collection_name + '/' + el.id + '/conversions/' + el.name + "-thumb.jpg";
+                            this.$refs.dropzone.manuallyAddFile(file, url);
+                        });
+                        this.initialized = true;
+                    }
                 }
 
-            },
-            images: {
-                //TODO: это место вызывает ошибку
-                // immediate: true,
-                // handler(value) {
-                //     console.log(this.value);
-                //     if (this.value.length > 0 && !this.initialized) {
-                //         console.log(this.value);
-                //         value.forEach(el => {
-                //             var file = {size: el.size, name: el.name, type: el.type, image: el.image};
-                //             var url = el.url;
-                //             this.$refs.dropzone.manuallyAddFile(file, url);
-                //         });
-                //         this.initialized = true;
-                //     }
-                // }
             }
         }
     }

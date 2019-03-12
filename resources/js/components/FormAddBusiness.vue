@@ -1,5 +1,8 @@
 <template>
     <div ref="business-form" class="stepper">
+        <template v-if="loading === true">
+            <div class="loader"></div>
+        </template>
         <div class="stepper__nav is-hidden-mobile">
             <template v-for="(item, index) in steps">
                 <div class="stepper__nav__item" :class="{ 'is-active' : item.active, 'is-ok' : item.success }">
@@ -10,7 +13,6 @@
                 </div>
             </template>
         </div>
-
         <div class="stepper__nav stepper__nav_mobile is-hidden-tablet">
             <div class="stepper__nav__item is-active">
                 <div class="stepper__nav__item__button">
@@ -19,7 +21,6 @@
                 <div class="stepper__nav__item__title">{{steps[step].title}}</div>
             </div>
         </div>
-
         <div v-show="step === 1">
             <div class="box step">
                 <div class="step__header">
@@ -36,7 +37,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">{{ trans('business.create.sold_success')}}</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="4" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="4"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">4.00%</div>
                                     </div>
                                 </div>
@@ -47,7 +49,8 @@
 
                 <div class="columns is-multiline">
                     <g-g-category-button v-model="business.category_id" :size="'is-6'"></g-g-category-button>
-                    <g-g-location-select-input v-model="business.country_id" :size="'is-6'"></g-g-location-select-input>
+                    <g-g-location-select-input v-model="business.country_id"
+                                               :size="'is-6'"></g-g-location-select-input>
                     <g-g-location-select-input :size="'is-6'" v-model="business.district_id"
                                                :type="'region'"></g-g-location-select-input>
                     <g-g-location-select-input :type="'city'" v-model="business.city_id"
@@ -84,7 +87,9 @@
                                             :placeholder="trans('business.create.reasonSale.placeholder')"></g-g-translatable-input>
 
                     <div class="column is-12">
-                        <upload-photo-business v-model="business.images"></upload-photo-business>
+                        <files-upload ref="filesUpload" :remove-url="/business-image-remove/"
+                                      v-model="business.media"></files-upload>
+                        <!--<upload-photo-business v-model="business.images"></upload-photo-business>-->
                     </div>
                     <g-g-translatable-input :size="'is-6'" v-model="business.options.nameVideoReview"
                                             :label="trans('business.create.nameVideoReview.title')"
@@ -97,8 +102,10 @@
                             <div class="control">
                                 <label class="checkbox is-info is-size-875" v-model="accept.value">
                                     <input type="checkbox" name="remember">
-                                    <span>Принимаю <a href="#" class="has-text-info is-link">условия данного раздела</a> и <a
-                                        href="#" class="has-text-info is-link">договора о неразглашении (NDA)</a></span>
+                                    <span>Принимаю <a href="#"
+                                                      class="has-text-info is-link">условия данного раздела</a> и <a
+                                        href="#"
+                                        class="has-text-info is-link">договора о неразглашении (NDA)</a></span>
                                 </label>
                             </div>
                         </div>
@@ -140,7 +147,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="10" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="10"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">9.50%</div>
                                     </div>
                                 </div>
@@ -203,7 +211,8 @@
                                     <span>Шаг 3: Информация о недвижимости</span>
                                     <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                 </button>
-                                <button class="button is-clear is-clear_close is-size-875 h-3" @click="toggleStep(1)">
+                                <button class="button is-clear is-clear_close is-size-875 h-3"
+                                        @click="toggleStep(1)">
                                     <span class="has-text-decoration-underline">Вернуться назад</span>
                                 </button>
                             </div>
@@ -251,8 +260,9 @@
                         <div class="columns is-multiline">
                             <div class="column is-12">
                                 <div class="buttons">
-                                    <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
-                                            @click="toggleStep(4)">
+                                    <button
+                                        class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(4)">
                                         <span>Шаг 4: Бизнес процессы</span>
                                         <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                     </button>
@@ -272,7 +282,8 @@
                 <div class="step__header">
                     <div class="columns is-multiline">
                         <div class="column is-6">
-                            <h3><img src="/svg/icons/ic_process.svg" alt="" class="svg"><span>{{steps[4].title}}</span>
+                            <h3><img src="/svg/icons/ic_process.svg" alt=""
+                                     class="svg"><span>{{steps[4].title}}</span>
                             </h3>
                         </div>
                         <div class="column is-6">
@@ -283,7 +294,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="22" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="22"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">22.07%</div>
                                     </div>
                                 </div>
@@ -312,7 +324,8 @@
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-select-input :size="'is-3-desktop is-6-tablet'" v-model="business.options.typeTrainingMaterials"
+                    <g-g-select-input :size="'is-3-desktop is-6-tablet'"
+                                      v-model="business.options.typeTrainingMaterials"
                                       :multiple="true"
                                       :closeOnSelect="false"
                                       :placeholder="trans('business.create.typeTrainingMaterials.placeholder')"
@@ -325,7 +338,8 @@
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
 
-                    <g-g-select-input :size="'is-3-desktop is-6-tablet'" v-model="business.options.typeTransferCustomerBase"
+                    <g-g-select-input :size="'is-3-desktop is-6-tablet'"
+                                      v-model="business.options.typeTransferCustomerBase"
                                       :multiple="true"
                                       :closeOnSelect="false"
                                       :placeholder="trans('business.create.typeTransferCustomerBase.placeholder')"
@@ -346,7 +360,8 @@
                                       :placeholder="trans('business.create.yn.placeholder')"
                                       :options="trans('business.create.yn.options')"></g-g-select-input>
                     <template v-if="business.options.willStaffLeave == 1">
-                        <g-g-leaving-workers-input v-model="business.options.leavingStaff"></g-g-leaving-workers-input>
+                        <g-g-leaving-workers-input
+                            v-model="business.options.leavingStaff"></g-g-leaving-workers-input>
                     </template>
                     <g-g-certificates-input
                         v-model="business.options.certificates"
@@ -389,7 +404,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="31" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="31"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">31.40%</div>
                                     </div>
                                 </div>
@@ -452,11 +468,14 @@
                     <g-g-select-input v-model="business.options.listTransferredProperty" :size="'is-6'"
                                       :multiple="true"
                                       :placeholder="trans('business.create.listTransferredProperty.placeholder')"
-                                      :label="trans('business.create.listTransferredProperty.title')" :searchable="true"
+                                      :label="trans('business.create.listTransferredProperty.title')"
+                                      :searchable="true"
                                       :options="trans('business.create.listTransferredProperty.options')"></g-g-select-input>
-                    <g-g-select-input v-model="business.options.deductionsDepreciation" :size="'is-3-desktop is-6-tablet'"
+                    <g-g-select-input v-model="business.options.deductionsDepreciation"
+                                      :size="'is-3-desktop is-6-tablet'"
                                       :placeholder="trans('business.create.deductionsDepreciation.placeholder')"
-                                      :label="trans('business.create.deductionsDepreciation.title')" :searchable="true"
+                                      :label="trans('business.create.deductionsDepreciation.title')"
+                                      :searchable="true"
                                       :options="trans('business.create.deductionsDepreciation.options')"></g-g-select-input>
 
                     <g-g-input v-if="business.options.deductionsDepreciation == 1" :type="'number'" :prevText="'%'"
@@ -474,7 +493,8 @@
                                     <span>Шаг 6: Нематериальные Активы</span>
                                     <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                 </button>
-                                <button class="button is-clear is-clear_close is-size-875 h-3" @click="toggleStep(4)">
+                                <button class="button is-clear is-clear_close is-size-875 h-3"
+                                        @click="toggleStep(4)">
                                     <span class="has-text-decoration-underline">Вернуться назад</span>
                                 </button>
                             </div>
@@ -566,7 +586,8 @@
 
                             <g-g-select-input :size="'is-6'" v-model="business.options.natureTraffic"
                                               :placeholder="trans('business.create.natureTraffic.placeholder')"
-                                              :label="trans('business.create.natureTraffic.title')" :searchable="true"
+                                              :label="trans('business.create.natureTraffic.title')"
+                                              :searchable="true"
                                               :options="trans('business.create.natureTraffic.options')"></g-g-select-input>
                             <g-g-select-input :size="'is-6'" v-model="business.options.sourcesTraffic"
                                               :multiple="true"
@@ -581,7 +602,8 @@
                                        :label="trans('business.create.sourceYandex.title')"
                                        :placeholder="trans('business.create.sourceYandex.placeholder')"></g-g-input>
 
-                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationTraffic"
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'"
+                                                    v-model="business.options.additionalInformationTraffic"
                                                     :label="trans('business.create.additionalInformationTraffic.title')"
                                                     :placeholder="trans('business.create.additionalInformationTraffic.placeholder')"></g-g-translatable-input>
                         </template>
@@ -655,7 +677,8 @@
                                        :label="trans('business.create.otherExpensesSite.title')"
                                        :placeholder="trans('business.create.otherExpensesSite.placeholder')"></g-g-input>
 
-                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationExpensesSite"
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'"
+                                                    v-model="business.options.additionalInformationExpensesSite"
                                                     :label="trans('business.create.additionalInformationExpensesSite.title')"
                                                     :placeholder="trans('business.create.additionalInformationExpensesSite.placeholder')"></g-g-translatable-input>
                         </template>
@@ -702,7 +725,8 @@
                                        :label="trans('business.create.textSiteGenerated.title')"
                                        :placeholder="trans('business.create.textSiteGenerated.placeholder')"></g-g-input>
 
-                            <g-g-translatable-input :type="'textarea'" :size="'is-12'" v-model="business.options.additionalInformationContentSite"
+                            <g-g-translatable-input :type="'textarea'" :size="'is-12'"
+                                                    v-model="business.options.additionalInformationContentSite"
                                                     :label="trans('business.create.additionalInformationContentSite.title')"
                                                     :placeholder="trans('business.create.additionalInformationContentSite.placeholder')"></g-g-translatable-input>
                         </template>
@@ -719,8 +743,9 @@
                         <div class="columns is-multiline">
                             <div class="column is-12">
                                 <div class="buttons">
-                                    <button class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
-                                            @click="toggleStep(7)">
+                                    <button
+                                        class="button button-next is-info is-size-875 h-3 has-text-weight-bold px-1"
+                                        @click="toggleStep(7)">
                                         <span>Шаг 7: Целевая аудитория</span>
                                         <img src="/svg/icons/ic_arrow_right.svg" alt="" class="svg">
                                     </button>
@@ -752,7 +777,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="52" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="52"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">51.96%</div>
                                     </div>
                                 </div>
@@ -907,7 +933,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="65" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="65"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">65.07%</div>
                                     </div>
                                 </div>
@@ -990,7 +1017,8 @@
                                 <div class="add-business__progress__info">
                                     <div class="is-size-875">Успех на продажу бизнеса</div>
                                     <div class="progress-wrap is-flex">
-                                        <progress class="progress is-success is-small" value="65" max="100"></progress>
+                                        <progress class="progress is-success is-small" value="65"
+                                                  max="100"></progress>
                                         <div class="has-text-success has-text-weight-bold percent">65.07%</div>
                                     </div>
                                 </div>
@@ -1018,7 +1046,8 @@
                         </div>
                         <div class="content">
                             <h3 class="mb-1">Способы размещения объявления до 50 дней</h3>
-                            <p>Публикация вашего бизнеса на проекте абсолютно бесплатна. Мы отправим ваше объявление на
+                            <p>Публикация вашего бизнеса на проекте абсолютно бесплатна. Мы отправим ваше объявление
+                                на
                                 модерацию и после проверки опубликуем его в каталоге бизнесов.</p>
                         </div>
 
@@ -1034,7 +1063,8 @@
                                                 <div class="content">
                                                     <h4>Обычная продажа</h4>
                                                     <div class="text is-size-875">62% на успех в продаже</div>
-                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                    <div
+                                                        class="ways-place-ads__item__info__price has-text-weight-bold">
                                                         Бесплатно
                                                     </div>
                                                 </div>
@@ -1059,7 +1089,8 @@
                                                     <div class="has-text-success is-size-875"><b>+19%</b> к успеху
                                                         продажи бизнеса
                                                     </div>
-                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                    <div
+                                                        class="ways-place-ads__item__info__price has-text-weight-bold">
                                                         €15 за 50 дней
                                                     </div>
                                                 </div>
@@ -1073,7 +1104,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1089,7 +1121,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1115,7 +1148,8 @@
                                                     <div class="has-text-success is-size-875"><b>+88%</b> к успеху
                                                         продажи бизнеса
                                                     </div>
-                                                    <div class="ways-place-ads__item__info__price has-text-weight-bold">
+                                                    <div
+                                                        class="ways-place-ads__item__info__price has-text-weight-bold">
                                                         €50 за 50 дней
                                                     </div>
                                                 </div>
@@ -1129,7 +1163,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1145,7 +1180,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1161,7 +1197,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1177,7 +1214,8 @@
                                                             src="http://marketplacenew.local/svg/icons/services/ic_translate.svg"
                                                             alt="">
                                                         </figure>
-                                                        <h4 class="card-service__title">Перевод документов</h4></div>
+                                                        <h4 class="card-service__title">Перевод документов</h4>
+                                                    </div>
                                                     <div class="card-service__info">
                                                         <div class="card-service__excerpt is-size-875">
                                                             Наши специалисты переведут документы на английский и
@@ -1203,7 +1241,8 @@
                             </div>
                         </div>
                         <div>
-                            <button @click="submit" class="button is-warning h-3 is-size-875 has-text-weight-bold px-1">
+                            <button @click="submit"
+                                    class="button is-warning h-3 is-size-875 has-text-weight-bold px-1">
                                 Продать бизнес {{package}}
                             </button>
                         </div>
@@ -1216,6 +1255,7 @@
 </template>
 
 <script>
+    import FilesUpload from './FilesUpload';
     import {VStepper} from 'vue-stepper-component';
     import Multiselect from 'vue-multiselect';
     import GGSelectInput from './form/GGSelectInput';
@@ -1245,6 +1285,7 @@
     export default {
         name: "form-add-bussines",
         components: {
+            FilesUpload,
             GGTranslatableInput,
             GGTextarea,
             GGContractsInput,
@@ -1273,6 +1314,7 @@
                 economy: 0,
                 price: 0,
                 package: '',
+                loading: true,
                 business: {
                     category_id: null,
                     country_id: null,
@@ -1284,7 +1326,7 @@
                     revenue: null,
                     profitability: null,
                     district_id: null,
-                    images: [],
+                    media: null,
                     options: {
                         //region Step 1
                         addresses: null,
@@ -1487,9 +1529,19 @@
             submit() {
                 console.log('submit!');
                 let vm = this;
+                let formData = new FormData();
+                let business = JSON.stringify(this.business);
+                let files = vm.$refs['filesUpload'].getAllFiles();
+                files.forEach(file => {
+                    formData.append("files[]", file);
+                })
+                formData.append("business", business);
                 if (vm.id) {
-                    axios.put('/business/' + vm.id, {
-                        business: this.business
+                    formData.append('_method', 'PUT');
+                    axios.post('/business/' + vm.id, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
                     }).then(responce => {
                         if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
@@ -1498,8 +1550,10 @@
                         this.$swal({type: 'error', title: 'Ошибка!', text: 'Не все поля были заполнны'});
                     });
                 } else {
-                    axios.post('/business', {
-                        business: this.business
+                    axios.post('/business', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
                     }).then(responce => {
                         if (responce.data.status === 'ok') {
                             window.location.href = '/profile/objects';
@@ -1520,18 +1574,24 @@
                 this.steps[index].active = true;
             },
             fetchBusiness() {
+                let vm = this;
                 axios.get('/business-get-categories').then(responce => {
                     vm.categories = responce.data;
                 })
             }
         },
-        mounted() {
-            if (this.id) {
-                axios.get('/business-get-by-id/' + this.id).then(responce => {
-                    this.business = {...this.business, ...responce.data.business};
-                    this.business.options = {...this.business.options, ...responce.data.options};
-                    this.business.images = responce.data.images;
+        created() {
+            let vm = this;
+            if (vm.id) {
+                axios.get('/business-get-by-id/' + vm.id).then(responce => {
+                    vm.business = {...vm.business, ...responce.data.business};
+                    vm.business.options = {...vm.business.options, ...responce.data.options};
+                    vm.$nextTick(() => {
+                        vm.loading = false
+                    })
                 })
+            } else {
+                vm.loading = false
             }
         }
     }

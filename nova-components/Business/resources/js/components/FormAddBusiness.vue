@@ -1308,7 +1308,8 @@
         -webkit-box-shadow: none;
     }
 
-    .field.has-addons .control:not(:last-child) {
-        height: 3em;
+    .has-addons .control:not(:last-child) {
+        height: 3em !important;
+        margin-bottom: 0em;
     }
 </style>

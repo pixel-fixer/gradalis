@@ -6,20 +6,29 @@
                 :class="{ 'text-60': localeKey !== currentLocale, 'text-primary border-b-2': localeKey === currentLocale }"
                 :key="`a-${localeKey}`"
                 v-for="(locale, localeKey) in locales.locales"
-                @click="changeTab(localeKey)"
+                @click="changeTab(localeKey,false)"
+            >
+                {{ locale }}
+            </a>
+            <a
+                class="inline-block font-bold cursor-pointer mr-2 animate-text-color select-none border-primary"
+                :class="{ 'text-60': localeKey !== currentLocale, 'text-primary border-b-2': localeKey === currentLocale }"
+                :key="`a-${localeKey}`"
+                v-for="(locale, localeKey) in locales.view_locales"
+                @click="changeTab(localeKey,true)"
             >
                 {{ locale }}
             </a>
         </label>
-        <div class="field">
+        <div class="field translatable-field">
 
-            <div
-                class="control">
+            <div class="control">
 
                 <input v-if="type == 'text'"
                        type="text"
                        class="input is-size-875"
                        :id="label"
+                       :disabled="disabled"
                        @input="inputChange"
                        :placeholder="placeholder"
                        v-model="inputValue[currentLocale]"
@@ -28,6 +37,7 @@
                 <textarea v-if="type == 'textarea'" type="text"
                           class="textarea is-size-875"
                           v-model="inputValue[currentLocale]"
+                          :disabled="disabled"
                           @input="inputChange"
                           :placeholder="placeholder"
                           @keydown.tab="handleChange">
@@ -54,6 +64,7 @@
                 inputValue: {},
                 locales: window.locales,
                 currentLocale: null,
+                disabled:false,
                 field: {
                     name: 'asdasd',
                 },
@@ -91,9 +102,10 @@
                 this.$emit('input', this.inputValue);
             },
 
-            changeTab(locale) {
+            changeTab(locale,disabled) {
                 this.$parent.$children.forEach(function (field) {
                     field.currentLocale = locale;
+                    field.disabled = disabled;
                     field.$nextTick(() => {
                         if (field.field && field.field.trix) {
                             field.$refs.field.update()
@@ -120,6 +132,12 @@
     }
 </script>
 <style>
+    .translatable-field input{
+        cursor: text !important;
+    }
+    .translatable-field textarea{
+        cursor: text !important;
+    }
     .animate-text-color {
         -webkit-transition: color .5s;
         transition: color .5s;

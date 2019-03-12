@@ -2,6 +2,7 @@ Nova.booting((Vue, router, store) => {
     window.trans = (string) => _.get(Nova.config.i18n, string);
     window.lang = document.documentElement.lang;
     window.locales = Nova.config.locales;
+    window.view_locales = Nova.config.view_locales;
     Vue.prototype.trans = (string, args) => {
         let value = _.get(Nova.config.i18n, string);
 

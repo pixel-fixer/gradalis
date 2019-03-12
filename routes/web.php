@@ -219,8 +219,7 @@ Route::namespace('Api')
         Route::get('/business-get', 'BusinessController@get');
         Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
         Route::get('/business-get-categories', 'BusinessController@getCategories');
-        Route::post('/business-image-upload', 'BusinessController@imageUpload');
-        Route::post('/business-image-remove', 'BusinessController@imageRemove');
+        Route::post('/business-image-remove/{business}', 'BusinessController@imageRemove');
     });
 //endregion
 

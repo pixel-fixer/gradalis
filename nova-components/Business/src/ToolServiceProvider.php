@@ -38,10 +38,20 @@ class ToolServiceProvider extends ServiceProvider
             $locales = array_map(function ($value) {
                 return __($value);
             }, config('translatable.locales'));
+            $languages = [];
+            $view_languages = [];
+            foreach ($locales as $lang => $locale) {
+                if (auth()->user()->hasPermissionTo("translate-{$lang}")) {
+                    $languages[$lang] = $locale;
+                } elseif (auth()->user()->hasPermissionTo("view-translation-{$lang}")) {
+                    $view_languages[$lang] = $locale;
+                }
 
+            }
             $data = [
-                'locales'     => $locales,
-                'indexLocale' => app()->getLocale()
+                'locales'     => $languages,
+                'view_locales'     => $view_languages,
+                'indexLocale' => key($languages)
             ];
 
             Nova::provideToScript([

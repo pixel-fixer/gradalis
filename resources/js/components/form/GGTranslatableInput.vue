@@ -6,6 +6,7 @@
                 :class="{ 'text-60': localeKey !== currentLocale, 'text-primary border-b-2': localeKey === currentLocale }"
                 :key="`a-${localeKey}`"
                 v-for="(locale, localeKey) in locales.locales"
+                v-if="locales.length > 1"
                 @click="changeTab(localeKey)"
             >
                 {{ locale }}

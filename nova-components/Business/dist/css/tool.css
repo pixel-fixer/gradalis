@@ -12864,6 +12864,10 @@ p,
   border-color: #405f84;
 }
 
+.field.has-addons.has-addons-fullwidth .control {
+  margin-bottom: 0px;
+}
+
 .field.has-addons.has-addons-fullwidth .control:not(:last-child) {
   margin-right: 1px;
 }
