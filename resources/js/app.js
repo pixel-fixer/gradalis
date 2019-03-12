@@ -12,14 +12,26 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import inlineSVG from 'inline-svg';
 import Swiper from 'swiper';
 import VueMomentTz from 'vue-moment-tz';
-
+import VueMq from 'vue-mq'
 import VSwitch from 'v-switch-case';
+
+import Sticky from 'sticky-js';
+
+let sticky = new Sticky('.sticky');
 
 Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyDs7VrVm9-Uc98tTj0eYIRgNkisaLQsWlg',
         libraries: 'places', // This is required if you use the Autocomplete plugin
     },
+});
+
+Vue.use(VueMq, {
+    breakpoints: {
+        mobile: 768,
+        tablet: 1024,
+        desktop: 1215,
+    }
 });
 
 window.Vue = Vue;
@@ -49,9 +61,11 @@ function errorResponseHandler(error) {
         return Promise.reject(error);
     }
 
-    // if has response show the error
     if (error.response) {
-        Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
+        //Если это не ошибка валидации ларавела
+        //TODO добавить редирект на login, если авторизация истекла
+        if (error.response.status !== 422)
+            Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
     }
 }
 
@@ -61,8 +75,13 @@ window.axios.interceptors.response.use(
     errorResponseHandler
 );
 Vue.component('business-list', require('./components/business/List.vue').default);
+Vue.component('news-index', require('./components/news/Index.vue').default);
+Vue.component('news-filter', require('./components/news/NewsFilter.vue').default);
+Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
+Vue.component('chat-widget', require('./components/chat/chat-widget.vue').default);
+
 
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/business/FormFilter.vue').default);
@@ -99,6 +118,24 @@ Vue.mixin({
             return _.find(this.$store.state.user.roles, item => {
                 return item.name == role
             })
+        },
+        $getDateTime(dbDateTime) {
+            var monthNames = [
+                'Январь',
+                'Февраль',
+                'Март',
+                'Апрель',
+                'Май',
+                'Июнь',
+                'Июль',
+                'Август',
+                'Сентябрь',
+                'Ноябрь',
+                'Декабрь',
+            ];
+
+            var date = new Date(Date.parse(dbDateTime.replace('-', '/', 'g')));
+            return date.getDate() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + date.getFullYear()
         }
     }
 })
@@ -114,8 +151,6 @@ Vue.component('vacancy-response', VacancyResponce);
 
 
 // review
-// const AddReview = () => import('./components/reviews/Add');
-// const ShowReview = () => import('./components/reviews/Show');
 Vue.component('add-review', require('./components/reviews/Add').default);
 Vue.component('show-review', require('./components/reviews/Show').default);
 // end 
@@ -366,4 +401,4 @@ window.openTab = function openTab(evt, tabName) {
     }
     tabsWrap.querySelector('#' + tabName).style.display = "block";
     evt.currentTarget.className += " is-active";
-}
+};

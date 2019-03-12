@@ -21,6 +21,13 @@ Route::domain('ref.' . config('app.domain'))->group(function () {
     Route::get('invitation/{token}', 'InvitationController@invitation');
 });
 
+// Route::get('lang/get', function(){
+//     return \App::getLocale();
+// });
+
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
 // JS Localization
 Route::get('/js/lang.js', 'CoreController@lang')->name('assets.lang');
 
@@ -109,9 +116,7 @@ Route::get('/vacancy/single', function () {
 Route::get('/contacts', function () {
     return view('contacts');
 });
-Route::get('/reviews', function () {
-    return view('reviews');
-});
+Route::get('/reviews', 'ReviewsController@index');
 Route::get('/help', function () {
     return view('help');
 });
@@ -153,6 +158,13 @@ Route::namespace('Business')->group(function () {
 });
 //endregion
 
+//region News Routes
+Route::namespace('News')->group(function () {
+    Route::get('news', 'NewsController@index');
+    Route::get('news/{slug}', 'NewsController@show');
+});
+//endregion
+
 
 //region BROKER Routes
 Route::namespace('Broker')->prefix('broker')->group(function () {
@@ -172,6 +184,10 @@ Route::namespace('Api')
         Route::post('/account-partner-status-change', 'AccountController@partnerStatusChange');
         Route::post('/account-chart-data', 'AccountController@getChartData');
         //});
+    
+        Route::post('/review-add', 'ReviewsController@addReview');
+        Route::post('/review-show', 'ReviewsController@showReview');
+        
         Route::post('/broker-chart-data', 'BrokerController@getChartData');
         Route::get('/broker-get-summary', 'BrokerController@getSummary');
         Route::get('/broker-get-offers-summary', 'BrokerController@getOffersSummary');
@@ -189,6 +205,10 @@ Route::namespace('Api')
         Route::post('/invitation-create', 'OfferController@invitationCreate');
         //});
 
+        Route::get('/news-get', 'NewsController@get');
+        Route::get('/news-get-categories', 'NewsController@getCategories');
+
+        Route::post('/business-reserve', 'BusinessController@reserve');
         Route::get('/business-get', 'BusinessController@get');
         Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
         Route::get('/business-get-categories', 'BusinessController@getCategories');

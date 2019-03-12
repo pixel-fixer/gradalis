@@ -6,7 +6,7 @@
 
         </div>
 
-        <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" :useCustomSlot=true
+        <vue-dropzone ref="dropzone" id="dropzone" :options="dropzoneOptions" :useCustomSlot=true
                       v-on:vdropzone-upload-progress="uploadProgress"
         >
             <div class="dropzone-custom-content">
@@ -43,6 +43,7 @@
                     previewTemplate: this.template(),
                     previewsContainer: ".dropzone-previews",
                     addRemoveLinks: false,
+                    autoProcessQueue: false,
                     dictCancelUploadConfirmation: "Вы уверены, что хотите отменить загрузку?"
                 },
             }
@@ -76,6 +77,9 @@
             uploadProgress: function (file, progress, bytesSent) {
                 var progressElement = file.previewElement.querySelector("[data-dz-uploadprogress]");
                 progressElement.closest(".dz-progress-wrap").querySelector(".dz-progress-text").textContent = Math.round(progress) + "%";
+            },
+            getAllFiles() {
+                return this.$refs['dropzone'].getQueuedFiles();
             }
         }
     }

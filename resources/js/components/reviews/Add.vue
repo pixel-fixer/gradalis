@@ -24,12 +24,12 @@
                                :label="form.company.title"
                                :placeholder="form.company.placeholder"
                                :required="form.company.required"></g-g-input>
-                    <g-g-textarea :size="'is-12'" v-model="form.comment.value"
-                                  :label="form.comment.title"
-                                  :placeholder="form.comment.placeholder"
-                                  :required="form.comment.required"></g-g-textarea>
+                    <g-g-textarea :size="'is-12'" v-model="form.article.value"
+                                  :label="form.article.title"
+                                  :placeholder="form.article.placeholder"
+                                  :required="form.article.required"></g-g-textarea>
                     <div class="column is-12">
-                        <UploadFiles></UploadFiles>
+                        <FilesUpload ref="filesUpload"></FilesUpload>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
     import Modal from '../Modal'
     import GGInput from '../form/GGInput'
     import GGTextarea from '../form/GGTextarea'
-    import UploadFiles from './UploadFiles'
+    import FilesUpload from '../FilesUpload'
 
     export default {
         name: "modalAddReview",
@@ -61,7 +61,7 @@
             Modal,
             GGTextarea,
             GGInput,
-            UploadFiles
+            FilesUpload
         },
         props: {
             value: {default: null},
@@ -93,7 +93,7 @@
                     value: '',
                     required: true
                 },
-                comment: {
+                article: {
                     title: 'Опишите ваши впечатления',
                     placeholder: 'Текст вашего отзыва',
                     value: '',
@@ -113,7 +113,25 @@
         },
         methods: {
             send() {
-                console.log('send');
+                let vm = this;
+                let form = {
+                    'article': vm.form.article.value,
+                    'company': vm.form.company.value,
+                    'email': vm.form.email.value,
+                    'name': vm.form.name.value,
+                    'phone': vm.form.phone.value,
+                };
+                axios.post('/review-add', {
+                    review: form,
+                    files: vm.$refs['filesUpload'].getAllFiles()
+                }).then(response => {
+                    vm.show = false;
+                    if (response.data.status === 'ok') {
+                        this.$swal({ type: 'success', text: 'Отзыв добавлен!' });
+                    } else {
+                        this.$swal({ type: 'error', text: 'Кажется дроиды что-то напутали, попробуйте позже.' });
+                    }
+                });
             },
         }
     }

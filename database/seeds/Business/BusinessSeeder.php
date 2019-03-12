@@ -20,12 +20,18 @@ class BusinessSeeder extends Seeder
      */
     public function run()
     {
-        ini_set('memory_limit', '1024M');
         Schema::disableForeignKeyConstraints();
         $this->saveCategories();
-        factory(Business::class, 20)->make()->each(function ($business) {
+        global $fakers;
+        $fakers = [
+            'ru' => Faker::create('ru_RU'),
+            'en' => Faker::create('en_EN'),
+            'pl' => Faker::create('pl_PL')
+        ];
+        factory(Business::class, 20)->make()->each(function ($business) use
+        ($fakers) {
             foreach (Language::all() as $lang) {
-                $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
+                $faker = $fakers[$lang->lang];
                 $name = $faker->company;
                 $url = Helpers::transliterate($name);
                 $description = $faker->realText(160);
@@ -36,6 +42,7 @@ class BusinessSeeder extends Seeder
                 $business->setTranslation('seo_description',$lang->lang,$description);
                 $business->setTranslation('seo_keywords',$lang->lang,$faker->words(4, true));
                 $business->save();
+                $faker = null;
             }
         });
 

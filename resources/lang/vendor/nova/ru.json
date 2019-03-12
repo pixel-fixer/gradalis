@@ -1,4 +1,8 @@
 {
+    "News": "Новости",
+    "NewsCategory": "Категории новостей",
+    "NewsCategories": "Категории новостей",
+
     "Business category": "Категория бизнеса",
     "Business": "Бизнес",
     "Of Business": "Бизнеса",
@@ -27,6 +31,9 @@
 
     "Language": "Язык",
     "Languages": "Языки",
+
+    "Review": "Отзыв",
+    "Reviews": "Отзывы",
 
     "User": "Пользователь",
     "Users": "Пользователи",
