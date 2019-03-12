@@ -465,3 +465,144 @@
         }
     }
 }
+
+
+.franchise-info {
+    &__company {
+        border-left: 0.1875rem solid;
+        border-color: $cyan;
+
+        &__logo {
+            height: 3.875rem;
+            max-height: 3.875rem;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+    }
+
+    &__item {
+        color: $very-dark-blue-2;
+        line-height: normal;
+        min-height: 3.875rem;
+        align-items: center;
+
+        &__icon {
+            margin: 0 0.75rem 0 0;
+            display: flex;
+            align-items: center;
+        }
+
+        &-list {
+            .column {
+                &:not(:last-child) {
+                    .franchise-info__item {
+                        border-right: 1px solid rgba($light-grayish-blue, 0.58);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.franchise-news {
+    &:not(:first-child) {
+        padding-top: 2rem;
+    }
+    &:not(:last-child) {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(#CFDAE6, .5);;
+    }
+
+
+    &__thumb {
+        height: 10.625rem;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__title {
+        margin: 0.5rem 0 0 0 !important;
+    }
+    &__time {
+        color: $light-grayish-blue;
+    }
+}
+
+.card-franchise-package {
+    border: 1px solid rgba($cyan, .19);
+    border-radius: .3125rem;
+    box-shadow: $box-shadow;
+    min-height: 17.5rem;
+    transition: $transition;
+    position: relative;
+    padding-bottom: 3.25rem !important;
+
+    &__title {
+        line-height: normal !important;
+    }
+
+
+    &__desc {
+        position: relative;
+
+        &__short,
+        &__full {
+            line-height: normal;
+            transition: $transition;
+        }
+
+        &__short {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &__full {
+            opacity: 0;
+            transform: translate(0, 1rem);
+            visibility: hidden;
+        }
+    }
+
+    &__footer {
+        transition: $transition;
+        position: absolute;
+        left: 1.5rem;
+        bottom: 1rem;
+        line-height: normal;
+        width: calc(100% - 3rem);
+        border-top: 1px solid rgba($cyan, .19);
+        padding-top: .5rem;
+    }
+
+
+    &:hover {
+        transform: translate(0, -.5rem);
+        background-color: $body-background-color;
+        box-shadow: none;
+
+        .card-franchise-package__desc__short,
+        .card-franchise-package__footer {
+            opacity: 0;
+            transform: translate(0, -1rem);
+            visibility: hidden;
+        }
+
+        .card-franchise-package__desc__full {
+            opacity: 1;
+            transform: translate(0);
+            visibility: visible;
+        }
+    }
+}

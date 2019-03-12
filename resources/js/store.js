@@ -8,6 +8,7 @@ export default new Vuex.Store({
       lang: document.documentElement.lang,
       user: window.user,
       partner: window.partner,
+      languages: ['ru', 'pl', 'en']
     },
     mutations: {
 

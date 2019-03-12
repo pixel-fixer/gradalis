@@ -2,7 +2,7 @@
     <transition name="modal">
         <div class="modal is-active">
             <div class="modal-background" @click="$emit('close')"></div>
-            <div class="modal-card">
+            <div class="modal-card" :style="style">
                 <header class="modal-card-head">
                     <slot name="header">
                         default header
@@ -27,20 +27,28 @@
 
 <script>
     export default {
+        props: {
+            width: {
+                default: ''
+            }
+        },
         name: "modal",
+        computed: {
+            style: function(){
+                let style = {}
+                if(this.width){
+                    style.width = this.width;    
+                }
+                return style;
+            }
+        }
     }
 </script>
 
 <style scoped>
     /*
-     * The following styles are auto-applied to elements with
-     * transition="modal" when their visibility is toggled
-     * by Vue.js.
-     *
-     * You can easily play with the modal transition by editing
-     * these styles.
+     * Transition
      */
-
     .modal-enter {
         opacity: 0;
     }

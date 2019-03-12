@@ -11,30 +11,69 @@
                 <div class="column is-12-tablet is-8-desktop">
                     <main class="news-single box">
                         <div class="news-single__header">
-                            <h1 class="section-title">{{$news->title}}</h1>
+                            <h1 class="section-title">FCG: четыре радикальных тренда на рынке одежды в 2019 году</h1>
                             <div class="news-single__header__info is-flex">
                                 <div class="news-single__header__tag-cat-list">
-                                    <a href="#" class="news-tag-cat"><img src="/svg/icons/{{$news->category->icon}}" class="svg">{{$news->category->title}}</a>
+                                    <a href="#" class="news-tag-cat">Новости</a>
                                 </div>
-                                <time class="is-size-875">{{ $news->created_at->format('d M Y')}}</time>
+                                <time class="is-size-875">20 декабря 2018</time>
                             </div>
                         </div>
                         <div class="news-single__thumb">
-                            @if(empty($news->video))
-                                @php
-                                    $media = $news->media->first();
-                                    $image = "/storage/".$media->id."/".$media->file_name;
-                                @endphp
-                                <img src="{{$image}}" alt="" class="has-border-radius"/>
-                            @else
-                                <video class="w-full" controls="">
-                                    <source src="{{$news->video}}" type="video/mp4">
-                                    Your browser does not support HTML5 video.
-                                </video>
-                            @endif
+                            <img src="http://laudator.ru/wp-content/uploads/2013/08/magazin-odezhdyi.jpg" alt="" class="has-border-radius">
+                            {{--<video class="w-full" controls="">--}}
+                                {{--<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">--}}
+                                {{--Your browser does not support HTML5 video.--}}
+                            {{--</video>--}}
                         </div>
                         <div class="content">
-                            {!! $news->description !!}
+                            <p style="font-style: italic; font-size: 18px; color: #596C80;">
+                                The Business of Fashion (BoF) и McKinsey & Company обнародовали список главных трендов
+                                фэшн-бизнеса будущего года. В исследовании The State of Fashion 2019 перечисляются 10
+                                основных тенденций. Перевод обзора публикует Inc.
+                            </p>
+                            <p>
+                                Эксперты ожидают, что в 2019 году рост отрасли замедлится: прогнозируется, что McKinsey
+                                Global Fashion Index, который отслеживает продажи в отрасли, операционную прибыль и
+                                создание дополнительной стоимости, в следующем году составит 3,5–4,5 проц против 4–5
+                                проц в 2018 году. Ухудшение прогноза на 2019 год связано с экономическими и
+                                политическими вызовами в России, Африке, Латинской Америке, а также на Ближнем Востоке,
+                                которые могут снизить потребительские расходы. В отчете также говорится, что в 2019 году
+                                Китай впервые обойдет США и станет крупнейшим модным рынком в мире.
+                            </p>
+                            <h2>10 основных трендов фэшн-бизнеса</h2>
+                            <p>
+                                «Участники модного рынка начали заблаговременно смотреть на возможности, а не просто
+                                фокусироваться на предстоящих вызовах», — говорится в исследовании. Авторы ожидают, что
+                                основной импульс роста будет поступать с рынков люксовых товаров, а также от
+                                развивающихся рынков в Азии.
+                            </p>
+                            <h3>Осторожность</h3>
+                            <p>
+                                В отрасли возникнут опасливые настроения из-за ослабления ключевых экономических
+                                показателей и других потенциально дестабилизирующих сил, ожидают в BoF и McKinsey.
+                                Представители модной индустрии начнут действовать осторожнее из-за опасений возможного
+                                замедления мировой экономики к 2020 году и будут активнее изучать свои возможности для
+                                повышения производительности.
+                            </p>
+                            <h3>Торговля 2.0</h3>
+                            <p>Компаниям нужно подготовить планы экстренных мероприятий на случай возможной
+                                реорганизации мировых производственно-бытовых связей.</p>
+                            <ul>
+                                <li>Бизнес-план</li>
+                                <li>Интеграция</li>
+                                <li>Вторичная бухгалтерия</li>
+                            </ul>
+                            <p>Кроме того, сферу торговли одеждой могут изменить новые барьеры, напряженность в вопросах
+                                торговли и неопределенность, а новые возможности могут появиться на фоне усиления
+                                торговли между развивающимися странами и пересмотра торговых соглашений.</p>
+                            <blockquote style="font-size: 24px;">
+                                Количество упоминаний слова feminist в рассылках или на сайтах ретейлеров увеличится в
+                                6,3 раза по сравнению с 2016 годом.
+                            </blockquote>
+                            <p>Кроме того, сферу торговли одеждой могут изменить новые барьеры, напряженность в вопросах
+                                торговли и неопределенность, а новые возможности могут появиться на фоне усиления
+                                торговли между развивающимися странами и пересмотра торговых соглашений.</p>
                         </div>
                         <div class="tags">
                             <span class="tag tag_big">fashion</span>
@@ -74,8 +113,7 @@
                                                     рублям
                                                 </div>
                                                 <div class="mt-1">
-                                                    <a href="/news-single"
-                                                       class="button is-info is-size-875">Подробнее</a>
+                                                    <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
                                                 </div>
                                             </article>
                                         </div>
@@ -98,8 +136,7 @@
                                                     рублям
                                                 </div>
                                                 <div class="mt-1">
-                                                    <a href="/news-single"
-                                                       class="button is-info is-size-875">Подробнее</a>
+                                                    <a href="/news-single" class="button is-info is-size-875">Подробнее</a>
                                                 </div>
                                             </article>
                                         </div>

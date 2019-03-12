@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function(Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->nullable();
             $table->integer('type');
             $table->tinyInteger('status')->default('0');
             $table->json('name');

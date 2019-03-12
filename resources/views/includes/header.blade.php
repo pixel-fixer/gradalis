@@ -134,6 +134,18 @@
                         {{--<a href="/profile" class="navbar-item basic user"><img src="{{ Auth::user()->avatar }}"--}}
                         {{--alt="User"><span--}}
                         {{--class="is-hidden-mobile">{{ Auth::user()->full_name }}</span></a>--}}
+                        @if(Auth::check() && (Auth::user()->hasRole('Медиа-баер') || Auth::user()->hasRole('Акаунт-менеджер')))
+                            <a href="/broker/balance" class="navbar-item basic is-hidden-mobile"><img
+                                    src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                    alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
+
+                            <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
+                                                            content: '$100',
+                                                            trigger: 'click',
+                                                    }">
+                                <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                     alt="Balance"></a>
+                            @else
                         <a href="/profile/balance" class="navbar-item basic is-hidden-mobile"><img
                                 src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                 alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
@@ -144,6 +156,7 @@
                                                     }">
                             <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                  alt="Balance"></a>
+                        @endif
 
                         {{--<a class="navbar-item basic" href="{{ route('logout') }}" onclick="event.preventDefault();--}}
                         {{--document.getElementById('logout-form').submit();"><img--}}

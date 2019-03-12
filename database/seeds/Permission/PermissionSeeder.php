@@ -1,14 +1,14 @@
 <?php
 
+use App\Models\Auth\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-use App\Models\Auth\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
 {
-    
+
     /**
      * Все модели для которых нужны разрешения
      *
@@ -31,7 +31,7 @@ class PermissionSeeder extends Seeder
         'Travel',
         'User',
     ];
-    
+
     /**
      * Отдельные разрешения, которые не относятся к моделям
      *
@@ -43,8 +43,14 @@ class PermissionSeeder extends Seeder
         'сhat_message-moderate',
         //Чат: модерация сообщений (свои пользователи)
         'сhat_message-moderate-my-users',
+        'translate-ru',
+        'translate-en',
+        'translate-pl',
+        'view-translation-ru',
+        'view-translation-en',
+        'view-translation-pl',
     ];
-    
+
     /**
      * Run the database seeds.
      *
@@ -53,8 +59,8 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
-        
-        foreach ( $this->allModels as $model ) {
+
+        foreach ($this->allModels as $model) {
             $resourcePermissions = [
                 "create $model"       => "create $model",
                 "update $model"       => "update $model",
@@ -63,26 +69,32 @@ class PermissionSeeder extends Seeder
                 "force delete $model" => "force delete $model",
                 "restore $model"      => "restore $model",
             ];
-            foreach ( $resourcePermissions as $resourcePermission ) {
+            foreach ($resourcePermissions as $resourcePermission) {
                 Permission::firstOrCreate(
                     ['name' => $resourcePermission],
                     ['guard_name' => 'web']
                 );
             }
         }
-        foreach ( $this->allPerms as $perm ) {
+        foreach ($this->allPerms as $perm) {
             Permission::firstOrCreate(
                 ['name' => $perm],
                 ['guard_name' => 'web']
             );
-        
+
         }
 
         User::whereId(1)->first()->assignRole('Продавец');
         User::whereId(4)->first()->assignRole('Покупатель');
+        User::where('email', 'content@user.com')->first()->assignRole('Контент менеджер');
 
-        Role::where('name', 'Админ')->first()->givePermissionTo('сhat_message-moderate');
+        Role::where('name', 'Админ')->first()
+            ->givePermissionTo('сhat_message-moderate')
+            ->givePermissionTo('translate-ru')
+            ->givePermissionTo('view-translation-pl')
+            ->givePermissionTo('view-translation-en');
         Role::where('name', 'Покупатель')->first()->givePermissionTo('object-buy');
         Role::where('name', 'Продавец')->first()->givePermissionTo('object-sell');
+        Role::where('name', 'Контент менеджер')->first()->givePermissionTo('translate-ru');
     }
 }

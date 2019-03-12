@@ -27,7 +27,7 @@ class CampaignTarget extends Model
             'counter_target',
             'target_id',
             'counter_id'
-        )->withPivot('sum', 'status', 'type');
+        )->withPivot('sum', 'status', 'type')->withTimestamps();
     }
 
 }

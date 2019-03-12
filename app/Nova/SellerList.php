@@ -37,7 +37,7 @@ class SellerList extends Resource
     {
         return $query->whereHas('roles', function ($query){
             $query->where('name', 'Продавец');
-        })->where('broker_id', $request->user()->id);
+        })->where('user_id', $request->user()->id);
     }
 
     /**

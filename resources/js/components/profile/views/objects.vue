@@ -16,7 +16,9 @@
                 <div class="column is-12">
                     <!-- Example Layout card service -->
                     <article class="box card-object-pa is-paddingless" v-for="object in objectsMapped">
-                        <div class="tag is-danger is-rounded card-object-pa__count-notifications">10</div>
+                        <div v-if="getObjectNotificationCount(object)" class="tag is-danger is-rounded card-object-pa__count-notifications">
+                            {{getObjectNotificationCount(object)}}
+                        </div>
                         <div class="card-object-pa__body p-1-5">
                             <div class="columns is-multiline">
                                 <div class="column is-4">
@@ -28,7 +30,7 @@
                                 </div>
                                 <div class="column is-8">
                                     <div class="card-object-pa__header is-flex">
-                                        <h3 class="card-object-pa__title">{{object.name}}</h3>
+                                        <h3 class="card-object-pa__title">{{object.name[$store.state.lang]}}</h3>
                                         <a :href="`/business/${object.id}/edit`" class="card-object-pa__link-edit is-size-875 is-flex link-with-icon">
                                             &nbsp;<img src="/svg/icons/ic_edit.svg" class="svg"
                                                     alt="Edit">
@@ -76,10 +78,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <button
+                                        <button v-if="object.doc_request.length > 0"
                                             class="button is-outlined is-danger h-3 has-text-weight-bold is-size-875"
-                                            @click="showModal('modal-documentation-requests-1')">
-                                            10 запросов на документацию
+                                            @click="ui.showDocumentsModal=true; doc_requests = object.doc_request;">
+                                            {{object.doc_request.length}} запросов на документацию
                                         </button>
                                     </div>
                                 </div>
@@ -131,18 +133,32 @@
                 </div>
             </div>
         </section>
+        <modal v-if="ui.showDocumentsModal" @close="ui.showDocumentsModal = false" width="55rem">
+            <div slot="header">
+                <p class="modal-card-title mb-0">Запросы документации</p>
+            </div>
+            <div slot="body">
+                <object-requests-table :request_list="doc_requests" @close="ui.showDocumentsModal=false"></object-requests-table>
+            </div>
+        </modal>
         <object-stats></object-stats>
     </div>
 </template>
 
 <script>
 import ObjectStats from './objects/object-stats'
+import Modal from './../../Modal';
+import ObjectRequestsTable from './objects/object-requests-table'
 
 export default {
-    components: { ObjectStats },
+    components: { ObjectStats, Modal, ObjectRequestsTable },
     data:() => ({
         filter: 'active',
+        ui: {
+            showDocumentsModal: false
+        },
         objects: [],
+        doc_requests: [],
         firstLoad: true
     }),
     mounted(){
@@ -198,6 +214,10 @@ export default {
                 }).catch(e => {
                     this.$swal({ type: 'error', title: e.response.status, text: e.response.data.message });
                 })
+        },
+        //TODO Пока плюсую только запросы на просмотр и документацию.
+        getObjectNotificationCount(object){
+            return object.doc_request.length + object.doc_request.length
         }
     }
 }

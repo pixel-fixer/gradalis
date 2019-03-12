@@ -6,7 +6,7 @@ use App\Models\Referral\Campaign;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
-
+use App\Models\ObjectRequest;
 class Franchise extends Model
 {
     use HasTranslations, Favoriteable;
@@ -121,7 +121,12 @@ class Franchise extends Model
 
     public function view_request()
     {
-        return $this->morphMany('App\Models\ViewRequest', 'object');
+        return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_VIEW);
+    }
+
+    public function doc_request()
+    {
+        return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_DOC);
     }
 
     public function getNameAttribute($value): string

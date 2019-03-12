@@ -7,41 +7,36 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
+use App;
+use Session;
 class Message extends Model implements HasMedia
 {
     use SoftDeletes;
     use HasMediaTrait;
 
-    protected $fillable = ['from', 'to', 'text', 'status', 'dialog_id'];
+    const STATUS_MODERATION = 0;
+    const STATUS_ACTIVE = 1;
+
+    public function __construct(array $attributes = array())
+    {
+        $this->attributes['locale'] = App::getLocale();
+        $this->attributes['ip_info'] = json_encode(Session::get('ip_info'));
+        parent::__construct($attributes);
+    }
+
+    protected $fillable = ['from', 'to', 'text', 'status', 'dialog_id', 'locale', 'ip_info'];
 
     protected $dates = ['deleted_at'];
 
     protected $appends = ['media_links'];
 
-    //TODO Дописать
-    /*
-    protected $statuses = [
-
-    ];
-    */
-
     protected $attributes = [
-        'status' => 0,
+        'status' => 0
     ];
 
-    // public function getMediaAttribute()
-    // {
-    //     $mediaMapped = $this->media;
-    //     foreach ($this->media as $k => $media){
-    //         $mediaMapped[$k]->url = [
-    //             'origin' => $media->getUrl(),
-    //             'thumb' =>$media->getUrl('thumb')
-    //         ];
-    //     }
-
-    //     return $mediaMapped;
-    // }
+    protected $casts = [
+        'ip_info' => 'array',
+    ];
 
     public function getMediaLinksAttribute()
     {

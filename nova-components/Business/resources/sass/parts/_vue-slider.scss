@@ -1,0 +1,29 @@
+@import '../variables';
+
+
+.vue-slider {
+    width: 100% !important;
+    height: .125rem !important;
+    background-color: #C5D2E6 !important;
+    border-radius: $radius !important;
+    &-component {
+        padding: 0.5rem 0 !important;
+        width: 100% !important;
+    }
+
+    &-process {
+        background-color: $cyan !important;
+    }
+
+    &-dot {
+        top: -7px !important;
+        &-handle {
+            box-shadow: none !important;
+            background-color: $white;
+            border: 0.3125rem solid $cyan;
+        }
+    }
+    &-piecewise {
+
+    }
+}

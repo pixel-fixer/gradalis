@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+// Fonts
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&subset=cyrillic-ext');
+
+
+//
+//// Bootstrap
+//@import '~bootstrap/scss/bootstrap';
+//
+//.navbar-laravel {
+//  background-color: #fff;
+//  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+//}
+
+
+//// Variables
+@import 'variables';
+
+// Plugins
+@import '../../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
+@import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/swiper/dist/css/swiper.min.css";
+
+@import "custom-bulma";
+
+@import "parts/header";
+@import "parts/main";
+@import "parts/footer";
+@import "parts/tooltip";
+@import "parts/form-inline";
+@import "parts/form";
+@import "parts/modal";
+@import "parts/blockquote";
+@import "parts/breadcrumb";
+@import "parts/pagination";
+@import "parts/vue-slider";
+@import "parts/share";
+@import "parts/dropdown";
+@import "parts/aside";
+@import "parts/add-business";
+@import "parts/stepper";
+@import "parts/dropzone";
+@import "parts/loader";
+@import "parts/timeline-process";
+@import "parts/accordion";
+
+@import "objects/card";
+@import "objects/form";
+@import "objects/main";
+
+
+@import "services/card";
+@import "services/buttons";
+@import "services/list-category";
+@import "services/main";
+@import "services/logics";
+
+
+@import "pa/objects";
+

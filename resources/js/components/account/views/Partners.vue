@@ -90,10 +90,12 @@
                                       :placeholder="trans('account.compare.placeholder')"
                                       :label="trans('account.compare.title')"
                                       :searchable="true" :options="trans('account.compare.options')"></g-g-select-input>
-                    <g-g-select-input v-model="sorting" :size="'is-4'"
-                                      :placeholder="trans('account.sort.placeholder')"
-                                      :label="trans('account.sort.title')"
-                                      :searchable="true" :options="trans('account.sort.options')"></g-g-select-input>
+                    <g-g-select-input v-model="partnerId" :size="'is-4'"
+                                      :placeholder="trans('account.partner.placeholder')"
+                                      :label="trans('account.partner.title')"
+                                      @input="changePartner"
+                                      :searchable="true" :options="partnerOptions">
+                    </g-g-select-input>
                 </div>
             </div>
 
@@ -184,26 +186,23 @@
                             {{partner.moderate_messages}} сообщений
                         </a>
                     </td>
-                    <td>12 525</td>
-                    <td>1 525</td>
-                    <td class="has-text-weight-bold">{{partner.balance}}</td>
+                    <td>{{partner.hits}}</td>
+                    <td>{{partner.approved_leads}}</td>
+                    <td class="has-text-weight-bold">{{partner.approved_commission}}</td>
                     <td>
                         <div class="is-flex">
                             <a href="#" class="link-with-icon mr-1">
                                 <img src="/svg/icons/ic_details.svg">
                                 <span class="has-text-decoration-underline">{{trans('account.in_account')}}</span>
                             </a>
-                            <router-link class="link-with-icon" :tag="'a'" :to="{ name: 'partner-settings', params: { userId: partner.id} }">
-
-                                <img src="/svg/icons/ic_profile_settings.svg">
-                                <span class="has-text-decoration-underline">{{trans('account.settings')}}</span>
-                            </router-link>
+                            <message-modal></message-modal>
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </section>
+        <portal-target name="modals"></portal-target>
     </div>
 
 </template>
@@ -213,6 +212,7 @@
     import LineChart from '../../charts/LineChart.js';
     import GGSelectInput from '../../form/GGSelectInput';
     import Modal from '../../Modal';
+    import MessageModal from '../../modals/MessageModal';
 
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
@@ -223,13 +223,15 @@
     export default {
         name: "AccountPartners",
         components: {
-            BarChart, LineChart, GGSelectInput, flatPickr, Modal
+            BarChart, LineChart, GGSelectInput, flatPickr, Modal, MessageModal
         },
         data() {
             return {
                 showModalRef: false,
                 partners: [],
                 partnersIds: [],
+                partnerId: 1,
+                partnerOptions: trans('account.partner.options'),
                 chart: {
                     data: null
                 },
@@ -291,6 +293,8 @@
                                 fontFamily: "'Roboto', sans-serif",
                                 beginAtZero: true,
                                 padding: 10,
+                                suggestedMin: 0,
+                                suggestedMax: 5
                             },
 
                         }]
@@ -321,6 +325,9 @@
             }
         },
         methods: {
+            changePartner() {
+                this.fetchChartData();
+            },
             dateChanged(val) {
                 this.from = val[0];
                 this.to = val[1];
@@ -408,6 +415,7 @@
                     vm.partners = responce.data;
                     responce.data.forEach(partner => {
                         vm.partnersIds.push(partner.id);
+                        vm.partnerOptions.push({'id': partner.id, 'name':partner.user.full_name});
                     });
                     vm.fetchChartData();
 
@@ -416,7 +424,11 @@
             fetchChartData() {
                 let vm = this;
                 let data = {};
-                data.partners = vm.partnersIds;
+                if(vm.partnerId > 1){
+                    data.partners = [vm.partnerId];
+                }else{
+                    data.partners = vm.partnersIds;
+                }
                 data.dateType = vm.dateType;
                 if (vm.from) {
                     data.from = vm.from;

@@ -1,0 +1,195 @@
+@import '../variables';
+
+.card {
+    &-service {
+        border-radius: $radius;
+        box-shadow: 0px 6px 10px rgba(23, 44, 77, 0.1);
+        padding: 1rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-1rem);
+        }
+
+        &__title {
+            line-height: normal;
+        }
+
+        &__body {
+            border-bottom: 1px solid rgba(207, 218, 230, 0.5);
+        }
+
+        &__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 1rem;
+            margin-left: 0;
+            margin-bottom: .5rem;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &__info {
+            //margin-top: .5rem;
+            flex: 1;
+        }
+
+        &__excerpt {
+            color: $label-color;
+            margin-bottom: .5rem;
+            margin-top: 0.125rem;
+        }
+
+        &__price {
+            color: $very-dark-blue-2;
+            font-weight: 900;
+            margin-bottom: .875rem;
+        }
+
+        &__footer {
+            padding-top: .875rem;
+
+            .button {
+                //height: 3rem;
+                box-sizing: border-box;
+
+                &:first-child {
+                    padding-left: 2.25em;
+                    padding-right: 2.25em;
+                }
+            }
+        }
+
+        /* Выводится в таблицах */
+        &_table {
+            &__icon {
+                margin-right: .5rem;
+
+                img {
+                    max-width: 2.5rem;
+                }
+            }
+
+            &__info {
+                h4 {
+                    line-height: 1em;
+                    padding-top: .375em;
+                }
+
+                time {
+                    color: $text;
+                    font-size: .75rem;
+                }
+            }
+        }
+
+    }
+
+    &-service-2 {
+        border-radius: $radius;
+        border: 0;
+        box-shadow: 0px 6px 10px rgba(23, 44, 77, 0.1);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-1rem);
+        }
+
+        &__title {
+            line-height: normal;
+        }
+
+        &__body {
+            border-bottom: 1px solid rgba(207, 218, 230, 0.5);
+            padding: 1.5rem 1.5rem .875rem 1.5rem;
+        }
+
+        &__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 1rem;
+            margin-left: 0;
+            margin-bottom: .0;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &__info {
+            margin-top: .5rem;
+            flex: 1;
+        }
+
+        &__excerpt {
+            margin-bottom: .5rem;
+            margin-top: 0.125rem;
+            border-left: 1px solid #CFDAE6;
+            padding: .5rem 0 .5rem 1rem;
+        }
+
+        &__price {
+            color: $very-dark-blue-2;
+            font-weight: 900;
+            margin-top: .875rem;
+            background-color: $body-background-color;
+            border-radius: $radius;
+            padding: .5rem;
+        }
+
+        &__add-info {
+            justify-content: space-between;
+        }
+
+        &__region-info {
+            margin-right: .5rem;
+
+            figure {
+                width: 2.375rem;
+                height: 2.375rem;
+                min-width: 2.375rem;
+                min-height: 2.375rem;
+                margin-right: .5rem;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 50%;
+                    border: .125rem solid rgba($light-grayish-blue, .5);
+                }
+            }
+            .icon {
+                height: 1.25rem;
+            }
+
+            &__flag {
+                img {
+                    width: 1rem;
+                    height: .75rem;
+                }
+            }
+
+            &__name {
+
+            }
+        }
+
+        &__footer {
+            padding: .875rem 1.5rem 1rem 1.5rem;
+
+            .button {
+                //height: 3rem;
+                box-sizing: border-box;
+
+                &:first-child {
+                    padding-left: 2.25em;
+                    padding-right: 2.25em;
+                }
+            }
+        }
+    }
+}

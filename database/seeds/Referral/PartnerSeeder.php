@@ -15,7 +15,7 @@ class PartnerSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         $managers = User::role('Акаунт-менеджер')->get()->pluck('id');
-        factory(User::class, 20)->create()->each(function ($partner) use ($managers) {
+        factory(User::class, 5)->create()->each(function ($partner) use ($managers) {
             $partner = Partner::create([
                'user_id' => $partner->id,
                'skype' => 'userskype',

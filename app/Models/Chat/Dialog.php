@@ -55,9 +55,10 @@ class Dialog extends Model
             throw new \Exception('Wrong Dialog model type');
     }
 
+    /* Пользователи, добавленные к текущему диалогу */
     public function users()
     {
-        return $this->belongsTo('App\Auth\User');
+        return $this->belongsToMany('App\Models\Auth\User');
     }
 
 }

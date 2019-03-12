@@ -1,0 +1,127 @@
+@import '../variables';
+
+.accordion {
+    .card {
+        box-shadow: none;
+        background-color: transparent;
+
+        &-header {
+            box-shadow: none;
+            cursor: pointer;
+
+            &-title,
+            &-icon {
+                padding: 0.75rem 1.5rem;
+            }
+
+            &-title {
+                margin-bottom: 0 !important;
+            }
+
+            &-icon {
+                transform: rotate(180deg);
+
+                svg {
+                    width: 1rem;
+
+                    path {
+                        fill: $navbar-dropdown-arrow;
+                    }
+                }
+            }
+        }
+
+        &.box {
+            background-color: $white;
+            box-shadow: $box-shadow;
+        }
+    }
+
+    &-body {
+        .card {
+            &-content {
+                padding: 0;
+            }
+        }
+    }
+
+    &.px-0 {
+        .card {
+            &-header {
+                &-title,
+                &-icon {
+                    padding: 0.75rem 0;
+                }
+            }
+        }
+    }
+
+    &_flip {
+        .card {
+            display: flex;
+            flex-direction: column;
+
+            .accordion-body {
+                order: -1;
+            }
+
+            //&-header {
+            //    &-icon {
+            //        .icon {
+            //            transform: scale(1, -1);
+            //        }
+            //    }
+            //}
+        }
+    }
+
+    &_with-excerpt {
+        .card {
+            transition: $transition;
+            margin-top: -2.5rem;
+
+            .show {
+
+            }
+            .hide {
+                display: none;
+            }
+
+            &-header {
+                &-title {
+                    position: relative;
+                    transition: $transition;
+                    padding-top: 1.75rem !important;
+
+                    &:before {
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        height: 1.75rem;
+                        transition: $transition;
+                        background: linear-gradient(to bottom, rgba($white, 0) 0%, rgba($white, 1) 100%);
+                    }
+                }
+            }
+
+            &.card-active {
+                margin-top: 0;
+
+                .card-header-title {
+                    padding-top: 0.75rem !important;
+                    &:before {
+                        height: .75rem;
+                    }
+                }
+                .show {
+                    display: none;
+                }
+                .hide {
+                    display: block;
+                }
+            }
+        }
+    }
+}

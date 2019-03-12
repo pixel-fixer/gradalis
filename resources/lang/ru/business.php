@@ -2,6 +2,7 @@
 
 return [
     'category' => 'Категория бизнеса',
+    'saled'    => 'Проданные',
     'index'    => [
         'title'    => 'Купить готовый бизнес в Польше',
         'category' => 'Категория',
@@ -16,6 +17,7 @@ return [
         'sold_success'                  => 'Успех на продажу бизнеса',
         'add_address'                   => 'Добавить еще один адрес',
         'remove_address'                => 'Удалить этот адрес',
+        'add_new_object'                => 'Добавить объект',
         'add_object'                    => 'Добавить еще один объект',
         'remove_object'                 => 'Удалить объект',
         'add_contract'                  => 'Добавить еще один объект',
@@ -158,8 +160,8 @@ return [
             'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Собственность'],
-                ['id' => 2, 'name' => 'Долевая собственность'],
-                ['id' => 3, 'name' => 'Совместное владение супружеской собственностью'],
+                ['id' => 2, 'name' => 'Аренда'],
+               // ['id' => 3, 'name' => 'Совместное владение супружеской собственностью'],
             ]
         ],
         'typeProperty'                  => [
@@ -817,20 +819,19 @@ return [
             'title'       => 'Укажите социальные сети',
             'placeholder' => 'Выберите',
             'options'     => [
-                ['id' => 1, 'name' => 'Item'],
-                ['id' => 2, 'name' => 'Item'],
-                ['id' => 3, 'name' => 'Item'],
+                ['id' => 1, 'name' => 'Facebook'],
+                ['id' => 2, 'name' => 'Vkontakte'],
             ]
         ],
         'socNetItems'                      => [
             'title'               => 'Группы в социальных сетях',
             'link'                => [
-                'title'       => 'Ссылка на группу в Facebook',
+                'title'       => 'Ссылка на группу',
                 'placeholder' => 'https://',
                 'tooltip'     => 'tooltip text',
             ],
             'countUsers'          => [
-                'title'       => 'Объём пользователей группы в Facebook',
+                'title'       => 'Объём пользователей группы',
                 'placeholder' => 11000,
                 'tooltip'     => 'tooltip text',
             ],
@@ -909,9 +910,9 @@ return [
             'title'       => 'Тип аудитории на которую расчитан бизнес',
             'placeholder' => 'Выберите',
             'options'     => [
-                ['id' => 1, 'name' => 'Item'],
-                ['id' => 2, 'name' => 'Item'],
-                ['id' => 3, 'name' => 'Item'],
+                ['id' => 1, 'name' => 'B2C'],
+                ['id' => 2, 'name' => 'B2B'],
+                ['id' => 3, 'name' => 'B2C - B2B']
             ]
         ],
         'genderTargetAudience'             => [
@@ -1083,8 +1084,8 @@ return [
         //endregion
         //region Step 8
         'legalStatus'                          => [
-            'title'         => 'Юридический статус',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Юридический статус',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1092,8 +1093,8 @@ return [
             ]
         ],
         'taxSystem'                            => [
-            'title'         => 'Система налогообложения',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Система налогообложения',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1101,8 +1102,8 @@ return [
             ]
         ],
         'changesProfileLegalEntity'            => [
-            'title'         => 'Были изменения профиля деятельности в юридическом лице?',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Были изменения профиля деятельности в юридическом лице?',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1110,8 +1111,8 @@ return [
             ]
         ],
         'havePenalties'                        => [
-            'title'         => 'Непокрытые штрафные санкции, наложенные фискальными органами?',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Непокрытые штрафные санкции, наложенные фискальными органами?',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1119,8 +1120,8 @@ return [
             ]
         ],
         'listPenalties'                        => [
-            'title'         => 'Укажите штрафные санкции',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Укажите штрафные санкции',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1128,8 +1129,8 @@ return [
             ]
         ],
         'haveDisputableSituations'             => [
-            'title'         => 'Вовлечение в спорные/коммерческие/административные ситуации?',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Вовлечение в спорные/коммерческие/административные ситуации?',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],
@@ -1137,8 +1138,8 @@ return [
             ]
         ],
         'listDisputableSituations'             => [
-            'title'         => 'Укажите типы спорных ситуаций',
-            'placeholder'   => 'Выберите',
+            'title'       => 'Укажите типы спорных ситуаций',
+            'placeholder' => 'Выберите',
             'options'     => [
                 ['id' => 1, 'name' => 'Item'],
                 ['id' => 2, 'name' => 'Item'],

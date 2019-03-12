@@ -19,6 +19,8 @@ import Sticky from 'sticky-js';
 
 let sticky = new Sticky('.sticky');
 
+import {BulmaAccordion, BulmaAccordionItem} from "vue-bulma-accordion";
+
 Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyDs7VrVm9-Uc98tTj0eYIRgNkisaLQsWlg',
@@ -82,7 +84,6 @@ Vue.component('main-list', require('./components/business/MainList.vue').default
 Vue.component('chat', require('./components/chat/chat.vue').default);
 Vue.component('chat-widget', require('./components/chat/chat-widget.vue').default);
 
-
 Vue.component('example-form-short', require('./components/ExampleFormShort.vue').default);
 Vue.component('example-form-filter', require('./components/business/FormFilter.vue').default);
 Vue.component('example-form-change-password', require('./components/ExampleFormChangePassword.vue').default);
@@ -101,6 +102,10 @@ Vue.component('profile', require('./components/profile/profile').default);
  * Глобальные миксины
  */
 Vue.mixin({
+
+    destroyed() {
+        console.log("I've been destroyed");
+    },
     methods: {
         $t(translatableObject) {
             return translatableObject[this.$store.state.lang]
@@ -166,8 +171,16 @@ Vue.component('account', require('./components/account/Account').default);
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
 
+// franchise
+const ModalBuyFranchise = () => import('./components/franchises/ModalBuyFranchise');
+Vue.component('modal-buy-franchise', ModalBuyFranchise);
+
 const app = new Vue({
     el: '#app',
+    components: {
+        BulmaAccordion,
+        BulmaAccordionItem
+    },
     data: {
         object: {
             // Переменные, используемые на странице объекта
@@ -182,7 +195,11 @@ const app = new Vue({
             showAddReviewModal: false,
             showSingleReviewModal: false,
             showSingleReviewModalID: null
-        }
+        },
+        franchise: {
+            // Переменные, используемые на странице франшизы
+            showModalBuy: false
+        },
     },
     router,
     store,
@@ -360,7 +377,7 @@ if ($dropdowns.length > 0) {
     $dropdowns.forEach(function ($el) {
         $el.addEventListener('click', function (event) {
             let target = event.target;
-            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active'))) {
+            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active')) && !target.classList.contains('is-info') && !target.classList.contains('is-clear')) {
                 return;
             } else {
                 event.stopPropagation();

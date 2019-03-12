@@ -8,20 +8,22 @@
                     <input type="text" placeholder="Поиск по истории сообщений" v-model="search" @input="onMessagesSearch">
                 </div>
             </transition>
-            <div class="flex flex-between flex-center">
+            <div class="flex flex-center">
+                <div @click="$emit('show-menu')">
+                    <simple-svg class="chat__dialog__menu-icon"
+                        :filepath="'/svg/icons/ic_menu.svg'"
+                        height="16" width="16">
+                    </simple-svg>
+                </div>
                 <div class="chat__dialog__top__theme" v-html="dialog.theme"></div>
             </div>
-            <div class="chat__dialog__search-btn" @click="ui.showDialogSearch = true">
+            <div class="chat__dialog__search-btn" @click="(ui.showDialogSearch = !ui.showDialogSearch)">
                 <img src="/svg/icons/chat/chat_search.svg" alt="">
             </div>
         </div>
         <!-- <div v-if="search" class="chat__dialog__is-searching">поиск</div> -->
-        <div class="chat-messages" v-if="messagesMapped.length > 0" v-bar>
-         
+        <div class="chat-messages" v-show="messagesMapped.length > 0" v-bar>
             <div class="chat-messages__scroll" ref="message_list">
-
-                <!--<div class="chat-messages__wrap">-->
-
               <div class="chat-messages__stack"
                      v-for="(stack, i) in messagesMapped"
                      :class="{yours: user.id == stack.user.id}"
@@ -65,13 +67,10 @@
                     </div>
                 </div>
                 <chat-preloader v-if="isSendingMessage"></chat-preloader>
-
-                <!--</div>-->
-
             </div>
         </div>
-        <div v-else-if="search" class="chat__dialog__no-messages">Сообщений не найдено</div>
-        <div v-else class="chat__dialog__no-messages">Сообщений нет</div>
+        <div v-show="messagesMapped.length ==0 && search" class="chat__dialog__no-messages">Сообщений не найдено</div>
+        <div v-show="messagesMapped.length == 0 && !search" class="chat__dialog__no-messages">Сообщений нет</div>
         <div class="chat__dialog__new-message">
             <div v-if="attachment.isLoaded" class="chat__dialog__new-message__files">
                 <div class="chat__dialog__new-message__file" :class="{'is-image': ifFileIsImage(attachment.mime)}">
@@ -139,7 +138,7 @@
     export default {
         name: "chat-dialog",
         components: { 'simple-svg': SimpleSVG, Modal, ChatMessageStatus, ChatPreloader },
-        props: ['dialog', 'user'],
+        props: ['dialog', 'user', 'isCompactChat'],
         data: () => ({
             ui: {
                 showDialogSearch: false,
@@ -201,6 +200,8 @@
         },
         methods: {
             scrollToEnd(initial = false){
+                if(typeof this.$refs.message_list == 'undefined')
+                    return
                 this.$nextTick(() => {
 
                     let message_list = this.$refs.message_list;
@@ -255,7 +256,7 @@
                             this.clearFile()
 
                             setTimeout(()=>{
-                                this.scrollToEnd()
+                               this.scrollToEnd()
                             }, 700) //TODO похоже на костыль
 
                              new Audio('/chat_message_sent.mp3').play()

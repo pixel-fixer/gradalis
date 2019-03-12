@@ -5,7 +5,7 @@
         <div class="broker-pa__header">
             <div class="columns is-multiline">
                 <div class="column is-8-desktop is-12-tablet">
-                    <h1 class="section-title mb-0-5">Лиды</h1>
+                    <h1 class="section-title mb-0-5">{{trans('account.leads')}}</h1>
                 </div>
                 <div class="column is-4-desktop is-12-tablet">
                     <div class="buttons">
@@ -19,9 +19,10 @@
                             class="control has-icons-left has-icons-left_1">
                             <flat-pickr
                                 class="input is-size-875"
-                                v-model="form.rangeDates.value"
-                                :placeholder="form.rangeDates.placeholder"
-                                :config="form.rangeDates.config"
+                                @on-close="dateChanged"
+                                v-model="rangeDates.value"
+                                :placeholder="rangeDates.placeholder"
+                                :config="rangeDates.config"
                             >
 
                             </flat-pickr>
@@ -39,15 +40,13 @@
         <div class="columns is-multiline">
             <div class="column">
                 <div class="columns is-multiline">
-                    <g-g-select-input v-model="form.offer.selected" :size="'is-8'"
-                                      :placeholder="form.offer.placeholder" :label="form.offer.title"
-                                      :searchable="true" :options="formOptions.offer.options"
+                    <g-g-select-input v-model="offer" :size="'is-8'"
+                                      :placeholder="trans('account.offer.placeholder')"
+                                      :label="trans('account.offer.title')"
+                                      @input="changeOffer"
+                                      :searchable="true" :options="offerOptions"
                                       :withImg="true">
                     </g-g-select-input>
-
-                    <g-g-select-input v-model="form.sorting.selected" :size="'is-4'"
-                                      :placeholder="form.sorting.placeholder" :label="form.sorting.title"
-                                      :searchable="true" :options="formOptions.sorting.options"></g-g-select-input>
                 </div>
             </div>
 
@@ -61,25 +60,31 @@
                     </div>
 
                     <div class="buttons has-addons mb-0 mr-1">
-                        <button class="button h-3 is-outlined is-info is-size-875 mb-0 is-active">
-                            <span>День</span>
+                        <button class="button h-3 is-outlined is-info is-size-875 mb-0"
+                                v-bind:class="{ 'is-active': dateType=='day'}"
+                                @click="switchDateType('day')"
+                        >
+                            <span>{{trans('account.day')}}</span>
                         </button>
-                        <button class="button h-3 is-outlined is-size-875 mb-0 is-info">
-                            <span>Неделя</span>
+                        <button class="button h-3 is-outlined is-size-875 mb-0 is-info"
+                                v-bind:class="{ 'is-active': dateType=='week'}"
+                                @click="switchDateType('week')"
+                        >
+                            <span>{{trans('account.week')}}</span>
                         </button>
                     </div>
 
                     <div class="buttons has-addons mb-0">
                         <button class="button h-3 is-outlined is-info is-size-875 is-medium mb-0"
                                 v-bind:class="{ 'is-active': typeChart=='line'}"
-                                @click="typeChart='line'">
+                                @click="switchChart('line')">
                             <span class="icon is-medium">
                                 <img src="/svg/icons/ic_line-chart.svg" alt=""
                                      class="svg"></span>
                         </button>
                         <button class="button h-3 is-outlined is-size-875 is-info is-medium mb-0"
                                 v-bind:class="{ 'is-active': typeChart=='bar'}"
-                                @click="typeChart='bar'">
+                                @click="switchChart('bar')">
                             <span class="icon is-medium"><img src="/svg/icons/ic_analytics-2.svg" alt=""
                                                               class="svg"></span>
                         </button>
@@ -93,9 +98,9 @@
 
         <div class="mb-2">
             <line-chart ref="lineChart" v-model="datacollection" :dataset="datacollection" :height="260"
-                        v-if="typeChart=='line'"/>
+                        v-show="typeChart=='line'"/>
             <bar-chart ref="barChart" v-model="datacollection" :dataset="datacollection" :height="260"
-                       v-if="typeChart=='bar'"/>
+                       v-show="typeChart=='bar'"/>
         </div>
 
         <section class="section is-paddingless content">
@@ -110,33 +115,19 @@
                 </tr>
                 </thead>
                 <tbody class="box is-paddingless">
-                <tr>
-                    <td>2210</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
+                <tr v-for="item in detailList">
+                    <td>{{item.lead_id}}</td>
+                    <td class="has-text-basic">{{item.date}} <span style="color: #8B97A9;"> в {{item.time}} (Польша)</span></td>
+                    <td>{{item.login_count}}</td>
                     <td>12</td>
                     <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2211</td>
-                    <td class="has-text-basic">28.09.2018 <span style="color: #8B97A9;">в 12:44 (Польша)</span></td>
-                    <td>125</td>
-                    <td>12</td>
-                    <td class="has-text-basic">
-                        <a href="#" class="link-with-icon">
-                            <img src="/svg/icons/ic_messages.svg">
-                            <span class="has-text-decoration-underline">Написать сообщение</span>
-                        </a>
+                        <message-modal :title="trans('account.write_message')"></message-modal>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </section>
+        <portal-target name="modals"></portal-target>
     </div>
 </template>
 
@@ -148,66 +139,41 @@
     import flatPickr from 'vue-flatpickr-component';
     import {Russian} from "flatpickr/dist/l10n/ru.js"
     import 'flatpickr/dist/flatpickr.css';
+    import MessageModal from '../../modals/MessageModal';
 
     flatpickr.localize(Russian);
 
     export default {
         name: "BrokerLeads",
         components: {
-            BarChart, LineChart, GGSelectInput, flatPickr
+            BarChart, LineChart, GGSelectInput, flatPickr,MessageModal
         },
         data() {
             return {
                 showModalRef: false,
                 partners: null,
-                partnersIds: [],
+                partnersId: [],
+                offer: 1,
+                detailList:[],
+                offerOptions: trans('account.offer.options'),
                 chart: {
                     data: null
                 },
-                form: {
-                    rangeDates: {
-                        placeholder: '25.02.2018 - 03.03.2018',
-                        value: '',
-                        config: {
-                            mode: "range",
-                            altFormat: 'd.m.Y',
-                            altInput: true,
-                            dateFormat: 'Y-m-d'
-                        }
-                    },
-                    offer: {
-                        selected: null,
-                        title: 'Оффер',
-                        placeholder: 'Выберите',
-                        selectedLabel: '',
-                        selectLabel: '',
-                        deselectLabel: '',
-                        noResult: 'Ничего не найдено'
-                    },
-                    sorting: {
-                        selected: null,
-                        title: 'Сортировка',
-                        placeholder: 'Выберите',
-                    },
+                rangeDates: {
+                    placeholder: '25.02.2018 - 03.03.2018',
+                    value: '',
+                    config: {
+                        mode: "range",
+                        altFormat: 'd.m.Y',
+                        altInput: true,
+                        dateFormat: 'Y-m-d'
+                    }
                 },
-                formOptions: {
-                    offer: {
-                        options: [
-                            {id: '1', name: 'Item 1', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '2', name: 'Item 2', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '3', name: 'Item 3', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                            {id: '4', name: 'Item 4', img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'},
-                        ]
-                    },
-                    sorting: {
-                        options: [
-                            {id: '1', name: 'Item 1'},
-                            {id: '2', name: 'Item 2'},
-                            {id: '3', name: 'Item 3'},
-                            {id: '4', name: 'Item 4'},
-                        ]
-                    },
-                },
+
+                // id: '4',
+                // name: 'Item 4',
+                // img: 'https://vue-multiselect.js.org/static/posters/trading_post.png'
+
                 datacollection: {
                     labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Мая', 'Июнь', 'Июль'],
                     datasets: [
@@ -223,7 +189,7 @@
                             // cubicInterpolationMode: 'monotone'
                         }
                     ]
-                },options: {
+                }, options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
@@ -252,7 +218,10 @@
                                 fontFamily: "'Roboto', sans-serif",
                                 beginAtZero: true,
                                 padding: 10,
+                                suggestedMin: 0,
+                                suggestedMax: 5
                             },
+                            stepSize: 1
 
                         }]
                     },
@@ -276,51 +245,87 @@
                     },
                 },
                 typeChart: 'line',
+                dateType: 'day',
+                from: null,
+                to: null
             }
         },
         methods: {
-            switchBar(){
-                this.typeChart='bar'
-                this.$refs['barChart'].renderChart(this.datacollection,this.options)
+            changeOffer(){
+                this.fetchChartData();
             },
-            switchLine(){
-                this.typeChart='line'
-                this.$refs['lineChart'].renderChart(this.datacollection,this.options)
+            dateChanged(val) {
+                this.from = val[0];
+                this.to = val[1];
+                this.fetchChartData()
             },
-            fetchPartners() {
+            switchChart(type = 'line') {
+                if (type == 'bar') {
+                    this.typeChart = 'bar';
+                    this.$nextTick(() => {
+                        this.$refs['barChart'].renderChart(this.datacollection, this.options)
+                    })
+                } else if (type == 'line') {
+                    this.typeChart = 'line';
+                    this.$nextTick(() => {
+                        this.$refs['lineChart'].renderChart(this.datacollection, this.options)
+                    })
+                }
+            },
+            switchDateType(type = 'day') {
+                this.dateType = type;
+                this.fetchChartData()
+            },
+            fetchOffers() {
                 let vm = this;
-                axios.post('/account-get-partners', {
-                    approved: true
-                }).then(responce => {
-                    vm.partners = responce.data;
-                    responce.data.forEach(partner => {
-                        vm.partnersIds.push(partner.id);
-                        this.$nextTick(() => {
-                            vm.fetchChartData();
-                        });
+                axios.get('/broker-get-offers').then(responce => {
+                    responce.data.forEach(el => {
+                        vm.offerOptions.push(el);
                     });
 
-                })
+                });
+            },
+            fetchLeadsDetails() {
+                let vm = this;
+                axios.post('/broker-get-leads-details').then(responce => {
+                    responce.data.forEach(el => {
+                        vm.detailList.push(el);
+                    });
+                });
             },
             fetchChartData() {
                 let vm = this;
-                axios.post('/account-chart-data', {
-                    partners: this.partnersIds
+                let data = {};
+                data.partnerId = vm.$store.state.partner.id;
+                data.dateType = vm.dateType;
+                if (vm.from) {
+                    data.from = vm.from;
+                }
+                if (vm.to) {
+                    data.to = vm.to;
+                }
+                if (vm.offer > 1) {
+                    data.campaign_id = vm.offer;
+                }
+                axios.post('/broker-lead-chart-data', {
+                    data: data
                 }).then(responce => {
                     vm.chart.data = responce.data;
                     vm.datacollection.labels = [];
                     vm.datacollection.datasets[0].data = [];
-                    vm.chart.data.forEach(el => {
-                        vm.datacollection.labels.push(el.date);
-                        vm.datacollection.datasets[0].data.push(el.views + 0);
+                    vm.chart.data.forEach(key => {
+                        vm.datacollection.labels.push(key.date);
+                        vm.datacollection.datasets[0].data.push(key.approved_leads);
                     });
-                    this.switchLine();
+                    this.switchChart();
                 })
             },
 
         },
-        created() {
-            this.fetchPartners();
+        mounted() {
+            this.fetchOffers();
+            this.fetchLeadsDetails();
+            this.fetchChartData();
         },
     }
 </script>

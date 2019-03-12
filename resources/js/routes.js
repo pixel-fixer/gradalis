@@ -16,6 +16,13 @@ const AccountPartners = () => import('./components/account/views/Partners');
 const AccountPartnersFuture = () => import('./components/account/views/FuturePartners');
 const AccountPartnerSettings = () => import('./components/account/views/SettingsPartner');
 
+const ServiceBuyCompanyLegalEntities = () => import('./components/profile/views/services/buy-company/LegalEntities');
+const ServiceBuyCompanyDocuments = () => import('./components/profile/views/services/buy-company/Documents');
+const ServiceBuyCompanyResults = () => import('./components/profile/views/services/buy-company/Results');
+const ServiceBuyCompanyForm = () => import('./components/profile/views/services/buy-company/Form');
+const ServiceRecruitingForm = () => import('./components/profile/views/services/recruiting/Form');
+const ServiceRecruitingProcess = () => import('./components/profile/views/services/recruiting/Process');
+
 export default new Router({
     mode: 'history',
     scrollBehavior: () => ({y: 0}),
@@ -23,7 +30,7 @@ export default new Router({
         /* Seller */
         {
             path: '/profile/',
-            redirect: '/profile/products',
+            redirect: '/profile/purchased-services',
             name: 'profile',
             meta: {breadcrumb: {label: 'Профиль'}}
         },
@@ -43,11 +50,11 @@ export default new Router({
             component: require('./components/profile/views/settings').default,
             meta: {breadcrumb: {parent: 'profile', label: 'Настройки'}}
         },
-        {
-            path: '/profile/products',
-            component: require('./components/profile/views/products').default,
-            meta: {breadcrumb: {parent: 'profile', label: 'Продукты'}}
-        },
+        // {
+        //     path: '/profile/products',
+        //     component: require('./components/profile/views/products').default,
+        //     meta: {breadcrumb: {parent: 'profile', label: 'Продукты'}}
+        // },
         {
             path: '/profile/purchased-services',
             component: require('./components/profile/views/purchased-services').default,
@@ -124,6 +131,45 @@ export default new Router({
             component: AccountPartnerSettings,
             props: true,
             name: 'partner-settings'
+        },
+
+        /* Services */
+        // ToDo: поправить ссылки
+        {
+            path: '/profile/services/buy-company/legal-entities', component: ServiceBuyCompanyLegalEntities,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        {
+            path: '/profile/services/buy-company/documents', component: ServiceBuyCompanyDocuments,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        {
+            path: '/profile/services/buy-company/results', component: ServiceBuyCompanyResults,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        {
+            path: '/profile/services/buy-company/create', component: ServiceBuyCompanyForm,
+            meta: {breadcrumb: {parent: 'profile', label: 'Покупка юридического лица'} }
+        },
+        //---
+        {
+            path: '/profile/services/recruiting/create', component: ServiceRecruitingForm,
+            meta: {breadcrumb: {parent: 'profile', label: 'Подбор персонала'} }
+        },
+        {
+            path: '/profile/services/recruiting/process', component: ServiceRecruitingProcess,
+            meta: {breadcrumb: {parent: 'profile', label: 'Подбор персонала'} }
+        },
+        //---
+
+        /* Custom services */
+        {
+            path: '/profile/user-service', component: require('./components/profile/views/user_service/user-services').default,
+            meta: {breadcrumb: {parent: 'profile', label: 'Ваши услуги'} }
+        },
+        {
+            path: '/profile/user-service/:id', component: require('./components/profile/views/user_service/user-service').default,
+            meta: {breadcrumb: {parent: 'profile', label: 'Ваша услуга'} },
         },
 
         /* 404 */

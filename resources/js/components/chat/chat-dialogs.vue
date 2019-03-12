@@ -4,7 +4,9 @@
             <img src="/svg/icons/chat/chat_search.svg" alt="">
             <input v-model="search" @input="$emit('search', search)" type="text" placeholder="Поиск чатов">
         </div>
-        <transition-group v-if="dialogsMapped.length > 0"
+        <div class="chat__list__scroll" v-bar v-if="dialogsMapped.length > 0">
+      
+        <transition-group 
                           tag="div"
                           class="chat__list__items"
                           name="fade">
@@ -21,8 +23,10 @@
                 </div>
             </div>
         </transition-group>
+        </div>
         <div v-else-if="search" class="chat__list__no-dialogs">Диалогов не найдено</div>
         <div v-else-if="!firstLoad" class="chat__list__no-dialogs">Диалогов нет</div>
+      
         <div class="flex-push"></div>
         <div class="chat__list__settings" ref="chat_list_settings">
             <a href="" @click.prevent="ui.showSettings = !ui.showSettings" :class="{active: ui.showSettings}">

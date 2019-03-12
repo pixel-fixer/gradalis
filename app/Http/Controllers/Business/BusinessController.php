@@ -53,11 +53,10 @@ class BusinessController extends Controller
     {
         Schema::disableForeignKeyConstraints();
         $businessData = $request->get('business');
+        $business->update($businessData);
         foreach ($businessData['images'] as $image) {
             $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
         }
-        $business->update($businessData);
-
         Schema::enableForeignKeyConstraints();
         return response()->json(['status' => 'ok']);
     }

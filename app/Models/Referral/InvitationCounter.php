@@ -14,12 +14,7 @@ class InvitationCounter extends Model
     protected $table = 'invitation_counter';
     protected $fillable = array('invitation_id', 'ip', 'http_referrer', 'user_id', 'token', 'count', 'approved');
     protected $appends = [
-        'open_leads',
-        'approved_leads',
-        'open_targets',
-        'payed_targets',
-        'open_commission',
-        'approved_commission',
+
     ];
 
     public function invitation()
@@ -27,13 +22,11 @@ class InvitationCounter extends Model
         return $this->belongsTo('App\Models\Referral\Invitation');
     }
 
-    public function getOpenLeadsAttribute()
-    {
-        return $this->targets()->wherePivot('status', 0)
-            ->wherePivot('type', 0)
-            ->count();
-    }
 
+    public function counter_target()
+    {
+        return $this->hasMany('App\Models\Referral\CounterTarget', 'counter_id');
+    }
     public function targets()
     {
         return $this->belongsToMany(
@@ -41,39 +34,6 @@ class InvitationCounter extends Model
             'counter_target',
             'counter_id',
             'target_id'
-        )->withPivot('sum', 'status', 'type');
-    }
-
-    public function getApprovedLeadsAttribute()
-    {
-        return $this->targets()->wherePivot('status', '>', 0)
-            ->wherePivot('type', 0)
-            ->count();
-    }
-
-    public function getOpenTargetsAttribute()
-    {
-        return $this->targets()->wherePivot('status', 0)
-            ->wherePivot('type', 1)
-            ->count();
-    }
-
-    public function getOpenCommissionAttribute()
-    {
-        return $this->targets()->wherePivot('status', 0)
-            ->sum('sum');
-    }
-
-    public function getApprovedCommissionAttribute()
-    {
-        return $this->targets()->wherePivot('status', 1)
-            ->sum('sum');
-    }
-
-    public function getPayedTargetsAttribute()
-    {
-        return $this->targets()->wherePivot('status', '>', 1)
-            ->wherePivot('type', 1)
-            ->count();
+        )->withPivot('sum', 'status', 'type')->withTimestamps();
     }
 }

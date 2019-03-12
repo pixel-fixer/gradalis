@@ -31,8 +31,9 @@ class ChatController extends Controller
     public function getDialogs($search = null)
     {
         //TODO Проверка на возможность смотреть диалоги, пока отдаются все существующие
-
-        $dialogs = Dialog::with('user', 'object');
+        $dialogs = Dialog::with('user', 'object')->whereHas('users', function($query){
+            $query->where('users.id', Auth::id());
+        }); 
 
         $search = request()->get('search', null);
 

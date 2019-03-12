@@ -1,4 +1,4 @@
-<aside>
+<aside class="h-full" data-sticky-container>
     <div class="card card-object card-object_promo">
         <div class="card-image">
             <figure class="image is-16by9">
@@ -54,20 +54,21 @@
             </div>
         </div>
     </div>
-
-    {{-- ToDo: Сделать Sticky --}}
-    <div class="mt-1-75 box">
-        <div class="is-size-875 mb-0-5">Стоимость продукта</div>
-        <div class="price-info">
-            <span class="tag is-danger price-sale">-13%</span>
-            <div class="price">€150 за подбор</div>
-            <span class="price-old">€250</span>
+    <div class="pt-1-75 sticky">
+        <div class="box">
+            <div class="is-size-875 mb-0-5">Стоимость продукта</div>
+            <div class="price-info">
+                <span class="tag is-danger price-sale">-13%</span>
+                <div class="price">€150 за подбор</div>
+                <span class="price-old">€250</span>
+            </div>
+            <div class="buttons mb-0-5">
+                <a href="#" class="button is-link is-size-875 h-3 has-text-weight-bold is-fullwidth">
+                    Заказать продукт
+                </a>
+            </div>
+            <div class="is-size-875"><i>Опишите свои пожелания и мы начнем работу над вашей заявкой</i></div>
         </div>
-        <div class="buttons mb-0-5">
-            <a href="#" class="button is-link is-size-875 h-3 has-text-weight-bold is-fullwidth">
-                Заказать продукт
-            </a>
-        </div>
-        <div class="is-size-875"><i>Опишите свои пожелания и мы начнем работу над вашей заявкой</i></div>
     </div>
+
 </aside>

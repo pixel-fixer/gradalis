@@ -11,7 +11,7 @@ use App\Models\Business\Business;
 use App\Models\Franchise\Franchise;
 use App\Models\Service\OrderedService;
 use App\Models\PaymentTransaction;
-use App\Models\ViewRequest;
+use App\Models\ObjectRequest;
 use App\Models\Travel\Travel;
 use App\Models\Auth\User;
 class ProfileController extends Controller
@@ -171,7 +171,7 @@ class ProfileController extends Controller
         return array_values($view_requests_mapped);  
     }
 
-    public function setObjectRequestStatus(ViewRequest $view_request, $status)
+    public function setObjectRequestStatus(ObjectRequest $view_request, $status)
     {
         $view_request->status = $status;
         $view_request->save();
@@ -182,14 +182,14 @@ class ProfileController extends Controller
 
     public function getObjects()
     {
-        $business = Business::where('user_id', Auth::id())->with('city.country')->get()->map(function($item){
+        $business = Business::where('user_id', Auth::id())->with(['city.country', 'view_request', 'doc_request'])->get()->map(function($item){
             $item->favorites_count = $item->favoritesCount;
             $item->status_labels = $item->getStatuses();
             $item->type= 'business';
             return $item;
         });
 
-        $franchise = Franchise::where('user_id', Auth::id())->with('city.country')->get()->map(function($item){
+        $franchise = Franchise::where('user_id', Auth::id())->with(['city.country', 'view_request', 'doc_request'])->get()->map(function($item){
             $item->favorites_count = $item->favoritesCount;
             $item->status_labels = $item->getStatuses();
             $item->type= 'franchise';

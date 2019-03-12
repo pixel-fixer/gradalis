@@ -20,7 +20,7 @@
                             </figure>
                             <div class="card-service_table__info">
                                 <h4>{{ $t(orderedService.service.name) }}</h4>
-                                <time>{{ getDateTime(orderedService.created_at)}}</time>
+                                <time>{{ $getDateTime(orderedService.created_at)}}</time>
                             </div>
                         </div>
                     </td>
@@ -74,24 +74,6 @@ export default {
         },
         getStatusLabel(status_id){
             return this.statusLabels[status_id-1]
-        },
-        getDateTime(dbDateTime){
-            var monthNames = [
-                'Январь',
-                'Февраль',
-                'Март',
-                'Апрель',
-                'Май',
-                'Июнь',
-                'Июль',
-                'Август',
-                'Сентябрь',
-                'Ноябрь',
-                'Декабрь',
-            ];
-
-            var date =  new Date(Date.parse(dbDateTime.replace('-','/','g')));
-            return date.getDate() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + date.getFullYear()
         }
     }
 }

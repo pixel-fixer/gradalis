@@ -56,13 +56,6 @@ Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/news', function () {
-    return view('news');
-});
-
-Route::get('/news-single', function () {
-    return view('news-single');
-});
 
 Route::get('/ui', function () {
     return view('ui');
@@ -120,6 +113,16 @@ Route::get('/reviews', 'ReviewsController@index');
 Route::get('/help', function () {
     return view('help');
 });
+//endregion
+
+//region Franchises
+//Route::get('/franchises', function () {
+//    return view('franchises.index');
+//});
+Route::get('/franchises/single', function () {
+    return view('franchises.show');
+});
+
 //endregion
 
 //region Services
@@ -183,6 +186,7 @@ Route::namespace('Api')
         Route::post('/account-get-summary', 'AccountController@getSummary');
         Route::post('/account-partner-status-change', 'AccountController@partnerStatusChange');
         Route::post('/account-chart-data', 'AccountController@getChartData');
+
         //});
     
         Route::post('/review-add', 'ReviewsController@addReview');
@@ -190,7 +194,10 @@ Route::namespace('Api')
         
         Route::post('/broker-chart-data', 'BrokerController@getChartData');
         Route::get('/broker-get-summary', 'BrokerController@getSummary');
+        Route::get('/broker-get-offers', 'BrokerController@getOffers');
         Route::get('/broker-get-offers-summary', 'BrokerController@getOffersSummary');
+        Route::post('/broker-lead-chart-data', 'BrokerController@getLeadChartData');
+        Route::post('/broker-get-leads-details', 'BrokerController@getLeadsDetails');
 
         Route::get('/location-get-countries', 'LocationController@getCountries');
         Route::get('/location-get-cities', 'LocationController@getCities');
@@ -244,6 +251,12 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 
     Route::get('/api/trips', 'ProfileController@getTrips');
+
+    Route::get('/api/user-service', 'Api\ServiceController@getUserServices');
+    Route::get('/api/user-service/{service}', 'Api\ServiceController@getUserService');
+    Route::get('/api/service-categories', 'Api\ServiceController@getServiceCategories');
+    Route::post('/api/user-service', 'Api\ServiceController@addUserService');
+    Route::post('/api/user-service/{service}', 'Api\ServiceController@updateUserService');
 });
 
 /* Фикс для возможных конфликтов роутов ларавела и личного кабинета */

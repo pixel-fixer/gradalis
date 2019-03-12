@@ -30,6 +30,8 @@ return [
     'all'                    => 'Все',
     'views'                  => 'Показы',
     'hits'                   => 'Хиты',
+    'write_message'          => 'Написать сообщение',
+    'message'                => 'Сообщение',
     'clicks'                 => 'Клики',
     'payed_targets'          => 'Целей оплачено',
     'open_commission'        => 'Открытая комиссия',
@@ -74,6 +76,20 @@ return [
         'options'     => [
             ['id' => 1, 'name' => '1 мин'],
             ['id' => 2, 'name' => '1 час']
+        ]
+    ],
+    'offer'                  => [
+        'title'       => 'Оффер',
+        'placeholder' => 'Выберите',
+        'options'     => [
+            ['id' => 1, 'name' => 'Все офферы']
+        ]
+    ],
+    'partner'                  => [
+        'title'       => 'Партнеры',
+        'placeholder' => 'Выберите',
+        'options'     => [
+            ['id' => 1, 'name' => 'Все партнеры']
         ]
     ],
     'compare'                => [

@@ -15,4 +15,12 @@ class ServiceCategory extends Model
 
     public $statuses = ['paid', 'preparation', 'in_progress', 'done'];
 
+    public function getNameAttribute($value): string
+    {
+        $data = json_decode($value, true);
+        if(!$data){
+            return $value;
+        }
+        return json_decode($value, true)[app()->getLocale()];
+    }
 }

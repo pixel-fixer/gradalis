@@ -41,16 +41,11 @@
                 <div class="field is-expanded">
                     <label for="tel"
                            class="label label_req"><span>Контактный телефон</span></label>
-                    <div class="field has-addons">
+                    <div class="field">
                         <p class="control">
-                            <a class="button is-static is-size-875">
-                                +48
-                            </a>
-                        </p>
-                        <p class="control is-expanded">
                             <input type="tel"
                                    id="tel" class="input is-size-875" name="tel"
-                                   value="" placeholder="(456) 566-09-23" required>
+                                   value="" placeholder="+48 (456) 566-09-23" required>
                         </p>
                     </div>
                 </div>
@@ -114,7 +109,7 @@
                 <div class="field">
                     <div class="control">
                         <button type="submit"
-                                class="button is-link is-fullwidth has-text-weight-bold">
+                                class="button is-link is-fullwidth has-text-weight-bold h-3">
                             Подтвердить регистрацию продаца
                         </button>
                     </div>

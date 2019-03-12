@@ -14,7 +14,7 @@ class AccountController extends Controller
     public function partnerStatusChange(Request $request)
     {
         $partner_id = $request->get('partner_id');
-        $partner = Partner::find($partner_id);
+        $partner    = Partner::find($partner_id);
         switch ($request->get('status')) {
             case 'block':
                 $partner->status = 2;
@@ -35,9 +35,9 @@ class AccountController extends Controller
             $q->whereIn('partner_id', $partners);
         })->get();
 
-        $data['views'] = 0;
+        $data['views']  = 0;
         $data['clicks'] = 0;
-        $data['regs'] = 0;
+        $data['regs']   = 0;
         foreach ($invitations as $invitation) {
             $data['views'] += $invitation->count;
             $data['clicks']++;
@@ -52,10 +52,10 @@ class AccountController extends Controller
 
     public function getPartners(Request $request)
     {
-        $blocked = $request->get('blocked');
-        $await = $request->get('await');
+        $blocked  = $request->get('blocked');
+        $await    = $request->get('await');
         $approved = $request->get('approved');
-        $query = Partner::where('apa_id', auth()->user()->id)->with('user')->with('user.country')->moderatedMessagesCount();
+        $query    = Partner::where('apa_id', auth()->user()->id)->with('user')->with('user.country')->moderatedMessagesCount();
 
         $query->where(function ($q) use ($blocked, $approved, $await) {
             if ($blocked) {
@@ -70,18 +70,26 @@ class AccountController extends Controller
         });
 
         $partners = $query->get();
+        $partners->map(function ($partner) {
+            $data                         = Partner::partnerSummary($partner->id)->first();
+            $partner->hits                = $data->hits;
+            $partner->approved_leads      = $data->approved_leads;
+            $partner->approved_commission = $data->approved_commission;
+            return $partner;
+        });
         return response()->json($partners);
     }
 
     public function getPartner(Partner $partner)
     {
-        $data['user'] = $partner->user;
+        $data['user']    = $partner->user;
         $data['partner'] = $partner;
         return response()->json($data);
     }
+
     public function updatePartner(Partner $partner)
     {
-        $data['user'] = $partner->user;
+        $data['user']    = $partner->user;
         $data['partner'] = $partner;
         return response()->json($data);
     }
@@ -112,8 +120,8 @@ class AccountController extends Controller
         }
 
         $data['result'] = $labels->transform(function ($invitation, $key) {
-            $views = 0;
-            $clicks = 0;
+            $views      = 0;
+            $clicks     = 0;
             $registered = 0;
             foreach ($invitation as $item) {
                 $views += $item->count;

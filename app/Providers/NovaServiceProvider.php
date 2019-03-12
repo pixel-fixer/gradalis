@@ -7,6 +7,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Marketplace\Business\Business;
 use Marketplace\Chat\Chat;
 use Marketplace\Objects\Objects;
 use App\Nova\CustomRole;
@@ -80,6 +81,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new Chat,
             new Objects,
+            new Business,
             new Referrals
         ];
     }
