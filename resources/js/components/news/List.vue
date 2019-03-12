@@ -4,7 +4,7 @@
             <h1 class="section-title">Последние новости</h1>
 
             <div class="card-news-list columns is-multiline">
-                <news-card v-for="item in news" v-bind:key="item.id" :news="item"></news-card>
+                <news-card v-for="item in news.data" v-bind:key="item.id" :news="item"></news-card>
             </div>
         </main>
         <!-- Pagination -->
@@ -35,7 +35,7 @@
         },
         data() {
             return {
-                news: null,
+                news: {},
                 form: {
                     category: null
                 },
@@ -66,7 +66,7 @@
                     }
 
                     vm.loaderNews = false;
-                    vm.news = responce.data.data;
+                    vm.news = responce.data;
                     vm.changeHisory(page);
                 })
             },
