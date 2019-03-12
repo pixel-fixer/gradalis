@@ -12,6 +12,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class NewMessage implements ShouldBroadcast
 {
+    //TODO Возможно, для производительности сделать через ShouldQueue
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;

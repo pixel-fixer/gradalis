@@ -34,6 +34,7 @@ class CoreController extends Controller
             $user = Auth::user()->load(['roles']);
             $user->canModerateMessages = $user->canModerateMessages();
             $user->permissions = $user->getPermissionsViaRoles();
+            $user->notifications = $user->unreadNotifications;
             $partner = Partner::where('user_id',$user->id)->first();
         }else{
             $user = null;

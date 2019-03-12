@@ -506,6 +506,7 @@
   &__stack.yours &__user{
     margin-right: 0;
     margin-left: 12px;
+    flex-shrink: 0;
   }
   &__user{
     width: 40px;
@@ -692,5 +693,12 @@
     }
   }
 
+  .chat__list__settings{
+    padding: 8px 5px;
+  }
+  .chat__list__settings__menu{
+    bottom: 39px;
+    left: 4px;
+  }
 }
 

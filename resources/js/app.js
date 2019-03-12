@@ -188,6 +188,16 @@ const app = new Vue({
     },
     router,
     store,
+    mounted(){
+        //Подписка на уведомления
+        if(this.$store.state.user){
+            //Имя канала для уведомлений можно поменять, надо смотреть как https://github.com/laravel/ideas/issues/202
+            window.Echo.private('App.Models.Auth.User.' + this.$store.state.user.id)
+                .notification((notification) => {
+                    this.$store.commit('add_notification', notification);
+                });
+        }
+    },
     methods: {
         showModal(id) {
             document.getElementById(id).classList.add('is-active');
