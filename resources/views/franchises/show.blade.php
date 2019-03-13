@@ -1015,10 +1015,177 @@
                                                     услуги текущим тенденциям, спросу, эффективность маркетинговых
                                                     инструментов, ценообразование и своевременность поставок</p>
                                             </div>
-                                            <button @click="franchise.showModalShowReview = true"
-                                                    class="button is-info px-1 has-text-weight-bold is-size-875 h-3">
-                                                Просмотреть отзыв
-                                            </button>
+                                            <div class="mt-1">
+                                                <!-- Swiper -->
+                                                <div class="swiper-container swiper-franchise-reviews">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="swiper-slide">
+                                                            <div class="franchise-review">
+                                                                <figure class="franchise-review__author-thumb">
+                                                                    <img
+                                                                        src="https://image.freepik.com/free-photo/no-translate-detected_23-2147650966.jpg"
+                                                                        alt="">
+                                                                </figure>
+                                                                <div class="franchise-review__info">
+                                                                    <h4>Говорухин Дмитрий</h4>
+                                                                    <div class="is-size-7 has-text-basic">
+                                                                        CEO, руководитель компании
+                                                                    </div>
+                                                                    <blockquote class="blockquote-v2 mt-1">
+                                                                        Франшиза "Персональное решение" оправдала мои
+                                                                        ожидания , бизнес развивается быстро
+                                                                    </blockquote>
+                                                                    <a @click="franchise.showModalShowReview = true"
+                                                                       class="has-text-info has-text-decoration-underline is-size-875">
+                                                                        Прочитать полную историю
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add Arrows -->
+                                                    <div class="swiper-button-next swiper-franchise-reviews-next"></div>
+                                                    <div class="swiper-button-prev swiper-franchise-reviews-prev"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1108,8 +1275,129 @@
             <div class="container">
                 <h2 class="title section-title">Похожие предложения</h2>
                 <div class="columns is-multiline">
-                    <!-- ToDo: выводить 3 штуки -->
-                    @include('parts.cards-object')
+                    <div class="column is-4">
+                        <div class="card card-object">
+                            <div class="card-image">
+                                <figure class="image is-16by9"><img
+                                        src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
+                                        alt="Placeholder image"></figure>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <!--<span class="info-icon object-promo">-->
+                                <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
+                                <!--</span>-->
+                                <!--<span class="info-icon object-sale"><img src="/svg/icons/ic_sale.svg" alt="Sale"></span>-->
+                                <a href="#" class="info-icon object-favorite has-tooltip"><img
+                                        src="/svg/icons/ic_favorites_white.svg" alt="Fav"></a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-object__header"><h3 class="title">ОАО ИнжВодСтрой</h3>
+                                    <p class="location"><img src="/svg/icons/ic_location.svg" alt="Fav"><span>Польша, г. Билава
+                                </span></p>
+                                </div>
+                                <div class="content card-object__content">
+                                    <div class="list-properties">
+                                        <div class="list-properties__item"><span>Категория</span> <span>IT-бизнес</span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Размер инвестиций</span>
+                                            <span><b>$48 000</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Окупаемость</span>
+                                            <span><b>1 мес</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Без роялти</span> <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-object__footer">
+                                    <a href="/franchises/single"
+                                       class="button is-outlined is-fullwidth has-text-weight-bold is-info">Подробнее
+                                        о франшизе</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card card-object">
+                            <div class="card-image">
+                                <figure class="image is-16by9"><img
+                                        src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
+                                        alt="Placeholder image"></figure>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <!--<span class="info-icon object-promo">-->
+                                <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
+                                <!--</span>-->
+                                <!--<span class="info-icon object-sale"><img src="/svg/icons/ic_sale.svg" alt="Sale"></span>-->
+                                <a href="#" class="info-icon object-favorite has-tooltip"><img
+                                        src="/svg/icons/ic_favorites_white.svg" alt="Fav"></a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-object__header"><h3 class="title">ОАО ИнжВодСтрой</h3>
+                                    <p class="location"><img src="/svg/icons/ic_location.svg" alt="Fav"><span>Польша, г. Билава
+                                </span></p>
+                                </div>
+                                <div class="content card-object__content">
+                                    <div class="list-properties">
+                                        <div class="list-properties__item"><span>Категория</span> <span>IT-бизнес</span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Размер инвестиций</span>
+                                            <span><b>$48 000</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Окупаемость</span>
+                                            <span><b>1 мес</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Без роялти</span> <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-object__footer">
+                                    <a href="/franchises/single"
+                                       class="button is-outlined is-fullwidth has-text-weight-bold is-info">Подробнее
+                                        о франшизе</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card card-object">
+                            <div class="card-image">
+                                <figure class="image is-16by9"><img
+                                        src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
+                                        alt="Placeholder image"></figure>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <!--<span class="info-icon object-promo">-->
+                                <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
+                                <!--</span>-->
+                                <!--<span class="info-icon object-sale"><img src="/svg/icons/ic_sale.svg" alt="Sale"></span>-->
+                                <a href="#" class="info-icon object-favorite has-tooltip"><img
+                                        src="/svg/icons/ic_favorites_white.svg" alt="Fav"></a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-object__header"><h3 class="title">ОАО ИнжВодСтрой</h3>
+                                    <p class="location"><img src="/svg/icons/ic_location.svg" alt="Fav"><span>Польша, г. Билава
+                                </span></p>
+                                </div>
+                                <div class="content card-object__content">
+                                    <div class="list-properties">
+                                        <div class="list-properties__item"><span>Категория</span> <span>IT-бизнес</span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Размер инвестиций</span>
+                                            <span><b>$48 000</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Окупаемость</span>
+                                            <span><b>1 мес</b></span>
+                                        </div>
+                                        <div class="list-properties__item"><span>Без роялти</span> <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-object__footer">
+                                    <a href="/franchises/single"
+                                       class="button is-outlined is-fullwidth has-text-weight-bold is-info">Подробнее
+                                        о франшизе</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1119,10 +1407,12 @@
     <modal-buy-franchise :show="franchise.showModalBuy" @close="franchise.showModalBuy = false"></modal-buy-franchise>
 
     <!-- Modal -->
-    <modal-add-review-franchise :show="franchise.showModalAddReview" @close="franchise.showModalAddReview = false"></modal-add-review-franchise>
+    <modal-add-review-franchise :show="franchise.showModalAddReview"
+                                @close="franchise.showModalAddReview = false"></modal-add-review-franchise>
 
     <!-- Modal -->
-    <modal-show-review-franchise :show="franchise.showModalShowReview" @close="franchise.showModalShowReview = false"></modal-show-review-franchise>
+    <modal-show-review-franchise :show="franchise.showModalShowReview"
+                                 @close="franchise.showModalShowReview = false"></modal-show-review-franchise>
 
     <!-- Modal -->
     <div class="modal" id="modal-how-purchase">

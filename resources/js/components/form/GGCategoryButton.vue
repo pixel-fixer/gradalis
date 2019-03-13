@@ -3,7 +3,7 @@
         <div class="field">
             <label class="label">{{label}}</label>
             <div class="control">
-                <div :class="(selected === null)?'inputbox-val':''" class="input h-3"
+                <div :class="(selected === null)?'inputbox-val':''" class="input h-3 is-size-875"
                      @click="modalCategoryShow = !modalCategoryShow">{{selectedName}}
                     <!--Modal-->
                     <portal to="modals">

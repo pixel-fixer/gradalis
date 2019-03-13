@@ -178,6 +178,8 @@ const ModalAddReviewFranchise = () => import('./components/franchises/ModalAddRe
 Vue.component('modal-add-review-franchise', ModalAddReviewFranchise);
 const ModalShowReviewFranchise = () => import('./components/franchises/ModalShowReview');
 Vue.component('modal-show-review-franchise', ModalShowReviewFranchise);
+Vue.component('franchises-list', require('./components/franchises/List.vue').default);
+
 
 const app = new Vue({
     el: '#app',
@@ -336,6 +338,22 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
     navigation: {
         nextEl: '.swiper-object-services-next',
         prevEl: '.swiper-object-services-prev',
+    },
+});
+
+/**
+ * Слайдер отзывов на странице франшизы
+ */
+var swiperFranchiseReviews = new Swiper('.swiper-franchise-reviews', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 0,
+    loop: false,
+    freeMode: false,
+    width: 700,
+    navigation: {
+        nextEl: '.swiper-franchise-reviews-next',
+        prevEl: '.swiper-franchise-reviews-prev',
     },
 });
 
