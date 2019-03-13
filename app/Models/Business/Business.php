@@ -174,4 +174,9 @@ class Business extends Model implements HasMedia
     {
         return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_DOC);
     }
+
+    public function request()
+    {
+        return $this->morphMany('App\Models\ObjectRequest', 'object');
+    }
 }

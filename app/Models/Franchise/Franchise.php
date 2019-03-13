@@ -128,6 +128,11 @@ class Franchise extends Model
     {
         return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_DOC);
     }
+    
+    public function request()
+    {
+        return $this->morphMany('App\Models\ObjectRequest', 'object');
+    }
 
     public function getNameAttribute($value): string
     {

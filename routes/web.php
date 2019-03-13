@@ -232,6 +232,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::patch('request/{view_request}/{status}', 'ProfileController@setObjectRequestStatus');
 
     Route::get('/api/objects', 'ProfileController@getObjects');
+    Route::get('/api/object/{type}/{id}', 'Api\ObjectController@getStats');
 
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 

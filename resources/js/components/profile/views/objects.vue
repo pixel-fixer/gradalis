@@ -15,7 +15,7 @@
             <div class="columns is-multiline">
                 <div class="column is-12">
                     <!-- Example Layout card service -->
-                    <article class="box card-object-pa is-paddingless" v-for="object in objectsMapped">
+                    <article class="box card-object-pa is-paddingless" v-for="object in objectsMapped" :key="object.id">
                         <div v-if="getObjectNotificationCount(object)" class="tag is-danger is-rounded card-object-pa__count-notifications">
                             {{getObjectNotificationCount(object)}}
                         </div>
@@ -89,11 +89,11 @@
                         </div>
                         <div class="card-object-pa__footer p-1-5">
                             <div class="buttons">
-                                <div class="dropdown">
+                            <!-- <div class="dropdown">
                                     <div class="dropdown-trigger">
-                                        <button class="button is-warning is-size-875 h-3 has-text-weight-bold"
-                                                aria-haspopup="true"
-                                                aria-controls="dropdown-services-1">
+                                        <button @click="object.ui.showServices = !object.ui.showServices" class="button is-outlined is-info is-size-875 h-3 has-text-weight-bold"
+                                                :class="{'is-warning': object.ui.showServices}"
+                                                aria-haspopup="true">
                                             <span>Услуги</span>
                                             <div class="multiselect__select"></div>
                                         </button>
@@ -107,27 +107,43 @@
                                             <a class="dropdown-item" href="#">Item</a>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div> -->
+                                <button @click="object.ui.showServices = !object.ui.showServices; updateObjects()"
+                                :class="{'is-warning': object.ui.showServices}"
+                                        class="button is-outlined is-info is-size-875 h-3 has-text-weight-bold"
+                                        
+                                        aria-haspopup="true">
+                                    <span>Услуги</span>
+                                </button> 
+                             
+                    
+                            
                                 <a v-if="object.status !== 3" class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold" @click="setStatusSold(object.type, object.id)">Продано</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Загрузить
                                     документы</a>
                                 <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold">Подключить
                                     агенство</a>
+                                <a class="button is-size-875 is-outlined is-info h-3 has-text-weight-bold"
+                                @click="object.ui.showStat = !object.ui.showStat; updateObjects()" :class="{'is-warning': object.ui.showStat}">Статистика</a>
                             </div>
-                            <div class="card-object-pa__services is-flex">
-                                <a href="#" class="card-object-pa__services__item"
-                                    v-tooltip="'Перевод документов'">
-                                    <img src="/svg/icons/services/ic_translate.svg" alt="">
-                                </a>
-                                <a href="#" class="card-object-pa__services__item" v-tooltip="'VIP'">
-                                    <img src="/svg/icons/services/ic_vip.svg" alt="">
-                                </a>
-                                <a href="#" class="card-object-pa__services__item"
-                                    v-tooltip="'Быстрая продажа'">
-                                    <img src="/svg/icons/services/ic_law.svg" alt="">
-                                </a>
-                            </div>
+                            <transition name="fade">
+                                <div class="card-object-pa__services is-flex" v-if="object.ui.showServices">
+                                    <a href="#" class="card-object-pa__services__item"
+                                        v-tooltip="'Перевод документов'">
+                                        <img src="/svg/icons/services/ic_translate.svg" alt="">
+                                    </a>
+                                    <a href="#" class="card-object-pa__services__item" v-tooltip="'VIP'">
+                                        <img src="/svg/icons/services/ic_vip.svg" alt="">
+                                    </a>
+                                    <a href="#" class="card-object-pa__services__item"
+                                        v-tooltip="'Быстрая продажа'">
+                                        <img src="/svg/icons/services/ic_law.svg" alt="">
+                                    </a>
+                                </div>
+                            </transition>
+                            <transition name="fade">
+                                <object-stats v-if="object.ui.showStat" :object-id="object.id" :type="object.type"></object-stats>
+                            </transition>
                         </div>
                     </article>
                 </div>
@@ -141,7 +157,7 @@
                 <object-requests-table :request_list="doc_requests" @close="ui.showDocumentsModal=false"></object-requests-table>
             </div>
         </modal>
-        <object-stats></object-stats>
+        
     </div>
 </template>
 
@@ -171,6 +187,13 @@ export default {
                     return item.status == 3
                 else
                    return item.status !== 3
+            }).map(item => {
+                if(typeof item.ui == 'undefined')
+                    item.ui = {
+                        showStat: false,
+                        showServices: false
+                    }
+                return item
             });
         },
     },
@@ -217,7 +240,10 @@ export default {
         },
         //TODO Пока плюсую только запросы на просмотр и документацию.
         getObjectNotificationCount(object){
-            return object.doc_request.length + object.doc_request.length
+            return object.doc_request.length + object.view_request.length
+        },
+        updateObjects(){
+            this.objects = this.objects.slice()
         }
     }
 }
