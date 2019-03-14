@@ -182,6 +182,8 @@ const ModalAddNewsFranchise = () => import('./components/franchises/ModalAddNews
 Vue.component('modal-add-news-franchise', ModalAddNewsFranchise);
 const ModalShowReviewFranchise = () => import('./components/franchises/ModalShowReview');
 Vue.component('modal-show-review-franchise', ModalShowReviewFranchise);
+const MapObjectsFranchises = () => import('./components/franchises/MapObjects');
+Vue.component('map-objects-franchises', MapObjectsFranchises);
 Vue.component('franchises-list', require('./components/franchises/List.vue').default);
 
 

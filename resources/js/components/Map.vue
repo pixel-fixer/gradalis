@@ -3,6 +3,15 @@
         :center="center"
         :zoom="12"
         class="contacts-map"
+        :options="{
+           zoomControl: true,
+           mapTypeControl: true,
+           scaleControl: true,
+           streetViewControl: false,
+           rotateControl: false,
+           fullscreenControl: false,
+           disableDefaultUi: false
+         }"
     >
         <gmap-marker
             :key="index"
@@ -29,17 +38,10 @@
             };
         },
         mounted() {
-            this.geolocate();
+
         },
         methods: {
-            geolocate: function() {
-                navigator.geolocation.getCurrentPosition(position => {
-                    this.center = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                });
-            }
+
         }
     }
 </script>
