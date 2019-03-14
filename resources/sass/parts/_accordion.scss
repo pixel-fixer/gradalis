@@ -35,6 +35,10 @@
             background-color: $white;
             box-shadow: $box-shadow;
         }
+
+        &.has-background-light-grayish-blue {
+            background-color: rgba(#C5D2E6, .2);
+        }
     }
 
     &-body {

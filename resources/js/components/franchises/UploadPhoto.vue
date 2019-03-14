@@ -15,7 +15,7 @@
                 </figure>
                 <div>
                     <div class="dropzone-custom-content__title">Загрузите фотографию</div>
-                    <div class="dropzone-custom-content__subtitle">1000x1000 пикселей, JPG, PNG, PDF, до 8 Мб</div>
+                    <div class="dropzone-custom-content__subtitle">1000x1000 пикселей, JPG, PNG, до 8 Мб</div>
                 </div>
             </div>
         </vue-dropzone>

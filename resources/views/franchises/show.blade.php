@@ -1262,6 +1262,65 @@
                                             <span>Как происходит покупка?</span>
                                         </a>
                                     </div>
+                                    <div class="mt-2">
+                                        <bulma-accordion :slide="{
+                                                                    duration: '.3s',
+                                                                    timerFunc: 'ease'
+                                                                }"
+                                                         :dropdown="true"
+                                        >
+                                            <bulma-accordion-item class="has-background-light-grayish-blue has-border-radius mb-1">
+                                                <h5 slot="title" class="mb-0 is-flex has-align-items-center">
+                                                    <img
+                                                        src="{{ asset('/img/franchises/ic_age.png') }}"
+                                                        alt=""
+                                                        class="icon mr-0-5">
+                                                    <span class="has-text-weight-bold is-size-875">Возрастные группы</span>
+                                                </h5>
+                                                <div slot="content" class="px-1-5 pb-1">
+                                                    <div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
+                                                        eligendi excepturi expedita explicabo iure libero quidem totam
+                                                        voluptas.
+                                                    </div>
+                                                </div>
+                                            </bulma-accordion-item>
+                                            <bulma-accordion-item class="has-background-light-grayish-blue has-border-radius mb-1">
+                                                <h5 slot="title" class="mb-0 is-flex has-align-items-center">
+                                                    <img
+                                                        src="{{ asset('/img/franchises/ic_gender.png') }}"
+                                                        alt=""
+                                                        class="icon mr-0-5">
+                                                    <span class="has-text-weight-bold is-size-875">Gender</span>
+                                                </h5>
+                                                <div slot="content" class="px-1-5 pb-1">
+                                                    <div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
+                                                        eligendi excepturi expedita explicabo iure libero quidem totam
+                                                        voluptas.
+                                                    </div>
+                                                </div>
+                                            </bulma-accordion-item>
+                                            <bulma-accordion-item class="has-background-light-grayish-blue has-border-radius mb-1">
+                                                <h5 slot="title" class="mb-0 is-flex has-align-items-center">
+                                                    <img
+                                                        src="{{ asset('/img/franchises/ic_ethnicity.png') }}"
+                                                        alt=""
+                                                        class="icon mr-0-5">
+                                                    <span class="has-text-weight-bold is-size-875">Этнические группы</span>
+                                                </h5>
+                                                <div slot="content" class="px-1-5 pb-1">
+                                                    <div>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
+                                                        eligendi excepturi expedita explicabo iure libero quidem totam
+                                                        voluptas.
+                                                    </div>
+                                                </div>
+                                            </bulma-accordion-item>
+
+
+                                        </bulma-accordion>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1281,7 +1340,8 @@
                                 <figure class="image is-16by9"><img
                                         src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                         alt="Placeholder image"></figure>
-                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span
+                                        class="term">$ 25 000</span></span>
                                 <!--<span class="info-icon object-promo">-->
                                 <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
                                 <!--</span>-->
@@ -1322,7 +1382,8 @@
                                 <figure class="image is-16by9"><img
                                         src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                         alt="Placeholder image"></figure>
-                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span
+                                        class="term">$ 25 000</span></span>
                                 <!--<span class="info-icon object-promo">-->
                                 <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
                                 <!--</span>-->
@@ -1363,7 +1424,8 @@
                                 <figure class="image is-16by9"><img
                                         src="https://www.hoteloxford.com/data/jpg/foto-galleria-130.jpg"
                                         alt="Placeholder image"></figure>
-                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span class="term">$ 25 000</span></span>
+                                <span class="tag tag-payback"><span class="name">прибыль в месяц</span> <span
+                                        class="term">$ 25 000</span></span>
                                 <!--<span class="info-icon object-promo">-->
                                 <!--<img src="/svg/icons/ic_recommended.svg" alt="Recommended">-->
                                 <!--</span>-->

@@ -17,9 +17,11 @@
         <div slot="body">
             <div class="content">
                 <figure class="modal-franchise-review__thumb is-marginless">
-                    <img
-                        src="http://tourismtur.ru/wp-content/uploads/%D0%9E%D1%82%D0%B5%D0%BB%D1%8C%20Viva%20la%20Hotel/1.jpg"
-                        alt="" class="has-border-radius">
+                    <video class="w-full has-border-radius has-box-shadow mb-2" controls="">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4"
+                                type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
                 </figure>
                 <h3 class="mt-1 mb-0">Тренд на дедолларизацию.</h3>
                 <time class="is-size-7 modal-franchise-review__date">10 января 2019</time>

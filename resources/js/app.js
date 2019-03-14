@@ -176,6 +176,10 @@ const ModalBuyFranchise = () => import('./components/franchises/ModalBuyFranchis
 Vue.component('modal-buy-franchise', ModalBuyFranchise);
 const ModalAddReviewFranchise = () => import('./components/franchises/ModalAddReview');
 Vue.component('modal-add-review-franchise', ModalAddReviewFranchise);
+const ModalAddObjectFranchise = () => import('./components/franchises/ModalAddObject');
+Vue.component('modal-add-object-franchise', ModalAddObjectFranchise);
+const ModalAddNewsFranchise = () => import('./components/franchises/ModalAddNews');
+Vue.component('modal-add-news-franchise', ModalAddNewsFranchise);
 const ModalShowReviewFranchise = () => import('./components/franchises/ModalShowReview');
 Vue.component('modal-show-review-franchise', ModalShowReviewFranchise);
 Vue.component('franchises-list', require('./components/franchises/List.vue').default);
@@ -206,6 +210,8 @@ const app = new Vue({
             // Переменные, используемые на странице франшизы
             showModalBuy: false,
             showModalAddReview: false,
+            showModalAddObject: false,
+            showModalAddNews: false,
             showModalShowReview: false
         },
     },

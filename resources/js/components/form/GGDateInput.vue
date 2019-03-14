@@ -47,7 +47,7 @@
                     }
                 }
             },
-            placeholder: {default: 'Поиск'},
+            placeholder: {default: '01.01.2020'},
             required: {default: false},
         },
         data() {

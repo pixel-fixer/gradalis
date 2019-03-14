@@ -1,7 +1,7 @@
 <template>
     <modal v-if="show" @close="$emit('close')">
         <div slot="header">
-            <p class="modal-card-title mb-0">Оставить отзыв</p>
+            <p class="modal-card-title mb-0">{{label}}</p>
         </div>
 
         <div slot="body">
@@ -17,8 +17,11 @@
                                :label="'Контактный email'"
                                :placeholder="'Введите Ваш Email'"></g-g-input>
                     <g-g-input :size="'is-6'" v-model="form.position"
-                               :label="'Ваша должност'"
+                               :label="'Ваша должность'"
                                :placeholder="'Введите должность'"></g-g-input>
+                    <g-g-input :size="'is-12'" v-model="form.video"
+                               :label="'Ссылка на видео'"
+                               :placeholder="'http://'" :type="'url'"></g-g-input>
                     <g-g-textarea :size="'is-12'" v-model="form.comment"
                                   :label="'Опишите ваши впечатления'"
                                   :placeholder="'Текст Вашего отзыва'"></g-g-textarea>
@@ -58,7 +61,8 @@
             Modal, GGInput, GGTextarea, UploadPhoto, UploadMaterials
         },
         props: {
-            show: {default: false}
+            show: {default: false},
+            label: {default: 'Оставить отзыв'},
         },
         data: () => ({
             form: {
@@ -67,6 +71,7 @@
                 email: null,
                 position: null,
                 comment: null,
+                video: null,
             },
         })
     }
