@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ObjectRequest extends Model
 {
-    protected $fillable = ['user_id', 'view_at', 'object_id', 'object_type', 'status', 'type', 'travel_id', 'buyer_comment'];
+    protected $fillable = ['user_id', 'view_at', 'object_id', 'object_type', 'status', 'type', 'travel_id', 'buyer_comment', 'reject_reason'];
     protected $table='object_requests';
     protected $with = ['user.city', 'object'];
 

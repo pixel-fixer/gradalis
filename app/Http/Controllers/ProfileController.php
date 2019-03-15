@@ -109,7 +109,6 @@ class ProfileController extends Controller
      */
     public function getFavorites()
     {
-        //TODO from cache
         return Auth::user()->favorites()->with('favoriteable.category')->get();
     }
 
@@ -227,4 +226,17 @@ class ProfileController extends Controller
         return response(['message' => 'Статус объекта изменен'], 200);
     }
 
+    public function rejectObjectViewRequest(ObjectRequest $view_request, Request $request)
+    {
+        $data = $request->validate([
+            'reject_reason' => 'required'
+        ]);
+
+        $view_request->status = ObjectRequest::STATUS_REJECTED;
+        $view_request->reject_reason = $data['reject_reason'];
+
+        $view_request->save();
+
+        return response(['message' => 'Статус объекта изменен'], 200);
+    }
 }

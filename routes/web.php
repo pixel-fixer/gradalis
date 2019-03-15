@@ -246,7 +246,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('balance/transactions', 'ProfileController@getPaymentTransactions');
 
     Route::get('requests/{type}', 'ProfileController@getObjectRequests');
-    Route::patch('request/{view_request}/{status}', 'ProfileController@setObjectRequestStatus');
+    Route::patch('request/{view_request}/reject', 'ProfileController@rejectObjectViewRequest');
+    Route::patch('request/{view_request}/status/{status}', 'ProfileController@setObjectRequestStatus');
+ 
 
     Route::get('/api/objects', 'ProfileController@getObjects');
     Route::get('/api/object/{type}/{id}', 'Api\ObjectController@getStats');

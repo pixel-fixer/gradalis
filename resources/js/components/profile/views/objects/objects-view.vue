@@ -15,7 +15,7 @@
                 <tr v-for="request in viewRequests">
                     <td class="has-text-basic">
                         <a :href="'/' + request.object.type + '/' + request.object.id" class="link-with-icon has-text-decoration-underline">
-                            {{request.object.name}}
+                            {{$t(request.object.name)}}
                         </a>
                     </td>
                     <td class="has-text-basic has-vertical-align-middle">
