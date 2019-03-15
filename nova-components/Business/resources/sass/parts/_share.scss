@@ -1,0 +1,25 @@
+@import '../variables';
+
+.share {
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-item {
+        font-weight: bold;
+        height: 3rem;
+        font-size: .875rem;
+        //margin-right: .875rem;
+        flex: 1;
+        margin-bottom: .25rem;
+        max-width: 100%;
+        @media screen and (min-width: $tablet) {
+            margin-right: .875rem;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+
+    }
+}

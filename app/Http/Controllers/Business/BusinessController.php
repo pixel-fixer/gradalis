@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Business;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessStoreRequest;
 use App\Models\Business\Business;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class BusinessController extends Controller
@@ -35,8 +36,17 @@ class BusinessController extends Controller
         $businessData = $request->get('business');
         $businessData['user_id'] = auth()->user()->id;
         $business = Business::create($businessData);
-        foreach ($businessData['images'] as $image) {
-            $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
+        foreach ($businessData['files'] as $file) {
+            //TODO: Хак для пдф, переделать
+            if (isset($file['dataURL'])) {
+                $business->addMediaFromBase64(
+                    $file['dataURL'],
+                    [
+                        'image/jpg',
+                        'image/jpeg',
+                    ]
+                )->toMediaCollection('business','business');
+            }
         }
 
         Schema::enableForeignKeyConstraints();
@@ -49,15 +59,14 @@ class BusinessController extends Controller
         return view('business.edit', $data);
     }
 
-    public function update(BusinessStoreRequest $request, Business $business)
+    public function update(Request $request, Business $business)
     {
         Schema::disableForeignKeyConstraints();
-        $businessData = $request->get('business');
-        foreach ($businessData['images'] as $image) {
-            $business->addMedia(storage_path('app/' . $image))->toMediaCollection('business/' . auth()->user()->id);
-        }
+        $businessData = json_decode($request->get('business'),true);
         $business->update($businessData);
-
+        foreach ($request->file('files') as $file) {
+            $business->addMedia($file)->toMediaCollection('business','business');
+        }
         Schema::enableForeignKeyConstraints();
         return response()->json(['status' => 'ok']);
     }

@@ -23,6 +23,7 @@
 
     &__header {
         align-items: flex-start;
+        justify-content: space-between;
     }
 
     &__link-edit {
@@ -144,7 +145,8 @@
                 margin-right: 0;
             }
 
-            svg {
+            svg,
+            img {
                 width: 1rem;
                 height: 1rem;
                 margin-right: .25rem;
@@ -172,6 +174,10 @@
 
                 }
             }
+        }
+
+        &-full {
+            border-top: 1px solid rgba($light-grayish-blue, 0.5);
         }
     }
 

@@ -27,6 +27,10 @@
         {
             "type": "path",
             "url": "./nova-components/Chat"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Business"
         }
     ],
     "require": {
@@ -50,7 +54,8 @@
         "spatie/laravel-medialibrary": "^7.5.5",
         "treestoneit/belongs-to-field": "^0.1.0",
         "vyuldashev/nova-permission": "^1.4",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "marketplace/business": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.0",
@@ -61,7 +66,8 @@
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "nunomaduro/larastan": "^0.3.13",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0",
+        "reliese/laravel": "^0.0.13"
     },
     "config": {
         "optimize-autoloader": true,

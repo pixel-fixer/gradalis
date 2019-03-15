@@ -19,18 +19,24 @@ class FranchisePackageSeeder extends Seeder
      */
     public function run()
     {
-        ini_set('memory_limit', '2G');
         Schema::disableForeignKeyConstraints();
-
+    
+        $fakers = [
+            'ru' => Faker::create('ru_RU'),
+            'en' => Faker::create('en_EN'),
+            'pl' => Faker::create('pl_PL')
+        ];
         foreach (Franchise::all() as $franchise) {
-            factory(FranchisePackage::class, 3)->make(['franchise_id' => $franchise->id])->each(function ($package) {
+            factory(FranchisePackage::class, 3)->make(['franchise_id' => $franchise->id])
+                                               ->each(function ($package) use ($fakers) {
                 foreach (Language::all() as $lang) {
-                    $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
+                    $faker = $fakers[$lang->lang];
                     $options = json_encode($faker->words(6));
                     $name = $faker->sentence(3);
                     $package->setTranslation('name', $lang->lang, $name);
                     $package->setTranslation('options', $lang->lang, $options);
                     $package->save();
+                    $faker = null;
                 }
             });
         }

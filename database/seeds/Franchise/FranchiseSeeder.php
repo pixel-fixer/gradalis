@@ -20,7 +20,6 @@ class FranchiseSeeder extends Seeder
      */
     public function run()
     {
-        ini_set('memory_limit', '2G');
         Schema::disableForeignKeyConstraints();
         $franchiseCategory = new FranchiseCategory();
         $translations = [
@@ -41,10 +40,16 @@ class FranchiseSeeder extends Seeder
         $franchiseCategory->name = "Фармацевтика";
         $franchiseCategory->setTranslations('translation', $translations);
         $franchiseCategory->save();
-
-        factory(Franchise::class, 3)->make()->each(function ($franchise) {
+    
+        $fakers = [
+            'ru' => Faker::create('ru_RU'),
+            'en' => Faker::create('en_EN'),
+            'pl' => Faker::create('pl_PL')
+        ];
+        factory(Franchise::class, 3)->make()->each(function ($franchise) use
+        ($fakers) {
             foreach (Language::all() as $lang) {
-                $faker = Faker::create($lang->lang . '_' . strtoupper($lang->lang));
+                $faker = $fakers[$lang->lang];
                 $name = 'Франшиза - '.$faker->company;
                 $url = Helpers::transliterate($name);
                 $description = $faker->realText(160);
@@ -55,6 +60,7 @@ class FranchiseSeeder extends Seeder
                 $franchise->setTranslation('seo_description',$lang->lang,$description);
                 $franchise->setTranslation('seo_keywords',$lang->lang,$faker->words(4, true));
                 $franchise->save();
+                $faker = null;
             }
         });
 

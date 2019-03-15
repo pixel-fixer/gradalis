@@ -16,7 +16,10 @@ import VueMq from 'vue-mq'
 import VSwitch from 'v-switch-case';
 
 import Sticky from 'sticky-js';
-var sticky = new Sticky('.sticky');
+
+let sticky = new Sticky('.sticky');
+
+import {BulmaAccordion, BulmaAccordionItem} from "vue-bulma-accordion";
 
 Vue.use(VueGoogleMaps, {
     load: {
@@ -31,7 +34,7 @@ Vue.use(VueMq, {
         tablet: 1024,
         desktop: 1215,
     }
-})
+});
 
 window.Vue = Vue;
 
@@ -77,6 +80,8 @@ Vue.use(Vuelidate);
 // );
 
 Vue.component('business-list', require('./components/business/List.vue').default);
+Vue.component('news-index', require('./components/news/Index.vue').default);
+Vue.component('news-filter', require('./components/news/NewsFilter.vue').default);
 Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);
 Vue.component('chat', require('./components/chat/chat.vue').default);
@@ -122,7 +127,7 @@ Vue.mixin({
                 return item.name == role
             })
         },
-        $getDateTime(dbDateTime){
+        $getDateTime(dbDateTime) {
             var monthNames = [
                 'Январь',
                 'Февраль',
@@ -137,7 +142,7 @@ Vue.mixin({
                 'Декабрь',
             ];
 
-            var date =  new Date(Date.parse(dbDateTime.replace('-','/','g')));
+            var date = new Date(Date.parse(dbDateTime.replace('-', '/', 'g')));
             return date.getDate() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + date.getFullYear()
         }
     }
@@ -154,8 +159,6 @@ Vue.component('vacancy-response', VacancyResponce);
 
 
 // review
-// const AddReview = () => import('./components/reviews/Add');
-// const ShowReview = () => import('./components/reviews/Show');
 Vue.component('add-review', require('./components/reviews/Add').default);
 Vue.component('show-review', require('./components/reviews/Show').default);
 // end 
@@ -171,8 +174,28 @@ Vue.component('account', require('./components/account/Account').default);
 const Map = () => import('./components/Map');
 Vue.component('google-map', Map);
 
+// franchise
+const ModalBuyFranchise = () => import('./components/franchises/ModalBuyFranchise');
+Vue.component('modal-buy-franchise', ModalBuyFranchise);
+const ModalAddReviewFranchise = () => import('./components/franchises/ModalAddReview');
+Vue.component('modal-add-review-franchise', ModalAddReviewFranchise);
+const ModalAddObjectFranchise = () => import('./components/franchises/ModalAddObject');
+Vue.component('modal-add-object-franchise', ModalAddObjectFranchise);
+const ModalAddNewsFranchise = () => import('./components/franchises/ModalAddNews');
+Vue.component('modal-add-news-franchise', ModalAddNewsFranchise);
+const ModalShowReviewFranchise = () => import('./components/franchises/ModalShowReview');
+Vue.component('modal-show-review-franchise', ModalShowReviewFranchise);
+const MapObjectsFranchises = () => import('./components/franchises/MapObjects');
+Vue.component('map-objects-franchises', MapObjectsFranchises);
+Vue.component('franchises-list', require('./components/franchises/List.vue').default);
+
+
 const app = new Vue({
     el: '#app',
+    components: {
+        BulmaAccordion,
+        BulmaAccordionItem
+    },
     data: {
         object: {
             // Переменные, используемые на странице объекта
@@ -187,7 +210,15 @@ const app = new Vue({
             showAddReviewModal: false,
             showSingleReviewModal: false,
             showSingleReviewModalID: null
-        }
+        },
+        franchise: {
+            // Переменные, используемые на странице франшизы
+            showModalBuy: false,
+            showModalAddReview: false,
+            showModalAddObject: false,
+            showModalAddNews: false,
+            showModalShowReview: false
+        },
     },
     router,
     store,
@@ -332,6 +363,22 @@ var swiperObjectServices = new Swiper('.swiper-object-services', {
 });
 
 /**
+ * Слайдер отзывов на странице франшизы
+ */
+var swiperFranchiseReviews = new Swiper('.swiper-franchise-reviews', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 0,
+    loop: false,
+    freeMode: false,
+    width: 700,
+    navigation: {
+        nextEl: '.swiper-franchise-reviews-next',
+        prevEl: '.swiper-franchise-reviews-prev',
+    },
+});
+
+/**
  * Слайдер на страницах брокера
  */
 var swiperBrokerDataIndicators = new Swiper('.swiper-broker-data-indicators', {
@@ -375,7 +422,7 @@ if ($dropdowns.length > 0) {
     $dropdowns.forEach(function ($el) {
         $el.addEventListener('click', function (event) {
             let target = event.target;
-            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active'))) {
+            if ((!target.closest('.dropdown-trigger')) && (target.closest('.dropdown.is-active')) && !target.classList.contains('is-info') && !target.classList.contains('is-clear')) {
                 return;
             } else {
                 event.stopPropagation();
@@ -416,4 +463,4 @@ window.openTab = function openTab(evt, tabName) {
     }
     tabsWrap.querySelector('#' + tabName).style.display = "block";
     evt.currentTarget.className += " is-active";
-}
+};

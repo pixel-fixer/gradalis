@@ -145,17 +145,17 @@
                                                     }">
                                 <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
                                      alt="Balance"></a>
-                            @else
-                        <a href="/profile/balance" class="navbar-item basic is-hidden-mobile"><img
-                                src="{{ asset('/svg/icons/ic_balance.svg') }}"
-                                alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
+                        @else
+                            <a href="/profile/balance" class="navbar-item basic is-hidden-mobile"><img
+                                    src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                    alt="Balance"><span>${{ Auth::user()->balance }}</span></a>
 
-                        <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
+                            <a class="navbar-item basic is-hidden-tablet" v-tooltip.left-start="{
                                                             content: '$100',
                                                             trigger: 'click',
                                                     }">
-                            <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
-                                 alt="Balance"></a>
+                                <img src="{{ asset('/svg/icons/ic_balance.svg') }}"
+                                     alt="Balance"></a>
                         @endif
 
                         {{--<a class="navbar-item basic" href="{{ route('logout') }}" onclick="event.preventDefault();--}}
@@ -173,7 +173,7 @@
     <div class="navbar-divider is-block"></div>
     <div class="container">
 
-    <!-- ToDo: Other menu in Broker Personal Area -->
+        <!-- ToDo: Other menu in Broker Personal Area -->
     @if(Auth::check() && !Auth::user()->hasRole('Медиа-баер') && !Auth::user()->hasRole('Акаунт-менеджер'))
         <!-- Desktop Menu-->
             <nav class="navbar header__line-bottom is-hidden-touch" role="navigation" aria-label="main navigation">
@@ -185,7 +185,7 @@
                         <img src="{{ asset('/svg/icons/ic_business.svg') }}" alt="Business"
                              class="icon"><span>Бизнес</span>
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/franchises">
                         <img src="{{ asset('/svg/icons/ic_franchise.svg') }}" alt="Franchise"
                              class="icon"><span>Франшизы</span>
                     </a>
@@ -384,7 +384,7 @@
                         <img src="{{ asset('/svg/icons/ic_business.svg') }}" alt="Business"
                              class="icon"><span>Бизнес</span>
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/franchises">
                         <img src="{{ asset('/svg/icons/ic_franchise.svg') }}" alt="Franchise"
                              class="icon"><span>Франшизы</span>
                     </a>

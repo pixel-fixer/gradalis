@@ -17,7 +17,9 @@
         "build-refferals": "cd nova-components/Referrals && npm run dev",
         "build-refferals-prod": "cd nova-components/Referrals && npm run prod",
         "build-chat": "cd nova-components/Chat && npm run dev",
-        "build-chat-prod": "cd nova-components/Chat && npm run prod"
+        "build-chat-prod": "cd nova-components/Chat && npm run prod",
+        "build-business": "cd nova-components/Business && npm run dev",
+        "build-business-prod": "cd nova-components/Business && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.18",

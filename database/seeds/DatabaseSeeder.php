@@ -52,7 +52,11 @@ class DatabaseSeeder extends Seeder
             'payment_transactions',
             'object_requests',
             'counter_target',
-            'dialog_user'
+            'dialog_user',
+            'news',
+            'news_category',
+            'reviews',
+            'media'
         ]);
 
         Schema::enableForeignKeyConstraints();
@@ -84,6 +88,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminNofiticationSeeder::class);
         $this->call(PaymentTransactionSeeder::class);
         $this->call(ObjectRequestSeeder::class);
+        $this->call(NewsSeeder::class);
+        $this->call(ReviewsSeeder::class);
 
         Model::reguard();
     }

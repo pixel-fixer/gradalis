@@ -29,7 +29,7 @@
             </div>
             <div class="card-content">
                 <div class="card-object__header">
-                    <h3 class="title">{{business.name}}</h3>
+                    <h3 class="title">{{business.name[$store.state.lang]}}</h3>
                     <p class="location"><img src="/svg/icons/ic_location.svg"
                                              alt="Fav"><span>{{business.city.country.translation.ru}}, г. {{business.city.translation.ru}}</span>
                     </p>

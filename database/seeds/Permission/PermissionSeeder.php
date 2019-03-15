@@ -91,8 +91,8 @@ class PermissionSeeder extends Seeder
         Role::where('name', 'Админ')->first()
             ->givePermissionTo('сhat_message-moderate')
             ->givePermissionTo('translate-ru')
-            ->givePermissionTo('view-translation-pl')
-            ->givePermissionTo('view-translation-en');
+            //->givePermissionTo('translate-en')
+            ->givePermissionTo('view-translation-pl');
         Role::where('name', 'Покупатель')->first()->givePermissionTo('object-buy');
         Role::where('name', 'Продавец')->first()->givePermissionTo('object-sell');
         Role::where('name', 'Контент менеджер')->first()->givePermissionTo('translate-ru');

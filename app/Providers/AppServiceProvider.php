@@ -31,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() === 'local') {
+            //Генератор моделей
+            $this->app->register(\Reliese\Coders\CodersServiceProvider::class);
+        }
     }
 }

@@ -56,13 +56,6 @@ Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
 
-Route::get('/news', function () {
-    return view('news.index');
-});
-
-Route::get('/news-single', function () {
-    return view('news.show');
-});
 
 Route::get('/ui', function () {
     return view('ui');
@@ -116,12 +109,23 @@ Route::get('/vacancy/single', function () {
 Route::get('/contacts', function () {
     return view('contacts');
 });
-Route::get('/reviews', function () {
-    return view('reviews');
-});
+Route::get('/reviews', 'ReviewsController@index');
 Route::get('/help', function () {
     return view('help');
 });
+//endregion
+
+//region Franchises
+//Route::get('/franchises', function () {
+//    return view('franchises.index');
+//});
+Route::get('/franchises/', function () {
+    return view('franchises.index');
+});
+Route::get('/franchises/single', function () {
+    return view('franchises.show');
+});
+
 //endregion
 
 //region Services
@@ -160,6 +164,13 @@ Route::namespace('Business')->group(function () {
 });
 //endregion
 
+//region News Routes
+Route::namespace('News')->group(function () {
+    Route::get('news', 'NewsController@index');
+    Route::get('news/{slug}', 'NewsController@show');
+});
+//endregion
+
 
 //region BROKER Routes
 Route::namespace('Broker')->prefix('broker')->group(function () {
@@ -180,6 +191,10 @@ Route::namespace('Api')
         Route::post('/account-chart-data', 'AccountController@getChartData');
 
         //});
+    
+        Route::post('/review-add', 'ReviewsController@addReview');
+        Route::post('/review-show', 'ReviewsController@showReview');
+        
         Route::post('/broker-chart-data', 'BrokerController@getChartData');
         Route::get('/broker-get-summary', 'BrokerController@getSummary');
         Route::get('/broker-get-offers', 'BrokerController@getOffers');
@@ -200,12 +215,14 @@ Route::namespace('Api')
         Route::post('/invitation-create', 'OfferController@invitationCreate');
         //});
 
+        Route::get('/news-get', 'NewsController@get');
+        Route::get('/news-get-categories', 'NewsController@getCategories');
+
         Route::post('/business-reserve', 'BusinessController@reserve');
         Route::get('/business-get', 'BusinessController@get');
         Route::get('/business-get-by-id/{business}', 'BusinessController@getById');
         Route::get('/business-get-categories', 'BusinessController@getCategories');
-        Route::post('/business-image-upload', 'BusinessController@imageUpload');
-        Route::post('/business-image-remove', 'BusinessController@imageRemove');
+        Route::post('/business-image-remove/{business}', 'BusinessController@imageRemove');
     });
 //endregion
 

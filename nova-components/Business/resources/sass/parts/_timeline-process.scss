@@ -1,0 +1,72 @@
+@import '../variables';
+
+$timeline-basic-color: #D0DBEB;
+
+.timeline-process {
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 1.5rem 0;
+        position: relative;
+        &:before {
+            position: absolute;
+            content: "";
+            width: 1px;
+            height: 100%;
+            left: 2.5rem;
+            top: 0;
+            background-color: $timeline-basic-color;
+            @media screen and (min-width: $tablet) {
+                left: 7.125rem;
+            }
+        }
+        &:first-child {
+            padding-top: 0;
+        }
+        &:last-child {
+            padding-bottom: 0;
+        }
+        &__tag {
+            width: 100%;
+            flex: 1 1 auto;
+            margin-bottom: .75rem;
+            text-align: center;
+            @media screen and (min-width: $tablet) {
+                width: 4rem;
+                margin-bottom: 0;
+                flex: auto;
+                margin-right: .875rem;
+                text-align: left;
+            }
+        }
+
+        &__marker {
+            width: 5.125rem;
+            height: 5.125rem;
+            min-width: 5.125rem;
+            min-height: 5.125rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $timeline-basic-color;
+            margin-right: .875rem;
+            background-color: $body-background-color;
+            position: relative;
+            z-index: 2;
+            img,
+            svg {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+        }
+
+        &__content {
+            width: calc(100% - 6.125rem);
+            @media screen and (min-width: $tablet) {
+                width: calc(100% - 11.125rem);
+            }
+        }
+    }
+}

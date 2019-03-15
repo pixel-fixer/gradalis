@@ -11,6 +11,46 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use App\Models\ObjectRequest;
+/**
+ * Class Business
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property array $name
+ * @property array $description
+ * @property array $seo_title
+ * @property array $seo_description
+ * @property array $seo_keywords
+ * @property int $price
+ * @property int $profitability
+ * @property int $profit
+ * @property int $payback
+ * @property int $status
+ * @property int $district_id
+ * @property int $city_id
+ * @property int $category_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
+ * @property int $commission
+ * @property int $call_count
+ * @property float $percent
+ * @property string $metrics
+ * @property int $login_count
+ * @property array $url
+ * @property int $revenue
+ * @property int $weight
+ * @property int $discount
+ * @property int $part
+ * @property int $part_amount
+ * @property array $options
+ * @property int $show_count
+ *
+ * @property \App\Models\Business\BusinessCategory $business_category
+ * @property \App\Models\City $city
+ * @property \App\Models\District $district
+ * @property \App\Models\Auth\User $user
+ */
 
 class Business extends Model implements HasMedia
 {
@@ -73,12 +113,22 @@ class Business extends Model implements HasMedia
         return "business";
     }
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaCollections()
     {
-        $this->addMediaConversion('thumb')
-            ->width(120)
-            ->height(60)
-            ->sharpen(10);
+        $this->addMediaCollection('business')
+            ->registerMediaConversions(function (Media $media) {
+                $this->addMediaConversion('thumb')
+                    ->width(100)
+                    ->height(100);
+
+                $this->addMediaConversion('card')
+                    ->width(214)
+                    ->height(250);
+
+                $this->addMediaConversion('original')
+                    ->width(1024)
+                    ->height(768);
+            });
     }
 
     public function category()
@@ -121,24 +171,24 @@ class Business extends Model implements HasMedia
         return $this->price * config('currency.PLN_BTC');
     }
 
-    public function getDescriptionAttribute($value): string
-    {
-        $data = json_decode($value, true);
-        if(!$data){
-            return $value;
-        }
-        return json_decode($value, true)[app()->getLocale()];
-    }
-
-
-    public function getNameAttribute($value): string
-    {
-        $data = json_decode($value, true);
-        if(!$data){
-            return $value;
-        }
-        return json_decode($value, true)[app()->getLocale()];
-    }
+//    public function getDescriptionAttribute($value): string
+//    {
+//        $data = json_decode($value, true);
+//        if(!$data){
+//            return $value;
+//        }
+//        return json_decode($value, true)[app()->getLocale()];
+//    }
+//
+//
+//    public function getNameAttribute($value): string
+//    {
+//        $data = json_decode($value, true);
+//        if(!$data){
+//            return $value;
+//        }
+//        return json_decode($value, true)[app()->getLocale()];
+//    }
 
     protected $casts = [
         'options' => 'array',

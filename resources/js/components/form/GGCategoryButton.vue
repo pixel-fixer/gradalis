@@ -3,7 +3,7 @@
         <div class="field">
             <label class="label">{{label}}</label>
             <div class="control">
-                <div :class="(selected === null)?'inputbox-val':''" class="input h-3"
+                <div :class="(selected === null)?'inputbox-val':''" class="input h-3 is-size-875"
                      @click="modalCategoryShow = !modalCategoryShow">{{selectedName}}
                     <!--Modal-->
                     <portal to="modals">
@@ -87,7 +87,14 @@
             value: {
                 immediate: true,
                 handler(value) {
-                    this.selected = value;
+                    if(this.categories && value) {
+                        this.selected = value;
+                        this.categories.forEach(val => {
+                            if (val.id === value) {
+                                this.selectedName = val.translation[locales.indexLocale];
+                            }
+                        });
+                    }
                 }
             }
         },
@@ -104,9 +111,9 @@
             let vm = this;
             axios.get('/business-get-categories').then(responce => {
                 vm.categories = responce.data;
-                if(this.value){
-                    this.selected = this.value;
-                    this.selectedName = vm.categories[this.selected].name;
+                if(vm.value){
+                    vm.selected = vm.value;
+                    vm.selectedName = vm.categories[vm.selected].transactions[locales.indexLocale];
                 }
             })
         },
