@@ -8,6 +8,8 @@ use App\Models\Travel\Travel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ObjectRequest;
 use App\Models\Travel\TravelComment;
+use App\Models\Travel\Flight;
+use App\Models\Travel\Hotel;
 
 class TravelController extends Controller
 {
@@ -91,5 +93,37 @@ class TravelController extends Controller
         TravelComment::create($data);
 
         return response(['message' => "Пожелание добавлено"]);
+    }
+
+    public function createFlight(Request $request)
+    {
+        $data = $request->validate([
+            'out_city' => 'required',
+            'in_city' => 'required',
+            'out_time' => 'required',
+            'in_time' => 'required',
+            'flight_number' => 'required',
+            'travel_id' => 'required'
+        ]);
+        $data['in_time'] = $data['in_time'].':00'; 
+        $data['out_time'] = $data['out_time'].':00'; 
+        Flight::create($data);
+
+        return response(['message' => "Перелет добавлен"]);
+    }
+
+    public function createHotel(Request $request)
+    {
+        $data = $request->validate([
+            'url' => 'required',
+            'check_in_date' => 'required',
+            'check_out_date' => 'required',
+            'travel_id' => 'required'
+        ]);
+        $data['check_in_date'] = $data['check_in_date'].':00'; 
+        $data['check_out_date'] = $data['check_out_date'].':00'; 
+        Hotel::create($data);
+
+        return response(['message' => "Перелет добавлен"]);
     }
 }

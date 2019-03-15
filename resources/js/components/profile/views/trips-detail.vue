@@ -15,6 +15,7 @@
         <trip-flights
             :flights="travel.flights"
             :travel-id="travel.id"
+            :travel="travel"
             @update="getTrip($route.params.id)">
         </trip-flights>
 

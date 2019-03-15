@@ -241,6 +241,8 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('/api/travel/{travel}', 'Api\TravelController@get');
     Route::post('/api/trip', 'Api\TravelController@create');
     Route::post('/api/trip/comment', 'Api\TravelController@createComment');
+    Route::post('/api/trip/flight', 'Api\TravelController@createFlight');
+    Route::post('/api/trip/hotel', 'Api\TravelController@createHotel');
     Route::post('/api/trip/view', 'Api\TravelController@createObjectView');
 
     Route::get('/api/user-service', 'Api\ServiceController@getUserServices');
