@@ -55,6 +55,15 @@ Route::get('/register/seller ', function () {
 Route::get('/register/buyer', function () {
     return view('auth.register.buyer');
 });
+Route::get('/register/executor', function () {
+    return view('auth.register.executor');
+});
+Route::get('/register/media-buyer', function () {
+    return view('auth.register.media-buyer');
+});
+Route::get('/register/broker', function () {
+    return view('auth.register.broker');
+});
 
 
 Route::get('/ui', function () {

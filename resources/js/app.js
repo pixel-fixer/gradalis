@@ -91,8 +91,15 @@ Vue.component('example-form-profile-spa', require('./components/ExampleFormProfi
 Vue.component('example-ui-form', require('./components/ExampleUiForm.vue').default);
 Vue.component('example-file-upload-vue', require('./components/ExampleFileUploadVue.vue').default);
 
-Vue.component('form-register-seller', require('./components/FormRegisterSeller').default);
-Vue.component('form-register-buyer', require('./components/FormRegisterBuyer').default);
+Vue.component('form-register-seller', require('./components/register/FormRegisterSeller').default);
+Vue.component('form-register-buyer', require('./components/register/FormRegisterBuyer').default);
+const FormRegisterExecutor = () => import('./components/register/FormRegisterExecutor');
+Vue.component('form-register-executor', FormRegisterExecutor);
+const FormRegisterMediaBuyer = () => import('./components/register/FormRegisterMediaBuyer');
+Vue.component('form-register-media-buyer', FormRegisterMediaBuyer);
+const FormRegisterBroker = () => import('./components/register/FormRegisterBroker');
+Vue.component('form-register-broker', FormRegisterBroker);
+
 Vue.component('form-add-business', require('./components/FormAddBusiness').default);
 Vue.component('upload-photo-business', require('./components/UploadPhotoBusiness.vue').default);
 
