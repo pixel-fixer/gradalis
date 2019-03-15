@@ -46,4 +46,15 @@ class ObjectController extends Controller
 
         return $stats;
     }
+
+    public function search($search = null)
+    {
+        $business = Business::with(['media'])->get(['id', 'name']);
+
+        $franchise = Franchise::with(['media'])->get(['id', 'name']);
+
+        //TODO смапить картинки
+
+        return $business->concat($franchise);
+    }
 }

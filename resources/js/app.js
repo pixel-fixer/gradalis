@@ -54,25 +54,28 @@ Vue.use(VSwitch);
 Vue.use(VueMomentTz);
 Vue.use(Vuelidate);
 
-function errorResponseHandler(error) {
-    // check for errorHandle config
-    if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
-        return Promise.reject(error);
-    }
+// TODO !! Это дело плохо работает с классом form.js !! переписать или там, или тут
 
-    if (error.response) {
-    //Если это не ошибка валидации ларавела
-    //TODO добавить редирект на login, если авторизация истекла
-    if(error.response.status !== 422)
-        Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
-    }
-}
+// function errorResponseHandler(error) {
+//     // check for errorHandle config
+//     if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
+//         return Promise.reject(error);
+//     }
+
+//     if (error.response) {
+//     //Если это не ошибка валидации ларавела
+//     //TODO добавить редирект на login, если авторизация истекла
+//     if(error.response.status !== 422)
+//         Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
+//     }
+// }
 
 // apply interceptor on response
-window.axios.interceptors.response.use(
-    response => response,
-    errorResponseHandler
-);
+// window.axios.interceptors.response.use(
+//     response => response,
+//     errorResponseHandler
+// );
+
 Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('reserve-button', require('./components/ReserveButton.vue').default);
 Vue.component('main-list', require('./components/business/MainList.vue').default);

@@ -147,8 +147,6 @@ class ProfileController extends Controller
 
     public function getObjectRequests($type)
     {
-
-        //TODO похоже на дичь, подумать.
         $business = Business::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
         $franchise = Franchise::where('user_id', Auth::id())->with(['view_request.user.city','view_request.object'])->get()->toArray();
 
@@ -158,16 +156,25 @@ class ProfileController extends Controller
             return empty($item);
         });
 
+  
         $view_requests_mapped = [];
         foreach($view_requests->values()->all() as $array){
             $view_requests_mapped = array_merge($view_requests_mapped, $array);
         }
 
-        $view_requests_mapped = array_filter($view_requests_mapped, function($item) use ($type){
-            return $item['type'] == $type;
+        switch ($type) {
+            case 'view':
+                $type_id = ObjectRequest::TYPE_VIEW;
+                break;
+            case 'doc':
+                $type_id = ObjectRequest::TYPE_DOC;
+                break;
+        }
+
+        $view_requests_mapped = array_filter($view_requests_mapped, function($item) use ($type_id){
+            return $item['type'] == $type_id;
         });
 
-        //var_dump($view_requests_mapped);
         return array_values($view_requests_mapped);  
     }
 
@@ -220,8 +227,4 @@ class ProfileController extends Controller
         return response(['message' => 'Статус объекта изменен'], 200);
     }
 
-    public function getTrips()
-    {
-        return Travel::where('user_id', Auth::id())->get(); 
-    }
 }

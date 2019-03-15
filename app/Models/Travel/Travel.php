@@ -5,13 +5,14 @@ namespace App\Models\Travel;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Models\ObjectRequest;
 
 
 class Travel extends Model implements HasMedia
 {
     use HasMediaTrait;
 
-    protected $guarded = ['id', 'ordered_services_id', 'user_id'];
+    protected $guarded = ['id', 'ordered_services_id'];
 
     public function user()
     {
@@ -53,5 +54,10 @@ class Travel extends Model implements HasMedia
                     || $file->mimeType === 'image/jpeg'
                     || $file->mimeType === 'image/png';
             });
+    }
+
+    public function object_view()
+    {
+        return $this->hasMany('App\Models\ObjectRequest')->where('type', ObjectRequest::TYPE_VIEW);
     }
 }

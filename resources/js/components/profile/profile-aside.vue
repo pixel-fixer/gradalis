@@ -24,14 +24,7 @@
                 <li class="aside-nav__item" v-if="$userCan('object-sell')">
                     <router-link to="/profile/object-requests/view" tag="a">
                         <img src="/svg/icons/ic_eye.svg" class="svg" alt="Eye">
-                        <span class="aside-nav__item__title has-text-weight-bold">Запросы на просмотр</span>
-                        <!-- <span class="aside-nav__item__count">5</span> -->
-                    </router-link>
-                </li>
-                <li class="aside-nav__item" v-if="$userCan('object-sell')">
-                    <router-link to="/profile/object-requests/doc" tag="a">
-                        <img src="/svg/icons/ic_eye.svg" class="svg" alt="Eye">
-                        <span class="aside-nav__item__title has-text-weight-bold">Запросы документации</span>
+                        <span class="aside-nav__item__title has-text-weight-bold">Запросы для объектов</span>
                         <!-- <span class="aside-nav__item__count">5</span> -->
                     </router-link>
                 </li>
@@ -45,7 +38,7 @@
                 <li class="aside-nav__item" v-if="$userCan('object-buy')">
                      <router-link to="/profile/trips" tag="a">
                         <img src="/svg/icons/ic_aircraft.svg" class="svg">
-                        <span class="aside-nav__item__title has-text-weight-bold">Ваши показы</span>
+                        <span class="aside-nav__item__title has-text-weight-bold">Ваши поездки</span>
                      </router-link>
                 </li>
                 <li class="aside-nav__item">

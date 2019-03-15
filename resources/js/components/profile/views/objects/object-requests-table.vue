@@ -44,7 +44,9 @@ export default {
     name: 'object-requests-table',
     props: {
         request_list: {
-            default: []
+            default: function(){
+                return [];
+            }
         },
     },
     data: () =>({
