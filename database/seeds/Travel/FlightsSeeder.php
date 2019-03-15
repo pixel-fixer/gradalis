@@ -19,6 +19,7 @@ class FlightsSeeder extends Seeder
             'out_time' =>  Carbon::now()->addDays(14),
             'in_city' => 'Москва',
             'out_city' => 'Варшава',
+            'flight_number' => 'asdasd',
             'airport' => ''
         ]);
     }

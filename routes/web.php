@@ -258,10 +258,18 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::patch('request/{view_request}/{status}', 'ProfileController@setObjectRequestStatus');
 
     Route::get('/api/objects', 'ProfileController@getObjects');
+    Route::get('/api/object/{type}/{id}', 'Api\ObjectController@getStats');
+    Route::get('/api/objects/search/{search?}', 'Api\ObjectController@search');
 
     Route::patch('/api/object/{type}/{id}/status/{status}', 'ProfileController@setObjectStatus');
 
-    Route::get('/api/trips', 'ProfileController@getTrips');
+    Route::get('/api/trips', 'Api\TravelController@list');
+    Route::get('/api/travel/{travel}', 'Api\TravelController@get');
+    Route::post('/api/trip', 'Api\TravelController@create');
+    Route::post('/api/trip/comment', 'Api\TravelController@createComment');
+    Route::post('/api/trip/flight', 'Api\TravelController@createFlight');
+    Route::post('/api/trip/hotel', 'Api\TravelController@createHotel');
+    Route::post('/api/trip/view', 'Api\TravelController@createObjectView');
 
     Route::get('/api/user-service', 'Api\ServiceController@getUserServices');
     Route::get('/api/user-service/{service}', 'Api\ServiceController@getUserService');

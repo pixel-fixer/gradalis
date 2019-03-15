@@ -21,11 +21,10 @@ Broadcast::channel('chart.data.{id}', function ($user, $id) {
     //return (int) $user->id === (int) $id;
 });
 
-//Notifications
-Broadcast::channel('App.User.{id}', function ($user, $id) {
+//Notifications and events for user
+Broadcast::channel('App.Models.Auth.User.{id}', function ($user, $id) {
    return (int) $user->id === (int) $id;
 });
-
 
 Broadcast::channel('chat.{common}', function ($user, $id) {
     return ['id' => $user->id];

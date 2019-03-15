@@ -57,25 +57,28 @@ Vue.use(VSwitch);
 Vue.use(VueMomentTz);
 Vue.use(Vuelidate);
 
-function errorResponseHandler(error) {
-    // check for errorHandle config
-    if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
-        return Promise.reject(error);
-    }
+// TODO !! Это дело плохо работает с классом form.js !! переписать или там, или тут
 
-    if (error.response) {
-        //Если это не ошибка валидации ларавела
-        //TODO добавить редирект на login, если авторизация истекла
-        if (error.response.status !== 422)
-            Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
-    }
-}
+// function errorResponseHandler(error) {
+//     // check for errorHandle config
+//     if (error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false) {
+//         return Promise.reject(error);
+//     }
+
+//     if (error.response) {
+//     //Если это не ошибка валидации ларавела
+//     //TODO добавить редирект на login, если авторизация истекла
+//     if(error.response.status !== 422)
+//         Vue.swal({type: 'error', title: error.response.status, text: error.response.data.message});
+//     }
+// }
 
 // apply interceptor on response
-window.axios.interceptors.response.use(
-    response => response,
-    errorResponseHandler
-);
+// window.axios.interceptors.response.use(
+//     response => response,
+//     errorResponseHandler
+// );
+
 Vue.component('business-list', require('./components/business/List.vue').default);
 Vue.component('news-index', require('./components/news/Index.vue').default);
 Vue.component('news-filter', require('./components/news/NewsFilter.vue').default);
@@ -226,6 +229,16 @@ const app = new Vue({
     },
     router,
     store,
+    mounted(){
+        //Подписка на уведомления
+        if(this.$store.state.user){
+            //Имя канала для уведомлений можно поменять, надо смотреть как https://github.com/laravel/ideas/issues/202
+            window.Echo.private('App.Models.Auth.User.' + this.$store.state.user.id)
+                .notification((notification) => {
+                    this.$store.commit('add_notification', notification);
+                });
+        }
+    },
     methods: {
         showModal(id) {
             document.getElementById(id).classList.add('is-active');

@@ -1,12 +1,9 @@
 <template>
-    <section class="section pt-1 mt-1 px-0">
-        <h3 class="mb-1">
-            Статистика моих объектов
-        </h3>
-        <table class="table is-fullwidth is-size-875">
+    <div>
+        <preloader v-if="isLoading"></preloader>
+        <table v-else class="table is-fullwidth is-size-875">
             <thead>
             <tr>
-                <th>Название объекта</th>
                 <th>Просмотры</th>
                 <th>Звонки</th>
                 <th>Запросы</th>
@@ -16,91 +13,70 @@
             </thead>
             <tbody class="box is-paddingless">
             <tr>
-                <td class="has-text-weight-bold has-vertical-align-middle">Мини-отель в собственность с видом на Невский проспект</td>
                 <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
                     <div class="text-with-icon">
                         <img src="/svg/icons/ic_eye.svg" class="svg"
                                 alt="">
-                        <span>20 670</span>
+                        <span>{{stats.showCount}}</span>
                     </div>
                 </td>
                 <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
                     <div class="text-with-icon">
                         <img src="/svg/icons/ic_phone.svg" class="svg"
                                 alt="">
-                        <span>1 290</span>
+                        <span>{{stats.callsCount}}</span>
                     </div>
                 </td>
                 <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
                     <div class="text-with-icon">
                         <img src="/svg/icons/ic_document.svg" class="svg"
                                 alt="">
-                        <span>20 670</span>
+                        <span>{{stats.requests}}</span>
                     </div>
                 </td>
                 <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
                     <div class="text-with-icon">
                         <img src="/svg/icons/ic_messages.svg" class="svg"
                                 alt="">
-                        <span>20 670</span>
+                        <span>{{stats.messages}}</span>
                     </div>
                 </td>
                 <td class="has-text-basic no-wrap has-vertical-align-middle">
                     <a class="link-with-icon">
                         <img src="/svg/icons/ic_details.svg" class="svg"
                                 alt="">
-                        <span class="has-text-decoration-underline">Посмотреть</span>
+                        <span class="has-text-decoration-underline">Что под этой кнопкой?</span>
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td class="has-text-weight-bold has-vertical-align-middle">Мини-отель в собственность с видом на Невский проспект</td>
-                <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
-                    <div class="text-with-icon">
-                        <img src="/svg/icons/ic_eye.svg" class="svg"
-                                alt="">
-                        <span>20 670</span>
-                    </div>
-                </td>
-                <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
-                    <div class="text-with-icon">
-                        <img src="/svg/icons/ic_phone.svg" class="svg"
-                                alt="">
-                        <span>1 290</span>
-                    </div>
-                </td>
-                <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
-                    <div class="text-with-icon">
-                        <img src="/svg/icons/ic_document.svg" class="svg"
-                                alt="">
-                        <span>20 670</span>
-                    </div>
-                </td>
-                <td class="has-text-basic has-text-weight-bold no-wrap has-vertical-align-middle">
-                    <div class="text-with-icon">
-                        <img src="/svg/icons/ic_messages.svg" class="svg"
-                                alt="">
-                        <span>20 670</span>
-                    </div>
-                </td>
-                <td class="has-text-basic no-wrap has-vertical-align-middle">
-                    <a class="link-with-icon">
-                        <img src="/svg/icons/ic_details.svg" class="svg"
-                                alt="">
-                        <span class="has-text-decoration-underline">Посмотреть</span>
-                    </a>
-                </td>
-            </tr>
-
             </tbody>
         </table>
-    </section>
+    </div>
 </template>
 
 <script>
+import Preloader from './../../../preloader'
+
 export default {
     name: 'object-stats',
-    props: ['data']
+    components: { Preloader },
+    props: ['objectId', 'type'],
+    data: () => ({
+        isLoading: true,
+        stats: []
+    }),
+    mounted(){
+        this.getData()
+    },
+    methods:{
+        getData(){
+            axios.get('/profile/api/object/' + this.type + '/' + this.objectId)
+            .then(res => {
+                this.stats = res.data
+                this.isLoading = false                
+            })
+        }
+    }
 }
 </script>
 

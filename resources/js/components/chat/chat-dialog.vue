@@ -28,8 +28,9 @@
                      v-for="(stack, i) in messagesMapped"
                      :class="{yours: user.id == stack.user.id}"
                      :key="i">
-                    <div class="chat-messages__user">
-                        <img src="/img/avatar-1.png" alt="">
+                    <div class="chat-messages__user" v-if="stack.user.avatar">
+                        <img :src="stack.user.avatar">
+                        <!-- <img v-else src="/svg/icons/ic_login.svg"> -->
                     </div>
                     <div class="chat-messages__list">
                         <div class="chat-messages__message"

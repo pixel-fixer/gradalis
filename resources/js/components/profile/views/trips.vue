@@ -1,11 +1,11 @@
 <template>
     <section class="section pt-1 px-0">
-        <h1 class="section-title mb-1-75">Ваши показы</h1>
+        <h1 class="section-title mb-1-75">Ваши поездки</h1>
         <table class="table is-fullwidth is-size-875">
             <thead>
             <tr>
                 <th style="padding-right: 0;">№</th>
-                <th>Продукт</th>
+                <th>Название</th>
                 <th>Дата</th>
                 <th>Объектов</th>
                 <th>Статус</th>
@@ -16,11 +16,11 @@
                 <tr v-for="trip in trips">
                     <td class="has-text-basic">1</td>
                     <td class="has-text-weight-bold">
-                        Тариф «Шпион»
+                        {{trip.name}}
                     </td>
-                    <td class="has-text-basic">12 марта 2019</td>
+                    <td class="has-text-basic"> {{trip.date}}</td>
                     <td class="has-text-weight-bold">
-                        12
+                        {{trip.object_view.length}}
                     </td>
                     <td class="has-text-warning">
                         Черновик
@@ -72,14 +72,72 @@
                 </tr> --> 
             </tbody>
         </table>
+        <p>
+            <button class="button is-info" @click="ui.showAddTripModal = true">Добавить поездку</button>
+        </p>
+
+        <modal v-if="ui.showAddTripModal" @close="ui.showAddTripModal = false">
+            <div slot="header">
+                <p class="modal-card-title mb-0">Добавить новую поездку</p>
+            </div>
+            <div slot="body">
+                <form @submit.prevent="addTrip">
+                    <div class="columns is-multiline">
+                        <g-g-input :type="'text'" :size="'is-6'"
+                            v-model="form.name"
+                            placeholder=""
+                            :required="true"
+                            :label="'Название'"></g-g-input>
+                        <g-g-date-input v-model="form.date"
+                                        label="Дата"
+                                        placeholder=""
+                                        :required="true"
+                                        :size="'is-6'">
+                        </g-g-date-input>
+                      </div>
+                    <button class="button is-info">Добавить поездку</button>
+                </form>
+            </div>
+        </modal>
+
     </section>
 </template>
 
 <script>
+import Modal from '../../Modal'
+import {Form} from './../../../form'
+import GGInput from './../../form/GGInput';
+import GGTextarea from './../../form/GGTextarea';
+import GGSelectInput from './../../form/GGSelectInput';
+import GGDateInput from '../../form/GGDateInput'
+
 export default {
+    components: {
+        Modal,
+        GGInput,
+        GGTextarea,
+        GGSelectInput,
+        GGDateInput
+    },
     data: () => ({
         trips: [],
-        products: []
+        products: [],
+        ui:{
+            showAddTripModal: false
+        },
+        modal:{
+            time:{
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true
+            },
+        },
+        form: new Form({
+            name: '',
+            date: '',
+            time: ''
+        })
     }),
     mounted(){
         this.getTips();
@@ -91,6 +149,12 @@ export default {
                 }).catch(err => {
                     this.$swal({ type: 'error', title: err.response.status, text: err.response.data.message });
                 })
+        },
+        addTrip(){
+            this.form.post('/profile/api/trip').then(()=>{
+                this.ui.showAddTripModal = false;
+                this.getTips();
+            })
         }
     }
 }   

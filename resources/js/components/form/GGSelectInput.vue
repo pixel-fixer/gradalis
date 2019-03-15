@@ -59,6 +59,7 @@
             closeOnSelect: {default: true},
             required: {default: false},
             withImg: {default: false},
+            optionIsValue: {default: false}
         },
         data() {
             return {
@@ -101,12 +102,15 @@
                 set: function (v) {
                     if (!this.multiple) {
                         this.$emit('input', v.id);
+                        this.$emit('input-option', v);
                     } else {
                         let values = new Array();
+                        let values_options = [];
                         v.forEach(el => {
                             values.push(el.id);
                         })
                         this.$emit('input', values);
+                        this.$emit('input-option', values_options);
                     }
                 },
             }

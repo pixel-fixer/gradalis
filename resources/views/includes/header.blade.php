@@ -11,10 +11,10 @@
             {{--<div class="navbar-contacts__worktime">Работаем с 10:00 до 20:00</div>--}}
             {{--</div>--}}
 
-            <!-- ToDo: Show only in Broker Personal Area -->
+            <!-- TODO: Возможно, нужно будет доработать -->
                 @auth
-                    {{-- @if(Auth::user()->user_id) --}}
-                    @if(false)
+                    @if(Auth::user()->user_id)
+                    {{-- @if(false) --}}
                         <div class="navbar-item is-hidden-touch">
                             <div class="manager is-flex">
                                 @if(Auth::user()->user->avatar)
@@ -48,7 +48,7 @@
                         </div>
                     @endif
                 @endauth
-                @if(Auth::check() && (Auth::user()->hasRole('Продавец') || Auth::user()->hasRole('Покупатель')))
+                {{-- @if(Auth::check() && (Auth::user()->hasRole('Продавец') || Auth::user()->hasRole('Покупатель')))
                     <div class="navbar-item is-hidden-touch">
                         <div class="manager is-flex">
                             <figure class="manager__avatar">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                @endif
+                @endif --}}
             </div>
 
 

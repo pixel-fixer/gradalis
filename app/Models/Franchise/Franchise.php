@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use App\Models\ObjectRequest;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class Franchise extends Model
 {
-    use HasTranslations, Favoriteable;
+    use HasTranslations, Favoriteable, HasMediaTrait;
 
     //В ожидании
     const STATUS_AWAIT = 0;
@@ -58,6 +60,14 @@ class Franchise extends Model
     protected $casts = [
         'price' => 'array',
     ];
+    
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(120)
+            ->height(60)
+            ->sharpen(10);
+    }
 
     public function getTypeAttribute()
     {
@@ -127,6 +137,11 @@ class Franchise extends Model
     public function doc_request()
     {
         return $this->morphMany('App\Models\ObjectRequest', 'object')->where('type', ObjectRequest::TYPE_DOC);
+    }
+    
+    public function request()
+    {
+        return $this->morphMany('App\Models\ObjectRequest', 'object');
     }
 
     public function getNameAttribute($value): string

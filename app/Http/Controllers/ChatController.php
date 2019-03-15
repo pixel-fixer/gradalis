@@ -7,7 +7,7 @@ use App\Models\Auth\User;
 use App\Models\Chat\Message;
 use App\Models\Chat\Dialog;
 use Auth;
-
+use Notification;
 class ChatController extends Controller
 {
     public function __construct()
@@ -66,16 +66,22 @@ class ChatController extends Controller
         $message = Message::create([
             'dialog_id' => request()->input('dialog_id'),
             'from' => Auth::id(),
-            'text' => request()->input('text',''),
+            'text' => request()->input('text',''),  
             'status' => Auth::user()->hasAnyRole(['Брокер-продавец', 'Брокер-покупатель']) ? 0 : 1
         ]);
 
         if(request()->hasFile('file') && request()->file('file')->isValid())
             $message->addMedia(request()->file('file'))->toMediaCollection();
 
-        $message = $message->load('from');
+        //Уведомляем юзеров, которые прикреплены к диалогу кроме отправляющего
+        $dialog = Dialog::where('id',  request()->input('dialog_id'))->firstOrFail();
 
-        broadcast(new \App\Events\NewMessage($message))->toOthers();
+        $users = $dialog->users()->where('dialog_user.user_id', '!=', Auth::id())->get();
+        Notification::send($users, new \App\Notifications\NewMessage($message));        
+
+        //broadcast(new \App\Events\NewMessage($message))->toOthers();
+
+        $message = $message->load('from');
 
         return $message;
     }

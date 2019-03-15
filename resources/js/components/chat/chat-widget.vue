@@ -4,7 +4,7 @@
             <div class="chat-widget__header" @click="(ui.expanded = !ui.expanded)" :class="{'is-expanded': ui.expanded}">                 
                 <img src="/svg/icons/ic_messages.svg" class="svg" alt="Messages">
                 <span class="aside-nav__item__title has-text-weight-bold">Сообщения</span>
-                <!-- <span class="chat-widget__header__count tag is-danger is-rounded tag__count is-flex">12</span>           -->
+                <span v-if="newMessagesCount" class="chat-widget__header__count tag is-danger is-rounded tag__count is-flex">{{newMessagesCount}}</span>          
             </div>
             <transition name="fade">
                 <chat v-show="ui.expanded"
@@ -26,6 +26,13 @@ export default {
             expanded: false
         }
     }),
+    computed:{
+        newMessagesCount(){
+            return this.$store.state.notifications.filter(item => {
+                return item.type == 'App\\Notifications\\NewMessage';
+            }).length
+        }
+    },
     mounted(){
         setTimeout(() => {
             this.ui.show = true;
