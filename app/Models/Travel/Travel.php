@@ -44,6 +44,11 @@ class Travel extends Model implements HasMedia
         return $this->hasMany('App\Models\Travel\Consultation');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Travel\TravelComment');
+    }
+
     public function registerMediaCollections()
     {
         $this

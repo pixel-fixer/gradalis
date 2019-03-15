@@ -149,7 +149,6 @@
 
 
 <script>
-
     export default {
         name: 'trip-flights',
         props: ['flights', 'travelId'],
@@ -158,15 +157,8 @@
         },
         data: () => ({
 
-        }),
-        mounted(){
-           
-        },
-        methods: {
-            addFlight(){
+        })
 
-            }
-        }
     }
 </script>
 

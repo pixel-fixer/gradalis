@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Travel\Travel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ObjectRequest;
+use App\Models\Travel\TravelComment;
 
 class TravelController extends Controller
 {
@@ -26,7 +27,7 @@ class TravelController extends Controller
 
     public function get(Travel $travel)
     {
-        $travel->load(['hotels', 'meetings', 'flights', 'consultations', 'object_view']);
+        $travel->load(['hotels', 'meetings', 'flights', 'consultations', 'object_view', 'comments']);
 
         return $travel;
     }
@@ -78,5 +79,17 @@ class TravelController extends Controller
         ObjectRequest::create($data);
 
         return response(['message' => "Запрос на просмотр отправлен"]);
+    }
+
+    public function createComment(Request $request)
+    {
+        $data = $request->validate([
+            'text' => 'required',
+            'travel_id' => 'required'
+        ]);
+
+        TravelComment::create($data);
+
+        return response(['message' => "Пожелание добавлено"]);
     }
 }

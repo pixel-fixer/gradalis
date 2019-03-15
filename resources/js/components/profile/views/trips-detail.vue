@@ -15,7 +15,7 @@
         <trip-flights
             :flights="travel.flights"
             :travel-id="travel.id"
-            @update="getTrip($route.params.id);">
+            @update="getTrip($route.params.id)">
         </trip-flights>
 
         <hr class="hr-basic">
@@ -45,26 +45,10 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="content">
-                <h3 class="mb-0">Ваши пожелания</h3>
-                <time class="is-size-7 has-text-basic">12 марта в 17:40</time>
-                <div class="is-size-875 mb-1-75">
-                    <p>Убедитесь, что сделка будет совершена без последствий. Вопреки законам математики, в жизни от
-                        перемены мест все меняется. Меняются наши внутренние ощущения, мировоззрение, отношение к жизни,
-                        —
-                        и, что
-                        самое интересное, только в лучшую сторону.</p>
-                </div>
-                <div class="buttons">
-                    <button class="button is-info is-outlined h-3 px-1 is-size-875 has-text-weight-bold px-1-5">
-                        <span class="icon icon-1"><img src="/svg/icons/ic_ask_question.svg" class="svg" alt=""></span>
-                        <span>Задать вопрос брокеру</span>
-                    </button>
-                    <button class="button is-info is-outlined h-3 px-1 is-size-875 has-text-weight-bold px-1-5">
-                        <span>Добавить пожелания</span>
-                    </button>
-                </div>
-            </div>
+            <travel-comments
+            :comments="travel.comments"
+            :travel-id="travel.id"
+            @update="getTrip($route.params.id)"></travel-comments>
         </section>
         <hr class="hr-basic">
         <section class="is-paddingless">
@@ -116,12 +100,14 @@
     import UploadDocuments from '../../UploadDocuments'
     import ObjectsView from './objects/objects-view'
     import TripFlights from './trip-flights'
+    import TravelComments from './travel-comments'
 
     export default {
         components: {
             UploadDocuments,
             ObjectsView,
-            TripFlights
+            TripFlights,
+            TravelComments
         },
         data: () => ({
             travel: null,
